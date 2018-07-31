@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Fixed Bed Reactor - Cascade Control</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script src="https://d3js.org/d3.v4.min.js"></script>
+  <script type="text/javascript" src="pvStripChart.js"></script>
+
+
+
+  <style type="text/css">
+
+  .noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+       unselectable="on"
+ onselectstart="return false;"
+ onmousedown="return false;"
+}
+.grid line {
+  stroke: lightgrey;
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
+
+.grid path {
+  stroke-width: 0;
+}
+/* Style the lines by removing the fill and applying a stroke */
+.chartLineOAT {
+    fill: none;
+    stroke: turquoise;
+    stroke-width: 2;
+}
+.chartLineSPr {
+    fill: none;
+    stroke: #9966CC;
+    stroke-width: 1;
+    stroke-dasharray: 5,5;
+
+}
+.chartLineCv {
+    fill: none;
+    stroke: #9966CC;
+    stroke-width: 2;
+}
+.chartLineCO {
+    fill: none;
+    stroke: blue;
+    stroke-width: 2;
+}
+.chartLineVAC {
+    fill: none;
+    stroke: violet;
+    stroke-width: 2;
+}
+.chartLineTEMP {
+    fill: none;
+    stroke: red;
+    stroke-width: 2;
+}
+
+
+
+.axisViolet line{
+  stroke: #9966CC;
+}
+
+.axisViolet path{
+  stroke: #9966CC;
+}
+
+
+.axisBlue line{
+  stroke: blue;
+}
+
+.axisBlue path{
+  stroke: blue;
+}
+
+
+
+.axisRed line{
+  stroke: red;
+}
+
+.axisRed path{
+  stroke: red;
+}
+
+  </style>
+
+</head>
+<body style='padding:10px;font-family:arial'>
+<center>
+<b>Fixed Bed Reactor - Cascade Control</b>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+This is an example of adiabatic cascade control for a catalytic fixed-bed reactor to provide a desired ion concentration of a gas leaving the reactor.
+The gas is flowing at constant volume and is preheated before entering the reactor.
+
+</div>
+<table><tr>
+<td style=width:400px;>
+<div style="padding:10px;width:400px;text-align:justify;height:560px;overflow-y:auto">
+
+<b>Sequence Of Operation:</b>
+This controls a gas ion concentration leaving a fixed bed reactor by preheating the gas before it enters the reactor. The primary controller, sensing concentration,
+functions to adjust the  temperature setpoint for the secondary controller. The secondary
+ temperature controller modulates the heating medium's flow
+control actuator to maintain the desired temperature.
+
+
+ <p></p>
+<b>System Chart: </b><img align=center src="../Images/chart.png" width=25 height=25 alt="" />
+ Select the button  to view the fixed bed cascade control system strip chart that records each minute:
+Concentration sensor, Setpoint request, Temperature sensor, and Flow Actutor position
+values  during the previous 100 minutes.
+
+
+ <p></p>
+<b>Concentration Chart:</b>
+The measured  concentration strip chart is shown for each minute recording
+ the ion concentration of the gas leaving the reactor,
+ and its setpoint, during the previous 100 minutes.<p></p>
+<p></p>
+<b>Analog Gauges: </b><a href="../AnalogGaugeObject/analogGaugeObject.htm">Gauges</a>
+ are provided on the central monitoring panel that display:
+  concentration sensor value, primary controller setpoint adjust value, temperature sensor value, and
+   the secondary controller output  position request value for the heating medium flow actuator.<p></p>
+<p>
+<b>Primary/Secondary Controller Status:</b><img src="../Images/greenPilotLight.png" width=25 height=25 align=center />
+
+
+
+ A <a href="../PilotLight/pilotLight.htm">5-state status pilot light</a> is included for the controller, shown at the controller in the system flow diagram.<br>
+
+
+
+</p>
+<p></p>
+<b>Primary/Secondary PID Controllers: </b> The central monitoring panel can <a href="../TuneController/tuneController.htm">tune each  PID loop</a>.
+The Setpoint(SPr), Proportional(P), Intergral(I), Derivative(D), and Controller Output(CO) values can be adjusted.
+ <p></p>
+<b>Flow Actuator Status:</b><img src="../Images/offPilotLight.png" width=25 height=25 align=center /> A <a href="../PilotLight/pilotLight.htm">5-state status pilot light</a>
+monitors the Flow Actuator status: maximum open position (ON), minimum open position (NORMAL OFF), or modulating (INTERMITTENT), and disabled/repairing (DEFECTIVE). If the Flow Actuator local  circuit detects a fault, the status will show ALARM. <br>
+
+
+</div>
+</td>
+<td style=width:800px;>
+<div id="svgDiv" style='border:1px solid black;width:800px;height:600px;'>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" id="mySVG" viewBox="0 0 800 600"><defs id="pilotLightDefs"><radialGradient id="blueGradient" cx="50%" cy="50%" r="75%"><stop offset="0%" stop-color="rgb(0,0,255)" stop-opacity="1"/><stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/></radialGradient><radialGradient id="greenGradient" cx="50%" cy="50%" r="75%"><stop offset="0%" stop-color="rgb(0,191,0)" stop-opacity="1"/><stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/></radialGradient><radialGradient id="greyGradient" cx="50%" cy="50%" r="75%"><stop offset="0%" stop-color="rgb(255,255,255)" stop-opacity="1"/><stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/></radialGradient><radialGradient id="redGradient" cx="50%" cy="50%" r="75%"><stop offset="0%" stop-color="rgb(255,0,0)" stop-opacity="1"/><stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/></radialGradient><radialGradient id="violetGradient" cx="50%" cy="50%" r="75%"><stop offset="0%" stop-color="rgb(219,0,219)" stop-opacity="1"/><stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/></radialGradient><radialGradient id="aquaGradient" cx="50%" cy="50%" r="75%"><stop offset="0%" stop-color="aqua" stop-opacity="1"/><stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/></radialGradient></defs><defs id="arrowDefs"><marker id="arrowred" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="red" stroke-linejoin="bevel"><path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/></marker><marker id="arrowred" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="red" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker><marker id="arrowred" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="red" stroke-linejoin="bevel">
+
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+
+</marker><marker id="arrowred" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="red" stroke-linejoin="bevel">
+
+
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+
+
+</marker><marker id="arrow4B5320" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#4B5320" stroke-linejoin="bevel">
+
+
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+
+
+</marker><marker id="arrow00FFFF" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#00FFFF" stroke-linejoin="bevel">
+
+
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+
+
+</marker><marker id="arrow0247FE" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#0247FE" stroke-linejoin="bevel">
+
+
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+
+
+</marker><marker id="arrow000000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#000000" stroke-linejoin="bevel">
+
+
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+
+
+</marker><marker id="arrow008080" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#008080" stroke-linejoin="bevel">
+
+
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+
+
+</marker></defs><g id="topG"><g shape-rendering="geometricPrecision" id="domAddPathG"><path fill="white" fill-opacity="0" stroke="#00FFFF" stroke-width="5" marker-end="url(#arrow00FFFF)" d="M 727 110 L 255 110" type="linear" rightAngle="true"/><path fill="white" fill-opacity="0" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow000000)" d="M 671 48 L 626 48 L 626 84 L 613 103 L 641 113 L 628 131 L 630 172" type="linear"/><path fill="white" fill-opacity="0" stroke="#008080" stroke-width="1" marker-end="url(#arrow008080)" d="M 549 102 L 549 60" stroke-dasharray="8 4" type="linear" rightAngle="true"/><path fill="white" fill-opacity="0" stroke="#008080" stroke-width="1" stroke-dasharray="8 4" marker-end="url(#arrow008080)" d="M 581 49 L 615 49" type="linear" rightAngle="true"/><path fill="white" fill-opacity="0" stroke="#008080" stroke-width="1" stroke-dasharray="8 4" marker-end="url(#arrow008080)" d="M 379 51 L 517 51" type="linear" rightAngle="true"/><path fill="white" fill-opacity="0" stroke="#008080" stroke-width="1" stroke-dasharray="8 4" marker-end="url(#arrow008080)" d="M 346 108 L 346 64" type="linear" rightAngle="true"/><path fill="white" fill-opacity="0" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow000000)" d="M 670 48 L 634 48" type="linear" rightAngle="true"/><path fill="white" fill-opacity="0" stroke="#008080" stroke-width="2" stroke-dasharray="8 4" marker-end="url(#arrow008080)" d="M 118 575 L 118 416" type="linear" rightAngle="true"/><path fill="white" fill-opacity="0" stroke="#008080" stroke-width="2" stroke-dasharray="8 4" marker-end="url(#arrow008080)" d="M 224 367 L 367 367" type="linear" rightAngle="true"/><path fill="white" fill-opacity="0" stroke="#008080" stroke-width="2" stroke-dasharray="8 4" marker-end="url(#arrow008080)" d="M 485 575 L 485 417" type="linear" rightAngle="true"/><path fill="white" fill-opacity="0" stroke="#008080" stroke-width="2" stroke-dasharray="8 4" marker-end="url(#arrow008080)" d="M 587 367 L 725 367" type="linear" rightAngle="true"/></g><g shape-rendering="geometricPrecision" id="domAddElemG" text-rendering="geometricPrecision"><circle stroke="#3B444B" stroke-width="2" fill="#FF0000" fill-opacity="0.5" transform="translate(628 109)" r="23"/><rect fill="#2E8B57" fill-opacity="0.5" stroke="#9966CC" stroke-width="2" x="0" y="0" width="89" height="44" rx="10" ry="10" transform="matrix(1 0 0 1 402 86)" rotateAngle="0"/><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 594 146)" rotateAngle="0">
+
+
+Heat Exchanger</text><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 392 150)" rotateAngle="0" stroke-width="null">
+
+
+Fixed Bed Reactor</text><text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 679 51)" rotateAngle="0">
+
+
+Heating Medium</text><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 737 116)" rotateAngle="0">
+
+
+Gas</text><text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 403 46)" rotateAngle="0">
+
+
+Setpoint Adjust</text><text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 320 32)" rotateAngle="0">
+
+
+Primary</text><text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 522 32)" rotateAngle="0">
+
+
+Secondary</text><text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 523 131)" rotateAngle="0">
+
+
+Temperature</text><text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 308 128)" rotateAngle="0">
+
+
+Concentration</text><text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 611 35)" rotateAngle="0">
+
+
+Flow</text><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 744 350)" rotateAngle="0">Flow </text><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 733 398)" rotateAngle="0">Actuator</text><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 237 424)" rotateAngle="0">Setpoint Adjust</text><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 127 561)" rotateAngle="0">Concentration</text><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 497 562)" rotateAngle="0">Temperature</text><text font-family="Arial" font-size="20" font-weight="bold" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 74 63)" rotateAngle="0" stroke-width="null">Cascade Control</text><text font-family="Arial" font-size="20" font-weight="bold" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 69 88)" rotateAngle="0" stroke-width="null">Fixed Bed Reactor</text><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 694 287)" rotateAngle="0">Minutes</text><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1.38778e-16 1 -1 1.38778e-16 39 177)" rotateAngle="90">Concentration</text><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 602 423)" rotateAngle="0">Control Output</text></g></g><g shape-rendering="geometricPrecision" id="domAddHmiG"><g id="control1511357488647" transform="matrix(0.4 0 0 0.4 549 47)" pointer-events="null">
+
+
+<line stroke="none" strokeCode="1" stroke-width="2" x1="0" y1="-60" x2="0" y2="60" name="SpineCenterLine"/>
+
+
+<ellipse fill="#FFD700" stroke="#E52B50" fillCode="137" strokeCode="5" stroke-width="4" cx="0" cy="0" rx="76" ry="32"/>
+
+
+</g><g id="pilotLight1511362260379" transform="matrix(10 0 0 10 548 47)" pointer-events="null" myStatus="ON">
+
+
+<circle id="pilotLight" cx="0" cy="0" r="1" fill="url(#greenGradient)"/>
+
+
+<line style="visibility:hidden" name="lineOff" x1="-.5" y1="-.5" x2=".5" y2=".5" stroke="black" stroke-width=".1"/>
+
+
+<line style="visibility:hidden" name="lineDisabled" x1=".5" y1="-.5" x2="-.5" y2=".5" stroke="black" stroke-width=".1"/>
+
+
+<circle style="visibility:hidden" name="circleDefective" cx="0" cy="0" r=".7" stroke="crimson" stroke-width=".2" fill="none"/>
+
+
+<line style="visibility:hidden" name="lineDefective" x1="-.5" y1="-.5" x2=".5" y2=".5" stroke="crimson" stroke-width=".08"/>
+
+
+</g><g id="control1511362510561" transform="matrix(0.4 0 0 0.4 346 50)" pointer-events="null">
+
+
+<line stroke="none" strokeCode="1" stroke-width="2" x1="0" y1="-60" x2="0" y2="60" name="SpineCenterLine"/>
+
+
+<ellipse fill="#228B22" stroke="#9966CC" fillCode="131" strokeCode="9" stroke-width="4" cx="0" cy="0" rx="76" ry="32"/>
+
+
+</g><g id="pilotLight1511362537450" transform="translate(344 50)scale(10)" pointer-events="null" myStatus="ON">
+
+
+<circle id="pilotLight" cx="0" cy="0" r="1" fill="url(#greenGradient)"/>
+
+
+<line style="visibility:hidden" name="lineOff" x1="-.5" y1="-.5" x2=".5" y2=".5" stroke="black" stroke-width=".1"/>
+
+
+<line style="visibility:hidden" name="lineDisabled" x1=".5" y1="-.5" x2="-.5" y2=".5" stroke="black" stroke-width=".1"/>
+
+
+<circle style="visibility:hidden" name="circleDefective" cx="0" cy="0" r=".7" stroke="crimson" stroke-width=".2" fill="none"/>
+
+
+<line style="visibility:hidden" name="lineDefective" x1="-.5" y1="-.5" x2=".5" y2=".5" stroke="crimson" stroke-width=".08"/>
+
+
+</g><g id="PID1511386645896" transform="matrix(0.7 0 0 0.7 117 366)" pointer-events="null">
+<ellipse id="pidEllipse" fill="#228B22" stroke="#9966CC" stroke-width="4" cx="0" cy="0" rx="152" ry="64"/>
+
+ <foreignObject class="noselect" id="foAdjust" width="300" height="100" x="-120" y="-50" pointer-events="hidden">
+
+<table xmlns="http://www.w3.org/1999/xhtml" cellpadding="0">
+
+<tbody>
+<tr>
+<td align="center" colspan="5">
+Tune Controller:<input type="checkbox" id="adjustControllerCheck"  />
+</td>
+</tr>
+
+    <tr align="center">
+
+    <td>
+SPr:<input disabled="" style="margin-right: 0px;margin-left: 0px;" type="radio" name="tuneRadio" id="tuneSPrClick"  />
+</td>
+
+    <td>
+P:<input style="margin-right: 0px;margin-left: 0px;" disabled="" type="radio" name="tuneRadio" id="tunePClick"  />
+</td>
+
+    <td>
+I:<input disabled="" title="turn off Integral" onclick="turnOffIntegralChecked()" id="turnOffIntegralCheck" type="checkbox" checked="" style="margin-right: 0px;margin-left: 0px;" />
+<input style="margin-right: 0px;margin-left: 0px;" disabled="" type="radio" name="tuneRadio" id="tuneIClick"  />
+</td>
+
+    <td>
+D:<input disabled="" title="turn off Derivative" onclick="turnOffDerivativeChecked()" id="turnOffDerivativeCheck" type="checkbox" checked="" style="margin-right: 0px;margin-left: 0px;" />
+<input style="margin-right: 0px;margin-left: 0px;" disabled="" type="radio" name="tuneRadio" id="tuneDClick"  />
+</td>
+
+    <td>
+CO:<input disabled="" type="radio" style="margin-right: 0px;margin-left: 0px;" name="tuneRadio" id="tuneCOClick"  />
+</td>
+
+    </tr>
+
+    <tr align="center">
+
+    <td>
+<input onfocus="blur()" type="text" style="width:40px" id="tuneSPrValue" value="100.0" />
+</td>
+
+    <td>
+  <input onfocus="blur()" type="text" style="width:40px" id="tunePValue" value="1" />
+</td>
+
+    <td>
+<input onfocus="blur()" type="text" style="width:40px" id="tuneIValue" value="10" />
+</td>
+
+    <td>
+<input onfocus="blur()" type="text" style="width:40px" id="tuneDValue" value="1" />
+</td>
+
+    <td>
+  <input onfocus="blur()" type="text" style="width:40px" id="tuneCOValue" value="0" />
+</td>
+
+    </tr>
+
+    <tr>
+<td align="center" colspan="5">
+
+        <table>
+
+        <tbody>
+<tr>
+
+        <td>
+<button  style="padding:0;width:30px;height:30px">
+<img src="../Images/minusRound.png" alt="" width="25" height="25" />
+</button>
+</td>
+
+        <td>
+
+            <select id="incrementSelect" title="Increment value">
+
+              <option value="">
+.10</option>
+
+              <option value="">
+.50</option>
+
+              <option selected="" value="">
+1.0</option>
+
+              <option value="">
+5.0</option>
+
+              <option value="">
+10</option>
+
+
+            </select>
+
+        </td>
+
+        <td>
+<button  style="padding:0;width:30px;height:30px">
+<img src="../Images/plusRound.png" alt="" width="25" height="25" />
+</button>
+</td>
+
+        </tr>
+
+        </tbody>
+</table>
+
+    </td>
+</tr>
+
+</tbody>
+</table>
+
+</foreignObject>
+
+</g><g id="gauge1511386708832" width="90" height="90" name="gaugeOAT" label="C" min="0" max="100" majorTicks="5" minorTicks="10" ringColor="#9966CC" faceColor="#228B22" diameter="100" units="%" transform="matrix(1 0 0 1 74 448)" pointer-events="null">
+<circle cx="45" cy="45" r="43.65" style="fill: rgb(153, 102, 204); stroke: rgb(0, 0, 0); stroke-width: 0.5px;"/>
+<circle cx="45" cy="45" r="39.285" style="fill: rgb(34, 139, 34); stroke: rgb(224, 224, 224); stroke-width: 2px;"/>
+<text class="noselect" x="45" y="27.5" dy="5" text-anchor="middle" style="font-size: 10px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+C</text>
+<text class="noselect" x="45" y="53" dy="4" text-anchor="middle" style="font-size: 8px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+%</text>
+<line x1="19.290686975291614" y1="65.2675881655307" x2="15.862778571997161" y2="67.96993325426811" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="17.086692619457907" y1="62.10529676238838" x2="13.364918302052292" y2="64.38600299737348" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="15.269662846901404" y1="58.70587315763155" x2="11.305617893154924" y2="60.533322911982424" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="13.864787297787412" y1="55.116443853349836" x2="9.71342560415907" y2="56.46530303379649" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="12.891541882799245" y1="51.386769417002995" x2="8.610414133839143" y2="52.2383386726034" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="12.363418786911723" y1="47.568554646390325" x2="8.01187462516662" y2="47.911028599242364" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="12.287739426069336" y1="43.71473178158749" x2="7.926104682878581" y2="43.54336268579916" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="12.665552949766678" y1="39.878726700745446" x2="8.354293343068903" y2="39.195890260844834" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="13.491621696598724" y1="36.11371827254213" x2="9.290504589478552" y2="34.92888070888108" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="23.394352300845043" y1="66.60564769915496" x2="18.76457065102612" y2="71.23542934897388" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+<text class="noselect" x="25.55491707076054" y="64.44508292923946" dy="3" text-anchor="start" style="font-size: 10px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+0</text>
+<line x1="16.436661968454306" y1="29.00376210649344" x2="12.628216897581545" y2="26.87093038735923" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="18.51480614665016" y1="25.757380303075163" x2="14.983446966203513" y2="23.191697676818517" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="20.960116847349248" y1="22.777760593115325" x2="17.754799093662477" y2="19.814795338864034" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="23.738694517790616" y1="20.106209701168986" x2="20.903853786829366" y2="16.78703766132485" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="26.812019496520772" y1="17.77976356724543" x2="24.386955429390206" y2="14.150398709544817" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="30.137486014776584" y1="15.830673914383311" x2="28.155817483413465" y2="11.941430436301083" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="33.66899284392557" y1="14.285961140237678" x2="32.158191889782316" y2="10.19075595893603" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="37.35758240076729" y1="13.167039730981067" x2="36.338593387536264" y2="8.92264502844521" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="41.15211945072404" y1="12.489421390438103" x2="40.639068710820574" y2="8.15467757582985" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="16.77086088411764" y1="33.30710772408469" x2="10.721759644999985" y2="30.801487950674257" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+<line x1="48.84788054927596" y1="12.489421390438103" x2="49.360931289179426" y2="8.15467757582985" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="52.642417599232694" y1="13.167039730981063" x2="53.66140661246372" y2="8.922645028445203" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="56.33100715607442" y1="14.285961140237678" x2="57.841808110217684" y2="10.19075595893603" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="59.86251398522341" y1="15.830673914383308" x2="61.84418251658653" y2="11.941430436301083" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="63.187980503479224" y1="17.779763567245432" x2="65.61304457060979" y2="14.15039870954482" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="66.26130548220938" y1="20.106209701168986" x2="69.09614621317064" y2="16.78703766132485" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="69.03988315265075" y1="22.777760593115314" x2="72.24520090633752" y2="19.81479533886402" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="71.48519385334984" y1="25.75738030307516" x2="75.01655303379648" y2="23.19169767681851" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="73.5633380315457" y1="29.00376210649344" x2="77.37178310241845" y2="26.870930387359234" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="45" y1="14.445000000000004" x2="45" y2="7.897500000000001" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+<line x1="76.50837830340127" y1="36.11371827254214" x2="80.70949541052144" y2="34.92888070888109" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="77.33444705023331" y1="39.87872670074544" x2="81.6457066569311" y2="39.195890260844834" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="77.71226057393066" y1="43.71473178158748" x2="82.07389531712141" y2="43.543362685799146" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="77.63658121308828" y1="47.56855464639032" x2="81.98812537483337" y2="47.911028599242364" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="77.10845811720075" y1="51.38676941700299" x2="81.38958586616086" y2="52.23833867260338" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="76.13521270221258" y1="55.11644385334985" x2="80.28657439584093" y2="56.4653030337965" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="74.73033715309859" y1="58.70587315763156" x2="78.69438210684507" y2="60.53332291198243" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="72.9133073805421" y1="62.10529676238837" x2="76.63508169794771" y2="64.38600299737348" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="70.70931302470838" y1="65.2675881655307" x2="74.13722142800283" y2="67.96993325426811" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="73.22913911588236" y1="33.30710772408468" x2="79.27824035500001" y2="30.80148795067425" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+<line x1="66.60564769915496" y1="66.60564769915496" x2="71.23542934897388" y2="71.23542934897388" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+<text class="noselect" x="64.44508292923946" y="64.44508292923946" dy="3" text-anchor="end" style="font-size: 10px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+100</text>
+<g class="pointerContainer">
+<path d="M0,-37.1025L-0.3095700663881331,-31.735019179864366C-0.6191401327762662,-26.36753835972873,-1.2382802655525325,-15.632576719457468,-1.5478503319406667,-8.632557539593101C-1.8574203983288011,-1.6325383597287342,-1.8574203983288033,1.6325383597287342,-1.5478503319406716,4.485807539593101C-1.2382802655525396,7.339076719457469,-0.6191401327762733,9.780538359728736,-5.921189464667502e-15,9.780538359728736C0.6191401327762615,9.780538359728736,1.23828026555253,7.339076719457469,1.5478503319406645,4.485807539593101C1.8574203983287987,1.6325383597287342,1.8574203983287987,-1.6325383597287342,1.5478503319406656,-8.632557539593101C1.2382802655525325,-15.632576719457468,0.6191401327762662,-26.36753835972873,0.3095700663881331,-31.735019179864366L0,-37.1025" style="fill: rgb(220, 57, 18); stroke: rgb(198, 51, 16); fill-opacity: 0.7;" transform="translate(45, 45) rotate(-135)"/>
+<circle cx="45" cy="45" r="5.2379999999999995" style="fill: rgb(70, 132, 238); stroke: rgb(102, 102, 102); opacity: 1;"/>
+<text class="noselect" x="45" y="69.75" dy="9" text-anchor="middle" style="font-size: 13px; fill: rgb(0, 0, 0); stroke-width: 1px;">
+0</text>
+</g>
+</g><g id="PID1511388426190" transform="matrix(0.7 0 0 0.7 478 369)" pointer-events="null">
+<ellipse id="pidEllipse" fill="gold" stroke="#E52B50" stroke-width="4" cx="0" cy="0" rx="152" ry="64"/>
+
+ <foreignObject class="noselect" id="foAdjust" width="300" height="100" x="-120" y="-50" pointer-events="hidden">
+
+<table xmlns="http://www.w3.org/1999/xhtml" cellpadding="0">
+
+<tbody>
+<tr>
+<td align="center" colspan="5">
+Tune Controller:<input type="checkbox" id="adjustControllerCheck"  />
+</td>
+</tr>
+
+    <tr align="center">
+
+    <td>
+SPr:<input disabled="" style="margin-right: 0px;margin-left: 0px;" type="radio" name="tuneRadio" id="tuneSPrClick"  />
+</td>
+
+    <td>
+P:<input style="margin-right: 0px;margin-left: 0px;" disabled="" type="radio" name="tuneRadio" id="tunePClick"/>
+</td>
+
+    <td>
+I:<input disabled="" title="turn off Integral" id="turnOffIntegralCheck" type="checkbox" checked="" style="margin-right: 0px;margin-left: 0px;" />
+<input style="margin-right: 0px;margin-left: 0px;" disabled="" type="radio" name="tuneRadio" id="tuneIClick" onclick="tuneIClicked()" />
+</td>
+
+    <td>
+D:<input disabled="" title="turn off Derivative" id="turnOffDerivativeCheck" type="checkbox" checked="" style="margin-right: 0px;margin-left: 0px;" />
+<input style="margin-right: 0px;margin-left: 0px;" disabled="" type="radio" name="tuneRadio" id="tuneDClick"  />
+</td>
+
+    <td>
+CO:<input disabled="" type="radio" style="margin-right: 0px;margin-left: 0px;" name="tuneRadio" id="tuneCOClick" />
+</td>
+
+    </tr>
+
+    <tr align="center">
+
+    <td>
+<input onfocus="blur()" type="text" style="width:40px" id="tuneSPrValue" value="100.0" />
+</td>
+
+    <td>
+  <input onfocus="blur()" type="text" style="width:40px" id="tunePValue" value="1" />
+</td>
+
+    <td>
+<input onfocus="blur()" type="text" style="width:40px" id="tuneIValue" value="10" />
+</td>
+
+    <td>
+<input onfocus="blur()" type="text" style="width:40px" id="tuneDValue" value="1" />
+</td>
+
+    <td>
+  <input onfocus="blur()" type="text" style="width:40px" id="tuneCOValue" value="0" />
+</td>
+
+    </tr>
+
+    <tr>
+<td align="center" colspan="5">
+
+        <table>
+
+        <tbody>
+<tr>
+
+        <td>
+<button  style="padding:0;width:30px;height:30px">
+<img src="../Images/minusRound.png" alt="" width="25" height="25" />
+</button>
+</td>
+
+        <td>
+
+            <select id="incrementSelect" title="Increment value">
+
+              <option value="">
+.10</option>
+
+              <option value="">
+.50</option>
+
+              <option selected="" value="">
+1.0</option>
+
+              <option value="">
+5.0</option>
+
+              <option value="">
+10</option>
+
+
+            </select>
+
+        </td>
+
+        <td>
+<button style="padding:0;width:30px;height:30px">
+<img src="../Images/plusRound.png" alt="" width="25" height="25" />
+</button>
+</td>
+
+        </tr>
+
+        </tbody>
+</table>
+
+    </td>
+</tr>
+
+</tbody>
+</table>
+
+</foreignObject>
+
+</g><g id="gauge1511388777112" width="90" height="90" name="gaugeOAT" label="SPrA" min="0" max="100" majorTicks="5" minorTicks="10" ringColor="#9966CC" faceColor="#228B22" diameter="100" units="%" transform="translate(242 324)" pointer-events="null"><circle cx="45" cy="45" r="43.65" style="fill: rgb(153, 102, 204); stroke: rgb(0, 0, 0); stroke-width: 0.5px;"/><circle cx="45" cy="45" r="39.285" style="fill: rgb(34, 139, 34); stroke: rgb(224, 224, 224); stroke-width: 2px;"/><text class="noselect" x="45" y="27.5" dy="5" text-anchor="middle" style="font-size: 10px; fill: rgb(51, 51, 51); stroke-width: 0px;">SPrA</text><text class="noselect" x="45" y="53" dy="4" text-anchor="middle" style="font-size: 8px; fill: rgb(51, 51, 51); stroke-width: 0px;">%</text><line x1="19.290686975291614" y1="65.2675881655307" x2="15.862778571997161" y2="67.96993325426811" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="17.086692619457907" y1="62.10529676238838" x2="13.364918302052292" y2="64.38600299737348" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="15.269662846901404" y1="58.70587315763155" x2="11.305617893154924" y2="60.533322911982424" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="13.864787297787412" y1="55.116443853349836" x2="9.71342560415907" y2="56.46530303379649" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="12.891541882799245" y1="51.386769417002995" x2="8.610414133839143" y2="52.2383386726034" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="12.363418786911723" y1="47.568554646390325" x2="8.01187462516662" y2="47.911028599242364" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="12.287739426069336" y1="43.71473178158749" x2="7.926104682878581" y2="43.54336268579916" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="12.665552949766678" y1="39.878726700745446" x2="8.354293343068903" y2="39.195890260844834" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="13.491621696598724" y1="36.11371827254213" x2="9.290504589478552" y2="34.92888070888108" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="23.394352300845043" y1="66.60564769915496" x2="18.76457065102612" y2="71.23542934897388" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/><text class="noselect" x="25.55491707076054" y="64.44508292923946" dy="3" text-anchor="start" style="font-size: 10px; fill: rgb(51, 51, 51); stroke-width: 0px;">0</text><line x1="16.436661968454306" y1="29.00376210649344" x2="12.628216897581545" y2="26.87093038735923" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="18.51480614665016" y1="25.757380303075163" x2="14.983446966203513" y2="23.191697676818517" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="20.960116847349248" y1="22.777760593115325" x2="17.754799093662477" y2="19.814795338864034" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="23.738694517790616" y1="20.106209701168986" x2="20.903853786829366" y2="16.78703766132485" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="26.812019496520772" y1="17.77976356724543" x2="24.386955429390206" y2="14.150398709544817" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="30.137486014776584" y1="15.830673914383311" x2="28.155817483413465" y2="11.941430436301083" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="33.66899284392557" y1="14.285961140237678" x2="32.158191889782316" y2="10.19075595893603" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="37.35758240076729" y1="13.167039730981067" x2="36.338593387536264" y2="8.92264502844521" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="41.15211945072404" y1="12.489421390438103" x2="40.639068710820574" y2="8.15467757582985" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="16.77086088411764" y1="33.30710772408469" x2="10.721759644999985" y2="30.801487950674257" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/><line x1="48.84788054927596" y1="12.489421390438103" x2="49.360931289179426" y2="8.15467757582985" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="52.642417599232694" y1="13.167039730981063" x2="53.66140661246372" y2="8.922645028445203" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="56.33100715607442" y1="14.285961140237678" x2="57.841808110217684" y2="10.19075595893603" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="59.86251398522341" y1="15.830673914383308" x2="61.84418251658653" y2="11.941430436301083" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="63.187980503479224" y1="17.779763567245432" x2="65.61304457060979" y2="14.15039870954482" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="66.26130548220938" y1="20.106209701168986" x2="69.09614621317064" y2="16.78703766132485" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="69.03988315265075" y1="22.777760593115314" x2="72.24520090633752" y2="19.81479533886402" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="71.48519385334984" y1="25.75738030307516" x2="75.01655303379648" y2="23.19169767681851" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="73.5633380315457" y1="29.00376210649344" x2="77.37178310241845" y2="26.870930387359234" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="45" y1="14.445000000000004" x2="45" y2="7.897500000000001" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/><line x1="76.50837830340127" y1="36.11371827254214" x2="80.70949541052144" y2="34.92888070888109" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="77.33444705023331" y1="39.87872670074544" x2="81.6457066569311" y2="39.195890260844834" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="77.71226057393066" y1="43.71473178158748" x2="82.07389531712141" y2="43.543362685799146" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="77.63658121308828" y1="47.56855464639032" x2="81.98812537483337" y2="47.911028599242364" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="77.10845811720075" y1="51.38676941700299" x2="81.38958586616086" y2="52.23833867260338" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="76.13521270221258" y1="55.11644385334985" x2="80.28657439584093" y2="56.4653030337965" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="74.73033715309859" y1="58.70587315763156" x2="78.69438210684507" y2="60.53332291198243" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="72.9133073805421" y1="62.10529676238837" x2="76.63508169794771" y2="64.38600299737348" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="70.70931302470838" y1="65.2675881655307" x2="74.13722142800283" y2="67.96993325426811" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="73.22913911588236" y1="33.30710772408468" x2="79.27824035500001" y2="30.80148795067425" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/><line x1="66.60564769915496" y1="66.60564769915496" x2="71.23542934897388" y2="71.23542934897388" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/><text class="noselect" x="64.44508292923946" y="64.44508292923946" dy="3" text-anchor="end" style="font-size: 10px; fill: rgb(51, 51, 51); stroke-width: 0px;">100</text><g class="pointerContainer"><path d="M0,-37.1025L-0.3095700663881331,-31.735019179864366C-0.6191401327762662,-26.36753835972873,-1.2382802655525325,-15.632576719457468,-1.5478503319406667,-8.632557539593101C-1.8574203983288011,-1.6325383597287342,-1.8574203983288033,1.6325383597287342,-1.5478503319406716,4.485807539593101C-1.2382802655525396,7.339076719457469,-0.6191401327762733,9.780538359728736,-5.921189464667502e-15,9.780538359728736C0.6191401327762615,9.780538359728736,1.23828026555253,7.339076719457469,1.5478503319406645,4.485807539593101C1.8574203983287987,1.6325383597287342,1.8574203983287987,-1.6325383597287342,1.5478503319406656,-8.632557539593101C1.2382802655525325,-15.632576719457468,0.6191401327762662,-26.36753835972873,0.3095700663881331,-31.735019179864366L0,-37.1025" style="fill: rgb(220, 57, 18); stroke: rgb(198, 51, 16); fill-opacity: 0.7;" transform="translate(45, 45) rotate(-135)"/><circle cx="45" cy="45" r="5.2379999999999995" style="fill: rgb(70, 132, 238); stroke: rgb(102, 102, 102); opacity: 1;"/><text class="noselect" x="45" y="69.75" dy="9" text-anchor="middle" style="font-size: 13px; fill: rgb(0, 0, 0); stroke-width: 1px;">0</text></g></g><g id="gauge1511388931866" width="90" height="90" name="gaugeOAT" label="Temperature" min="80" max="280" majorTicks="5" minorTicks="10" ringColor="#E52B50" faceColor="#FFD700" diameter="100" units="degF" transform="translate(442 451)" pointer-events="null"><circle cx="45" cy="45" r="43.65" style="fill: rgb(229, 43, 80); stroke: rgb(0, 0, 0); stroke-width: 0.5px;"/><circle cx="45" cy="45" r="39.285" style="fill: rgb(255, 215, 0); stroke: rgb(224, 224, 224); stroke-width: 2px;"/><text class="noselect" x="45" y="27.5" dy="5" text-anchor="middle" style="font-size: 10px; fill: rgb(51, 51, 51); stroke-width: 0px;">Temperature</text><text class="noselect" x="45" y="53" dy="4" text-anchor="middle" style="font-size: 8px; fill: rgb(51, 51, 51); stroke-width: 0px;">degF</text><line x1="19.290686975291614" y1="65.2675881655307" x2="15.862778571997161" y2="67.96993325426811" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="17.086692619457907" y1="62.10529676238838" x2="13.364918302052292" y2="64.38600299737348" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="15.269662846901404" y1="58.70587315763155" x2="11.305617893154924" y2="60.533322911982424" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="13.864787297787412" y1="55.116443853349836" x2="9.71342560415907" y2="56.46530303379649" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="12.891541882799245" y1="51.386769417002995" x2="8.610414133839143" y2="52.2383386726034" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="12.363418786911723" y1="47.568554646390325" x2="8.01187462516662" y2="47.911028599242364" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="12.287739426069336" y1="43.71473178158749" x2="7.926104682878581" y2="43.54336268579916" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="12.665552949766678" y1="39.878726700745446" x2="8.354293343068903" y2="39.195890260844834" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="13.491621696598724" y1="36.11371827254213" x2="9.290504589478552" y2="34.92888070888108" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="23.394352300845043" y1="66.60564769915496" x2="18.76457065102612" y2="71.23542934897388" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/><text class="noselect" x="25.55491707076054" y="64.44508292923946" dy="3" text-anchor="start" style="font-size: 10px; fill: rgb(51, 51, 51); stroke-width: 0px;">80</text><line x1="16.436661968454306" y1="29.00376210649344" x2="12.628216897581545" y2="26.87093038735923" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="18.51480614665016" y1="25.757380303075163" x2="14.983446966203513" y2="23.191697676818517" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="20.960116847349248" y1="22.777760593115325" x2="17.754799093662477" y2="19.814795338864034" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="23.738694517790616" y1="20.106209701168986" x2="20.903853786829366" y2="16.78703766132485" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="26.812019496520772" y1="17.77976356724543" x2="24.386955429390206" y2="14.150398709544817" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="30.137486014776584" y1="15.830673914383311" x2="28.155817483413465" y2="11.941430436301083" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="33.66899284392557" y1="14.285961140237678" x2="32.158191889782316" y2="10.19075595893603" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="37.35758240076729" y1="13.167039730981067" x2="36.338593387536264" y2="8.92264502844521" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="41.15211945072404" y1="12.489421390438103" x2="40.639068710820574" y2="8.15467757582985" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="16.77086088411764" y1="33.30710772408469" x2="10.721759644999985" y2="30.801487950674257" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/><line x1="48.84788054927596" y1="12.489421390438103" x2="49.360931289179426" y2="8.15467757582985" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="52.642417599232694" y1="13.167039730981063" x2="53.66140661246372" y2="8.922645028445203" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="56.33100715607442" y1="14.285961140237678" x2="57.841808110217684" y2="10.19075595893603" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="59.86251398522341" y1="15.830673914383308" x2="61.84418251658653" y2="11.941430436301083" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="63.187980503479224" y1="17.779763567245432" x2="65.61304457060979" y2="14.15039870954482" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="66.26130548220938" y1="20.106209701168986" x2="69.09614621317064" y2="16.78703766132485" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="69.03988315265075" y1="22.777760593115314" x2="72.24520090633752" y2="19.81479533886402" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="71.48519385334984" y1="25.75738030307516" x2="75.01655303379648" y2="23.19169767681851" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="73.5633380315457" y1="29.00376210649344" x2="77.37178310241845" y2="26.870930387359234" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="45" y1="14.445000000000004" x2="45" y2="7.897500000000001" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/><line x1="76.50837830340127" y1="36.11371827254214" x2="80.70949541052144" y2="34.92888070888109" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="77.33444705023331" y1="39.87872670074544" x2="81.6457066569311" y2="39.195890260844834" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="77.71226057393066" y1="43.71473178158748" x2="82.07389531712141" y2="43.543362685799146" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="77.63658121308828" y1="47.56855464639032" x2="81.98812537483337" y2="47.911028599242364" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="77.10845811720075" y1="51.38676941700299" x2="81.38958586616086" y2="52.23833867260338" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="76.13521270221258" y1="55.11644385334985" x2="80.28657439584093" y2="56.4653030337965" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="74.73033715309859" y1="58.70587315763156" x2="78.69438210684507" y2="60.53332291198243" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="72.9133073805421" y1="62.10529676238837" x2="76.63508169794771" y2="64.38600299737348" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="70.70931302470838" y1="65.2675881655307" x2="74.13722142800283" y2="67.96993325426811" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/><line x1="73.22913911588236" y1="33.30710772408468" x2="79.27824035500001" y2="30.80148795067425" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/><line x1="66.60564769915496" y1="66.60564769915496" x2="71.23542934897388" y2="71.23542934897388" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/><text class="noselect" x="64.44508292923946" y="64.44508292923946" dy="3" text-anchor="end" style="font-size: 10px; fill: rgb(51, 51, 51); stroke-width: 0px;">280</text><g class="pointerContainer"><path d="M0,-37.1025L-0.3095700663881331,-31.735019179864366C-0.6191401327762662,-26.36753835972873,-1.2382802655525325,-15.632576719457468,-1.5478503319406667,-8.632557539593101C-1.8574203983288011,-1.6325383597287342,-1.8574203983288033,1.6325383597287342,-1.5478503319406716,4.485807539593101C-1.2382802655525396,7.339076719457469,-0.6191401327762733,9.780538359728736,-5.921189464667502e-15,9.780538359728736C0.6191401327762615,9.780538359728736,1.23828026555253,7.339076719457469,1.5478503319406645,4.485807539593101C1.8574203983287987,1.6325383597287342,1.8574203983287987,-1.6325383597287342,1.5478503319406656,-8.632557539593101C1.2382802655525325,-15.632576719457468,0.6191401327762662,-26.36753835972873,0.3095700663881331,-31.735019179864366L0,-37.1025" style="fill: rgb(220, 57, 18); stroke: rgb(198, 51, 16); fill-opacity: 0.7;" transform="translate(45, 45) rotate(-135)"/><circle cx="45" cy="45" r="5.2379999999999995" style="fill: rgb(70, 132, 238); stroke: rgb(102, 102, 102); opacity: 1;"/><text class="noselect" x="45" y="69.75" dy="9" text-anchor="middle" style="font-size: 13px; fill: rgb(0, 0, 0); stroke-width: 1px;">80</text></g></g><g id="gauge1511389171679" width="90" height="90" name="gaugeOAT" label="CO" min="0" max="100" majorTicks="5" minorTicks="10" ringColor="#E52B50" faceColor="#FFD700" diameter="100" units="%" transform="translate(605 322)" pointer-events="null">
+<circle cx="45" cy="45" r="43.65" style="fill: rgb(229, 43, 80); stroke: rgb(0, 0, 0); stroke-width: 0.5px;"/>
+<circle cx="45" cy="45" r="39.285" style="fill: rgb(255, 215, 0); stroke: rgb(224, 224, 224); stroke-width: 2px;"/>
+<text class="noselect" x="45" y="27.5" dy="5" text-anchor="middle" style="font-size: 10px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+CO</text>
+<text class="noselect" x="45" y="53" dy="4" text-anchor="middle" style="font-size: 8px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+%</text>
+<line x1="19.290686975291614" y1="65.2675881655307" x2="15.862778571997161" y2="67.96993325426811" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="17.086692619457907" y1="62.10529676238838" x2="13.364918302052292" y2="64.38600299737348" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="15.269662846901404" y1="58.70587315763155" x2="11.305617893154924" y2="60.533322911982424" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="13.864787297787412" y1="55.116443853349836" x2="9.71342560415907" y2="56.46530303379649" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="12.891541882799245" y1="51.386769417002995" x2="8.610414133839143" y2="52.2383386726034" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="12.363418786911723" y1="47.568554646390325" x2="8.01187462516662" y2="47.911028599242364" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="12.287739426069336" y1="43.71473178158749" x2="7.926104682878581" y2="43.54336268579916" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="12.665552949766678" y1="39.878726700745446" x2="8.354293343068903" y2="39.195890260844834" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="13.491621696598724" y1="36.11371827254213" x2="9.290504589478552" y2="34.92888070888108" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="23.394352300845043" y1="66.60564769915496" x2="18.76457065102612" y2="71.23542934897388" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+<text class="noselect" x="25.55491707076054" y="64.44508292923946" dy="3" text-anchor="start" style="font-size: 10px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+0</text>
+<line x1="16.436661968454306" y1="29.00376210649344" x2="12.628216897581545" y2="26.87093038735923" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="18.51480614665016" y1="25.757380303075163" x2="14.983446966203513" y2="23.191697676818517" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="20.960116847349248" y1="22.777760593115325" x2="17.754799093662477" y2="19.814795338864034" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="23.738694517790616" y1="20.106209701168986" x2="20.903853786829366" y2="16.78703766132485" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="26.812019496520772" y1="17.77976356724543" x2="24.386955429390206" y2="14.150398709544817" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="30.137486014776584" y1="15.830673914383311" x2="28.155817483413465" y2="11.941430436301083" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="33.66899284392557" y1="14.285961140237678" x2="32.158191889782316" y2="10.19075595893603" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="37.35758240076729" y1="13.167039730981067" x2="36.338593387536264" y2="8.92264502844521" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="41.15211945072404" y1="12.489421390438103" x2="40.639068710820574" y2="8.15467757582985" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="16.77086088411764" y1="33.30710772408469" x2="10.721759644999985" y2="30.801487950674257" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+<line x1="48.84788054927596" y1="12.489421390438103" x2="49.360931289179426" y2="8.15467757582985" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="52.642417599232694" y1="13.167039730981063" x2="53.66140661246372" y2="8.922645028445203" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="56.33100715607442" y1="14.285961140237678" x2="57.841808110217684" y2="10.19075595893603" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="59.86251398522341" y1="15.830673914383308" x2="61.84418251658653" y2="11.941430436301083" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="63.187980503479224" y1="17.779763567245432" x2="65.61304457060979" y2="14.15039870954482" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="66.26130548220938" y1="20.106209701168986" x2="69.09614621317064" y2="16.78703766132485" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="69.03988315265075" y1="22.777760593115314" x2="72.24520090633752" y2="19.81479533886402" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="71.48519385334984" y1="25.75738030307516" x2="75.01655303379648" y2="23.19169767681851" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="73.5633380315457" y1="29.00376210649344" x2="77.37178310241845" y2="26.870930387359234" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="45" y1="14.445000000000004" x2="45" y2="7.897500000000001" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+<line x1="76.50837830340127" y1="36.11371827254214" x2="80.70949541052144" y2="34.92888070888109" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="77.33444705023331" y1="39.87872670074544" x2="81.6457066569311" y2="39.195890260844834" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="77.71226057393066" y1="43.71473178158748" x2="82.07389531712141" y2="43.543362685799146" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="77.63658121308828" y1="47.56855464639032" x2="81.98812537483337" y2="47.911028599242364" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="77.10845811720075" y1="51.38676941700299" x2="81.38958586616086" y2="52.23833867260338" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="76.13521270221258" y1="55.11644385334985" x2="80.28657439584093" y2="56.4653030337965" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="74.73033715309859" y1="58.70587315763156" x2="78.69438210684507" y2="60.53332291198243" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="72.9133073805421" y1="62.10529676238837" x2="76.63508169794771" y2="64.38600299737348" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="70.70931302470838" y1="65.2675881655307" x2="74.13722142800283" y2="67.96993325426811" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+<line x1="73.22913911588236" y1="33.30710772408468" x2="79.27824035500001" y2="30.80148795067425" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+<line x1="66.60564769915496" y1="66.60564769915496" x2="71.23542934897388" y2="71.23542934897388" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+<text class="noselect" x="64.44508292923946" y="64.44508292923946" dy="3" text-anchor="end" style="font-size: 10px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+100</text>
+<g class="pointerContainer">
+<path d="M0,-37.1025L-0.3095700663881331,-31.735019179864366C-0.6191401327762662,-26.36753835972873,-1.2382802655525325,-15.632576719457468,-1.5478503319406667,-8.632557539593101C-1.8574203983288011,-1.6325383597287342,-1.8574203983288033,1.6325383597287342,-1.5478503319406716,4.485807539593101C-1.2382802655525396,7.339076719457469,-0.6191401327762733,9.780538359728736,-5.921189464667502e-15,9.780538359728736C0.6191401327762615,9.780538359728736,1.23828026555253,7.339076719457469,1.5478503319406645,4.485807539593101C1.8574203983287987,1.6325383597287342,1.8574203983287987,-1.6325383597287342,1.5478503319406656,-8.632557539593101C1.2382802655525325,-15.632576719457468,0.6191401327762662,-26.36753835972873,0.3095700663881331,-31.735019179864366L0,-37.1025" style="fill: rgb(220, 57, 18); stroke: rgb(198, 51, 16); fill-opacity: 0.7;" transform="translate(45, 45) rotate(-135)"/>
+<circle cx="45" cy="45" r="5.2379999999999995" style="fill: rgb(70, 132, 238); stroke: rgb(102, 102, 102); opacity: 1;"/>
+<text class="noselect" x="45" y="69.75" dy="9" text-anchor="middle" style="font-size: 13px; fill: rgb(0, 0, 0); stroke-width: 1px;">
+0</text>
+</g>
+</g><g id="pilotLight1511389252796" transform="matrix(15 0 0 15 744 368)" pointer-events="null" myStatus="NORMAL OFF">
+<circle id="pilotLight" cx="0" cy="0" r="1" fill="url(#greyGradient)"/>
+<line style="visibility:visible" name="lineOff" x1="-.5" y1="-.5" x2=".5" y2=".5" stroke="black" stroke-width=".1"/>
+<line style="visibility:visible" name="lineDisabled" x1=".5" y1="-.5" x2="-.5" y2=".5" stroke="black" stroke-width=".1"/>
+<circle style="visibility:hidden" name="circleDefective" cx="0" cy="0" r=".7" stroke="crimson" stroke-width=".2" fill="none"/>
+<line style="visibility:hidden" name="lineDefective" x1="-.5" y1="-.5" x2=".5" y2=".5" stroke="crimson" stroke-width=".08"/>
+</g></g><g shape-rendering="geometricPrecision" id="domAddSymbolG"><g stroke="black" stroke-width=".5" size="20" transform="matrix(0.666667 0 0 0.666667 626 48)">
+
+
+<polygon fill="#CC3333" points="15 -0.00000548364 -0.00000548364 -15 -15 -0.00000548364 -0.00000548364 15"/>
+
+
+<polygon fill="#FF6FFF" points="-0.00000548364 -13.7784 -7.95495 -0.00000548364 -0.00000548364 13.7784 7.95495 -0.00000548364"/>
+
+
+</g><g stroke="black" stroke-width=".5" size="20" transform="translate(347 110)scale(0.6666666666666666)">
+
+
+<polygon fill="#9966CC" points="-0.0000065565 -8.66025 -15 -0.0000065565 -0.0000065565 8.66025 15 -0.0000065565"/>
+
+
+</g><g stroke="black" stroke-width=".5" size="30" transform="matrix(1 0 0 1 117 582)">
+<polygon fill="#9966CC" points="-0.0000065565 -8.66025 -15 -0.0000065565 -0.0000065565 8.66025 15 -0.0000065565"/>
+</g><g stroke="black" stroke-width="2" size="20" transform="matrix(0.666667 0 0 0.666667 485 582)">
+<polygon fill="#E52B50" points="15 0.00000154972 14.2659 -4.63524 12.1353 -8.81679 8.81679 -12.1353 4.63527 -14.2658 0.00000154972 -15 -4.63524 -14.2658 -8.81679 -12.1353 -12.1353 -8.81679 -14.2658 -4.63524 -15 0.00000154972 -14.2658 4.63527 -12.1353 8.81679 -8.81679 12.1353 -4.63524 14.2659 0.00000154972 15 4.63527 14.2659 8.81679 12.1353 12.1353 8.81679 14.2659 4.63527"/>
+</g><g stroke="black" stroke-width=".5" size="30" transform="matrix(1 0 0 1 776 369)">
+<polygon fill="#E52B50" points="15 -0.00000548364 -0.00000548364 -15 -15 -0.00000548364 -0.00000548364 15"/>
+<polygon fill="#EE82EE" points="-0.00000548364 -13.7784 -7.95495 -0.00000548364 -0.00000548364 13.7784 7.95495 -0.00000548364"/>
+</g><g stroke="black" stroke-width="2" size="15" transform="translate(549.9999999205272 110.00000006953874)scale(0.5)"><polygon fill="#E32636" points="15 0.00000154972 14.2659 -4.63524 12.1353 -8.81679 8.81679 -12.1353 4.63527 -14.2658 0.00000154972 -15 -4.63524 -14.2658 -8.81679 -12.1353 -12.1353 -8.81679 -14.2658 -4.63524 -15 0.00000154972 -14.2658 4.63527 -12.1353 8.81679 -8.81679 12.1353 -4.63524 14.2659 0.00000154972 15 4.63527 14.2659 8.81679 12.1353 12.1353 8.81679 14.2659 4.63527"/></g></g><foreignObject width="30" height="30" x="5" y="5" id="stripChartButton"><button xmlns="http://www.w3.org/1999/xhtml" onclick="openStripChart()" title="Example: System Strip Chart" style="border-radius:8px;padding:0px;background:khaki;width:40px;height:40px;"><img src="../Images/chart.png" width="30" height="30" alt="" /></button></foreignObject>
+<g id="pvStripChart" shape-rendering="geometricPrecision" transform="translate(80,180)">
+</svg>
+
+</div>
+
+</td>
+</tr></table>
+  <br />SVG Source:
+  <div id=svgSourceDiv style=overflow:auto;width:100%;height:1px;text-align:left; /></div>
+  Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:100%;text-align:left; /></div><p></p>
+</center>
+
+<div id=stripChartDiv style='overflow:hidden;visibility:hidden;border:3px solid black;border-radius:5px;position:absolute;top:20px;left:20px;width:1px;height:1px;background:khaki;'>
+<table style=width:1200px ><tr><td style=width:90% align=center><b>Fixed Bed Reactor Concentration Control - Strip Chart</b></td><td align=right><button title='Close Strip Chart' onClick="closeStripChart()" style=background:red;font-weight:bold >X</button></td></tr>
+<tr><td colspan=2>
+This example continuosly records the Concentration(Cv), Primary controller setpoint(SPr) request, inlet gas Temperature(T), Secondary Temperature controller output value(CO) to the Flow Actuator. Each value is recorded at the current minute and during the previous 100 minutes.
+Simulation: random values updated every 2 seconds (equals 1 minute).
+</td></tr>
+</table>
+</div>
+<script id=myScript>
+
+//=====SYSTEM STRIP CHART====================
+var StripChartOpen=false
+var SystemInterval
+function openStripChart()
+{
+    StripChartOpen=true
+    slideStripChart()
+    stripChartDiv.style.visibility='visible'
+    d3.select("#stripChartDiv").transition().duration(1500)
+    .styleTween("width", function() { return d3.interpolate("1px", "1200px"); })
+    .styleTween("height", function() { return d3.interpolate("1px", "650px"); });
+   SystemInterval=setInterval(slideStripChart,2000)
+}
+function closeStripChart()
+{
+    d3.select("#stripChartDiv").transition().duration(1000)
+    .styleTween("width", function() { return d3.interpolate("1200px", "1px"); })
+    .styleTween("height", function() { return d3.interpolate("650px", "1px"); })
+
+    setTimeout("stripChartDiv.style.visibility='hidden'",1000)
+    StripChartOpen=false
+    clearInterval(SystemInterval)
+}
+
+
+//---onload---
+function initSystemStripChart()
+{
+
+    var width=900
+    var height=450
+
+// The number of datapoints
+var n = 100;
+
+//  X scale will use the index of our data
+var xScale = d3.scaleLinear()
+    .domain([0, n-1]) // input
+    .range([0, width]); // output
+
+// Y scale will use the randomly generate number
+var yScale = d3.scaleLinear()
+    .domain([40, 100]) // input
+    .range([height, 0]); // output
+
+  // gridlines in x axis function
+function make_x_gridlines() {
+    return d3.axisBottom(xScale)
+       // .ticks(5)
+}
+
+// gridlines in y axis function
+function make_y_gridlines() {
+    return d3.axisLeft(yScale)
+       // .ticks(5)
+}
+
+// Add the SVG to the div
+var svg = d3.select("#stripChartDiv").append("svg")
+    .attr("overflow", "visible")
+    .attr("width", width)
+    .attr("height", height)
+// Add the SVG to the div
+var topG = svg.append("g")
+   .attr("transform", "translate(60,50)")
+
+    topG.append("defs").append("clipPath")
+    .attr("id", "clip")
+    .append("rect")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("transform", "translate(5,0)")
+
+// add the X gridlines
+  topG.append("g")
+      .attr("class", "grid")
+      .attr("transform", "translate(0," + height + ")")
+      .call(make_x_gridlines()
+          .tickSize(-height)
+          .tickFormat("")
+      )
+
+  // add the Y gridlines
+  topG.append("g")
+      .attr("class", "grid")
+      .call(make_y_gridlines()
+          .tickSize(-width)
+          .tickFormat("")
+      )
+
+
+// Call the x axis in a group tag
+topG.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale))
+.selectAll("text")
+     .attr("font-size","14")
+     .attr("fill","black")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+// Call the y axis in a group tag
+topG.append("g")
+    .attr("class", "y axis axisViolet")
+    .call(d3.axisLeft(yScale))
+    .selectAll("text")
+     .attr("font-size","14")
+     .attr("fill","#9966CC")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+
+
+var yTempScale = d3.scaleLinear() //---T---
+    .domain([100, 200]) // input
+    .range([height, 0]) // output
+
+ topG.append("g")
+    .attr("class", "y axis right axisRed")
+    .attr("transform", "translate("+(width+30)+",0)")
+    .call(d3.axisRight(yTempScale))
+        .selectAll("text")
+     .attr("font-size","14")
+     .attr("fill","red")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+
+
+
+    //---RIGHT y AXIS (controller output)---
+    var yCoScale = d3.scaleLinear() //---right values---
+    .domain([0,100]) //---show max/min for controller output---
+    .range([height, 0])
+
+    //---right ticks and values--
+ topG.append("g")
+    .attr("class", "y axis output axisBlue")
+    .attr("transform", "translate("+(width+150)+",0)")
+    .call(d3.axisLeft(yCoScale))
+    .selectAll("text")
+     .attr("font-size","14")
+     .attr("fill","blue")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+
+<!--Titles-->
+topG.append("text")
+     .attr("x","0")
+     .attr("y","0")
+     .attr("dy","-20")
+     .attr("text-anchor","middle")
+     .attr("font-size","17")
+     .attr("fill","#9966CC")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+     .text("Cv (%)")
+
+topG.append("text")
+     .attr("x","950")
+     .attr("y","0")
+     .attr("dy","-20")
+     .attr("text-anchor","middle")
+     .attr("font-size","17")
+     .attr("fill","red")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+     .html("T(&deg;F)")
+
+
+topG.append("text")
+     .attr("x","1040")
+     .attr("y","0")
+     .attr("dy","-20")
+     .attr("text-anchor","middle")
+     .attr("font-size","17")
+     .attr("fill","blue")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+     .text("CO (\u0025)")
+
+topG.append("text")
+     .attr("x","450")
+     .attr("y","490")
+     .attr("text-anchor","middle")
+     .attr("font-size","17")
+     .attr("fill","black")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+     .text("Time (minutes)")
+
+<!--Data and Data Lines/Paths-->
+//---{SPr,Cv,CO,VAC,T} ---
+ lineCv = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yScale(d.Cv); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+ lineSPr = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yScale(d.SPr); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+ lineCO = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yCoScale(d.CO); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+ lineT = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yTempScale(d.T); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+
+
+    // Append the path, bind the data, and call the line generator
+pathCv=topG.append("path")
+  .attr("clip-path", "url(#clip)")
+    .datum(Data) // 10. Binds data to the line
+    .attr("class", "chartLineCv") // Assign a class for styling
+    .attr("d", pathCv); // 11. Calls the line generator
+pathSPr=topG.append("path")
+ .attr("clip-path", "url(#clip)")
+    .datum(Data) // 10. Binds data to the line
+    .attr("class", "chartLineSPr") // Assign a class for styling
+    .attr("d", lineSPr); // 11. Calls the line generator
+pathCO=topG.append("path")
+ .attr("clip-path", "url(#clip)")
+    .datum(Data) // 10. Binds data to the line
+    .attr("class", "chartLineCO") // Assign a class for styling
+    .attr("d", lineCO); // 11. Calls the line generator
+
+
+
+pathT=topG.append("path")
+ .attr("clip-path", "url(#clip)")
+    .datum(Data) // 10. Binds data to the line
+    .attr("class", "chartLineTEMP") // Assign a class for styling
+    .attr("d", lineT); // 11. Calls the line generator
+
+
+  stripLabelCv=topG.append('text')
+   .attr("font-size","12")
+   .attr("text-anchor","end")
+   .attr("dy","5")
+  .attr("dx","3")
+   .text("Cv")
+  stripLabelSPr=topG.append('text')
+   .attr("font-size","12")
+   .attr("text-anchor","end")
+   .attr("dy","5")
+    .attr("dx","3")
+   .text("SPr")
+  stripLabelCO=topG.append('text')
+   .attr("font-size","12")
+   .attr("text-anchor","end")
+   .attr("dy","5")
+   .attr("dx","3")
+   .text("CO")
+
+  stripLabelT=topG.append('text')
+   .attr("font-size","12")
+   .attr("text-anchor","end")
+  .attr("dy","5")
+   .attr("dx","3")
+   .text("T")
+
+
+
+
+}
+var lineCv
+var lineSPr
+var lineCO
+var lineT
+var pathCv
+var pathSPr
+var pathCO
+var pathT
+var stripLabelCv
+var stripLabelSPr
+var stripLabelCO
+var stripLabelT
+var StripChartOpen=false
+var StripChartInterval
+
+function openStripChart()
+{
+    StripChartOpen=true
+    slideStripChart()
+    stripChartDiv.style.visibility='visible'
+    d3.select("#stripChartDiv").transition().duration(1500)
+    .styleTween("width", function() { return d3.interpolate("1px", "1200px"); })
+    .styleTween("height", function() { return d3.interpolate("1px", "650px"); });
+   StripChartInterval=setInterval(slideStripChart,2000)
+
+}
+function closeStripChart()
+{
+    d3.select("#stripChartDiv").transition().duration(1000)
+    .styleTween("width", function() { return d3.interpolate("1200px", "1px"); })
+    .styleTween("height", function() { return d3.interpolate("650px", "1px"); })
+
+    setTimeout("stripChartDiv.style.visibility='hidden'",1000)
+    clearInterval(StripChartInterval)
+    StripChartOpen=false
+}
+
+//--every 2 seconds=1 MINUTE---
+function slideStripChart()
+{
+    var width=600
+    Data[Data.length]=Data[0] //---{SPr,Cv,CO,VAC,T} ---
+
+        pathCv.attr("d", lineCv)
+        .attr("transform", null);
+        pathSPr.attr("d", lineSPr)
+        .attr("transform", null);
+
+        pathCO.attr("d", lineCO)
+        .attr("transform", null);
+        pathT.attr("d", lineT)
+        .attr("transform", null);
+
+        pathCv.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+       pathSPr.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+        pathCO.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+        pathT.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+
+        var pathSplit=pathCv.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabelCv.attr("x",splitX)
+        stripLabelCv.attr("y",splitY)
+
+        var pathSplit=pathSPr.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabelSPr.attr("x",splitX)
+        stripLabelSPr.attr("y",splitY)
+
+
+
+        var pathSplit=pathCO.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabelCO.attr("x",splitX)
+        stripLabelCO.attr("y",splitY)
+
+        var pathSplit=pathT.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabelT.attr("x",splitX)
+        stripLabelT.attr("y",splitY)
+
+
+
+   Data.shift()
+
+}
+
+function buildData()
+{
+ for(var k=0;k<100;k++)
+ {
+  var sp=Math.random()*1+58
+  var stp=Math.random()*1+57
+  var co=Math.round(Math.random()*2)+80
+  var t=Math.round(Math.random()*5)+150
+  myValue.value+="{SPr:"+sp+",Cv:"+stp+",CO:"+co+",T:"+t+"},\n"
+}
+
+
+}
+
+//---start dataBase-----------
+var Data=[
+//---{SPr,Cv,CO,T} ---
+{SPr:58.459680158627684,Cv:57.698096122150936,CO:80,T:152},
+{SPr:58.104051737491,Cv:57.9439823818315,CO:81,T:153},
+{SPr:58.98507135297751,Cv:57.39056361314648,CO:81,T:154},
+{SPr:58.49110641081614,Cv:57.76520203050072,CO:82,T:155},
+{SPr:58.04849936439993,Cv:57.58623367563905,CO:81,T:152},
+{SPr:58.92537370358077,Cv:57.53783930696816,CO:80,T:155},
+{SPr:58.604197058853124,Cv:57.036786742429044,CO:81,T:151},
+{SPr:58.26714816892461,Cv:57.52667845386278,CO:82,T:152},
+{SPr:58.9546187695934,Cv:57.952058508420244,CO:80,T:152},
+{SPr:58.48033890022137,Cv:57.207914213390616,CO:82,T:153},
+{SPr:58.91492177592443,Cv:57.931211973811855,CO:81,T:153},
+{SPr:58.103396436177555,Cv:57.256180784582945,CO:81,T:152},
+{SPr:58.9161702367948,Cv:57.260898447623646,CO:81,T:150},
+{SPr:58.38005889857316,Cv:57.96861488845714,CO:81,T:154},
+{SPr:58.77143897833275,Cv:57.5671113060469,CO:81,T:150},
+{SPr:58.17332784234285,Cv:57.184883239853505,CO:82,T:152},
+{SPr:58.34713293259925,Cv:57.278965739495206,CO:81,T:150},
+{SPr:58.363784933582885,Cv:57.737926105143316,CO:81,T:151},
+{SPr:58.15963111237351,Cv:57.533493656105065,CO:81,T:153},
+{SPr:58.71360263297506,Cv:57.49896093756097,CO:80,T:155},
+{SPr:58.53444234469077,Cv:57.4581991278156,CO:81,T:151},
+{SPr:58.7749853179248,Cv:57.448043479932124,CO:81,T:150},
+{SPr:58.130254224315756,Cv:57.191489447858004,CO:81,T:151},
+{SPr:58.82726685741704,Cv:57.639098906656,CO:81,T:153},
+{SPr:58.737910979783315,Cv:57.38110974708144,CO:81,T:155},
+{SPr:58.42967844526925,Cv:57.61294199604268,CO:81,T:152},
+{SPr:58.19199323267365,Cv:57.76031471257659,CO:81,T:154},
+{SPr:58.653579489533946,Cv:57.97475457644693,CO:81,T:152},
+{SPr:58.85099211667558,Cv:57.982193451492705,CO:82,T:154},
+{SPr:58.349825559756326,Cv:57.84325150713683,CO:81,T:152},
+{SPr:58.42793042823102,Cv:57.88057497466153,CO:82,T:155},
+{SPr:58.87215706305429,Cv:57.390300072441995,CO:82,T:151},
+{SPr:58.69573382845876,Cv:57.66532699573492,CO:82,T:150},
+{SPr:58.89038231541428,Cv:57.79791138254219,CO:81,T:152},
+{SPr:58.80260850105443,Cv:57.30695607927846,CO:81,T:153},
+{SPr:58.21239982797014,Cv:57.518374922604345,CO:81,T:153},
+{SPr:58.39388307747676,Cv:57.748477580275306,CO:81,T:153},
+{SPr:58.389830361261616,Cv:57.29002374116617,CO:82,T:154},
+{SPr:58.778369471936045,Cv:57.617090071261494,CO:81,T:154},
+{SPr:58.57238708972862,Cv:57.695686958342556,CO:80,T:151},
+{SPr:58.06773561852323,Cv:57.283641995892765,CO:81,T:152},
+{SPr:58.136985755279525,Cv:57.61113283400198,CO:82,T:154},
+{SPr:58.832191828480184,Cv:57.038827171039344,CO:81,T:151},
+{SPr:58.95983803585809,Cv:57.209361256932766,CO:81,T:154},
+{SPr:58.259824503605394,Cv:57.791667722023035,CO:81,T:151},
+{SPr:58.11702983302287,Cv:57.057563695826474,CO:81,T:152},
+{SPr:58.329618892513636,Cv:57.42876575413631,CO:80,T:152},
+{SPr:58.06471779308966,Cv:57.792693505212824,CO:82,T:152},
+{SPr:58.14860076653424,Cv:57.897494938697506,CO:82,T:155},
+{SPr:58.63384832997627,Cv:57.5310972395338,CO:81,T:154},
+{SPr:58.39559528513391,Cv:57.528811573858164,CO:82,T:153},
+{SPr:58.97770164612997,Cv:57.434505815446826,CO:81,T:153},
+{SPr:58.75358357100683,Cv:57.0901987694604,CO:82,T:150},
+{SPr:58.849353038856,Cv:57.26262408515021,CO:81,T:153},
+{SPr:58.480113924983776,Cv:57.02879344983186,CO:81,T:155},
+{SPr:58.71929199122649,Cv:57.04557243006191,CO:81,T:152},
+{SPr:58.35514517606263,Cv:57.30393797508574,CO:81,T:151},
+{SPr:58.317215215107154,Cv:57.32142198211209,CO:81,T:151},
+{SPr:58.224726130910156,Cv:57.84870454599543,CO:80,T:154},
+{SPr:58.38867173013154,Cv:57.48660109365768,CO:80,T:152},
+{SPr:58.735201558934854,Cv:57.36484468384649,CO:82,T:153},
+{SPr:58.728179561820795,Cv:57.86119005423897,CO:81,T:155},
+{SPr:58.21981302985498,Cv:57.63091287736043,CO:80,T:152},
+{SPr:58.68037601091604,Cv:57.0129103436836,CO:81,T:155},
+{SPr:58.45330178775967,Cv:57.13380388553457,CO:81,T:150},
+{SPr:58.54086371898121,Cv:57.798210940806506,CO:82,T:153},
+{SPr:58.76473977154741,Cv:57.09434056234277,CO:82,T:152},
+{SPr:58.95077854677624,Cv:57.71546576664473,CO:81,T:155},
+{SPr:58.92722243344291,Cv:57.54032689831472,CO:81,T:153},
+{SPr:58.72281774031485,Cv:57.06980991298279,CO:80,T:154},
+{SPr:58.56048487976672,Cv:57.76593577200349,CO:81,T:150},
+{SPr:58.59526060061736,Cv:57.88802726279609,CO:81,T:153},
+{SPr:58.85128349137506,Cv:57.2026524540336,CO:80,T:150},
+{SPr:58.728274667406446,Cv:57.472423277233666,CO:81,T:154},
+{SPr:58.05385383083913,Cv:57.15417099539618,CO:81,T:152},
+{SPr:58.784563335358584,Cv:57.363832963794934,CO:82,T:154},
+{SPr:58.61943051057707,Cv:57.241603077827044,CO:80,T:151},
+{SPr:58.5008784091608,Cv:57.85134177399431,CO:81,T:153},
+{SPr:58.41789307597049,Cv:57.697246900652885,CO:81,T:155},
+{SPr:58.877049971504675,Cv:57.53207863770071,CO:81,T:153},
+{SPr:58.63860161072967,Cv:57.68778952834095,CO:81,T:151},
+{SPr:58.62997781431317,Cv:57.1346023395686,CO:80,T:152},
+{SPr:58.69560084759508,Cv:57.9990895748569,CO:82,T:155},
+{SPr:58.86924699415691,Cv:57.55822466234446,CO:80,T:153},
+{SPr:58.13012638503048,Cv:57.959239628019894,CO:81,T:150},
+{SPr:58.62541362463979,Cv:57.64534461431321,CO:81,T:153},
+{SPr:58.628780909127606,Cv:57.819511525512084,CO:82,T:152},
+{SPr:58.31979335549089,Cv:57.51739234412039,CO:80,T:155},
+{SPr:58.50567536730739,Cv:57.0061652114985,CO:82,T:151},
+{SPr:58.416498306413516,Cv:57.7491125542397,CO:81,T:155},
+{SPr:58.72771045294074,Cv:57.05388691846237,CO:81,T:150},
+{SPr:58.69208718202254,Cv:57.02018528713271,CO:80,T:154},
+{SPr:58.69362724270934,Cv:57.81712423246298,CO:80,T:155},
+{SPr:58.23691014640879,Cv:57.34440572381172,CO:81,T:151},
+{SPr:58.785139039959915,Cv:57.50624580268648,CO:80,T:151},
+{SPr:58.43818893720414,Cv:57.65062719381753,CO:81,T:150},
+{SPr:58.349937501515136,Cv:57.64601607965731,CO:81,T:151},
+{SPr:58.124243069881814,Cv:57.14319464471195,CO:81,T:151},
+{SPr:58.08981318501165,Cv:57.27813582979042,CO:82,T:151},
+{SPr:58.854195056065926,Cv:57.03065483480832,CO:81,T:153}
+
+]
+
+</script>
+<script>
+document.addEventListener("onload",init(),false)
+function init()
+{   // buildData()
+    buildPVStripChart()
+   	showSourceSVG()
+	showSourceJS()
+     initSystemStripChart()
+}
+
+
+</script>
+<script>
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88028738-1', 'auto');
+  ga('send', 'pageview');
+
+
+</script>
+
+</body>
+
+</html>

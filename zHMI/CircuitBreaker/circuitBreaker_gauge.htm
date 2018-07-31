@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Circuit Breaker - With Analog Gauge &amp; Strip Chart</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+ <style type="text/css">
+
+
+  .noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+       unselectable="on"
+ onselectstart="return false;"
+ onmousedown="return false;"
+}
+/* Style the lines by removing the fill and applying a stroke */
+.chartLine23F1 {
+    fill: none;
+    stroke: violet;
+    stroke-width: 3;
+}
+.chartLine23F2 {
+    fill: none;
+    stroke: purple;
+    stroke-width: 3;
+}
+.chartLine23F3 {
+    fill: none;
+    stroke: aqua;
+    stroke-width: 3;
+}
+.grid line {
+  stroke: lightgrey;
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
+
+.grid path {
+  stroke-width: 0;
+}
+  </style>
+
+</head>
+<body style='padding:10px;font-family:arial'>
+<center>
+<b>Circuit Breaker - With Analog Gauge &amp; Strip Chart</b>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+Create an interactive SVG image object to monitor or reset a Circuit Breaker. Allow the central panel the ability to reset the circuit breaker after it has tripped.
+It includes an associated external  manual disconnect switch. Each circuit breaker has a label. Also included is a blue arrow line leaving the circuit breaker.
+An analog gauge is included  with a plotted strip chart for its values.
+</div>
+<table><tr>
+<td>
+<div class="noselect"  style="padding:10px;width:460px;text-align:justify">
+
+<b>Scenerio:</b><br />Three(3) SVG circuit breaker objects are shown.
+This monitors the status of an external manual disconnect and its associated downstream circuit breaker. The circuit breaker also includes an internal <b>lockout</b> disconnect.
+ In this example, the circuit breaker can be reset both locally and/or <b>remotely</b> from the central panel.
+After the CB has tripped, within remote status, the operator can click on the circuit breaker to reset it. Click button below to view SVG strip chart (<span style='font-weight:bold;font-size:150%'>*</span>Values are random/simulated).
+<center><button onClick="openStripChart()" title="View Strip Chart" style=background:khaki;width:60px;height:60px;><img src="chart.png" width=40 height=40 alt="" /></button></center>
+<p></p>
+<center>Select field device input<br>
+<table style=width:100% border=1>
+<tr><td style=background:gainsboro align=center colspan=4>23F1</td></tr>
+
+<tr><td align=center colspan=3>Field Device Input</td></tr>
+<tr><td>Manual Disconnect</td><td><input type="radio" name=md23F1Radio id=md23F1CloseRadio onClick=manualDisconnectCloseClicked("23F1") checked  />:Closed</td><td> <input type="radio"  name=md23F1Radio id=md23F1OpenRadio onClick=manualDisconnectOpenClicked("23F1")    />:Opened</td></tr>
+<tr><td>Circuit Breaker Lockout</td><td><input type="radio"  name=lockout23F1Radio  id=lockout23F1CloseRadio onClick=lockoutCloseClicked("23F1")  checked    />:Closed</td><td> <input type="radio"  name=lockout23F1Radio  id=lockout23F1OpenRadio onClick=lockoutOpenClicked("23F1")    />:Opened</td></tr>
+<tr><td>Circuit Breaker</td><td><input type="radio"  name=cb23F1Radio  id=cb23F1TripRadio  onClick=circuitBreakerTripClicked("23F1")   />: Tripped</td><td> <input type="radio"  name=cb23F1Radio  id=cb23F1ResetRadio onClick=circuitBreakerResetClicked("23F1")  disabled    />:Reset</td></tr>
+</table>
+
+<table style=width:100%  border=1>
+<tr><td style=background:gainsboro  align=center colspan=4>23F2</td></tr>
+
+<tr><td align=center colspan=3>Field Device Input</td></tr>
+<tr><td>Manual Disconnect</td><td><input type="radio" name=md23F2Radio id=md23F2CloseRadio onClick=manualDisconnectCloseClicked("23F2") checked />:Closed</td><td> <input type="radio"  name=md23F2Radio id=md23F2OpenRadio onClick=manualDisconnectOpenClicked("23F2")    />:Opened</td></tr>
+<tr><td>Circuit Breaker Lockout</td><td><input type="radio"  name=lockout23F2Radio  id=lockout23F2CloseRadio onClick=lockoutCloseClicked("23F2")  checked    />:Closed</td><td> <input type="radio"  name=lockout23F2Radio  id=lockout23F2OpenRadio onClick=lockoutOpenClicked("23F2")    />:Opened</td></tr>
+<tr><td>Circuit Breaker</td><td><input type="radio"  name=cb23F2Radio  id=cb23F2TripRadio  onClick=circuitBreakerTripClicked("23F2")   />: Tripped</td><td> <input type="radio"  name=cb23F2Radio  id=cb23F2ResetRadio onClick=circuitBreakerResetClicked("23F2")  disabled    />:Reset</td></tr>
+</table>
+
+<table style=width:100%  border=1>
+<tr><td style=background:gainsboro  align=center colspan=4>23F3</td></tr>
+
+<tr><td align=center colspan=3>Field Device Input</td></tr>
+
+<tr><td>Manual Disconnect</td><td><input type="radio" name=md23F3Radio id=md23F3CloseRadio onClick=manualDisconnectCloseClicked("23F3") checked  />:Closed</td><td> <input type="radio"  name=md23F3Radio id=md23F3OpenRadio onClick=manualDisconnectOpenClicked("23F3")    />:Opened</td></tr>
+<tr><td>Circuit Breaker Lockout</td><td><input type="radio"  name=lockout23F3Radio  id=lockout23F3CloseRadio onClick=lockoutCloseClicked("23F3")  checked    />:Closed</td><td> <input type="radio"  name=lockout23F3Radio  id=lockout23F3OpenRadio onClick=lockoutOpenClicked("23F3")    />:Opened</td></tr>
+<tr><td>Circuit Breaker</td><td><input type="radio"  name=cb23F3Radio  id=cb23F3TripRadio  onClick=circuitBreakerTripClicked("23F3")   />: Tripped</td><td> <input type="radio"  name=cb23F3Radio  id=cb23F3ResetRadio onClick=circuitBreakerResetClicked("23F3")  disabled    />:Reset</td></tr>
+</table>
+</center>
+
+
+
+</div>
+</td>
+<td>
+<div id="svgDiv" style='width:800px;height:560px;'>
+<svg id=mySVG width=800 height=560>
+ <defs><marker id="arrowEndBlue" viewBox="0 0 8000 8000" refX="270" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="blue" stroke-linejoin="bevel">
+<path id="arrowEndPath" stroke="RGB(0,0,0)" stroke-width="5" d="M2 59,293 148,1 243,121 151,Z">
+</path>
+</marker>
+
+</defs>
+
+
+<defs>
+<filter id="dropShadow" width="140" height="240">
+  <feGaussianBlur in="SourceAlpha" stdDeviation="10"/> <!-- stdDeviation is how much to blur -->
+  <feOffset dx="12" dy="10" result="offsetblur"/> <!-- how much to offset -->
+  <feMerge>
+    <feMergeNode/> <!-- this contains the offset blurred image -->
+    <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+  </feMerge>
+</filter>
+
+
+
+
+</defs>
+  <defs>
+
+<radialGradient id="radialGradientGreen" gradientUnits="userSpaceOnUse" cx="5" cy="100" r="10%">
+<stop stop-color="#FFFFFF" offset="0"/><stop stop-color="green" offset="1"/>
+</radialGradient>
+
+<radialGradient id="radialGradientRed" gradientUnits="userSpaceOnUse" cx="5" cy="100" r="10%">
+<stop stop-color="#FFFFFF" offset="0"/><stop stop-color="red" offset="1"/>
+</radialGradient>
+
+
+
+
+
+  </defs>
+  <defs>
+
+
+
+  <g id="circuitBreakerOBJ">
+    <line id=disconnectLine x1=0 y1=-190 x2=-14 y2=-110 stroke="black" stroke-width="6" />
+    <line  id=disc2CBLine x1="0" y1="-120" x2=0 y2=0 stroke='blue' stroke-width="12" />
+
+ <circle  r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=-190 />
+ <circle  r="5" fill="white" stroke="black" stroke-width="1" cx=0 cy=-190 />
+  <circle  r="5" fill="black" stroke="black" stroke-width="1" cx=-45 cy=-130 />
+  <circle  r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=-120 />
+
+
+    <rect  id="baseCB"
+       width="100"
+       height="200"
+       fill="url(#radialGradientGreen)"
+       filter="url(#dropShadow)"
+       stroke="black"
+       stroke-width="3"
+       rx="6"
+       ry="6"
+       x="-50"
+       y="-50"
+       onClick="circuitBreakerRemoteResetClicked(evt)"
+        />
+
+ <circle pointer-events="none" r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=-40 />
+ <circle pointer-events="none" r="5" fill="white" stroke="black" stroke-width="1" cx=0 cy=-40 />
+  <circle pointer-events="none"   r="5" fill="black" stroke="black" stroke-width="1" cx=-40 cy=10 />
+  <circle  pointer-events="none" r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=30 />
+  <line pointer-events="none"  id=lockoutCBline x1=0 y1=-40 x2=-14 y2=35 stroke="black" stroke-width="6" />
+ <circle pointer-events="none" r="5" fill="white" stroke="black" stroke-width="1" cx=0 cy=-40 />
+
+
+
+    <line pointer-events="none"  x1=0 y1=30 x2=0 y2=85 stroke="black" stroke-width="4" />
+    <line pointer-events="none"  x1=-20 y1=85 x2=20 y2=85 stroke="black" stroke-width="4" />
+    <line pointer-events="none"   x1=-20 y1=115 x2=20 y2=115 stroke="black" stroke-width="4" />
+    <line pointer-events="none"  id=tripLine x1=-20 y1=85 x2=20 y2=115 stroke="black" stroke-width="4" />
+   <line pointer-events="none"   x1=0 y1=115 x2=0 y2=150 stroke="black" stroke-width="4" />
+  </g>
+
+
+
+  <g id=labelObj class=noselect  ><rect width=90 height=40 fill="gainsboro" stroke="none" rx=5 ry=5 x=-45 y=-20 /><text x=0 y=0 dy=8  font-size="30" text-anchor="middle" fill="black" stroke="none" font-family="arial" /></g>
+
+
+
+  </defs>
+<line x1="0" y1="20" x2=700 y2=20 stroke='blue' stroke-width="6" />
+<line x1="200" y1="20" x2=200 y2=120 stroke='blue' stroke-width="6" />
+<line x1="350" y1="20" x2=350 y2=120 stroke='blue' stroke-width="6" />
+<line x1="500" y1="20" x2=500 y2=120 stroke='blue' stroke-width="6" />
+
+
+<line marker-end="url(#arrowEndBlue)" id=feedLine23F1 x1="200" y1="200" x2=200 y2=550 stroke='blue'  stroke-width="6" />
+<line marker-end="url(#arrowEndBlue)"  id=feedLine23F2  x1="350" y1="200" x2=350 y2=550 stroke='blue' stroke-width="6" />
+<line marker-end="url(#arrowEndBlue)"  id=feedLine23F3  x1="500" y1="200" x2=500 y2=550 stroke='blue'  stroke-width="6" />
+<g id=gauge23F1GaugeContainer transform='translate(150,380)' value="0" />
+<g id=gauge23F2GaugeContainer transform='translate(300,380)' value="0"  />
+<g id=gauge23F3GaugeContainer transform='translate(450,380)' value="0"  />
+
+
+</svg>
+</div><p></p>
+
+</td>
+</tr>
+<tr><td colspan=2>
+<div style=width:90%>
+<span style='font-weight:bold;font-size:150%'>*</span><i>Strip Chart Simulation - Initially there are 100 values in the database for each analog gauge.
+ Additional analog gauge random values are created every second, beginning when this web page is opened.
+  The strip chart is then automatically updated, sliding left to accept the new values. All three(3) analog gauge values are compared in the strip chart.</i>
+</div>
+
+</td></tr>
+
+</table>
+  <br />SVG Source:
+  <div id=svgSourceDiv style=overflow:auto;width:100%;height:1px;text-align:left; /></div>
+  Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:100%;text-align:left; /></div><p></p>
+</center>
+<div id=stripChartDiv style='overflow:hidden;visibility:hidden;border:3px solid black;border-radius:5px;position:absolute;top:20px;left:20px;width:1px;height:1px;background:khaki;'>
+<table style=width:1200px ><tr><td style=width:90% align=center><b>Analog Gauge Values - Strip Chart</b></td><td align=right><button title='Close Strip Chart' onClick="closeStripChart()" style=background:red;font-weight:bold >X</button></td></tr>
+<tr><td align=center colspan=2>
+<span style=background:violet;padding:3px;>23F1</span>
+<span style=background:purple;padding:3px;color:white>23F2</span>
+<span style=background:aqua;padding:3px;>23F3</span>
+
+</td></tr>
+
+</table>
+</div>
+<script id=myScript>
+
+var cbStatus=[]  //----cbStatus[label]=[manualDisconnectClosed(t/f), lockoutDisconnectClosed(t/f), cbTripOpened(t/f), cbResetClosed(t/f)]
+
+var cbObjArray=[]
+//---cbObjArray[]=[label,locX,locY,scale]
+cbObjArray[0]=["23F1",200,200,.5]
+cbObjArray[1]=["23F2",350,200,.5]
+cbObjArray[2]=["23F3",500,200,.5]
+
+var AlarmIntervalTimer //---all alarms 'pulse' at the same time---
+
+//---onload: translate/scale button(its center Point) as desired---
+ //----cbStatusArray[label,manualDisconnectClosed(t/f), lockoutDisconnectClosed(t/f), cbTripOpened(t/f), cbResetClosed(t/f)]
+function createCircuitBreakers()
+{
+
+    for(var k=0;k<cbObjArray.length;k++)
+    {
+        var labelName=cbObjArray[k][0]
+
+        var cbG=circuitBreakerOBJ.cloneNode(true)
+        cbG.setAttribute("labelName",labelName)
+        cbG.setAttribute("id","cb"+labelName)
+
+        mySVG.appendChild(cbG)
+        var bb=cbG.getBBox()
+        var cx=bb.x+.5*bb.width
+        var cy=bb.y+.5*bb.height
+
+        var locX=cbObjArray[k][1]
+        var locY=cbObjArray[k][2]
+        var scale=cbObjArray[k][3]
+        var transX=locX-cx*scale
+        var transY=locY-cy*scale
+        cbG.setAttribute("transform","translate("+(transX)+" "+(transY)+")scale("+scale+")")
+         cbStatus.push({label:labelName,manualDisconnectClosed:true,lockoutDisconnectClosed:true,cbTripOpened:false,cbResetClosed:false})
+
+        //---add Label
+        var label=labelObj.cloneNode(true)
+        label.setAttribute("id","label"+labelName)
+        console.log( label.lastChild)
+        label.lastChild.textContent=labelName
+        label.setAttribute("transform","translate("+(locX)+" "+(locY+140)+")")
+        mySVG.appendChild(label)
+
+    }
+
+
+}
+
+//----Select 'Local' States: radio button select----
+function manualDisconnectCloseClicked(labelName)
+{
+    var cbObj=document.getElementById("cb"+labelName)
+    var elems=cbObj.childNodes
+    for(var k=0;k<elems.length;k++)
+    {
+        var elem=elems.item(k)
+        if(elem.nodeName!="#text")
+        {
+
+            if(elem.getAttribute("id")=="disconnectLine")
+            {
+                elem.setAttribute("x2",-14)
+                elem.setAttribute("y2",-110)
+            }
+
+            if(elem.getAttribute("id")=="disc2CBLine")
+            {
+                   elem.removeAttribute("stroke-dasharray")
+            }
+        }
+
+    }
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName)
+        {
+            cbStatus[k].manualDisconnectClosed=true
+            var feeder=document.getElementById("feedLine"+labelName)
+            if(cbStatus[k].lockoutDisconnectClosed==true )
+                feeder.removeAttribute("stroke-dasharray")
+            break;
+        }
+
+    }
+}
+function manualDisconnectOpenClicked(labelName)
+{
+    var cbObj=document.getElementById("cb"+labelName)
+    var elems=cbObj.childNodes
+    for(var k=0;k<elems.length;k++)
+    {
+        var elem=elems.item(k)
+        if(elem.nodeName!="#text")
+        {
+
+            if(elem.getAttribute("id")=="disconnectLine")
+            {
+                elem.setAttribute("x2",-40)
+                elem.setAttribute("y2",-120)
+            }
+
+            if(elem.getAttribute("id")=="disc2CBLine")
+            {
+                elem.setAttribute("stroke-dasharray","10 10")
+            }
+
+        }
+
+    }
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName)
+        {
+            cbStatus[k].manualDisconnectClosed=false
+            break;
+        }
+    }
+
+    var feeder=document.getElementById("feedLine"+labelName)
+    feeder.setAttribute("stroke-dasharray","10 10")
+}
+function lockoutCloseClicked(labelName)
+{
+    var cbObj=document.getElementById("cb"+labelName)
+    var elems=cbObj.childNodes
+    for(var k=0;k<elems.length;k++)
+    {
+        var elem=elems.item(k)
+        if(elem.nodeName!="#text")
+        {
+            if(elem.getAttribute("id")=="lockoutCBline")
+            {
+            elem.setAttribute("x2",-14)
+            elem.setAttribute("y2",35)
+            }
+        }
+    }
+
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName)
+        {
+            cbStatus[k].lockoutDisconnectClosed=true
+            var feeder=document.getElementById("feedLine"+labelName)
+            if(cbStatus[k].manualDisconnectClosed==true&&cbStatus[k].cbTripOpened==false )
+                feeder.removeAttribute("stroke-dasharray")
+
+            break;
+        }
+    }
+
+}
+function lockoutOpenClicked(labelName)
+{
+    var cbObj=document.getElementById("cb"+labelName)
+    var elems=cbObj.childNodes
+    for(var k=0;k<elems.length;k++)
+    {
+        var elem=elems.item(k)
+        if(elem.nodeName!="#text")
+        {
+            if(elem.getAttribute("id")=="lockoutCBline")
+            {
+                elem.setAttribute("x2",-40)
+                elem.setAttribute("y2",20)
+            }
+        }
+
+    }
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName)
+        {
+            cbStatus[k].lockoutDisconnectClosed=false
+
+            break;
+        }
+    }
+
+    var feeder=document.getElementById("feedLine"+labelName)
+    feeder.setAttribute("stroke-dasharray","10 10")
+}
+
+
+function circuitBreakerTripClicked(labelName)
+{
+
+    var cbObj=document.getElementById("cb"+labelName)
+    var elems=cbObj.childNodes
+    for(var k=0;k<elems.length;k++)
+    {
+       var elem=elems.item(k)
+       if(elem.nodeName!="#text")
+       {
+          if(elem.getAttribute("id")=="tripLine")
+          {
+             elem.setAttribute("display","none")
+          }
+
+          if(elem.getAttribute("id")=="baseCB")
+          {
+            elem.setAttribute("fill","url(#radialGradientRed)")
+          }
+       }
+    }
+
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName)
+        {
+            cbStatus[k].cbTripOpened=true
+            if(!AlarmIntervalTimer)
+                 AlarmIntervalTimer=setInterval(alarmInterval,500)                              //---init alarm interval---
+            break;
+        }
+    }
+
+    var feeder=document.getElementById("feedLine"+labelName)
+    feeder.setAttribute("stroke-dasharray","10 10")
+
+    var resetRadio=document.getElementById("cb"+labelName+"ResetRadio")
+    resetRadio.disabled=false
+
+}
+function circuitBreakerResetClicked(labelName)
+{
+    var cbObj=document.getElementById("cb"+labelName)
+    var elems=cbObj.childNodes
+    for(var k=0;k<elems.length;k++)
+    {
+        var elem=elems.item(k)
+        if(elem.nodeName!="#text")
+        {
+            if(elem.getAttribute("id")=="tripLine")
+            {
+                elem.setAttribute("display","block")
+
+            }
+
+            if(elem.getAttribute("id")=="baseCB")
+            {
+                elem.setAttribute("fill","url(#radialGradientGreen)")
+
+            }
+        }
+
+    }
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName)
+        {
+            cbStatus[k].cbTripOpened=false
+            var feeder=document.getElementById("feedLine"+labelName)
+            if(cbStatus[k].manualDisconnectClosed==true && cbStatus[k].lockoutDisconnectClosed==true)
+                feeder.removeAttribute("stroke-dasharray")
+
+            break;
+        }
+    }
+
+    var resetRadio=document.getElementById("cb"+labelName+"ResetRadio")
+    resetRadio.disabled=true
+        var allTripsCleared=true
+   for(var k=0;k<cbStatus.length;k++)
+    {
+
+          if(cbStatus[k].cbTripOpened==true)
+          {
+             allTripsCleared=false
+               break
+         }
+
+    }
+
+     if(allTripsCleared==true)
+     {
+        clearInterval(AlarmIntervalTimer)
+        AlarmIntervalTimer=null
+
+     }
+
+
+
+}
+
+//---click on CB 'button'----
+function circuitBreakerRemoteResetClicked(evt)
+{
+    var cbObj=evt.target.parentNode
+    var labelName=cbObj.getAttribute("labelName")
+
+    var tripped=false
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName&&cbStatus[k].cbTripOpened==true )
+        {
+           tripped=true
+
+            break;
+        }
+    }
+
+
+     if(tripped==true)
+     {
+
+        var elems=cbObj.childNodes
+        for(var k=0;k<elems.length;k++)
+        {
+            var elem=elems.item(k)
+            if(elem.nodeName!="#text")
+            {
+                if(elem.getAttribute("id")=="tripLine")
+                {
+                    elem.setAttribute("display","block")
+
+                }
+
+                if(elem.getAttribute("id")=="baseCB")
+                {
+                    elem.setAttribute("fill","url(#radialGradientGreen)")
+
+                }
+            }
+
+        }
+        for(var k=0;k<cbStatus.length;k++)
+        {
+            var label=cbStatus[k].label
+            if(label==labelName)
+            {
+                cbStatus[k].cbTripOpened=false
+                var feeder=document.getElementById("feedLine"+labelName)
+                if(cbStatus[k].manualDisconnectClosed==true && cbStatus[k].lockoutDisconnectClosed==true)
+                    feeder.removeAttribute("stroke-dasharray")
+
+                break;
+            }
+        }
+
+        var resetRadio=document.getElementById("cb"+labelName+"ResetRadio")
+        resetRadio.disabled=true
+        var tripRadio=document.getElementById("cb"+labelName+"TripRadio")
+          tripRadio.checked=false
+
+        var allTripsCleared=true
+       for(var k=0;k<cbStatus.length;k++)
+        {
+
+              if(cbStatus[k].cbTripOpened==true)
+              {
+                allTripsCleared=false
+               break
+             }
+
+        }
+
+         if(allTripsCleared==true)
+         {
+            clearInterval(AlarmIntervalTimer)
+            AlarmIntervalTimer=null
+
+         }
+
+    }
+
+}
+
+var AlarmFill
+//===all alarms 'pulse' simultaneously---
+function alarmInterval()
+{
+
+   if(!AlarmFill)
+    AlarmFill="url(#radialGradientRed)"
+
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        var cbG=document.getElementById("cb"+label)
+        var cbRect=cbG.getElementsByTagName("rect")[0]
+        if(cbStatus[k].cbTripOpened==true )
+           cbRect.setAttribute("fill",AlarmFill)
+
+    }
+
+   if(AlarmFill=="url(#radialGradientRed)")
+    AlarmFill="red"
+    else
+    AlarmFill="url(#radialGradientRed)"
+}
+
+//======================GAUGES========================================
+//---NOTE: created at https://github.com/thlorenz/d3-gauge plus requires D3 version 4 via:  https://d3js.org/d3.v4.min.js ---
+
+ var gauges = [];
+
+			function createGauge(name, label, min, max, colorCode)
+			{
+				var config =
+				{
+					size: 110,
+					label: label,
+					min: undefined != min ? min : 0,
+					max: undefined != max ? max : 1200,
+					minorTicks: 5,
+                    colorCode:colorCode
+				}
+
+				var range = config.max - config.min;
+				config.yellowZones = [{ from: config.min + range*0.75, to: config.min + range*0.9 }];
+				config.redZones = [{ from: config.min + range*0.9, to: config.max }];
+
+				gauges[name] = new Gauge(name + "GaugeContainer", config);
+				gauges[name].render();
+			}
+
+			function createGauges()
+			{
+				createGauge("gauge23F1", "23F1",0,1200,"violet");
+				createGauge("gauge23F2", "23F2",0,1200,"purple");
+				createGauge("gauge23F3", "23F3",0,1200,"aqua");
+				//createGauge("test", "Test", -50, 50 );
+			}
+
+
+			function getRandom23F1(gauge) //----200 to 250---
+			{
+			   return Math.floor(Math.random() * 50) + 200
+			}
+			function getRandom23F2(gauge) //----500 to 550--
+			{
+              return Math.floor(Math.random() * 50) + 500
+			}
+			function getRandom23F3(gauge) //----800 to 850---
+			{
+			   return Math.floor(Math.random() * 50) + 800
+			}
+
+			function initializeGauges()
+			{
+				createGauges();
+               var gaugeIntervalTimer=setInterval(updateGauges,1000)//---all gauge values read at the same time---
+
+			}
+
+//==================Database and gauge update---------------
+
+function updateGauges()
+{
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+
+        var update=false
+        if(cbStatus[k].manualDisconnectClosed==true
+        && cbStatus[k].lockoutDisconnectClosed==true
+        && cbStatus[k].cbTripOpened==false)
+        update=true
+
+        if(label=="23F1") var y23F1=updateGauge23F1(update)
+        if(label=="23F2") var y23F2=updateGauge23F2(update)
+        if(label=="23F3") var y23F3=updateGauge23F3(update)
+
+    }
+    slideStripChart([y23F1,y23F2,y23F3])
+}
+//gaugeData[]=[23F1 value,23F2 value, 23F3 value]
+function updateGauge23F1(update)
+{
+    var key="gauge23F1"
+    if(update==true)
+        var value = getRandom23F1(gauges[key])
+    else
+        var value=0
+    gauges[key].redraw(value,250);
+    return value
+
+
+}
+function updateGauge23F2(update)
+{
+    var key="gauge23F2"
+    if(update==true)
+        var value = getRandom23F2(gauges[key])
+    else
+        var value=0
+    gauges[key].redraw(value,250);
+     return value
+
+}
+function updateGauge23F3(update)
+{
+    var key="gauge23F3"
+    if(update==true)
+        var value = getRandom23F3(gauges[key])
+    else
+        var value=0
+    gauges[key].redraw(value,250);
+     return value
+
+}
+
+
+function Gauge(placeholderName, configuration)
+{
+	this.placeholderName = placeholderName;
+
+	var self = this; // for internal d3 functions
+
+	this.configure = function(configuration)
+	{
+		this.config = configuration;
+
+		this.config.size = this.config.size * 0.9;
+
+		this.config.raduis = this.config.size * 0.97 / 2;
+		this.config.cx = this.config.size / 2;
+		this.config.cy = this.config.size / 2;
+
+		this.config.min = undefined != configuration.min ? configuration.min : 0;
+		this.config.max = undefined != configuration.max ? configuration.max : 100;
+		this.config.range = this.config.max - this.config.min;
+
+		this.config.majorTicks = configuration.majorTicks || 5;
+		this.config.minorTicks = configuration.minorTicks || 2;
+
+		this.config.greenColor 	= configuration.greenColor || "#109618";
+		this.config.yellowColor = configuration.yellowColor || "#FF9900";
+		this.config.redColor 	= configuration.redColor || "#DC3912";
+
+		this.config.transitionDuration = configuration.transitionDuration || 500;
+	}
+
+	this.render = function()
+	{
+		this.gauge = d3.select("#" + this.placeholderName)
+							.attr("class", "gauge")
+							.attr("width", this.config.size)
+							.attr("height", this.config.size)
+
+
+		this.gauge.append("svg:circle")
+					.attr("cx", this.config.cx)
+					.attr("cy", this.config.cy)
+					.attr("r", this.config.raduis)
+					.style("fill", this.config.colorCode)
+					.style("stroke", "#000")
+					.style("stroke-width", "0.5px");
+
+		this.gauge.append("svg:circle")
+					.attr("cx", this.config.cx)
+					.attr("cy", this.config.cy)
+					.attr("r", 0.9 * this.config.raduis)
+					.style("fill", "khaki")
+					.style("stroke", "#e0e0e0")
+					.style("stroke-width", "2px");
+
+		for (var index in this.config.greenZones)
+		{
+			this.drawBand(this.config.greenZones[index].from, this.config.greenZones[index].to, self.config.greenColor);
+		}
+
+		for (var index in this.config.yellowZones)
+		{
+			this.drawBand(this.config.yellowZones[index].from, this.config.yellowZones[index].to, self.config.yellowColor);
+		}
+
+		for (var index in this.config.redZones)
+		{
+			this.drawBand(this.config.redZones[index].from, this.config.redZones[index].to, self.config.redColor);
+		}
+
+		if (undefined != this.config.label)
+		{
+			var fontSize = Math.round(this.config.size / 9);
+			this.gauge.append("svg:text")
+						.attr("x", this.config.cx)
+						.attr("y", this.config.cy / 2 + fontSize / 2)
+						.attr("dy", fontSize / 2)
+						.attr("text-anchor", "middle")
+						.text(this.config.label)
+						.style("font-size", fontSize + "px")
+						.style("fill", "#333")
+						.style("stroke-width", "0px");
+		}
+
+		var fontSize = Math.round(this.config.size / 16);
+		var majorDelta = this.config.range / (this.config.majorTicks - 1);
+		for (var major = this.config.min; major <= this.config.max; major += majorDelta)
+		{
+			var minorDelta = majorDelta / this.config.minorTicks;
+			for (var minor = major + minorDelta; minor < Math.min(major + majorDelta, this.config.max); minor += minorDelta)
+			{
+				var point1 = this.valueToPoint(minor, 0.75);
+				var point2 = this.valueToPoint(minor, 0.85);
+
+				this.gauge.append("svg:line")
+							.attr("x1", point1.x)
+							.attr("y1", point1.y)
+							.attr("x2", point2.x)
+							.attr("y2", point2.y)
+							.style("stroke", "#666")
+							.style("stroke-width", "1px");
+			}
+
+			var point1 = this.valueToPoint(major, 0.7);
+			var point2 = this.valueToPoint(major, 0.85);
+
+			this.gauge.append("svg:line")
+						.attr("x1", point1.x)
+						.attr("y1", point1.y)
+						.attr("x2", point2.x)
+						.attr("y2", point2.y)
+						.style("stroke", "#333")
+						.style("stroke-width", "2px");
+
+			if (major == this.config.min || major == this.config.max)
+			{
+				var point = this.valueToPoint(major, 0.63);
+
+				this.gauge.append("svg:text")
+				 			.attr("x", point.x)
+				 			.attr("y", point.y)
+				 			.attr("dy", fontSize / 2)
+				 			.attr("text-anchor", major == this.config.min ? "start" : "end")
+				 			.text(major)
+				 			.style("font-size", (fontSize+4) + "px")
+							.style("fill", "#333")
+							.style("stroke-width", "0px");
+			}
+		}
+
+		var pointerContainer = this.gauge.append("svg:g").attr("class", "pointerContainer");
+
+		var midValue = (this.config.min + this.config.max) / 2;
+
+		var pointerPath = this.buildPointerPath(midValue);
+
+		var pointerLine = d3.line()
+									.x(function(d) { return d.x })
+									.y(function(d) { return d.y })
+									.curve(d3.curveBasis);
+
+		pointerContainer.selectAll("path")
+							.data([pointerPath])
+							.enter()
+								.append("svg:path")
+									.attr("d", pointerLine)
+									.style("fill", "#dc3912")
+									.style("stroke", "#c63310")
+									.style("fill-opacity", 0.7)
+
+		pointerContainer.append("svg:circle")
+							.attr("cx", this.config.cx)
+							.attr("cy", this.config.cy)
+							.attr("r", 0.12 * this.config.raduis)
+							.style("fill", "#4684EE")
+							.style("stroke", "#666")
+							.style("opacity", 1);
+
+		var fontSize = Math.round(this.config.size / 10);
+		pointerContainer.selectAll("text")
+							.data([midValue])
+							.enter()
+								.append("svg:text")
+									.attr("x", this.config.cx)
+									.attr("y", this.config.size - this.config.cy / 4 - fontSize)
+									.attr("dy", fontSize)
+									.attr("text-anchor", "middle")
+									.style("font-size", (fontSize+4) + "px")
+									.style("fill", "#000")
+									.style("stroke-width", "1px");
+
+		this.redraw(this.config.min, 0);
+	}
+
+	this.buildPointerPath = function(value)
+	{
+		var delta = this.config.range / 13;
+
+		var head = valueToPoint(value, 0.85);
+		var head1 = valueToPoint(value - delta, 0.12);
+		var head2 = valueToPoint(value + delta, 0.12);
+
+		var tailValue = value - (this.config.range * (1/(270/360)) / 2);
+		var tail = valueToPoint(tailValue, 0.28);
+		var tail1 = valueToPoint(tailValue - delta, 0.12);
+		var tail2 = valueToPoint(tailValue + delta, 0.12);
+
+		return [head, head1, tail2, tail, tail1, head2, head];
+
+		function valueToPoint(value, factor)
+		{
+			var point = self.valueToPoint(value, factor);
+			point.x -= self.config.cx;
+			point.y -= self.config.cy;
+			return point;
+		}
+	}
+
+	this.drawBand = function(start, end, color)
+	{
+		if (0 >= end - start) return;
+
+		this.gauge.append("svg:path")
+					.style("fill", color)
+					.attr("d", d3.arc()
+						.startAngle(this.valueToRadians(start))
+						.endAngle(this.valueToRadians(end))
+						.innerRadius(0.65 * this.config.raduis)
+						.outerRadius(0.85 * this.config.raduis))
+					.attr("transform", function() { return "translate(" + self.config.cx + ", " + self.config.cy + ") rotate(270)" });
+	}
+
+	this.redraw = function(value, transitionDuration)
+	{
+		var pointerContainer = this.gauge.select(".pointerContainer");
+
+		pointerContainer.selectAll("text").text(Math.round(value));
+
+		var pointer = pointerContainer.selectAll("path");
+		pointer.transition()
+					.duration(undefined != transitionDuration ? transitionDuration : this.config.transitionDuration)
+					//.delay(0)
+					//.ease("linear")
+					//.attr("transform", function(d)
+					.attrTween("transform", function()
+					{
+						var pointerValue = value;
+						if (value > self.config.max) pointerValue = self.config.max + 0.02*self.config.range;
+						else if (value < self.config.min) pointerValue = self.config.min - 0.02*self.config.range;
+						var targetRotation = (self.valueToDegrees(pointerValue) - 90);
+						var currentRotation = self._currentRotation || targetRotation;
+						self._currentRotation = targetRotation;
+
+						return function(step)
+						{
+							var rotation = currentRotation + (targetRotation-currentRotation)*step;
+							return "translate(" + self.config.cx + ", " + self.config.cy + ") rotate(" + rotation + ")";
+						}
+					});
+	}
+
+	this.valueToDegrees = function(value)
+	{
+		// thanks @closealert
+		//return value / this.config.range * 270 - 45;
+		return value / this.config.range * 270 - (this.config.min / this.config.range * 270 + 45);
+	}
+
+	this.valueToRadians = function(value)
+	{
+		return this.valueToDegrees(value) * Math.PI / 180;
+	}
+
+	this.valueToPoint = function(value, factor)
+	{
+		return { 	x: this.config.cx - this.config.raduis * factor * Math.cos(this.valueToRadians(value)),
+					y: this.config.cy - this.config.raduis * factor * Math.sin(this.valueToRadians(value)) 		};
+	}
+
+	// initialization
+	this.configure(configuration);
+}
+
+//================================Analog Gauges - Strip Chart================================
+//-----uses D3 version 4: https://d3js.org/d3.v4.min.js ---------------
+
+//---onload---
+function initStripChart()
+{
+// Use the margin convention practice
+var margin = {top: 50, right: 50, bottom: 50, left: 50}
+  , width = 1200 - margin.left - margin.right // Use the window's width
+  , height = 600 - margin.top - margin.bottom; // Use the window's height
+
+// The number of datapoints
+var n = 100;
+
+//  X scale will use the index of our data
+var xScale = d3.scaleLinear()
+    .domain([0, n-1]) // input
+    .range([0, width]); // output
+
+// Y scale will use the randomly generate number
+var yScale = d3.scaleLinear()
+    .domain([0, 1200]) // input
+    .range([height, 0]); // output
+
+  // gridlines in x axis function
+function make_x_gridlines() {
+    return d3.axisBottom(xScale)
+       // .ticks(5)
+}
+
+// gridlines in y axis function
+function make_y_gridlines() {
+    return d3.axisLeft(yScale)
+       // .ticks(5)
+}
+
+// d3's line generator
+ line23F1 = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yScale(d[0]); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+ line23F2 = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yScale(d[1]); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+ line23F3 = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yScale(d[2]); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+// Add the SVG to the div
+var svg = d3.select("#stripChartDiv").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+
+var topG=svg.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+
+
+    topG.append("defs").append("clipPath")
+    .attr("id", "clip")
+    .append("rect")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height)
+    .attr("transform", "translate(" +width/100 + ",0)")
+
+  var redRect=topG.append("rect")
+   .attr("width", width)
+   .attr("height",50)
+   .attr("fill","red")
+   .attr("stroke","none")
+   .attr("x",0)
+   .attr("y",0)
+  var yellowRect=topG.append("rect")
+   .attr("width", width)
+   .attr("height",75)
+   .attr("fill","orange")
+   .attr("stroke","none")
+   .attr("x",0)
+   .attr("y",50)
+
+// add the X gridlines
+  topG.append("g")
+      .attr("class", "grid")
+      .attr("transform", "translate(0," + height + ")")
+      .call(make_x_gridlines()
+          .tickSize(-height)
+          .tickFormat("")
+      )
+
+  // add the Y gridlines
+  topG.append("g")
+      .attr("class", "grid")
+      .call(make_y_gridlines()
+          .tickSize(-width)
+          .tickFormat("")
+      )
+
+
+
+// Call the x axis in a group tag
+topG.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale)); // Create an axis component with d3.axisBottom
+
+// Call the y axis in a group tag
+topG.append("g")
+    .attr("class", "y axis")
+    .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
+
+    // Append the path, bind the data, and call the line generator
+path23F1=topG.append("path")
+  .attr("clip-path", "url(#clip)")
+    .datum(gaugeData) // 10. Binds data to the line
+    .attr("class", "chartLine23F1") // Assign a class for styling
+    .attr("d", line23F1); // 11. Calls the line generator
+path23F2=topG.append("path")
+ .attr("clip-path", "url(#clip)")
+    .datum(gaugeData) // 10. Binds data to the line
+    .attr("class", "chartLine23F2") // Assign a class for styling
+    .attr("d", line23F2); // 11. Calls the line generator
+path23F3=topG.append("path")
+ .attr("clip-path", "url(#clip)")
+    .datum(gaugeData) // 10. Binds data to the line
+    .attr("class", "chartLine23F3") // Assign a class for styling
+    .attr("d", line23F3); // 11. Calls the line generator
+
+  stripLabel23F1=topG.append('text')
+   .text("23F1")
+  stripLabel23F2=topG.append('text')
+   .text("23F2")
+  stripLabel23F3=topG.append('text')
+   .text("23F3")
+
+
+
+}
+var line23F1
+var line23F2
+var line23F3
+var path23F1
+var path23F2
+var path23F3
+var stripLabel23F1
+var stripLabel23F2
+var stripLabel23F3
+
+function slideStripChart(dataAdd)
+{
+    var width=1100
+    gaugeData[gaugeData.length]=dataAdd //[y23F1,y23F2,y23F3]
+     if(StripChartOpen==true)
+    {
+        path23F1.attr("d", line23F1)
+        .attr("transform", null);
+        path23F2.attr("d", line23F2)
+        .attr("transform", null);
+        path23F3.attr("d", line23F3)
+        .attr("transform", null);
+
+        path23F1.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+
+        path23F2.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+
+        path23F3.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+
+        var pathSplit=path23F1.attr("d").split(",")
+
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabel23F1.attr("x",splitX)
+        stripLabel23F1.attr("y",splitY)
+
+        var pathSplit=path23F2.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabel23F2.attr("x",splitX)
+        stripLabel23F2.attr("y",splitY)
+
+        var pathSplit=path23F3.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabel23F3.attr("x",splitX)
+        stripLabel23F3.attr("y",splitY)
+    }
+
+    gaugeData.shift()
+
+}
+var StripChartOpen=false
+function openStripChart()
+{
+    StripChartOpen=true
+    stripChartDiv.style.visibility='visible'
+    d3.select("#stripChartDiv").transition().duration(1500)
+    .styleTween("width", function() { return d3.interpolate("1px", "1200px"); })
+    .styleTween("height", function() { return d3.interpolate("1px", "650px"); });
+}
+function closeStripChart()
+{
+    d3.select("#stripChartDiv").transition().duration(1000)
+    .styleTween("width", function() { return d3.interpolate("1200px", "1px"); })
+    .styleTween("height", function() { return d3.interpolate("650px", "1px"); })
+
+    setTimeout("stripChartDiv.style.visibility='hidden'",1000)
+    StripChartOpen=false
+}
+//---start dataBase-----------
+var gaugeData=[] //----gaugeData[]=[23F1 value,23F2 value, 23F3 value]
+gaugeData[0]=[204,529,831]
+gaugeData[1]=[235,523,834]
+gaugeData[2]=[233,523,819]
+gaugeData[3]=[244,526,814]
+gaugeData[4]=[230,543,816]
+gaugeData[5]=[242,515,829]
+gaugeData[6]=[242,537,805]
+gaugeData[7]=[248,544,839]
+gaugeData[8]=[239,541,847]
+gaugeData[9]=[216,522,830]
+gaugeData[10]=[211,528,834]
+gaugeData[11]=[202,517,822]
+gaugeData[12]=[242,546,821]
+gaugeData[13]=[220,522,819]
+gaugeData[14]=[230,541,832]
+gaugeData[15]=[237,533,809]
+gaugeData[16]=[242,531,847]
+gaugeData[17]=[215,532,831]
+gaugeData[18]=[202,508,816]
+gaugeData[19]=[204,503,810]
+gaugeData[20]=[245,549,810]
+gaugeData[21]=[244,515,846]
+gaugeData[22]=[244,501,821]
+gaugeData[23]=[213,521,828]
+gaugeData[24]=[208,543,820]
+gaugeData[25]=[202,533,837]
+gaugeData[26]=[226,527,808]
+gaugeData[27]=[210,548,812]
+gaugeData[28]=[244,546,840]
+gaugeData[29]=[200,511,835]
+gaugeData[30]=[243,513,800]
+gaugeData[31]=[230,535,808]
+gaugeData[32]=[236,532,845]
+gaugeData[33]=[249,530,838]
+gaugeData[34]=[200,540,835]
+gaugeData[35]=[244,535,800]
+gaugeData[36]=[247,532,800]
+gaugeData[37]=[200,510,811]
+gaugeData[38]=[206,540,845]
+gaugeData[39]=[210,542,801]
+gaugeData[40]=[222,546,843]
+gaugeData[41]=[210,518,804]
+gaugeData[42]=[207,508,803]
+gaugeData[43]=[218,533,810]
+gaugeData[44]=[235,545,844]
+gaugeData[45]=[245,502,818]
+gaugeData[46]=[244,542,849]
+gaugeData[47]=[206,502,831]
+gaugeData[48]=[235,522,841]
+gaugeData[49]=[202,524,837]
+gaugeData[50]=[219,520,838]
+gaugeData[51]=[224,506,824]
+gaugeData[52]=[215,531,809]
+gaugeData[53]=[219,547,824]
+gaugeData[54]=[236,539,840]
+gaugeData[55]=[216,543,826]
+gaugeData[56]=[207,528,832]
+gaugeData[57]=[207,531,831]
+gaugeData[58]=[209,504,834]
+gaugeData[59]=[210,505,831]
+gaugeData[60]=[208,546,829]
+gaugeData[61]=[232,532,806]
+gaugeData[62]=[215,548,839]
+gaugeData[63]=[245,511,812]
+gaugeData[64]=[205,523,845]
+gaugeData[65]=[235,514,813]
+gaugeData[66]=[234,520,826]
+gaugeData[67]=[202,518,849]
+gaugeData[68]=[200,516,827]
+gaugeData[69]=[219,509,848]
+gaugeData[70]=[247,534,807]
+gaugeData[71]=[211,535,824]
+gaugeData[72]=[211,504,824]
+gaugeData[73]=[243,530,801]
+gaugeData[74]=[233,543,823]
+gaugeData[75]=[239,536,807]
+gaugeData[76]=[236,547,837]
+gaugeData[77]=[243,513,813]
+gaugeData[78]=[244,518,800]
+gaugeData[79]=[248,523,812]
+gaugeData[80]=[215,521,821]
+gaugeData[81]=[244,513,826]
+gaugeData[82]=[246,533,828]
+gaugeData[83]=[222,529,804]
+gaugeData[84]=[239,522,840]
+gaugeData[85]=[221,543,835]
+gaugeData[86]=[220,541,821]
+gaugeData[87]=[219,547,824]
+gaugeData[88]=[223,512,832]
+gaugeData[89]=[245,513,812]
+gaugeData[90]=[241,505,800]
+gaugeData[91]=[236,536,820]
+gaugeData[92]=[228,527,839]
+gaugeData[93]=[230,520,839]
+gaugeData[94]=[219,529,815]
+gaugeData[95]=[202,539,820]
+gaugeData[96]=[221,534,834]
+gaugeData[97]=[241,536,801]
+gaugeData[98]=[244,545,827]
+gaugeData[99]=[247,507,815]
+
+
+</script>
+<script>
+document.addEventListener("onload",init(),false)
+function init()
+{
+
+    initStripChart()
+    createCircuitBreakers()
+    initializeGauges()
+   	showSourceSVG()
+	showSourceJS()
+
+}
+
+
+</script>
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88028738-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+
+</html>

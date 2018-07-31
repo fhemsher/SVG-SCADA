@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Status Stick Object - 5 States</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style='padding:10px;font-family:arial;background:honeydew'>
+<center>
+<h4>Status Stick Object - 5 States</h4>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+Create an SVG monitoring strip object that displays all five(5) states: ON, ALARM, INTERMITTENT, DEFECTIVE, AND NORMAL OFF.
+The four(4) inactive states are opaque. The active state indicator's opacity is 1 and it increases in size.
+Each state has a different color. Each fill color consists of a radialGradient.
+</div>
+<table><tr>
+<td>
+<div style="padding:10px;width:400px;text-align:justify">
+
+<b>Scenerio:</b><br />
+Select a radio button to change the state of the status stick.<br>
+
+<br>Each change of state color also includes a confirming graphic feedback to compensate for color blindness.<br>
+<table border=1>
+<tr style=font-weight:bold ><td>State</td><td>Color</td><td>Feedback</td></tr>
+<tr><td>1. ON</td><td>green</td><td>solid</td></tr>
+<tr><td>2. ALARM</td><td>red</td><td>flash w/ diagonal line</td></tr>
+<tr><td>3. INTERMITTENT</td><td>violet</td><td>flashing</td></tr>
+<tr><td>4. DEFECTIVE</td><td>aqua</td><td>inner red 'not' symbol</td></tr>
+<tr><td>5. NORMAL OFF</td><td>grey</td><td>"X" lines</td></tr>
+
+</table> <p></p>
+Example of how the various states could be applied: The central monitoring panel PID loop graphic
+includes two(2) status sticks; one associated  with the field controller, and the other monitoring the modulating actuator's controlled device (e.g. valve, damper, etc.) position locally.
+<br>
+<table border=1 style=text-align:left;>
+<tr style=font-weight:bold ><td>State</td><td>PID Controller</td><td>Actuator</td></tr>
+<tr><td>ON</td><td>Local circuit active</td><td>Actuator's device fully open</td></tr>
+<tr><td>ALARM</td><td>Local circuit failure</td><td>Local circuit failure</td></tr>
+<tr><td>INTERMITTENT</td><td>Not applicable</td><td>Actuator's device modulating</td></tr>
+<tr><td>DEFECTIVE</td><td>Under repair</td><td>Under repair</td></tr>
+<tr><td>NORMAL OFF</td><td>Local circuit off</td><td>Actuator's device fully closed</td></tr>
+
+</table>
+
+</div>
+</td>
+<td>
+<TABLE>
+<TR><TD valign=top>
+<div id="svgDiv" style='width:85px;height:400px'>
+<svg id=mySVG width=85 height=400>
+<defs>
+<radialGradient id="blueGradient" cx="50%" cy="50%" r="75%" >
+<stop offset="0%" style="stop-color:rgb(0,0,255);stop-opacity:1" />
+<stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+</radialGradient>
+<radialGradient id="greenGradient" cx="50%" cy="50%" r="75%" >
+<stop offset="0%" style="stop-color:rgb(0,191,0);stop-opacity:1" />
+<stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+</radialGradient>
+<radialGradient id="greyGradient" cx="50%" cy="50%" r="75%" >
+<stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+<stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+</radialGradient>
+<radialGradient id="redGradient" cx="50%" cy="50%" r="75%" >
+<stop offset="0%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+<stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+</radialGradient>
+<radialGradient id="violetGradient" cx="50%" cy="50%" r="75%" >
+<stop offset="0%" style="stop-color:rgb(219,0,219);stop-opacity:1" />
+<stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+</radialGradient>
+<radialGradient id="aquaGradient" cx="50%" cy="50%" r="75%" >
+<stop offset="0%" style="stop-color:aqua;stop-opacity:1" />
+<stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+</radialGradient>
+</defs>
+<defs>
+<g id=pilotLightG><circle id=pilotLight cx="0" cy="0" r="1"  fill="url(#greenGradient)" /><line style="visibility:hidden" name=lineOff x1=-.5 y1=-.5 x2=.5 y2=.5 stroke='black' stroke-width=.1 /><line  style="visibility:hidden"  name=lineDisabled x1=.5 y1=-.5 x2=-.5 y2=.5 stroke='black' stroke-width=.1 /><circle  style="visibility:hidden"  name=circleDefective cx=0 cy=0 r=.7 stroke='crimson' stroke-width=.2 fill="none" /><line style="visibility:hidden" name=lineDefective x1=-.5 y1=-.5 x2=.5 y2=.5 stroke='crimson' stroke-width=.08 /></g>
+</defs>
+<rect x=25 y=20 rx=8 ry=8 stroke="black" stroke-width=2 fill="ghostwhite" width=50 height=260 />
+<line x1=50 y1=280 x2=50 y2=340  stroke="black" stroke-width=2 />
+</svg>
+</div>
+</TD>
+<TD valign=top align=left><p></p>
+<input type="radio" checked id=onRadio onClick=setStatus() name=statusRadio />:ON<p></p>
+<p>&nbsp;</p><input id=alarmRadio onClick=setStatus()  type="radio" name=statusRadio />:ALARM<p></p>
+<p>&nbsp;</p><input id=intermittentRadio onClick=setStatus()  type="radio" name=statusRadio />:INTERMITTENT<p></p>
+<p>&nbsp;</p><input id=defectiveRadio onClick=setStatus()  type="radio" name=statusRadio />:DEFECTIVE<p></p>
+<p>&nbsp;</p><input id=normalOffRadio onClick=setStatus()  type="radio" name=statusRadio />:NORMAL OFF
+
+
+</TD>
+
+
+</TR>
+
+
+</TABLE>
+</td>
+</tr></table>
+  <br />SVG Source:
+  <div id=svgSourceDiv style=overflow:auto;width:100%;text-align:left; /></div>
+  Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:100%;text-align:left; /></div><p></p>
+</center>
+<script id=myScript>
+//---configure pilot lights---
+var config=[] //---[pilotLightId,transX,transY,scale,initialState(color)]---
+config[0]=["onStatus",50,50,20,"green"]
+config[1]=["alarmStatus",50,100,20,"red"]
+config[2]=["intermittentStatus",50,150,20,"violet"]
+config[3]=["defectiveStatus",50,200,20,"aqua"]
+config[4]=["normalOffStatus",50,250,20,"grey"]
+
+//---onload---
+function createPilotLights()
+{
+    for(var k=0;k<config.length;k++)
+    {
+        var myPilotLightG=pilotLightG.cloneNode(true)
+        myPilotLightG.setAttribute("id",config[k][0])
+        myPilotLightG.setAttribute("opacity",.25)
+        var id=config[k][0]
+        var transX=config[k][1]
+        var transY=config[k][2]
+        var scale=config[k][3]
+        var color=config[k][4]
+
+        var gradient=color+"Gradient"
+        myPilotLightG.firstChild.setAttribute("fill","url(#"+gradient+")")
+        myPilotLightG.setAttribute("transform","translate("+transX+","+transY+")scale("+scale+")")
+
+        var off=myPilotLightG.childNodes.item(1)
+        var disabled=myPilotLightG.childNodes.item(2)
+        var defectiveCircle=myPilotLightG.childNodes.item(3)
+        var defectiveLine=myPilotLightG.childNodes.item(4)
+
+        if(color=="red")
+            off.setAttribute("style","visibility:visible")
+
+        if(color=="grey")
+        {
+            off.setAttribute("style","visibility:visible")
+            disabled.setAttribute("style","visibility:visible")
+        }
+
+
+        if(color=="aqua")
+        {
+            defectiveCircle.setAttribute("style","visibility:visible")
+            defectiveLine.setAttribute("style","visibility:visible")
+
+         }
+        mySVG.appendChild(myPilotLightG)
+    }
+}
+
+//---radio button click---
+function setStatus()
+{
+    onStatus.setAttribute("opacity",.25)
+    alarmStatus.setAttribute("opacity",.25)
+    intermittentStatus.setAttribute("opacity",.25)
+    defectiveStatus.setAttribute("opacity",.25)
+    normalOffStatus.setAttribute("opacity",.25)
+    //---return to inactive size---
+    for(var k=0;k<config.length;k++)
+    {
+        var id=config[k][0]
+        var transX=config[k][1]
+        var transY=config[k][2]
+        var scale=config[k][3]
+        document.getElementById(id).setAttribute("transform","translate("+transX+","+transY+")scale("+scale+")")
+    }
+    //---increase active state size---
+    if(onRadio.checked)
+    {
+        onStatus.removeAttribute("opacity")
+        var transX=config[0][1]
+        var transY=config[0][2]
+        var scale=config[0][3]*1.2
+        onStatus.setAttribute("transform","translate("+transX+","+transY+")scale("+scale+")")
+    }
+
+    if(alarmRadio.checked)
+    {
+        alarmStatus.removeAttribute("opacity")
+        var transX=config[1][1]
+        var transY=config[1][2]
+        var scale=config[1][3]*1.2
+        alarmStatus.setAttribute("transform","translate("+transX+","+transY+")scale("+scale+")")
+     }
+
+    if(intermittentRadio.checked)
+    {
+        intermittentStatus.removeAttribute("opacity")
+        var transX=config[2][1]
+        var transY=config[2][2]
+        var scale=config[2][3]*1.2
+        intermittentStatus.setAttribute("transform","translate("+transX+","+transY+")scale("+scale+")")
+    }
+
+    if(defectiveRadio.checked)
+    {
+        defectiveStatus.removeAttribute("opacity")
+        var transX=config[3][1]
+        var transY=config[3][2]
+        var scale=config[3][3]*1.2
+        defectiveStatus.setAttribute("transform","translate("+transX+","+transY+")scale("+scale+")")
+    }
+
+    if(normalOffRadio.checked)
+    {
+        normalOffStatus.removeAttribute("opacity")
+        var transX=config[4][1]
+        var transY=config[4][2]
+        var scale=config[4][3]*1.2
+        normalOffStatus.setAttribute("transform","translate("+transX+","+transY+")scale("+scale+")")
+    }
+
+}
+
+var intermittentInterval=setInterval("intermittent()",1000)
+
+function intermittent()
+{
+    for(var k=0;k<config.length;k++)
+    {
+        var myPilotLightG=document.getElementById(config[k][0])
+        var off=myPilotLightG.childNodes.item(1)
+        var disabled=myPilotLightG.childNodes.item(2)
+        var defective=myPilotLightG.childNodes.item(3)
+        var id=config[k][0]
+        var myPilotLight=document.getElementById(id)
+        var color=config[k][4]
+        if(intermittentRadio.checked && color=="violet")
+        {
+
+            off.setAttribute("style","visibility:hidden")
+            disabled.setAttribute("style","visibility:hidden")
+            defective.setAttribute("style","visibility:hidden")
+
+            if(myPilotLight.getAttribute("fill-opacity")=="1")
+            myPilotLight.setAttribute("fill-opacity",.6)
+            else
+            myPilotLight.setAttribute("fill-opacity",1)
+        }
+        if(alarmRadio.checked && color=="red")
+        {
+            if(myPilotLight.getAttribute("fill-opacity")=="1")
+            myPilotLight.setAttribute("fill-opacity",.6)
+            else
+            myPilotLight.setAttribute("fill-opacity",1)
+        }
+
+
+
+    }
+
+}
+
+
+</script>
+<script>
+document.addEventListener("onload",init(),false)
+function init()
+{
+    createPilotLights()
+   	showSourceSVG()
+	showSourceJS()
+    setStatus()
+}
+
+
+</script>
+<script>
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88028738-1', 'auto');
+  ga('send', 'pageview');
+
+
+</script>
+
+</body>
+
+</html>

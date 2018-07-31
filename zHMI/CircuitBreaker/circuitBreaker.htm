@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Circuit Breaker - Local</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+ <style type="text/css">
+  .noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+       unselectable="on"
+ onselectstart="return false;"
+ onmousedown="return false;"
+}
+
+  </style>
+
+</head>
+<body style='padding:10px;font-family:arial'>
+<center>
+<h4>Circuit Breaker - 'Local' Status with Central Monitoring Only</h4>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+Create an interactive SVG image object to monitor a Circuit Breaker.
+It includes an associated external  manual disconnect switch. Each circuit breaker has a label. Also included is a blue arrow line leaving the circuit breaker.
+</div>
+<table><tr>
+<td>
+<div class="noselect"  style="padding:10px;width:400px;text-align:justify">
+
+<b>Scenerio:</b><br />Three(3) SVG circuit breaker objects are shown.
+This monitors the status of an external manual disconnect and its associated downstream circuit breaker. The circuit breaker also includes an internal <b>lockout</b> disconnect.
+ In this example, The curcuit breaker cannot be reset from the central panel.<p></p> Note: At present, the circuit breaker color is flashing red for tripped and solid green for OK (This may change).
+<p></p>
+<center>Select Field Device State (monitored at central panel)<br>
+<table border=1>
+<tr><td align=center colspan=4>23F1 Field Devices</td></tr>
+<tr><td>Manual Disconnect</td><td><input type="radio" name=md23F1Radio id=md23F1CloseRadio onClick=manualDisconnectCloseClicked("23F1") checked  />:Closed</td><td> <input type="radio"  name=md23F1Radio id=md23F1OpenRadio onClick=manualDisconnectOpenClicked("23F1")    />:Opened</td></tr>
+<tr><td>Circuit Breaker Lockout</td><td><input type="radio"  name=lockout23F1Radio  id=lockout23F1CloseRadio onClick=lockoutCloseClicked("23F1")  checked    />:Closed</td><td> <input type="radio"  name=lockout23F1Radio  id=lockout23F1OpenRadio onClick=lockoutOpenClicked("23F1")    />:Opened</td></tr>
+<tr><td>Circuit Breaker</td><td><input type="radio"  name=cb23F1Radio  id=cb23F1TripRadio  onClick=circuitBreakerTripClicked("23F1")   />: Tripped</td><td> <input type="radio"  name=cb23F1Radio  id=cb23F1ResetRadio onClick=circuitBreakerResetClicked("23F1")  disabled    />:Reset</td></tr>
+</table>
+
+<table border=1>
+<tr><td align=center colspan=4>23F2 Field Devices</td></tr>
+<tr><td>Manual Disconnect</td><td><input type="radio" name=md23F2Radio id=md23F2CloseRadio onClick=manualDisconnectCloseClicked("23F2") checked />:Closed</td><td> <input type="radio"  name=md23F2Radio id=md23F2OpenRadio onClick=manualDisconnectOpenClicked("23F2")    />:Opened</td></tr>
+<tr><td>Circuit Breaker Lockout</td><td><input type="radio"  name=lockout23F2Radio  id=lockout23F2CloseRadio onClick=lockoutCloseClicked("23F2")  checked    />:Closed</td><td> <input type="radio"  name=lockout23F2Radio  id=lockout23F2OpenRadio onClick=lockoutOpenClicked("23F2")    />:Opened</td></tr>
+<tr><td>Circuit Breaker</td><td><input type="radio"  name=cb23F2Radio  id=cb23F2TripRadio  onClick=circuitBreakerTripClicked("23F2")   />: Tripped</td><td> <input type="radio"  name=cb23F2Radio  id=cb23F2ResetRadio onClick=circuitBreakerResetClicked("23F2")  disabled    />:Reset</td></tr>
+</table>
+
+<table border=1>
+<tr><td align=center colspan=4>23F3 Field Devices</td></tr>
+<tr><td>Manual Disconnect</td><td><input type="radio" name=md23F3Radio id=md23F3CloseRadio onClick=manualDisconnectCloseClicked("23F3") checked  />:Closed</td><td> <input type="radio"  name=md23F3Radio id=md23F3OpenRadio onClick=manualDisconnectOpenClicked("23F3")    />:Opened</td></tr>
+<tr><td>Circuit Breaker Lockout</td><td><input type="radio"  name=lockout23F3Radio  id=lockout23F3CloseRadio onClick=lockoutCloseClicked("23F3")  checked    />:Closed</td><td> <input type="radio"  name=lockout23F3Radio  id=lockout23F3OpenRadio onClick=lockoutOpenClicked("23F3")    />:Opened</td></tr>
+<tr><td>Circuit Breaker</td><td><input type="radio"  name=cb23F3Radio  id=cb23F3TripRadio  onClick=circuitBreakerTripClicked("23F3")   />: Tripped</td><td> <input type="radio"  name=cb23F3Radio  id=cb23F3ResetRadio onClick=circuitBreakerResetClicked("23F3")  disabled    />:Reset</td></tr>
+</table>
+</center>
+
+
+
+</div>
+</td>
+<td>
+<div id="svgDiv" style='width:800px;height:500px;'>
+<svg id=mySVG width=800 height=500>
+ <defs><marker id="arrowEndBlue" viewBox="0 0 8000 8000" refX="270" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="blue" stroke-linejoin="bevel">
+<path id="arrowEndPath" stroke="RGB(0,0,0)" stroke-width="5" d="M2 59,293 148,1 243,121 151,Z">
+</path>
+</marker>
+</defs>
+  <defs>
+  <g id="circuitBreakerOBJ">
+    <line id=disconnectLine x1=0 y1=-190 x2=-14 y2=-110 stroke="black" stroke-width="6" />
+    <line  id=disc2CBLine x1="0" y1="-120" x2=0 y2=0 stroke='blue' stroke-width="12" />
+
+ <circle  r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=-190 />
+  <circle  r="5" fill="black" stroke="black" stroke-width="1" cx=-45 cy=-130 />
+  <circle  r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=-120 />
+
+
+    <rect  id="baseCB"
+       width="100"
+       height="200"
+       fill="green"
+       stroke="black"
+       stroke-width="3"
+       rx="6"
+       ry="6"
+       x="-50"
+       y="-50"
+        />
+
+ <circle  r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=-40 />
+  <circle  r="5" fill="black" stroke="black" stroke-width="1" cx=-40 cy=10 />
+  <circle r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=30 />
+  <line id=lockoutCBline x1=0 y1=-40 x2=-14 y2=35 stroke="black" stroke-width="6" />
+
+
+
+    <line x1=0 y1=30 x2=0 y2=85 stroke="black" stroke-width="4" />
+    <line x1=-20 y1=85 x2=20 y2=85 stroke="black" stroke-width="4" />
+    <line  x1=-20 y1=115 x2=20 y2=115 stroke="black" stroke-width="4" />
+    <line id=tripLine x1=-20 y1=85 x2=20 y2=115 stroke="black" stroke-width="4" />
+   <line  x1=0 y1=115 x2=0 y2=150 stroke="black" stroke-width="4" />
+
+  </g>
+  <g id=labelObj class=noselect ><rect width=90 height=40 fill="gainsboro" stroke="none" rx=5 ry=5 x=-45 y=-20 /><text x=0 y=0 dy=8  font-size="30" text-anchor="middle" fill="black" stroke="none" font-family="arial" /></g>
+
+
+
+  </defs>
+<line x1="0" y1="20" x2=700 y2=20 stroke='blue' stroke-width="6" />
+<line x1="200" y1="20" x2=200 y2=120 stroke='blue' stroke-width="6" />
+<line x1="350" y1="20" x2=350 y2=120 stroke='blue' stroke-width="6" />
+<line x1="500" y1="20" x2=500 y2=120 stroke='blue' stroke-width="6" />
+
+
+<line marker-end="url(#arrowEndBlue)" id=feedLine23F1 x1="200" y1="200" x2=200 y2=490 stroke='blue'  stroke-width="6" />
+<line marker-end="url(#arrowEndBlue)"  id=feedLine23F2  x1="350" y1="200" x2=350 y2=490 stroke='blue' stroke-width="6" />
+<line marker-end="url(#arrowEndBlue)"  id=feedLine23F3  x1="500" y1="200" x2=500 y2=490 stroke='blue'  stroke-width="6" />
+</svg>
+</div>
+
+</td>
+</tr></table>
+  <br />SVG Source:
+  <div id=svgSourceDiv style=overflow:auto;width:100%;height:1px;text-align:left; /></div>
+  Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:100%;height:300px;text-align:left; /></div><p></p>
+</center>
+<script id=myScript>
+var cbStatus=[]  //----cbStatus[label]=[manualDisconnectClosed(t/f), lockoutDisconnectClosed(t/f), cbTripOpened(t/f), cbResetClosed(t/f)]
+
+var cbObjArray=[]
+//---cbObjArray[]=[label,locX,locY,scale]
+cbObjArray[0]=["23F1",200,200,.5]
+cbObjArray[1]=["23F2",350,200,.5]
+cbObjArray[2]=["23F3",500,200,.5]
+var intervalTrippedTimer23F1
+var intervalTrippedTimer23F2
+var intervalTrippedTimer23F3
+//---onload: translate/scale button(its center Point) as desired---
+ //----cbStatusArray[label,manualDisconnectClosed(t/f), lockoutDisconnectClosed(t/f), cbTripOpened(t/f), cbResetClosed(t/f)]
+function createCircuitBreakers()
+{
+    for(var k=0;k<cbObjArray.length;k++)
+    {
+        var cbG=circuitBreakerOBJ.cloneNode(true)
+        var labelName=cbObjArray[k][0]
+        cbG.setAttribute("id","cb"+labelName)
+        mySVG.appendChild(cbG)
+        var bb=cbG.getBBox()
+        var cx=bb.x+.5*bb.width
+        var cy=bb.y+.5*bb.height
+
+        var locX=cbObjArray[k][1]
+        var locY=cbObjArray[k][2]
+        var scale=cbObjArray[k][3]
+        var transX=locX-cx*scale
+        var transY=locY-cy*scale
+        cbG.setAttribute("transform","translate("+(transX)+" "+(transY)+")scale("+scale+")")
+         cbStatus.push({label:labelName,manualDisconnectClosed:true,lockoutDisconnectClosed:true,cbTripOpened:false,cbResetClosed:false})
+
+        //---add Label
+        var label=labelObj.cloneNode(true)
+        label.setAttribute("id","label"+labelName)
+        console.log( label.lastChild)
+        label.lastChild.textContent=labelName
+        label.setAttribute("transform","translate("+(locX)+" "+(locY+140)+")")
+        mySVG.appendChild(label)
+
+    }
+
+
+}
+
+//----Select 'Local' States: radio button select----
+function manualDisconnectCloseClicked(labelName)
+{
+    var cbObj=document.getElementById("cb"+labelName)
+    var elems=cbObj.childNodes
+    for(var k=0;k<elems.length;k++)
+    {
+        var elem=elems.item(k)
+        if(elem.nodeName!="#text")
+        {
+
+            if(elem.getAttribute("id")=="disconnectLine")
+            {
+                elem.setAttribute("x2",-14)
+                elem.setAttribute("y2",-110)
+            }
+
+            if(elem.getAttribute("id")=="disc2CBLine")
+            {
+                   elem.removeAttribute("stroke-dasharray")
+            }
+        }
+
+    }
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName)
+        {
+            cbStatus[k].manualDisconnectClosed=true
+            var feeder=document.getElementById("feedLine"+labelName)
+            if(cbStatus[k].lockoutDisconnectClosed==true )
+                feeder.removeAttribute("stroke-dasharray")
+            break;
+        }
+
+    }
+}
+function manualDisconnectOpenClicked(labelName)
+{
+    var cbObj=document.getElementById("cb"+labelName)
+    var elems=cbObj.childNodes
+    for(var k=0;k<elems.length;k++)
+    {
+        var elem=elems.item(k)
+        if(elem.nodeName!="#text")
+        {
+
+            if(elem.getAttribute("id")=="disconnectLine")
+            {
+                elem.setAttribute("x2",-40)
+                elem.setAttribute("y2",-120)
+            }
+
+            if(elem.getAttribute("id")=="disc2CBLine")
+            {
+                elem.setAttribute("stroke-dasharray","10 10")
+            }
+
+        }
+
+    }
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName)
+        {
+            cbStatus[k].manualDisconnectClosed=false
+            break;
+        }
+    }
+
+    var feeder=document.getElementById("feedLine"+labelName)
+    feeder.setAttribute("stroke-dasharray","10 10")
+}
+function lockoutCloseClicked(labelName)
+{
+    var cbObj=document.getElementById("cb"+labelName)
+    var elems=cbObj.childNodes
+    for(var k=0;k<elems.length;k++)
+    {
+        var elem=elems.item(k)
+        if(elem.nodeName!="#text")
+        {
+            if(elem.getAttribute("id")=="lockoutCBline")
+            {
+            elem.setAttribute("x2",-14)
+            elem.setAttribute("y2",35)
+            }
+        }
+    }
+
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName)
+        {
+            cbStatus[k].lockoutDisconnectClosed=true
+            var feeder=document.getElementById("feedLine"+labelName)
+            if(cbStatus[k].manualDisconnectClosed==true&&cbStatus[k].cbTripOpened==false )
+                feeder.removeAttribute("stroke-dasharray")
+
+            break;
+        }
+    }
+
+}
+function lockoutOpenClicked(labelName)
+{
+    var cbObj=document.getElementById("cb"+labelName)
+    var elems=cbObj.childNodes
+    for(var k=0;k<elems.length;k++)
+    {
+        var elem=elems.item(k)
+        if(elem.nodeName!="#text")
+        {
+            if(elem.getAttribute("id")=="lockoutCBline")
+            {
+                elem.setAttribute("x2",-40)
+                elem.setAttribute("y2",20)
+            }
+        }
+
+    }
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName)
+        {
+            cbStatus[k].lockoutDisconnectClosed=false
+
+            break;
+        }
+    }
+
+    var feeder=document.getElementById("feedLine"+labelName)
+    feeder.setAttribute("stroke-dasharray","10 10")
+}
+
+var TrippedCB23F1
+var TrippedCB23F2
+var TrippedCB23F3
+function circuitBreakerTripClicked(labelName)
+{
+    var cbObj=document.getElementById("cb"+labelName)
+    var elems=cbObj.childNodes
+    for(var k=0;k<elems.length;k++)
+    {
+       var elem=elems.item(k)
+       if(elem.nodeName!="#text")
+       {
+          if(elem.getAttribute("id")=="tripLine")
+          {
+             elem.setAttribute("display","none")
+          }
+
+          if(elem.getAttribute("id")=="baseCB")
+          {
+            elem.setAttribute("fill","red")
+            if(labelName=="23F1") TrippedCB23F1=elem
+            if(labelName=="23F2") TrippedCB23F2=elem
+            if(labelName=="23F3") TrippedCB23F3=elem
+            if(labelName=="23F1")
+                intervalTrippedTimer23F1=setInterval(flashCB23F1,500)
+            if(labelName=="23F2")
+                intervalTrippedTimer23F2=setInterval(flashCB23F2,500)
+            if(labelName=="23F3")
+                intervalTrippedTimer23F3=setInterval(flashCB23F3,500)
+          }
+       }
+    }
+
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName)
+        {
+            cbStatus[k].cbTripOpened=true
+
+            break;
+        }
+    }
+
+    var feeder=document.getElementById("feedLine"+labelName)
+    feeder.setAttribute("stroke-dasharray","10 10")
+
+    var resetRadio=document.getElementById("cb"+labelName+"ResetRadio")
+    resetRadio.disabled=false
+
+}
+function circuitBreakerResetClicked(labelName)
+{
+    var cbObj=document.getElementById("cb"+labelName)
+    var elems=cbObj.childNodes
+    for(var k=0;k<elems.length;k++)
+    {
+        var elem=elems.item(k)
+        if(elem.nodeName!="#text")
+        {
+            if(elem.getAttribute("id")=="tripLine")
+            {
+                elem.setAttribute("display","block")
+
+            }
+
+            if(elem.getAttribute("id")=="baseCB")
+            {
+                elem.setAttribute("fill","green")
+
+            }
+        }
+
+    }
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName)
+        {
+            cbStatus[k].cbTripOpened=false
+            var feeder=document.getElementById("feedLine"+labelName)
+            if(cbStatus[k].manualDisconnectClosed==true && cbStatus[k].lockoutDisconnectClosed==true)
+                feeder.removeAttribute("stroke-dasharray")
+
+            break;
+        }
+    }
+
+    var resetRadio=document.getElementById("cb"+labelName+"ResetRadio")
+    resetRadio.disabled=true
+
+    if(labelName=="23F1")
+        {clearInterval(intervalTrippedTimer23F1);TrippedCB23F1.setAttribute("fill","green")}
+    if(labelName=="23F2")
+        {clearInterval(intervalTrippedTimer23F2);TrippedCB23F2.setAttribute("fill","green")}
+    if(labelName=="23F3")
+        {clearInterval(intervalTrippedTimer23F3);TrippedCB23F2.setAttribute("fill","green")}
+}
+
+
+
+function flashCB23F1()
+{
+    if(TrippedCB23F1.getAttribute("fill")=="red")
+        TrippedCB23F1.setAttribute("fill","white")
+    else
+        TrippedCB23F1.setAttribute("fill","red")
+}
+
+function flashCB23F2()
+{
+
+    if(TrippedCB23F2.getAttribute("fill")=="red")
+        TrippedCB23F2.setAttribute("fill","white")
+    else
+        TrippedCB23F2.setAttribute("fill","red")
+}
+
+function flashCB23F3()
+{
+    if(TrippedCB23F3.getAttribute("fill")=="red")
+        TrippedCB23F3.setAttribute("fill","white")
+    else
+        TrippedCB23F3.setAttribute("fill","red")
+}
+
+</script>
+<script>
+document.addEventListener("onload",init(),false)
+function init()
+{
+    createCircuitBreakers()
+
+
+   	showSourceSVG()
+	showSourceJS()
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

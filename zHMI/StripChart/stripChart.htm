@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Example: Strip Chart</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+
+<style type="text/css">
+<!--
+.grid line {
+  stroke: lightgrey;
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
+
+.grid path {
+  stroke-width: 0;
+}
+/* Style the lines by removing the fill and applying a stroke */
+.chartLineOAT {
+    fill: none;
+    stroke: turquoise;
+    stroke-width: 2;
+}
+.chartLineSP {
+    fill: none;
+    stroke: red;
+    stroke-width: 1;
+    stroke-dasharray: 5,5;
+
+}
+.chartLineHWS {
+    fill: none;
+    stroke: red;
+    stroke-width: 2;
+}
+.chartLineCO {
+    fill: none;
+    stroke: blue;
+    stroke-width: 2;
+}
+
+.axisTurquoise line{
+  stroke: turquoise;
+}
+
+.axisTurquoise path{
+  stroke: turquoise;
+}
+
+
+.axisRed line{
+  stroke: red;
+}
+
+.axisRed path{
+  stroke: red;
+}
+
+
+.axisBlue line{
+  stroke: blue;
+}
+
+.axisBlue path{
+  stroke: blue;
+}
+
+
+-->
+</style>
+</head>
+<body style='padding:10px;font-family:arial'>
+<center>
+<b>Example: Strip Chart</b>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+This example continuosly records the outside air dry bulb temperature(OAT), heating hot water supply temperature(HWS), PID controller output value(CO), plus the desired hot water supply temperature setpoint(SP) at the current and during the previous 100 minutes.
+
+
+</div>
+<table><tr>
+<td>
+<div style="padding:10px;width:400px;text-align:justify">
+
+<b>Simulation:</b><br />
+Every two(2) seconds new values are updated. NOTE: Values are random, therefore do not reflect typical system responses.
+</div>
+</td>
+<td>
+<div id="svgDiv" style='border:1px solid black;width:750px;height:550px;'>
+<svg id=mySVG width=750 height=550>
+<g id=stripChartG transform="translate(50,50)"/>
+</svg>
+</div>
+
+</td>
+</tr></table>
+  <br />SVG Source:
+  <div id=svgSourceDiv style=overflow:auto;width:100%;height:1px;text-align:left; /></div>
+  Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:100%;text-align:left; /></div><p></p>
+</center>
+<script id=myScript>
+//---onload---
+function initStripChart()
+{
+
+ var width=600
+var height=400
+
+// The number of datapoints
+var n = 100;
+
+//  X scale will use the index of our data
+var xScale = d3.scaleLinear()
+    .domain([0, n-1]) // input
+    .range([0, width]); // output
+
+// Y scale will use the randomly generate number
+var yScale = d3.scaleLinear()
+    .domain([-20, 120]) // input
+    .range([height, 0]); // output
+
+  // gridlines in x axis function
+function make_x_gridlines() {
+    return d3.axisBottom(xScale)
+       // .ticks(5)
+}
+
+// gridlines in y axis function
+function make_y_gridlines() {
+    return d3.axisLeft(yScale)
+       // .ticks(5)
+}
+
+
+// Add the SVG to the div
+var topG = d3.select("#stripChartG")
+
+//var topG=svg.append("g")
+   // .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+    //
+
+    topG.append("defs").append("clipPath")
+    .attr("id", "clip")
+    .append("rect")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("transform", "translate(5,0)")
+
+
+
+// add the X gridlines
+  topG.append("g")
+      .attr("class", "grid")
+      .attr("transform", "translate(0," + height + ")")
+      .call(make_x_gridlines()
+          .tickSize(-height)
+          .tickFormat("")
+      )
+
+  // add the Y gridlines
+  topG.append("g")
+      .attr("class", "grid")
+      .call(make_y_gridlines()
+          .tickSize(-width)
+          .tickFormat("")
+      )
+
+
+
+// Call the x axis in a group tag
+topG.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale))
+.selectAll("text")
+     .attr("font-size","14")
+     .attr("fill","black")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+// Call the y axis in a group tag
+topG.append("g")
+    .attr("class", "y axis axisTurquoise")
+    .call(d3.axisLeft(yScale))
+    .selectAll("text")
+     .attr("font-size","14")
+     .attr("fill","aqua")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+
+
+var y1Scale = d3.scaleLinear() //---HWS/SP---
+    .domain([80, 180]) // input
+    .range([height, 0]) // output
+
+ topG.append("g")
+    .attr("class", "y axis right axisRed")
+    .attr("transform", "translate("+width+",0)")
+    .call(d3.axisRight(y1Scale))
+        .selectAll("text")
+     .attr("font-size","14")
+     .attr("fill","red")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+
+    //---RIGHT y AXIS (controller output)---
+    var y2Scale = d3.scaleLinear() //---right values---
+    .domain([0,100]) //---show max/min for controller output---
+    .range([height, 0])
+
+    //---right ticks and values--
+ topG.append("g")
+    .attr("class", "y axis output axisBlue")
+    .attr("transform", "translate("+(width+70)+",0)")
+    .call(d3.axisLeft(y2Scale))
+    .selectAll("text")
+     .attr("font-size","14")
+     .attr("fill","blue")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+
+<!--Titles-->
+topG.append("text")
+     .attr("x","0")
+     .attr("y","0")
+     .attr("dy","-20")
+     .attr("text-anchor","middle")
+     .attr("font-size","17")
+     .attr("fill","aqua")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+     .text("OAT (\u00B0F)")
+
+topG.append("text")
+     .attr("x","590")
+     .attr("y","0")
+     .attr("dy","-20")
+     .attr("text-anchor","middle")
+     .attr("font-size","17")
+     .attr("fill","red")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+     .text("HWS (\u00B0F)")
+
+topG.append("text")
+     .attr("x","670")
+     .attr("y","420")
+     .attr("text-anchor","middle")
+     .attr("font-size","17")
+     .attr("fill","blue")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+     .text("CO (\u0025)")
+
+topG.append("text")
+     .attr("x","300")
+     .attr("y","450")
+     .attr("text-anchor","middle")
+     .attr("font-size","17")
+     .attr("fill","black")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+     .text("Time (minutes)")
+
+<!--Data and Data Lines/Paths-->
+// d3's line generator {time,OAT,SP,HWS,CO}
+ lineOAT = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yScale(d.OAT); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+ lineSP = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return y1Scale(d.SP); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+ lineHWS = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return y1Scale(d.HWS); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+ lineCO = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return y2Scale(d.CO); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+
+
+    // Append the path, bind the data, and call the line generator
+pathOAT=topG.append("path")
+  .attr("clip-path", "url(#clip)")
+    .datum(Data) // 10. Binds data to the line
+    .attr("class", "chartLineOAT") // Assign a class for styling
+    .attr("d", lineOAT); // 11. Calls the line generator
+pathSP=topG.append("path")
+ .attr("clip-path", "url(#clip)")
+    .datum(Data) // 10. Binds data to the line
+    .attr("class", "chartLineSP") // Assign a class for styling
+    .attr("d", lineSP); // 11. Calls the line generator
+pathHWS=topG.append("path")
+ .attr("clip-path", "url(#clip)")
+    .datum(Data) // 10. Binds data to the line
+    .attr("class", "chartLineHWS") // Assign a class for styling
+    .attr("d", lineHWS); // 11. Calls the line generator
+
+pathCO=topG.append("path")
+ .attr("clip-path", "url(#clip)")
+    .datum(Data) // 10. Binds data to the line
+    .attr("class", "chartLineCO") // Assign a class for styling
+    .attr("d", lineCO); // 11. Calls the line generator
+
+
+  stripLabelOAT=topG.append('text')
+   .attr("font-size","12")
+   .attr("text-anchor","end")
+   .attr("dy","5")
+  .attr("dx","3")
+   .text("OAT")
+  stripLabelSP=topG.append('text')
+   .attr("font-size","12")
+   .attr("text-anchor","end")
+   .attr("dy","5")
+    .attr("dx","3")
+   .text("SP")
+  stripLabelHWS=topG.append('text')
+   .attr("font-size","12")
+   .attr("text-anchor","end")
+  .attr("dy","5")
+   .attr("dx","3")
+   .text("HWS")
+  stripLabelCO=topG.append('text')
+   .attr("font-size","12")
+   .attr("text-anchor","end")
+   .attr("dy","5")
+   .attr("dx","3")
+   .text("CO")
+
+
+
+}
+var lineOAT
+var lineSP
+var lineHWS
+var lineCO
+var pathOAT
+var pathSP
+var pathHWS
+var pathCO
+var stripLabelOAT
+var stripLabelSP
+var stripLabelHWS
+var stripLabelCO
+
+//--every 2 seconds---
+function slideStripChart()
+{
+    var width=600
+    Data[Data.length]=Data[0] //[y23F1,y23F2,y23F3]
+
+        pathOAT.attr("d", lineOAT)
+        .attr("transform", null);
+        pathSP.attr("d", lineSP)
+        .attr("transform", null);
+        pathHWS.attr("d", lineHWS)
+        .attr("transform", null);
+        pathCO.attr("d", lineCO)
+        .attr("transform", null);
+
+        pathOAT.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+       pathSP.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+        pathHWS.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+        pathCO.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+
+        var pathSplit=pathOAT.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabelOAT.attr("x",splitX)
+        stripLabelOAT.attr("y",splitY)
+
+        var pathSplit=pathSP.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabelSP.attr("x",splitX)
+        stripLabelSP.attr("y",splitY)
+
+        var pathSplit=pathHWS.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabelHWS.attr("x",splitX)
+        stripLabelHWS.attr("y",splitY)
+
+        var pathSplit=pathCO.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabelCO.attr("x",splitX)
+        stripLabelCO.attr("y",splitY)
+
+
+
+   Data.shift()
+
+}
+
+//---start dataBase-----------
+var Data=[
+//---{OAT,SP,HWS,CO},  {outside air tempeature(DB),hws temperature setpoint, measured hws temperature,controller output} ---
+{OAT:30,SP:145,HWS:152,CO:47},
+{OAT:33,SP:147,HWS:157,CO:52},
+{OAT:32,SP:146,HWS:151,CO:48},
+{OAT:35,SP:142,HWS:156,CO:55},
+{OAT:34,SP:147,HWS:156,CO:55},
+{OAT:32,SP:147,HWS:159,CO:59},
+{OAT:31,SP:145,HWS:150,CO:47},
+{OAT:30,SP:141,HWS:152,CO:52},
+{OAT:31,SP:148,HWS:158,CO:50},
+{OAT:30,SP:141,HWS:152,CO:42},
+{OAT:34,SP:148,HWS:150,CO:56},
+{OAT:30,SP:145,HWS:158,CO:55},
+{OAT:31,SP:144,HWS:152,CO:51},
+{OAT:30,SP:149,HWS:154,CO:41},
+{OAT:34,SP:148,HWS:151,CO:53},
+{OAT:35,SP:141,HWS:159,CO:52},
+{OAT:34,SP:149,HWS:153,CO:47},
+{OAT:30,SP:140,HWS:154,CO:52},
+{OAT:35,SP:140,HWS:153,CO:46},
+{OAT:32,SP:147,HWS:156,CO:44},
+{OAT:32,SP:146,HWS:155,CO:42},
+{OAT:30,SP:145,HWS:157,CO:41},
+{OAT:34,SP:142,HWS:156,CO:55},
+{OAT:31,SP:140,HWS:152,CO:57},
+{OAT:31,SP:142,HWS:151,CO:53},
+{OAT:31,SP:145,HWS:157,CO:55},
+{OAT:34,SP:140,HWS:158,CO:48},
+{OAT:34,SP:147,HWS:154,CO:50},
+{OAT:31,SP:146,HWS:158,CO:44},
+{OAT:34,SP:145,HWS:155,CO:59},
+{OAT:34,SP:148,HWS:150,CO:59},
+{OAT:30,SP:149,HWS:153,CO:52},
+{OAT:34,SP:146,HWS:153,CO:42},
+{OAT:31,SP:147,HWS:154,CO:49},
+{OAT:30,SP:143,HWS:155,CO:52},
+{OAT:34,SP:143,HWS:153,CO:45},
+{OAT:35,SP:145,HWS:153,CO:55},
+{OAT:33,SP:140,HWS:154,CO:43},
+{OAT:32,SP:147,HWS:152,CO:41},
+{OAT:30,SP:141,HWS:155,CO:59},
+{OAT:30,SP:140,HWS:150,CO:52},
+{OAT:31,SP:147,HWS:159,CO:53},
+{OAT:31,SP:147,HWS:154,CO:54},
+{OAT:34,SP:143,HWS:154,CO:47},
+{OAT:30,SP:142,HWS:156,CO:52},
+{OAT:33,SP:146,HWS:156,CO:48},
+{OAT:33,SP:141,HWS:159,CO:44},
+{OAT:32,SP:149,HWS:150,CO:49},
+{OAT:31,SP:143,HWS:150,CO:48},
+{OAT:32,SP:149,HWS:152,CO:54},
+{OAT:35,SP:149,HWS:154,CO:43},
+{OAT:30,SP:146,HWS:150,CO:57},
+{OAT:35,SP:145,HWS:156,CO:52},
+{OAT:35,SP:147,HWS:151,CO:50},
+{OAT:30,SP:140,HWS:158,CO:41},
+{OAT:32,SP:149,HWS:152,CO:55},
+{OAT:35,SP:143,HWS:152,CO:40},
+{OAT:35,SP:142,HWS:155,CO:46},
+{OAT:33,SP:143,HWS:153,CO:49},
+{OAT:30,SP:144,HWS:153,CO:46},
+{OAT:35,SP:141,HWS:158,CO:53},
+{OAT:30,SP:143,HWS:155,CO:49},
+{OAT:35,SP:145,HWS:156,CO:42},
+{OAT:32,SP:143,HWS:151,CO:50},
+{OAT:34,SP:145,HWS:151,CO:53},
+{OAT:30,SP:143,HWS:157,CO:46},
+{OAT:33,SP:147,HWS:151,CO:58},
+{OAT:31,SP:141,HWS:155,CO:49},
+{OAT:30,SP:144,HWS:154,CO:53},
+{OAT:32,SP:144,HWS:152,CO:59},
+{OAT:32,SP:142,HWS:153,CO:45},
+{OAT:33,SP:149,HWS:158,CO:52},
+{OAT:35,SP:149,HWS:150,CO:55},
+{OAT:32,SP:149,HWS:152,CO:43},
+{OAT:32,SP:140,HWS:155,CO:56},
+{OAT:33,SP:143,HWS:157,CO:47},
+{OAT:33,SP:147,HWS:157,CO:47},
+{OAT:32,SP:143,HWS:153,CO:44},
+{OAT:31,SP:143,HWS:152,CO:40},
+{OAT:34,SP:143,HWS:150,CO:41},
+{OAT:30,SP:145,HWS:152,CO:49},
+{OAT:30,SP:148,HWS:155,CO:53},
+{OAT:30,SP:149,HWS:152,CO:57},
+{OAT:32,SP:149,HWS:157,CO:47},
+{OAT:30,SP:142,HWS:153,CO:43},
+{OAT:31,SP:142,HWS:155,CO:40},
+{OAT:31,SP:140,HWS:152,CO:49},
+{OAT:30,SP:149,HWS:159,CO:59},
+{OAT:31,SP:147,HWS:151,CO:47},
+{OAT:30,SP:144,HWS:152,CO:59},
+{OAT:30,SP:144,HWS:157,CO:48},
+{OAT:34,SP:148,HWS:153,CO:58},
+{OAT:30,SP:146,HWS:152,CO:54},
+{OAT:31,SP:148,HWS:156,CO:43},
+{OAT:30,SP:147,HWS:158,CO:56},
+{OAT:31,SP:144,HWS:151,CO:55},
+{OAT:33,SP:149,HWS:154,CO:41},
+{OAT:34,SP:148,HWS:154,CO:44},
+{OAT:33,SP:149,HWS:159,CO:55},
+{OAT:34,SP:140,HWS:159,CO:53}
+
+
+]
+
+</script>
+<script>
+
+function buildInitData()
+{
+     for(var k=0;k<100;k++)
+     {
+  		  var oat= Math.floor(Math.random() * 6) + 30
+  		  var sp= Math.floor(Math.random() * 10) + 140
+  		  var hws= Math.floor(Math.random() * 10) + 150
+  		  var co= Math.floor(Math.random() * 20) + 40
+
+          myValue.value+="{OAT:"+oat+",SP:"+sp+",HWS:"+hws+",CO:"+co+"},\n"
+
+     }
+
+
+}
+
+
+document.addEventListener("onload",init(),false)
+function init()
+{   initStripChart()
+   	showSourceSVG()
+	showSourceJS()
+    setInterval(slideStripChart,2000)
+
+}
+
+
+</script>
+<script>
+/*
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88028738-1', 'auto');
+  ga('send', 'pageview');
+  */
+
+</script>
+
+</body>
+
+</html>

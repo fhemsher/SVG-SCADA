@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>Button</title>
+</head>
+
+<body>
+
+
+<svg
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.1"
+   width="240"
+   height="100">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3159">
+      <stop
+         id="stop3163"
+         style="stop-color:#000000;stop-opacity:0"
+         offset="0" />
+      <stop
+         id="stop3161"
+         style="stop-color:#000000;stop-opacity:0.5"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3030">
+      <stop
+         id="stop3032"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3034"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="120"
+       y1="10"
+       x2="120"
+       y2="50"
+       id="linearGradient3113"
+       xlink:href="#linearGradient3030"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       cx="120"
+       cy="170"
+       r="100"
+       fx="120"
+       fy="170"
+       id="radialGradient3165"
+       xlink:href="#linearGradient3159"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,-0.72727275,2,0,-220,170)" />
+  </defs>
+  <style type="text/css">
+    rect[role="button"] { fill: red; }
+    rect[aria-pressed="true"] { fill: green; }
+    /* rect:hover { fill: blue; } */
+  </style>
+  <script type="text/ecmascript">
+    function buttonEvent(event) {
+      if ((event.type == "click" && event.button == 0) ||
+          (event.type == "keydown" && (event.keyCode == 32 || event.keyCode ==13))) {
+
+        var target = event.target; /* Should be rectangle ButtonBase */
+
+	var setPressed = false;
+	var setText = "OFF";
+	if ( target.getAttribute("aria-pressed") == "false" ) {
+	  setPressed = true;
+	  setText = "ON";
+        }
+
+	target.setAttribute("aria-pressed", setPressed );
+
+	var parent = target.parentNode;
+	var child = parent.firstChild;
+	while (child != null) {
+ 	  if (child.nodeName == "text" && child.hasChildNodes() ) {
+	    child.firstChild.nodeValue = setText;
+	  }
+	  child = child.nextSibling;
+	}
+      }
+    }
+  </script>
+  <g id="layer1"
+     cursor="pointer"
+     onkeydown="return buttonEvent(evt);"
+     onclick="return buttonEvent(evt);">
+    <rect
+       role="button"
+       aria-pressed="true"
+       width="220"
+       height="80"
+       ry="40"
+       x="10"
+       y="10"
+       id="ButtonBase"
+       style="stroke:none" />
+    <rect
+       width="220"
+       height="80"
+       ry="40"
+       x="10"
+       y="10"
+       id="ButtonGlow"
+       pointer-events="none"
+       style="fill:url(#radialGradient3165);stroke:none" />
+    <text
+       x="120"
+       y="66"
+       id="text3194"
+       pointer-events="none"
+       xml:space="preserve"
+       style="font-size:40px;text-align:center;text-anchor:middle;fill:#000000;stroke:none;font-family:Sans">ON</text>
+    <text
+       x="120"
+       y="64.5"
+       id="text3198"
+       pointer-events="none"
+       xml:space="preserve"
+       style="font-size:40px;text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;font-family:Sans">ON</text>
+    <path
+       d="m 50,15 140,0 c 11.08,0 22.51667,10.914008 20,20 C 208.16563,41.622482 201.08,40 190,40 L 50.00005,40 C 38.92005,40 31.834332,41.622512 30,35 27.483323,25.914009 38.92,15 50,15 z"
+       id="ButtonHighlight"
+       pointer-events="none"
+       style="fill:url(#linearGradient3113)" />
+  </g>
+</svg>
+</body>
+
+</html>

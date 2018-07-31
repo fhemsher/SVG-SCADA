@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Building Heating Hot Water System</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script src="https://d3js.org/d3.v4.min.js"></script>
+  <script type="text/javascript" src="../AnalogGaugeObject/analogGaugeObject.js"></script>
+
+
+
+  <style type="text/css">
+    rect[role="button"] { fill: red; }
+    rect[aria-pressed="true"] { fill: green; }
+    /* rect:hover { fill: blue; } */
+  .noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+       unselectable="on"
+ onselectstart="return false;"
+ onmousedown="return false;"
+}
+.grid line {
+  stroke: lightgrey;
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
+
+.grid path {
+  stroke-width: 0;
+}
+/* Style the lines by removing the fill and applying a stroke */
+.chartLineOAT {
+    fill: none;
+    stroke: turquoise;
+    stroke-width: 2;
+}
+.chartLineSP {
+    fill: none;
+    stroke: red;
+    stroke-width: 1;
+    stroke-dasharray: 5,5;
+
+}
+.chartLineHWS {
+    fill: none;
+    stroke: red;
+    stroke-width: 2;
+}
+.chartLineCO {
+    fill: none;
+    stroke: blue;
+    stroke-width: 2;
+}
+
+.axisTurquoise line{
+  stroke: turquoise;
+}
+
+.axisTurquoise path{
+  stroke: turquoise;
+}
+
+
+.axisRed line{
+  stroke: red;
+}
+
+.axisRed path{
+  stroke: red;
+}
+
+
+.axisBlue line{
+  stroke: blue;
+}
+
+.axisBlue path{
+  stroke: blue;
+}
+
+  </style>
+
+</head>
+<body style='padding:10px;font-family:arial'>
+<center>
+<b>Building Heating Hot Water System</b>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+This shows a steam to hot water convertor controls. The central monitoring panel displays sensors, actuators, charts, graphs, gauges, and status pilot lights. Also the system's PID controller can be tuned at the central monitoring panel.
+</div>
+<table><tr>
+<td style=width:400px;>
+<div style="padding:10px;width:400px;text-align:justify;height:560px;overflow-y:auto">
+
+<b>Sequence Of Operation:</b>
+This controls the hot water temperature  leaving the steam convertor (H.W.S.) by modulating the steam valve.
+The setpoint of the hot water temperature is automaticlly reset from outdoor air drybulb temperature (O.A.T.)
+<p></p><b>Reset Schedule:</b> The set point reset schedule, and its current set point, is shown on an interactive <a title="Example: Reset Schedule Graph" href="../ResetScheduleGraph/resetScheduleGraph.htm"> reset schedule graph</a>. The reset line/curve can be modified at the central monitoring panel.
+ <p></p>
+<b>Current Value Chart:</b>
+The measured  HWS temperature strip chart is shown that continually plots the hot water temperature during the previous 60 minutes.<p></p>
+<p></p>
+<b>Analog Gauges: </b><a href="../AnalogGaugeObject/analogGaugeObject.htm">Gauges</a> are provided on the central monitoring panel that display: Outside air dry bulb temperature(OAT), hot water temperature leaving the convertor(HWS), and the controller output  (CO) value to the steam valve.<p></p>
+<b>System Chart: </b><img src="../Images/chart.png" width=30 height=30 alt="" />Select the button  to view the hot water system strip chart that continuosly records the OAT, HWS, and CO gauge values, plus the desired hot water supply temperature setpoint  during the previous 100 minutes.
+<p>
+<b>Controller Status:</b> A <a href="../PilotLight/pilotLight.htm">5-state status pilot light</a> is included for the local controller, shown inside this controller's diagram.<br>
+
+
+
+</p>
+<p></p>
+<b>PID Controller: </b> The central monitoring panel can tune the PID loop. It  displays and has access to adjust the following values associated with the controller: <br>
+1.) HWS Temperature Setpoint(SP) - When this radio button is checked it overrides the OAT reset and selects a manual mode. <br>
+2.) Proportional(P) Value - When this radio button is checked the value is available for change. <br>
+3.) Intergral(I) Value (repeats/minute) - When the checkbox is un-checked the integral is is ignored. When the radio button is checked the value is available for change.<br>
+4.) Derivative(D) Value - When the checkbox is un-checked the derivative value is ignored. When the radio button is checked the value is available for change.<br>
+5.) Steam Valve Position(CO): 0 to 100% - When this radio button is checked it overrides the controller output (CO) and selects a manual mode.  <br>
+<br>Choose the radio button for desired value to adjust. Select the increment, then use the <img src="../Images/minusRound.png" width=20 height=20 /> or <img src="../Images/plusRound.png" width=20 height=20 />  button to change value.
+ <p></p>
+<b>Actuator Status:</b> A <a href="../PilotLight/pilotLight.htm">5-state status pilot light</a> monitors the actuator status: fully open (ON), fully Closed (NORMAL OFF), or modulating (INTERMITTENT), and disabled/repairing (DEFECTIVE). If the actuator's local positioning circuit detects a fault, the status will show ALARM. <br>
+
+
+</div>
+</td>
+<td style=width:800px;>
+<div id="svgDiv" style='border:1px solid black;width:800px;height:560px;'>
+<svg id=mySVG width=800 height=560>
+<svg xmlns="http://www.w3.org/2000/svg" id="DataDisc1506183566730" overflow="visible" by="FJH" discTag="HW1" description="Building Heating Hot Water System Steam Converter PID Loop" width="284" height="161.320556640625" Date="Sat Sep 23 12:19:26 EDT 2017" gmtMS="1506183566730">
+<defs>
+<marker id="arrowEnd" viewBox="0 0 8000 8000" refX="280" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="red" stroke-linejoin="bevel">
+<path id="arrowEndPath" stroke="RGB(0,0,0)" stroke-width="5" d="M2 59,293 148,1 243,121 151,Z"/>
+</marker>
+</defs>
+<defs>
+<marker id="arrowEndAqua" viewBox="0 0 8000 8000" refX="280" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="aqua" stroke-linejoin="bevel">
+<path id="arrowEndPath" stroke="RGB(0,0,0)" stroke-width="5" d="M2 59,293 148,1 243,121 151,Z"/>
+</marker>
+</defs>
+<defs>
+<marker id="arrowEndBlue" viewBox="0 0 8000 8000" refX="280" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="blue" stroke-linejoin="bevel">
+<path id="arrowEndPath" stroke="RGB(0,0,0)" stroke-width="5" d="M2 59,293 148,1 243,121 151,Z"/>
+</marker>
+
+<marker id="arrowStartRed" viewBox="0 0 8000 8000" refX="20" refY="140" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="red" stroke-linejoin="bevel">
+<path  stroke="RGB(0,0,0)" stroke-width="5" d="M4 147,299 60,159 148,299 251,Z">
+</path>
+</marker>
+
+
+<marker id="arrowStartAqua" viewBox="0 0 8000 8000" refX="20" refY="140" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="aqua" stroke-linejoin="bevel">
+<path  stroke="RGB(0,0,0)" stroke-width="5" d="M4 147,299 60,159 148,299 251,Z">
+</path>
+</marker>
+
+
+
+</defs>
+
+<defs>
+<filter id="dropShadow" height="40">
+  <feGaussianBlur in="SourceAlpha" stdDeviation="10"/> <!-- stdDeviation is how much to blur -->
+  <feOffset dx="6" dy="10" result="offsetblur"/> <!-- how much to offset -->
+  <feMerge>
+    <feMergeNode/> <!-- this contains the offset blurred image -->
+    <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+  </feMerge>
+</filter>
+</defs>
+ <!--controller diagram-->
+<g transform="translate(80,40)scale(.5)" >
+    <line class="SpineCenterLine" stroke="Teal" strokeCode="25" stroke-width="2" x1="0" y1="-60" x2="0" y2="60" visibility="visible"/>
+    <path class="SpineUL" fill="LightBlue" stroke="Teal" fillCode="11" strokeCode="25" stroke-width="2" d="M0,0 v-60 a120,60 0 0,1 -120,60"/>
+    <path class="SpineUR" fill="LightBlue" stroke="Teal" fillCode="11" strokeCode="25" stroke-width="2" marker-end="url(#arrowEnd)" d="M0,0 v-60 a120,60 0 0,0 120,60"/>
+    <path class="SpineLL" fill="LightBlue" stroke="Teal" fillCode="11" strokeCode="25" stroke-width="2" d="M0,0 v60 a120,60 0 0,0 -120,-60"/>
+    <path class="SpineLR" fill="LightBlue" stroke="Teal" fillCode="11" strokeCode="25" stroke-width="2" marker-end="url(#arrowEnd)" d="M0,0 v60 a120,60 0 0,1 120,-60"/>
+    <ellipse class="Ellipse" fill="Gold" stroke="GoldenRod" fillCode="21" strokeCode="20" stroke-width="4" cx="0" cy="0" rx="76" ry="32"/>
+    <g id="SatA_7" fill="Red" stroke="black" stroke-width="2" transform="translate(0,-70)scale(.4)" class="SatTop" description="">
+    <polygon points="10.8253 6.25 25 0.00000149011 10.8253 -6.25 12.5 -21.6507 0.00000149011 -12.5 -12.5 -21.6507 -10.8253 -6.25 -25 0.00000149011 -10.8253 6.25 -12.5 21.6507 0.00000149011 12.5 12.5 21.6507"/>
+    </g>
+    <g id="SatX_2" fill="SpringGreen" stroke="black" stroke-width="2" transform="translate(0,70)scale(.4)" class="SatBot" description="Network Connection">
+    <polygon points="-0.0000075102 21.6507 25 -21.6507 -25 -21.6507"/>
+    </g>
+    <g id="SatE_17" fill="Turquoise" stroke="black" stroke-width="2" transform="translate(-130,0)scale(.4)" class="SatLeft" description="Outdoor Air Temperature">
+    <polygon points="25 0.00000258286 23.7765 -3.86272 20.2255 -7.3473 14.6947 -10.1127 7.72545 -11.8882 0.00000258286 -12.5 -7.7254 -11.8882 -14.6947 -10.1127 -20.2255 -7.3473 -23.7764 -3.86272 -25 0.00000258286 -23.7764 3.86272 -20.2255 7.3473 -14.6947 10.1127 -7.7254 11.8882 0.00000258286 12.5 7.72545 11.8882 14.6947 10.1127 20.2255 7.3473 23.7765 3.86272"/>
+    </g>
+    <g id="SatH_8" fill="Crimson" stroke="black" stroke-width="2" transform="translate(130,0)scale(.4)" class="SatRight" description="Steam Control Valve Actuator">
+    <polygon points="25 -0.00000735125 -0.00000735125 -25 -25 -0.00000735125 -0.00000735125 25"/>
+    <polygon fill="white" points="-0.00000735125 -14.1422 -24.4949 -0.00000735125 -0.00000735125 14.1422 24.4949 -0.00000735125"/>
+    </g>
+</g>
+</svg>
+
+
+
+ <defs>
+<radialGradient id="blueGradient" cx="50%" cy="50%" r="75%" >
+<stop offset="0%" style="stop-color:rgb(0,0,255);stop-opacity:1" />
+<stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+</radialGradient>
+<radialGradient id="greenGradient" cx="50%" cy="50%" r="75%" >
+<stop offset="0%" style="stop-color:rgb(0,191,0);stop-opacity:1" />
+<stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+</radialGradient>
+<radialGradient id="greyGradient" cx="50%" cy="50%" r="75%" >
+<stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+<stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+</radialGradient>
+<radialGradient id="redGradient" cx="50%" cy="50%" r="75%" >
+<stop offset="0%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+<stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+</radialGradient>
+<radialGradient id="violetGradient" cx="50%" cy="50%" r="75%" >
+<stop offset="0%" style="stop-color:rgb(219,0,219);stop-opacity:1" />
+<stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+</radialGradient>
+</defs>
+<!--System flow diagram--->
+<g  id=flowDiagramG transform="translate(240,5)">
+<svg xmlns="http://www.w3.org/2000/svg" width="550" height="130" id="sideKickSVG" viewBox="0 0 550 130" >
+<defs id="arrowDefs">
+<marker id="arrow000000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#000000" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker>
+<marker id="arrow00FFFF" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#00FFFF" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker>
+<marker id="arrowE32636" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#E32636" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker>
+<marker id="arrow007FFF" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#007FFF" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker>
+<marker id="arrow0000FF" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#0000FF" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker>
+</defs>
+<g id="topG">
+<g id="domAddPathG">
+<path fill="white" fill-opacity="0" stroke="#000000" stroke-width="1" marker-end="url(#arrow000000)" d="M 388 31 L 449 31 L 449 48" type="linear" rightAngle="true" vector-effect="non-scaling-stroke"/>
+<path fill="white" fill-opacity="0" stroke="#000000" stroke-width="1" marker-end="url(#arrow000000)" d="M 389 81 L 349 81" type="linear" rightAngle="true" vector-effect="non-scaling-stroke"/>
+<path fill="white" fill-opacity="0" stroke="#000000" stroke-width="1" marker-end="url(#arrow000000)" d="M 348 60 L 389 60" type="linear" rightAngle="true" vector-effect="non-scaling-stroke"/>
+<path fill="white" fill-opacity="0" stroke="#00FFFF" stroke-width="1" stroke-dasharray="8 4" marker-end="url(#arrow00FFFF)" d="M 35 70 L 123 70" type="linear" rightAngle="true" vector-effect="non-scaling-stroke"/>
+<path fill="white" fill-opacity="0" stroke="#E32636" stroke-width="1" stroke-dasharray="8 4" marker-end="url(#arrowE32636)" d="M 372 88 L 371 125 L 150 125 L 150 82" type="linear" rightAngle="true" vector-effect="non-scaling-stroke"/>
+<path fill="white" fill-opacity="0" stroke="#0000FF" stroke-width="1" stroke-dasharray="8 4" marker-end="url(#arrow0000FF)" d="M 150 56 L 150 9 L 419 9 L 419 24" type="linear" rightAngle="true" vector-effect="non-scaling-stroke"/>
+</g>
+<g id="domAddElemG" text-rendering="geometricPrecision">
+<ellipse stroke="#DAA520" stroke-width="2" fill="#FFD700" fill-opacity="1.0" vector-effect="non-scaling-stroke" transform="matrix(1 0 0 1 152 68)" rx="28" ry="11" rotateAngle="0"/>
+<rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="1" x="0" y="0" width="6" height="46" transform="matrix(1 0 0 1 390 46)" rotateAngle="0"/>
+<rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="1" x="0" y="0" width="89" height="37" transform="translate(397 51)" rotateAngle="0"/>
+<text font-family="Verdana" font-size="17" font-weight="normal" stroke="maroon" stroke-width="0.17" fill="#000000" transform="matrix(1 0 0 1 398 74)" rotateAngle="0">
+Convertor</text>
+<text font-family="Verdana" font-size="15" font-weight="normal" stroke="maroon" stroke-width="0.15" fill="#000000" transform="matrix(1 0 0 1 335 35)" rotateAngle="0">
+Steam</text>
+<text font-family="Verdana" font-size="12" font-weight="normal" stroke="maroon" stroke-width="0.12" fill="#000000" transform="matrix(1 0 0 1 310 63)" rotateAngle="0">
+H.W.R</text>
+<text font-family="Arial" font-size="12" font-weight="normal" stroke="maroon" stroke-width="0.12" fill="#000000" transform="matrix(1 0 0 1 312 85)" rotateAngle="0">
+H.W.S</text>
+<text font-family="Arial" font-size="12" font-weight="normal" stroke="maroon" stroke-width="0.12" fill="#000000" transform="matrix(1 0 0 1 8 55)" rotateAngle="0">
+O.A.T</text>
+<text font-family="Arial" font-size="12" font-weight="normal" stroke="maroon" stroke-width="0.12" fill="#000000" transform="matrix(1 0 0 1 427 24)" rotateAngle="0">
+Valve</text>
+</g>
+</g>
+<g id="domAddSymbolG">
+<g stroke="black" stroke-width=".5" size="20" transform="translate(372 81)scale(0.6666666666666666)" cursor="default">
+<polygon fill="#E52B50" points="6.49518 3.75 15 8.94069e-7 6.49518 -3.75 7.5 -12.9904 8.94069e-7 -7.5 -7.5 -12.9904 -6.49518 -3.75 -15 8.94069e-7 -6.49518 3.75 -7.5 12.9904 8.94069e-7 7.5 7.5 12.9904"/>
+</g>
+<g stroke="black" stroke-width=".5" size="20" transform="matrix(0.666667 0 0 0.666667 25 69)" cursor="default">
+<polygon fill="#00B7EB" points="15 0.00000154972 14.2659 -2.31763 12.1353 -4.40838 8.81679 -6.06762 4.63527 -7.13292 0.00000154972 -7.5 -4.63524 -7.13292 -8.81679 -6.06762 -12.1353 -4.40838 -14.2658 -2.31763 -15 0.00000154972 -14.2658 2.31763 -12.1353 4.40838 -8.81679 6.06762 -4.63524 7.13292 0.00000154972 7.5 4.63527 7.13292 8.81679 6.06762 12.1353 4.40838 14.2659 2.31763"/>
+</g>
+<g stroke="black" stroke-width=".5" size="20" transform="matrix(0.666667 0 0 0.666667 420 31)" cursor="default">
+<polygon fill="#E32636" points="15 -0.00000441075 -0.00000441075 -15 -15 -0.00000441075 -0.00000441075 15"/>
+<polygon fill="#FFFFFF" points="-0.00000441075 -8.48529 -14.6969 -0.00000441075 -0.00000441075 8.48529 14.6969 -0.00000441075"/>
+</g>
+</g>
+</svg>
+</g>
+ <!--lines-->
+<line x1="400" y1="150" x2="400" y2="413"  id=hwsLine stroke="red" stroke-width="2" marker-end="url(#arrowEnd)" />
+<line x1="45" y1="480" x2="247" y2="480"  id=resetLine stroke="aqua" stroke-width="2" marker-end="url(#arrowEndAqua)" />
+<line x1="555" y1="480" x2="758" y2="480"  id=actuatorLine stroke="blue" stroke-width="2" marker-end="url(#arrowEndBlue)" />
+
+<!--sensors/actuators-->
+<g atTag="@HW1" id="SatA_7" fill="Red" stroke="black" stroke-width="2" transform="translate(400,160)scale(.6)" class="SatTop" description="Heating Hot Water Sypply Temperature">
+<polygon points="10.8253 6.25 25 0.00000149011 10.8253 -6.25 12.5 -21.6507 0.00000149011 -12.5 -12.5 -21.6507 -10.8253 -6.25 -25 0.00000149011 -10.8253 6.25 -12.5 21.6507 0.00000149011 12.5 12.5 21.6507"/>
+</g>
+<g atTag="@HW1" id="SatE_17" fill="Turquoise" stroke="black" stroke-width="2" transform="translate(30,480)scale(.6)" class="SatLeft" description="Outdoor Air Dry Bulb Temperature">
+<polygon points="25 0.00000258286 23.7765 -3.86272 20.2255 -7.3473 14.6947 -10.1127 7.72545 -11.8882 0.00000258286 -12.5 -7.7254 -11.8882 -14.6947 -10.1127 -20.2255 -7.3473 -23.7764 -3.86272 -25 0.00000258286 -23.7764 3.86272 -20.2255 7.3473 -14.6947 10.1127 -7.7254 11.8882 0.00000258286 12.5 7.72545 11.8882 14.6947 10.1127 20.2255 7.3473 23.7765 3.86272"/>
+</g>
+<g atTag="@HW1" id="SatH_8" fill="Crimson" stroke="black" stroke-width="2" transform="translate(770,480)scale(.6)" class="SatRight" description="Steam Control Valve Actuator">
+<polygon points="25 -0.00000735125 -0.00000735125 -25 -25 -0.00000735125 -0.00000735125 25"/>
+<polygon fill="white" points="-0.00000735125 -14.1422 -24.4949 -0.00000735125 -0.00000735125 14.1422 24.4949 -0.00000735125"/>
+</g>
+<!--primary controller-->
+<g id=PIDG transform="translate(400,480)">
+<ellipse  id="pidEllipse" fill="gold" stroke="GoldenRod"  stroke-width="4" cx="0" cy="0" rx="152" ry="64"/>
+ <foreignObject id=foAdjust width=300 height=100 x=-130 y=-50>
+<table cellpadding=0>
+<tr><td align=center colspan=5>Tune Controller:<input type="checkbox" id=adjustControllerCheck onClick=adjustControllerChecked() /></td></tr>
+    <tr align=center>
+    <td>SP:<input  disabled style="margin-right: 0px;margin-left: 0px;"  type="radio" name=tuneRadio id=tuneSPClick onClick=tuneSPClicked() /></td>
+    <td>P:<input style="margin-right: 0px;margin-left: 0px;"   disabled  type="radio" name=tuneRadio  id=tunePClick onClick=tunePClicked()   /></td>
+    <td>I:<input disabled title="turn off Integral" onClick=turnOffIntegralChecked() id=turnOffIntegralCheck type="checkbox" checked style="margin-right: 0px;margin-left: 0px;"  /><input style="margin-right: 0px;margin-left: 0px;" disabled  type="radio" name=tuneRadio  id=tuneIClick onClick=tuneIClicked()   /></td>
+    <td>D:<input disabled  title="turn off Derivative" onClick=turnOffDerivativeChecked() id=turnOffDerivativeCheck  type="checkbox" checked style="margin-right: 0px;margin-left: 0px;" /><input style="margin-right: 0px;margin-left: 0px;"  disabled  type="radio" name=tuneRadio  id=tuneDClick onClick=tuneDClicked()   /></td>
+    <td>CO:<input  disabled type="radio" style="margin-right: 0px;margin-left: 0px;"  name=tuneRadio   id=tuneCOClick onClick=tuneCOClicked()  /></td>
+    </tr>
+    <tr align=center>
+    <td><input onfocus=blur() type="text" style=width:40px id=tuneSPValue value=140 /></td>
+    <td>&nbsp;&nbsp;<input onfocus=blur()  type="text" style=width:40px  id=tunePValue value=1 /></td>
+    <td><input onfocus=blur()  type="text" style=width:40px  id=tuneIValue value=10 /></td>
+    <td><input onfocus=blur()  type="text" style=width:40px  id=tuneDValue value=1 /></td>
+    <td>&nbsp;&nbsp;<input onfocus=blur()  type="text" style=width:40px  id=tuneCOValue value=0 /></td>
+    </tr>
+    <tr><td align=center colspan=5>
+        <TABLE >
+        <TR>
+        <TD><button  onClick=controlAdjust(-1) style=padding:0;width:30px;height:30px><img src="minusRound.png" alt="" width=25 height=25 /></button></TD>
+        <TD>
+            <select id=incrementSelect title="Increment value">
+              <option value="">.10</option>
+              <option value="">.50</option>
+              <option selected value="">1.0</option>
+              <option value="">5.0</option>
+              <option value="">10</option>
+
+            </select>
+        </TD>
+        <TD><button  onClick=controlAdjust(1) style=padding:0;width:30px;height:30px><img src="plusRound.png" alt="" width=25 height=25 /></button></TD>
+        </TR>
+        </TABLE>
+    </td></tr>
+</table>
+</foreignObject>
+</g>
+<!--gauges/pilot lights-->
+<g id=gaugeOATGaugeContainer transform='translate(130,460)' />
+<g id=gaugeHWSGaugeContainer transform='translate(400,260)' />
+<g id=gaugeCOGaugeContainer transform='translate(650,460)'  />
+<g id=pilotLightStatusG transform="translate(80,40)scale(15)"><circle id=pilotLightStatus cx="0" cy="0" r="1"  fill="url(#greenGradient)" /><line style="visibility:hidden" name=lineOff x1=-.5 y1=-.5 x2=.5 y2=.5 stroke='black' stroke-width=.1 /><line  style="visibility:hidden"  name=lineDisabled x1=.5 y1=-.5 x2=-.5 y2=.5 stroke='black' stroke-width=.1 /><circle  style="visibility:hidden"  name=circleDefective cx=0 cy=0 r=.8 stroke='red' stroke-width=.1 fill="none" /></g>
+<g id=pilotLightActuatorG transform="translate(770,510)scale(15)"><circle id=pilotLightActuator cx="0" cy="0" r="1"  fill="url(#greyGradient)" /><line style="visibility:visible" name=lineOff x1=-.5 y1=-.5 x2=.5 y2=.5 stroke='black' stroke-width=.1 /><line  style="visibility:visible"  name=lineDisabled x1=.5 y1=-.5 x2=-.5 y2=.5 stroke='black' stroke-width=.1 /><circle  style="visibility:hidden"  name=circleDefective cx=0 cy=0 r=.8 stroke='red' stroke-width=.1 fill="none" /></g>
+<!--graphs/charts-->
+<g id="oatResetGraph" transform="translate(50,170)"></g>
+<g id="pvStripChart" transform="translate(500,170)"></g>
+<!--Headings/tags-->
+<text id=setPntReset x=60 y=405 >HWS Setpoint Reset vs OAT</text>
+<text id=hwsLWT x=500 y=405  >Hot Water Supply Temperature</text>
+<text id=sp x=10 y=160 font-size=12  >SP (&deg;F)</text>
+<text id=oat x=290 y=375 font-size=12  >OAT (&deg;F)</text>
+<text id=hwt x=460 y=160 font-size=12  >HWS (&deg;F)</text>
+<text id=mn x=712 y=375 font-size=12  >Minutes</text>
+
+
+ <foreignObject id=stripChartButton width=40 height=40 x=55 y=85>
+  <button onClick="openStripChart()" title="Example: System Strip Chart" style=border-radius:8px;padding:0px;background:khaki;width:50px;height:50px;><img src="../Images/chart.png" width=40 height=40 alt="" /></button>
+</foreignObject>
+
+
+</svg>
+</div>
+
+</td>
+</tr>
+<tr>
+<td colspan=2>
+  <br />SVG Source:
+  <div id=svgSourceDiv style=overflow:auto;width:1200px;height:1px;text-align:left; /></div>
+  Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:1200px;text-align:left; /></div><p></p>
+</td>
+</tr>
+</table>
+
+</center>
+<div id=stripChartDiv style='overflow:hidden;visibility:hidden;border:3px solid black;border-radius:5px;position:absolute;top:20px;left:20px;width:1px;height:1px;background:khaki;'>
+<table style=width:1200px ><tr><td style=width:90% align=center><b>Heating Hot Water System Control - Strip Chart</b></td><td align=right><button title='Close Strip Chart' onClick="closeStripChart()" style=background:red;font-weight:bold >X</button></td></tr>
+<tr><td colspan=2>
+This example continuosly records the outside air dry bulb temperature(OAT), heating hot water supply temperature(HWS), PID controller output value(CO), plus the desired hot water supply temperature setpoint(SP) at the current minute and during the previous 100 minutes.
+Simulation: random values updated every 2 seconds (equals 1 minute).
+</td></tr>
+</table>
+
+
+</div>
+
+<script id=myScript>
+
+
+
+function buildResetChart()
+{
+
+var width=230
+var height=200
+
+//  X scale will use the index of our data
+var xScale = d3.scaleLinear()
+    .domain([-20,120]) // input
+    .range([0, width]); // output
+
+// Y scale will use the randomly generate number
+var yScale = d3.scaleLinear()
+    .domain([80, 180]) // input
+    .range([height, 0]); // output
+
+  // gridlines in x axis function
+function make_x_gridlines() {
+    return d3.axisBottom(xScale)
+       // .ticks(5)
+}
+
+// gridlines in y axis function
+function make_y_gridlines() {
+    return d3.axisLeft(yScale)
+       // .ticks(5)
+}
+
+var graphG=d3.select("#oatResetGraph")
+// add the X gridlines
+  graphG.append("g")
+      .attr("class", "grid")
+      .attr("transform", "translate(0," + height + ")")
+      .call(make_x_gridlines()
+          .tickSize(-height)
+          .tickFormat("")
+      )
+
+  // add the Y gridlines
+  graphG.append("g")
+      .attr("class", "grid")
+      .call(make_y_gridlines()
+          .tickSize(-width)
+          .tickFormat("")
+      )
+
+
+
+// Call the x axis in a group tag
+graphG.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale)); // Create an axis component with d3.axisBottom
+
+// Call the y axis in a group tag
+graphG.append("g")
+    .attr("class", "y axis")
+    .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
+
+
+   // define the reset line
+   var dataReset=[]
+   dataReset[0]=[-20,180]
+   dataReset[1]=[0,180]
+   dataReset[2]=[80,80]
+   dataReset[3]=[120,80]
+
+var resetLine = d3.line()
+    .x(function(d) { return xScale(d[0]); })
+    .y(function(d) { return yScale(d[1]); });
+ // Add the  reset line path.
+
+
+  graphG.append("path")
+      .data([dataReset])
+      .attr("fill", "none")
+      .attr("stroke", "blue")
+      .attr("stroke-width", "2")
+      .attr("d", resetLine);
+
+    var hwsRedLine= d3.line()
+    .x(function(d) { return xScale(d[0]); })
+    .y(function(d) { return yScale(d[1]); });
+   var dataHWS=[]
+  dataHWS[0]=[-20,140]
+  dataHWS[1]=[30,140]
+ graphG.append("path")
+      .data([dataHWS])
+      .attr("fill", "none")
+      .attr("stroke", "red")
+      .attr("stroke-width", "2")
+      .attr("marker-start", "url(#arrowStartRed")
+      .attr("d", hwsRedLine);
+
+   var circleLoc=[30,140]
+    var setCircleDot=graphG.append("circle")
+    .datum(circleLoc)
+    .attr("fill", "red")
+    .attr("stroke", "aqua")
+    .attr("stroke-width", "2")
+    .attr("r", "6")
+    .attr("cx", function(d) { console.log(xScale(d[0])); return xScale(d[0]); })
+    .attr("cy", function(d) {console.log(yScale(d[0])); return yScale(d[1]); });
+
+    var oatAquaLine= d3.line()
+    .x(function(d) { return xScale(d[0]); })
+    .y(function(d) { return yScale(d[1]); });
+       var dataOAT=[]
+  dataOAT[0]=[30,140]
+  dataOAT[1]=[30,80]
+
+
+     graphG.append("path")
+      .data([dataOAT])
+      .attr("fill", "none")
+      .attr("stroke", "aqua")
+      .attr("marker-start", "url(#arrowStartAqua")
+      .attr("stroke-width", "2")
+      .attr("d", oatAquaLine);
+
+}
+
+ //---hot water supply temp---
+function buildPVStripChart()
+{
+
+var width=200
+var height=200
+
+//  X scale will use the index of our data
+var xScale = d3.scaleLinear()
+    .domain([0, 60]) // 60 minutes
+    .range([0, width]); // output
+
+
+var yScale = d3.scaleLinear()
+    .domain([80, 220]) // input
+    .range([height, 0]); // output
+
+  // gridlines in x axis function
+function make_x_gridlines() {
+    return d3.axisBottom(xScale)
+       // .ticks(5)
+}
+
+// gridlines in y axis function
+function make_y_gridlines() {
+    return d3.axisLeft(yScale)
+       // .ticks(5)
+}
+
+var graphG=d3.select("#pvStripChart")
+// add the X gridlines
+  graphG.append("g")
+      .attr("class", "grid")
+      .attr("transform", "translate(0," + height + ")")
+      .call(make_x_gridlines()
+          .tickSize(-height)
+          .tickFormat("")
+      )
+
+  // add the Y gridlines
+  graphG.append("g")
+      .attr("class", "grid")
+      .call(make_y_gridlines()
+          .tickSize(-width)
+          .tickFormat("")
+      )
+
+
+
+// Call the x axis in a group tag
+graphG.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale)); // Create an axis component with d3.axisBottom
+
+// Call the y axis in a group tag
+graphG.append("g")
+    .attr("class", "y axis")
+    .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
+
+var line = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yScale(d); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+var path=graphG.append("path")
+    .datum(dataHWS) // 10. Binds data to the line
+    .attr("class", "chartLineHWS") // Assign a class for styling
+    .attr("d", line); // 11. Calls the line generator
+
+    var resetFactor=.3
+var lineSP = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d,i) { return yScale(140+(i*resetFactor)); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+var pathSP=graphG.append("path")
+    .datum(dataHWS) // 10. Binds data to the line
+    .attr("class", "chartLineSP") // Assign a class for styling
+    .attr("d", lineSP); // 11. Calls the line generator
+
+
+
+}
+var dataHWS=[]
+dataHWS[0]=140
+dataHWS[1]=142
+dataHWS[2]=144
+dataHWS[3]=146
+dataHWS[4]=148
+dataHWS[5]=148
+dataHWS[6]=147
+dataHWS[7]=149
+dataHWS[8]=152
+dataHWS[9]=153
+
+dataHWS[10]=150
+dataHWS[11]=148
+dataHWS[12]=147
+dataHWS[13]=146
+dataHWS[14]=148
+dataHWS[15]=145
+dataHWS[16]=144
+dataHWS[17]=143
+dataHWS[18]=142
+dataHWS[19]=140
+
+dataHWS[20]=142
+dataHWS[21]=143
+dataHWS[22]=144
+dataHWS[23]=145
+dataHWS[24]=146
+dataHWS[25]=147
+dataHWS[26]=148
+dataHWS[27]=149
+dataHWS[28]=150
+dataHWS[29]=151
+
+dataHWS[30]=152
+dataHWS[31]=153
+dataHWS[32]=154
+dataHWS[33]=155
+dataHWS[34]=156
+dataHWS[35]=157
+dataHWS[36]=158
+dataHWS[37]=159
+dataHWS[38]=160
+dataHWS[39]=161
+
+dataHWS[40]=163
+dataHWS[41]=165
+dataHWS[42]=166
+dataHWS[43]=165
+dataHWS[44]=164
+dataHWS[45]=163
+dataHWS[46]=162
+dataHWS[47]=161
+dataHWS[48]=160
+dataHWS[49]=159
+
+dataHWS[50]=158
+dataHWS[51]=157
+dataHWS[52]=156
+dataHWS[53]=155
+dataHWS[54]=154
+dataHWS[55]=153
+dataHWS[56]=152
+dataHWS[57]=151
+dataHWS[58]=151
+dataHWS[59]=151
+dataHWS[60]=151
+
+
+//======================GAUGES========================================
+            //---on load this page-------
+			function createGauges()
+			{
+               // createGauge(name, label, min, max, majorTicks, minorTicks, ringColor, faceColor, diameter, orangeZoneRange, redZoneRange, greenZoneRange,units)<br>
+                 createGauge("gaugeHWS", "HWS",80,220,5,10,"red","khaki",120,[180,200],[200,220],null,"\u00B0F");
+                 createGauge("gaugeOAT", "OAT",-20,120,5,10,"aqua","khaki",120,null,null,null,"\u00B0F");
+                 createGauge("gaugeCO", "CO",0,100,5,10,"blue","khaki",120,null,null,null,"\u0025");
+
+			}
+
+//============================TUNING==================================
+function turnOffIntegralChecked()
+{
+   if(turnOffIntegralCheck.checked)
+   {
+      tuneIValue.style.background=""
+      turnOffIntegralCheck.title="Turn off Integral"
+
+      tuneIClick.disabled=false
+
+
+   }
+   else
+   {
+
+      tuneIValue.style.background="gainsboro"
+      turnOffIntegralCheck.title="Turn on Integral"
+      tuneIClick.checked=false
+      tuneIClick.disabled=true
+   }
+
+
+
+}
+function turnOffDerivativeChecked()
+{
+   if(turnOffDerivativeCheck.checked)
+   {
+      tuneDValue.style.background=""
+      turnOffDerivativeCheck.title="Turn off Derivative"
+      tuneDClick.disabled=false
+
+
+   }
+   else
+   {
+
+      tuneDValue.style.background="gainsboro"
+      turnOffDerivativeCheck.title="Turn on Derivative"
+            tuneDClick.checked=false
+      tuneDClick.disabled=true
+
+   }
+
+
+
+
+}
+
+function adjustControllerChecked()
+{
+
+   if(adjustControllerCheck.checked)
+   {
+        tuneSPClick.disabled=false
+        tunePClick.disabled=false
+        tuneIClick.disabled=false
+        tuneDClick.disabled=false
+        tuneCOClick.disabled=false
+        turnOffIntegralCheck.disabled=false
+        turnOffDerivativeCheck.disabled=false
+
+
+   }
+   else
+   {
+        tuneSPClick.checked=false
+        tunePClick.checked=false
+        tuneIClick.checked=false
+        tuneDClick.checked=false
+        tuneCOClick.checked=false
+
+              tuneSPClick.disabled=true
+        tunePClick.disabled=true
+        tuneIClick.disabled=true
+        tuneDClick.disabled=true
+        tuneCOClick.disabled=true
+
+        turnOffIntegralCheck.disabled=true
+        turnOffDerivativeCheck.disabled=true
+
+
+
+   }
+
+     tuneSPValue.style.border=""
+    tunePValue.style.border=""
+    tuneIValue.style.border=""
+    tuneDValue.style.border=""
+    tuneCOValue.style.border=""
+
+TuneSelected=null
+
+
+
+}
+
+
+
+var TuneSelected
+function controlAdjust(factor)
+{
+    var increment=+incrementSelect.options[incrementSelect.selectedIndex].text
+    var change=factor*increment
+
+
+    if(TuneSelected=="SP")
+    {
+        var spValue=(+tuneSPValue.value)+change
+        console.log(spValue)
+
+        tuneSPValue.value=spValue.toFixed(1)
+
+
+    }
+    if(TuneSelected=="P")
+    {
+        var pValue=(+tunePValue.value)+change
+        tunePValue.value=pValue.toFixed(1)
+    }
+    if(TuneSelected=="I")
+    {
+        var iValue=(+tuneIValue.value)+change
+        tuneIValue.value=iValue.toFixed(0)
+    }
+    if(TuneSelected=="D")
+    {
+        var dValue=(+tuneDValue.value)+change
+        tuneDValue.value=dValue.toFixed(1)
+    }
+    if(TuneSelected=="OUT")
+    {
+        var outValue=(+tuneCOValue.value)+change
+        tuneCOValue.value=outValue.toFixed(1)
+    }
+}
+
+function tuneSPClicked()
+{
+
+    tuneSPValue.style.border="2px solid black"
+    tunePValue.style.border=""
+    tuneIValue.style.border=""
+    tuneDValue.style.border=""
+    tuneCOValue.style.border=""
+
+        TuneSelected="SP"
+
+
+
+}
+
+function tunePClicked()
+{
+    tuneSPValue.style.border=""
+    tunePValue.style.border="2px solid black"
+    tuneIValue.style.border=""
+    tuneDValue.style.border=""
+    tuneCOValue.style.border=""
+        TuneSelected="P"
+
+
+
+}
+
+function tuneIClicked()
+{
+
+    tuneSPValue.style.border=""
+    tunePValue.style.border=""
+    tuneIValue.style.border="2px solid black"
+    tuneDValue.style.border=""
+    tuneCOValue.style.border=""
+        TuneSelected="I"
+
+
+}
+
+function tuneDClicked()
+{
+
+    tuneSPValue.style.border=""
+    tunePValue.style.border=""
+    tuneIValue.style.border=""
+    tuneDValue.style.border="2px solid black"
+    tuneCOValue.style.border=""
+
+        TuneSelected="D"
+
+
+}
+
+function tuneCOClicked()
+{
+    tuneSPValue.style.border=""
+    tunePValue.style.border=""
+    tuneIValue.style.border=""
+    tuneDValue.style.border=""
+    tuneCOValue.style.border="2px solid black"
+
+        TuneSelected="OUT"
+
+
+
+}
+//=====SYSTEM STRIP CHART====================
+var StripChartOpen=false
+var StripChartInterval
+
+function openStripChart()
+{
+    StripChartOpen=true
+    slideStripChart()
+    stripChartDiv.style.visibility='visible'
+    d3.select("#stripChartDiv").transition().duration(1500)
+    .styleTween("width", function() { return d3.interpolate("1px", "1200px"); })
+    .styleTween("height", function() { return d3.interpolate("1px", "650px"); });
+   StripChartInterval=setInterval(slideStripChart,2000)
+
+}
+function closeStripChart()
+{
+    d3.select("#stripChartDiv").transition().duration(1000)
+    .styleTween("width", function() { return d3.interpolate("1200px", "1px"); })
+    .styleTween("height", function() { return d3.interpolate("650px", "1px"); })
+
+    setTimeout("stripChartDiv.style.visibility='hidden'",1000)
+    clearInterval(StripChartInterval)
+    StripChartOpen=false
+}
+
+
+//---onload---
+function initSystemStripChart()
+{
+
+    var width=1000
+    var height=460
+
+// The number of datapoints
+var n = 100;
+
+//  X scale will use the index of our data
+var xScale = d3.scaleLinear()
+    .domain([0, n-1]) // input
+    .range([0, width]); // output
+
+// Y scale will use the randomly generate number
+var yScale = d3.scaleLinear()
+    .domain([-20, 120]) // input
+    .range([height, 0]); // output
+
+  // gridlines in x axis function
+function make_x_gridlines() {
+    return d3.axisBottom(xScale)
+       // .ticks(5)
+}
+
+// gridlines in y axis function
+function make_y_gridlines() {
+    return d3.axisLeft(yScale)
+       // .ticks(5)
+}
+
+// Add the SVG to the div
+var svg = d3.select("#stripChartDiv").append("svg")
+    .attr("overflow", "visible")
+    .attr("width", width)
+    .attr("height", height)
+// Add the SVG to the div
+var topG = svg.append("g")
+   .attr("transform", "translate(60,50)")
+
+    topG.append("defs").append("clipPath")
+    .attr("id", "clip")
+    .append("rect")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("transform", "translate(5,0)")
+
+// add the X gridlines
+  topG.append("g")
+      .attr("class", "grid")
+      .attr("transform", "translate(0," + height + ")")
+      .call(make_x_gridlines()
+          .tickSize(-height)
+          .tickFormat("")
+      )
+
+  // add the Y gridlines
+  topG.append("g")
+      .attr("class", "grid")
+      .call(make_y_gridlines()
+          .tickSize(-width)
+          .tickFormat("")
+      )
+
+
+// Call the x axis in a group tag
+topG.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale))
+.selectAll("text")
+     .attr("font-size","14")
+     .attr("fill","black")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+// Call the y axis in a group tag
+topG.append("g")
+    .attr("class", "y axis axisTurquoise")
+    .call(d3.axisLeft(yScale))
+    .selectAll("text")
+     .attr("font-size","14")
+     .attr("fill","aqua")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+
+
+var y1Scale = d3.scaleLinear() //---HWS/SP---
+    .domain([80, 180]) // input
+    .range([height, 0]) // output
+
+ topG.append("g")
+    .attr("class", "y axis right axisRed")
+    .attr("transform", "translate("+(width+30)+",0)")
+    .call(d3.axisRight(y1Scale))
+        .selectAll("text")
+     .attr("font-size","14")
+     .attr("fill","red")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+
+    //---RIGHT y AXIS (controller output)---
+    var y2Scale = d3.scaleLinear() //---right values---
+    .domain([0,100]) //---show max/min for controller output---
+    .range([height, 0])
+
+    //---right ticks and values--
+ topG.append("g")
+    .attr("class", "y axis output axisBlue")
+    .attr("transform", "translate("+(width+100)+",0)")
+    .call(d3.axisLeft(y2Scale))
+    .selectAll("text")
+     .attr("font-size","14")
+     .attr("fill","blue")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+
+<!--Titles-->
+topG.append("text")
+     .attr("x","0")
+     .attr("y","0")
+     .attr("dy","-20")
+     .attr("text-anchor","middle")
+     .attr("font-size","17")
+     .attr("fill","aqua")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+     .text("OAT (\u00B0F)")
+
+topG.append("text")
+     .attr("x","1020")
+     .attr("y","0")
+     .attr("dy","-20")
+     .attr("text-anchor","middle")
+     .attr("font-size","17")
+     .attr("fill","red")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+     .text("HWS (\u00B0F)")
+
+topG.append("text")
+     .attr("x","1100")
+     .attr("y","495")
+     .attr("text-anchor","middle")
+     .attr("font-size","17")
+     .attr("fill","blue")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+     .text("CO (\u0025)")
+
+topG.append("text")
+     .attr("x","500")
+     .attr("y","500")
+     .attr("text-anchor","middle")
+     .attr("font-size","17")
+     .attr("fill","black")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+     .text("Time (minutes)")
+
+<!--Data and Data Lines/Paths-->
+// d3's line generator {time,OAT,SP,HWS,CO}
+ lineOAT = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yScale(d.OAT); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+ lineSP = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return y1Scale(d.SP); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+ lineHWS = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return y1Scale(d.HWS); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+ lineCO = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return y2Scale(d.CO); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+
+
+    // Append the path, bind the data, and call the line generator
+pathOAT=topG.append("path")
+  .attr("clip-path", "url(#clip)")
+    .datum(Data) // 10. Binds data to the line
+    .attr("class", "chartLineOAT") // Assign a class for styling
+    .attr("d", lineOAT); // 11. Calls the line generator
+pathSP=topG.append("path")
+ .attr("clip-path", "url(#clip)")
+    .datum(Data) // 10. Binds data to the line
+    .attr("class", "chartLineSP") // Assign a class for styling
+    .attr("d", lineSP); // 11. Calls the line generator
+pathHWS=topG.append("path")
+ .attr("clip-path", "url(#clip)")
+    .datum(Data) // 10. Binds data to the line
+    .attr("class", "chartLineHWS") // Assign a class for styling
+    .attr("d", lineHWS); // 11. Calls the line generator
+
+pathCO=topG.append("path")
+ .attr("clip-path", "url(#clip)")
+    .datum(Data) // 10. Binds data to the line
+    .attr("class", "chartLineCO") // Assign a class for styling
+    .attr("d", lineCO); // 11. Calls the line generator
+
+
+  stripLabelOAT=topG.append('text')
+   .attr("font-size","12")
+   .attr("text-anchor","end")
+   .attr("dy","5")
+  .attr("dx","3")
+   .text("OAT")
+  stripLabelSP=topG.append('text')
+   .attr("font-size","12")
+   .attr("text-anchor","end")
+   .attr("dy","5")
+    .attr("dx","3")
+   .text("SP")
+  stripLabelHWS=topG.append('text')
+   .attr("font-size","12")
+   .attr("text-anchor","end")
+  .attr("dy","5")
+   .attr("dx","3")
+   .text("HWS")
+  stripLabelCO=topG.append('text')
+   .attr("font-size","12")
+   .attr("text-anchor","end")
+   .attr("dy","5")
+   .attr("dx","3")
+   .text("CO")
+
+
+
+}
+var lineOAT
+var lineSP
+var lineHWS
+var lineCO
+var pathOAT
+var pathSP
+var pathHWS
+var pathCO
+var stripLabelOAT
+var stripLabelSP
+var stripLabelHWS
+var stripLabelCO
+
+//--every 2 seconds---
+function slideStripChart()
+{
+    var width=600
+    Data[Data.length]=Data[0] //[y23F1,y23F2,y23F3]
+
+        pathOAT.attr("d", lineOAT)
+        .attr("transform", null);
+        pathSP.attr("d", lineSP)
+        .attr("transform", null);
+        pathHWS.attr("d", lineHWS)
+        .attr("transform", null);
+        pathCO.attr("d", lineCO)
+        .attr("transform", null);
+
+        pathOAT.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+       pathSP.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+        pathHWS.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+        pathCO.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+
+        var pathSplit=pathOAT.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabelOAT.attr("x",splitX)
+        stripLabelOAT.attr("y",splitY)
+
+        var pathSplit=pathSP.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabelSP.attr("x",splitX)
+        stripLabelSP.attr("y",splitY)
+
+        var pathSplit=pathHWS.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabelHWS.attr("x",splitX)
+        stripLabelHWS.attr("y",splitY)
+
+        var pathSplit=pathCO.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabelCO.attr("x",splitX)
+        stripLabelCO.attr("y",splitY)
+
+
+
+   Data.shift()
+
+}
+
+//---start dataBase-----------
+var Data=[
+//---{OAT,SP,HWS,CO},  {outside air tempeature(DB),hws temperature setpoint, measured hws temperature,controller output} ---
+{OAT:30,SP:145,HWS:152,CO:47},
+{OAT:33,SP:147,HWS:157,CO:52},
+{OAT:32,SP:146,HWS:151,CO:48},
+{OAT:35,SP:142,HWS:156,CO:55},
+{OAT:34,SP:147,HWS:156,CO:55},
+{OAT:32,SP:147,HWS:159,CO:59},
+{OAT:31,SP:145,HWS:150,CO:47},
+{OAT:30,SP:141,HWS:152,CO:52},
+{OAT:31,SP:148,HWS:158,CO:50},
+{OAT:30,SP:141,HWS:152,CO:42},
+{OAT:34,SP:148,HWS:150,CO:56},
+{OAT:30,SP:145,HWS:158,CO:55},
+{OAT:31,SP:144,HWS:152,CO:51},
+{OAT:30,SP:149,HWS:154,CO:41},
+{OAT:34,SP:148,HWS:151,CO:53},
+{OAT:35,SP:141,HWS:159,CO:52},
+{OAT:34,SP:149,HWS:153,CO:47},
+{OAT:30,SP:140,HWS:154,CO:52},
+{OAT:35,SP:140,HWS:153,CO:46},
+{OAT:32,SP:147,HWS:156,CO:44},
+{OAT:32,SP:146,HWS:155,CO:42},
+{OAT:30,SP:145,HWS:157,CO:41},
+{OAT:34,SP:142,HWS:156,CO:55},
+{OAT:31,SP:140,HWS:152,CO:57},
+{OAT:31,SP:142,HWS:151,CO:53},
+{OAT:31,SP:145,HWS:157,CO:55},
+{OAT:34,SP:140,HWS:158,CO:48},
+{OAT:34,SP:147,HWS:154,CO:50},
+{OAT:31,SP:146,HWS:158,CO:44},
+{OAT:34,SP:145,HWS:155,CO:59},
+{OAT:34,SP:148,HWS:150,CO:59},
+{OAT:30,SP:149,HWS:153,CO:52},
+{OAT:34,SP:146,HWS:153,CO:42},
+{OAT:31,SP:147,HWS:154,CO:49},
+{OAT:30,SP:143,HWS:155,CO:52},
+{OAT:34,SP:143,HWS:153,CO:45},
+{OAT:35,SP:145,HWS:153,CO:55},
+{OAT:33,SP:140,HWS:154,CO:43},
+{OAT:32,SP:147,HWS:152,CO:41},
+{OAT:30,SP:141,HWS:155,CO:59},
+{OAT:30,SP:140,HWS:150,CO:52},
+{OAT:31,SP:147,HWS:159,CO:53},
+{OAT:31,SP:147,HWS:154,CO:54},
+{OAT:34,SP:143,HWS:154,CO:47},
+{OAT:30,SP:142,HWS:156,CO:52},
+{OAT:33,SP:146,HWS:156,CO:48},
+{OAT:33,SP:141,HWS:159,CO:44},
+{OAT:32,SP:149,HWS:150,CO:49},
+{OAT:31,SP:143,HWS:150,CO:48},
+{OAT:32,SP:149,HWS:152,CO:54},
+{OAT:35,SP:149,HWS:154,CO:43},
+{OAT:30,SP:146,HWS:150,CO:57},
+{OAT:35,SP:145,HWS:156,CO:52},
+{OAT:35,SP:147,HWS:151,CO:50},
+{OAT:30,SP:140,HWS:158,CO:41},
+{OAT:32,SP:149,HWS:152,CO:55},
+{OAT:35,SP:143,HWS:152,CO:40},
+{OAT:35,SP:142,HWS:155,CO:46},
+{OAT:33,SP:143,HWS:153,CO:49},
+{OAT:30,SP:144,HWS:153,CO:46},
+{OAT:35,SP:141,HWS:158,CO:53},
+{OAT:30,SP:143,HWS:155,CO:49},
+{OAT:35,SP:145,HWS:156,CO:42},
+{OAT:32,SP:143,HWS:151,CO:50},
+{OAT:34,SP:145,HWS:151,CO:53},
+{OAT:30,SP:143,HWS:157,CO:46},
+{OAT:33,SP:147,HWS:151,CO:58},
+{OAT:31,SP:141,HWS:155,CO:49},
+{OAT:30,SP:144,HWS:154,CO:53},
+{OAT:32,SP:144,HWS:152,CO:59},
+{OAT:32,SP:142,HWS:153,CO:45},
+{OAT:33,SP:149,HWS:158,CO:52},
+{OAT:35,SP:149,HWS:150,CO:55},
+{OAT:32,SP:149,HWS:152,CO:43},
+{OAT:32,SP:140,HWS:155,CO:56},
+{OAT:33,SP:143,HWS:157,CO:47},
+{OAT:33,SP:147,HWS:157,CO:47},
+{OAT:32,SP:143,HWS:153,CO:44},
+{OAT:31,SP:143,HWS:152,CO:40},
+{OAT:34,SP:143,HWS:150,CO:41},
+{OAT:30,SP:145,HWS:152,CO:49},
+{OAT:30,SP:148,HWS:155,CO:53},
+{OAT:30,SP:149,HWS:152,CO:57},
+{OAT:32,SP:149,HWS:157,CO:47},
+{OAT:30,SP:142,HWS:153,CO:43},
+{OAT:31,SP:142,HWS:155,CO:40},
+{OAT:31,SP:140,HWS:152,CO:49},
+{OAT:30,SP:149,HWS:159,CO:59},
+{OAT:31,SP:147,HWS:151,CO:47},
+{OAT:30,SP:144,HWS:152,CO:59},
+{OAT:30,SP:144,HWS:157,CO:48},
+{OAT:34,SP:148,HWS:153,CO:58},
+{OAT:30,SP:146,HWS:152,CO:54},
+{OAT:31,SP:148,HWS:156,CO:43},
+{OAT:30,SP:147,HWS:158,CO:56},
+{OAT:31,SP:144,HWS:151,CO:55},
+{OAT:33,SP:149,HWS:154,CO:41},
+{OAT:34,SP:148,HWS:154,CO:44},
+{OAT:33,SP:149,HWS:159,CO:55},
+{OAT:34,SP:140,HWS:159,CO:53}
+
+
+]
+
+</script>
+<script>
+document.addEventListener("onload",init(),false)
+function init()
+{
+
+
+    buildResetChart()
+    buildPVStripChart()
+    createGauges()
+
+   	showSourceSVG()
+	showSourceJS()
+
+
+     initSystemStripChart()
+
+}
+
+
+</script>
+<script>
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88028738-1', 'auto');
+  ga('send', 'pageview');
+
+
+</script>
+
+</body>
+
+</html>

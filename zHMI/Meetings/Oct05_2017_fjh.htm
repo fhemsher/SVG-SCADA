@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>IEC 61850-6-2 Task Force Meeting 10/5/2017</title>
+</head>
+
+<body style=font-family:arial;cursor:default;background:gainsboro>
+<center><b>IEC 61850-6-2 Task Force Meeting 10/5/2017 Thu 11am-12noon(EST)</b><h2><i>About SVG</i> by Francis Hemsher</h2>
+  <div style='background:yellow;padding:5px;text-align:justify;border:1px solid black'> <b>eXtensible Markup Language (XML)</b>
+
+was designed to store and transport data. It is also
+
+ both human &amp; machine readable. XML became a W3C Recommendation in 1998.
+ <center>example: <b>&lt;greeting from="Francis" >Hello, world!&lt;/greeting></b></center>
+  </div>
+
+   <p style='background:yellow;padding:5px;text-align:justify;border:1px solid black'><b>Scalable Vector Graphics (SVG)</b> is an XML-based vector image format for two-dimensional graphics with support for interactivity and animation. The SVG specification is an open standard developed by the World Wide Web Consortium (W3C) since 1999. SVG images and their behaviors are defined in XML text files.
+   <center><img src="Bitmap_VS_SVG.svg.png" alt="" /></center>
+   </p>
+
+<table border=1 cellpadding=5 style='border-color:black;width:1200px;border-collapse:collapse;' >
+<tr><td>1.) What is an SVG Image?</td><td><b>Shapes:</b> Circles, Rectangles, Polygons, Ellipses, Polylines, Lines, Paths, and Text</td></tr>
+<tr><td colspan=2 align=center>
+<svg width=1100 height=100>
+    <circle id=myCircle r=40 cx=200 cy=50 fill=red />
+    <rect id=myRect width=100 height=80 x=360 y=10 fill=lime />
+    <polygon id="myPolygon" stroke="blue" stroke-width="3" fill="yellow" points="621.651 62.5 650 50 621.651 37.5 625 6.69873 600 25 575 6.69873 578.349 37.5 550 50 578.349 62.5 575 93.3013 600 75 625 93.3013" />
+</svg>
+</td></tr>
+
+<tr><td>2.) How to create an SVG Image?</td><td><b>XML:</b> Circles, Rectangles, Polygons, Ellipses, Polylines, Lines, Paths, and Text</td></tr>
+<tr><td colspan=2 align=center>
+<textarea  style='width:800px;height:130px;overflow:hidden;background:grey;cursor:default;padding:10px;font-weight:bold;font-size:120%;'>
+<svg width="1100" height="100" >
+    <circle id="myCircle" r="40" cx="200" cy="50" fill="red" />
+    <rect id="myRect" width="100" height="80" x="360" y="10" fill="lime" />
+    <polygon id="myPolygon" stroke="blue" stroke-width="3" fill="yellow" points="621.651 62.5 650 50 621.651 37.5 625 6.69873 600 25 575 6.69873 578.349 37.5 550 50 578.349 62.5 575 93.3013 600 75 625 93.3013" />
+</svg>
+</textarea>
+</td></tr>
+
+<tr><td>3.) How to make an SVG Image Dynamic?</td><td><b>Javascript + XML:</b> Circles, Rectangles, Polygons, Ellipses, Polylines, Lines, Paths, and Text</td></tr>
+<tr><td colspan=2 align=center>
+<svg width="1100" height="100" >
+    <circle id="myCircle" r="40" cx="200" cy="50" fill="red" />
+    <rect id="myRect" onClick="changeMe(evt)" width="100" height="80" x="360" y="10" fill="lime" />
+    <polygon id="myPolygon" stroke="blue" stroke-width="3" fill="yellow" points="621.651 62.5 650 50 621.651 37.5 625 6.69873 600 25 575 6.69873 578.349 37.5 550 50 578.349 62.5 575 93.3013 600 75 625 93.3013" />
+</svg>
+<textarea  style='width:760px;height:140px;overflow:hidden;background:grey;cursor:default;padding:10px;font-weight:bold;font-size:120%;'>
+<svg width="1100" height="100" >
+    <circle id="myCircle" r="40" cx="200" cy="50" fill="red" />
+    <rect id="myRect" onClick="changeMe(evt)" width="100" height="80" x="360" y="10" fill="lime" />
+    <polygon id="myPolygon" stroke="blue" stroke-width="3" fill="yellow" points="621.651 62.5 650 50 621.651 37.5 625 6.69873 600 25 575 6.69873 578.349 37.5 550 50 578.349 62.5 575 93.3013 600 75 625 93.3013" />
+</svg>
+</textarea>
+<textarea  style='width:340px;height:140px;overflow:hidden;background:grey;cursor:default;padding:10px;font-weight:bold;font-size:120%;'>
+function changeMe(evt)
+{
+var target=evt.target
+target.setAttribute("fill","maroon")
+}
+</textarea>
+</tr></td>
+<tr><td>4.) How to Animate an SVG Image?</td><td><b>Javascript:</b> Example: <a title="3D Polygons" href="../../ThreeJS/Examples/14_three.js-Geometric-solids.htm">Polygons</a> &amp;  <a title="Animated Ellipse" href="../../Replicate/13-replicate-D3-life.htm">Ellipse</a></td></tr>
+<tr><td colspan=2  style=padding:10px;background:yellow>
+Javascript can change any svg element's attribute via <b>setAttribute()</b> over any time interval.
+</tr></td>
+<tr><td>5.) How to store information in an SVG Image?</td><td><b>XML Attributes:</b> Custom attributes attach data within an svg image </td></tr>
+
+<tr><td colspan=2 align=center>
+<svg width="1100" height="100" id="Point" onClick=showPointName()  type="digital" name="NO.1 BK 12KV CB" item="149" mrid="_3e620d55-246e-403e-8561-2d111d6c7d1c" ref="#_9e3f94e5-33d2-475b-a586-34c2eebb3493" dnpClass="CLASS2" desc_0="OPEN" desc_1="CLOSED" norm="1">
+    <circle id="myCircle" r="40" cx="200" cy="50" fill="red" />
+    <rect id="myRect" width="100" height="80" x="360" y="10" fill="lime" />
+    <polygon id="myPolygon" stroke="blue" stroke-width="3" fill="yellow" points="621.651 62.5 650 50 621.651 37.5 625 6.69873 600 25 575 6.69873 578.349 37.5 550 50 578.349 62.5 575 93.3013 600 75 625 93.3013" />
+</svg>
+<textarea  style='width:800px;height:180px;overflow:hidden;background:grey;cursor:default;padding:10px;font-weight:bold;font-size:120%;'>
+<svg width="1100" height="100"  id="Point" onClick=showPointName()  type="digital" name="NO.1 BK 12KV CB" item="149" mrid="_3e620d55-246e-403e-8561-2d111d6c7d1c" ref="#_9e3f94e5-33d2-475b-a586-34c2eebb3493" dnpClass="CLASS2" desc_0="OPEN" desc_1="CLOSED" norm="1">
+    <circle id="myCircle" r="40" cx="200" cy="50" fill="red" />
+    <rect id="myRect" width="100" height="80" x="360" y="10" fill="lime" />
+    <polygon id="myPolygon" stroke="blue" stroke-width="3" fill="yellow" points="621.651 62.5 650 50 621.651 37.5 625 6.69873 600 25 575 6.69873 578.349 37.5 550 50 578.349 62.5 575 93.3013 600 75 625 93.3013" />
+</svg>
+</textarea>
+<textarea  style='width:300px;height:180px;overflow:hidden;background:grey;cursor:default;padding:10px;font-weight:bold;font-size:120%;'>
+function showPointName()
+{
+alert(Point.getAttribute("name"))
+}
+</textarea>
+
+</tr></td>
+<tr><td colspan=2  style=padding:10px;background:yellow>
+Javascript can monitor any svg element's attribute value via <b>getAttribute()</b>.
+</tr></td>
+<tr><td>6.) Why Zoom an  SVG Image?</td><td><b>Hole In The Middle Of The Sea:</b> &#9835;<i> There's a flea on the wing on the fly
+on the frog on the bump on the log
+in the hole in the middle of the sea.</i></td></tr>
+<tr><td colspan=2 align=center>
+<a href="../../M/svg-d3-temp-humid.htm">Zoomable Plot: Temperature vs Humidity vs Wind Speed</a> <br>
+(<a href="http://localhost/StarMapWiki/index.htm">StarMap.wiki</a>) / <a href="../../N/svg-d3-universe-scale.htm" >The Universe: Ultimate SVG Zoom Challenge (scale=5 Trillion)</a>
+</tr></td>
+<tr><td>7.) Why SVG Images NOW?</td><td><b>It has taken 20 Years...</b>All Browsers include lightning-quick SVG display, plus immense power of Javascript.</td></tr>
+<tr><td colspan=2  style=padding:10px;background:yellow>
+Jon Ferraiolo of Adobe initiated SVG almost 20 years ago. About 3 years ago all browsers <b>finally</b> supported all features of SVG with powerful graphic engines. Also, during those 20 years, Javascript went from a weak scripting language
+to a juggernaut in controlling dynamic web content.
+</tr></td>
+<tr><td>8.) How SVG Will Serve Your Purposes?</td><td><b>You tell me.</b></td></tr>
+
+<tr><td colspan=2 align=center>
+Hints:) <a href="../DataDisc/build-data-disc.htm">Support a standard of Control/Monitoring Symbols</a> / (<a href="../DataDisc/dynamic-data-change.htm">Spiral</a>)  &amp; (<a href="https://www.aavso.org/">AAVSO</a>) / <a href="http://localhost/AAVSO/LCGv2/index.htm">SVG symbols can be plotted in graphs</a>
+</tr></td>
+<tr><td colspan=2  style=padding:10px;background:yellow>
+<b>THE REAL DEAL</b><br>
+ SVG can display line diagrams, dynamic plots/graphs, and status needed for HMI.<br>
+ SVG can provide selections to change settings and control the process.<br>
+
+  SVG can be linked to a control system vendor's database via an <b>API</b> to respond to data and its changes.<br>
+   SVG, with all of it's dynamic features, can be viewed in the <b>Browser</b>: No plugins or executable programs required...The information SVG is showing is avalable to all. <br>
+<p></p>Prediction: Vendors will soon migrate from their custom executables  to a server/browser environment using SVG + Javascript at the Control Center.
+</tr></td>
+
+
+
+</table>
+<p></p>
+<div id=comments style='text-align:left;background:white;width:90%;height:200px;border:1px solid black;padding:10px' contentEditable >
+Questions &amp; Comments:
+
+
+
+</div>
+<p></p>
+This file is online at <a href="http://svgDiscovery.com/HMI/Meetings/Oct05_2017.htm">svgDiscovery.com/HMI/Meetings/Oct05_2017.htm</a>
+</center>
+<p></p>
+<script>
+function changeMe(evt)
+{
+var target=evt.target
+target.setAttribute("fill","maroon")
+}
+
+function showPointName()
+{
+alert(Point.getAttribute("name"))
+}
+</script>
+</body>
+
+</html>

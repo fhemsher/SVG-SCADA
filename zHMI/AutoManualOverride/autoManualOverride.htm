@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Auto Manual Override</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ <script src="https://d3js.org/d3.v4.min.js"></script>
+
+<style>
+
+.ticks {
+  font: 10px sans-serif;
+}
+
+.track,
+.track-inset,
+.track-overlay {
+  stroke-linecap: round;
+}
+
+.track {
+  stroke: #000;
+  stroke-opacity: 0.3;
+  stroke-width: 12px;
+}
+
+.track-inset {
+  stroke: #ddd;
+  stroke-width: 8px;
+}
+
+.track-overlay {
+  pointer-events: stroke;
+  stroke-width: 50px;
+  stroke: transparent;
+  cursor: pointer;
+}
+
+.handle {
+
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.25px;
+}
+
+</style>
+
+
+
+</head>
+<body style='padding:10px;font-family:arial'>
+<center>
+<h4>Auto Manual Override</h4>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+The Auto/Manual Override can function to adjust a control signal to a field control device.
+It includes a slider to set the output signal during Manual selection.
+
+
+
+</div>
+<table><tr>
+<td valign=top>
+<div style="padding:10px;width:400px;text-align:justify">
+
+<b>Scenario:</b><br />
+Each Auto/Manual Override object is an HTML Div element that includes the Auto/Manual buttons, signal values and an
+SVG slider. The slider is created via D3.<p></p>
+
+To create each Auto/Manual Override object, define the following:<br>
+1.) Face Color<br>
+2.) Ring Color<br>
+3.) Minimum Slider Value<br>
+4.) Maximum Slider Value<br>
+5.) Signal Units of Measurement : utf8 defined as <b>/unicode</b> <br>
+6.) Left &amp; Top location values<br>
+7.) Scale
+
+<p></p>
+The input signals for each example is simulated every 2 seconds.<br>
+Initially the Auto/Manual Overrides are shown as 'Auto', with the slider and output  signal tracking the input signal.
+<br> Select 'Manual' at either, and adjust its slider as desired.
+<br><br>
+Note: The A/M override includes bumpless transfer, where the signal out matches the signal in during A/M selection.
+
+</div>
+</td>
+<td>
+<div id=autoManualDiv style='width:400px;height:400px;border:1px solid black'></div>
+
+</td>
+</tr></table>
+  Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:100%;text-align:left; /></div><p></p>
+</center>
+
+   <div id=autoManualPercentDiv style='display:none;position:absolute; top:0px;left:0px;border-radius:10px;background:skyblue;width:200px;border:3px solid blue'>
+     <table style=width:100% >
+    <tr><td><input id=signalPercentInValue  style='border:inset 3px;font-size:110%;text-align:center;font-weight:bold;color:lime;background:black;width:100px' value="50%" type="text" /> <button style="border-radius:5px;background:lime;border:4px inset;width:80px" onclick=autoPercentButtonClicked() id=autoPercentButton>Auto</button></td></tr>
+    <tr>
+        <td>
+      <svg id=autoManualPercentSVG width=190 height=40 ></svg>
+        </td>
+    </tr>
+    <tr><td align=right><button style='border-radius:5px;background:darkorange;border:4px outset;width:80px' onclick=manualPercentButtonClicked() id=manualPercentButton>Manual</button> <input id=signalPercentOutValue style='border:inset 3px;font-size:110%;text-align:center;font-weight:bold;color:lime;background:black;width:100px' value="50%" type="text" /></td></tr>
+    </table>
+  </div>
+
+    <div id=autoManualDegreeDiv  style='display:none;position:absolute; top:0px;left:0px;border-radius:10px;background:violet;width:200px;border:3px solid red'>
+    <table style=width:100%>
+    <tr><td><input id=signalDegreeInValue  style='color:lime;background:black;border:inset 3px;font-size:110%;text-align:center;font-weight:bold;width:100px' value="50%" type="text" /> <button  style="border-radius:5px;background:lime;border:4px inset;width:80px" onclick=autoDegreeButtonClicked() id=autoDegreeButton>Auto</button></td></tr>
+    <tr>
+        <td>
+      <svg id=autoManualDegreeSVG width=190 height=40 ></svg>
+        </td>
+    </tr>
+    <tr><td align=right><button style='border-radius:5px;background:darkorange;border:4px outset;width:80px' onclick=manualDegreeButtonClicked() id=manualDegreeButton>Manual</button> <input id=signalDegreeOutValue style='color:lime;background:black;border:inset 3px;font-size:110%;text-align:center;font-weight:bold;width:100px' value="50%" type="text" /></td></tr>
+    </table>
+  </div>
+
+
+
+<script id=myScript>
+var OverridePercent=false
+var SliderPercent
+var HandlePercent
+var TRxPercent
+
+var unitPercent="\u0025" //---utf8---
+function buildPercentSlider()
+{
+    signalPercentInValue.value=50+unitPercent
+    signalPercentOutValue.value=50+unitPercent
+
+    var svg = d3.select("#autoManualPercentSVG")
+    width = 160
+    height = 40
+
+    TRxPercent = d3.scaleLinear()
+    .domain([0, 100])
+    .range([0, width])
+    .clamp(true);
+
+    SliderPercent = svg.append("g")
+    .attr("class", "slider")
+    .attr("transform", "translate(15 " + height / 2 + ")");
+
+    SliderPercent.append("line")
+    .attr("class", "track")
+    .attr("x1", TRxPercent.range()[0])
+    .attr("x2", TRxPercent.range()[1])
+    .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-inset")
+    .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-overlay")
+    .call(d3.drag()
+    .on("start.interrupt", function() { SliderPercent.interrupt(); })
+    .on("start drag", function() { if(OverridePercent==true)  slidePercent(TRxPercent.invert(d3.event.x)); }));
+
+    SliderPercent.insert("g", ".track-overlay")
+    .attr("class", "ticks")
+    .attr("transform", "translate(0," + 18 + ")")
+    .selectAll("text")
+    .data(TRxPercent.ticks(5))
+    .enter().append("text")
+    .attr("x", TRxPercent)
+    .attr("text-anchor", "middle")
+    .text(function(d) { return d + unitPercent; });
+
+    HandlePercent = SliderPercent.insert("circle", ".track-overlay")
+    .attr("id", "dragHandlePercent")
+    .attr("class", "handle")
+    .attr("fill", "white")
+    .attr("r", 9);
+
+    transitionSliderPercent(0,50)
+
+}
+
+function slidePercent(h)
+{
+      HandlePercent.attr("cx", TRxPercent(h));
+      signalPercentOutValue.value=h.toFixed(0) + unitPercent;
+}
+
+function transitionSliderPercent(from,to)
+{
+   SliderPercent.transition()
+    .duration(750)
+    .tween("slidePercent", function() {
+      var i = d3.interpolate(from, to);
+
+         return function(t) { slidePercent(i(t)); };
+
+    });
+
+}
+
+function autoPercentButtonClicked()
+{
+    OverridePercent=false
+    autoPercentButton.style.border="inset 4px"
+    manualPercentButton.style.border="outset 4px"
+    var from=+signalPercentOutValue.value.split(unitPercent)[0]
+    var to=+signalPercentInValue.value.split(unitPercent)[0]
+    transitionSliderPercent(from,to)
+    signalPercentOutValue.style.color="lime"
+    dragHandlePercent.setAttribute("fill","white")
+}
+function manualPercentButtonClicked()
+{
+    OverridePercent=true
+    autoPercentButton.style.border="outset 4px"
+    manualPercentButton.style.border="inset 4px"
+    signalPercentOutValue.style.color="darkorange"
+    dragHandlePercent.setAttribute("fill","darkorange")
+
+    var from=+signalPercentInValue.value.split(unitPercent)[0]
+    var to=+signalPercentOutValue.value.split(unitPercent)[0]
+    transitionSliderPercent(from,to)
+}
+
+//========================degree=========================
+var OverrideDegree=false
+var SliderDegree
+var HandleDegree
+var TRxDegree
+
+var unitPercentDegreeF="\u2109" //---utf8---
+function buildDegreeSlider()
+{
+    signalDegreeInValue.value=150+unitPercentDegreeF
+    signalDegreeOutValue.value=150+unitPercentDegreeF
+
+    var svg = d3.select("#autoManualDegreeSVG")
+    console.log(svg)
+    width = 160
+    height = 40
+
+    TRxDegree = d3.scaleLinear()
+    .domain([100, 200])
+    .range([0, width])
+    .clamp(true);
+
+    SliderDegree = svg.append("g")
+    .attr("class", "slider")
+    .attr("transform", "translate(15 " + height / 2 + ")");
+
+    SliderDegree.append("line")
+    .attr("class", "track")
+    .attr("x1", TRxDegree.range()[0])
+    .attr("x2", TRxDegree.range()[1])
+    .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-inset")
+    .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-overlay")
+    .call(d3.drag()
+    .on("start.interrupt", function() { SliderDegree.interrupt(); })
+    .on("start drag", function() { if(OverrideDegree==true)  slideDegree(TRxDegree.invert(d3.event.x)); }));
+
+    SliderDegree.insert("g", ".track-overlay")
+    .attr("class", "ticks")
+    .attr("transform", "translate(0," + 18 + ")")
+    .selectAll("text")
+    .data(TRxDegree.ticks(5))
+    .enter().append("text")
+    .attr("x", TRxDegree)
+    .attr("text-anchor", "middle")
+    .text(function(d) { return d + unitPercentDegreeF; });
+
+    HandleDegree = SliderDegree.insert("circle", ".track-overlay")
+    .attr("id", "dragHandleDegree")
+    .attr("class", "handle")
+    .attr("fill", "white")
+    .attr("r", 9);
+
+
+
+    transitionSliderDegree(100,150)
+
+
+}
+
+function slideDegree(h)
+{
+      HandleDegree.attr("cx", TRxDegree(h));
+      signalDegreeOutValue.value=h.toFixed(0) + unitPercentDegreeF;
+}
+
+function transitionSliderDegree(from,to)
+{
+   SliderDegree.transition()
+    .duration(750)
+    .tween("slideDegree", function() {
+      var i = d3.interpolate(from, to);
+
+         return function(t) { slideDegree(i(t)); };
+
+    });
+
+}
+
+function autoDegreeButtonClicked()
+{
+     OverrideDegree=false
+     autoDegreeButton.style.border="inset 4px"
+     manualDegreeButton.style.border="outset 4px"
+     var from=+signalDegreeOutValue.value.split(unitPercentDegreeF)[0]
+     var to=+signalDegreeInValue.value.split(unitPercentDegreeF)[0]
+     transitionSliderDegree(from,to)
+
+   dragHandleDegree.setAttribute("fill","white")
+}
+function manualDegreeButtonClicked()
+{
+    OverrideDegree=true
+    autoDegreeButton.style.border="outset 4px"
+    manualDegreeButton.style.border="inset 4px"
+    dragHandleDegree.setAttribute("fill","darkorange")
+
+    var from=+signalDegreeInValue.value.split(unitPercentDegreeF)[0]
+    var to=+signalDegreeOutValue.value.split(unitPercentDegreeF)[0]
+    transitionSliderDegree(from,to)
+}
+
+
+//----simulated input signal---
+//---fired at simulated signal generator
+function degreeSignalIn(signalIn)
+{
+    var v1=+signalDegreeInValue.value.split(unitPercentDegreeF)[0]
+    if(OverrideDegree==false)
+    {
+        transitionSliderDegree(v1,signalIn)
+    }
+   signalDegreeInValue.value=signalIn+unitPercentDegreeF
+
+}
+function percentSignalIn(signalIn)
+{
+    var v1=+signalPercentInValue.value.split(unitPercent)[0]
+    if(OverridePercent==false)
+    {
+        transitionSliderPercent(v1,signalIn)
+
+    }
+    signalPercentInValue.value=signalIn+unitPercent
+}
+
+
+</script>
+<script>
+
+function locateAM()
+{
+    var bb= autoManualDiv.getBoundingClientRect()
+    var x = bb.left
+    var y = bb.top
+    var xPercent=50
+    var yPercent=50
+    var xDegree=100
+    var yDegree=200
+   var xScroll = document.documentElement.scrollLeft;
+    var yScroll = document.documentElement.scrollTop;
+
+    var leftPercent=x+xPercent+xScroll
+    var topPercent=y+yPercent+yScroll
+
+    autoManualPercentDiv.style.left=leftPercent+"px"
+    autoManualPercentDiv.style.top=topPercent+"px"
+    var leftDegree=x+xDegree+xScroll
+    var topDegree=y+yDegree+yScroll
+    autoManualDegreeDiv.style.left=leftDegree+"px"
+    autoManualDegreeDiv.style.top=topDegree+"px"
+
+    autoManualPercentDiv.style.display="inline"
+    autoManualDegreeDiv.style.display="inline"
+
+}
+
+
+document.addEventListener("onload",init(),false)
+function init()
+{
+
+
+buildDegreeSlider();
+buildPercentSlider()
+ locateAM()
+
+  // 	showSourceSVG()
+	showSourceJS()
+  var signalGenerator=setInterval(
+   function()
+   {
+        var signalDegreeIn=Math.round(Math.random()*10)+150
+        degreeSignalIn(signalDegreeIn)
+
+          var signalPercentIn=Math.round(Math.random()*10)+45
+        percentSignalIn(signalPercentIn)
+   },2000)
+}
+
+
+</script>
+<script>
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88028738-1', 'auto');
+  ga('send', 'pageview');
+
+
+</script>
+
+</body>
+
+</html>

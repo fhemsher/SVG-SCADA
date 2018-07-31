@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Button w/ Analog Gauge</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+<script src="https://d3js.org/d3.v4.min.js"></script>
+   <script type="text/javascript" src="gauge.js"></script>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+ <style type="text/css">
+    rect[role="button"] { fill: red; }
+    rect[aria-pressed="true"] { fill: green; }
+    /* rect:hover { fill: blue; } */
+  .noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+       unselectable="on"
+ onselectstart="return false;"
+ onmousedown="return false;"
+}
+
+  </style>
+
+</head>
+<body style='padding:10px;font-family:arial'>
+<center>
+<h4>Button w/ Analog Gauge</h4>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+Create an SVG image of an interactive SVG button, from a rectangle  that includes <b>linearGradient &amp; radialGradient</b>.
+Also include feeder analog gauge.
+</div>
+<table><tr>
+<td>
+<div class="noselect"  style="padding:10px;width:400px;text-align:justify">
+
+<b>Scenerio:</b><br />
+The user places cursor over the button, then toggels the button to ON(green) or OFF(red).
+The button displays "ON" or "OFF" text. When 'ON' is selected, it activates the analog gauge (simulated values).
+<p></p>
+
+A 'feed' line leaving the bottom of button displays as dashed/red for OFF  and solid/green for ON. (It is
+intended to connect to an image representing where the feed connects.)
+
+</div>
+</td>
+<td>
+<div id="svgDiv" style='width:800px;height:500px;'>
+<svg id=mySVG width=800 height=500>
+ <defs><marker id="arrowEndGreen" viewBox="0 0 8000 8000" refX="270" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="green" stroke-linejoin="bevel">
+<path id="arrowEndPath" stroke="RGB(0,0,0)" stroke-width="5" d="M2 59,293 148,1 243,121 151,Z">
+</path>
+</marker>
+<marker id="arrowEndRed" viewBox="0 0 8000 8000" refX="270" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="red" stroke-linejoin="bevel">
+<path id="arrowEndPath" stroke="RGB(0,0,0)" stroke-width="5" d="M2 59,293 148,1 243,121 151,Z">
+</path>
+</marker>
+
+</defs>
+
+
+<defs>
+<filter id="dropShadow" height="40">
+  <feGaussianBlur in="SourceAlpha" stdDeviation="10"/> <!-- stdDeviation is how much to blur -->
+  <feOffset dx="6" dy="10" result="offsetblur"/> <!-- how much to offset -->
+  <feMerge>
+    <feMergeNode/> <!-- this contains the offset blurred image -->
+    <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+  </feMerge>
+</filter>
+</defs>
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3159">
+      <stop
+         id="stop3163"
+         style="stop-color:#000000;stop-opacity:0"
+         offset="0" />
+      <stop
+         id="stop3161"
+         style="stop-color:#000000;stop-opacity:0.5"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3030">
+      <stop
+         id="stop3032"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3034"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="120"
+       y1="10"
+       x2="120"
+       y2="50"
+       id="linearGradient3113"
+       xlink:href="#linearGradient3030"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       cx="120"
+       cy="170"
+       r="100"
+       fx="120"
+       fy="170"
+       id="radialGradient3165"
+       xlink:href="#linearGradient3159"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,-0.72727275,2,0,-220,170)" />
+  </defs>
+  <defs>
+  <g id="buttonOBJ" setText="OFF"
+     cursor="pointer"
+     onkeydown="return buttonEvent(evt);"
+     onclick="return buttonEvent(evt);"
+     >
+    <rect
+       role="button"
+       aria-pressed="false"
+       width="220"
+       height="80"
+       ry="40"
+       x="10"
+       y="10"
+       id="ButtonBase"
+       style="stroke:none"
+       filter="url(#dropShadow)"
+        />
+    <rect
+       width="220"
+       height="80"
+       ry="40"
+       x="10"
+       y="10"
+       id="ButtonGlow"
+       pointer-events="none"
+       style="fill:url(#radialGradient3165);stroke:none"
+       filter="url(#dropShadow)"
+       />
+    <text class="noselect"
+       x="120"
+       y="66"
+       id="text3194"
+       pointer-events="none"
+       xml:space="preserve"
+       style="font-size:40px;text-align:center;text-anchor:middle;fill:#000000;stroke:none;font-family:Sans">OFF</text>
+    <text  class="noselect"
+       x="120"
+       y="64.5"
+       id="text3198"
+       pointer-events="none"
+       xml:space="preserve"
+       style="font-size:40px;text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;font-family:Sans">OFF</text>
+    <path
+       d="m 50,15 140,0 c 11.08,0 22.51667,10.914008 20,20 C 208.16563,41.622482 201.08,40 190,40 L 50.00005,40 C 38.92005,40 31.834332,41.622512 30,35 27.483323,25.914009 38.92,15 50,15 z"
+       id="ButtonHighlight"
+       pointer-events="none"
+       style="fill:url(#linearGradient3113)" />
+  </g>
+  <g id=labelObj ><rect width=90 height=40 fill="gainsboro" stroke="none" rx=5 ry=5 x=-45 y=-20 /><text x=0 y=0 dy=8  font-size="30" text-anchor="middle" fill="black" stroke="none" font-family="arial" /></g>
+  </defs>
+  <line x1="0" y1="20" x2=700 y2=20 stroke='green' stroke-width="6" />
+<line x1="200" y1="20" x2=200 y2=150 stroke='green' stroke-width="6" />
+<line x1="350" y1="20" x2=350 y2=150 stroke='green' stroke-width="6" />
+<line x1="500" y1="20" x2=500 y2=150 stroke='green' stroke-width="6" />
+<line marker-end="url(#arrowEndRed)" id=feedLine23F1 x1="200" y1="150" x2=200 y2=490 stroke='red' stroke-dasharray="10 10" stroke-width="6" />
+<line marker-end="url(#arrowEndRed)"  id=feedLine23F2  x1="350" y1="150" x2=350 y2=490 stroke='red' stroke-dasharray="10 10" stroke-width="6" />
+<line marker-end="url(#arrowEndRed)"  id=feedLine23F3  x1="500" y1="150" x2=500 y2=490 stroke='red' stroke-dasharray="10 10" stroke-width="6" />
+<g id=gauge23F1GaugeContainer transform='translate(145,260)' value="0" />
+<g id=gauge23F2GaugeContainer transform='translate(295,260)' value="0"  />
+<g id=gauge23F3GaugeContainer transform='translate(445,260)' value="0"  />
+</svg>
+</div>
+
+</td>
+</tr></table>
+  <br />SVG Source:
+  <div id=svgSourceDiv style=overflow:auto;width:100%;height:1px;text-align:left; /></div>
+  Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:100%;height:300px;text-align:left; /></div><p></p>
+</center>
+<script id=myScript>
+var audio = new Audio('buttonClick.mp3');
+
+
+function buttonEvent(event)
+{
+    if ((event.type == "click" && event.button == 0) ||
+    (event.type == "keydown" && (event.keyCode == 32 || event.keyCode ==13)))
+    {
+        var target = event.target; /* Should be rectangle ButtonBase */
+        var setText=target.parentNode.getAttribute("setText")
+        var myId=target.parentNode.getAttribute("id")
+
+         var myGauge=gauges["gauge"+myId]
+         console.log(myGauge)
+         var feedLine=document.getElementById("feedLine"+myId)
+
+         audio.play();  //---added button click sound---
+        if(setText=="ON") //---prevent selection 'bounce'---
+        {
+            var setPressed = false;
+            var setText = "OFF";
+            target.parentNode.setAttribute("setText","OFF")
+
+            feedLine.setAttribute("stroke","red")
+            feedLine.setAttribute("stroke-dasharray", "10 10")
+           feedLine.setAttribute("marker-end","url(#arrowEndRed)")
+           myGauge.redraw(0, 250)
+            if(myId=="23F1")
+            clearInterval(IntervalGauge23F1);
+            if(myId=="23F2")
+            clearInterval(IntervalGauge23F2);
+            if(myId=="23F3")
+            clearInterval(IntervalGauge23F3);
+
+
+        }
+        else if ( target.getAttribute("aria-pressed") == "false" )
+        {
+            setPressed = true;
+            var setText = "ON";
+            target.parentNode.setAttribute("setText","ON")
+            feedLine.setAttribute("stroke","green")
+            feedLine.removeAttribute("stroke-dasharray")
+            feedLine.setAttribute("marker-end","url(#arrowEndGreen)")
+            var value = getRandomValue(myGauge)
+            myGauge.redraw(value, 250)
+            if(myId=="23F1")
+            IntervalGauge23F1=setInterval(updateGauge23F1, 2500);
+            if(myId=="23F2")
+            IntervalGauge23F2=setInterval(updateGauge23F2, 2500);
+            if(myId=="23F3")
+            IntervalGauge23F3=setInterval(updateGauge23F3, 2500);
+        }
+
+
+        //updateGauges()
+        target.setAttribute("aria-pressed", setPressed );
+
+        var parent = target.parentNode;
+        var child = parent.firstChild;
+        while (child != null)
+        {
+            if (child.nodeName == "text" && child.hasChildNodes() )
+            {
+                child.firstChild.nodeValue = setText;
+            }
+            child = child.nextSibling;
+        }
+    }
+}
+
+var buttonObjArray=[]
+//---buttonObjArray[]=[id,locX,locY,scale]
+buttonObjArray[0]=["23F1",200,150,.5]
+buttonObjArray[1]=["23F2",350,150,.5]
+buttonObjArray[2]=["23F3",500,150,.5]
+
+//---onload: translate/scale button(its center Point) as desired---
+function createButtons()
+{
+    for(var k=0;k<buttonObjArray.length;k++)
+    {
+        var buttonG=buttonOBJ.cloneNode(true)
+        var id=buttonObjArray[k][0]
+        buttonG.setAttribute("id",id)
+        mySVG.appendChild(buttonG)
+        var bb=buttonG.getBBox()
+        var cx=bb.x+.5*bb.width
+        var cy=bb.y+.5*bb.height
+
+        var locX=buttonObjArray[k][1]
+        var locY=buttonObjArray[k][2]
+        var scale=buttonObjArray[k][3]
+        var transX=locX-cx*scale
+        var transY=locY-cy*scale
+        buttonG.setAttribute("transform","translate("+(transX)+" "+(transY)+")scale("+scale+")")
+        //---add Label
+        var label=labelObj.cloneNode(true)
+        label.setAttribute("id","label"+id)
+        console.log( label.lastChild)
+        label.lastChild.textContent=id
+        label.setAttribute("transform","translate("+(locX)+" "+(locY+60)+")")
+        mySVG.appendChild(label)
+    }
+}
+
+
+
+</script>
+<script>
+document.addEventListener("onload",init(),false)
+function init()
+{
+    createButtons()
+    initializeGauges()
+
+   	showSourceSVG()
+	showSourceJS()
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

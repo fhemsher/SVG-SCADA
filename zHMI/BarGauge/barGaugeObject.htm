@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Bar Gauge Object</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script src="../../d3.v4.min.js"></script>
+
+
+</head>
+<body style='padding:10px;font-family:arial'>
+<center>
+<h4>Bar Gauge Object</h4>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+This is a configurable bar gauge object showing the minimum to maximum span values on the x-axis.
+The bar transitions smoothly during value changes, using D3 version 4. Also includes set point value plus orange-to-red min/max alarm zones on the bar.
+The bar flashes if values fall within the min/max alarm warning zones.
+</div>
+<table><tr>
+<td>
+<div style="padding:10px;width:500px;text-align:left">
+
+
+
+<p></p><center>
+<button onClick=changeOAT()>Outside Air Temperature</button>
+<button onClick=changeHWS()>Heating Hot Water Temperature</button>
+<button onClick=changePOS()>Actuator Position</button>
+ <br>
+Click button for a simulated change in the bar gauge</center >
+<p></p>
+<b>Configuring The Bar Gauge:</b><br />
+ buildBarGauge(id, title, units, min, max, barColor, faceColor, setPoint, maxAlert, minAlert, initialValue, scale, transX, transY)
+<br>
+<br>
+
+1.)  id - your ID for the bar gauge  <br>
+2.) title - shown in bar gauge  <br>
+3.) units - units of measurement<br>
+4.) min - minium value number range<br>
+5.) max - maximum value number range<br>
+6.) barColor - border enclosing the numbers  <br>
+7.) faceColor - the background color <br>
+8.) setPoint (optional) - setpoint of the control loop<br>
+
+9.) maxAlert (optional) -  maximum alarm warning value<br>
+10.) minAlert (optional) -  minimum alarm warning  value<br>
+11.) initialValue - value first shown in the bar<br>
+12.) scale - size the bar gauge (default size 300x80 px.)<br>
+
+13.) transX - locate bar gauge upper-left x <br>
+14.) transY - locate bar gauge  upper-left y <br>
+
+</div>
+</td>
+<td>
+<div id="svgDiv" style='width:400px;height:400px;'>
+<svg id=mySVG width=400 height=400 overflow="visible">
+<defs>
+<linearGradient id="warningMax" y1="84%" x1="24%" y2="82%" x2="72%" >
+     <stop offset="0" stop-color="#FFA500" stop-opacity="1" />
+     <stop offset="100%" stop-color="#FF0000" stop-opacity="1" stop-offset="100%" />
+ </linearGradient>
+<linearGradient id="warningMin" y2="84%" x2="24%" y1="82%" x1="72%" >
+     <stop offset="0" stop-color="#FFA500" stop-opacity="1" />
+     <stop offset="100%" stop-color="#FF0000" stop-opacity="1" stop-offset="100%" />
+ </linearGradient>
+</defs>
+</svg>
+</div>
+
+</td>
+</tr></table>
+  <br />SVG Source:
+  <div id=svgSourceDiv style=overflow:auto;width:100%;height:1px;text-align:left; /></div>
+  Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:100%;text-align:left; /></div><p></p>
+</center>
+<script id=myScript>
+//======================BAR GAUGE OBJECT========================================
+function buildBarGauge(id,title,units,min,max,barColor,faceColor,setPoint,maxAlert,minAlert,initialValue,scale,transX,transY)
+{
+    //---default size---
+    var gaugeWidth=300
+    var gaugeHeight=80
+
+    var  BarGauge=d3.select("#mySVG").append("g")
+    .attr("id",id)
+    var gaugeRect=BarGauge.append("rect")
+    .attr("width",gaugeWidth)
+    .attr("height",gaugeHeight)
+    .attr("fill",faceColor)
+    .attr("rx","5")
+    .attr("ry","5")
+    .attr("stroke","black")
+    .attr("stroke-width",1)
+
+    var myTitle=BarGauge.append("text")
+    .text(title)
+    .attr("x",gaugeWidth/2)
+    .attr("dy","1em")
+    .attr("font-family","arial")
+    .attr("font-weight","bold")
+    .attr("text-anchor","middle")
+    .attr("class", "noselect")
+
+    var myUnits=BarGauge.append("text")
+    .attr("id","unitsText"+id)
+    .text(initialValue+" "+units)
+    .attr("x",gaugeWidth/2)
+    .attr("y",gaugeHeight)
+    .attr("dy","-.5em")
+    .attr("font-family","arial")
+    .attr("text-anchor","middle")
+    .attr("class", "noselect")
+
+    var lrPadding=20
+    var barHeight=gaugeHeight/4
+    var barWidth=gaugeWidth-2*lrPadding
+    var minMaxSpan=max-min
+    var pxPerUnit=barWidth/minMaxSpan
+    //---bgRect
+    BarGauge.append("rect")
+    .attr("id", "barBgRect")
+    .attr("y", barHeight )
+    .attr("x", lrPadding )
+    .attr("width", barWidth )
+    .attr("fill", "gainsboro")
+    .attr("height",barHeight);
+
+    var xBar = d3.scaleLinear()
+    .range([0, barWidth]);
+
+    xBar.domain([min, max])
+
+    if(min<=0)
+        var valueSpan=initialValue+Math.abs(min)
+    else
+        var valueSpan=initialValue-min
+    var valueWidth=barWidth*valueSpan/minMaxSpan
+
+    BarGauge.append("rect")
+    .attr("id", "barRect"+id)
+    .attr("fill", barColor)
+    .attr("opacity", "1")
+    .attr("width", 0 )
+    .transition().duration(800)
+    .attr("width", valueWidth )
+    .attr("y", barHeight )
+    .attr("x", lrPadding )
+    .attr("height", barHeight);
+
+    //----alarm----------------------------
+    if(maxAlert)
+    {
+        if(min<=0)
+            var maxAlertSpan=maxAlert+Math.abs(min)
+        else
+            var maxAlertSpan=maxAlert-min
+        var maxAlertWidth=barWidth-barWidth*maxAlertSpan/minMaxSpan
+
+        BarGauge.append("rect")
+        .attr("id","maxErrorRect")
+        .attr("x",barWidth-maxAlertWidth+lrPadding)
+        .attr("y",barHeight+barHeight/3)
+        .attr("width",maxAlertWidth)
+        .attr("height",barHeight/3)
+        .attr("stroke","none")
+        .attr("fill","url(#warningMax)")
+    }
+
+    if(minAlert)
+    {
+        if(min<=0)
+            var minAlertSpan=minAlert+Math.abs(min)
+        else
+            var minAlertSpan=minAlert-min
+
+        var minAlertWidth=barWidth*minAlertSpan/minMaxSpan
+        BarGauge.append("rect")
+        .attr("id","minErrorRect")
+        .attr("x",lrPadding)
+        .attr("y",barHeight+barHeight/3)
+        .attr("width",minAlertWidth)
+        .attr("height",barHeight/3)
+        .attr("stroke","none")
+        .attr("fill","url(#warningMin)")
+    }
+
+    //-----------setpoint line------------
+    if(setPoint)
+    {
+        if(min<=0)
+        {
+            var span=setPoint+Math.abs(min)
+            var setPointX=barWidth*span/(Math.abs(min)+Math.abs(max))+lrPadding
+        }
+        else
+        {
+            var span=setPoint-min
+            var setPointX=barWidth*(span/(max-min))+lrPadding
+        }
+        var dash=barHeight/5
+
+        BarGauge.append("line")
+        .attr("id", "lineSP")
+        .attr("x1",setPointX)
+        .attr("y1", barHeight)
+        .attr("x2", setPointX)
+        .attr("y2", barHeight*2)
+        .attr("stroke", "lime")
+        .attr("stroke-width", 2)
+        .attr("stroke-dasharray", dash+","+dash)
+    }
+
+        // add the x Axis
+    BarGauge.append("g")
+    .style("font-size",10)
+    .attr("class", "noselect")
+    .attr("transform", "translate("+lrPadding+"," + barHeight*2 + ")")
+    .call(d3.axisBottom(xBar));
+
+    BarGauge.attr("transform", "translate("+transX+" "+transY+")scale("+scale+")")
+}
+
+
+
+
+//---onload---
+function placeBarGauges()
+{
+    // buildBarGauge(id,title,units,min,max,barColor,faceColor,setPoint,maxAlert,minAlert,initialValue,scale,transX,transY)
+  buildBarGauge("barOAT","Outside Air Temperature","Degrees F.",-20,120,"black","violet",false,false,false,75,.7,100,100)
+  buildBarGauge("barHWS","Hot Water Supply","Degrees F.",60,220,"black","skyblue",160,200,75,170,.8,200,200)
+  buildBarGauge("barPOS","Actuator Position","\u0025",0,100,"black","#d2691e",false,false,false,50,1,120,300)
+}
+//---button---
+function changeOAT()
+{
+    var min=-20
+    var max=120
+    var units="Degrees F."
+    var lrPadding=20
+    var gaugeWidth=300
+    var barWidth=gaugeWidth-2*lrPadding
+
+    var oatValue=Math.floor(Math.random() * 40) + 55
+     var minMaxSpan=max-min
+    var valueSpan=oatValue+Math.abs(min)
+     var valueWidth=barWidth*valueSpan/minMaxSpan
+
+     d3.select("#unitsTextbarOAT")
+   .text(oatValue+" "+units)
+
+    var bar=d3.select("#barRectbarOAT")
+    var currentWidth=bar.attr("width")
+
+
+    bar.attr("width",currentWidth )
+    .transition().duration(800)
+    .attr("width", valueWidth )
+}
+var MaxWarning //---alarm interval---
+//---button---
+function changeHWS()
+{
+    Math.floor(Math.random() * 80) + 140
+
+    var min=60
+    var max=220
+    var minMaxSpan=max-min
+    var units="Degrees F."
+    var lrPadding=20
+    var gaugeWidth=300
+    var barWidth=gaugeWidth-2*lrPadding
+
+    var hwsValue=Math.floor(Math.random() * 80) + 140
+    var valueSpan=hwsValue-min
+    var valueWidth=barWidth*valueSpan/minMaxSpan
+
+   d3.select("#unitsTextbarHWS")
+   .text(hwsValue+" "+units)
+
+    var bar=d3.select("#barRectbarHWS")
+    var currentWidth=bar.attr("width")
+
+    bar.attr("width",currentWidth )
+    .transition().duration(800)
+    .attr("width", valueWidth )
+
+   //---Alarm Flash---
+    var maxAlert=200
+
+    if(hwsValue>=maxAlert)
+    if(!MaxWarning)
+        MaxWarning=setInterval(warningFlash,500)
+    if(hwsValue<maxAlert&&MaxWarning)
+    {
+       window.clearInterval(MaxWarning)
+       barRectbarHWS.setAttribute("opacity",1)
+       MaxWarning=null
+    }
+}
+//---alarm zone flash---
+//---value into min/max alarm band----
+function warningFlash()
+{
+    if(+barRectbarHWS.getAttribute("opacity")==1)
+      barRectbarHWS.setAttribute("opacity",.5)
+     else
+      barRectbarHWS.setAttribute("opacity",1)
+}
+//---button---
+function changePOS()
+{
+    var min=0
+    var max=100
+    var units="\u0025"
+    var lrPadding=20
+    var gaugeWidth=300
+    var barWidth=gaugeWidth-2*lrPadding
+
+    var posValue= Math.floor(Math.random() * 50) + 40
+    var minMaxSpan=max
+    var valueSpan=posValue
+    var valueWidth=barWidth*valueSpan/minMaxSpan
+
+    d3.select("#unitsTextbarPOS")
+    .text(posValue+" "+units)
+
+    var bar=d3.select("#barRectbarPOS")
+    var currentWidth=bar.attr("width")
+
+    bar.attr("width",currentWidth )
+    .transition().duration(800)
+    .attr("width", valueWidth )
+
+}
+</script>
+<script>
+document.addEventListener("onload",init(),false)
+function init()
+{
+   placeBarGauges()
+   	showSourceSVG()
+	showSourceJS()
+   // setInterval(randomValues,2000)
+}
+
+
+</script>
+<script>
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88028738-1', 'auto');
+  ga('send', 'pageview');
+
+
+</script>
+</body>
+
+</html>

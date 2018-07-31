@@ -1,0 +1,295 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Auto/Manual Adjust</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script src="../../d3.v4.min.js"></script>
+</head>
+
+<body onload=buildProcessSlider();buildScadaSlider() style=font-family:arial>
+<style>
+
+.ticks {
+  font: 10px sans-serif;
+}
+
+.track,
+.track-inset,
+.track-overlay {
+  stroke-linecap: round;
+}
+
+.track {
+  stroke: #000;
+  stroke-opacity: 0.3;
+  stroke-width: 12px;
+}
+
+.track-inset {
+  stroke: #ddd;
+  stroke-width: 8px;
+}
+
+.track-overlay {
+  pointer-events: stroke;
+  stroke-width: 50px;
+  stroke: transparent;
+  cursor: pointer;
+}
+
+.handle {
+
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.25px;
+}
+
+</style>
+     <svg  id="autoManualScadaSVG" width="190" height="40"><g class="slider" transform="translate(15 20)"><line class="track" x1="0" x2="160"/><line class="track-inset" x1="0" x2="160"/><g class="ticks" transform="translate(0,18)"><text x="0" text-anchor="middle">0%</text><text x="32" text-anchor="middle">20%</text><text x="64" text-anchor="middle">40%</text><text x="96" text-anchor="middle">60%</text><text x="128" text-anchor="middle">80%</text><text x="160" text-anchor="middle">100%</text></g><circle id="dragHandleScada" class="handle" fill="white" r="9"/><line class="track-overlay" x1="0" x2="160" style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"/></g></svg>
+
+    <div id="autoManualScadaDiv" style='position:absolute; top:300px;left:500px;border-radius:10px;background:skyblue;width:200px;border:3px solid blue'>
+     <table style="width:100%" >
+    <tr><td><input id="signalScadaInValue"  style='border:inset 3px;font-size:110%;text-align:center;font-weight:bold;color:lime;background:black;width:100px' value="50%" type="text" /> <button style="background:lime;border:4px inset;width:80px" onclick="autoScadaButtonClicked()" id="autoScadaButton">Auto</button></td></tr>
+    <tr>
+        <td>
+      <svg id="autoManualScadaSVG" width="190" height="40" ></svg>
+        </td>
+    </tr>
+    <tr><td align="right"><button style='background:darkorange;border:4px outset;width:80px' onclick="manualScadaButtonClicked()" id="manualScadaButton">Manual</button> <input id="signalScadaOutValue" style='border:inset 3px;font-size:110%;text-align:center;font-weight:bold;color:lime;background:black;width:100px' value="50%" type="text" /></td></tr>
+    </table>
+  </div>
+
+    <div id=autoManualProcessDiv  style='position:absolute; top:100px;left:300px;border-radius:10px;background:grey;width:200px;border:3px solid gainsboro'>
+    <table style=width:100%>
+    <tr><td><input id=signalProcessInValue  style='background:gainsboro;border:inset 3px;font-size:110%;text-align:center;font-weight:bold;width:100px' value="50%" type="text" /> <button  style="border:4px inset;width:80px" onclick=autoProcessButtonClicked() id=autoProcessButton>Auto</button></td></tr>
+    <tr>
+        <td>
+      <svg id=autoManualProcessSVG width=190 height=40 ></svg>
+        </td>
+    </tr>
+    <tr><td align=right><button style='border:4px outset;width:80px' onclick=manualProcessButtonClicked() id=manualProcessButton>Manual</button> <input id=signalProcessOutValue style='background:gainsboro;border:inset 3px;font-size:110%;text-align:center;font-weight:bold;width:100px' value="50%" type="text" /></td></tr>
+    </table>
+  </div>
+
+
+
+
+<script>
+var OverrideScada=false
+var SliderScada
+var HandleScada
+var TRxScada
+
+var units="\u0025" //---utf8---
+function buildScadaSlider()
+{
+     signalScadaInValue.value=50+units
+     signalScadaOutValue.value=50+units
+
+var svg = d3.select("#autoManualScadaSVG")
+  console.log(svg)
+    width = 160
+    height = 40
+
+TRxScada = d3.scaleLinear()
+    .domain([0, 100])
+    .range([0, width])
+    .clamp(true);
+
+SliderScada = svg.append("g")
+    .attr("class", "slider")
+    .attr("transform", "translate(15 " + height / 2 + ")");
+
+SliderScada.append("line")
+    .attr("class", "track")
+    .attr("x1", TRxScada.range()[0])
+    .attr("x2", TRxScada.range()[1])
+  .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-inset")
+  .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-overlay")
+    .call(d3.drag()
+        .on("start.interrupt", function() { SliderScada.interrupt(); })
+        .on("start drag", function() { if(OverrideScada==true)  slideScada(TRxScada.invert(d3.event.x)); }));
+
+SliderScada.insert("g", ".track-overlay")
+    .attr("class", "ticks")
+    .attr("transform", "translate(0," + 18 + ")")
+  .selectAll("text")
+  .data(TRxScada.ticks(5))
+  .enter().append("text")
+    .attr("x", TRxScada)
+    .attr("text-anchor", "middle")
+    .text(function(d) { return d + units; });
+
+HandleScada = SliderScada.insert("circle", ".track-overlay")
+    .attr("id", "dragHandleScada")
+    .attr("class", "handle")
+    .attr("fill", "white")
+    .attr("r", 9);
+
+
+
+transitionSliderScada(0,50)
+       console.log(new XMLSerializer().serializeToString(autoManualScadaSVG))
+}
+
+function slideScada(h)
+{
+  HandleScada.attr("cx", TRxScada(h));
+  signalScadaOutValue.value=h.toFixed(0) + units;
+}
+
+function transitionSliderScada(from,to)
+{
+   SliderScada.transition()
+    .duration(750)
+    .tween("slideScada", function() {
+      var i = d3.interpolate(from, to);
+
+         return function(t) { slideScada(i(t)); };
+
+    });
+
+
+
+}
+
+function autoScadaButtonClicked()
+{
+     OverrideScada=false
+     autoScadaButton.style.border="inset 4px"
+     manualScadaButton.style.border="outset 4px"
+     var from=+signalScadaOutValue.value.split(units)[0]
+     var to=+signalScadaInValue.value.split(units)[0]
+     transitionSliderScada(from,to)
+    signalScadaOutValue.style.color="lime"
+   dragHandleScada.setAttribute("fill","white")
+}
+function manualScadaButtonClicked()
+{
+   OverrideScada=true
+        autoScadaButton.style.border="outset 4px"
+     manualScadaButton.style.border="inset 4px"
+      signalScadaOutValue.style.color="darkorange"
+         dragHandleScada.setAttribute("fill","darkorange")
+
+         var from=+signalScadaInValue.value.split(units)[0]
+     var to=+signalScadaOutValue.value.split(units)[0]
+     transitionSliderScada(from,to)
+}
+
+//========================process=========================
+var OverrideProcess=false
+var SliderProcess
+var HandleProcess
+var TRxProcess
+
+var units="\u0025" //---utf8---
+function buildProcessSlider()
+{
+     signalProcessInValue.value=50+units
+     signalProcessOutValue.value=50+units
+
+var svg = d3.select("#autoManualProcessSVG")
+  console.log(svg)
+    width = 160
+    height = 40
+
+TRxProcess = d3.scaleLinear()
+    .domain([0, 100])
+    .range([0, width])
+    .clamp(true);
+
+SliderProcess = svg.append("g")
+    .attr("class", "slider")
+    .attr("transform", "translate(15 " + height / 2 + ")");
+
+SliderProcess.append("line")
+    .attr("class", "track")
+    .attr("x1", TRxProcess.range()[0])
+    .attr("x2", TRxProcess.range()[1])
+  .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-inset")
+  .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-overlay")
+    .call(d3.drag()
+        .on("start.interrupt", function() { SliderProcess.interrupt(); })
+        .on("start drag", function() { if(OverrideProcess==true)  slideProcess(TRxProcess.invert(d3.event.x)); }));
+
+SliderProcess.insert("g", ".track-overlay")
+    .attr("class", "ticks")
+    .attr("transform", "translate(0," + 18 + ")")
+  .selectAll("text")
+  .data(TRxProcess.ticks(5))
+  .enter().append("text")
+    .attr("x", TRxProcess)
+    .attr("text-anchor", "middle")
+    .text(function(d) { return d + units; });
+
+HandleProcess = SliderProcess.insert("circle", ".track-overlay")
+    .attr("id", "dragHandleProcess")
+    .attr("class", "handle")
+    .attr("fill", "white")
+    .attr("r", 9);
+
+
+
+transitionSliderProcess(0,50)
+
+
+}
+
+function slideProcess(h)
+{
+  HandleProcess.attr("cx", TRxProcess(h));
+  signalProcessOutValue.value=h.toFixed(0) + units;
+}
+
+function transitionSliderProcess(from,to)
+{
+   SliderProcess.transition()
+    .duration(750)
+    .tween("slideProcess", function() {
+      var i = d3.interpolate(from, to);
+
+         return function(t) { slideProcess(i(t)); };
+
+    });
+
+
+
+}
+
+function autoProcessButtonClicked()
+{
+     OverrideProcess=false
+     autoProcessButton.style.border="inset 4px"
+     manualProcessButton.style.border="outset 4px"
+     var from=+signalProcessOutValue.value.split(units)[0]
+     var to=+signalProcessInValue.value.split(units)[0]
+     transitionSliderProcess(from,to)
+
+   dragHandleProcess.setAttribute("fill","white")
+}
+function manualProcessButtonClicked()
+{
+   OverrideProcess=true
+        autoProcessButton.style.border="outset 4px"
+     manualProcessButton.style.border="inset 4px"
+
+
+         var from=+signalProcessInValue.value.split(units)[0]
+     var to=+signalProcessOutValue.value.split(units)[0]
+     transitionSliderProcess(from,to)
+}
+</script>
+
+
+</body>
+
+</html>

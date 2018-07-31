@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Circuit Breaker - POS</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+ <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script type="text/javascript" src="../TexturesJS/textures.min.js"></script>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+ <style type="text/css">
+  .noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+       unselectable="on"
+ onselectstart="return false;"
+ onmousedown="return false;"
+}
+
+  </style>
+
+</head>
+<body style='padding:10px;font-family:arial'>
+<center>
+<b>Circuit Breaker - POS: intermediate/on/off/bad </b>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+Create an interactive SVG image object to monitor or reset a Circuit Breaker. Allow the central panel the ability to reset the circuit breaker after it has tripped.
+It includes an associated external  manual disconnect switch. Each circuit breaker has a label. Also included is a blue arrow line leaving the circuit breaker.
+Show graphically the differences between each POS state.
+</div>
+<table><tr>
+<td>
+<div class="noselect"  style="padding:10px;width:460px;text-align:justify">
+
+<b>Scenerio:</b><br />Three(3) SVG circuit breaker objects are shown.
+This monitors the status of an external manual disconnect and its associated downstream circuit breaker. The circuit breaker also includes an internal <b>lockout</b> disconnect.
+ In this example, the circuit breaker can be reset both locally and/or <b>remotely</b> from the central panel.
+After the CB has tripped, within remote status, the operator can click on the circuit breaker to reset it.
+
+<p></p>
+<center>Select POS State  &amp; field device input<br>
+<table style=width:100% border=1>
+<tr><td style=background:gainsboro align=center colspan=4>23F1</td></tr>
+<tr><td><b>POS State</b></td><td colspan=2 >Int:<input type="radio"  name=posRadio1  id=cb23F1IntRadio  onClick=intRadioClicked("23F1")   />
+on:<input checked type="radio"  name=posRadio1  id=cb23F1OnRadio onClick=onRadioClicked("23F1") />
+off:<input type="radio"  name=posRadio1  id=cb23F1OffRadio onClick=offRadioClicked("23F1") />
+bad:<input type="radio"  name=posRadio1  id=cb23F1BadRadio onClick=badRadioClicked("23F1") />
+</td></tr>
+<tr><td align=center colspan=3>Field Device Input</td></tr>
+<tr><td>Manual Disconnect</td><td><input type="radio" name=md23F1Radio id=md23F1CloseRadio onClick=manualDisconnectCloseClicked("23F1") checked  />:Closed</td><td> <input type="radio"  name=md23F1Radio id=md23F1OpenRadio onClick=manualDisconnectOpenClicked("23F1")    />:Opened</td></tr>
+<tr><td>Circuit Breaker Lockout</td><td><input type="radio"  name=lockout23F1Radio  id=lockout23F1CloseRadio onClick=lockoutCloseClicked("23F1")  checked    />:Closed</td><td> <input type="radio"  name=lockout23F1Radio  id=lockout23F1OpenRadio onClick=lockoutOpenClicked("23F1")    />:Opened</td></tr>
+<tr><td>Circuit Breaker</td><td><input type="radio"  name=cb23F1Radio  id=cb23F1TripRadio  onClick=circuitBreakerTripClicked("23F1")   />: Tripped</td><td> <input type="radio"  name=cb23F1Radio  id=cb23F1ResetRadio onClick=circuitBreakerResetClicked("23F1")  disabled    />:Reset</td></tr>
+</table>
+
+<table style=width:100%  border=1>
+<tr><td style=background:gainsboro  align=center colspan=4>23F2</td></tr>
+<tr><td><b>POS State</b></td><td colspan=2 >Int:<input type="radio"  name=posRadio2  id=cb23F2IntRadio  onClick=intRadioClicked("23F2")   />
+on:<input checked type="radio"  name=posRadio2  id=cb23F2OnRadio onClick=onRadioClicked("23F2") />
+off:<input type="radio"  name=posRadio2  id=cb23F2OffRadio onClick=offRadioClicked("23F2") />
+bad:<input type="radio"  name=posRadio2  id=cb23F2BadRadio onClick=badRadioClicked("23F2") />
+</td></tr>
+<tr><td align=center colspan=3>Field Device Input</td></tr>
+<tr><td>Manual Disconnect</td><td><input type="radio" name=md23F2Radio id=md23F2CloseRadio onClick=manualDisconnectCloseClicked("23F2") checked />:Closed</td><td> <input type="radio"  name=md23F2Radio id=md23F2OpenRadio onClick=manualDisconnectOpenClicked("23F2")    />:Opened</td></tr>
+<tr><td>Circuit Breaker Lockout</td><td><input type="radio"  name=lockout23F2Radio  id=lockout23F2CloseRadio onClick=lockoutCloseClicked("23F2")  checked    />:Closed</td><td> <input type="radio"  name=lockout23F2Radio  id=lockout23F2OpenRadio onClick=lockoutOpenClicked("23F2")    />:Opened</td></tr>
+<tr><td>Circuit Breaker</td><td><input type="radio"  name=cb23F2Radio  id=cb23F2TripRadio  onClick=circuitBreakerTripClicked("23F2")   />: Tripped</td><td> <input type="radio"  name=cb23F2Radio  id=cb23F2ResetRadio onClick=circuitBreakerResetClicked("23F2")  disabled    />:Reset</td></tr>
+</table>
+
+<table style=width:100%  border=1>
+<tr><td style=background:gainsboro  align=center colspan=4>23F3</td></tr>
+<tr><td><b>POS State</b></td><td colspan=2 >Int:<input type="radio"  name=posRadio3  id=cb23F3IntRadio  onClick=intRadioClicked("23F3")   />
+on:<input checked type="radio"  name=posRadio3  id=cb23F3OnRadio onClick=onRadioClicked("23F3") />
+off:<input type="radio"  name=posRadio3  id=cb23F3OffRadio onClick=offRadioClicked("23F3") />
+bad:<input type="radio"  name=posRadio3  id=cb23F3BadRadio onClick=badRadioClicked("23F3") />
+</td></tr>
+<tr><td align=center colspan=3>Field Device Input</td></tr>
+
+<tr><td>Manual Disconnect</td><td><input type="radio" name=md23F3Radio id=md23F3CloseRadio onClick=manualDisconnectCloseClicked("23F3") checked  />:Closed</td><td> <input type="radio"  name=md23F3Radio id=md23F3OpenRadio onClick=manualDisconnectOpenClicked("23F3")    />:Opened</td></tr>
+<tr><td>Circuit Breaker Lockout</td><td><input type="radio"  name=lockout23F3Radio  id=lockout23F3CloseRadio onClick=lockoutCloseClicked("23F3")  checked    />:Closed</td><td> <input type="radio"  name=lockout23F3Radio  id=lockout23F3OpenRadio onClick=lockoutOpenClicked("23F3")    />:Opened</td></tr>
+<tr><td>Circuit Breaker</td><td><input type="radio"  name=cb23F3Radio  id=cb23F3TripRadio  onClick=circuitBreakerTripClicked("23F3")   />: Tripped</td><td> <input type="radio"  name=cb23F3Radio  id=cb23F3ResetRadio onClick=circuitBreakerResetClicked("23F3")  disabled    />:Reset</td></tr>
+</table>
+</center>
+
+
+
+</div>
+</td>
+<td>
+<div id="svgDiv" style='width:800px;height:500px;'>
+<svg id=mySVG width=800 height=500>
+ <defs><marker id="arrowEndBlue" viewBox="0 0 8000 8000" refX="270" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="blue" stroke-linejoin="bevel">
+<path id="arrowEndPath" stroke="RGB(0,0,0)" stroke-width="5" d="M2 59,293 148,1 243,121 151,Z">
+</path>
+</marker>
+
+</defs>
+
+
+<defs>
+<filter id="dropShadow" width="140" height="240">
+  <feGaussianBlur in="SourceAlpha" stdDeviation="10"/> <!-- stdDeviation is how much to blur -->
+  <feOffset dx="12" dy="10" result="offsetblur"/> <!-- how much to offset -->
+  <feMerge>
+    <feMergeNode/> <!-- this contains the offset blurred image -->
+    <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+  </feMerge>
+</filter>
+</defs>
+  <defs>
+
+<radialGradient id="radialGradientGreen" gradientUnits="userSpaceOnUse" cx="5" cy="100" r="10%">
+<stop stop-color="#FFFFFF" offset="0"/><stop stop-color="green" offset="1"/>
+</radialGradient>
+
+<radialGradient id="radialGradientRed" gradientUnits="userSpaceOnUse" cx="5" cy="100" r="10%">
+<stop stop-color="#FFFFFF" offset="0"/><stop stop-color="red" offset="1"/>
+</radialGradient>
+
+<radialGradient id="radialGradientPos" gradientUnits="userSpaceOnUse" cx="25" cy="25" r="3%">
+<stop stop-color="#FFFFFF" offset="0"/><stop stop-color="green" offset="1"/>
+</radialGradient>
+
+
+
+  </defs>
+  <defs>
+ <rect id="texPOS" fill="none" stroke="none"  x=-100 y=-200 width=200 height=500 />
+
+
+
+  <g id="circuitBreakerOBJ">
+    <line id=disconnectLine x1=0 y1=-190 x2=-14 y2=-110 stroke="black" stroke-width="6" />
+    <line  id=disc2CBLine x1="0" y1="-120" x2=0 y2=0 stroke='blue' stroke-width="12" />
+
+ <circle  r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=-190 />
+ <circle  r="5" fill="white" stroke="black" stroke-width="1" cx=0 cy=-190 />
+  <circle  r="5" fill="black" stroke="black" stroke-width="1" cx=-45 cy=-130 />
+  <circle  r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=-120 />
+
+
+    <rect  id="baseCB"
+       width="100"
+       height="200"
+       fill="url(#radialGradientGreen)"
+       filter="url(#dropShadow)"
+       stroke="black"
+       stroke-width="3"
+       rx="6"
+       ry="6"
+       x="-50"
+       y="-50"
+       onClick="circuitBreakerRemoteResetClicked(evt)"
+        />
+
+ <circle pointer-events="none" r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=-40 />
+ <circle pointer-events="none" r="5" fill="white" stroke="black" stroke-width="1" cx=0 cy=-40 />
+  <circle pointer-events="none"   r="5" fill="black" stroke="black" stroke-width="1" cx=-40 cy=10 />
+  <circle  pointer-events="none" r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=30 />
+  <line pointer-events="none"  id=lockoutCBline x1=0 y1=-40 x2=-14 y2=35 stroke="black" stroke-width="6" />
+ <circle pointer-events="none" r="5" fill="white" stroke="black" stroke-width="1" cx=0 cy=-40 />
+
+
+
+    <line pointer-events="none"  x1=0 y1=30 x2=0 y2=85 stroke="black" stroke-width="4" />
+    <line pointer-events="none"  x1=-20 y1=85 x2=20 y2=85 stroke="black" stroke-width="4" />
+    <line pointer-events="none"   x1=-20 y1=115 x2=20 y2=115 stroke="black" stroke-width="4" />
+    <line pointer-events="none"  id=tripLine x1=-20 y1=85 x2=20 y2=115 stroke="black" stroke-width="4" />
+   <line pointer-events="none"   x1=0 y1=115 x2=0 y2=150 stroke="black" stroke-width="4" />
+  </g>
+
+
+
+  <g id=labelObj class=noselect  ><rect width=90 height=40 fill="gainsboro" stroke="none" rx=5 ry=5 x=-45 y=-20 /><text x=0 y=0 dy=8  font-size="30" text-anchor="middle" fill="black" stroke="none" font-family="arial" /></g>
+
+
+
+  </defs>
+<line x1="0" y1="20" x2=700 y2=20 stroke='blue' stroke-width="6" />
+<line x1="200" y1="20" x2=200 y2=120 stroke='blue' stroke-width="6" />
+<line x1="350" y1="20" x2=350 y2=120 stroke='blue' stroke-width="6" />
+<line x1="500" y1="20" x2=500 y2=120 stroke='blue' stroke-width="6" />
+
+
+<line marker-end="url(#arrowEndBlue)" id=feedLine23F1 x1="200" y1="200" x2=200 y2=490 stroke='blue'  stroke-width="6" />
+<line marker-end="url(#arrowEndBlue)"  id=feedLine23F2  x1="350" y1="200" x2=350 y2=490 stroke='blue' stroke-width="6" />
+<line marker-end="url(#arrowEndBlue)"  id=feedLine23F3  x1="500" y1="200" x2=500 y2=490 stroke='blue'  stroke-width="6" />
+</svg>
+</div><p></p>
+<div style=width:750px;height:160px;background:gainsboro;><center><b>POS States (Circuit Breaker Object Fill Patterns)</b></center>
+<center><table cellpadding=5>
+<tr>
+
+<td align=center>intermediate<br>
+<svg id=posIntermediateSVG width=100 height=100  >
+<rect id=posIntermediateRect
+       width="100"
+       height="100"
+
+       rx="6"
+       ry="6"
+       x="0"
+       y="0"
+
+        />
+</svg>
+</td>
+
+<td align=center>on (none)<br>
+<svg width=100 height=100  >
+<rect
+       width="100"
+       height="100"
+       fill="none"
+       stroke="black"
+       stroke-width="3"
+       rx="6"
+       ry="6"
+       x="0"
+       y="0"
+
+        />
+</svg>
+</td>
+
+
+
+<td align=center>off<br>
+<svg id=posOffSVG  width=100 height=100  >
+<rect  id=posOffRect
+       width="100"
+       height="100"
+
+       rx="6"
+       ry="6"
+       x="0"
+       y="0"
+
+        />
+</svg>
+</td>
+<td align=center>bad<br>
+<svg id=posBadSVG  width=100 height=100  >
+<rect  id=posBadRect
+       width="100"
+       height="100"
+
+       rx="6"
+       ry="6"
+       x="0"
+       y="0"
+
+        />
+</svg>
+</td>
+
+
+</tr>
+
+
+</table></center>
+</div>
+</td>
+</tr></table>
+<div style='text-align:left'><i>Highlighting Remote Selections - An SVG element that can make a selection will include a drop shadow and gradient fill color. SVG elements that only monitor values will not include a drop shadow and will have a solid fill color.</i></div>
+  <br />SVG Source:
+  <div id=svgSourceDiv style=overflow:auto;width:100%;height:1px;text-align:left; /></div>
+  Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:100%;height:300px;text-align:left; /></div><p></p>
+</center>
+<script id=myScript>
+
+
+var cbStatus=[]  //----cbStatus[label]=[manualDisconnectClosed(t/f), lockoutDisconnectClosed(t/f), cbTripOpened(t/f), cbResetClosed(t/f)]
+
+var cbObjArray=[]
+//---cbObjArray[]=[label,locX,locY,scale]
+cbObjArray[0]=["23F1",200,200,.5]
+cbObjArray[1]=["23F2",350,200,.5]
+cbObjArray[2]=["23F3",500,200,.5]
+
+var AlarmIntervalTimer //---all alarms 'pulse' at the same time---
+//----create textures for POS-----------
+//---onload---
+var TexOff
+var TexIntermediate
+var TexBad
+function buildTexturesPOS()
+{
+    TexIntermediate=textures.paths()
+    .d("waves")
+    .stroke("violet");
+
+    TexOff=textures.paths()
+    .d("crosses")
+    .size(80)
+    .thicker()
+    .stroke("red");
+
+    TexBad=textures.paths()
+    .d("caps")
+    .size(80)
+    .thicker()
+    .stroke("black")
+
+    var svg=d3.select("#mySVG")
+    svg.call(TexIntermediate);
+    svg.call(TexOff);
+    svg.call(TexBad);
+
+ //----example rects-------------
+    var svgInt=d3.select("#posIntermediateSVG")
+    svgInt.call(TexIntermediate);
+    var rectInt=d3.select("#posIntermediateRect")
+    rectInt.attr("fill",TexIntermediate.url())
+
+    var svgOff=d3.select("#posOffSVG")
+    svgOff.call(TexOff);
+    var rectOff=d3.select("#posOffRect")
+    rectOff.attr("fill",TexOff.url())
+
+    var svgBad=d3.select("#posBadSVG")
+    svgBad.call(TexBad);
+    var rectBad=d3.select("#posBadRect")
+    rectBad.attr("fill",TexBad.url())
+
+}
+//---onload: translate/scale button(its center Point) as desired---
+ //----cbStatusArray[label,manualDisconnectClosed(t/f), lockoutDisconnectClosed(t/f), cbTripOpened(t/f), cbResetClosed(t/f)]
+function createCircuitBreakers()
+{
+
+    for(var k=0;k<cbObjArray.length;k++)
+    {
+        var labelName=cbObjArray[k][0]
+
+        var texturePOS= document.getElementById("texPOS").cloneNode(true)
+        texturePOS.setAttribute("id","pos"+labelName)
+        mySVG.appendChild(texturePOS)
+
+
+        var cbG=circuitBreakerOBJ.cloneNode(true)
+
+        cbG.setAttribute("labelName",labelName)
+        cbG.setAttribute("id","cb"+labelName)
+
+        mySVG.appendChild(cbG)
+        var bb=cbG.getBBox()
+        var cx=bb.x+.5*bb.width
+        var cy=bb.y+.5*bb.height
+
+        var locX=cbObjArray[k][1]
+        var locY=cbObjArray[k][2]
+        var scale=cbObjArray[k][3]
+        var transX=locX-cx*scale
+        var transY=locY-cy*scale
+        cbG.setAttribute("transform","translate("+(transX)+" "+(transY)+")scale("+scale+")")
+         cbStatus.push({label:labelName,manualDisconnectClosed:true,lockoutDisconnectClosed:true,cbTripOpened:false,cbResetClosed:false})
+        texturePOS.setAttribute("transform","translate("+(transX)+" "+(transY)+")scale("+scale+")")
+
+        //---add Label
+        var label=labelObj.cloneNode(true)
+        label.setAttribute("id","label"+labelName)
+        console.log( label.lastChild)
+        label.lastChild.textContent=labelName
+        label.setAttribute("transform","translate("+(locX)+" "+(locY+140)+")")
+        mySVG.appendChild(label)
+
+    }
+
+
+}
+
+//----Select 'Local' States: radio button select----
+function manualDisconnectCloseClicked(labelName)
+{
+    var cbObj=document.getElementById("cb"+labelName)
+    var elems=cbObj.childNodes
+    for(var k=0;k<elems.length;k++)
+    {
+        var elem=elems.item(k)
+        if(elem.nodeName!="#text")
+        {
+
+            if(elem.getAttribute("id")=="disconnectLine")
+            {
+                elem.setAttribute("x2",-14)
+                elem.setAttribute("y2",-110)
+            }
+
+            if(elem.getAttribute("id")=="disc2CBLine")
+            {
+                   elem.removeAttribute("stroke-dasharray")
+            }
+        }
+
+    }
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName)
+        {
+            cbStatus[k].manualDisconnectClosed=true
+            var feeder=document.getElementById("feedLine"+labelName)
+            if(cbStatus[k].lockoutDisconnectClosed==true )
+                feeder.removeAttribute("stroke-dasharray")
+            break;
+        }
+
+    }
+}
+function manualDisconnectOpenClicked(labelName)
+{
+    var cbObj=document.getElementById("cb"+labelName)
+    var elems=cbObj.childNodes
+    for(var k=0;k<elems.length;k++)
+    {
+        var elem=elems.item(k)
+        if(elem.nodeName!="#text")
+        {
+
+            if(elem.getAttribute("id")=="disconnectLine")
+            {
+                elem.setAttribute("x2",-40)
+                elem.setAttribute("y2",-120)
+            }
+
+            if(elem.getAttribute("id")=="disc2CBLine")
+            {
+                elem.setAttribute("stroke-dasharray","10 10")
+            }
+
+        }
+
+    }
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName)
+        {
+            cbStatus[k].manualDisconnectClosed=false
+            break;
+        }
+    }
+
+    var feeder=document.getElementById("feedLine"+labelName)
+    feeder.setAttribute("stroke-dasharray","10 10")
+}
+function lockoutCloseClicked(labelName)
+{
+    var cbObj=document.getElementById("cb"+labelName)
+    var elems=cbObj.childNodes
+    for(var k=0;k<elems.length;k++)
+    {
+        var elem=elems.item(k)
+        if(elem.nodeName!="#text")
+        {
+            if(elem.getAttribute("id")=="lockoutCBline")
+            {
+            elem.setAttribute("x2",-14)
+            elem.setAttribute("y2",35)
+            }
+        }
+    }
+
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName)
+        {
+            cbStatus[k].lockoutDisconnectClosed=true
+            var feeder=document.getElementById("feedLine"+labelName)
+            if(cbStatus[k].manualDisconnectClosed==true&&cbStatus[k].cbTripOpened==false )
+                feeder.removeAttribute("stroke-dasharray")
+
+            break;
+        }
+    }
+
+}
+function lockoutOpenClicked(labelName)
+{
+    var cbObj=document.getElementById("cb"+labelName)
+    var elems=cbObj.childNodes
+    for(var k=0;k<elems.length;k++)
+    {
+        var elem=elems.item(k)
+        if(elem.nodeName!="#text")
+        {
+            if(elem.getAttribute("id")=="lockoutCBline")
+            {
+                elem.setAttribute("x2",-40)
+                elem.setAttribute("y2",20)
+            }
+        }
+
+    }
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName)
+        {
+            cbStatus[k].lockoutDisconnectClosed=false
+
+            break;
+        }
+    }
+
+    var feeder=document.getElementById("feedLine"+labelName)
+    feeder.setAttribute("stroke-dasharray","10 10")
+}
+
+
+function circuitBreakerTripClicked(labelName)
+{
+
+    var cbObj=document.getElementById("cb"+labelName)
+    var elems=cbObj.childNodes
+    for(var k=0;k<elems.length;k++)
+    {
+       var elem=elems.item(k)
+       if(elem.nodeName!="#text")
+       {
+          if(elem.getAttribute("id")=="tripLine")
+          {
+             elem.setAttribute("display","none")
+          }
+
+          if(elem.getAttribute("id")=="baseCB")
+          {
+            elem.setAttribute("fill","url(#radialGradientRed)")
+          }
+       }
+    }
+
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName)
+        {
+            cbStatus[k].cbTripOpened=true
+            if(!AlarmIntervalTimer)
+                 AlarmIntervalTimer=setInterval(alarmInterval,500)                              //---init alarm interval---
+            break;
+        }
+    }
+
+    var feeder=document.getElementById("feedLine"+labelName)
+    feeder.setAttribute("stroke-dasharray","10 10")
+
+    var resetRadio=document.getElementById("cb"+labelName+"ResetRadio")
+    resetRadio.disabled=false
+
+}
+function circuitBreakerResetClicked(labelName)
+{
+    var cbObj=document.getElementById("cb"+labelName)
+    var elems=cbObj.childNodes
+    for(var k=0;k<elems.length;k++)
+    {
+        var elem=elems.item(k)
+        if(elem.nodeName!="#text")
+        {
+            if(elem.getAttribute("id")=="tripLine")
+            {
+                elem.setAttribute("display","block")
+
+            }
+
+            if(elem.getAttribute("id")=="baseCB")
+            {
+                elem.setAttribute("fill","url(#radialGradientGreen)")
+
+            }
+        }
+
+    }
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName)
+        {
+            cbStatus[k].cbTripOpened=false
+            var feeder=document.getElementById("feedLine"+labelName)
+            if(cbStatus[k].manualDisconnectClosed==true && cbStatus[k].lockoutDisconnectClosed==true)
+                feeder.removeAttribute("stroke-dasharray")
+
+            break;
+        }
+    }
+
+    var resetRadio=document.getElementById("cb"+labelName+"ResetRadio")
+    resetRadio.disabled=true
+        var allTripsCleared=true
+   for(var k=0;k<cbStatus.length;k++)
+    {
+
+          if(cbStatus[k].cbTripOpened==true)
+          {
+         allTripsCleared=false
+           break
+         }
+
+    }
+
+     if(allTripsCleared==true)
+     {
+        clearInterval(AlarmIntervalTimer)
+        AlarmIntervalTimer=null
+
+     }
+
+
+
+}
+
+//---click on CB 'button'----
+function circuitBreakerRemoteResetClicked(evt)
+{
+    var cbObj=evt.target.parentNode
+    var labelName=cbObj.getAttribute("labelName")
+
+    var tripped=false
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        if(label==labelName&&cbStatus[k].cbTripOpened==true )
+        {
+           tripped=true
+
+            break;
+        }
+    }
+
+
+     if(tripped==true)
+     {
+
+        var elems=cbObj.childNodes
+        for(var k=0;k<elems.length;k++)
+        {
+            var elem=elems.item(k)
+            if(elem.nodeName!="#text")
+            {
+                if(elem.getAttribute("id")=="tripLine")
+                {
+                    elem.setAttribute("display","block")
+
+                }
+
+                if(elem.getAttribute("id")=="baseCB")
+                {
+                    elem.setAttribute("fill","url(#radialGradientGreen)")
+
+                }
+            }
+
+        }
+        for(var k=0;k<cbStatus.length;k++)
+        {
+            var label=cbStatus[k].label
+            if(label==labelName)
+            {
+                cbStatus[k].cbTripOpened=false
+                var feeder=document.getElementById("feedLine"+labelName)
+                if(cbStatus[k].manualDisconnectClosed==true && cbStatus[k].lockoutDisconnectClosed==true)
+                    feeder.removeAttribute("stroke-dasharray")
+
+                break;
+            }
+        }
+
+        var resetRadio=document.getElementById("cb"+labelName+"ResetRadio")
+        resetRadio.disabled=true
+        var tripRadio=document.getElementById("cb"+labelName+"TripRadio")
+          tripRadio.checked=false
+
+        var allTripsCleared=true
+       for(var k=0;k<cbStatus.length;k++)
+        {
+
+              if(cbStatus[k].cbTripOpened==true)
+              {
+             allTripsCleared=false
+               break
+             }
+
+        }
+
+         if(allTripsCleared==true)
+         {
+            clearInterval(AlarmIntervalTimer)
+            AlarmIntervalTimer=null
+
+         }
+
+    }
+
+}
+
+var AlarmFill
+//===all alarms 'pulse' simultaneously---
+function alarmInterval()
+{
+
+   if(!AlarmFill)
+    AlarmFill="url(#radialGradientRed)"
+
+    for(var k=0;k<cbStatus.length;k++)
+    {
+        var label=cbStatus[k].label
+        var cbG=document.getElementById("cb"+label)
+        var cbRect=cbG.getElementsByTagName("rect")[0]
+        if(cbStatus[k].cbTripOpened==true )
+           cbRect.setAttribute("fill",AlarmFill)
+
+    }
+
+   if(AlarmFill=="url(#radialGradientRed)")
+    AlarmFill="red"
+    else
+    AlarmFill="url(#radialGradientRed)"
+}
+
+//============================POS State Selections====================================
+function intRadioClicked(labelName)
+{
+
+          var textureRect=d3.select("#pos"+labelName)
+       textureRect.attr("fill",TexIntermediate.url())
+       textureRect.attr("stroke","violet")
+       textureRect.attr("stroke-width",3)
+
+
+
+}
+function onRadioClicked(labelName)
+{
+     var textureRect=d3.select("#pos"+labelName)
+      textureRect.attr("fill","none")
+       textureRect.attr("stroke","none")
+
+}
+function offRadioClicked(labelName)
+{
+      var textureRect=d3.select("#pos"+labelName)
+       textureRect.attr("fill",TexOff.url())
+       textureRect.attr("stroke","red")
+       textureRect.attr("stroke-width",3)
+
+
+}
+function badRadioClicked(labelName)
+{
+        var textureRect=d3.select("#pos"+labelName)
+       textureRect.attr("fill",TexBad.url())
+       textureRect.attr("stroke","black")
+       textureRect.attr("stroke-width",3)
+
+
+
+}
+
+
+
+
+</script>
+<script>
+document.addEventListener("onload",init(),false)
+function init()
+{
+
+     buildTexturesPOS()
+    createCircuitBreakers()
+
+   	showSourceSVG()
+	showSourceJS()
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

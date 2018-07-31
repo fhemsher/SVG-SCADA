@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Trend Gauge Object</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script src="../../d3.v4.min.js"></script>
+
+
+<style type="text/css">
+<!--
+.grid line {
+  stroke: lightgrey;
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
+
+.grid path {
+  stroke-width: 0;
+}
+-->
+</style>
+</head>
+<body style='padding:10px;font-family:arial'>
+<center>
+<h4>Trend Gauge Object</h4>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+This is a rectangular configurable gauge object with a chart on its face. The chart line transitions smoothly during value changes, using D3 version 4. Also includes digital value, min/max alarm bands , and setpoint line on the chart.
+</div>
+<table><tr>
+<td>
+<div style="padding:10px;width:500px;text-align:left">
+
+
+Place a &lt;g> element in your svg drawing with its id=name and translation request. Note: the translation values
+reference the center of the gauge.<br>
+e.g. &lt;g id="myName" transform="translate(200,200)" />
+<p></p>
+(Each gauge is shown with a simulated change every two(2) seconds)
+<p></p>
+<b>Configuring The Gauge:</b><br />
+buildTrendGauge(name, title, units, timeLine, min, max, minErrorBand, maxErrorBand, width, height, ringColor, faceColor, setPoint)<br>
+1.) name - id name for the gauge. Included in id<br>
+2.) title - shown in gauge  <br>
+3.) units - units of measurement (y-axis) <br>
+4.) timeLine - number of chart time increments (x-axis) <br>
+5.) min - minimum value on gauge (y-axis)<br>
+5.) max - maximum value on gauge (y-axis)<br>
+7.) width - width of the gauge chart<br>
+8.) height - height of the gauge chart<br>
+9.) ringColor -  gauge stroke color<br>
+10.) faceColor - gauge fill color<br>
+11.) setPoint(optional) - the setpoint line value<br>
+12.) maxErrorBand(optional) - orange-to-red band(% of span)<br>
+13.) minErrorBand(optional) -  orange-to-red band(% of span)<br>
+</div>
+</td>
+<td>
+<div id="svgDiv" style='width:400px;height:400px;'>
+<svg id=mySVG width=400 height=400 overflow="visible">
+<g id=gaugeOAT transform='translate(80,100)'/>
+<g id=gaugeHWS transform='translate(300,100)' />
+<g id=gaugePERCENT transform='translate(200,250)'  />
+</svg>
+</div>
+
+</td>
+</tr></table>
+  <br />SVG Source:
+  <div id=svgSourceDiv style=overflow:auto;width:100%;height:1px;text-align:left; /></div>
+  Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:100%;text-align:left; /></div><p></p>
+</center>
+<script id=myScript>
+//======================GAUGE OBJECT========================================
+function buildTrendGauge(name,title,units,timeLine,min,max,minErrorBand,maxErrorBand,width,height,ringColor,faceColor,setPoint)
+{
+
+   var valueSpan=max-min
+   var pxVal =height/valueSpan
+    //---simulation-----
+     Data=[]
+    if(!setPoint)
+    {
+    var dataBand=valueSpan*.5
+      var vy=valueSpan*.1
+    }
+    else
+    {
+    var dataBand=(setPoint-min)
+     var vy=valueSpan*.1
+    }
+    var pmFactor=-1
+    for(var k=0;k<timeLine;k++)
+    {
+      var rv=Math.random()*vy*pmFactor+dataBand+min
+       Data.push(rv)
+       pmFactor=pmFactor*-1
+    }
+     eval("Data"+name+"=Data")
+
+//  X scale will use the index of our data
+var xTimeScale = d3.scaleLinear()
+    .domain([0, timeLine])
+    .range([0, width])
+
+
+var yScale = d3.scaleLinear()
+    .domain([min, max]) // input
+    .range([height, 0]); // output
+
+
+ var gauge=d3.select("#"+name)
+ .attr("id","domGauge"+name)
+
+  // gridlines in x axis function
+function make_x_gridlines() {
+    return d3.axisBottom(xTimeScale)
+}
+
+// gridlines in y axis function
+function make_y_gridlines() {
+    return d3.axisLeft(yScale)
+}
+
+
+var faceRect=gauge.append("rect")
+ .attr("id","faceRect"+name)
+ .attr("stroke","none")
+ .attr("fill",faceColor)
+
+  var defs=gauge.append("defs")
+
+ gauge.append("rect")
+ .attr("id","baseRect"+name)
+ .attr("width",width)
+ .attr("height",height)
+ .attr("stroke","none")
+ .attr("fill","ghostWhite")
+
+ defs.append("clipPath")
+    .attr("id", "clip")
+    .append("rect")
+    .attr("width", width)
+    .attr("height", height)
+ .attr("transform", "translate(12,0)")
+
+// add the X gridlines
+  gauge.append("g")
+      .attr("class", "grid")
+      .attr("transform", "translate(0," + height + ")")
+      .call(make_x_gridlines()
+          .tickSize(-height)
+          .tickFormat("")
+      )
+
+  // add the Y gridlines
+  gauge.append("g")
+      .attr("class", "grid")
+      .call(make_y_gridlines()
+          .tickSize(-width)
+          .tickFormat("")
+      )
+
+
+
+if(maxErrorBand)
+{
+      var warningMax=defs.append("linearGradient")
+      .attr("id","warningMax"+name)
+      .attr("x1","84%")
+      .attr("y1","24%")
+      .attr("x2","82%")
+      .attr("y2","72%")
+    warningMax.append("stop")
+    .attr("offset","0%")
+    .attr("stop-color","#FF0000")
+    .attr("stop-opacity","1")
+    warningMax.append("stop")
+    .attr("offset","100%")
+    .attr("stop-color","#FFA500")
+    .attr("stop-opacity","1")
+    .attr("stop-offset","100%")
+     gauge.append("rect")
+     .attr("id","maxRect"+name)
+     .attr("width",width)
+     .attr("height",height*maxErrorBand/100)
+     .attr("stroke","none")
+     .attr("fill","url(#warningMax"+name+")")
+ }
+
+ if(minErrorBand)
+ {
+      var warningMin=defs.append("linearGradient")
+      .attr("id","warningMin"+name)
+      .attr("x1","84%")
+      .attr("y1","24%")
+      .attr("x2","82%")
+      .attr("y2","72%")
+    warningMin.append("stop")
+    .attr("offset","0%")
+    .attr("stop-color","#FFA500")
+    .attr("stop-opacity","1")
+    .attr("stop-offset","0%")
+    warningMin.append("stop")
+    .attr("offset","100%")
+    .attr("stop-color","#FF0000")
+    .attr("stop-opacity","1")
+
+    gauge.append("rect")
+     .attr("id","minRect"+name)
+     .attr("y",height-height*minErrorBand/100)
+     .attr("width",width)
+     .attr("height",height*minErrorBand/100)
+     .attr("stroke","none")
+     .attr("fill","url(#warningMin"+name+")")
+}
+
+
+ var pxVal =height/valueSpan
+
+ if(setPoint)
+ {
+     var x1=0
+     var y1=(max-setPoint)*pxVal
+     var x2=width
+     var y2=(max-setPoint)*pxVal
+
+    var setPointLine=gauge.append("line")
+     .attr("id","setPointLine"+name)
+     .attr("x1",x1)
+     .attr("y1",y1)
+     .attr("x2",x2)
+     .attr("y2",y2)
+     .attr("stroke","green")
+     .attr("stroke-width","1")
+    .attr("stroke-dasharray","2,2")
+}
+
+// Call the x axis in a group tag
+gauge.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xTimeScale) // Create an axis component with d3.axisBottom
+     .ticks(""))
+
+// Call the y axis in a group tag
+gauge.append("g")
+    .attr("class", "y axis")
+    .call(d3.axisLeft(yScale)
+     .ticks(4))
+
+//--Data and Data Lines/Paths-->
+
+var gaugeLine = d3.line()
+    .x(function(d, i) { return xTimeScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yScale(d); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+ eval("line"+name+"=gaugeLine")
+    // Append the path, bind the data, and call the line generator
+
+gaugePath=gauge.append("path")
+  .attr("clip-path", "url(#clip)")
+    .datum(Data) // 10. Binds data to the line
+    .attr("stroke-width", "1")
+    .attr("stroke", "black")
+    .attr("fill", "none")
+    .attr("d", gaugeLine) // 11. Calls the line generator
+ eval("path"+name+"=gaugePath")
+
+
+var pointer=gauge.append("polygon")
+    .attr("id","pointer"+name)
+    .attr("stroke","pointer")
+    .attr("fill","#000000")
+    .attr("points","8 0 -4 -6.9282 -4 6.9282")
+
+
+
+     var lastValue=Data[Data.length-1].toFixed(0)
+    var valueLabel=gauge.append("text")
+    .attr("id","valueLabel"+name)
+    .attr("fill","black")
+    .attr("dy",".5em")
+    .attr("dx","1em")
+    .text(lastValue +units)
+
+     var titleLabel=gauge.append("text")
+         .attr("text-anchor","middle")
+           .attr("dy","1.3em")
+           .attr("font-size","15px")
+           .attr("font-weight","bold")
+           .attr("fill","black")
+           .attr("y",height)
+           .attr("x",width/2)
+           .text(title)
+
+    var pathSplit=gaugePath.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        valueLabel.attr("x",splitX)
+        valueLabel.attr("y",splitY)
+    pointer.attr("transform","translate("+(splitX)+","+splitY+")scale(1.5)")
+
+     var bb=document.getElementById("domGauge"+name).getBBox()
+        var padding=3 //---ring stroke width---
+     faceRect.attr("x",bb.x-padding)
+   faceRect.attr("y",bb.y-padding)
+   faceRect.attr("width",bb.width+2*padding)
+   faceRect.attr("height",bb.height+2*padding)
+
+
+     gauge.append("rect")
+   .attr("x",bb.x-padding)
+   .attr("y",bb.y-padding)
+   .attr("width",bb.width+2*padding)
+   .attr("height",bb.height+2*padding)
+   .attr("stroke",ringColor)
+   .attr("stroke-width","3")
+   .attr("rx","3")
+   .attr("ry","3")
+   .attr("fill","white")
+   .attr("fill-opacity","0")
+   .attr("pointer-events","visible")
+
+}
+
+//==================END GAUGE OBJECT======================================
+
+
+//---onload this page---
+function createGauges() //----this application configuration----
+{
+    //buildTrendGauge(name,title,units,timeLine,min,max,minErrorBand,maxErrorBand,width,height,ringColor,faceColor,setPoint)
+    buildTrendGauge("gaugeOAT", "Outside Air Temperature","\u00B0F",10,-20,120,false,false,130,80,"#9400d3","#adff2f",false);
+    buildTrendGauge("gaugeHWS", "Hot Water Supply","\u00B0F",10,80,220,false,20,130,80,"#0000cd","#b0e0e6",140);
+    buildTrendGauge("gaugePERCENT", "Output Value","\u0025",10,0,100,false,false,130,80,"#d2691e","#deb887",false);
+
+    setInterval(changeOAT,1500)
+    setInterval(changeHWS,2000)
+    setInterval(changePERCENT,2500)
+
+}
+
+
+var DatagaugeOAT
+var DatagaugeHWS
+var DatagaugePERCENT
+var pathgaugeOAT
+var pathgaugeHWS
+var pathgaugePERCENT
+var linegaugeOAT
+var linegaugeHWS
+var linegaugePERCENT
+
+function changeTrendGauge(Data,line,path,name,units,width,timeLine)
+{
+
+    Data[Data.length]=Data[0]
+
+    var lastValue=Data[Data.length-1].toFixed(0)
+
+    var pointer=d3.select("#pointer"+name)
+    var valueLabel=d3.select("#valueLabel"+name)
+
+    path.attr("d", line)
+    .attr("transform", null);
+
+   path.transition().duration(850).attr("transform", "translate(" + (-width/timeLine) + ",0)")
+
+    var pathSplit=path.attr("d").split(",")
+    var splitX=pathSplit[pathSplit.length-2]
+    var splitY=pathSplit[pathSplit.length-1]
+
+    valueLabel.transition().duration(850).attr("y",splitY)
+    valueLabel.text(lastValue +units)
+
+    var transX=pointer.attr("transform").split("translate(")[1].split(",")[0]
+    pointer.transition().duration(850).attr("transform","translate("+(transX)+","+splitY+")scale(1.5)")
+     Data.shift()
+}
+
+function changeOAT()
+{
+    changeTrendGauge(DatagaugeOAT,linegaugeOAT,pathgaugeOAT,"gaugeOAT","\u00B0F",130,10)
+}
+function changeHWS()
+{
+    changeTrendGauge(DatagaugeHWS,linegaugeHWS,pathgaugeHWS,"gaugeHWS","\u00B0F",130,10)
+}
+function changePERCENT()
+{
+    changeTrendGauge(DatagaugePERCENT,linegaugePERCENT,pathgaugePERCENT,"gaugePERCENT","\u0025",130,10)
+}
+</script>
+<script>
+document.addEventListener("onload",init(),false)
+function init()
+{    createGauges()
+   	showSourceSVG()
+	showSourceJS()
+}
+
+
+</script>
+
+
+</body>
+
+</html>

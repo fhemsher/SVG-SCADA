@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Substation Digital Panel - Firefox Problem</title>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style='padding:10px;font-family:arial'>
+<center>
+<h4>Substation Digital Panel - Firefox Problem</h4>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+Create a substation panel showing AMPS(A, B, C, N)  and MW, MVAR, MVA. Values displayed are digital values transmitted from a sensor.
+<p></p>
+<b><i>Firefox HTML Corrupted</i> - It looses the ability to render in the HTML page parent table.</b>
+
+
+</div>
+<table>
+
+<tr>
+<td>
+<div style="padding:10px;width:400px;text-align:justify">
+
+<b>Scenerio:</b><br />
+This was created as an SVG <b>foreignObject</b>. Therefore it provides an efficient means of automatically aligning elements via the HTML table element, rather than attempting to
+position each element in the SVG drawing, which can be tedious. includes a label.<p></p>
+The panel can be easily duplicated and located.
+<p></p>
+Random values are being simulated.
+</div>
+</td>
+<td>
+
+<div id="svgDiv" style='width:800px;height:400px;'>
+<svg id=mySVG overflow=hidden width=800 height=400>
+<defs>
+<foreignObject id=digitalPanelObj x=-110 y=-110 width="220" height="220" >
+<div style="overflow:hidden;width: 220px; height:220px;padding:0px;background:grey;border-radius:20px;" >
+<TABLE cellpadding=0 cellspacing=0 style='border:1px solid black;padding:5px;border-radius:20px;background:silver'>
+<TR>
+<TD>
+    <table style=border-radius:10px;height:200px;background:gainsboro;>
+    <tr><td colspan=2 align=center style='font-weight:bold;font-size:20px;color:blue;font-family:arial'>AMPS</td> </tr>
+    <tr>
+    <td style='font-weight:bold;font-size:20px;color:blue;font-family:arial'>A</td>
+    <td><input onfocus=blur() id=valueA type="text" style='width:80px;background:black;color:lime;font-weight:bold; font-size:30px;font-family:times new roman;' value="8888" /></td>
+    </tr>
+    <tr>
+    <td style='font-weight:bold;font-size:20px;color:blue;font-family:arial'>B</td>
+    <td><input onfocus=blur() id=valueB  type="text" style='width:80px;background:black;color:lime;font-weight:bold; font-size:30px;font-family:times new roman;' value="8888" /></td>
+    </tr>
+    <tr>
+    <td style='font-weight:bold;font-size:25px;color:blue;font-family:arial'>C</td>
+    <td><input onfocus=blur() id=valueC  type="text" style='width:80px;background:black;color:lime;font-weight:bold; font-size:30px;font-family:times new roman;' value="8888" /></td>
+    </tr>
+    <tr>
+    <td style='font-weight:bold;font-size:25px;color:blue;font-family:arial'>N</td>
+    <td><input onfocus=blur() id=valueN  type="text" style='width:80px;background:black;color:lime;font-weight:bold; font-size:30px;font-family:times new roman;' value="8888" /></td>
+    </tr>
+    </table>
+</TD>
+<TD>
+<table style=border-radius:10px;height:200px;background:gainsboro;>
+<tr><td align=center style='font-weight:bold;font-size:20px;color:violet;font-family:arial'>MW
+<br><input onfocus=blur() id=valueMW  type="text" style='width:80px;background:black;color:violet;font-weight:bold; font-size:30px;font-family:times new roman;' value="888.8" />
+</td></tr>
+<tr><td align=center style='font-weight:bold;font-size:20px;color:violet;font-family:arial'>MVAR
+<br><input onfocus=blur() id=valueMVAR  type="text" style='width:80px;background:black;color:violet;font-weight:bold; font-size:30px;font-family:times new roman;' value="888.8" />
+</td></tr>
+<tr><td align=center style='font-weight:bold;font-size:20px;color:violet;font-family:arial'>MVA
+<br><input onfocus=blur() id=valueMVA  type="text" style='width:80px;background:black;color:violet;font-weight:bold; font-size:30px;font-family:times new roman;' value="888.8" />
+</td></tr>
+</table>
+</TD>
+</TR>
+<TR><TD COLSPAN=2 ALIGN=CENTER></TD></TR>
+</TABLE>
+</div><P></P><CENTER><DIV  STYLE='WIDTH:80PX;FONT-WEIGHT:BOLD;FONT-SIZE:30PX;COLOR:WHITE;PADDING:5PX;BACKGROUND:DARKKHAKI'>T2</DIV></CENTER>
+</foreignObject>
+<defs>
+</svg>
+</div>
+
+</td>
+</tr></table>
+  <br />SVG Source:
+  <div id=svgSourceDiv style=overflow:auto;width:100%;height:1px;text-align:left; /></div>
+  Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:100%;height:300px;text-align:left; /></div><p></p>
+</center>
+<script id=myScript>
+
+var panelConfigArray=[]
+//panelConfigArray[]=["Label",transX,transY,scale]
+panelConfigArray[0]=["23F1",200,200,.8]
+panelConfigArray[1]=["23F2",400,200,.8]
+panelConfigArray[2]=["23F3",600,200,.8]
+
+//---onload----
+function createDigitalPanels()
+{
+    for(var k=0;k<panelConfigArray.length;k++)
+    {
+        var digitalPanel=digitalPanelObj.cloneNode(true)
+        var label=panelConfigArray[k][0]
+        digitalPanel.setAttribute("id","digitalPanel"+label)
+        var inputs=digitalPanel.getElementsByTagName("input")
+        inputs[0].setAttribute("id","Avalue"+label)
+        inputs[1].setAttribute("id","Bvalue"+label)
+        inputs[2].setAttribute("id","Cvalue"+label)
+        inputs[3].setAttribute("id","Nvalue"+label)
+        inputs[4].setAttribute("id","MWvalue"+label)
+        inputs[5].setAttribute("id","MVARvalue"+label)
+        inputs[6].setAttribute("id","MVAvalue"+label)
+
+        var labelDiv=digitalPanel.getElementsByTagName("div")[1]
+        labelDiv.innerHTML=label
+        var transX=panelConfigArray[k][1]
+        var transY=panelConfigArray[k][2]
+        var scale=panelConfigArray[k][3]
+        digitalPanel.setAttribute("transform","translate("+transX+" "+transY+")scale("+scale+")")
+        mySVG.appendChild(digitalPanel)
+    }
+
+}
+</script>
+<script>
+function randomValues()
+{
+    for(var k=0;k<panelConfigArray.length;k++)
+    {
+        var label=panelConfigArray[k][0]
+
+        document.getElementById("Avalue"+label).value=rand10000()
+        document.getElementById("Bvalue"+label).value=rand10000()
+        document.getElementById("Cvalue"+label).value=rand10000()
+        document.getElementById("Nvalue"+label).value=rand10000()
+        document.getElementById("MWvalue"+label).value=rand1000().toFixed(1)
+        document.getElementById("MVARvalue"+label).value=rand1000().toFixed(1)
+        document.getElementById("MVAvalue"+label).value=rand1000().toFixed(1)
+
+    }
+
+}
+
+function rand10000()
+{
+   return Math.floor(Math.random() * 6000) + 3500
+
+}
+function rand1000()
+{
+   return Math.random() * 600 + 350
+
+}
+document.addEventListener("onload",init(),false)
+function init()
+{   createDigitalPanels()
+
+    setInterval(randomValues,3500)
+}
+
+</script>
+
+
+</body>
+
+</html>

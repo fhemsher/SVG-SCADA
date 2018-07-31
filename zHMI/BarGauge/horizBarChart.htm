@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <title>Bar Gauge Object</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script src="../../d3.v4.min.js"></script>
+
+
+<style type="text/css">
+.bar { fill: steelblue; }
+
+-->
+</style>
+</head>
+
+
+
+
+
+
+
+
+<style>
+
+
+
+</style>
+<body>
+
+<table border=1>
+<tr>
+<td>1.) Title</td>
+<td><input id=titleValue type="text" style=width:200px; value="Outside Air Temperature" /></td>
+</tr>
+<tr>
+<td>2.) Units</td>
+<td><input id=unitValue type="text" style=width:200px; value="degrees .F" /></td>
+</tr>
+<tr>
+<td>3.) Min</td>
+<td><input id=minValue type="text" style=width:200px; value="-20" /></td>
+</tr>
+<tr>
+<td>4.) Max</td>
+<td><input id=maxValue type="text" style=width:200px; value="120" /></td>
+</tr>
+<tr>
+<td>5.) Gauge Width</td>
+<td><input id=gaugeWidthValue type="text" style=width:200px; value="300" /></td>
+</tr>
+<tr>
+<td>6.)Gauge height</td>
+<td><input id=gaugeHeightValue type="text" style=width:200px; value="80" /></td>
+</tr>
+<tr>
+<td>7.) bar color</td>
+<td><input id=barColorValue type="text" style=width:200px; /></td>
+</tr>
+<tr>
+<td>8.) Face Color</td>
+<td><input id=faceColorValue type="text" style=width:200px; value="skyblue" /></td>
+</tr>
+<tr>
+<td>9.) Setpoint (optional)</td>
+<td><input id=setPointValue type="text" style=width:200px; value="58" /></td>
+</tr>
+<tr>
+<td>10.) maxErrorBand(optional)</td>
+<td><input id=maxErrorBandValue type="text" style=width:200px; value="20" />%</td>
+</tr>
+<tr>
+<td>11.) minErrorBand(optional)</td>
+<td><input id=minErrorBandValue type="text" style=width:200px; value="15" />%</td>
+</tr>
+<tr>
+<td>12.) Initial Value</td>
+<td><input id=initValue type="text" style=width:200px; value="98" /></td>
+</tr>
+<tr>
+<td>13.) scale</td>
+<td><input id=scaleValue type="text" style=width:200px; value=".8" /></td>
+</tr>
+
+
+</table>
+
+
+<div id=svgDiv style=width:500px;height:400px>
+<svg id=mySVG width=500 height=400 >
+<g id=barGaugeG font-size="14" transform="translate(50,60)" >
+<defs>
+<linearGradient id="warningMax" y1="84%" x1="24%" y2="82%" x2="72%" >
+     <stop offset="0" stop-color="#FFA500" stop-opacity="1" />
+     <stop offset="100%" stop-color="#FF0000" stop-opacity="1" stop-offset="100%" />
+ </linearGradient>
+<linearGradient id="warningMin" y2="84%" x2="24%" y1="82%" x1="72%" >
+     <stop offset="0" stop-color="#FFA500" stop-opacity="1" />
+     <stop offset="100%" stop-color="#FF0000" stop-opacity="1" stop-offset="100%" />
+ </linearGradient>
+</defs>
+</g>
+
+</svg>
+
+</div>
+  <br />SVG Source:
+  <div id=svgSourceDiv style=overflow:auto;width:100%;height:1px;text-align:left; /></div>
+  Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:100%;text-align:left; /></div><p></p>
+
+<script id=myScript type="text/javascript">
+var title=titleValue.value
+var units=unitValue.value
+var min=+minValue.value
+var max=+maxValue.value
+var gaugeWidth=+gaugeWidthValue.value
+var gaugeHeight=+gaugeHeightValue.value
+var barColor=barColorValue.value
+var faceColor=faceColorValue.value
+var setPoint=+setPointValue.value
+var maxErrorBand=maxErrorBandValue.value
+var minErrorBand=minErrorBandValue.value
+if(maxErrorBandValue.value!="")
+ maxErrorBand=+maxErrorBandValue.value/100
+if(minErrorBandValue.value!="")
+ minErrorBand=+minErrorBandValue.value/100
+var initialValue=+initValue.value
+var scale=+scaleValue.value
+
+
+//---value into min/max alarm band----
+function alarmPulse()
+{
+    if(+gaugeBar.getAttribute("opacity")==1)
+      gaugeBar.setAttribute("opacity",.5)
+     else
+      gaugeBar.setAttribute("opacity",1)
+
+}
+
+function buildBarGauge(title,units,min,max,gaugeWidth,gaugeHeight,barColor,faceColor,setPoint,maxErrorBand,minErrorBand,initialValue,scale)
+{
+    var myGauge=d3.select("#barGaugeG")
+    var gaugeRect=myGauge.append("rect")
+    .attr("width",gaugeWidth)
+    .attr("height",gaugeHeight)
+    .attr("fill",faceColor)
+    .attr("rx","5")
+    .attr("ry","5")
+    .attr("stroke","black")
+    .attr("stroke-width",1)
+
+   var myTitle=myGauge.append("text")
+   .text(title)
+   .attr("x",gaugeWidth/2)
+   .attr("dy","1em")
+   .attr("font-family","arial")
+   .attr("font-weight","bold")
+   .attr("text-anchor","middle")
+
+   var myUnits=myGauge.append("text")
+   .text(initialValue+" "+units)
+   .attr("x",gaugeWidth/2)
+   .attr("y",gaugeHeight)
+   .attr("dy","-.5em")
+   .attr("font-family","arial")
+   .attr("text-anchor","middle")
+
+
+   var lrPadding=20
+
+
+
+   var barHeight=gaugeHeight/4
+   var barWidth=gaugeWidth-2*lrPadding
+
+      //---bgRect
+     myGauge.append("rect")
+      .attr("id", "barBgRect")
+     // .attr("x", function(d) { return x(d.sales); })
+      .attr("y", barHeight )
+      .attr("x", lrPadding )
+      .attr("width", barWidth )
+      .attr("fill", "gainsboro")
+      .attr("height",barHeight);
+
+
+
+   var xBar = d3.scaleLinear()
+          .range([0, barWidth]);
+
+      xBar.domain([min, max])
+
+     var minMaxSpan=Math.abs(min) +Math.abs(max)
+    var valueSpan=initialValue+Math.abs(min)
+     var valueWidth=barWidth*valueSpan/minMaxSpan
+
+      console.log(valueWidth)
+    myGauge.append("rect")
+      .attr("id", "gaugeBar")
+      .attr("class", "bar")
+      .attr("opacity", "1")
+     .attr("width", 0 )
+      .transition().duration(800)
+      .attr("width", valueWidth )
+.attr("y", barHeight )
+      .attr("x", lrPadding )
+            .attr("height", barHeight);
+
+
+  //----alarm----------------------------
+
+  if(maxErrorBand!="")
+  {
+        myGauge.append("rect")
+     .attr("id","maxErrorRect")
+     .attr("x",barWidth-barWidth*maxErrorBand+lrPadding)
+     .attr("y",barHeight+barHeight/3)
+     .attr("width",barWidth*maxErrorBand)
+     .attr("height",barHeight/3)
+     .attr("stroke","none")
+     .attr("fill","url(#warningMax)")
+}
+
+ if(minErrorBand!="")
+  {
+        myGauge.append("rect")
+     .attr("id","minErrorRect")
+     .attr("x",lrPadding)
+     .attr("y",barHeight+barHeight/3)
+     .attr("width",barWidth*minErrorBand)
+     .attr("height",barHeight/3)
+     .attr("stroke","none")
+     .attr("fill","url(#warningMin)")
+  }
+
+
+
+   //-----------setpoint line------------
+      var setPoint=58
+      var span=setPoint+Math.abs(min)
+     var setPointX=barWidth*span/(Math.abs(min)+Math.abs(max))+lrPadding
+     dash=barHeight/5
+
+
+       myGauge.append("line")
+      .attr("id", "lineSP")
+      .attr("x1",setPointX)
+      .attr("y1", barHeight)
+      .attr("x2", setPointX)
+      .attr("y2", barHeight*2)
+      .attr("stroke", "lime")
+      .attr("stroke-width", 2)
+      .attr("stroke-dasharray", dash+","+dash)
+
+         // add the x Axis
+  myGauge.append("g")
+  .style("font-size",10)
+      .attr("transform", "translate("+lrPadding+"," + barHeight*2 + ")")
+      .call(d3.axisBottom(xBar));
+
+  //----scale---
+var matrix = barGaugeG.transform.baseVal.consolidate().matrix;
+        matrix.a=scale
+        matrix.d=scale
+        barGaugeG.transform.baseVal.consolidate().matrix;
+
+}
+buildBarGauge(title,units,min,max,gaugeWidth,gaugeHeight,barColor,faceColor,setPoint,maxErrorBand,minErrorBand,initialValue,scale)
+
+
+
+</script>
+
+<script>
+
+// set the dimensions and margins of the graph
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 360 - margin.left - margin.right,
+    height = 15
+
+// set the ranges
+//var y = d3.scaleBand()
+         // .range([height, 0])
+          //.padding(0.1);
+
+var x = d3.scaleLinear()
+          .range([0, width]);
+
+// append the svg object to the body of the page
+// append a 'group' element to 'svg'
+// moves the 'group' element to the top left margin
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+
+
+  // Scale the range of the data in the domains
+  x.domain([-20, 120])
+ // y.domain(data.map(function(d) { return d.salesperson; }));
+  //y.domain([0, d3.max(data, function(d) { return d.sales; })]);
+
+  // append the rectangles for the bar chart
+    var value=115
+    var span=value+20
+     var barWidth=width*span/140
+    //---bgRect
+     svg.append("rect")
+      .attr("id", "bgRect")
+     // .attr("x", function(d) { return x(d.sales); })
+      .attr("width", width )
+      .attr("fill", "gainsboro")
+      .attr("height",height);
+
+     //---maxAlarm---------
+     var defs=svg.append("defs")
+
+
+
+
+
+
+
+     var maxErrorBand=.15  //percent span---
+     var minErrorBand=.05  //percent span---
+
+
+
+
+
+    svg.append("rect")
+      .attr("id", "Bar")
+      .attr("class", "bar")
+      .attr("opacity", "1")
+     .attr("width", 0 )
+      .transition().duration(800)
+      .attr("width", barWidth )
+      //.attr("y", function(d) { return y(d.salesperson); })
+      .attr("height", height);
+
+        svg.append("rect")
+     .attr("id","maxRect")
+     .attr("x",width-width*maxErrorBand)
+     .attr("y",height/3)
+     .attr("width",width*maxErrorBand)
+     .attr("height",height/3)
+     .attr("stroke","none")
+     .attr("fill","url(#warningMax)")
+
+        svg.append("rect")
+     .attr("id","minRect")
+     .attr("x",0)
+     .attr("y",height/3)
+     .attr("width",width*minErrorBand)
+     .attr("height",height/3)
+     .attr("stroke","none")
+     .attr("fill","url(#warningMin)")
+
+
+    //-----------setpoint line------------
+      var setPoint=58
+      var span=58+20
+     var setPointX=width*span/140
+     dash=height/10
+
+
+       svg.append("line")
+      .attr("id", "lineSP")
+      .attr("x1",setPointX)
+      .attr("y1", 0)
+      .attr("x2", setPointX)
+      .attr("y2", height)
+      .attr("stroke", "lime")
+      .attr("stroke-width", 3)
+      .attr("stroke-dasharray", dash+","+dash)
+
+
+
+  // add the x Axis
+  svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+  // add the y Axis
+ // svg.append("g")
+      //.call(d3.axisLeft(y));
+
+
+</script>
+<script>
+document.addEventListener("onload",init(),false)
+function init()
+{
+   	showSourceSVG()
+	showSourceJS()
+  // setInterval(alarmPulse,500)
+}
+
+
+</script>
+
+
+</body>

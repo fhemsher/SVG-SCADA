@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Button  Object w/ Analog Gauge</title>
+  <script type="text/javascript" src="../../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../../highlightCode.js"></script>
+  <link href='../../../highlight.css' rel='stylesheet' />
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+ <style type="text/css">
+    rect[role="button"] { fill: red; }
+    rect[aria-pressed="true"] { fill: green; }
+    /* rect:hover { fill: blue; } */
+  .noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+       unselectable="on"
+ onselectstart="return false;"
+ onmousedown="return false;"
+}
+
+  </style>
+
+</head>
+<body style='padding:10px;font-family:arial'>
+<center>
+<h4>Button Object w/ Analog Gauge</h4>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+Create an SVG Object of an interactive SVG button. Three(3) button objects are shown with an interactive analog gauge attached to a feeder line leaving the button..
+
+</div>
+<table><tr>
+<td>
+<div class="noselect"  style="padding:10px;width:400px;text-align:justify">
+
+<b>Scenerio:</b><br />
+The user places cursor over the button, then toggels the button to ON(green) or OFF(red).
+The button displays "ON" or "OFF" text. When 'ON' is selected it activates the analog gauge (simulated values).
+<p></p>
+
+A 'feed' line leaving the bottom of button displays as dashed/red for OFF  and solid/green for ON. (It is
+intended to connect to an image representing where the feed connects.)
+
+</div>
+</td>
+<td>
+<div id="svgDiv" style='width:800px;height:500px;'>
+<svg id=mySVG width=800 height=500>
+<defs>
+<filter id="dropShadow" height="40">
+  <feGaussianBlur in="SourceAlpha" stdDeviation="10"/> <!-- stdDeviation is how much to blur -->
+  <feOffset dx="6" dy="10" result="offsetblur"/> <!-- how much to offset -->
+  <feMerge>
+    <feMergeNode/> <!-- this contains the offset blurred image -->
+    <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+  </feMerge>
+</filter>
+</defs>
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3159">
+      <stop
+         id="stop3163"
+         style="stop-color:#000000;stop-opacity:0"
+         offset="0" />
+      <stop
+         id="stop3161"
+         style="stop-color:#000000;stop-opacity:0.5"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3030">
+      <stop
+         id="stop3032"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3034"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="120"
+       y1="10"
+       x2="120"
+       y2="50"
+       id="linearGradient3113"
+       xlink:href="#linearGradient3030"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       cx="120"
+       cy="170"
+       r="100"
+       fx="120"
+       fy="170"
+       id="radialGradient3165"
+       xlink:href="#linearGradient3159"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,-0.72727275,2,0,-220,170)" />
+  </defs>
+  <defs>
+  <g id="buttonOBJ" setText="OFF"
+     cursor="pointer"
+     onkeydown="return buttonEvent(evt);"
+     onclick="return buttonEvent(evt);"
+     >
+    <rect
+       role="button"
+       aria-pressed="false"
+       width="220"
+       height="80"
+       ry="40"
+       x="10"
+       y="10"
+       id="ButtonBase"
+       style="stroke:none"
+       filter="url(#dropShadow)"
+        />
+    <rect
+       width="220"
+       height="80"
+       ry="40"
+       x="10"
+       y="10"
+       id="ButtonGlow"
+       pointer-events="none"
+       style="fill:url(#radialGradient3165);stroke:none"
+       />
+    <text class="noselect"
+       x="120"
+       y="66"
+       id="text3194"
+       pointer-events="none"
+       xml:space="preserve"
+       style="font-size:40px;text-align:center;text-anchor:middle;fill:#000000;stroke:none;font-family:Sans">OFF</text>
+    <text  class="noselect"
+       x="120"
+       y="64.5"
+       id="text3198"
+       pointer-events="none"
+       xml:space="preserve"
+       style="font-size:40px;text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;font-family:Sans">OFF</text>
+    <path
+       d="m 50,15 140,0 c 11.08,0 22.51667,10.914008 20,20 C 208.16563,41.622482 201.08,40 190,40 L 50.00005,40 C 38.92005,40 31.834332,41.622512 30,35 27.483323,25.914009 38.92,15 50,15 z"
+       id="ButtonHighlight"
+       pointer-events="none"
+       style="fill:url(#linearGradient3113)" />
+  </g>
+  <g id=labelObj ><rect width=90 height=40 fill="gainsboro" stroke="none" rx=5 ry=5 x=-45 y=-20 /><text x=0 y=0 dy=8  font-size="30" text-anchor="middle" fill="black" stroke="none" font-family="arial" /></g>
+  </defs>
+  <line x1="0" y1="20" x2=700 y2=20 stroke='green' stroke-width="6" />
+<line x1="200" y1="20" x2=200 y2=150 stroke='green' stroke-width="6" />
+<line x1="350" y1="20" x2=350 y2=150 stroke='green' stroke-width="6" />
+<line x1="500" y1="20" x2=500 y2=150 stroke='green' stroke-width="6" />
+<line id=feedLine23F1 x1="200" y1="160" x2=200 y2=450 stroke='red' stroke-dasharray="15 15" stroke-width="6" />
+<line id=feedLine23F2 x1="350" y1="160" x2=350 y2=450 stroke='red' stroke-dasharray="15 15" stroke-width="6" />
+<line id=feedLine23F3 x1="500" y1="160" x2=500 y2=450 stroke='red' stroke-dasharray="15 15" stroke-width="6" />
+<g id=gauge23F1GaugeContainer transform='translate(150,260)' value="0" />
+<g id=gauge23F2GaugeContainer transform='translate(300,260)' value="0"  />
+<g id=gauge23F3GaugeContainer transform='translate(450,260)' value="0"  />
+</svg>
+</div>
+
+</td>
+</tr></table>
+  <br />SVG Source:
+  <div id=svgSourceDiv style=overflow:auto;width:100%;height:1px;text-align:left; /></div>
+  Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:100%;height:300px;text-align:left; /></div><p></p>
+</center>
+<script id=myScript>
+var audio = new Audio('../buttonClick.mp3');
+
+
+function buttonEvent(event)
+{
+    if ((event.type == "click" && event.button == 0) ||
+    (event.type == "keydown" && (event.keyCode == 32 || event.keyCode ==13)))
+    {
+        var target = event.target; /* Should be rectangle ButtonBase */
+        var setText=target.parentNode.getAttribute("setText")
+        var myId=target.parentNode.getAttribute("id")
+
+         var myGauge=gauges["gauge"+myId]
+         console.log(myGauge)
+         var feedLine=document.getElementById("feedLine"+myId)
+
+         audio.play();  //---added button click sound---
+        if(setText=="ON") //---prevent selection 'bounce'---
+        {
+            var setPressed = false;
+            var setText = "OFF";
+            target.parentNode.setAttribute("setText","OFF")
+
+            feedLine.setAttribute("stroke","red")
+            feedLine.setAttribute("stroke-dasharray", "15 15")
+           myGauge.redraw(0, 250)
+                       if(myId=="23F1")
+            clearInterval(IntervalGauge23F1);
+            if(myId=="23F2")
+            clearInterval(IntervalGauge23F2);
+            if(myId=="23F3")
+            clearInterval(IntervalGauge23F3);
+
+
+        }
+        else if ( target.getAttribute("aria-pressed") == "false" )
+        {
+            setPressed = true;
+            var setText = "ON";
+            target.parentNode.setAttribute("setText","ON")
+            feedLine.setAttribute("stroke","green")
+            feedLine.removeAttribute("stroke-dasharray")
+            var value = getRandomValue(myGauge)
+            myGauge.redraw(value, 250)
+            if(myId=="23F1")
+            IntervalGauge23F1=setInterval(updateGauge23F1, 2500);
+            if(myId=="23F2")
+            IntervalGauge23F2=setInterval(updateGauge23F2, 2500);
+            if(myId=="23F3")
+            IntervalGauge23F3=setInterval(updateGauge23F3, 2500);
+        }
+
+
+        //updateGauges()
+        target.setAttribute("aria-pressed", setPressed );
+
+        var parent = target.parentNode;
+        var child = parent.firstChild;
+        while (child != null)
+        {
+            if (child.nodeName == "text" && child.hasChildNodes() )
+            {
+                child.firstChild.nodeValue = setText;
+            }
+            child = child.nextSibling;
+        }
+    }
+}
+
+var buttonObjArray=[]
+//---buttonObjArray[]=[id,locX,locY,scale]
+buttonObjArray[0]=["23F1",200,150,.5]
+buttonObjArray[1]=["23F2",350,150,.5]
+buttonObjArray[2]=["23F3",500,150,.5]
+
+//---onload: translate/scale button(its center Point) as desired---
+function createButtons()
+{
+    for(var k=0;k<buttonObjArray.length;k++)
+    {
+        var buttonG=buttonOBJ.cloneNode(true)
+        var id=buttonObjArray[k][0]
+        buttonG.setAttribute("id",id)
+        mySVG.appendChild(buttonG)
+        var bb=buttonG.getBBox()
+        var cx=bb.x+.5*bb.width
+        var cy=bb.y+.5*bb.height
+
+        var locX=buttonObjArray[k][1]
+        var locY=buttonObjArray[k][2]
+        var scale=buttonObjArray[k][3]
+        var transX=locX-cx*scale
+        var transY=locY-cy*scale
+        buttonG.setAttribute("transform","translate("+(transX)+" "+(transY)+")scale("+scale+")")
+        //---add Label
+        var label=labelObj.cloneNode(true)
+        label.setAttribute("id","label"+id)
+        console.log( label.lastChild)
+        label.lastChild.textContent=id
+        label.setAttribute("transform","translate("+(locX)+" "+(locY+60)+")")
+        mySVG.appendChild(label)
+    }
+}
+
+//======================GAUGES========================================
+//---NOTE: created at https://github.com/thlorenz/d3-gauge plus requires D3 version 4 via:  https://d3js.org/d3.v4.min.js ---
+
+ var gauges = [];
+    var IntervalGauge23F1
+    var IntervalGauge23F2
+    var IntervalGauge23F3
+			function createGauge(name, label, min, max)
+			{
+				var config =
+				{
+					size: 120,
+					label: label,
+					min: undefined != min ? min : 0,
+					max: undefined != max ? max : 100,
+					minorTicks: 5
+				}
+
+				var range = config.max - config.min;
+				config.yellowZones = [{ from: config.min + range*0.75, to: config.min + range*0.9 }];
+				config.redZones = [{ from: config.min + range*0.9, to: config.max }];
+
+				gauges[name] = new Gauge(name + "GaugeContainer", config);
+				gauges[name].render();
+			}
+
+			function createGauges()
+			{
+				createGauge("gauge23F1", "23F1");
+				createGauge("gauge23F2", "23F2");
+				createGauge("gauge23F3", "23F3");
+				//createGauge("test", "Test", -50, 50 );
+			}
+
+
+			function getRandomValue(gauge)
+			{
+				var overflow = 0; //10;
+				return gauge.config.min - overflow + (gauge.config.max - gauge.config.min + overflow*2) *  Math.random();
+			}
+
+			function initializeGauges()
+			{
+				createGauges();
+
+			}
+
+
+
+function updateGauge23F1()
+{
+    var key="gauge23F1"
+    var value = getRandomValue(gauges[key])
+    gauges[key].redraw(value);
+}
+function updateGauge23F2()
+{
+    var key="gauge23F2"
+    var value = getRandomValue(gauges[key])
+    gauges[key].redraw(value);
+}
+function updateGauge23F3()
+{
+    var key="gauge23F3"
+    var value = getRandomValue(gauges[key])
+    gauges[key].redraw(value);
+}
+
+
+function Gauge(placeholderName, configuration)
+{
+	this.placeholderName = placeholderName;
+
+	var self = this; // for internal d3 functions
+
+	this.configure = function(configuration)
+	{
+		this.config = configuration;
+
+		this.config.size = this.config.size * 0.9;
+
+		this.config.raduis = this.config.size * 0.97 / 2;
+		this.config.cx = this.config.size / 2;
+		this.config.cy = this.config.size / 2;
+
+		this.config.min = undefined != configuration.min ? configuration.min : 0;
+		this.config.max = undefined != configuration.max ? configuration.max : 100;
+		this.config.range = this.config.max - this.config.min;
+
+		this.config.majorTicks = configuration.majorTicks || 5;
+		this.config.minorTicks = configuration.minorTicks || 2;
+
+		this.config.greenColor 	= configuration.greenColor || "#109618";
+		this.config.yellowColor = configuration.yellowColor || "#FF9900";
+		this.config.redColor 	= configuration.redColor || "#DC3912";
+
+		this.config.transitionDuration = configuration.transitionDuration || 500;
+	}
+
+	this.render = function()
+	{
+		this.gauge = d3.select("#" + this.placeholderName)
+							.attr("class", "gauge")
+							.attr("width", this.config.size)
+							.attr("height", this.config.size);
+
+		this.gauge.append("svg:circle")
+					.attr("cx", this.config.cx)
+					.attr("cy", this.config.cy)
+					.attr("r", this.config.raduis)
+					.style("fill", "#ccc")
+					.style("stroke", "#000")
+					.style("stroke-width", "0.5px");
+
+		this.gauge.append("svg:circle")
+					.attr("cx", this.config.cx)
+					.attr("cy", this.config.cy)
+					.attr("r", 0.9 * this.config.raduis)
+					.style("fill", "#fff")
+					.style("stroke", "#e0e0e0")
+					.style("stroke-width", "2px");
+
+		for (var index in this.config.greenZones)
+		{
+			this.drawBand(this.config.greenZones[index].from, this.config.greenZones[index].to, self.config.greenColor);
+		}
+
+		for (var index in this.config.yellowZones)
+		{
+			this.drawBand(this.config.yellowZones[index].from, this.config.yellowZones[index].to, self.config.yellowColor);
+		}
+
+		for (var index in this.config.redZones)
+		{
+			this.drawBand(this.config.redZones[index].from, this.config.redZones[index].to, self.config.redColor);
+		}
+
+		if (undefined != this.config.label)
+		{
+			var fontSize = Math.round(this.config.size / 9);
+			this.gauge.append("svg:text")
+						.attr("x", this.config.cx)
+						.attr("y", this.config.cy / 2 + fontSize / 2)
+						.attr("dy", fontSize / 2)
+						.attr("text-anchor", "middle")
+						.text(this.config.label)
+						.style("font-size", fontSize + "px")
+						.style("fill", "#333")
+						.style("stroke-width", "0px");
+		}
+
+		var fontSize = Math.round(this.config.size / 16);
+		var majorDelta = this.config.range / (this.config.majorTicks - 1);
+		for (var major = this.config.min; major <= this.config.max; major += majorDelta)
+		{
+			var minorDelta = majorDelta / this.config.minorTicks;
+			for (var minor = major + minorDelta; minor < Math.min(major + majorDelta, this.config.max); minor += minorDelta)
+			{
+				var point1 = this.valueToPoint(minor, 0.75);
+				var point2 = this.valueToPoint(minor, 0.85);
+
+				this.gauge.append("svg:line")
+							.attr("x1", point1.x)
+							.attr("y1", point1.y)
+							.attr("x2", point2.x)
+							.attr("y2", point2.y)
+							.style("stroke", "#666")
+							.style("stroke-width", "1px");
+			}
+
+			var point1 = this.valueToPoint(major, 0.7);
+			var point2 = this.valueToPoint(major, 0.85);
+
+			this.gauge.append("svg:line")
+						.attr("x1", point1.x)
+						.attr("y1", point1.y)
+						.attr("x2", point2.x)
+						.attr("y2", point2.y)
+						.style("stroke", "#333")
+						.style("stroke-width", "2px");
+
+			if (major == this.config.min || major == this.config.max)
+			{
+				var point = this.valueToPoint(major, 0.63);
+
+				this.gauge.append("svg:text")
+				 			.attr("x", point.x)
+				 			.attr("y", point.y)
+				 			.attr("dy", fontSize / 3)
+				 			.attr("text-anchor", major == this.config.min ? "start" : "end")
+				 			.text(major)
+				 			.style("font-size", fontSize + "px")
+							.style("fill", "#333")
+							.style("stroke-width", "0px");
+			}
+		}
+
+		var pointerContainer = this.gauge.append("svg:g").attr("class", "pointerContainer");
+
+		var midValue = (this.config.min + this.config.max) / 2;
+
+		var pointerPath = this.buildPointerPath(midValue);
+
+		var pointerLine = d3.line()
+									.x(function(d) { return d.x })
+									.y(function(d) { return d.y })
+									.curve(d3.curveBasis);
+
+		pointerContainer.selectAll("path")
+							.data([pointerPath])
+							.enter()
+								.append("svg:path")
+									.attr("d", pointerLine)
+									.style("fill", "#dc3912")
+									.style("stroke", "#c63310")
+									.style("fill-opacity", 0.7)
+
+		pointerContainer.append("svg:circle")
+							.attr("cx", this.config.cx)
+							.attr("cy", this.config.cy)
+							.attr("r", 0.12 * this.config.raduis)
+							.style("fill", "#4684EE")
+							.style("stroke", "#666")
+							.style("opacity", 1);
+
+		var fontSize = Math.round(this.config.size / 10);
+		pointerContainer.selectAll("text")
+							.data([midValue])
+							.enter()
+								.append("svg:text")
+									.attr("x", this.config.cx)
+									.attr("y", this.config.size - this.config.cy / 4 - fontSize)
+									.attr("dy", fontSize / 2)
+									.attr("text-anchor", "middle")
+									.style("font-size", fontSize + "px")
+									.style("fill", "#000")
+									.style("stroke-width", "0px");
+
+		this.redraw(this.config.min, 0);
+	}
+
+	this.buildPointerPath = function(value)
+	{
+		var delta = this.config.range / 13;
+
+		var head = valueToPoint(value, 0.85);
+		var head1 = valueToPoint(value - delta, 0.12);
+		var head2 = valueToPoint(value + delta, 0.12);
+
+		var tailValue = value - (this.config.range * (1/(270/360)) / 2);
+		var tail = valueToPoint(tailValue, 0.28);
+		var tail1 = valueToPoint(tailValue - delta, 0.12);
+		var tail2 = valueToPoint(tailValue + delta, 0.12);
+
+		return [head, head1, tail2, tail, tail1, head2, head];
+
+		function valueToPoint(value, factor)
+		{
+			var point = self.valueToPoint(value, factor);
+			point.x -= self.config.cx;
+			point.y -= self.config.cy;
+			return point;
+		}
+	}
+
+	this.drawBand = function(start, end, color)
+	{
+		if (0 >= end - start) return;
+
+		this.gauge.append("svg:path")
+					.style("fill", color)
+					.attr("d", d3.arc()
+						.startAngle(this.valueToRadians(start))
+						.endAngle(this.valueToRadians(end))
+						.innerRadius(0.65 * this.config.raduis)
+						.outerRadius(0.85 * this.config.raduis))
+					.attr("transform", function() { return "translate(" + self.config.cx + ", " + self.config.cy + ") rotate(270)" });
+	}
+
+	this.redraw = function(value, transitionDuration)
+	{
+		var pointerContainer = this.gauge.select(".pointerContainer");
+
+		pointerContainer.selectAll("text").text(Math.round(value));
+
+		var pointer = pointerContainer.selectAll("path");
+		pointer.transition()
+					.duration(undefined != transitionDuration ? transitionDuration : this.config.transitionDuration)
+					//.delay(0)
+					//.ease("linear")
+					//.attr("transform", function(d)
+					.attrTween("transform", function()
+					{
+						var pointerValue = value;
+						if (value > self.config.max) pointerValue = self.config.max + 0.02*self.config.range;
+						else if (value < self.config.min) pointerValue = self.config.min - 0.02*self.config.range;
+						var targetRotation = (self.valueToDegrees(pointerValue) - 90);
+						var currentRotation = self._currentRotation || targetRotation;
+						self._currentRotation = targetRotation;
+
+						return function(step)
+						{
+							var rotation = currentRotation + (targetRotation-currentRotation)*step;
+							return "translate(" + self.config.cx + ", " + self.config.cy + ") rotate(" + rotation + ")";
+						}
+					});
+	}
+
+	this.valueToDegrees = function(value)
+	{
+		// thanks @closealert
+		//return value / this.config.range * 270 - 45;
+		return value / this.config.range * 270 - (this.config.min / this.config.range * 270 + 45);
+	}
+
+	this.valueToRadians = function(value)
+	{
+		return this.valueToDegrees(value) * Math.PI / 180;
+	}
+
+	this.valueToPoint = function(value, factor)
+	{
+		return { 	x: this.config.cx - this.config.raduis * factor * Math.cos(this.valueToRadians(value)),
+					y: this.config.cy - this.config.raduis * factor * Math.sin(this.valueToRadians(value)) 		};
+	}
+
+	// initialization
+	this.configure(configuration);
+}
+</script>
+<script>
+document.addEventListener("onload",init(),false)
+function init()
+{
+    createButtons()
+    initializeGauges()
+
+   	showSourceSVG()
+	showSourceJS()
+
+}
+
+
+</script>
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88028738-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+
+</html>

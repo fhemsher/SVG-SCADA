@@ -1,0 +1,238 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Auto/Manual Object</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script src="../../d3.v4.min.js"></script>
+</head>
+
+<body onload=buildSlider() style=font-family:arial>
+
+
+
+
+
+
+
+    <div id=autoManualDiv style='display:none;border-radius:10px;background:skyblue;width:200px;border:3px solid gainsboro'>
+<style>
+
+.ticks {
+  font: 10px sans-serif;
+}
+
+.track,
+.track-inset,
+.track-overlay {
+  stroke-linecap: round;
+}
+
+.track {
+  stroke: #000;
+  stroke-opacity: 0.3;
+  stroke-width: 12px;
+}
+
+.track-inset {
+  stroke: #ddd;
+  stroke-width: 8px;
+}
+
+.track-overlay {
+  pointer-events: stroke;
+  stroke-width: 50px;
+  stroke: transparent;
+  cursor: pointer;
+}
+
+.handle {
+
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.25px;
+}
+
+</style>
+
+
+    <table style=width:100%>
+    <tr><td align=right><button style="background:lime;border:4px inset;width:80px" onclick=autoButtonClicked() id=autoButton>Auto</button></td><td><input id=signalInValue  style='border:inset 3px;font-size:110%;text-align:center;font-weight:bold;color:lime;background:black;width:100px' value="50%" type="text" /></td></tr>
+    <tr>
+        <td colspan=2>
+      <svg id=autoManualSVG width=190 height=40 ></svg>
+        </td>
+    </tr>
+    <tr><td align=right><button style='background:darkorange;border:4px outset;width:80px' onclick=manualButtonClicked() id=manualButton>Manual</button></td><td><input id=signalOutValue style='border:inset 3px;font-size:110%;text-align:center;font-weight:bold;color:lime;background:black;width:100px' value="50%" type="text" /></td></tr>
+    </table>
+  </div>
+<script>
+var Override=false
+var Slider
+var Handle
+var TRx
+
+
+
+function createAutoManual(minValue,maxValue,borderColor,faceColor,transX,transY,scale )
+{    var utcms=new Date().getTime()
+    var id="autoManual"+utcms
+
+   var autoManualObj=autoManualDiv.cloneNode(true)
+        autoManualObj.style.display="block"
+        autoManualObj.style.position="absolute"
+        autoManualObj.style.borderColor=borderColor
+        autoManualObj.style.background=faceColor
+        autoManualObj.style.left=transX+"px"
+        autoManualObj.style.top=transY+"px"
+        autoManualObj.style.transform="scale("+scale+")"
+   var mySVG=autoManualObj.getElementsByTagName("svg")[0]
+
+
+   var autoObj="autoButton"+id
+   var manualObj="manualButton"+id
+   var signalInObj="signalInValue"+id
+   var signalOutObj="signalOutValue"+id
+   var handleObj="handle"+id
+   var sliderObj="slider"+id
+
+   var autoButton=autoManualObj.getElementsByTagName("button")[0]
+       autoButton.id=autoObj
+   var manualButton=autoManualObj.getElementsByTagName("button")[1]
+       manualButton.id=manualObj
+   autoButton.setAttribute("onclick","autoButtonClicked("+autoObj+","+manualObj+","+signalInObj+","+signalOutObj+","+handleObj+")")
+   manualButton.setAttribute("onclick","manualButtonClicked("+autoObj+","+manualObj+","+signalInObj+","+signalOutObj+","+handleObj+")")
+   var signalInValue=autoManualObj.getElementsByTagName("input")[0]
+       signalInValue.id=signalInObj
+   var signalOutValue=autoManualObj.getElementsByTagName("input")[1]
+       signalOutValue.id=signalOutObj
+       mySVG.id=id+"SVG"
+
+  document.body.appendChild(autoManualObj)
+var svg = d3.select("#"+id+"SVG")
+
+    width = 160
+    height = 40
+
+TRx = d3.scaleLinear()
+    .domain([minValue, maxValue])
+    .range([0, width])
+    .clamp(true);
+
+Slider = svg.append("g")
+    .attr("id", sliderObj)
+    .attr("class", "slider")
+    .attr("transform", "translate(15 " + height / 2 + ")");
+
+Slider.append("line")
+    .attr("class", "track")
+    .attr("x1", TRx.range()[0])
+    .attr("x2", TRx.range()[1])
+  .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-inset")
+  .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-overlay")
+    .call(d3.drag()
+        .on("start.interrupt", function() { Slider.interrupt(); })
+        .on("start drag", function() { if(Override==true)  slide(TRx.invert(d3.event.x),signalOutObj); }));
+
+Slider.insert("g", ".track-overlay")
+    .attr("class", "ticks")
+    .attr("transform", "translate(0," + 18 + ")")
+  .selectAll("text")
+  .data(TRx.ticks(5))
+  .enter().append("text")
+    .attr("x", TRx)
+    .attr("text-anchor", "middle")
+    .text(function(d) { return d +units; });
+
+Handle = Slider.insert("circle", ".track-overlay")
+    .attr("id", handleObj)
+    .attr("class", "handle")
+    .attr("fill", "white")
+    .attr("r", 9);
+
+
+
+transitionSlider(minValue,maxValue/2,signalOutObj)
+    console.log(autoManualSVG)
+
+}
+
+function slide(h,signalOutObj)
+{
+  Handle.attr("cx", TRx(h));
+  signalOutObj.value=h.toFixed(0) + units;
+}
+
+function transitionSlider(from,to,signalOutObj)
+{
+   Slider.transition()
+    .duration(750)
+    .tween("slide", function() {
+      var i = d3.interpolate(from, to);
+
+         return function(t) { slide(i(t),signalOutObj); };
+
+    });
+
+
+
+}
+
+function autoButtonClicked(autoObj,manualObj,signalInObj,signalOutObj,handleObj)
+{
+     Override=false
+
+
+
+     autoObj.style.border="inset 4px"
+     manualObj.style.border="outset 4px"
+     var from=+signalOutObj.value.split(units)[0]
+     var to=+signalInObj.value.split(units)[0]
+     transitionSlider(from,to)
+    signalInObj.style.color="lime"
+   handleObj.setAttribute("fill","white")
+}
+function manualButtonClicked(autoObj,manualObj,signalInObj,signalOutObj,handleObj)
+{
+   Override=true
+        autoObj.style.border="outset 4px"
+     manualObj.style.border="inset 4px"
+      signalOutObj.style.color="darkorange"
+         handleObj.setAttribute("fill","darkorange")
+            console.log(units)
+         var from=+signalInValue.value.split(units)[0]
+     var to=+signalInObj.value.split(units)[0]
+     transitionSlider(from,to)
+}
+var units="\u0025" //---utf8---
+function buildSlider()
+{
+
+var minValue=0
+var maxValue=100
+
+var borderColor="red"
+var faceColor="skyblue"
+var transX=100
+var transY=200
+var scale=.8
+    createAutoManual(minValue,maxValue,borderColor,faceColor,transX,transY,scale )
+
+
+
+
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

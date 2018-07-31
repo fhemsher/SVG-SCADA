@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Substation Digital Monitoring</title>
+
+<script type="text/javascript" src="../../highlight.pack.js"></script>
+<script type="text/javascript" src="../../highlightCode.js"></script>
+<link href='../../highlight.css' rel='stylesheet' />
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style='padding:10px;font-family:arial'>
+<center>
+<h4>Substation Digital Monitoring</h4>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+An HTML table, within a foreignObject provides an efficient means of automatically aligning HTML input elements, buttons, etc via the HTML table element, rather than attempting to
+position each element in the SVG drawing, which can be tedious.<br>
+<span style=color:red>NOTE: This works well in all browsers, <b><u style=color:black >except Firefox</u></b>. It corrupts the parent HTML.</span>
+
+</div>
+<table><tr>
+<td>
+<div style="padding:10px;width:400px;text-align:justify">
+
+<b>Scenerio:</b><br />
+This substantial and dynamically changing foreignObject includes tables, divs, and input elements. It represents a  substation electrical monitoring panel. The input values
+are randomly created/updated every second.<p></p>
+</div>
+</td>
+<td>
+<div id="svgDiv" style='background-color:lightgreen;width:400px;height:400px;'>
+<svg id="mySVG" width="400" height="400">
+<circle cx=200 cy=200 r=180 fill=red />
+<foreignObject id=digitalPanelObj x=90 y=90 width="220" height="220" >
+<div style="overflow:hidden;width: 220px; height:220px;padding:0px;background:grey;border-radius:20px;" >
+<TABLE cellpadding=0 cellspacing=0 style='border:1px solid black;padding:5px;border-radius:20px;background:silver'>
+<TR>
+<TD>
+    <table style=border-radius:10px;height:200px;background:gainsboro;>
+    <tr><td colspan=2 align=center style='font-weight:bold;font-size:20px;color:blue;font-family:arial'>AMPS</td> </tr>
+    <tr>
+    <td style='font-weight:bold;font-size:20px;color:blue;font-family:arial'>A</td>
+    <td><input onfocus=blur() id=valueA type="text" style='width:80px;background:black;color:lime;font-weight:bold; font-size:30px;font-family:times new roman;' value="8888" /></td>
+    </tr>
+    <tr>
+    <td style='font-weight:bold;font-size:20px;color:blue;font-family:arial'>B</td>
+    <td><input onfocus=blur() id=valueB  type="text" style='width:80px;background:black;color:lime;font-weight:bold; font-size:30px;font-family:times new roman;' value="8888" /></td>
+    </tr>
+    <tr>
+    <td style='font-weight:bold;font-size:25px;color:blue;font-family:arial'>C</td>
+    <td><input onfocus=blur() id=valueC  type="text" style='width:80px;background:black;color:lime;font-weight:bold; font-size:30px;font-family:times new roman;' value="8888" /></td>
+    </tr>
+    <tr>
+    <td style='font-weight:bold;font-size:25px;color:blue;font-family:arial'>N</td>
+    <td><input onfocus=blur() id=valueN  type="text" style='width:80px;background:black;color:lime;font-weight:bold; font-size:30px;font-family:times new roman;' value="8888" /></td>
+    </tr>
+    </table>
+</TD>
+<TD>
+<table style=border-radius:10px;height:200px;background:gainsboro;>
+<tr><td align=center style='font-weight:bold;font-size:20px;color:violet;font-family:arial'>MW
+<br><input onfocus=blur() id=valueMW  type="text" style='width:80px;background:black;color:violet;font-weight:bold; font-size:30px;font-family:times new roman;' value="888.8" />
+</td></tr>
+<tr><td align=center style='font-weight:bold;font-size:20px;color:violet;font-family:arial'>MVAR
+<br><input onfocus=blur() id=valueMVAR  type="text" style='width:80px;background:black;color:violet;font-weight:bold; font-size:30px;font-family:times new roman;' value="888.8" />
+</td></tr>
+<tr><td align=center style='font-weight:bold;font-size:20px;color:violet;font-family:arial'>MVA
+<br><input onfocus=blur() id=valueMVA  type="text" style='width:80px;background:black;color:violet;font-weight:bold; font-size:30px;font-family:times new roman;' value="888.8" />
+</td></tr>
+</table>
+</TD>
+</TR>
+<TR><TD COLSPAN=2 ALIGN=CENTER></TD></TR>
+</TABLE>
+</div><P></P><CENTER><DIV  STYLE='WIDTH:80PX;FONT-WEIGHT:BOLD;FONT-SIZE:30PX;COLOR:WHITE;PADDING:5PX;BACKGROUND:DARKKHAKI'>T2</DIV></CENTER>
+</foreignObject>
+</svg>
+</div>
+
+</td>
+</tr></table>
+  <br />SVG Source:
+<div id=svgSourceDiv style=overflow:auto;width:100%;height:1px;text-align:left; /></div>
+Javascript:
+<div id=jsCodeDiv style=overflow:auto;width:100%;text-align:left; /></div>
+</center>
+<div id='browserDiv' style='padding:5px;position:absolute;top:5px;left:5px;background-color:gainsboro;'>OK in: CH41/Edge/Opera<br /></div>
+<script id=myScript>
+//---onload---
+function randomValues()
+{
+    valueA.value=rand10000()
+    valueB.value=rand10000()
+    valueC.value=rand10000()
+    valueN.value=rand10000()
+    valueMW.value=rand1000().toFixed(1)
+    valueMVAR.value=rand1000().toFixed(1)
+    valueMVA.value=rand1000().toFixed(1)
+}
+
+function rand10000()
+{
+   return Math.floor(Math.random() * 6000) + 3500
+
+}
+function rand1000()
+{
+   return Math.random() * 600 + 350
+
+}
+</script>
+<script>
+document.addEventListener("onload",init(),false)
+function init()
+{
+
+
+showSourceSVG()
+showSourceJS()
+setInterval(randomValues,500)
+}
+</script>
+
+</body>
+
+</html>

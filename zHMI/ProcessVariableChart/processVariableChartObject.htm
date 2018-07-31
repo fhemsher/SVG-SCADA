@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Process Variable Chart  Object</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script src="../../d3.v4.min.js"></script>
+
+
+<style type="text/css">
+<!--
+.grid line {
+  stroke: black;
+  stroke-opacity: 0.5;
+
+}
+
+.grid path {
+  stroke-width: 0;
+}
+
+
+
+.chartLineLeft {
+    fill: none;
+    stroke: DarkViolet;
+    stroke-width: 3;
+}
+.chartLineRight2 {
+    fill: none;
+    stroke: red;
+    stroke-width: 3;
+}
+.chartLineRight1 {
+    fill: none;
+    stroke: blue;
+    stroke-width: 3;
+}
+
+
+
+.axisred line{
+  stroke: red;
+}
+
+.axisred path{
+  stroke: red;
+}
+
+
+.axisBlue line{
+  stroke: blue;
+}
+
+.axisBlue path{
+  stroke: blue;
+}
+
+.axisDarkViolet line{
+  stroke: DarkViolet;
+}
+
+.axisDarkViolet path{
+  stroke: DarkViolet;
+}
+
+
+
+
+-->
+</style>
+</head>
+<body style='padding:10px;font-family:arial'>
+<center>
+<h4>Process Variable Chart Object</h4>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+A configurable object that charts process variables. It plots a continuous strip chart for either 1, 2, or 3 measured variables along a timeline.
+Includes an optional setpoint line for process variable 1.
+</div>
+<table><tr>
+<td>
+<div style="padding:10px;width:500px;text-align:left">
+
+<p></p>
+Simulated values shown every 2 seconds, sliding the strip chart, repesenting 1 minute.<br>
+
+<p></p>
+<b>Configuring the Process Variable Chart:</b><br />
+buildProcessVariableChart(id, title, timeLine, timeLineUnits, faceColor, leftVariable, minLeft, maxLeft, setPointLeft, right1Variable, minRight1, maxRight1, setPointLeft, right2Variable, minRight2, maxRight2,  scale, transX, transY)<br>
+1.) id - your id value<br>
+2.) title - shown in Process Variable Chart  <br>
+3.) timeLine - number of chart time increments (x-axis) <br>
+4.) timeLineUnits - units of time measurement<br>
+5.) faceColor - fill color<br>
+6.)  leftVariable (required) - measured variable name<br>
+7.)  minLeft (required) -     measured variable minimum value<br>
+8.)  maxLeft (required) -      measured variable maximum value<br>
+9.)  setPointLeft (optional) - setpoint line for left measured variable  <br>
+10.)  rightVariable1 (optional) - measured variable name<br>
+11.)  minRight1 (optional) -  measured variable minimum value<br>
+12.)  maxRight1 (optional) - measured variable maximum value<br>
+13.)  rightVariable2 (optional) - measured variable name<br>
+14.)  minRight2 (optional) -  measured variable minimum value<br>
+15.)  maxRight2 (optional) - measured variable maximum value<br>
+16.) scale - size the Process Variable Chart (default size 700x400 px.)<br>
+17.) transX - locate Process Variable Chart upper-left x <br>
+18.) transY - locate Process Variable Chart  upper-left y <br>
+
+</div>
+</td>
+<td>
+<div id="svgDiv" style='width:400px;height:600px;'>
+<svg id=mySVG width=400 height=600 overflow="visible">
+
+</svg>
+</div>
+<!--
+<defs>
+<foreignObject id=PVCFO width=700 height=60 transform="translate(0,400)" >
+ <table style=width:100%>
+<tr align=center>
+<td><input type="text" style='border:6px inset DarkViolet;background:black;color:lime;font-family:times new roman;font-weight:bold;font-size:33px;width:80px' value="81" /></td>
+<td><input type="text" style='border:6px inset blue;background:black;color:lime;font-family:times new roman;font-weight:bold;font-size:33px;width:80px' value="46" /></td>
+<td><input type="text" style='border:6px inset red;background:black;color:lime;font-family:times new roman;font-weight:bold;font-size:33px;width:80px' value="201" /></td>
+</tr>
+<tr align=center style='font-weight:bold;font-size:25px'><td style='color:DarkViolet'>Left</td><td style='color:blue'></td><td style='color:red'></td></tr>
+ </table>
+ </foreignObject>
+</defs>
+-->
+</td>
+</tr></table>
+  <br />SVG Source:
+  <div id=svgSourceDiv style=overflow:auto;width:100%;height:1px;text-align:left; /></div>
+  Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:100%;text-align:left; /></div><p></p>
+</center>
+<script id=myScript>
+//======================PVC MONITOR OBJECT========================================
+function buildProcessVariableChart(id, title, timeLine, timeLineUnits, faceColor, leftVariable, minLeft, maxLeft, setPointLeft, right1Variable, minRight1, maxRight1,  right2Variable, minRight2, maxRight2,  scale, transX, transY)
+{
+    var defaultHeight=410
+    //---chart size---
+    var height=260
+     var width=450
+
+    if(leftVariable&&right1Variable&&right2Variable)
+    var defaultWidth=700
+    else if(leftVariable&&right1Variable)
+    var defaultWidth=600
+    else if(leftVariable)
+    var defaultWidth=550
+
+
+    var svg=d3.select("#mySVG")
+    //---container---
+    var PVCG=svg.append("g")
+    .attr("id",id)
+    .attr("text-rendering","geometricPrecision")
+    .attr("shape-rendering","geometricPrecision")
+    .attr("transform","translate("+transX+","+transY+")scale("+scale+")")
+
+    //---face rectangle---
+    PVCG.append("rect")
+    .attr("id","faceRect"+id)
+    .attr("height",defaultHeight)
+    .attr("width",defaultWidth)
+    .attr("rx",20)
+    .attr("ry",20)
+    .attr("fill",faceColor)
+    .attr("stroke","black")
+    .attr("stroke-width",3)
+
+    var myTitle=PVCG.append("text")
+    .attr("id","PVCTitle"+id)
+    .text(title)
+    .attr("x",defaultWidth/2)
+    .attr("dy","1em")
+    .attr("font-family","arial")
+    .attr("font-size","40")
+    .attr("font-weight","bold")
+    .attr("text-anchor","middle")
+
+
+    //---timeline---
+    var xTime = d3.scaleLinear()
+    .domain([0, timeLine])
+    .range([0, width])
+
+
+    var yLeft = d3.scaleLinear()
+    .domain([minLeft, maxLeft]) // measured
+    .range([height, 0]); // output
+    //---hertz value---
+    var yRight1 = d3.scaleLinear()
+    .domain([minRight1, maxRight1]) // input
+    .range([height, 0]); // output
+    //---voltage value---
+    var yRight2 = d3.scaleLinear()
+    .domain([minRight2, maxRight2]) // input
+    .range([height, 0]); // output
+
+    // gridlines in x axis function
+    function make_x_gridlines() {
+    return d3.axisBottom(xTime)
+    }
+
+    // gridlines in y axis function
+    function make_y_gridlines() {
+    return d3.axisLeft(yLeft)
+    }
+
+    var plotG=PVCG.append("g")
+    .attr("id","plotG"+id)
+    .attr("transform","translate(70,90)")
+
+    plotG.append("rect")
+    .attr("id","plotRect")
+    .attr("width",width)
+    .attr("height",height)
+    .attr("stroke","none")
+    .attr("fill","ghostWhite")
+    var defs=plotG.append("defs")
+    defs.append("clipPath")
+    .attr("id", "clip")
+    .append("rect")
+    .attr("width", width)
+    .attr("height", height)
+
+    // add the X gridlines
+    plotG.append("g")
+    .attr("class", "grid")
+    .attr("transform", "translate(0," + height + ")")
+    .call(make_x_gridlines()
+    .tickSize(-height)
+    .tickFormat("")
+    )
+
+    // add the Y gridlines
+    plotG.append("g")
+    .attr("class", "grid")
+    .call(make_y_gridlines()
+    .tickSize(-width)
+    .tickFormat("")
+    )
+
+    // Call the x axis timeLine in a group tag
+    plotG.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height+ ")")
+    .call(d3.axisBottom(xTime)) // Create an axis component with d3.axisBottom
+    .selectAll("text")
+    .attr("font-size","24")
+    .attr("fill","black")
+    .attr("stroke","black")
+    .attr("stroke-width",".5")
+
+    var unitText=plotG.append("text")
+    .text(timeLineUnits)
+    .attr("x",width/2)
+    .attr("y",height+45)
+    .attr("font-family","arial")
+    .attr("font-size","25")
+    .attr("text-anchor","middle")
+
+    // Call the Left y axis in a group tag
+    var Left=plotG.append("text")
+    .text(leftVariable)
+    .attr("font-size",30)
+    .attr("fill","DarkViolet")
+    .attr("stroke","black")
+    .attr("stroke-width","1")
+    .attr("font-weight","bold")
+    .attr("transform","translate(-60,-20)")
+
+    if(right1Variable)
+    var Right1=plotG.append("text")
+    .text(right1Variable)
+    .attr("font-size",30)
+    .attr("fill","blue")
+    .attr("stroke","black")
+    .attr("stroke-width","1")
+    .attr("font-weight","bold")
+    .attr("transform","translate(340,-20)")
+
+    if(right2Variable)
+    var Right2=plotG.append("text")
+    .text(right2Variable)
+    .attr("font-size",30)
+    .attr("fill","red")
+    .attr("stroke","black")
+    .attr("stroke-width","1")
+    .attr("font-weight","bold")
+    .attr("transform","translate(510,-20)")
+
+    plotG.append("g")
+    .attr("class", "y axisDarkViolet")
+    .call(d3.axisLeft(yLeft))
+    .selectAll("text")
+    .attr("font-size","24")
+    .attr("fill","DarkViolet")
+    .attr("stroke","black")
+    .attr("stroke-width",".5")
+    if(right1Variable)
+    plotG.append("g")
+    .attr("class", "y axis right axisBlue")
+    .attr("transform", "translate("+(width+10)+",0)")
+    .call(d3.axisRight(yRight1))
+    .selectAll("text")
+    .attr("font-size","24")
+    .attr("fill","blue")
+    .attr("stroke","black")
+    .attr("stroke-width",".5")
+     if(right2Variable)
+    plotG.append("g")
+    .attr("class", "y axis right axisred")
+    .attr("transform", "translate("+(width+100)+",0)")
+    .call(d3.axisRight(yRight2))
+    .selectAll("text")
+    .attr("font-size","24")
+    .attr("fill","red")
+    .attr("stroke","black")
+    .attr("stroke-width",".5")
+
+
+    //-----------setpoint line------------
+    if(setPointLeft)
+    {
+        var pxPerValHt=height/(Math.abs(maxLeft)-Math.abs(minLeft))
+        var setPointY=pxPerValHt*(maxLeft-setPointLeft)
+         var dash=width/30
+
+        plotG.append("line")
+        .attr("id", "setPointLeft")
+        .attr("x1",0)
+        .attr("y1", setPointY)
+        .attr("x2", width)
+        .attr("y2", setPointY)
+        .attr("stroke", "green")
+        .attr("stroke-width", 2)
+        .attr("stroke-dasharray", dash+","+dash)
+    }
+
+
+     if(id=="hwsPVC")
+    {
+        lineLeftHwsPVC = d3.line()
+        .x(function(d, i) { return xTime(i); }) // set the x values for the line generator
+        .y(function(d) { return yLeft(d.Left); }) // set the y values for the line generator
+        .curve(d3.curveMonotoneX) // apply smoothing to the line
+   }
+    if(id=="pumpPVC")
+    {
+        lineLeftPumpPVC = d3.line()
+        .x(function(d, i) { return xTime(i); }) // set the x values for the line generator
+        .y(function(d) { return yLeft(d.Left); }) // set the y values for the line generator
+        .curve(d3.curveMonotoneX) // apply smoothing to the line
+        if(right2Variable)
+        lineRight2PumpPVC  = d3.line()
+        .x(function(d, i) { return xTime(i); }) // set the x values for the line generator
+        .y(function(d) { return yRight2(d.Right2); }) // set the y values for the line generator
+        .curve(d3.curveMonotoneX) // apply smoothing to the line
+        if(right1Variable)
+        lineRight1PumpPVC = d3.line()
+        .x(function(d, i) { return xTime(i); }) // set the x values for the line generator
+        .y(function(d) { return yRight1(d.Right1); }) // set the y values for the line generator
+        .curve(d3.curveMonotoneX) // apply smoothing to the line
+    }
+    if(id=="fanPVC")
+    {
+        lineLeftFanPVC = d3.line()
+        .x(function(d, i) { return xTime(i); }) // set the x values for the line generator
+        .y(function(d) { return yLeft(d.Left); }) // set the y values for the line generator
+        .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+        if(right1Variable)
+        lineRight1FanPVC = d3.line()
+        .x(function(d, i) { return xTime(i); }) // set the x values for the line generator
+        .y(function(d) { return yRight1(d.Right1); }) // set the y values for the line generator
+        .curve(d3.curveMonotoneX) // apply smoothing to the line
+    }
+
+    // Append the path, bind the data, and call the line generator
+    if(id=="pumpPVC")
+        Data=DataPump
+    else if(id=="fanPVC")
+        Data=DataFan
+    else if(id=="hwsPVC")
+        Data=DataHWS
+
+    if(id=="hwsPVC")
+    {
+        var pathLeft=plotG.append("path")
+        .attr("clip-path", "url(#clip)")
+        .datum(Data) // 10. Binds data to the line
+        .attr("class", "chartLineLeft") // Assign a class for styling
+        .attr("d", lineLeftHwsPVC); // 11. Calls the line generator
+        pathLeft.attr("id","pathLeft"+id)
+   }
+
+
+    if(id=="pumpPVC")
+    {
+        var pathLeft=plotG.append("path")
+        .attr("clip-path", "url(#clip)")
+        .datum(Data) // 10. Binds data to the line
+        .attr("class", "chartLineLeft") // Assign a class for styling
+        .attr("d", lineLeftPumpPVC); // 11. Calls the line generator
+        pathLeft.attr("id","pathLeft"+id)
+        if(right2Variable)
+        var pathRight2=plotG.append("path")
+        .attr("clip-path", "url(#clip)")
+        .datum(Data) // 10. Binds data to the line
+        .attr("class", "chartLineRight2") // Assign a class for styling
+        .attr("d", lineRight2PumpPVC); // 11. Calls the line generator
+        pathRight2.attr("id","pathRight2"+id)
+       if(right1Variable)
+        var pathRight1=plotG.append("path")
+        .attr("clip-path", "url(#clip)")
+        .datum(Data) // 10. Binds data to the line
+        .attr("class", "chartLineRight1") // Assign a class for styling
+        .attr("d", lineRight1PumpPVC); // 11. Calls the line generator
+        pathRight1.attr("id","pathRight1"+id)
+    }
+    if(id=="fanPVC")
+    {
+         var pathLeft=plotG.append("path")
+        .attr("clip-path", "url(#clip)")
+        .datum(Data) // 10. Binds data to the line
+        .attr("class", "chartLineLeft") // Assign a class for styling
+        .attr("d", lineLeftFanPVC); // 11. Calls the line generator
+        pathLeft.attr("id","pathLeft"+id)
+
+        if(right1Variable)
+        var pathRight1=plotG.append("path")
+        .attr("clip-path", "url(#clip)")
+        .datum(Data) // 10. Binds data to the line
+        .attr("class", "chartLineRight1") // Assign a class for styling
+        .attr("d", lineRight1FanPVC); // 11. Calls the line generator
+        pathRight1.attr("id","pathRight1"+id)
+    }
+
+
+   /*  Digital Readout
+    var fo=PVCFO.cloneNode(true)
+    fo.setAttribute("id","digital"+id)
+    document.getElementById(id).appendChild(fo)
+    //---add digital values---
+    var digitalLeft=fo.getElementsByTagName("input")[0]
+    var digitalRight1=fo.getElementsByTagName("input")[1]
+    var digitalRight2=fo.getElementsByTagName("input")[2]
+    digitalLeft.value=Data[Data.length-1].Left
+    if(right1Variable)
+    digitalRight1.value=Data[Data.length-1].Right1
+    else
+    digitalRight1.style.display="none"
+    if(right2Variable)
+    digitalRight2.value=Data[Data.length-1].Right2
+    else
+     digitalRight2.style.display="none"
+
+    var tr=fo.getElementsByTagName("tr")[1]
+    var tdLeft=tr.getElementsByTagName("td")[0]
+    var tdRight1=tr.getElementsByTagName("td")[1]
+    var tdRight2=tr.getElementsByTagName("td")[2]
+    tdLeft.innerHTML=leftVariable
+    if(right1Variable)
+    tdRight1.innerHTML=right1Variable
+    if(right1Variable)
+    tdRight2.innerHTML=right2Variable
+  */
+
+}
+
+//==================END PVC OBJECT======================================
+
+//---onload this page---
+function createPVCs() //----this application configuration----
+{
+    //buildProcessVariableChart(id, title, timeLine, timeLineUnits, faceColor, leftVariable, minLeft, maxLeft, setPointLeft, right1Variable, minRight1, maxRight1, right2Variable, minRight2, maxRight2, scale, transX, transY)<br>
+    buildProcessVariableChart("hwsPVC", "Heating Hot Water",60,"Minutes","yellow","HWS(\u00B0F)", 60, 220,160, null, null, null, null,null,null,.2,20,50);
+    buildProcessVariableChart("fanPVC", "Fan Static Pressure",60,"Minutes","#ffd700","STP(in W.C.)", 0, 5, 3.25, "Fan(HZ)", 60, 180, null, null, null, .3,10,150);
+    buildProcessVariableChart("pumpPVC", "Hot Water Flow ",60,"Minutes","#adff2f","HWS(\u00B0F)", 60, 220, 150, "Flow(GPM)", 0, 600,  "OAT(\u00B0F)",-20, 120,.4,20,290);
+}
+
+var simulateInterval=setInterval("simulate()",2000)
+function simulate()
+{
+    slideHwsStripChart()
+    slidePumpStripChart()
+    slideFanStripChart()
+}
+
+var lineLeftHwsPVC
+
+var lineLeftPumpPVC
+var lineRight1PumpPVC
+var lineRight2PumpPVC
+var lineLeftFanPVC
+var lineRight1FanPVC
+function slideHwsStripChart()
+{
+    var width=450
+    DataHWS[DataHWS.length]=DataHWS[0] //---{Left} ---
+
+    var pathLeft=d3.select("#pathLefthwsPVC")
+
+    pathLeft.attr("d", lineLeftHwsPVC)
+    .attr("transform", null);
+    pathLeft.transition().duration(850).attr("transform", "translate(" + -width/60 + ",0)")
+
+    DataHWS.shift()
+
+}
+function slidePumpStripChart()
+{
+    var width=450
+    DataPump[DataPump.length]=DataPump[0] //---{Left,Right2,Right1} ---
+
+    var pathRight2=d3.select("#pathRight2pumpPVC")
+    var pathLeft=d3.select("#pathLeftpumpPVC")
+    var pathRight1=d3.select("#pathRight1pumpPVC")
+
+    pathRight2.attr("d", lineRight2PumpPVC)
+    .attr("transform", null);
+    pathLeft.attr("d", lineLeftPumpPVC)
+    .attr("transform", null);
+    pathRight1.attr("d", lineRight1PumpPVC)
+    .attr("transform", null);
+
+    pathRight2.transition().duration(850).attr("transform", "translate(" + -width/60 + ",0)")
+    pathLeft.transition().duration(850).attr("transform", "translate(" + -width/60 + ",0)")
+    pathRight1.transition().duration(850).attr("transform", "translate(" + -width/60 + ",0)")
+
+    DataPump.shift()
+
+}
+function slideFanStripChart()
+{
+    var width=400
+    DataFan[DataFan.length]=DataFan[0] //---{Left,Right2,Right1} ---
+    var pathLeft=d3.select("#pathLeftfanPVC")
+    var pathRight1=d3.select("#pathRight1fanPVC")
+
+    pathRight1.attr("d", lineRight1FanPVC)
+    .attr("transform", null);
+    pathLeft.attr("d", lineLeftFanPVC)
+    .attr("transform", null);
+
+    pathLeft.transition().duration(850).attr("transform", "translate(" + -width/60 + ",0)")
+    pathRight1.transition().duration(850).attr("transform", "translate(" + -width/60 + ",0)")
+    DataFan.shift()
+}
+
+//---start dataBase-----------
+var DataPump=[
+{Left:138,Right2:83,Right1:204},
+{Left:169,Right2:72,Right1:228},
+{Left:167,Right2:90,Right1:223},
+{Left:147,Right2:79,Right1:204},
+{Left:139,Right2:72,Right1:218},
+{Left:156,Right2:74,Right1:221},
+{Left:159,Right2:82,Right1:226},
+{Left:167,Right2:72,Right1:213},
+{Left:153,Right2:72,Right1:226},
+{Left:142,Right2:87,Right1:236},
+{Left:145,Right2:83,Right1:232},
+{Left:153,Right2:76,Right1:220},
+{Left:131,Right2:84,Right1:214},
+{Left:164,Right2:90,Right1:205},
+{Left:155,Right2:87,Right1:228},
+{Left:166,Right2:75,Right1:204},
+{Left:138,Right2:84,Right1:208},
+{Left:132,Right2:84,Right1:204},
+{Left:168,Right2:78,Right1:209},
+{Left:150,Right2:80,Right1:212},
+{Left:132,Right2:81,Right1:205},
+{Left:146,Right2:79,Right1:202},
+{Left:144,Right2:77,Right1:226},
+{Left:138,Right2:83,Right1:228},
+{Left:160,Right2:74,Right1:216},
+{Left:160,Right2:88,Right1:237},
+{Left:135,Right2:90,Right1:221},
+{Left:151,Right2:81,Right1:239},
+{Left:134,Right2:78,Right1:232},
+{Left:154,Right2:77,Right1:225},
+{Left:144,Right2:89,Right1:212},
+{Left:132,Right2:86,Right1:211},
+{Left:132,Right2:79,Right1:225},
+{Left:144,Right2:79,Right1:212},
+{Left:134,Right2:73,Right1:226},
+{Left:137,Right2:82,Right1:207},
+{Left:159,Right2:87,Right1:209},
+{Left:165,Right2:87,Right1:211},
+{Left:152,Right2:88,Right1:224},
+{Left:164,Right2:82,Right1:239},
+{Left:154,Right2:82,Right1:223},
+{Left:133,Right2:74,Right1:212},
+{Left:152,Right2:74,Right1:225},
+{Left:168,Right2:89,Right1:225},
+{Left:135,Right2:80,Right1:225},
+{Left:149,Right2:76,Right1:234},
+{Left:154,Right2:83,Right1:223},
+{Left:159,Right2:86,Right1:233},
+{Left:155,Right2:76,Right1:225},
+{Left:165,Right2:88,Right1:205},
+{Left:155,Right2:83,Right1:231},
+{Left:152,Right2:74,Right1:229},
+{Left:156,Right2:87,Right1:220},
+{Left:167,Right2:84,Right1:233},
+{Left:155,Right2:86,Right1:228},
+{Left:147,Right2:74,Right1:235},
+{Left:167,Right2:83,Right1:224},
+{Left:131,Right2:84,Right1:213},
+{Left:169,Right2:88,Right1:212},
+{Left:142,Right2:71,Right1:200}
+
+]
+var DataFan=[
+{Left:2.634495418019192,Right1:104},
+{Left:3.4051096238080323,Right1:101},
+{Left:3.1727041242653913,Right1:81},
+{Left:2.6442301565036637,Right1:91},
+{Left:3.7343680905275,Right1:108},
+{Left:2.9846109187131096,Right1:82},
+{Left:3.45742594698292,Right1:93},
+{Left:3.991184614678524,Right1:100},
+{Left:3.7283499227927948,Right1:98},
+{Left:3.804143814773777,Right1:101},
+{Left:3.096779606261305,Right1:89},
+{Left:3.4877178837606557,Right1:84},
+{Left:2.7346915977309845,Right1:109},
+{Left:2.615609060563392,Right1:92},
+{Left:3.8403290066999567,Right1:96},
+{Left:3.0355906871030216,Right1:87},
+{Left:3.268843305453172,Right1:105},
+{Left:3.826428634138113,Right1:104},
+{Left:3.371842865004168,Right1:86},
+{Left:3.5412948606334123,Right1:94},
+{Left:3.8506680393610644,Right1:80},
+{Left:3.6127266378907916,Right1:108},
+{Left:3.71851922655116,Right1:82},
+{Left:2.501600336989,Right1:103},
+{Left:3.7448175680246556,Right1:101},
+{Left:3.770635008546916,Right1:84},
+{Left:3.2723395305871774,Right1:100},
+{Left:3.7914508791183277,Right1:108},
+{Left:3.562107441227077,Right1:106},
+{Left:3.5240667795920153,Right1:97},
+{Left:3.381976162581209,Right1:96},
+{Left:3.962403085448793,Right1:89},
+{Left:3.662480281311324,Right1:90},
+{Left:2.7254453473688303,Right1:90},
+{Left:2.714541318694905,Right1:103},
+{Left:3.4256521460211724,Right1:100},
+{Left:3.8852412177886038,Right1:103},
+{Left:2.9899089800641363,Right1:88},
+{Left:3.7640280357575104,Right1:107},
+{Left:2.995231770396545,Right1:105},
+{Left:2.772074015411541,Right1:105},
+{Left:3.2945992175131433,Right1:107},
+{Left:2.7560694568652564,Right1:103},
+{Left:2.7020033228898632,Right1:98},
+{Left:2.7064498302820783,Right1:91},
+{Left:3.5571045789489006,Right1:85},
+{Left:3.1734243658295362,Right1:98},
+{Left:3.109579680176093,Right1:97},
+{Left:2.6683793012638892,Right1:105},
+{Left:2.634083888730652,Right1:82},
+{Left:2.961306051762154,Right1:88},
+{Left:3.826825133794236,Right1:86},
+{Left:2.853989733679941,Right1:85},
+{Left:3.604752216335224,Right1:91},
+{Left:3.017321333448807,Right1:96},
+{Left:3.367162540629901,Right1:104},
+{Left:2.975564539556113,Right1:92},
+{Left:3.0694197012349687,Right1:100},
+{Left:2.939315435814734,Right1:99},
+{Left:3.0004050774519397,Right1:95}
+
+]
+var DataHWS=[
+{Left:155},
+{Left:153},
+{Left:174},
+{Left:177},
+{Left:147},
+{Left:169},
+{Left:160},
+{Left:172},
+{Left:180},
+{Left:141},
+{Left:156},
+{Left:147},
+{Left:149},
+{Left:159},
+{Left:165},
+{Left:156},
+{Left:152},
+{Left:168},
+{Left:149},
+{Left:170},
+{Left:150},
+{Left:169},
+{Left:143},
+{Left:149},
+{Left:176},
+{Left:175},
+{Left:167},
+{Left:151},
+{Left:152},
+{Left:162},
+{Left:165},
+{Left:177},
+{Left:148},
+{Left:152},
+{Left:153},
+{Left:173},
+{Left:169},
+{Left:143},
+{Left:151},
+{Left:161},
+{Left:158},
+{Left:165},
+{Left:178},
+{Left:161},
+{Left:156},
+{Left:158},
+{Left:142},
+{Left:142},
+{Left:147},
+{Left:164},
+{Left:144},
+{Left:148},
+{Left:151},
+{Left:146},
+{Left:160},
+{Left:166},
+{Left:164},
+{Left:158},
+{Left:152},
+{Left:176}
+]
+</script>
+<script>
+document.addEventListener("onload",init(),false)
+function init()
+{    createPVCs()
+   	showSourceSVG()
+	showSourceJS()
+
+}
+
+
+
+//    // buildProcessVariableChart("pumpPVC", "Pump Flow PVC",60,"Minutes","#adff2f","Hot Water (F)", 60, 220, false, "Flow (GPM)", 0, 800, "Outside Air (F)", -20, 120,.4,20,50);
+
+function buildDataPump()
+{      myValue.value="var DataPump=[\n"
+ for(var k=0;k<60;k++)
+ {
+
+  var left=Math.round(Math.random()*40)+130
+  var r1=Math.round(Math.random()*40)+200
+  var r2=Math.round(Math.random()*20)+70
+
+  myValue.value+="{Left:"+left+",Right2:"+r2+",Right1:"+r1+"},\n"
+}
+
+
+}
+
+   // buildProcessVariableChart("fanPVC", "Fan Static PVC",60,"Minutes","#ffd700","Static Pressure (in W.C)", 0, 10, false, "Flow (CFM)", 0, 10000, "Fan Frequency (HZ)", 0, 130,.3,60,260);
+
+function buildDataFan()
+{    myValue.value+="var DataFan=[\n"
+ for(var k=0;k<60;k++)
+ {
+
+  var left=Math.random()*1.5+2.5
+  var r1=Math.round(Math.random()*30)+80
+
+  myValue.value+="{Left:"+left+",Right1:"+r1+"},\n"
+}
+
+
+}
+
+function buildDataHW()
+{    myValue.value+="var DataHWS=[\n"
+ for(var k=0;k<60;k++)
+ {
+
+  var left=Math.round(Math.random()*40)+140
+
+  myValue.value+="{Left:"+left+"},\n"
+}
+
+
+}
+</script>
+
+
+</body>
+
+</html>

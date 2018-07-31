@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>AHU Supply Duct Static Pressure Control</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script type="text/javascript" src="../AnalogGaugeObject/analogGaugeObject.js"></script>
+
+
+
+  <style type="text/css">
+
+  .noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+       unselectable="on"
+ onselectstart="return false;"
+ onmousedown="return false;"
+}
+.grid line {
+  stroke: lightgrey;
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
+
+.grid path {
+  stroke-width: 0;
+}
+/* Style the lines by removing the fill and applying a stroke */
+.chartLineOAT {
+    fill: none;
+    stroke: turquoise;
+    stroke-width: 2;
+}
+.chartLineSP {
+    fill: none;
+    stroke: red;
+    stroke-width: 1;
+    stroke-dasharray: 5,5;
+
+}
+.chartLineSTP {
+    fill: none;
+    stroke: red;
+    stroke-width: 2;
+}
+.chartLineCO {
+    fill: none;
+    stroke: blue;
+    stroke-width: 2;
+}
+.chartLineVAC {
+    fill: none;
+    stroke: violet;
+    stroke-width: 2;
+}
+.chartLineHZ {
+    fill: none;
+    stroke: lime;
+    stroke-width: 2;
+}
+
+
+
+.axisRed line{
+  stroke: red;
+}
+
+.axisRed path{
+  stroke: red;
+}
+
+
+.axisBlue line{
+  stroke: blue;
+}
+
+.axisBlue path{
+  stroke: blue;
+}
+
+.axisViolet line{
+  stroke: violet;
+}
+
+.axisViolet path{
+  stroke: violet;
+}
+
+.axisLime line{
+  stroke: lime;
+}
+
+.axisLime path{
+  stroke: lime;
+}
+
+  </style>
+
+</head>
+<body style='padding:10px;font-family:arial'>
+<center>
+<b>AHU Supply Duct Static Pressure Control</b>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+Static pressure is controlled via a Variable Frequency Drive(VFD) at the supply air fan for a variable air volume system.  The central monitoring panel displays sensors, actuators, charts, graphs, gauges, and status pilot lights. Also the system's PID controller can be tuned at the central monitoring panel.
+</div>
+<table><tr>
+<td style=width:400px;>
+<div style="padding:10px;width:400px;text-align:justify;height:560px;overflow-y:auto">
+
+<b>Sequence Of Operation:</b>
+This controls the AHU supply duct static pressure by modulating the fan speed via a variable frequency drive.
+ <p></p>
+<b>Current Value Chart:</b>
+The measured  static pressure(STP) strip chart is shown that records each minute the supply air duct static pressure and its setpoint during the previous 60 minutes.<p></p>
+<p></p>
+<b>Analog Gauges: </b><a href="../AnalogGaugeObject/analogGaugeObject.htm">Gauges</a> are provided on the central monitoring panel that display: Supply duct static pressure(STP), fan motor frequency(Hz), fan motor voltage(VAC), and the controller output(CO) value to the VFD.<p></p>
+<b>System Chart: </b><img src="../Images/chart.png" width=30 height=30 alt="" />Select the button  to view the static pressure system strip chart that each minute it records the STP, Hz, VAC, and CO gauge values  during the previous 100 minutes.
+<p>
+<b>Controller Status:</b> A <a href="../PilotLight/pilotLight.htm">5-state status pilot light</a> is included for the local controller, shown inside this controller's diagram.<br>
+
+
+
+</p>
+<p></p>
+<b>PID Controller: </b> The central monitoring panel can tune the PID loop. It  displays and has access to adjust the following values associated with the controller: <br>
+1.) Static Pressure Setpoint(SP) - When this radio button is checked it the static pressure setpoint is available for change. <br>
+2.) Proportional(P) Value - When this radio button is checked the value is available for change. <br>
+3.) Intergral(I) Value (repeats/minute) - When the checkbox is un-checked the integral is is ignored. When the radio button is checked the value is available for change.<br>
+4.) Derivative(D) Value - When the checkbox is un-checked the derivative value is ignored. When the radio button is checked the value is available for change.<br>
+5.) VFD Demand(CO): 0 to 100% - When this radio button is checked it overrides the controller output (CO) and selects a manual mode.  <br>
+<br>Choose the radio button for desired value to adjust. Select the increment, then use the <img src="../Images/minusRound.png" width=20 height=20 /> or <img src="../Images/plusRound.png" width=20 height=20 /> button to change value.
+ <p></p>
+<b>VFD Status:</b> A <a href="../PilotLight/pilotLight.htm">5-state status pilot light</a> monitors the VFD status: minimum operating frequency (ON), maximum operating frequency (NORMAL OFF), or modulating (INTERMITTENT), and disabled/repairing (DEFECTIVE). If the VFD's local  circuit detects a fault, the status will show ALARM. <br>
+
+
+</div>
+</td>
+<td style=width:800px;>
+<div id="svgDiv" style='border:1px solid black;width:800px;height:560px;'>
+<svg id=mySVG width=800 height=560>
+
+<defs>
+<marker id="arrowEndBlue" viewBox="0 0 8000 8000" refX="280" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="blue" stroke-linejoin="bevel">
+<path id="arrowEndPath" stroke="RGB(0,0,0)" stroke-width="5" d="M2 59,293 148,1 243,121 151,Z"/>
+</marker>
+</defs>
+<!--Controller Diagram-->
+<svg xmlns="http://www.w3.org/2000/svg" id="DataDisc1509535975657" overflow="visible" by="FJH" description="Air Handler Supply Duct Static Pressure Control via VFD Fan Speed Controller" discTag="SP1" width="220" height="161.320556640625" Date="Wed Nov 1 07:32:55 EDT 2017" gmtMS="1509535975657">
+<defs>
+<marker id="arrowEnd" viewBox="0 0 8000 8000" refX="280" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="red" stroke-linejoin="bevel">
+<path id="arrowEndPath" stroke="RGB(0,0,0)" stroke-width="5" d="M2 59,293 148,1 243,121 151,Z"/>
+</marker>
+</defs>
+<g discTag="SP1" transform="translate(60,40)scale(.5)">
+<line stroke="Teal" strokeCode="25" stroke-width="2" x1="0" y1="-60" x2="0" y2="60"/>
+<path fill="LightBlue" stroke="Teal" fillCode="11" strokeCode="25" stroke-width="2" marker-end="url(#arrowEnd)" d="M0,0 v-60 a120,60 0 0,0 120,60"/>
+<path fill="LightBlue" stroke="Teal" fillCode="11" strokeCode="25" stroke-width="2" marker-end="url(#arrowEnd)" d="M0,0 v60 a120,60 0 0,1 120,-60"/>
+<ellipse fill="Turquoise" stroke="Teal" fillCode="17" strokeCode="25" stroke-width="4" cx="0" cy="0" rx="76" ry="32"/>
+
+<g id="SatT_17" fill="Turquoise" stroke="black" stroke-width="2" transform="translate(0,-70)scale(.4)" class="SatTop" atTag="@undefined" description="Duct Static Pressure Sensor">
+<polygon points="25 0.00000298023 12.5 -21.6507 -12.5 -21.6507 -25 0.00000298023 -12.5 21.6507 12.5 21.6507"/>
+<polygon fill="white" points="15.9812 0.00000298023 15.199 -4.93844 12.929 -9.39345 9.39345 -12.929 4.93844 -15.199 0.00000298023 -15.9812 -4.93844 -15.199 -9.39345 -12.929 -12.929 -9.39345 -15.199 -4.93844 -15.9812 0.00000298023 -15.199 4.93844 -12.929 9.39345 -9.39345 12.929 -4.93844 15.199 0.00000298023 15.9812 4.93844 15.199 9.39345 12.929 12.929 9.39345 15.199 4.93844"/>
+</g>
+<g atTag="@HW1@hw1" id="SatX_2" fill="SpringGreen" stroke="black" stroke-width="2" transform="translate(0,70)scale(.4)" class="SatBot" description="Network Connection">
+<polygon points="-0.0000075102 21.6507 25 -21.6507 -25 -21.6507"/>
+</g>
+<g id="SatO_25" fill="Teal" stroke="black" stroke-width="2" transform="translate(130,0)scale(.4)" class="SatRight" atTag="@undefined" description="Variable Frequency Drive">
+<polygon points="25 0.00000258286 23.7765 -7.7254 20.2255 -14.6947 14.6947 -20.2255 7.72545 -23.7764 0.00000258286 -25 -7.7254 -23.7764 -14.6947 -20.2255 -20.2255 -14.6947 -23.7764 -7.7254 -25 0.00000258286 -23.7764 7.72545 -20.2255 14.6947 -14.6947 20.2255 -7.7254 23.7765 0.00000258286 25 7.72545 23.7765 14.6947 20.2255 20.2255 14.6947 23.7765 7.72545"/>
+<polygon fill="white" points="0.00000258286 -22.5793 -13.0362 0.00000258286 0.00000258286 22.5793 13.0362 0.00000258286"/>
+</g>
+</g>
+</svg>
+<!--System Flow Diagram-->
+<g  id=flowDiagramG transform="translate(240,5)">
+<svg xmlns="http://www.w3.org/2000/svg" width="550" height="130" id="sideKickSVG" viewBox="0 0 550 130" onmousemove="dragText(evt)">
+<defs id="arrowDefs">
+<marker id="arrow000000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#000000" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker>
+<marker id="arrowE52B50" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#E52B50" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker>
+<marker id="arrowE32636" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#E32636" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker>
+<marker id="arrow0000FF" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#0000FF" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker>
+</defs>
+<g id="topG">
+<g shape-rendering="geometricPrecision" id="domAddPathG">
+<path fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" marker-end="url(#arrow000000)" d="M 209 64 L 447 64" type="linear" rightAngle="true"/>
+<path fill="white" fill-opacity="0" stroke="#E52B50" stroke-width="2" stroke-dasharray="8 4" marker-end="url(#arrowE52B50)" d="M 386 73 L 386 109 L 111 109 L 111 76" type="linear" rightAngle="true"/>
+<path fill="white" fill-opacity="0" stroke="#0000FF" stroke-width="2" stroke-dasharray="8 4" marker-end="url(#arrow0000FF)" d="M 109 51 L 109 31 L 282 31" type="linear" rightAngle="true"/>
+</g>
+<g shape-rendering="geometricPrecision" id="domAddElemG" text-rendering="geometricPrecision">
+<ellipse stroke="#008080" stroke-width="2" fill="#30D5C8" fill-opacity="1.0" transform="translate(111 62)" rx="28" ry="11" rotateAngle="0"/>
+<rect fill="#FFFFFF" fill-opacity="1.0" stroke="#000000" stroke-width="1" x="0" y="0" width="33" height="25" transform="matrix(1 0 0 1 302 51)" rotateAngle="0"/>
+<circle stroke="#000000" stroke-width="1" fill="#FFFFFF" fill-opacity="1.0" transform="matrix(1 0 0 1 296 65)" r="20"/>
+<text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 311 35)" rotateAngle="0">
+VFD</text>
+<text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 370 51)" rotateAngle="0">
+STP</text>
+<text font-family="Arial" font-size="15" font-weight="bold" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 263 97)" rotateAngle="0">
+Supply Fan</text>
+<text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" fill="#000000" transform="matrix(1 0 0 1 430 86)" rotateAngle="0">
+Variable Air Volume</text>
+</g>
+</g>
+<g shape-rendering="geometricPrecision" id="domAddSymbolG">
+<g stroke="black" stroke-width=".5" size="20" transform="translate(385 64)scale(0.6666666666666666)">
+<polygon fill="#30D5C8" points="15 0.00000178814 7.5 -12.9904 -7.5 -12.9904 -15 0.00000178814 -7.5 12.9904 7.5 12.9904"/>
+<polygon fill="#FFFFFF" points="9.58869 0.00000178814 9.11937 -2.96306 7.7574 -5.63607 5.63607 -7.7574 2.96306 -9.11937 0.00000178814 -9.58869 -2.96306 -9.11937 -5.63607 -7.7574 -7.7574 -5.63607 -9.11937 -2.96306 -9.58869 0.00000178814 -9.11937 2.96306 -7.7574 5.63607 -5.63607 7.7574 -2.96306 9.11937 0.00000178814 9.58869 2.96306 9.11937 5.63607 7.7574 7.7574 5.63607 9.11937 2.96306"/>
+</g>
+<g stroke="black" stroke-width=".5" size="20" transform="matrix(0.666667 0 0 0.666667 296 31)">
+<polygon fill="#008080" points="15 0.00000154972 14.2659 -4.63524 12.1353 -8.81679 8.81679 -12.1353 4.63527 -14.2658 0.00000154972 -15 -4.63524 -14.2658 -8.81679 -12.1353 -12.1353 -8.81679 -14.2658 -4.63524 -15 0.00000154972 -14.2658 4.63527 -12.1353 8.81679 -8.81679 12.1353 -4.63524 14.2659 0.00000154972 15 4.63527 14.2659 8.81679 12.1353 12.1353 8.81679 14.2659 4.63527"/>
+<polygon fill="#FFFFFF" points="0.00000154972 -13.5476 -7.82172 0.00000154972 0.00000154972 13.5476 7.82172 0.00000154972"/>
+</g>
+</g>
+</svg>
+</g>
+<!--Connecting Lines-->
+<line x1="160" y1="220" x2="160" y2="413"  id=staticLine stroke="red" stroke-width="2" marker-end="url(#arrowEnd)" />
+
+<line x1="150" y1="480" x2="490" y2="480"  id=actuatorLine stroke="blue" stroke-width="2" marker-end="url(#arrowEndBlue)" />
+
+<!--Sensors/Actuators-->
+<g id="SatO_25" fill="Teal" stroke="black" stroke-width="2" transform="translate(500,480)scale(.4)" class="SatRight" atTag="@SP1" description="Variable Frequency Drive">
+<polygon points="25 0.00000258286 23.7765 -7.7254 20.2255 -14.6947 14.6947 -20.2255 7.72545 -23.7764 0.00000258286 -25 -7.7254 -23.7764 -14.6947 -20.2255 -20.2255 -14.6947 -23.7764 -7.7254 -25 0.00000258286 -23.7764 7.72545 -20.2255 14.6947 -14.6947 20.2255 -7.7254 23.7765 0.00000258286 25 7.72545 23.7765 14.6947 20.2255 20.2255 14.6947 23.7765 7.72545"/>
+<polygon fill="white" points="0.00000258286 -22.5793 -13.0362 0.00000258286 0.00000258286 22.5793 13.0362 0.00000258286"/>
+</g>
+<g id="SatT_17" fill="Turquoise" stroke="black" stroke-width="2" transform="translate(160,220)scale(.4)" class="SatTop" atTag="@undefined" description="Duct Static Pressure Sensor">
+<polygon points="25 0.00000298023 12.5 -21.6507 -12.5 -21.6507 -25 0.00000298023 -12.5 21.6507 12.5 21.6507"/>
+<polygon fill="white" points="15.9812 0.00000298023 15.199 -4.93844 12.929 -9.39345 9.39345 -12.929 4.93844 -15.199 0.00000298023 -15.9812 -4.93844 -15.199 -9.39345 -12.929 -12.929 -9.39345 -15.199 -4.93844 -15.9812 0.00000298023 -15.199 4.93844 -12.929 9.39345 -9.39345 12.929 -4.93844 15.199 0.00000298023 15.9812 4.93844 15.199 9.39345 12.929 12.929 9.39345 15.199 4.93844"/>
+</g>
+
+
+<!--Charts/Graphs-->
+<g id="pvStripChart" transform="translate(300,170)"></g>
+
+<!--Controller Body-->
+<g id=PIDG transform="translate(160,480)">
+<ellipse  id="pidEllipse" fill="Turquoise" stroke="teal"  stroke-width="4" cx="0" cy="0" rx="152" ry="64"/>
+ <foreignObject id=foAdjust width=300 height=100 x=-130 y=-50>
+<table cellpadding=0>
+<tr><td align=center colspan=5>Tune Controller:<input type="checkbox" id=adjustControllerCheck onClick=adjustControllerChecked() /></td></tr>
+    <tr align=center>
+    <td>SP:<input  disabled style="margin-right: 0px;margin-left: 0px;"  type="radio" name=tuneRadio id=tuneSPClick onClick=tuneSPClicked() /></td>
+    <td>P:<input style="margin-right: 0px;margin-left: 0px;"   disabled  type="radio" name=tuneRadio  id=tunePClick onClick=tunePClicked()   /></td>
+    <td>I:<input disabled title="turn off Integral" onClick=turnOffIntegralChecked() id=turnOffIntegralCheck type="checkbox" checked style="margin-right: 0px;margin-left: 0px;"  /><input style="margin-right: 0px;margin-left: 0px;" disabled  type="radio" name=tuneRadio  id=tuneIClick onClick=tuneIClicked()   /></td>
+    <td>D:<input disabled  title="turn off Derivative" onClick=turnOffDerivativeChecked() id=turnOffDerivativeCheck  type="checkbox" checked style="margin-right: 0px;margin-left: 0px;" /><input style="margin-right: 0px;margin-left: 0px;"  disabled  type="radio" name=tuneRadio  id=tuneDClick onClick=tuneDClicked()   /></td>
+    <td>CO:<input  disabled type="radio" style="margin-right: 0px;margin-left: 0px;"  name=tuneRadio   id=tuneCOClick onClick=tuneCOClicked()  /></td>
+    </tr>
+    <tr align=center>
+    <td><input onfocus=blur() type="text" style=width:40px id=tuneSPValue value=6.0 /></td>
+    <td>&nbsp;&nbsp;<input onfocus=blur()  type="text" style=width:40px  id=tunePValue value=1 /></td>
+    <td><input onfocus=blur()  type="text" style=width:40px  id=tuneIValue value=10 /></td>
+    <td><input onfocus=blur()  type="text" style=width:40px  id=tuneDValue value=1 /></td>
+    <td>&nbsp;&nbsp;<input onfocus=blur()  type="text" style=width:40px  id=tuneCOValue value=0 /></td>
+    </tr>
+    <tr><td align=center colspan=5>
+        <TABLE >
+        <TR>
+        <TD><button  onClick=controlAdjust(-1) style=padding:0;width:30px;height:30px><img src="../Images/minusRound.png" alt="" width=25 height=25 /></button></TD>
+        <TD>
+            <select id=incrementSelect title="Increment value">
+              <option value="">.10</option>
+              <option value="">.50</option>
+              <option selected value="">1.0</option>
+              <option value="">5.0</option>
+              <option value="">10</option>
+
+            </select>
+        </TD>
+        <TD><button  onClick=controlAdjust(1) style=padding:0;width:30px;height:30px><img src="../Images/plusRound.png" alt="" width=25 height=25 /></button></TD>
+        </TR>
+        </TABLE>
+    </td></tr>
+</table>
+</foreignObject>
+</g>
+
+<!--Gauges/Pilot Lights-->
+ <defs>
+<radialGradient id="blueGradient" cx="50%" cy="50%" r="75%" >
+<stop offset="0%" style="stop-color:rgb(0,0,255);stop-opacity:1" />
+<stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+</radialGradient>
+<radialGradient id="greenGradient" cx="50%" cy="50%" r="75%" >
+<stop offset="0%" style="stop-color:rgb(0,191,0);stop-opacity:1" />
+<stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+</radialGradient>
+<radialGradient id="greyGradient" cx="50%" cy="50%" r="75%" >
+<stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+<stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+</radialGradient>
+<radialGradient id="redGradient" cx="50%" cy="50%" r="75%" >
+<stop offset="0%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+<stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+</radialGradient>
+<radialGradient id="violetGradient" cx="50%" cy="50%" r="75%" >
+<stop offset="0%" style="stop-color:rgb(219,0,219);stop-opacity:1" />
+<stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+</radialGradient>
+</defs>
+<g id=pilotLightStatusG transform="translate(60,40)scale(15)"><circle id=pilotLightStatus cx="0" cy="0" r="1"  fill="url(#greenGradient)" /><line style="visibility:hidden" name=lineOff x1=-.5 y1=-.5 x2=.5 y2=.5 stroke='black' stroke-width=.1 /><line  style="visibility:hidden"  name=lineDisabled x1=.5 y1=-.5 x2=-.5 y2=.5 stroke='black' stroke-width=.1 /><circle  style="visibility:hidden"  name=circleDefective cx=0 cy=0 r=.8 stroke='red' stroke-width=.1 fill="none" /></g>
+<g id=pilotLightActuatorG transform="translate(525,480)scale(15)"><circle id=pilotLightActuator cx="0" cy="0" r="1"  fill="url(#greyGradient)" /><line style="visibility:visible" name=lineOff x1=-.5 y1=-.5 x2=.5 y2=.5 stroke='black' stroke-width=.1 /><line  style="visibility:visible"  name=lineDisabled x1=.5 y1=-.5 x2=-.5 y2=.5 stroke='black' stroke-width=.1 /><circle  style="visibility:hidden"  name=circleDefective cx=0 cy=0 r=.8 stroke='red' stroke-width=.1 fill="none" /></g>
+
+<g id=gaugeSTPGaugeContainer transform='translate(160,280)' />
+<g id=gaugeCOGaugeContainer transform='translate(400,460)'  />
+<g id=gaugeHZGaugeContainer transform='translate(591,460)' />
+<g id=gaugeVACGaugeContainer transform='translate(697,460)' />
+
+
+
+<!--Text/Labels-->
+<!--Headings/tags-->
+<text id=statPressure x=400 y=425  >Supply Duct Static Pressure</text>
+<text id=stp x=260 y=158 font-size=12  >STP (in. W.C.)</text>
+<text id=mn x=712 y=400 font-size=12  >Minutes</text>
+<text id=mn x=500 y=510 font-size=14 font-weight='bold'  >VFD</text>
+
+
+
+ <foreignObject id=stripChartButton width=40 height=40 x=45 y=85>
+  <button onClick="openStripChart()" title="Example: System Strip Chart" style=border-radius:8px;padding:0px;background:khaki;width:50px;height:50px;><img src="../Images/chart.png" width=40 height=40 alt="" /></button>
+</foreignObject>
+
+</svg>
+</div>
+
+</td>
+</tr></table>
+  <br />SVG Source:
+  <div id=svgSourceDiv style=overflow:auto;width:100%;height:1px;text-align:left; /></div>
+  Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:100%;text-align:left; /></div><p></p>
+</center>
+
+<div id=stripChartDiv style='overflow:hidden;visibility:hidden;border:3px solid black;border-radius:5px;position:absolute;top:20px;left:20px;width:1px;height:1px;background:khaki;'>
+<table style=width:1200px ><tr><td style=width:90% align=center><b>AHU Supply Duct Static Pressure Control - Strip Chart</b></td><td align=right><button title='Close Strip Chart' onClick="closeStripChart()" style=background:red;font-weight:bold >X</button></td></tr>
+<tr><td colspan=2>
+This example continuosly records the supply duct static pressure(STP), variable frequency drive values (Hz &amp; VAC), PID controller output value(CO) at the current minute and during the previous 100 minutes.
+Simulation: random values updated every 2 seconds (equals 1 minute).
+</td></tr>
+</table>
+</div>
+<textarea id=myValue style='width:400px;height:400px;'></textarea>
+<script id=myScript>
+ //---supply duct static pressure---
+function buildPVStripChart()
+{
+
+var width=400
+var height=220
+
+//  X scale will use the index of our data
+var xScale = d3.scaleLinear()
+    .domain([0, 60]) // 60 minutes
+    .range([0, width]); // output
+
+
+var yScale = d3.scaleLinear()
+    .domain([0, 10]) // input
+    .range([height, 0]); // output
+
+  // gridlines in x axis function
+function make_x_gridlines() {
+    return d3.axisBottom(xScale)
+       // .ticks(5)
+}
+
+// gridlines in y axis function
+function make_y_gridlines() {
+    return d3.axisLeft(yScale)
+       // .ticks(5)
+}
+
+var graphG=d3.select("#pvStripChart")
+// add the X gridlines
+  graphG.append("g")
+      .attr("class", "grid")
+      .attr("transform", "translate(0," + height + ")")
+      .call(make_x_gridlines()
+          .tickSize(-height)
+          .tickFormat("")
+      )
+
+  // add the Y gridlines
+  graphG.append("g")
+      .attr("class", "grid")
+      .call(make_y_gridlines()
+          .tickSize(-width)
+          .tickFormat("")
+      )
+
+// Call the x axis in a group tag
+graphG.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale)); // Create an axis component with d3.axisBottom
+
+// Call the y axis in a group tag
+graphG.append("g")
+    .attr("class", "y axis")
+    .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
+
+var line = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yScale(d[1]); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+var path=graphG.append("path")
+    .datum(dataSTP) // 10. Binds data to the line
+    .attr("class", "chartLineSTP") // Assign a class for styling
+    .attr("d", line); // 11. Calls the line generator
+
+var lineSP = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yScale(d[0]); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+var pathSP=graphG.append("path")
+    .datum(dataSTP) // 10. Binds data to the line
+    .attr("class", "chartLineSP") // Assign a class for styling
+    .attr("d", lineSP); // 11. Calls the line generator
+
+
+
+}
+var dataSTP=[] //---[setpoint,value]---
+dataSTP[0]=[6.0,6.0]
+dataSTP[1]=[6.0,6.1]
+dataSTP[2]=[6.0,6.2]
+dataSTP[3]=[6.0,6.3]
+dataSTP[4]=[6.0,6.4]
+dataSTP[5]=[6.0,6.5]
+dataSTP[6]=[6.0,6.6]
+dataSTP[7]=[6.0,6.8]
+dataSTP[8]=[6.0,6.9]
+dataSTP[9]=[6.0,7.1]
+
+dataSTP[10]=[6.0,7.0]
+dataSTP[11]=[6.0,6.9]
+dataSTP[12]=[6.0,6.8]
+dataSTP[13]=[6.0,6.7]
+dataSTP[14]=[6.0,6.5]
+dataSTP[15]=[6.0,6.3]
+dataSTP[16]=[6.0,6.2]
+dataSTP[17]=[6.0,6.1]
+dataSTP[18]=[6.0,6.0]
+dataSTP[19]=[6.0,6.0]
+
+dataSTP[20]=[6.0,6.0]
+dataSTP[21]=[6.0,6.0]
+dataSTP[22]=[6.0,6.0]
+dataSTP[23]=[6.0,6.0]
+dataSTP[24]=[6.0,5.9]
+dataSTP[25]=[6.0,5.8]
+dataSTP[26]=[6.0,5.7]
+dataSTP[27]=[6.0,5.8]
+dataSTP[28]=[6.0,5.8]
+dataSTP[29]=[6.0,5.8]
+
+dataSTP[30]=[6.0,5.8]
+dataSTP[31]=[6.0,5.9]
+dataSTP[32]=[6.0,5.9]
+dataSTP[33]=[6.0,6.0]
+dataSTP[34]=[6.0,6.1]
+dataSTP[35]=[6.0,6.2]
+dataSTP[36]=[6.0,6.3]
+dataSTP[37]=[6.0,6.4]
+dataSTP[38]=[6.0,6.5]
+dataSTP[39]=[6.0,6.5]
+
+dataSTP[40]=[6.0,6.5]
+dataSTP[41]=[6.0,6.5]
+dataSTP[42]=[6.0,6.4]
+dataSTP[43]=[6.0,6.3]
+dataSTP[44]=[6.0,6.3]
+dataSTP[45]=[6.0,6.2]
+dataSTP[46]=[6.0,6.2]
+dataSTP[47]=[6.0,6.1]
+dataSTP[48]=[6.0,6.0]
+dataSTP[49]=[6.0,6.0]
+
+dataSTP[50]=[6.0,6.0]
+dataSTP[51]=[6.0,5.9]
+dataSTP[52]=[6.0,6.0]
+dataSTP[53]=[6.0,6.0]
+dataSTP[54]=[6.0,6.0]
+dataSTP[55]=[6.0,6.2]
+dataSTP[56]=[6.0,6.3]
+dataSTP[57]=[6.0,6.4]
+dataSTP[58]=[6.0,6.5]
+dataSTP[59]=[6.0,6.6]
+dataSTP[60]=[6.0,6.7]
+
+
+
+//======================GAUGES========================================
+            //---on load this page-------
+			function createGauges()
+			{
+               // createGauge(name, label, min, max, majorTicks, minorTicks, ringColor, faceColor, diameter, orangeZoneRange, redZoneRange, greenZoneRange,units)<br>
+                 createGauge("gaugeSTP", "STP",0,10,5,10,"red","khaki",120,[8,9],[9,10],null,'wc');
+                 createGauge("gaugeCO", "CO",0,100,5,10,"blue","khaki",120,null,null,null,"\u0025");
+                 createGauge("gaugeHZ", "Hz",0,130,5,10,"violet","khaki",120,null,null,null,"");
+                 createGauge("gaugeVAC", "VAC",0,500,5,10,"lime","khaki",120,null,null,null,"");
+
+			}
+
+//============================TUNING==================================
+function turnOffIntegralChecked()
+{
+   if(turnOffIntegralCheck.checked)
+   {
+      tuneIValue.style.background=""
+      turnOffIntegralCheck.title="Turn off Integral"
+
+      tuneIClick.disabled=false
+
+
+   }
+   else
+   {
+
+      tuneIValue.style.background="gainsboro"
+      turnOffIntegralCheck.title="Turn on Integral"
+      tuneIClick.checked=false
+      tuneIClick.disabled=true
+   }
+
+
+
+}
+function turnOffDerivativeChecked()
+{
+   if(turnOffDerivativeCheck.checked)
+   {
+      tuneDValue.style.background=""
+      turnOffDerivativeCheck.title="Turn off Derivative"
+      tuneDClick.disabled=false
+
+
+   }
+   else
+   {
+
+      tuneDValue.style.background="gainsboro"
+      turnOffDerivativeCheck.title="Turn on Derivative"
+            tuneDClick.checked=false
+      tuneDClick.disabled=true
+
+   }
+
+
+
+
+}
+
+function adjustControllerChecked()
+{
+
+   if(adjustControllerCheck.checked)
+   {
+        tuneSPClick.disabled=false
+        tunePClick.disabled=false
+        tuneIClick.disabled=false
+        tuneDClick.disabled=false
+        tuneCOClick.disabled=false
+        turnOffIntegralCheck.disabled=false
+        turnOffDerivativeCheck.disabled=false
+
+
+   }
+   else
+   {
+        tuneSPClick.checked=false
+        tunePClick.checked=false
+        tuneIClick.checked=false
+        tuneDClick.checked=false
+        tuneCOClick.checked=false
+
+              tuneSPClick.disabled=true
+        tunePClick.disabled=true
+        tuneIClick.disabled=true
+        tuneDClick.disabled=true
+        tuneCOClick.disabled=true
+
+        turnOffIntegralCheck.disabled=true
+        turnOffDerivativeCheck.disabled=true
+
+
+
+   }
+
+     tuneSPValue.style.border=""
+    tunePValue.style.border=""
+    tuneIValue.style.border=""
+    tuneDValue.style.border=""
+    tuneCOValue.style.border=""
+
+TuneSelected=null
+
+
+
+}
+
+
+
+var TuneSelected
+function controlAdjust(factor)
+{
+    var increment=+incrementSelect.options[incrementSelect.selectedIndex].text
+    var change=factor*increment
+
+
+    if(TuneSelected=="SP")
+    {
+        var spValue=(+tuneSPValue.value)+change
+        console.log(spValue)
+
+        tuneSPValue.value=spValue.toFixed(1)
+
+
+    }
+    if(TuneSelected=="P")
+    {
+        var pValue=(+tunePValue.value)+change
+        tunePValue.value=pValue.toFixed(1)
+    }
+    if(TuneSelected=="I")
+    {
+        var iValue=(+tuneIValue.value)+change
+        tuneIValue.value=iValue.toFixed(0)
+    }
+    if(TuneSelected=="D")
+    {
+        var dValue=(+tuneDValue.value)+change
+        tuneDValue.value=dValue.toFixed(1)
+    }
+    if(TuneSelected=="OUT")
+    {
+        var outValue=(+tuneCOValue.value)+change
+        tuneCOValue.value=outValue.toFixed(1)
+    }
+}
+
+function tuneSPClicked()
+{
+
+    tuneSPValue.style.border="2px solid black"
+    tunePValue.style.border=""
+    tuneIValue.style.border=""
+    tuneDValue.style.border=""
+    tuneCOValue.style.border=""
+
+        TuneSelected="SP"
+
+
+
+}
+
+function tunePClicked()
+{
+    tuneSPValue.style.border=""
+    tunePValue.style.border="2px solid black"
+    tuneIValue.style.border=""
+    tuneDValue.style.border=""
+    tuneCOValue.style.border=""
+        TuneSelected="P"
+
+
+
+}
+
+function tuneIClicked()
+{
+
+    tuneSPValue.style.border=""
+    tunePValue.style.border=""
+    tuneIValue.style.border="2px solid black"
+    tuneDValue.style.border=""
+    tuneCOValue.style.border=""
+        TuneSelected="I"
+
+
+}
+
+function tuneDClicked()
+{
+
+    tuneSPValue.style.border=""
+    tunePValue.style.border=""
+    tuneIValue.style.border=""
+    tuneDValue.style.border="2px solid black"
+    tuneCOValue.style.border=""
+
+        TuneSelected="D"
+
+
+}
+
+function tuneCOClicked()
+{
+    tuneSPValue.style.border=""
+    tunePValue.style.border=""
+    tuneIValue.style.border=""
+    tuneDValue.style.border=""
+    tuneCOValue.style.border="2px solid black"
+
+        TuneSelected="OUT"
+
+
+
+}
+
+//=====SYSTEM STRIP CHART====================
+var StripChartOpen=false
+var SystemInterval
+function openStripChart()
+{
+    StripChartOpen=true
+    slideStripChart()
+    stripChartDiv.style.visibility='visible'
+    d3.select("#stripChartDiv").transition().duration(1500)
+    .styleTween("width", function() { return d3.interpolate("1px", "1200px"); })
+    .styleTween("height", function() { return d3.interpolate("1px", "650px"); });
+   SystemInterval=setInterval(slideStripChart,2000)
+}
+function closeStripChart()
+{
+    d3.select("#stripChartDiv").transition().duration(1000)
+    .styleTween("width", function() { return d3.interpolate("1200px", "1px"); })
+    .styleTween("height", function() { return d3.interpolate("650px", "1px"); })
+
+    setTimeout("stripChartDiv.style.visibility='hidden'",1000)
+    StripChartOpen=false
+    clearInterval(SystemInterval)
+}
+
+
+//---onload---
+function initSystemStripChart()
+{
+
+    var width=900
+    var height=480
+
+// The number of datapoints
+var n = 100;
+
+//  X scale will use the index of our data
+var xScale = d3.scaleLinear()
+    .domain([0, n-1]) // input
+    .range([0, width]); // output
+
+// Y scale will use the randomly generate number
+var yScale = d3.scaleLinear()
+    .domain([0, 10]) // input
+    .range([height, 0]); // output
+
+  // gridlines in x axis function
+function make_x_gridlines() {
+    return d3.axisBottom(xScale)
+       // .ticks(5)
+}
+
+// gridlines in y axis function
+function make_y_gridlines() {
+    return d3.axisLeft(yScale)
+       // .ticks(5)
+}
+
+// Add the SVG to the div
+var svg = d3.select("#stripChartDiv").append("svg")
+    .attr("overflow", "visible")
+    .attr("width", width)
+    .attr("height", height)
+// Add the SVG to the div
+var topG = svg.append("g")
+   .attr("transform", "translate(60,50)")
+
+    topG.append("defs").append("clipPath")
+    .attr("id", "clip")
+    .append("rect")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("transform", "translate(5,0)")
+
+// add the X gridlines
+  topG.append("g")
+      .attr("class", "grid")
+      .attr("transform", "translate(0," + height + ")")
+      .call(make_x_gridlines()
+          .tickSize(-height)
+          .tickFormat("")
+      )
+
+  // add the Y gridlines
+  topG.append("g")
+      .attr("class", "grid")
+      .call(make_y_gridlines()
+          .tickSize(-width)
+          .tickFormat("")
+      )
+
+
+// Call the x axis in a group tag
+topG.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale))
+.selectAll("text")
+     .attr("font-size","14")
+     .attr("fill","black")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+// Call the y axis in a group tag
+topG.append("g")
+    .attr("class", "y axis axisRed")
+    .call(d3.axisLeft(yScale))
+    .selectAll("text")
+     .attr("font-size","14")
+     .attr("fill","red")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+
+
+var yHzScale = d3.scaleLinear() //---HZ---
+    .domain([0, 130]) // input
+    .range([height, 0]) // output
+
+ topG.append("g")
+    .attr("class", "y axis right axisViolet")
+    .attr("transform", "translate("+(width+30)+",0)")
+    .call(d3.axisRight(yHzScale))
+        .selectAll("text")
+     .attr("font-size","14")
+     .attr("fill","violet")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+
+    //---RIGHT y AXIS (controller output)---
+    var yVacScale = d3.scaleLinear() //---right values---
+    .domain([0,500])
+    .range([height, 0])
+
+    //---right ticks and values--
+ topG.append("g")
+    .attr("class", "y axis output axisLime")
+    .attr("transform", "translate("+(width+120)+",0)")
+    .call(d3.axisLeft(yVacScale))
+    .selectAll("text")
+     .attr("font-size","14")
+     .attr("fill","lime")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+
+    //---RIGHT y AXIS (controller output)---
+    var yCoScale = d3.scaleLinear() //---right values---
+    .domain([0,100]) //---show max/min for controller output---
+    .range([height, 0])
+
+    //---right ticks and values--
+ topG.append("g")
+    .attr("class", "y axis output axisBlue")
+    .attr("transform", "translate("+(width+190)+",0)")
+    .call(d3.axisLeft(yCoScale))
+    .selectAll("text")
+     .attr("font-size","14")
+     .attr("fill","blue")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+
+
+
+
+
+
+
+<!--Titles-->
+topG.append("text")
+     .attr("x","0")
+     .attr("y","0")
+     .attr("dy","-20")
+     .attr("text-anchor","middle")
+     .attr("font-size","17")
+     .attr("fill","red")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+     .text("STP (in. W.C.)")
+
+topG.append("text")
+     .attr("x","950")
+     .attr("y","0")
+     .attr("dy","-20")
+     .attr("text-anchor","middle")
+     .attr("font-size","17")
+     .attr("fill","violet")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+     .text("Hz")
+topG.append("text")
+     .attr("x","1005")
+     .attr("y","0")
+     .attr("dy","-20")
+     .attr("text-anchor","middle")
+     .attr("font-size","17")
+     .attr("fill","lime")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+     .text("VAC")
+
+topG.append("text")
+     .attr("x","1085")
+     .attr("y","0")
+     .attr("dy","-20")
+     .attr("text-anchor","middle")
+     .attr("font-size","17")
+     .attr("fill","blue")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+     .text("CO (\u0025)")
+
+topG.append("text")
+     .attr("x","450")
+     .attr("y","520")
+     .attr("text-anchor","middle")
+     .attr("font-size","17")
+     .attr("fill","black")
+     .attr("stroke","black")
+     .attr("stroke-width",".5")
+     .text("Time (minutes)")
+
+<!--Data and Data Lines/Paths-->
+//---{SP,STP,CO,VAC,HZ} ---
+ lineSTP = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yScale(d.STP); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+ lineSP = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yScale(d.SP); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+ lineCO = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yCoScale(d.CO); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+ lineVAC = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yVacScale(d.VAC); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+ lineHZ = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yHzScale(d.HZ); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+
+
+    // Append the path, bind the data, and call the line generator
+pathSTP=topG.append("path")
+  .attr("clip-path", "url(#clip)")
+    .datum(Data) // 10. Binds data to the line
+    .attr("class", "chartLineSTP") // Assign a class for styling
+    .attr("d", pathSTP); // 11. Calls the line generator
+pathSP=topG.append("path")
+ .attr("clip-path", "url(#clip)")
+    .datum(Data) // 10. Binds data to the line
+    .attr("class", "chartLineSP") // Assign a class for styling
+    .attr("d", lineSP); // 11. Calls the line generator
+pathCO=topG.append("path")
+ .attr("clip-path", "url(#clip)")
+    .datum(Data) // 10. Binds data to the line
+    .attr("class", "chartLineCO") // Assign a class for styling
+    .attr("d", lineCO); // 11. Calls the line generator
+
+
+pathVAC=topG.append("path")
+ .attr("clip-path", "url(#clip)")
+    .datum(Data) // 10. Binds data to the line
+    .attr("class", "chartLineVAC") // Assign a class for styling
+    .attr("d", lineVAC); // 11. Calls the line generator
+
+pathHZ=topG.append("path")
+ .attr("clip-path", "url(#clip)")
+    .datum(Data) // 10. Binds data to the line
+    .attr("class", "chartLineHZ") // Assign a class for styling
+    .attr("d", lineHZ); // 11. Calls the line generator
+
+
+  stripLabelSTP=topG.append('text')
+   .attr("font-size","12")
+   .attr("text-anchor","end")
+   .attr("dy","5")
+  .attr("dx","3")
+   .text("STP")
+  stripLabelSP=topG.append('text')
+   .attr("font-size","12")
+   .attr("text-anchor","end")
+   .attr("dy","5")
+    .attr("dx","3")
+   .text("SP")
+  stripLabelCO=topG.append('text')
+   .attr("font-size","12")
+   .attr("text-anchor","end")
+   .attr("dy","5")
+   .attr("dx","3")
+   .text("CO")
+  stripLabelVAC=topG.append('text')
+   .attr("font-size","12")
+   .attr("text-anchor","end")
+  .attr("dy","5")
+   .attr("dx","3")
+   .text("VAC")
+
+  stripLabelHZ=topG.append('text')
+   .attr("font-size","12")
+   .attr("text-anchor","end")
+  .attr("dy","5")
+   .attr("dx","3")
+   .text("Hz")
+
+
+
+
+}
+var lineSTP
+var lineSP
+var lineVAC
+var lineCO
+var lineHZ
+var pathSTP
+var pathSP
+var pathVAC
+var pathCO
+var pathHZ
+var stripLabelSTP
+var stripLabelSP
+var stripLabelVAC
+var stripLabelCO
+var stripLabelHZ
+var StripChartOpen=false
+var StripChartInterval
+
+function openStripChart()
+{
+    StripChartOpen=true
+    slideStripChart()
+    stripChartDiv.style.visibility='visible'
+    d3.select("#stripChartDiv").transition().duration(1500)
+    .styleTween("width", function() { return d3.interpolate("1px", "1200px"); })
+    .styleTween("height", function() { return d3.interpolate("1px", "650px"); });
+   StripChartInterval=setInterval(slideStripChart,2000)
+
+}
+function closeStripChart()
+{
+    d3.select("#stripChartDiv").transition().duration(1000)
+    .styleTween("width", function() { return d3.interpolate("1200px", "1px"); })
+    .styleTween("height", function() { return d3.interpolate("650px", "1px"); })
+
+    setTimeout("stripChartDiv.style.visibility='hidden'",1000)
+    clearInterval(StripChartInterval)
+    StripChartOpen=false
+}
+
+//--every 2 seconds=1 MINUTE---
+function slideStripChart()
+{
+    var width=600
+    Data[Data.length]=Data[0] //---{SP,STP,CO,VAC,HZ} ---
+
+        pathSTP.attr("d", lineSTP)
+        .attr("transform", null);
+        pathSP.attr("d", lineSP)
+        .attr("transform", null);
+        pathVAC.attr("d", lineVAC)
+        .attr("transform", null);
+        pathCO.attr("d", lineCO)
+        .attr("transform", null);
+        pathHZ.attr("d", lineHZ)
+        .attr("transform", null);
+
+        pathSTP.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+       pathSP.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+        pathVAC.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+        pathCO.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+        pathHZ.transition().duration(850).attr("transform", "translate(" + -width/100 + ",0)")
+
+        var pathSplit=pathSTP.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabelSTP.attr("x",splitX)
+        stripLabelSTP.attr("y",splitY)
+
+        var pathSplit=pathSP.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabelSP.attr("x",splitX)
+        stripLabelSP.attr("y",splitY)
+
+        var pathSplit=pathVAC.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabelVAC.attr("x",splitX)
+        stripLabelVAC.attr("y",splitY)
+
+        var pathSplit=pathCO.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabelCO.attr("x",splitX)
+        stripLabelCO.attr("y",splitY)
+
+        var pathSplit=pathHZ.attr("d").split(",")
+        var splitX=pathSplit[pathSplit.length-2]
+        var splitY=pathSplit[pathSplit.length-1]
+        stripLabelHZ.attr("x",splitX)
+        stripLabelHZ.attr("y",splitY)
+
+
+
+   Data.shift()
+
+}
+
+function buildData()
+{
+ for(var k=0;k<100;k++)
+ {
+
+  var ci=Math.round(Math.random()*50)+50
+  var vac=Math.round(Math.random()*60)+60
+  var hz=Math.round(Math.random()*240)+240
+  myValue.value+="{CI:"+ci+",VAC:"+vac+",HZ:"+hz+"},\n"
+}
+
+
+}
+
+//---start dataBase-----------
+var Data=[
+//---{SP,STP,CO,VAC,HZ} ---
+{SP:5.8597086599313215,STP:5.980161314812135,CO:84,VAC:202,HZ:44},
+{SP:5.819752117538988,STP:5.975204928289244,CO:82,VAC:207,HZ:40},
+{SP:6.395825100749633,STP:6.3964669499146245,CO:85,VAC:203,HZ:40},
+{SP:5.707397894544297,STP:5.806443530460019,CO:85,VAC:203,HZ:45},
+{SP:5.884418117120751,STP:6.435989160650105,CO:83,VAC:204,HZ:43},
+{SP:6.195112079573936,STP:6.125472528258385,CO:81,VAC:207,HZ:41},
+{SP:6.201368413892768,STP:5.71200339464645,CO:84,VAC:201,HZ:49},
+{SP:6.240277552019079,STP:5.778244083238918,CO:80,VAC:210,HZ:47},
+{SP:5.677506281332766,STP:6.322253130093831,CO:83,VAC:209,HZ:45},
+{SP:5.905995399284812,STP:5.813713139712959,CO:80,VAC:206,HZ:41},
+{SP:5.854354171324974,STP:6.4234621030806816,CO:83,VAC:205,HZ:44},
+{SP:6.230637946896966,STP:6.378839012828818,CO:83,VAC:204,HZ:48},
+{SP:5.765743883963143,STP:6.026573708420607,CO:82,VAC:202,HZ:48},
+{SP:5.848829830310609,STP:5.614015047834496,CO:80,VAC:206,HZ:47},
+{SP:5.919104233545573,STP:5.818047809915397,CO:81,VAC:201,HZ:49},
+{SP:5.949730066745696,STP:5.616085586843944,CO:81,VAC:210,HZ:49},
+{SP:5.726513236160379,STP:6.3095666744149765,CO:82,VAC:204,HZ:43},
+{SP:5.676173007728597,STP:6.287873495609962,CO:80,VAC:204,HZ:43},
+{SP:5.884835782311376,STP:6.420182935138513,CO:83,VAC:209,HZ:47},
+{SP:6.253028353062523,STP:5.635936249272508,CO:81,VAC:206,HZ:49},
+{SP:5.615910202138657,STP:6.2755704139046635,CO:81,VAC:206,HZ:43},
+{SP:6.252331602450356,STP:6.431946336768879,CO:84,VAC:205,HZ:45},
+{SP:6.4946469079374225,STP:6.05420421834544,CO:82,VAC:209,HZ:49},
+{SP:5.82775312170815,STP:5.553267255164315,CO:83,VAC:201,HZ:46},
+{SP:6.014260032146223,STP:6.47383223822326,CO:82,VAC:208,HZ:46},
+{SP:5.736317642254102,STP:5.786936683881577,CO:81,VAC:208,HZ:41},
+{SP:6.363014036480903,STP:6.36040009464576,CO:83,VAC:203,HZ:47},
+{SP:5.781899825930283,STP:6.176822711009014,CO:82,VAC:210,HZ:47},
+{SP:5.9599364708671185,STP:5.5123487375473506,CO:81,VAC:202,HZ:43},
+{SP:5.930296986715145,STP:6.219074401250289,CO:80,VAC:205,HZ:46},
+{SP:5.53056559337613,STP:5.950671048682825,CO:84,VAC:203,HZ:47},
+{SP:6.010426028409077,STP:6.178554786184594,CO:81,VAC:209,HZ:43},
+{SP:5.927716142609354,STP:5.561173612345005,CO:84,VAC:204,HZ:48},
+{SP:5.552841171222067,STP:5.594296839539918,CO:81,VAC:206,HZ:47},
+{SP:5.543720588679986,STP:5.965025784133302,CO:85,VAC:206,HZ:46},
+{SP:6.229103427827407,STP:5.949901298446925,CO:81,VAC:208,HZ:45},
+{SP:5.623525559840178,STP:5.703456932681696,CO:83,VAC:200,HZ:47},
+{SP:5.91430209193962,STP:5.915040644874987,CO:83,VAC:204,HZ:48},
+{SP:5.628774722734187,STP:5.856027125485501,CO:83,VAC:203,HZ:46},
+{SP:6.18430440698805,STP:5.787200721493756,CO:84,VAC:203,HZ:40},
+{SP:5.986356997921076,STP:5.7469475580992,CO:82,VAC:201,HZ:49},
+{SP:6.281253218911934,STP:5.8980420330148515,CO:80,VAC:204,HZ:48},
+{SP:6.470127403032773,STP:6.211098961622671,CO:84,VAC:204,HZ:45},
+{SP:6.383170867900063,STP:6.324747747975168,CO:85,VAC:205,HZ:48},
+{SP:6.304201894530097,STP:6.420189375665532,CO:82,VAC:205,HZ:42},
+{SP:6.009864170896433,STP:6.065705862908301,CO:83,VAC:208,HZ:42},
+{SP:6.447300376612517,STP:5.763890553526482,CO:84,VAC:201,HZ:49},
+{SP:5.58738437242656,STP:5.991408893929815,CO:83,VAC:206,HZ:40},
+{SP:5.590738441193964,STP:5.787132295671373,CO:84,VAC:201,HZ:47},
+{SP:6.174848245108183,STP:5.591443197680647,CO:82,VAC:206,HZ:46},
+{SP:6.4416810264917785,STP:5.762134239084189,CO:84,VAC:203,HZ:48},
+{SP:5.597578505538374,STP:5.98021639201383,CO:82,VAC:205,HZ:47},
+{SP:6.4047032408275,STP:5.837072230098254,CO:81,VAC:201,HZ:42},
+{SP:6.244140911706279,STP:5.526134196404625,CO:80,VAC:209,HZ:46},
+{SP:5.521627875892613,STP:5.759336249724373,CO:83,VAC:205,HZ:42},
+{SP:5.541970642609947,STP:6.0106153841316825,CO:84,VAC:207,HZ:44},
+{SP:5.5778358403353145,STP:6.390767416068419,CO:82,VAC:201,HZ:50},
+{SP:5.953317953801188,STP:5.665834152109122,CO:84,VAC:206,HZ:43},
+{SP:6.392396480837129,STP:5.568800278919834,CO:81,VAC:200,HZ:44},
+{SP:5.842614050814241,STP:6.2767964283736175,CO:84,VAC:201,HZ:44},
+{SP:6.030520648886878,STP:6.349090020812397,CO:81,VAC:209,HZ:45},
+{SP:6.194411863212954,STP:6.287715918551024,CO:80,VAC:209,HZ:48},
+{SP:6.006630762968818,STP:5.854666437000066,CO:83,VAC:201,HZ:44},
+{SP:6.472464151447737,STP:6.106387971724055,CO:85,VAC:207,HZ:46},
+{SP:6.055866283223722,STP:5.96456385488669,CO:80,VAC:209,HZ:44},
+{SP:6.300347706391067,STP:5.549559516206768,CO:81,VAC:207,HZ:43},
+{SP:5.8436133532254635,STP:6.099243103229213,CO:83,VAC:204,HZ:42},
+{SP:5.694066025890419,STP:5.782387584408324,CO:84,VAC:210,HZ:41},
+{SP:5.842898492341042,STP:6.076330135651728,CO:82,VAC:205,HZ:44},
+{SP:6.45559191956731,STP:6.44733602992316,CO:85,VAC:209,HZ:41},
+{SP:6.251976310272331,STP:6.254447444765404,CO:81,VAC:204,HZ:42},
+{SP:5.768236338230697,STP:6.001334976074011,CO:80,VAC:206,HZ:44},
+{SP:6.224990343452344,STP:5.5914846975339225,CO:81,VAC:202,HZ:49},
+{SP:6.119407180364062,STP:5.683073220314139,CO:80,VAC:206,HZ:46},
+{SP:6.170536436481555,STP:5.678033337429569,CO:85,VAC:209,HZ:45},
+{SP:5.828563249409466,STP:5.864854046500743,CO:83,VAC:205,HZ:42},
+{SP:6.350739675502986,STP:6.4082036323992755,CO:82,VAC:209,HZ:46},
+{SP:5.570481961448248,STP:6.470454862746651,CO:84,VAC:203,HZ:48},
+{SP:6.090521022654276,STP:5.677710218926107,CO:84,VAC:203,HZ:46},
+{SP:5.544024789815544,STP:5.7708230949390735,CO:82,VAC:204,HZ:48},
+{SP:5.855887120995485,STP:5.550074273096933,CO:85,VAC:207,HZ:47},
+{SP:5.889518661290348,STP:6.493138392504244,CO:84,VAC:209,HZ:44},
+{SP:6.0454186342886285,STP:6.400227341298492,CO:81,VAC:203,HZ:46},
+{SP:5.534952256928031,STP:5.525616342112369,CO:84,VAC:204,HZ:47},
+{SP:5.556227835750677,STP:6.3817949950370405,CO:83,VAC:207,HZ:42},
+{SP:6.371159157335012,STP:5.744477822614982,CO:81,VAC:205,HZ:45},
+{SP:5.630462754345233,STP:6.17619927734164,CO:80,VAC:205,HZ:47},
+{SP:5.863090162215952,STP:5.6891134391091285,CO:83,VAC:200,HZ:42},
+{SP:6.119142333733514,STP:5.671424770709836,CO:82,VAC:203,HZ:49},
+{SP:5.990098101512067,STP:6.381276767291626,CO:82,VAC:204,HZ:46},
+{SP:6.0301732827270165,STP:5.944700895924454,CO:84,VAC:206,HZ:49},
+{SP:5.924488100779731,STP:5.635313099997846,CO:84,VAC:201,HZ:49},
+{SP:5.723785472299777,STP:5.839228253276593,CO:81,VAC:208,HZ:45},
+{SP:5.863256250872109,STP:6.022395317175202,CO:85,VAC:202,HZ:43},
+{SP:5.614622814806999,STP:5.511062338331263,CO:81,VAC:206,HZ:45},
+{SP:6.418073769550485,STP:6.358418069123547,CO:83,VAC:206,HZ:49},
+{SP:5.721620668978008,STP:6.20618610468332,CO:83,VAC:201,HZ:46},
+{SP:6.0169483142326765,STP:6.334008340392741,CO:84,VAC:210,HZ:44},
+{SP:6.418770474383215,STP:6.374709769766887,CO:82,VAC:205,HZ:48},
+{SP:6.233001045270367,STP:5.610807817705924,CO:81,VAC:201,HZ:46}
+
+]
+
+</script>
+<script>
+document.addEventListener("onload",init(),false)
+function init()
+{   createGauges()
+    buildPVStripChart()
+   	showSourceSVG()
+	showSourceJS()
+     initSystemStripChart()
+}
+
+
+</script>
+<script>
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88028738-1', 'auto');
+  ga('send', 'pageview');
+
+
+</script>
+
+</body>
+
+</html>

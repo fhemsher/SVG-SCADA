@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Variable Frequency Drive  Object</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script src="../../d3.v4.min.js"></script>
+
+
+<style type="text/css">
+<!--
+.grid line {
+  stroke: black;
+  stroke-opacity: 0.5;
+
+}
+
+.grid path {
+  stroke-width: 0;
+}
+
+
+
+.chartLineCI {
+    fill: none;
+    stroke: purple;
+    stroke-width: 3;
+}
+.chartLineVAC {
+    fill: none;
+    stroke: red;
+    stroke-width: 3;
+}
+.chartLineHZ {
+    fill: none;
+    stroke: blue;
+    stroke-width: 3;
+}
+
+
+
+.axisRed line{
+  stroke: red;
+}
+
+.axisRed path{
+  stroke: red;
+}
+
+
+.axisBlue line{
+  stroke: blue;
+}
+
+.axisBlue path{
+  stroke: blue;
+}
+
+.axisPurple line{
+  stroke: purple;
+}
+
+.axisPurple path{
+  stroke: purple;
+}
+
+
+
+
+-->
+</style>
+</head>
+<body style='padding:10px;font-family:arial'>
+<center>
+<h4>Variable Frequency Drive Object</h4>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+A configurable object that monitors a VFD's values and status. It plots strip chart and provides digital values for: controller signal input (CI), hertz (HZ), and voltage (VAC). Includes 5-state status monitoring.
+</div>
+<table><tr>
+<td>
+<div style="padding:10px;width:500px;text-align:left">
+
+<p></p><center>
+Simulated values shown every 2 seconds, sliding the strip chart, repesenting 1 minute.<br>
+<p></p> NOTE: Status is shown as modulating the VFD via CI values.
+</center>
+<p></p>
+<b>Configuring the VFD monitor:</b><br />
+buildVFDMonitor(id, name, title, timeLine, timeLineUnits, faceColor, scale, transX, transY)<br>
+1.) id - your id value<br>
+2.) title - shown in VFD monitor  <br>
+4.) timeLine - number of chart time increments (x-axis) <br>
+5.) timeLineUnits - units of time measurement<br>
+6.) faceColor - fill color<br>
+7.) scale - size the VFD monitor (default size 600x500 px.)<br>
+8.) transX - locate VFD monitor upper-left x <br>
+9.) transY - locate VFD monitor  upper-left y <br>
+
+</div>
+</td>
+<td>
+<div id="svgDiv" style='width:400px;height:400px;'>
+<svg id=mySVG width=400 height=400 overflow="visible">
+
+<defs id="pilotLightDefs">
+<radialGradient id="blueGradient" cx="50%" cy="50%" r="75%">
+<stop offset="0%" stop-color="rgb(0,0,255)" stop-opacity="1"/>
+<stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+</radialGradient>
+<radialGradient id="greenGradient" cx="50%" cy="50%" r="75%">
+<stop offset="0%" stop-color="rgb(0,191,0)" stop-opacity="1"/>
+<stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+</radialGradient>
+<radialGradient id="greyGradient" cx="50%" cy="50%" r="75%">
+<stop offset="0%" stop-color="rgb(255,255,255)" stop-opacity="1"/>
+<stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+</radialGradient>
+<radialGradient id="redGradient" cx="50%" cy="50%" r="75%">
+<stop offset="0%" stop-color="rgb(255,0,0)" stop-opacity="1"/>
+<stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+</radialGradient>
+<radialGradient id="violetGradient" cx="50%" cy="50%" r="75%">
+<stop offset="0%" stop-color="rgb(219,0,219)" stop-opacity="1"/>
+<stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+</radialGradient>
+<radialGradient id="aquaGradient" cx="50%" cy="50%" r="75%">
+<stop offset="0%" stop-color="aqua" stop-opacity="1"/>
+<stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+</radialGradient>
+</defs>
+<defs>
+<foreignObject id=vfdFO width=400 height=60 transform="translate(290,400)" >
+ <table cellspacing=5>
+<tr>
+<td><input type="text" style='border:6px inset purple;background:black;color:lime;font-family:times new roman;font-weight:bold;font-size:33px;width:80px' value="81" /></td>
+<td><input type="text" style='border:6px inset blue;background:black;color:lime;font-family:times new roman;font-weight:bold;font-size:33px;width:80px' value="46" /></td>
+<td><input type="text" style='border:6px inset red;background:black;color:lime;font-family:times new roman;font-weight:bold;font-size:33px;width:80px' value="201" /></td>
+</tr>
+<tr align=center style='font-weight:bold;font-size:25px'><td style='color:purple'>CI</td><td style='color:blue'>HZ</td><td style='color:red'>VAC</td></tr>
+ </table>
+ </foreignObject>
+<g id=statusStickG >
+    <rect x="-25" y="-130" rx="8" ry="8" stroke="black" stroke-width="2" fill="ghostwhite" width="50" height="260">
+    </rect>
+
+    <g id="onStatusG" transform="translate(0,100)scale(22)" opacity=".25">
+        <circle id="pilotLightON" cx="0" cy="0" r="1" fill="url(#greenGradient)">
+        </circle>
+    </g>
+    <g id="alarmStatusG" transform="translate(0,50)scale(22)" opacity=".25">
+        <circle id="pilotLightALARM" cx="0" cy="0" r="1" fill="url(#redGradient)">
+        </circle>
+        <line name="lineAlarm" x1="-.5" y1="-.5" x2=".5" y2=".5" stroke="black" stroke-width=".1">
+        </line>
+    </g>
+    <g id="intermittentStatusG" transform="translate(0,0)scale(22)" opacity="1">
+        <circle id="pilotLightINTERMITTENT" cx="0" cy="0" r="1" fill="url(#violetGradient)">
+        </circle>
+    </g>
+    <g id="defectiveStatusG" transform="translate(0,-50)scale(22)" opacity=".25">
+        <circle id="pilotLightDEFECTIVE" cx="0" cy="0" r="1" fill="url(#aquaGradient)">
+        </circle>
+        <circle name="circleDefective" cx="0" cy="0" r=".7" stroke="crimson" stroke-width=".2" fill="none">
+        </circle>
+        <line name="lineDefective" x1="-.5" y1="-.5" x2=".5" y2=".5" stroke="crimson" stroke-width=".08">
+        </line>
+    </g>
+    <g id="normalOffStatus" transform="translate(0,-100)scale(22)" opacity=".25">
+        <circle id="pilotLightOFF" cx="0" cy="0" r="1" fill="url(#greyGradient)">
+        </circle>
+        <line name="lineDisabled1" x1="-.5" y1="-.5" x2=".5" y2=".5" stroke="black" stroke-width=".1">
+        </line>
+        <line name="lineDisabled2" x1=".5" y1="-.5" x2="-.5" y2=".5" stroke="black" stroke-width=".1">
+        </line>
+    </g>
+    <rect x=-25 y=-150  stroke="none"  fill="white" width=50 height=300 opacity=0 />
+
+</g>
+
+
+</defs>
+</svg>
+</div>
+
+</td>
+</tr></table>
+  <br />SVG Source:
+  <div id=svgSourceDiv style=overflow:auto;width:100%;height:1px;text-align:left; /></div>
+  Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:100%;text-align:left; /></div><p></p>
+</center>
+<script id=myScript>
+//======================VFD MONITOR OBJECT========================================
+function buildVFDMonitor(id,title,timeLine,timeLineUnits,faceColor,scale,transX,transY)
+{
+
+    var defaultWidth=600
+    var defaultHeight=500
+
+    var svg=d3.select("#mySVG")
+    //---container---
+    var vfdG=svg.append("g")
+    .attr("id",id)
+    .attr("text-rendering","geometricPrecision")
+    .attr("shape-rendering","geometricPrecision")
+    .attr("transform","translate("+transX+","+transY+")scale("+scale+")")
+
+    //---face rectangle---
+    vfdG.append("rect")
+    .attr("id","faceRect"+id)
+    .attr("height",defaultHeight)
+    .attr("width",defaultWidth)
+    .attr("rx",20)
+    .attr("ry",20)
+    .attr("fill",faceColor)
+    .attr("stroke","black")
+    .attr("stroke-width",3)
+
+    var myTitle=vfdG.append("text")
+    .attr("id","vfdTitle"+id)
+    .text(title)
+    .attr("x",defaultWidth/2)
+    .attr("dy","1em")
+    .attr("font-family","arial")
+    .attr("font-size","40")
+    .attr("font-weight","bold")
+    .attr("text-anchor","middle")
+
+    //---chart size---
+    var width=400
+    var height=260
+    //---timeline---
+    var xTime = d3.scaleLinear()
+    .domain([0, timeLine])
+    .range([0, width])
+
+    //---controller analog input---
+    var yCI = d3.scaleLinear()
+    .domain([0, 100]) // percent
+    .range([height, 0]); // output
+    //---hertz value---
+    var yHZ = d3.scaleLinear()
+    .domain([0, 130]) // input
+    .range([height, 0]); // output
+    //---voltage value---
+    var yVAC = d3.scaleLinear()
+    .domain([0, 500]) // input
+    .range([height, 0]); // output
+
+
+    // gridlines in x axis function
+    function make_x_gridlines() {
+    return d3.axisBottom(xTime)
+    }
+
+    // gridlines in y axis function
+    function make_y_gridlines() {
+    return d3.axisLeft(yCI)
+    }
+
+
+    var plotG=vfdG.append("g")
+    .attr("id","plotG"+id)
+    .attr("transform","translate(70,90)")
+
+
+    plotG.append("rect")
+    .attr("id","plotRect")
+    .attr("width",width)
+    .attr("height",height)
+    .attr("stroke","none")
+    .attr("fill","ghostWhite")
+    var defs=plotG.append("defs")
+    defs.append("clipPath")
+    .attr("id", "clip")
+    .append("rect")
+    .attr("width", width)
+    .attr("height", height)
+    //.attr("transform", "translate(100,50)")
+
+    // add the X gridlines
+    plotG.append("g")
+    .attr("class", "grid")
+    .attr("transform", "translate(0," + height + ")")
+    .call(make_x_gridlines()
+    .tickSize(-height)
+    .tickFormat("")
+    )
+
+    // add the Y gridlines
+    plotG.append("g")
+    .attr("class", "grid")
+    .call(make_y_gridlines()
+    .tickSize(-width)
+    .tickFormat("")
+    )
+
+
+
+
+    // Call the x axis timeLine in a group tag
+    plotG.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height+ ")")
+    .call(d3.axisBottom(xTime)) // Create an axis component with d3.axisBottom
+    .selectAll("text")
+    .attr("font-size","24")
+    .attr("fill","black")
+    .attr("stroke","black")
+    .attr("stroke-width",".5")
+
+    var unitText=plotG.append("text")
+    .text(timeLineUnits)
+    .attr("x",width/2)
+    .attr("y",height+45)
+    .attr("font-family","arial")
+    .attr("font-size","25")
+    .attr("text-anchor","middle")
+
+
+    // Call the CI y axis in a group tag
+    var CI=plotG.append("text")
+    .text("CI (%)")
+    .attr("font-size",30)
+    .attr("fill","purple")
+    .attr("stroke","black")
+    .attr("stroke-width","1")
+    .attr("font-weight","bold")
+    .attr("transform","translate(-60,-20)")
+
+    var HZ=plotG.append("text")
+    .text("HZ")
+    .attr("font-size",30)
+    .attr("fill","blue")
+    .attr("stroke","black")
+    .attr("stroke-width","1")
+    .attr("font-weight","bold")
+    .attr("transform","translate(400,-20)")
+    var VAC=plotG.append("text")
+    .text("VAC")
+    .attr("font-size",30)
+    .attr("fill","red")
+    .attr("stroke","black")
+    .attr("stroke-width","1")
+    .attr("font-weight","bold")
+    .attr("transform","translate(460,-20)")
+
+
+
+    plotG.append("g")
+    .attr("class", "y axisPurple")
+    .call(d3.axisLeft(yCI))
+    .selectAll("text")
+    .attr("font-size","24")
+    .attr("fill","purple")
+    .attr("stroke","black")
+    .attr("stroke-width",".5")
+
+    plotG.append("g")
+    .attr("class", "y axis right axisBlue")
+    .attr("transform", "translate("+(width+10)+",0)")
+    .call(d3.axisRight(yHZ))
+    .selectAll("text")
+    .attr("font-size","24")
+    .attr("fill","blue")
+    .attr("stroke","black")
+    .attr("stroke-width",".5")
+
+    plotG.append("g")
+    .attr("class", "y axis right axisRed")
+    .attr("transform", "translate("+(width+70)+",0)")
+    .call(d3.axisRight(yVAC))
+    .selectAll("text")
+    .attr("font-size","24")
+    .attr("fill","red")
+    .attr("stroke","black")
+    .attr("stroke-width",".5")
+
+    //--Data and Data Lines/Paths-->
+    //---{CI,VAC,HZ} ---
+
+    if(id=="pumpVFD")
+    {
+        lineCIPumpVFD = d3.line()
+        .x(function(d, i) { return xTime(i); }) // set the x values for the line generator
+        .y(function(d) { return yCI(d.CI); }) // set the y values for the line generator
+        .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+        lineVACPumpVFD  = d3.line()
+        .x(function(d, i) { return xTime(i); }) // set the x values for the line generator
+        .y(function(d) { return yVAC(d.VAC); }) // set the y values for the line generator
+        .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+        lineHZPumpVFD = d3.line()
+        .x(function(d, i) { return xTime(i); }) // set the x values for the line generator
+        .y(function(d) { return yHZ(d.HZ); }) // set the y values for the line generator
+        .curve(d3.curveMonotoneX) // apply smoothing to the line
+    }
+    if(id=="fanVFD")
+    {
+        lineCIFanVFD = d3.line()
+        .x(function(d, i) { return xTime(i); }) // set the x values for the line generator
+        .y(function(d) { return yCI(d.CI); }) // set the y values for the line generator
+        .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+        lineVACFanVFD  = d3.line()
+        .x(function(d, i) { return xTime(i); }) // set the x values for the line generator
+        .y(function(d) { return yVAC(d.VAC); }) // set the y values for the line generator
+        .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+
+        lineHZFanVFD = d3.line()
+        .x(function(d, i) { return xTime(i); }) // set the x values for the line generator
+        .y(function(d) { return yHZ(d.HZ); }) // set the y values for the line generator
+        .curve(d3.curveMonotoneX) // apply smoothing to the line
+    }
+
+    // Append the path, bind the data, and call the line generator
+    if(id=="pumpVFD")
+        Data=DataPump
+    else
+        Data=DataFan
+    if(id=="pumpVFD")
+    {
+
+        var pathCI=plotG.append("path")
+        .attr("clip-path", "url(#clip)")
+        .datum(Data) // 10. Binds data to the line
+        .attr("class", "chartLineCI") // Assign a class for styling
+        .attr("d", lineCIPumpVFD); // 11. Calls the line generator
+        pathCI.attr("id","pathCI"+id)
+
+        var pathVAC=plotG.append("path")
+        .attr("clip-path", "url(#clip)")
+        .datum(Data) // 10. Binds data to the line
+        .attr("class", "chartLineVAC") // Assign a class for styling
+        .attr("d", lineVACPumpVFD); // 11. Calls the line generator
+        pathVAC.attr("id","pathVAC"+id)
+
+        var pathHZ=plotG.append("path")
+        .attr("clip-path", "url(#clip)")
+        .datum(Data) // 10. Binds data to the line
+        .attr("class", "chartLineHZ") // Assign a class for styling
+        .attr("d", lineHZPumpVFD); // 11. Calls the line generator
+        pathHZ.attr("id","pathHZ"+id)
+    }
+    if(id=="fanVFD")
+    {
+         var pathCI=plotG.append("path")
+        .attr("clip-path", "url(#clip)")
+        .datum(Data) // 10. Binds data to the line
+        .attr("class", "chartLineCI") // Assign a class for styling
+        .attr("d", lineCIFanVFD); // 11. Calls the line generator
+        pathCI.attr("id","pathCI"+id)
+
+        var pathVAC=plotG.append("path")
+        .attr("clip-path", "url(#clip)")
+        .datum(Data) // 10. Binds data to the line
+        .attr("class", "chartLineVAC") // Assign a class for styling
+        .attr("d", lineVACFanVFD); // 11. Calls the line generator
+        pathVAC.attr("id","pathVAC"+id)
+
+        var pathHZ=plotG.append("path")
+        .attr("clip-path", "url(#clip)")
+        .datum(Data) // 10. Binds data to the line
+        .attr("class", "chartLineHZ") // Assign a class for styling
+        .attr("d", lineHZFanVFD); // 11. Calls the line generator
+        pathHZ.attr("id","pathHZ"+id)
+    }
+
+    var statusStick=statusStickG.cloneNode(true)
+    statusStick.setAttribute("id","status"+id)
+    statusStick.setAttribute("transform","translate(150,430)rotate(90)")
+    document.getElementById(id).appendChild(statusStick)
+
+
+    var fo=vfdFO.cloneNode(true)
+    fo.setAttribute("id","digital"+id)
+    document.getElementById(id).appendChild(fo)
+
+}
+
+//==================END VFD OBJECT======================================
+
+//---onload this page---
+function createVFDs() //----this application configuration----
+{
+    //buildVFDMonitor(id,title,timeLine,timeLineUnits,faceColor,scale,transX,transY)
+    buildVFDMonitor("pumpVFD", "Pump Flow VFD",60,"Minutes","#adff2f",.4,20,50);
+    buildVFDMonitor("fanVFD", "Fan Static VFD",60,"Minutes","#ffd700",.3,60,260);
+}
+
+var intermittentInterval=setInterval("intermittent()",1000)
+function intermittent()
+{
+    var pumpVFDStatus=document.getElementById("statuspumpVFD")
+    var intermittentPumpG=pumpVFDStatus.getElementsByTagName("g")[2]
+    if(intermittentPumpG.getAttribute("fill-opacity")=="1")
+        intermittentPumpG.setAttribute("fill-opacity",.6)
+    else
+        intermittentPumpG.setAttribute("fill-opacity",1)
+
+    var fanVFDStatus=document.getElementById("statusfanVFD")
+    var intermittentFanG=fanVFDStatus.getElementsByTagName("g")[2]
+    if(intermittentFanG.getAttribute("fill-opacity")=="1")
+        intermittentFanG.setAttribute("fill-opacity",.6)
+    else
+        intermittentFanG.setAttribute("fill-opacity",1)
+}
+
+var simulateInterval=setInterval("simulate()",2000)
+function simulate()
+{
+    slidePumpStripChart()
+    slideFanStripChart()
+}
+var lineCIPumpVFD
+var lineHZPumpVFD
+var lineVACPumpVFD
+var lineCIFanVFD
+var lineHZFanVFD
+var lineVACFanVFD
+
+function slidePumpStripChart()
+{
+    var width=400
+    DataPump[DataPump.length]=DataPump[0] //---{CI,VAC,HZ} ---
+
+    var pathVAC=d3.select("#pathVACpumpVFD")
+    var pathCI=d3.select("#pathCIpumpVFD")
+    var pathHZ=d3.select("#pathHZpumpVFD")
+
+    pathVAC.attr("d", lineVACPumpVFD)
+    .attr("transform", null);
+    pathCI.attr("d", lineCIPumpVFD)
+    .attr("transform", null);
+    pathHZ.attr("d", lineHZPumpVFD)
+    .attr("transform", null);
+
+    pathVAC.transition().duration(850).attr("transform", "translate(" + -width/60 + ",0)")
+    pathCI.transition().duration(850).attr("transform", "translate(" + -width/60 + ",0)")
+    pathHZ.transition().duration(850).attr("transform", "translate(" + -width/60 + ",0)")
+
+    //---add digital values---
+    var digitalCI=digitalpumpVFD.getElementsByTagName("input")[0]
+    var digitalHZ=digitalpumpVFD.getElementsByTagName("input")[1]
+    var digitalVAC=digitalpumpVFD.getElementsByTagName("input")[2]
+    digitalCI.value=DataPump[DataPump.length-1].CI
+    digitalHZ.value=DataPump[DataPump.length-1].HZ
+    digitalVAC.value=DataPump[DataPump.length-1].VAC
+
+
+    DataPump.shift()
+
+}
+function slideFanStripChart()
+{
+    var width=400
+    DataFan[DataFan.length]=DataFan[0] //---{CI,VAC,HZ} ---
+    var pathVAC=d3.select("#pathVACfanVFD")
+    var pathCI=d3.select("#pathCIfanVFD")
+    var pathHZ=d3.select("#pathHZfanVFD")
+
+    pathVAC.attr("d", lineVACFanVFD)
+    .attr("transform", null);
+    pathCI.attr("d", lineCIFanVFD)
+    .attr("transform", null);
+    pathHZ.attr("d", lineHZFanVFD)
+    .attr("transform", null);
+
+    pathVAC.transition().duration(850).attr("transform", "translate(" + -width/60 + ",0)")
+    pathCI.transition().duration(850).attr("transform", "translate(" + -width/60 + ",0)")
+    pathHZ.transition().duration(850).attr("transform", "translate(" + -width/60 + ",0)")
+
+
+    //---add digital values---
+    var digitalCI=digitalfanVFD.getElementsByTagName("input")[0]
+    var digitalHZ=digitalfanVFD.getElementsByTagName("input")[1]
+    var digitalVAC=digitalfanVFD.getElementsByTagName("input")[2]
+    digitalCI.value=DataFan[DataFan.length-1].CI
+    digitalHZ.value=DataFan[DataFan.length-1].HZ
+    digitalVAC.value=DataFan[DataFan.length-1].VAC
+
+
+    DataFan.shift()
+
+}
+
+//---start dataBase-----------
+var DataPump=[
+{CI:21,VAC:414,HZ:73},
+{CI:24,VAC:411,HZ:67},
+{CI:21,VAC:417,HZ:72},
+{CI:20,VAC:419,HZ:60},
+{CI:21,VAC:411,HZ:73},
+{CI:23,VAC:436,HZ:66},
+{CI:23,VAC:406,HZ:65},
+{CI:22,VAC:431,HZ:66},
+{CI:20,VAC:410,HZ:66},
+{CI:24,VAC:439,HZ:64},
+{CI:24,VAC:402,HZ:63},
+{CI:22,VAC:424,HZ:74},
+{CI:22,VAC:438,HZ:72},
+{CI:20,VAC:431,HZ:71},
+{CI:25,VAC:425,HZ:69},
+{CI:24,VAC:430,HZ:69},
+{CI:25,VAC:427,HZ:61},
+{CI:21,VAC:432,HZ:71},
+{CI:21,VAC:407,HZ:61},
+{CI:24,VAC:427,HZ:73},
+{CI:21,VAC:434,HZ:73},
+{CI:20,VAC:422,HZ:70},
+{CI:23,VAC:421,HZ:74},
+{CI:23,VAC:413,HZ:62},
+{CI:24,VAC:436,HZ:74},
+{CI:21,VAC:427,HZ:65},
+{CI:20,VAC:405,HZ:63},
+{CI:25,VAC:404,HZ:70},
+{CI:24,VAC:404,HZ:64},
+{CI:24,VAC:426,HZ:62},
+{CI:23,VAC:422,HZ:67},
+{CI:22,VAC:430,HZ:71},
+{CI:21,VAC:425,HZ:63},
+{CI:21,VAC:431,HZ:65},
+{CI:21,VAC:431,HZ:70},
+{CI:22,VAC:421,HZ:75},
+{CI:24,VAC:430,HZ:74},
+{CI:22,VAC:430,HZ:74},
+{CI:24,VAC:418,HZ:64},
+{CI:23,VAC:427,HZ:69},
+{CI:23,VAC:414,HZ:74},
+{CI:23,VAC:419,HZ:68},
+{CI:21,VAC:421,HZ:63},
+{CI:24,VAC:408,HZ:67},
+{CI:25,VAC:428,HZ:72},
+{CI:21,VAC:434,HZ:71},
+{CI:22,VAC:431,HZ:66},
+{CI:24,VAC:408,HZ:64},
+{CI:21,VAC:421,HZ:60},
+{CI:20,VAC:402,HZ:68},
+{CI:21,VAC:430,HZ:68},
+{CI:24,VAC:415,HZ:65},
+{CI:22,VAC:429,HZ:65},
+{CI:20,VAC:423,HZ:65},
+{CI:24,VAC:419,HZ:74},
+{CI:23,VAC:438,HZ:69},
+{CI:24,VAC:427,HZ:69},
+{CI:25,VAC:439,HZ:70},
+{CI:24,VAC:414,HZ:65},
+{CI:21,VAC:422,HZ:64},
+{CI:20,VAC:403,HZ:74}
+
+]
+
+var DataFan=[
+{CI:24,VAC:418,HZ:75},
+{CI:22,VAC:403,HZ:62},
+{CI:22,VAC:403,HZ:66},
+{CI:21,VAC:438,HZ:64},
+{CI:20,VAC:416,HZ:73},
+{CI:22,VAC:421,HZ:64},
+{CI:22,VAC:414,HZ:70},
+{CI:25,VAC:415,HZ:75},
+{CI:24,VAC:419,HZ:74},
+{CI:21,VAC:432,HZ:71},
+{CI:22,VAC:414,HZ:70},
+{CI:22,VAC:439,HZ:64},
+{CI:23,VAC:425,HZ:70},
+{CI:23,VAC:408,HZ:66},
+{CI:25,VAC:406,HZ:62},
+{CI:21,VAC:430,HZ:61},
+{CI:24,VAC:416,HZ:71},
+{CI:24,VAC:418,HZ:67},
+{CI:20,VAC:408,HZ:63},
+{CI:24,VAC:414,HZ:62},
+{CI:21,VAC:418,HZ:63},
+{CI:24,VAC:421,HZ:66},
+{CI:23,VAC:401,HZ:75},
+{CI:20,VAC:405,HZ:65},
+{CI:23,VAC:420,HZ:72},
+{CI:23,VAC:404,HZ:71},
+{CI:23,VAC:427,HZ:61},
+{CI:25,VAC:403,HZ:74},
+{CI:22,VAC:400,HZ:73},
+{CI:24,VAC:425,HZ:74},
+{CI:21,VAC:423,HZ:65},
+{CI:21,VAC:404,HZ:61},
+{CI:24,VAC:423,HZ:72},
+{CI:23,VAC:406,HZ:70},
+{CI:22,VAC:421,HZ:70},
+{CI:25,VAC:429,HZ:69},
+{CI:20,VAC:427,HZ:62},
+{CI:20,VAC:412,HZ:69},
+{CI:22,VAC:433,HZ:73},
+{CI:25,VAC:400,HZ:62},
+{CI:24,VAC:401,HZ:69},
+{CI:21,VAC:421,HZ:61},
+{CI:20,VAC:408,HZ:71},
+{CI:22,VAC:414,HZ:61},
+{CI:25,VAC:405,HZ:66},
+{CI:23,VAC:433,HZ:65},
+{CI:20,VAC:403,HZ:73},
+{CI:23,VAC:414,HZ:69},
+{CI:22,VAC:416,HZ:75},
+{CI:24,VAC:402,HZ:71},
+{CI:22,VAC:431,HZ:73},
+{CI:25,VAC:440,HZ:63},
+{CI:25,VAC:433,HZ:74},
+{CI:24,VAC:417,HZ:69},
+{CI:24,VAC:408,HZ:71},
+{CI:25,VAC:411,HZ:65},
+{CI:21,VAC:428,HZ:67},
+{CI:22,VAC:419,HZ:74},
+{CI:24,VAC:417,HZ:72},
+{CI:21,VAC:400,HZ:68},
+{CI:25,VAC:414,HZ:71}
+
+]
+
+
+</script>
+<script>
+document.addEventListener("onload",init(),false)
+function init()
+{    createVFDs()
+   	showSourceSVG()
+	showSourceJS()
+    //buildData()
+}
+
+
+
+function buildData()
+{
+ for(var k=0;k<60;k++)
+ {
+
+  var ci=Math.round(Math.random()*5)+20
+  var hz=Math.round(Math.random()*15)+60
+  var vac=Math.round(Math.random()*40)+400
+  myValue.value+="{CI:"+ci+",VAC:"+vac+",HZ:"+hz+"},\n"
+}
+
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<svg id="svgCircuitBreaker"  xmlns="http://www.w3.org/2000/svg" >
+ <defs>
+ <marker id="arrowEndBlue" viewBox="0 0 8000 8000" refX="270" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="blue" stroke-linejoin="bevel">
+<path id="arrowEndPath" stroke="RGB(0,0,0)" stroke-width="5" d="M2 59,293 148,1 243,121 151,Z">
+</path>
+</marker>
+<filter id="dropShadow" width="140" height="240">
+  <feGaussianBlur in="SourceAlpha" stdDeviation="10"/> <!-- stdDeviation is how much to blur -->
+  <feOffset dx="12" dy="10" result="offsetblur"/> <!-- how much to offset -->
+  <feMerge>
+    <feMergeNode/> <!-- this contains the offset blurred image -->
+    <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+  </feMerge>
+</filter>
+
+<radialGradient id="radialGradientGreen" gradientUnits="userSpaceOnUse" cx="5" cy="100" r="10%">
+<stop stop-color="#FFFFFF" offset="0"/><stop stop-color="green" offset="1"/>
+</radialGradient>
+
+<radialGradient id="radialGradientRed" gradientUnits="userSpaceOnUse" cx="5" cy="100" r="10%">
+<stop stop-color="#FFFFFF" offset="0"/><stop stop-color="red" offset="1"/>
+</radialGradient>
+
+<radialGradient id="radialGradientPos" gradientUnits="userSpaceOnUse" cx="25" cy="25" r="3%">
+<stop stop-color="#FFFFFF" offset="0"/><stop stop-color="green" offset="1"/>
+</radialGradient>
+
+</defs>
+<!-- POS State fill Textures/Patterns -->
+<rect id="texPOS" fill="none" stroke="none"  x="-100" y="-200" width="200" height="500" />
+
+<g id="circuitBreakerOBJ">
+ <!-- Manual Disconnect -->
+<line id="disconnectLine" x1="0" y1="-190" x2="-14" y2="-110" stroke="black" stroke-width="6" />
+<line  id="disc2CBLine" x1="0" y1="-120" x2="0" y2="0" stroke="blue" stroke-width="12" />
+
+<circle  r="10" fill="black" stroke="black" stroke-width="1" cx="0" cy="-190" />
+<circle  r="5" fill="white" stroke="black" stroke-width="1" cx="0" cy="-190" />
+<circle  r="5" fill="black" stroke="black" stroke-width="1" cx="-45" cy="-130" />
+<circle  r="10" fill="black" stroke="black" stroke-width="1" cx="0" cy="-120" />
+<!-- Circuit Breaker Rect -->
+    <rect  id="baseCB"
+       width="100"
+       height="200"
+       fill="url(#radialGradientGreen)"
+       filter="url(#dropShadow)"
+       stroke="black"
+       stroke-width="3"
+       rx="6"
+       ry="6"
+       x="-50"
+       y="-50"
+       onClick="circuitBreakerRemoteResetClicked(evt)"
+        />
+   <!-- Lockout Disconnect -->
+    <circle pointer-events="none" r="10" fill="black" stroke="black" stroke-width="1" cx="0" cy="-40" />
+    <circle pointer-events="none" r="5" fill="white" stroke="black" stroke-width="1" cx="0" cy="-40" />
+    <circle pointer-events="none"   r="5" fill="black" stroke="black" stroke-width="1" cx="-40" cy="10" />
+
+    <circle  pointer-events="none" r="10" fill="black" stroke="black" stroke-width="1" cx="0" cy="30" />
+    <line pointer-events="none"  id="lockoutCBline" x1="0" y1="-40" x2="-14" y2="35" stroke="black" stroke-width="6" />
+    <circle pointer-events="none" r="5" fill="white" stroke="black" stroke-width="1" cx="0" cy="-40" />
+
+    <line pointer-events="none"  x1="0" y1="30" x2="0" y2="85" stroke="black" stroke-width="4" />
+    <line pointer-events="none"  x1="-20" y1="85" x2="20" y2="85" stroke="black" stroke-width="4" />
+    <line pointer-events="none"   x1="-20" y1="115" x2="20" y2="115" stroke="black" stroke-width="4" />
+    <line pointer-events="none"  id="tripLine" x1="-20" y1="85" x2="20" y2="115" stroke="black" stroke-width="4" />
+    <line pointer-events="none"   x1="0" y1="115" x2="0" y2="150" stroke="black" stroke-width="4" />
+</g>
+<g id="labelObj" class="noselect"  ><rect width="90" height="40" fill="gainsboro" stroke="none" rx="5" ry="5" x="-45" y="-20" /><text x="0" y="0" dy="8"  font-size="30" text-anchor="middle" fill="black" stroke="none" font-family="arial" /></g>
+</svg>
