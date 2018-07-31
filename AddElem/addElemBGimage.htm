@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style type="text/css">
+<!--
+body {
+-moz-box-shadow: 4px 4px 5px #888;
+-webkit-box-shadow: 4px 4px 5px #888;
+box-shadow: 4px 4px 5px #888;
+}
+-->
+</style>
+  <title>Iframe Title</title>
+<meta charset=utf-8 />
+</head>
+<body onload=sendSize() style='padding:5px;border-radius:10px;border:2px solid lightblue;background-color:transparent;margin:0;font-family:arial'>
+<div id=containerDiv style=background-color:ghostwhite>
+
+<table style='width:300px;'>
+<tr>
+<td>
+<table style='width:100%;background-color:gainsboro'>
+<tr ><td id=drawBGimageTopTable style='width:90%;background-color:ghostwhite' align=center><span id=drawBGimageEditSpan>Background Template Image</span></td><td align=right> <button onClick=parent.closeDrawBGimage()  >X</button></td></tr>
+</table>
+</td>
+
+</tr>
+<tr>
+<td>
+<input id=bgImgFile type="file" onchange="parent.loadImageFile()">
+ <center><div id=editTemplateCheckDiv style=visibility:hidden;padding:2px;background:orange><input type="checkbox" id=editTemplateCheck onClick=parent.setEditBGimage()  />:Edit Template</div></center>
+</td>
+
+
+</tr>
+<tr><td align=center >
+Width:<input disabled type="text" style=width:60px id=bgImageWidthValue />
+Height:<input disabled type="text" style=width:60px id=bgImageHeightValue />
+
+
+
+</td></tr>
+<tr>
+<td align=center >
+Opacity:
+  <select onChange=parent.drawBGimageOpacitySelected() id=drawBGimageOpacitySelect>
+		<option >0.1</option>
+		<option>0.2</option>
+		<option >0.3</option>
+		<option >0.4</option>
+		<option>0.5</option>
+		<option >0.6</option>
+		<option >0.7</option>
+		<option >0.8</option>
+		<option >0.9</option>
+		<option  selected >1.0</option>
+
+		</select>
+
+</td>
+</tr>
+
+<tr>
+	<td valign=bottom align=center>Rotate
+		&nbsp;&nbsp;<button  onClick=parent.rotateBGimageAdjust(-1) style='height:25px;width:25px;padding:0px'><img width=20 height=20 src="../Images/minusRound.png" /></button>
+		<select title="rotate toggle value" id=rotateDrawBGimageAdjustSelect >
+		<option>.5</option>
+		<option>1</option>
+		<option>2</option>
+		<option selected>5</option>
+		<option>10</option>
+		</select>
+		<button onClick=parent.rotateBGimageAdjust(1)   style='height:25px;width:25px;padding:0px'><img width=20 height=20 src="../Images/plusRound.png" /></button>
+		&nbsp;<input id=adjustedRotateBGimageValue disabled type=text style='width:40px;' value=0 />&deg;
+	</td>
+</tr>
+
+
+<tr align=center>
+<td>
+	<button id=drawBGimageCancelButton disabled title='cancel/remove this image' onClick=parent.cancelDrawBGimage()>cancel</button>
+	<button style='background-color:red;visibility:hidden' id=drawBGimageDeleteButton  onClick=parent.removeCurrentDrawBGimage()>delete</button>
+    <button id=drawBGimageFinishButton disabled onClick=parent.finishDrawBGimage()>finish</button>
+</td>
+</tr>
+
+</table>
+</div>
+
+
+</body>
+<script>
+
+
+function sendSize()
+{
+
+
+    var width=containerDiv.scrollWidth+15
+    var height=containerDiv.scrollHeight+30
+
+    parent.sizeFrame('addElemBGimage',width,height)
+
+     if(parent.EditBGimage==true)
+   		parent.setEditBGimage()
+        else
+          parent.startBGimageDraw()
+
+}
+</script>
+</html>

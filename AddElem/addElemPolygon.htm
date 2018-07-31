@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Iframe Title</title>
+<meta charset=utf-8 />
+<style type="text/css">
+<!--
+body {
+-moz-box-shadow: 4px 4px 5px #888;
+-webkit-box-shadow: 4px 4px 5px #888;
+box-shadow: 4px 4px 5px #888;
+}
+-->
+</style>
+</head>
+<body onload=sendSize() style='padding:5px;border-radius:10px;border:2px solid lightblue;background-color:transparent;margin:0;font-family:arial'>
+<div id=containerDiv style=background:linen>
+
+<table style='width:300px'>
+<tr>
+<td>
+<table style='width:100%;background-color:gainsboro'>
+<tr ><td id=drawPolygonTopTable style='width:90%;background-color:linen' align=center><span id=drawPolygonEditSpan>Draw Polygons</span></td><td align=right> <button onClick=parent.closeDrawPolygon()  >X</button></td></tr>
+</table>
+</td>
+
+</tr>
+ <tr><td align=center>Vertices:<select id=drawPolygonVerticeSelect onChange=parent.drawPolygonVerticeSelected()>
+ <option>3</option>
+ <option>4</option>
+ <option>5</option>
+ <option selected>6</option>
+ <option>7</option>
+ <option>8</option>
+ <option>9</option>
+ <option>10</option>
+ <option>11</option>
+ <option>12</option>
+ <option>13</option>
+ <option>14</option>
+ <option>15</option>
+ <option>16</option>
+ <option>17</option>
+ <option>18</option>
+ <option>19</option>
+ <option>20</option>
+
+ </select>
+ &nbsp;&nbsp;&nbsp;Radius:<select id=drawPolygonRadiusSelect onChange=parent.drawPolygonRadiusSelected()>
+<option>8</option>
+<option>10</option>
+<option>15</option>
+<option>20</option>
+<option>25</option>
+<option selected>30</option>
+<option>40</option>
+<option>50</option>
+<option>60</option>
+<option>70</option>
+<option>80</option>
+<option>90</option>
+<option>100</option>
+
+
+
+ </select>
+
+ </td></tr>
+<tr>
+<td align=center ><span id=drawPolygonStrokeBg >Stroke Color:</span>
+<select  title="Stroke Color" onChange=parent.showDrawPolygonStrokeBg() id=drawPolygonStrokeSelect></select>
+width:
+  <select onChange=parent.drawPolygonStrokeWidthSelected() id=drawPolygonStrokeWidthSelect>
+		<option >0.5</option>
+		<option >1</option>
+		<option selected>2</option>
+		<option >3</option>
+		<option >4</option>
+		<option >5</option>
+		<option >6</option>
+		<option >7</option>
+		<option >8</option>
+		<option >9</option>
+		<option >10</option>
+		<option >15</option>
+		<option >20</option>
+		<option >25</option>
+		<option >30</option>
+		</select><br/>
+Dash:<input type=checkbox id=drawPolygonStrokeDashCheck onClick=parent.drawPolygonStrokeDashChecked() />
+  &nbsp;Shadow:<input id=drawPolygonShadowCheck onClick=parent.drawPolygonShadowChecked() type="checkbox" />
+</td>
+</tr>
+
+<tr>
+<td align=center ><span id=drawPolygonFillBg >Fill Color:</span>
+<select  title="Fill Opacity" onChange=parent.showDrawPolygonFillBg() id=drawPolygonFillSelect></select>
+Opacity:
+  <select onChange=parent.drawPolygonOpacitySelected() id=drawPolygonOpacitySelect>
+		<option >0.1</option>
+		<option>0.2</option>
+		<option >0.3</option>
+		<option >0.4</option>
+		<option>0.5</option>
+		<option >0.6</option>
+		<option >0.7</option>
+		<option >0.8</option>
+		<option >0.9</option>
+		<option  selected >1.0</option>
+
+		</select>
+
+</td>
+</tr>
+
+<tr>
+	<td valign=bottom align=center>Rotate
+		&nbsp;&nbsp;<button  onClick=parent.rotatePolygonAdjust(-1) style='height:25px;width:25px;padding:0px'><img width=20 height=20 src="../Images/minusRound.png" /></button>
+		<select title="rotate toggle value" id=rotateDrawPolygonAdjustSelect >
+		<option>.5</option>
+		<option>1</option>
+		<option>2</option>
+		<option selected>5</option>
+		<option>10</option>
+		</select>
+		<button onClick=parent.rotatePolygonAdjust(1)   style='height:25px;width:25px;padding:0px'><img width=20 height=20 src="../Images/plusRound.png" /></button>
+		&nbsp;<input id=adjustedRotatePolygonValue disabled type=text style='width:40px;' value=0 />&deg;
+	</td>
+</tr>
+
+
+
+
+<tr align=center>
+<td>
+	<button id=drawPolygonCancelButton disabled title='cancel/remove this circle' onClick=parent.cancelDrawPolygon()>cancel</button>
+	<button style=visibility:hidden id=drawPolygonCopyButton title='Toggle for each copy of this circle' onClick=parent.copyDrawPolygon()>copy</button>
+	<button id=drawPolygonTopButton style=background:white;font-size:120%;font-weight:bold;color:maroon;visibility:hidden  title='Move to top' onClick=parent.topDrawPolygon()>&#x21E7;</button>
+	<button id=drawPolygonBotButton style=background:white;font-size:120%;font-weight:bold;color:maroon   title='Move to bottom' onClick=parent.botDrawPolygon()>&#x21E9;</button>
+
+    <button style='background-color:red;visibility:hidden' id=drawPolygonDeleteButton  onClick=parent.removeCurrentDrawPolygon()>delete</button>
+
+    <button id=drawPolygonFinishButton disabled onClick=parent.finishDrawPolygon()>finish</button>
+</td>
+</tr>
+
+</table>
+</div>
+
+
+</body>
+<script>
+
+function writePolygonColorSelection()
+{
+   var DrawColors=parent.clrArray
+	for(var k=0;k<DrawColors.length;k++)
+	{
+		var name=DrawColors[k][0]
+		var myColor=DrawColors[k][1]
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+        drawPolygonStrokeSelect.appendChild(option)
+
+       	var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+		option.text=k
+
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+        drawPolygonFillSelect.appendChild(option)
+
+
+
+
+	}
+	drawPolygonStrokeSelect.selectedIndex=41
+	var clr=drawPolygonStrokeSelect.options[drawPolygonStrokeSelect.selectedIndex].value
+	drawPolygonStrokeBg.style.backgroundColor=clr
+}
+
+
+function sendSize()
+{
+
+  writePolygonColorSelection()
+   var width=containerDiv.scrollWidth+15
+   var height=containerDiv.scrollHeight+30
+
+   parent.sizeFrame('addElemPolygon',width,height)
+
+
+     if(parent.EditPolygon==true)
+        parent.setEditPolygon()
+        else
+       parent.startPolygonDraw()     
+
+}
+
+
+</script>
+</html>

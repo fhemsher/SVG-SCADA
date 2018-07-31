@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Iframe Title</title>
+<meta charset=utf-8 />
+<style type="text/css">
+<!--
+body {
+-moz-box-shadow: 4px 4px 5px #888;
+-webkit-box-shadow: 4px 4px 5px #888;
+box-shadow: 4px 4px 5px #888;
+}
+-->
+</style>
+</head>
+<body onload=sendSize() style='padding:5px;border-radius:10px;border:2px solid lightblue;background-color:transparent;margin:0;font-family:arial'>
+<div id=containerDiv style=background:#ABCDEF>
+
+<table style='width:300px'>
+<tr>
+<td>
+<table style='width:100%'>
+<tr ><td id=drawAutoManualTopTable style='width:90%;' align=center><span id=drawAutoManualEditSpan>Draw Auto/Manual Overrides</span>
+<br> Scale:<select name="" id="drawAutoManualScaleSelect" onChange=parent.drawAutoManualScaleSelected()>
+<option>1.0</option>
+<option>0.9</option>
+<option>0.8</option>
+<option>0.7</option>
+<option>0.6</option>
+<option selected>0.5</option>
+<option>0.4</option>
+<option>0.3</option>
+<option>0.2</option>
+<option>0.1</option>
+</select> </td><td align=right> <button onClick=parent.closeDrawAutoManual()  >X</button></td></tr>
+
+<tr><td align=center colspan=2>
+
+HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this element"  id=sourceHMICheck  />
+
+
+</td></tr>
+
+</table>
+</td>
+
+</tr>
+<tr>
+
+<td align=center>
+<span id=drawAutoManualFillBg >Face Color:</span>
+<select  title="Fill Color" onChange=parent.showDrawAutoManualFillBg() id=drawAutoManualFillSelect></select>
+
+<span id=drawAutoManualRingBg >Ring Color:</span>
+<select  title="Ring Color" onChange=parent.showDrawAutoManualRingBg() id=drawAutoManualRingSelect></select>
+
+</td>
+</tr>
+
+
+
+<tr align=center>
+<td>
+	<button id=drawAutoManualCancelButton disabled title='cancel/remove this AutoManual' onClick=parent.cancelDrawAutoManual()>cancel</button>
+    <button style='background-color:red;visibility:hidden' id=drawAutoManualDeleteButton  onClick=parent.removeCurrentDrawAutoManual()>delete</button>
+	<button id=drawAutoManualTopButton style=background:white;font-size:120%;font-weight:bold;color:maroon;visibility:hidden  title='Move to top' onClick=parent.topDrawAutoManual()>&#x21E7;</button>
+	<button id=drawAutoManualBotButton style=background:white;font-size:120%;font-weight:bold;color:maroon;   title='Move to bottom' onClick=parent.botDrawAutoManual()>&#x21E9;</button>
+
+    <button id=drawAutoManualFinishButton disabled onClick=parent.finishDrawAutoManual()>finish</button>
+</td>
+</tr>
+
+</table>
+</div>
+<div style=display:none>
+<svg  width=600 height=600 >
+    <foreignObject  id=AutoManualFO >
+   <div id=AutoManualDiv class='noselect' style='border-radius:10px;background:skyblue;width:200px;border:3px solid blue'>
+    <table style=width:100% >
+    <tr><td><input id=signalInValue  style='border:inset 3px;font-size:110%;text-align:center;font-weight:bold;color:lime;background:black;width:100px' value="50%" type="text" /> <button style="border-radius:5px;background:lime;border:4px inset;width:80px" onclick=autoButtonClicked() id=autoButton>Auto</button></td></tr>
+    <tr>
+        <td>
+            <svg id="autoManuaSVG" width="190" height="40"></svg>
+        </td>
+    </tr>
+    <tr><td align=right><button style='border-radius:5px;background:darkorange;border:4px outset;width:80px' onclick=manualButtonClicked() id=manualButton>Manual</button> <input id=signalOutValue style='border:inset 3px;font-size:110%;text-align:center;font-weight:bold;color:lime;background:black;width:100px' value="50%" type="text" /></td></tr>
+    </table>
+  </div>
+    </foreignObject>
+    </svg>
+</div>
+
+</body>
+<script>
+
+function writeAutoManualColorSelection()
+{
+   var DrawColors=parent.clrArray
+	for(var k=0;k<DrawColors.length;k++)
+	{
+		var name=DrawColors[k][0]
+		var myColor=DrawColors[k][1]
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+
+       drawAutoManualRingSelect.appendChild(option)
+
+
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+        drawAutoManualFillSelect.appendChild(option)
+
+
+
+	}
+	drawAutoManualFillSelect.selectedIndex=88
+	drawAutoManualRingSelect.selectedIndex=95
+	 	var clrFill=drawAutoManualFillSelect.options[drawAutoManualFillSelect.selectedIndex].value
+	drawAutoManualFillBg.style.backgroundColor=clrFill
+   	 	var clrRing=drawAutoManualRingSelect.options[drawAutoManualRingSelect.selectedIndex].value
+	drawAutoManualRingBg.style.backgroundColor=clrRing
+
+
+}
+
+
+
+function sendSize()
+{
+ writeAutoManualColorSelection()
+
+   var width=containerDiv.scrollWidth+15
+   var height=containerDiv.scrollHeight+30
+
+   parent.sizeFrame('addElemAutoManual',width,height)
+
+
+     if(parent.EditAutoManual==true)
+        parent.setEditAutoManual()
+        else
+       parent.startAutoManualDraw()
+
+}
+
+
+</script>
+</html>

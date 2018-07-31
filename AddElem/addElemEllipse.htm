@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style type="text/css">
+<!--
+body {
+-moz-box-shadow: 4px 4px 5px #888;
+-webkit-box-shadow: 4px 4px 5px #888;
+box-shadow: 4px 4px 5px #888;
+}
+-->
+</style>
+  <title>Iframe Title</title>
+<meta charset=utf-8 />
+</head>
+<body onload=sendSize() style='padding:5px;border-radius:10px;border:2px solid lightblue;background-color:transparent;margin:0;font-family:arial'>
+<div id=containerDiv style=background-color:linen>
+
+<table style='width:300px;'>
+<tr>
+<td>
+<table style='width:100%;background-color:gainsboro'>
+<tr ><td id=drawEllipseTopTable style='width:90%;background-color:linen' align=center><span id=drawEllipseEditSpan>Draw Ellipses</span></td><td align=right> <button onClick=parent.closeDrawEllipse()  >X</button></td></tr>
+</table>
+</td>
+
+</tr>
+
+<tr >
+<td align=center ><span id=drawEllipseStrokeBg >Stroke Color:</span>
+<select  title="Stroke Color" onChange=parent.showDrawEllipseStrokeBg() id=drawEllipseStrokeSelect></select>
+width:
+  <select onChange=parent.drawEllipseStrokeWidthSelected() id=drawEllipseStrokeWidthSelect>
+		<option >0.5</option>
+		<option >1</option>
+		<option selected>2</option>
+		<option >3</option>
+		<option >4</option>
+		<option >5</option>
+		<option >6</option>
+		<option >7</option>
+		<option >8</option>
+		<option >9</option>
+		<option >10</option>
+		<option >15</option>
+		<option >20</option>
+		<option >25</option>
+		<option >30</option>
+		</select><br/>
+Dash:<input type=checkbox id=drawEllipseStrokeDashCheck onClick=parent.drawEllipseStrokeDashChecked() />
+  &nbsp;Shadow:<input id=drawEllipseShadowCheck onClick=parent.drawEllipseShadowChecked() type="checkbox" />
+
+</td>
+</tr>
+
+<tr>
+<td align=center ><span id=drawEllipseFillBg >Fill Color:</span>
+<select  title="Fill Opacity" onChange=parent.showDrawEllipseFillBg() id=drawEllipseFillSelect></select>
+Opacity:
+  <select onChange=parent.drawEllipseOpacitySelected() id=drawEllipseOpacitySelect>
+		<option >0.1</option>
+		<option>0.2</option>
+		<option >0.3</option>
+		<option >0.4</option>
+		<option>0.5</option>
+		<option >0.6</option>
+		<option >0.7</option>
+		<option >0.8</option>
+		<option >0.9</option>
+		<option  selected >1.0</option>
+
+		</select>
+
+</td>
+</tr>
+
+<tr>
+	<td valign=bottom align=center>Rotate
+		&nbsp;&nbsp;<button  onClick=parent.rotateEllipseAdjust(-1) style='height:25px;width:25px;padding:0px'><img width=20 height=20 src="../Images/minusRound.png" /></button>
+		<select title="rotate toggle value" id=rotateDrawEllipseAdjustSelect >
+		<option>.5</option>
+		<option>1</option>
+		<option>2</option>
+		<option selected>5</option>
+		<option>10</option>
+		</select>
+		<button onClick=parent.rotateEllipseAdjust(1)   style='height:25px;width:25px;padding:0px'><img width=20 height=20 src="../Images/plusRound.png" /></button>
+		&nbsp;<input id=adjustedRotateEllipseValue disabled type=text style='width:40px;' value=0 />&deg;
+	</td>
+</tr>
+
+
+<tr align=center>
+<td>
+	<button id=drawEllipseCancelButton disabled title='cancel/remove this path' onClick=parent.cancelDrawEllipse()>cancel</button>
+	<button style=visibility:hidden id=drawEllipseCopyButton title='Toggle for each copy of this ellipse' onClick=parent.copyDrawEllipse()>copy</button>
+	<button id=drawEllipseTopButton style=background:white;font-size:120%;font-weight:bold;color:maroon;visibility:hidden  title='Move to top' onClick=parent.topDrawEllipse()>&#x21E7;</button>
+	<button id=drawEllipseBotButton style=background:white;font-size:120%;font-weight:bold;color:maroon;   title='Move to bottom' onClick=parent.botDrawEllipse()>&#x21E9;</button>
+	<button style='background-color:red;visibility:hidden' id=drawEllipseDeleteButton  onClick=parent.removeCurrentDrawEllipse()>delete</button>
+    <button id=drawEllipseFinishButton disabled onClick=parent.finishDrawEllipse()>finish</button>
+</td>
+</tr>
+
+</table>
+</div>
+
+
+</body>
+<script>
+
+function writeEllipseColorSelection()
+{
+   var DrawColors=parent.clrArray
+	for(var k=0;k<DrawColors.length;k++)
+	{
+		var name=DrawColors[k][0]
+		var myColor=DrawColors[k][1]
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+        drawEllipseStrokeSelect.appendChild(option)
+
+       	var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+		option.text=k
+
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+        drawEllipseFillSelect.appendChild(option)
+
+
+
+
+	}
+	drawEllipseStrokeSelect.selectedIndex=44
+	var clr=drawEllipseStrokeSelect.options[drawEllipseStrokeSelect.selectedIndex].value
+	drawEllipseStrokeBg.style.backgroundColor=clr
+}
+
+
+function sendSize()
+{
+
+  writeEllipseColorSelection()
+   var width=containerDiv.scrollWidth+15
+   var height=containerDiv.scrollHeight+30
+
+   parent.sizeFrame('addElemEllipse',width,height)
+
+
+     if(parent.EditEllipse==true)
+        parent.setEditEllipse()
+        else
+       parent.startEllipseDraw()
+
+}
+
+
+</script>
+</html>

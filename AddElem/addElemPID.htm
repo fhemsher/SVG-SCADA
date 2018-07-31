@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Iframe Title</title>
+<meta charset=utf-8 />
+<style type="text/css">
+<!--
+body {
+-moz-box-shadow: 4px 4px 5px #888;
+-webkit-box-shadow: 4px 4px 5px #888;
+box-shadow: 4px 4px 5px #888;
+}
+-->
+</style>
+</head>
+<body onload=sendSize() style='padding:5px;border-radius:10px;border:2px solid lightblue;background-color:transparent;margin:0;font-family:arial'>
+<div id=containerDiv style='background-color:#ABCDEF'>
+
+<table style='width:300px'>
+<tr>
+<td>
+<table style='width:100%'>
+<tr ><td id=drawPIDTopTable style='width:90%;' align=center><span id=drawPIDEditSpan>Draw PID</span>
+&nbsp; &nbsp; &nbsp; Scale:<select name="" id="drawPIDScaleSelect" onChange=parent.drawPIDScaleSelected()>
+<option>1.0</option>
+<option>.9</option>
+<option>.8</option>
+<option selected>.7</option>
+<option>.6</option>
+<option>.5</option>
+<option>.4</option>
+<option>.3</option>
+<option>.2</option>
+<option>.1</option>
+</select> </td><td align=right> <button onClick=parent.closeDrawPID()  >X</button></td></tr>
+</table>
+</td>
+
+</tr>
+<tr><td align=center colspan=2>
+
+HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this element"  id=sourceHMICheck  />
+
+
+</td></tr>
+
+<tr >
+<td align=center ><span id=drawPIDStrokeBg >Stroke Color:</span>
+<select  title="Stroke Color" onChange=parent.showDrawPIDStrokeBg() id=drawPIDStrokeSelect></select>
+
+
+
+<span id=drawPIDFillBg >Fill Color:</span>
+<select  title="Fill Opacity" onChange=parent.showDrawPIDFillBg() id=drawPIDFillSelect></select>
+
+</td>
+</tr>
+
+
+
+<tr  align=center>
+<td>
+	<button id=drawPIDCancelButton disabled title='cancel/remove this PID' onClick=parent.cancelDrawPID()>cancel</button>
+    <button style='background-color:red;visibility:hidden' id=drawPIDDeleteButton  onClick=parent.removeCurrentDrawPID()>delete</button>
+	<button id=drawPIDTopButton style=background:white;font-size:120%;font-weight:bold;color:maroon;visibility:hidden  title='Move to top' onClick=parent.topDrawPID()>&#x21E7;</button>
+	<button id=drawPIDBotButton style=background:white;font-size:120%;font-weight:bold;color:maroon   title='Move to bottom' onClick=parent.botDrawPID()>&#x21E9;</button>
+
+    <button id=drawPIDFinishButton disabled onClick=parent.finishDrawPID()>finish</button>
+</td>
+</tr>
+
+</table>
+</div>
+
+
+</body>
+<script>
+
+function writePIDColorSelection()
+{
+   var DrawColors=parent.clrArray
+	for(var k=0;k<DrawColors.length;k++)
+	{
+		var name=DrawColors[k][0]
+		var myColor=DrawColors[k][1]
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+        drawPIDStrokeSelect.appendChild(option)
+
+       	var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+		option.text=k
+
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+        drawPIDFillSelect.appendChild(option)
+	}
+	drawPIDFillSelect.selectedIndex=22
+	drawPIDStrokeSelect.selectedIndex=116
+	var clr=drawPIDStrokeSelect.options[drawPIDStrokeSelect.selectedIndex].value
+	drawPIDStrokeBg.style.backgroundColor=clr
+    	var clrFill=drawPIDFillSelect.options[drawPIDFillSelect.selectedIndex].value
+	drawPIDFillBg.style.backgroundColor=clrFill
+
+
+}
+
+
+
+function sendSize()
+{
+ writePIDColorSelection()
+
+   var width=containerDiv.scrollWidth+15
+   var height=containerDiv.scrollHeight+30
+
+   parent.sizeFrame('addElemPID',width,height)
+
+
+     if(parent.EditPID==true)
+        parent.setEditPID()
+        else
+       parent.startPIDDraw()
+
+}
+
+
+</script>
+</html>

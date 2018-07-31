@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>Untitled</title>
+<style type="text/css">
+<!--
+body {
+-moz-box-shadow: 4px 4px 5px #888;
+-webkit-box-shadow: 4px 4px 5px #888;
+box-shadow: 4px 4px 5px #888;
+}
+-->
+</style>
+</head>
+
+<body onload=sendSize() style=font-family:arial>
+<div id=containerDiv style="padding:10px;background:#C3E6D3;border-radius:10px;border:1px solid purple">
+<table style=width:100%; ><tr><td style=width:90% align=center><b>Create A Component</b></td><td align=right><button onClick=parent.closeDrawComponent() >X</button></td></tr></table>
+<div style=text-align:justify;font-size:90%><i>
+A Component is a <b>group</b> of elements that can represent transmitters, sensors, actuators, dampers, valves, or any control device.
+</i>
+</div><br>
+<div style=text-align:justify;font-size:80%'>
+Click to set upper-left of component elements' containment rectangle. Then drag cursor to bottom-right and click to capture desired elements for the component group.
+
+</div>
+<center>
+
+<button disabled id=cancelButton  onClick=parent.cancelComponent();parent.startComponentDraw()  >cancel</button>
+<button disabled id=finishButton  onClick=parent.finishComponent()>finish</button>
+
+</center>
+
+
+<div id=saveToLibraryDiv style=opacity:.5>
+<div style=text-align:justify;font-size:90%><i><center><b>Save to Library ?</b></center>You may share your component with others... Send it to the library. Include a title and associated description, then select <button>save</button>. NOTE: At any time you can remove it from the library.</i>
+</div>
+<table class="copySource" >
+<tr><td><p></p>
+Category:<select name="" id="componentCategorySelect">
+<option>Component Category:</option>
+<option>Sensor Liquid</option>
+<option>Sensor Air/Gas</option>
+<option>Sensor Mechanical</option>
+<option>Sensor Electrical</option>
+<option>Transmitter</option>
+<option>Sensor + Transmitter</option>
+<option>Actuator - Pneumatic</option>
+<option>Actuator - Electronic</option>
+<option>Control Valve Body</option>
+<option>Control Valve + Actuator</option>
+<option>Control Device</option>
+<option>Mechanical Equipment</option>
+<option>Electrical Equipment</option>
+<option>Central Monitoring</option>
+<option>Other</option>
+</select>
+
+ </td></tr>
+<tr>
+<td><input type="text" id=myComponentTitleValue style="width:270px" placeholder="Your Component Title" /></td></tr>
+<tr> <td valign=center><textarea id=myComponentDescriptionValue style="width:270px;height:40px" placeholder="Your Component Description" ></textarea></td></tr>
+<tr> <td><input type="text" id=myComponentNameValue style="width:270px" placeholder="Your Name" /></td></tr>
+<tr> <td><input type="text" id=myComponentEmailValue style="width:270px" placeholder="Your Email" /></td></tr>
+<tr> <td align=center><button disabled  onClick=parent.sendComponent() id=sendButton >save</button></td></tr>
+<tr> <td align=center><button disabled  onClick=parent.refreshComponentLibrary() id=refreshComponentLibraryButton >refresh library</button></td></tr>
+
+<tr><td style=height:30px; ><span class="copySource"  id=sendComponentMessageSpan style=color:blue></span></td></tr>
+
+</table>
+</div>
+
+</div>
+
+<script>
+function sendSize()
+{
+
+
+   var width=containerDiv.scrollWidth+15
+   var height=containerDiv.scrollHeight+30
+
+   parent.sizeFrame('addElemComponent',width,height)
+   if(parent.getCookie("name")&&parent.getCookie("email"))
+   {
+       myComponentNameValue.value=parent.getCookie("name").replace(/%20/g," ")
+       myComponentEmailValue.value=parent.getCookie("email").replace(/%20/g," ")
+
+
+   }
+
+
+       parent.startComponentDraw()
+
+}
+</script>
+</body>
+
+</html>

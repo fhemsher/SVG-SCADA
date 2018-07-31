@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Iframe Title</title>
+<meta charset=utf-8 />
+<style type="text/css">
+<!--
+body {
+-moz-box-shadow: 4px 4px 5px #888;
+-webkit-box-shadow: 4px 4px 5px #888;
+box-shadow: 4px 4px 5px #888;
+}
+-->
+</style>
+</head>
+<body onload=sendSize() style='padding:5px;border-radius:10px;border:2px solid lightblue;background-color:transparent;margin:0;font-family:arial'>
+<div id=containerDiv style=background:#ABCDEF>
+
+<table style='width:360px'>
+<tr>
+<td>
+<table style='width:100%'>
+<tr ><td id=drawGaugeTopTable style='width:90%;' align=center><span id=drawGaugeEditSpan>Draw Round Gauges</span>
+
+</td><td align=right> <button onClick=parent.closeDrawGauge()  >X</button></td></tr>
+</table>
+
+
+
+</td>
+
+</tr>
+ <tr><td  align=center colspan=2>
+
+HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this element"  id=sourceHMICheck  />
+
+
+</td></tr>
+<tr id=gaugeSelectTR  >
+<td align=center>
+       <table style='width:330px;border-collapse: collapse;' cellpadding=3 id=roundGaugeTable  border=1>
+       <tr><td colspan=2 align=center>Configure Round Gauge</td></tr>
+        <tr><td>Name:<input type=text id=gaugeNameValue style='width:80px;' value="gaugeOAT" /></td>
+        <td>Label:<input type=text id=gaugeLabelValue style='width:50px;' value="OAT" /></td></tr>
+        <tr><td>Units:<input type=text id=gaugeUnitValue style='cursor:default;width:50px;' title="&#[unicode];" value="&#8457;" /></td>
+        <td> Dia:<input type=text style=width:30px id=gaugeDiaValue  value="100" />px.</td></tr>
+        <tr><td>Min<input type=text id=gaugeMinValue style='width:50px;' value="-20" /></td>
+        <td>Max <input type=text id=gaugeMaxValue style='width:50px;' value="120" /></td></tr>
+       <tr><td>Major Ticks:<input type=text id=gaugeMajorTickValue style='width:30px;' value="5" /></td>
+        <td>Minor Ticks:<input type=text id=gaugeMinorTickValue style='width:30px;' value="10" /></td></tr>
+        <tr><td>Ring <span id=ringColorBg>Color</span>: <select id=ringColorSelect onChange=parent.ringColorSelected()></select></td>
+        <td>Face <span id=faceColorBg>Color</span>:<select id=faceColorGaugeSelect onChange=parent.faceColorGaugeSelected()></select>
+         </td></tr>
+        <tr>
+            <td colspan=2 align=center>
+                <table>
+                <tr style="background:orange"><td>Orange Zone Band:</td><td><input id=gaugeOrangeZoneValue type=text style=width:80px placeholder="start,end" /> </td></tr>
+                <tr style="background:red"><td>Red Zone Band:</td><td><input id=gaugeRedZoneValue type=text style=width:80px placeholder="start,end" /> </td></tr>
+                <tr style="background:lime"><td>Green Zone Band:</td><td><input id=gaugeGreenZoneValue type=text style=width:80px placeholder="start,end" /> </td></tr>
+                </table>
+             </td>
+       </tr>
+       </table>
+</td>
+</tr>
+
+
+
+
+
+
+<tr   align=center>
+<td>
+	<button id=drawGaugeCancelButton disabled title='cancel/remove this circle' onClick=parent.cancelDrawGauge()>cancel</button>
+    <button style='background-color:red;visibility:hidden' id=drawGaugeDeleteButton  onClick=parent.removeCurrentDrawGauge()>delete</button>
+	<button id=drawGaugeTopButton style=background:white;font-size:120%;font-weight:bold;color:maroon;visibility:hidden  title='Move to top' onClick=parent.topDrawGauge()>&#x21E7;</button>
+	<button id=drawGaugeBotButton style=background:white;font-size:120%;font-weight:bold;color:maroon   title='Move to bottom' onClick=parent.botDrawGauge()>&#x21E9;</button>
+    <button title='Preview change(s)' style='background-color:orange;visibility:hidden' id=editGaugePreviewButton onClick=parent.editGaugePreviewDrawGauge()>preview</button>
+
+    <button id=drawGaugeFinishButton disabled onClick=parent.finishDrawGauge()>finish</button>
+</td>
+</tr>
+
+</table>
+</div>
+
+
+</body>
+<script>
+function writeGaugeColorSelection()
+{
+   var DrawColors=parent.clrArray
+	for(var k=0;k<DrawColors.length;k++)
+	{
+		var name=DrawColors[k][0]
+		var myColor=DrawColors[k][1]
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+		option.text=k
+        faceColorGaugeSelect.appendChild(option)
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+		option.text=k
+       ringColorSelect.appendChild(option)
+
+
+
+
+
+
+
+
+
+	}
+	ringColorSelect.selectedIndex=45
+	faceColorGaugeSelect.selectedIndex=23
+
+	var clr=ringColorSelect.options[ringColorSelect.selectedIndex].value
+   ringColorBg.style.backgroundColor=clr
+	var clr2=faceColorGaugeSelect.options[faceColorGaugeSelect.selectedIndex].value
+   faceColorBg.style.backgroundColor=clr2
+
+
+
+
+
+}
+
+
+
+function sendSize()
+{
+   writeGaugeColorSelection()
+
+   var width=containerDiv.scrollWidth+15
+   var height=containerDiv.scrollHeight+30
+
+   parent.sizeFrame('addElemGauge',width,height)
+
+
+     if(parent.EditGauge==true)
+        parent.setEditGauge()
+        else
+       parent.startGaugeDraw()
+
+}
+
+
+</script>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Iframe Title</title>
+<meta charset=utf-8 />
+<style type="text/css">
+<!--
+body {
+-moz-box-shadow: 4px 4px 5px #888;
+-webkit-box-shadow: 4px 4px 5px #888;
+box-shadow: 4px 4px 5px #888;
+}
+-->
+</style>
+</head>
+<body onload=sendSize() style='padding:5px;border-radius:10px;border:2px solid lightblue;background-color:transparent;margin:0;font-family:arial'>
+<div id=containerDiv style=background:orange>
+
+<table style='width:300px;'>
+<tr>
+<td>
+<table style='width:100%;background-color:gainsboro'>
+<tr ><td id=editProcessTopTable style='width:90%;background-color:orange' align=center><span id=editProcessEditSpan>Edit Process</span></td><td align=right> <button onClick=parent.closeEditProcess()  >X</button></td></tr>
+</table>
+</td>
+
+</tr>
+
+
+<tr>
+<td align=center >Scale: <input  onmousedown="parent.ScaleProcess=true" onmouseup="parent.ScaleProcess=false" onmousemove="parent.scaleProcess(this.value)" id=scaleRangeValue style=width:150px type="range" value=1.0  min=".1" step=.05 max="2"> <input style=width:40px id=scaleValue type="text" value=1.0 />
+
+<br>Shadow:<input id=editProcessShadowCheck onClick=parent.editProcessShadowChecked() type="checkbox" />
+
+</td>
+</tr>
+<tr>
+	<td valign=bottom align=center>Rotate
+		&nbsp;&nbsp;<button  onClick=parent.rotateProcessAdjust(-1) style='height:25px;width:25px;padding:0px'><img width=20 height=20 src="../Images/minusRound.png" /></button>
+		<select title="rotate toggle value" id=rotateEditProcessAdjustSelect >
+		<option>.5</option>
+		<option>1</option>
+		<option>2</option>
+		<option selected>5</option>
+		<option>10</option>
+		</select>
+		<button onClick=parent.rotateProcessAdjust(1)   style='height:25px;width:25px;padding:0px'><img width=20 height=20 src="../Images/plusRound.png" /></button>
+		&nbsp;<input id=adjustedRotateProcessValue disabled type=text style='width:40px;' value=0 />&deg;
+	</td>
+</tr>
+<tr align=center><td><button title="Flip Across X" onClick=parent.flipProcessX()>Flip X</button> <button title="Flip Across Y" onClick=parent.flipProcessY()>Flip Y</button></td></tr>
+
+
+<tr align=center>
+<td>
+	<button id=editProcessCancelButton  title='cancel component edits' onClick=parent.cancelDrawEditProcess()>cancel</button>
+	<button style= id=editProcessCopyButton title='Toggle for each copy of this circle' onClick=parent.copyEditProcess()>copy</button>
+	<button id=editProcessTopButton style=background:white;font-size:120%;font-weight:bold;color:maroon  title='Move to top' onClick=parent.topEditProcess()>&#x21E7;</button>
+	<button id=editProcessBotButton style=background:white;font-size:120%;font-weight:bold;color:maroon   title='Move to bottom' onClick=parent.botEditProcess()>&#x21E9;</button>
+
+    <button style='background-color:red;' id=editProcessDeleteButton  onClick=parent.removeCurrentDrawProcess()>delete</button>
+
+    <button id=editProcessFinishButton  onClick=parent.finishEditProcess()>finish</button>
+</td>
+</tr>
+
+</table>
+
+</div>
+
+
+</body>
+<script>
+
+
+function sendSize()
+{
+
+
+   var width=containerDiv.scrollWidth+15
+   var height=containerDiv.scrollHeight+30
+
+   parent.sizeFrame('editElemProcess',width,height)
+
+
+
+       parent.setEditProcess()
+
+
+}
+
+
+</script>
+</html>

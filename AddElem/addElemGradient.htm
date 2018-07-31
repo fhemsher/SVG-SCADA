@@ -1,0 +1,383 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>Untitled</title>
+</head>
+
+<body onload=sendSize() style='font-size:100%;border-radius:10px;border:2px solid lightblue;background-color:transparent;margin:0;font-family:arial'>
+<div id=containerDiv style=background:linen>
+
+<table border=1 cellspacing=0 cellpadding=0 style='border-collapse: collapse;width:390px;background-color:linen'>
+<tr>
+<td  colspan=2>
+<table cellspacing=0 cellpadding=0  style='width:100%;background-color:linen'>
+<tr ><td id=drawGradientTopTable style='width:90%;background-color:linen' align=center><span id=drawGradientEditSpan>Create &amp; Add Gradient</span>
+ <br><input checked type="radio" name=gradientRadio id=radialRadio onClick='resetGradient()' />:Radial
+ <input type="radio" name=gradientRadio id=linearRadio  onClick='resetGradient()' />:Linear
+
+
+</td><td align=right> <button onClick=parent.closeDrawGradient()  >X</button></td></tr>
+</table>
+</td></tr>
+<tr>
+<td>
+<b>Stop 1</b> <span id=stop1ColorBG>Color</span>
+<select name="" id="stop1ColorSelect" onChange=resetGradient()>
+</select><br>
+<input onmouseover="setOffset1Value()" onmousemove="setOffset1Value()"  id=offset1SliderValue style=width:180px; type="range" name="points" min="0" max="100" step=1 value=0><input id=offset1Value style=width:30px type="text" value=0 />% <b>offset</b><br>
+<input onmouseover="setOpacity1Value()" onmousemove="setOpacity1Value()" id=opacity1SliderValue style=width:180px; type="range" name="points" min="0" max="1" step=.1 value=1><input id=opacity1Value  style=width:30px type="text" value=1 /><b>opacity </b><br>
+</td>
+<td rowspan=5  style='border:4px inset violet'  valign=top align=center><div style=background:white;width:90px;height:440px;overflow-y:auto;overflow-x:hidden;><b>Saved<br>Gradients</b><hr><table style=width:90px id=savedGradientTable></table>
+<div style=font-size:80%;text-align:justify >
+<i>After a gradient is saved, click on an element to add the gradient to either fill or stroke.</i>
+</div>
+
+</div></td>
+</tr>
+<tr>
+<td>
+<b>Stop 2</b> <span id=stop2ColorBG>Color</span>
+<select name="" id="stop2ColorSelect" onChange=resetGradient()>
+</select><br>
+<input onmouseover="setOffset2Value()" onmousemove="setOffset2Value()"  id=offset2SliderValue style=width:180px; type="range" name="points" min="0" max="100" step=1 value=100><input  id=offset2Value style=width:30px type="text" value=100 />% <b>offset </b><br>
+<input onmouseover="setOpacity2Value()" onmousemove="setOpacity2Value()"  id=opacity2SliderValue style=width:180px; type="range" name="points" min="0" max="1" step=.1 value=1><input style=width:30px type="text" value=1 id=opacity2Value /> <b>opacity </b><br>
+</td>
+
+</tr>
+<tr id=radialTR >
+<td align=left><center>Radial Gradient</center>
+<input onmouseover="setCxValue()" onmousemove="setCxValue()"  id=cxSliderValue style=width:180px; type="range" name="points" min="0" max="100" step=1 value=50><input id=cxValue style=width:30px type="text" value=50 />% <b>cx</b><br>
+<input onmouseover="setCyValue()" onmousemove="setCyValue()"  id=cySliderValue style=width:180px; type="range" name="points" min="0" max="100" step=1 value=50><input id=cyValue  style=width:30px type="text" value=50 />% <b>cy</b><br>
+<input onmouseover="setRValue()" onmousemove="setRValue()"  id=rSliderValue style=width:180px; type="range" name="points" min="0" max="100" step=1 value=75><input id=rValue  style=width:30px type="text" value=75 />% <b>r</b><br>
+<input onmouseover="setFxValue()" onmousemove="setFxValue()"  id=fxSliderValue style=width:180px; type="range" name="points" min="0" max="100" step=1 value=50><input id=fxValue  style=width:30px type="text" value=50 />% <b>fx</b><br>
+<input onmouseover="setFyValue()" onmousemove="setFyValue()"  id=fySliderValue style=width:180px; type="range" name="points" min="0" max="100" step=1 value=50><input id=fyValue  style=width:30px type="text" value=50 />% <b>fy</b><br>
+
+</td>
+
+</tr>
+<tr id=linearTR style='display:none;'>
+<td align=left><center>Linear Gradient</center>
+<input onmouseover="setX1Value()" onmousemove="setX1Value()"  id=x1SliderValue style=width:180px; type="range" name="points" min="0" max="100" step=1 value=0><input id=x1Value style=width:30px type="text" value=0 />% <b>x1</b><br>
+<input onmouseover="setY1Value()" onmousemove="setY1Value()"  id=y1SliderValue style=width:180px; type="range" name="points" min="0" max="100" step=1 value=0><input id=y1Value  style=width:30px type="text" value=0  />% <b>y1</b><br>
+<input onmouseover="setX2Value()" onmousemove="setX2Value()"  id=x2SliderValue style=width:180px; type="range" name="points" min="0" max="100" step=1 value=100><input id=x2Value  style=width:30px type="text" value=100  />% <b>x2</b><br>
+<input onmouseover="setY2Value()" onmousemove="setY2Value()"  id=y2SliderValue style=width:180px; type="range" name="points" min="0" max="100" step=1 value=100><input id=y2Value  style=width:30px type="text" value=100  />% <b>y2</b><br>
+</td>
+
+</tr>
+
+
+
+<tr><td>
+<table border=1 cellspacing=0 cellpadding=0 ><tr>
+<td style=width:100px>
+Spread Method:<br>
+<input onClick=padChecked() type="checkbox" id=padCheck />pad<br>
+<input onClick=repeatChecked()  type="checkbox" id=repeatCheck />repeat<br>
+<input onClick=reflectChecked()  type="checkbox" id=reflectCheck />reflect
+</td><td style=width:130px;height:120px>
+<svg width=150 height=120 overflow=visible>
+ <defs>
+<radialGradient id=gradientRadial cx=50% cy=50% r=75% fx=50% fy=50% ><stop id=stop1Radial offset=0% stop-color="rgb(255,0,0)" stop-opacity=1 /><stop id=stop2Radial offset=100% stop-color="rgb(0,0,0)" stop-opacity=1 /></radialGradient>
+<linearGradient id=gradientLinear x1=0% y1=0% x2=100% y2=100% ><stop id=stop1Linear offset=0% stop-color="rgb(255,0,0)" stop-opacity=1 /><stop id=stop2Linear offset=100% stop-color="rgb(0,0,0)" stop-opacity=1 /></linearGradient>
+</defs>
+<defs id=defsGradientSave />
+
+<rect id=gradientRect x=10 y=10 display="none" width=150 height=100 stroke-width=20 stroke=gainsboro fill=url(#gradientLinear) rx=10 ry=10 />
+<circle id=gradientCircle cx=75 cy=65 r=50 stroke-width=20 stroke=gainsboro fill=url(#gradientRadial)  />
+
+
+</svg>
+
+</td>
+<td align=center> <input onClick=resetGradient() type="radio" checked id=fillRadio name=strokeFillRadio/><br>:Fill<br><input onClick=resetGradient() type="radio" id=strokeRadio name=strokeFillRadio/>:Strk
+<br><br><button style='border:2px solid violet'  id=saveGradientButton onclick=parent.saveGradientButtonClicked()>Save</button>
+</td>
+</tr> </table>
+</td></tr>
+
+</table>
+</div>
+</body>
+<script>
+function setOffset1Value()
+{
+    offset1Value.value=offset1SliderValue.value
+    resetGradient()
+}
+function setOpacity1Value()
+{
+   opacity1Value.value=opacity1SliderValue.value
+    resetGradient()
+}
+function setOffset2Value()
+{
+    offset2Value.value=offset2SliderValue.value
+    resetGradient()
+}
+function setOpacity2Value()
+{
+   opacity2Value.value=opacity2SliderValue.value
+
+}
+function setCxValue()
+{
+   cxValue.value=cxSliderValue.value
+    resetGradient()
+}
+function setCyValue()
+{
+   cyValue.value=cySliderValue.value
+    resetGradient()
+}
+function setRValue()
+{
+   rValue.value=rSliderValue.value
+    resetGradient()
+}
+function setFxValue()
+{
+   fxValue.value=fxSliderValue.value
+    resetGradient()
+}
+function setFyValue()
+{
+   fyValue.value=fySliderValue.value
+    resetGradient()
+}
+function setX1Value()
+{
+   x1Value.value=x1SliderValue.value
+    resetGradient()
+}
+function setY1Value()
+{
+   y1Value.value=y1SliderValue.value
+    resetGradient()
+}
+function setX2Value()
+{
+   x2Value.value=x2SliderValue.value
+    resetGradient()
+}
+function setY2Value()
+{
+   y2Value.value=y2SliderValue.value
+    resetGradient()
+}
+
+function padChecked()
+{
+       repeatCheck.checked=false
+      reflectCheck.checked=false
+      if(padCheck.checked)
+      {
+      gradientRadial.setAttribute("spreadMethod","pad")
+     gradientLinear.setAttribute("spreadMethod","pad")
+     }
+  else
+   {
+     gradientRadial.removeAttribute("spreadMethod")
+     gradientLinear.removeAttribute("spreadMethod")
+   }
+
+
+}
+function repeatChecked()
+{
+     padCheck.checked=false
+      reflectCheck.checked=false
+      if(repeatCheck.checked)
+      {
+           gradientRadial.setAttribute("spreadMethod","repeat")
+     gradientLinear.setAttribute("spreadMethod","repeat")
+     }
+     else
+   {
+     gradientRadial.removeAttribute("spreadMethod")
+     gradientLinear.removeAttribute("spreadMethod")
+   }
+
+
+
+}
+function reflectChecked()
+{
+  repeatCheck.checked=false
+     padCheck.checked=false
+     if(reflectCheck.checked)
+     {
+           gradientRadial.setAttribute("spreadMethod","reflect")
+     gradientLinear.setAttribute("spreadMethod","reflect")
+     }
+ else
+   {
+     gradientRadial.removeAttribute("spreadMethod")
+     gradientLinear.removeAttribute("spreadMethod")
+   }
+}
+
+
+function resetGradient()
+{
+
+    if(radialRadio.checked)
+    {
+      gradientCircle.setAttribute("display","block")
+      gradientRect.setAttribute("display","none")
+      radialTR.style.display=""
+      linearTR.style.display="none"
+
+    }
+    else
+    {
+      gradientCircle.setAttribute("display","none")
+      gradientRect.setAttribute("display","block")
+      radialTR.style.display="none"
+      linearTR.style.display=""
+
+
+    }
+
+   var stop1Color=stop1ColorSelect.options[stop1ColorSelect.selectedIndex].value
+  stop1ColorBG.style.background=stop1Color
+   var stop1Offset=offset1Value.value+"%"
+   var stop1Opacity=opacity1Value.value
+   var stop2Color=stop2ColorSelect.options[stop2ColorSelect.selectedIndex].value
+      stop2ColorBG.style.background=stop2Color
+   var stop2Offset=offset2Value.value+"%"
+   var stop2Opacity=opacity2Value.value
+   var cx=cxValue.value+"%"
+   var cy=cyValue.value+"%"
+   var r=rValue.value+"%"
+   var fx=fxValue.value+"%"
+   var fy=fyValue.value+"%"
+   var x1=x1Value.value+"%"
+   var y1=y1Value.value+"%"
+   var x2=x2Value.value+"%"
+   var y2=y2Value.value+"%"
+
+
+    gradientRadial.setAttribute("cx",cx)
+    gradientRadial.setAttribute("cy",cy)
+    gradientRadial.setAttribute("r",r)
+    gradientRadial.setAttribute("fx",fx)
+    gradientRadial.setAttribute("fy",fy)
+    stop1Radial.setAttribute("offset",stop1Offset)
+    stop1Radial.setAttribute("stop-color",stop1Color)
+    stop1Radial.setAttribute("stop-opacity",stop1Opacity)
+    stop2Radial.setAttribute("offset",stop2Offset)
+    stop2Radial.setAttribute("stop-color",stop2Color)
+    stop2Radial.setAttribute("stop-opacity",stop2Opacity)
+
+    gradientLinear.setAttribute("x1",x1)
+    gradientLinear.setAttribute("y1",y1)
+    gradientLinear.setAttribute("x2",x2)
+    gradientLinear.setAttribute("y2",y2)
+    stop1Linear.setAttribute("offset",stop1Offset)
+    stop1Linear.setAttribute("stop-color",stop1Color)
+    stop1Linear.setAttribute("stop-opacity",stop1Opacity)
+    stop2Linear.setAttribute("stop-offset",stop2Offset)
+    stop2Linear.setAttribute("stop-color",stop2Color)
+    stop2Linear.setAttribute("stop-opacity",stop2Opacity)
+    gradientRect.setAttribute("fill","gainsboro")
+    gradientRect.setAttribute("stroke","gainsboro")
+    gradientCircle.setAttribute("fill","gainsboro")
+    gradientCircle.setAttribute("stroke","gainsboro")
+    if(radialRadio.checked)
+    {      MyGradient=gradientRadial
+        if(fillRadio.checked)
+        {   GradientTarget="fill"
+        gradientRect.setAttribute("fill","url(#gradientRadial)")
+        gradientCircle.setAttribute("fill","url(#gradientRadial)")
+
+        }
+        else
+        {  GradientTarget="stroke"
+       gradientRect.setAttribute("stroke","url(#gradientRadial)")
+       gradientCircle.setAttribute("stroke","url(#gradientRadial)")
+       }
+
+    }
+    else
+    {
+          MyGradient=gradientLinear
+        if(fillRadio.checked)
+        {      GradientTarget="fill"
+        gradientRect.setAttribute("fill","url(#gradientLinear)")
+           gradientCircle.setAttribute("fill","url(#gradientRadial)")
+        }
+        else
+        {   GradientTarget="stroke"
+       gradientRect.setAttribute("stroke","url(#gradientLinear)")
+           gradientCircle.setAttribute("stroke","url(#gradientRadial)")
+
+        }
+
+    }
+
+   saveGradientButton.disabled=false
+}
+var MyGradient
+var GradientTarget
+
+function writeGradientColorSelection()
+{
+   var DrawColors=parent.clrArray
+	for(var k=0;k<DrawColors.length;k++)
+	{
+		var name=DrawColors[k][0]
+		var myColor=DrawColors[k][1]
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+        stop1ColorSelect.appendChild(option)
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+        stop2ColorSelect.appendChild(option)
+
+	}
+	stop1ColorSelect.selectedIndex=7
+	var clr=stop1ColorSelect.options[stop1ColorSelect.selectedIndex].value
+	stop1ColorBG.style.backgroundColor=clr
+
+	stop2ColorSelect.selectedIndex=143
+	var clr=stop2ColorSelect.options[stop2ColorSelect.selectedIndex].value
+	stop2ColorBG.style.backgroundColor=clr
+
+
+}
+
+
+function sendSize()
+{
+
+  writeGradientColorSelection()
+  /*
+         if(parent.SchematicGradientArray.length!=0)
+         {
+            setTimeout(parent.buildGradientTable,900)
+
+        }
+   */
+   var width=containerDiv.scrollWidth
+   var height=containerDiv.scrollHeight+30
+
+   parent.sizeFrame('addElemGradient',width,height)
+
+  MyGradient=gradientRadial
+GradientTarget="fill"
+    parent.startGradientDraw()
+
+}
+</script>
+</html>

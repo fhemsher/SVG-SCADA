@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset=utf-8 />
+  <title></title>
+<meta charset=utf-8 />
+<style type="text/css">
+<!--
+body {
+-moz-box-shadow: 4px 4px 5px #888;
+-webkit-box-shadow: 4px 4px 5px #888;
+box-shadow: 4px 4px 5px #888;
+}
+-->
+</style>
+</head>
+<body onload=sendSize() style='padding:0px;border:2px solid lightblue;background-color:transparent;margin:0;font-family:verdana'>
+<div id=containerDiv style=background:linen >
+
+<table id=drawTextTopTable style='padding:3px;background-color:linen;width:360px;'><tr>
+<td style='width:90%;' align=center>
+&nbsp;&nbsp;&nbsp;<span id=editTextSpan>Draw </span> Text<input type=text maxlength=100 id=drawTextWriteTextValue style='color:linen;border-width:0px;width:1px;font-family:lucida Console;font-size:100%;overflow:hidden' />
+&nbsp;Size:<select id=drawTextFontSizeSelect onChange=parent.drawTextFontSizeSelected();focusText() >
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>12</option>
+<option>15</option>
+<option>17</option>
+<option selected>20</option>
+<option>25</option>
+<option>30</option>
+<option>35</option>
+<option>40</option>
+<option>45</option>
+<option>50</option>
+<option>60</option>
+<option>70</option>
+<option>80</option>
+<option>90</option>
+<option>100</option>
+<option>120</option>
+<option>140</option>
+<option>160</option>
+<option>180</option>
+<option>200</option>
+<option>250</option>
+<option>300</option>
+</select>
+</td><td align=right><button  onClick=parent.closeIframe("addElemText");parent.closeDrawText()>X</button></td></tr>
+<tr><td colspan=2 id=textClickOnTD style=font-size:80% align=center><i>Click on drawing to locate text</i></td></tr></table>
+<table id=botTextTable style=width:360px;background:linen>
+<tr >
+<td valign=bottom align=center>
+ Color:<span id=drawTextFillBg > Fill </span> &nbsp;
+<select   onChange=parent.showDrawTextFillBg();focusText() id=drawTextFillSelect></select>
+
+<b>Bold</b>:<input type="checkbox" id=drawTextBoldCheck onClick=parent.drawTextBoldChecked();focusText() />
+<i>Italic</i>:<input type="checkbox" id=drawTextItalicCheck onClick=parent.drawTextItalicChecked();focusText() />
+<br>
+ Color:<span id=drawTextStrokeBg > Stroke </span> &nbsp;
+<select   onChange=parent.showDrawTextStrokeBg();focusText() id=drawTextStrokeSelect></select>
+</td>
+</tr>
+<tr>
+<td valign=bottom align=center>
+<span id=fontFamilySpan style=font-family:arial>Font Family</span>:
+<select   onChange=parent.drawTextFontFamilySelected();focusText() id=drawTextFontFamilySelect>
+<option>Arial</option>
+<option>Helvetica</option>
+<option>Times New Roman</option>
+<option>Times</option>
+<option>Courier New</option>
+<option>Courier</option>
+<option>Verdana</option>
+<option>Georgia</option>
+<option>Palatino</option>
+<option>Garamond</option>
+<option>Bookman</option>
+<option>Comic Sans MS</option>
+<option>Trebuchet MS</option>
+<option>Arial Black</option>
+<option>Lucida Sans Unicode</option>
+<option>Lucida Console</option>
+
+</select></td>
+</tr>
+
+
+<tr>
+	<td valign=bottom align=center>Rotate
+		&nbsp;&nbsp;<button  onClick=parent.rotateTextAdjust(-1);focusText() style='height:25px;width:25px;padding:0px'><img width=20 height=20 src="../Images/minusRound.png" /></button>
+		<select title="rotate toggle value" id=rotateDrawTextAdjustSelect >
+		<option>.5</option>
+		<option>1</option>
+		<option>2</option>
+		<option selected>5</option>
+		<option>10</option>
+		</select>
+		<button onClick=parent.rotateTextAdjust(1);focusText()   style='height:25px;width:25px;padding:0px'><img width=20 height=20 src="../Images/plusRound.png" /></button>
+		&nbsp;<input id=adjustedRotateTextValue disabled type=text style='width:40px;' value=0 />&deg;
+	</td>
+</tr>
+
+
+<tr  align=center>
+	<td>
+        Shadow:<input type="checkbox" id=shadowDrawTextCheck onClick=parent.shadowDrawTextChecked();focusText() />
+        <br>
+		<button id=deleteDrawTextButton  title='remove this text' onClick=parent.removeCurrentDrawText() style='visibility:hidden;background-color:red'>delete</button>
+	<button id=drawTextTopButton style=background:white;font-size:120%;font-weight:bold;color:maroon;visibility:hidden  title='Move to top' onClick=parent.topDrawText()>&#x21E7;</button>
+	<button id=drawTextBotButton style=background:white;font-size:120%;font-weight:bold;color:maroon   title='Move to bottom' onClick=parent.botDrawText()>&#x21E9;</button>
+		<button id=cancelDrawTextButton disabled title='cancel this text' onClick=parent.cancelDrawText()>cancel</button>
+        <button id=finishDrawTextButton disabled onClick=parent.finishDrawText()>finish[Enter]</button>
+	</td>
+</tr>
+
+</table>
+</div>
+
+</body>
+<script>
+
+function focusText()
+{
+  setTimeout("drawTextWriteTextValue.focus()",500)
+}
+var KeyPress
+var PrevKey=null
+function drawTextKeyPress(event)
+{
+	KeyPress=(event.charCode) ? event.which : event.keyCode  //===ff===
+	if(KeyPress!=8&&KeyPress!=13) //----backspace---
+	{
+		event.preventDefault();
+		parent.TextBlinker.attr("dx","-.5")
+		parent.TextBlinker.attr("dy",0)
+
+		var myChar=String.fromCharCode(KeyPress);
+		drawTextWriteTextValue.value+=myChar;
+		parent.WriteText=drawTextWriteTextValue.value
+		parent.ActiveTspan.text(drawTextWriteTextValue.value )
+
+		finishDrawTextButton.disabled=false
+		cancelDrawTextButton.disabled=false
+
+
+
+
+	}
+	else if(KeyPress==13)
+	{
+       	parent.finishDrawText()
+	}
+
+
+	PrevKey=KeyPress
+    NextLine=false
+	   return false
+}
+
+function drawTextKeyUp(event)
+{
+   var myKey=(event.charCode) ? event.which : event.keyCode  //===ff===
+
+   if(myKey==8)   //----backspace---
+   {
+         parent.WriteText=drawTextWriteTextValue.value
+		 parent.ActiveTspan.text(drawTextWriteTextValue.value )
+         if(parent.TspanCnt>0 && drawTextWriteTextValue.value=="")
+		 {
+            parent.removeLastTspan()
+
+
+		 }
+
+        if(parent.DrawTextEdit==true)
+			PrevEditRow.innerText=parent.WriteText
+    }
+
+ return false
+
+
+}
+
+function writeTextColorSelection()
+{
+   var DrawColors=parent.clrArray
+	for(var k=0;k<DrawColors.length;k++)
+	{
+		var name=DrawColors[k][0]
+		var myColor=DrawColors[k][1]
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+         drawTextStrokeSelect.appendChild(option)
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+        drawTextFillSelect.appendChild(option)
+	}
+	drawTextFillSelect.selectedIndex=143
+	var clr=drawTextFillSelect.options[drawTextFillSelect.selectedIndex].value
+	drawTextFillBg.style.backgroundColor=clr
+}
+
+
+
+function sendSize()
+{
+         writeTextColorSelection()
+
+parent.startTextDraw()
+   var width=containerDiv.scrollWidth+10
+   var height=containerDiv.scrollHeight+10
+   parent.sizeFrame('addElemText',width,height)
+
+   if(parent.EditText==true)
+   		parent.setEditText()
+        else
+          parent.startTextDraw()
+
+
+
+}
+</script>
+</html>

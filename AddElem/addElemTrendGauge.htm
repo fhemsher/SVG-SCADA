@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Iframe Title</title>
+<meta charset=utf-8 />
+<style type="text/css">
+<!--
+body {
+-moz-box-shadow: 4px 4px 5px #888;
+-webkit-box-shadow: 4px 4px 5px #888;
+box-shadow: 4px 4px 5px #888;
+}
+-->
+</style>
+</head>
+<body onload=sendSize() style='padding:5px;border-radius:10px;border:2px solid lightblue;background-color:transparent;margin:0;font-family:arial'>
+<div id=containerDiv style='background-color:#ABCDEF'>
+
+<table style='width:360px;'>
+<tr>
+<td>
+<table style='width:100%;'>
+<tr ><td id=drawTrendGaugeTopTable style='width:90%;' align=center><span id=drawTrendGaugeEditSpan>Draw Trend Gauges</span></b>
+
+</td><td align=right> <button onClick=parent.closeDrawTrendGauge()  >X</button></td></tr>
+<tr><td  align=center colspan=2>
+
+HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this element"  id=sourceHMICheck  />
+
+
+</td></tr>
+
+</table>
+
+
+</td>
+
+</tr>
+
+
+
+<tr id=trendGaugeSelectTR >
+<td align=center>
+       <table style='width:330px;;border-collapse: collapse;' cellpadding=3 id=trendGaugeTable  border=1>
+        <tr><td colspan=2>Title:<input type=text id=trendGaugeTitleValue style='width:180px;' value="Supply Hot Water" /></td></tr>
+        <tr><td colspan=2 >Units Of Measurement:<input type=text id=trendGaugeUnitValue style='cursor:default;width:50px;' value="&deg;F" /></td></tr>
+        <tr><td>Width:<input type=text style=width:30px id=trendGaugeWidthValue  value="100" /></td>
+        <td>Height:<input type=text style=width:30px id=trendGaugeHeightValue  value="50" /></td></tr>
+        <tr><td>Min<input type=text id=trendGaugeMinValue style='width:50px;' value="60" /></td>
+        <td>Max <input type=text id=trendGaugeMaxValue style='width:50px;' value="220" /></td></tr>
+        <tr><td>Ring <span id=trendGaugeRingColorBg>Color</span>: <select id=trendGaugeRingColorSelect onChange=parent.trendGaugeRingColorSelected()></select></td>
+        <td>Face <span id=trendGaugeFaceColorBg>Color</span>:<select id=trendGaugeFaceColorSelect onChange=parent.trendGaugeFaceColorSelected()></select>
+         </td></tr>
+        <tr><td><input type="checkbox" checked id=trendGaugeSetpointCheck />Setpoint Line:</td><td><input id=trendGaugeSetpointValue type=text style=width:80px placeholder="setpoint" value="140" /> </td></tr>
+        <tr><td><input type="checkbox" checked id=trendGaugeMaxErrorCheck />Max Error Band:</td><td><input id=trendGaugeMaxErrorBandValue type=text style=width:80px placeholder="percent span" value=15 />% </td></tr>
+        <tr><td><input type="checkbox"   id=trendGaugeMinErrorCheck />Min Error Band:</td><td><input id=trendGaugeMinErrorBandValue  type=text style=width:80px placeholder="percent span"   />%</td></tr>
+
+       </table>
+</td>
+</tr>
+
+
+
+
+<tr  align=center>
+<td>
+	<button id=drawTrendGaugeCancelButton disabled title='cancel/remove this circle' onClick=parent.cancelDrawTrendGauge()>cancel</button>
+    <button style='background-color:red;visibility:hidden' id=drawTrendGaugeDeleteButton  onClick=parent.removeCurrentDrawTrendGauge()>delete</button>
+    <button title='Preview change(s)' style='background-color:orange;visibility:hidden' id=editTrendGaugePreviewButton onClick=parent.editTrendGaugePreviewDraw()>preview</button>
+	<button id=drawTrendGaugeTopButton style=background:white;font-size:120%;font-weight:bold;color:maroon;visibility:hidden  title='Move to top' onClick=parent.topDrawTrendGauge()>&#x21E7;</button>
+	<button id=drawTrendGaugeBotButton style=background:white;font-size:120%;font-weight:bold;color:maroon   title='Move to bottom' onClick=parent.botDrawTrendGauge()>&#x21E9;</button>
+
+    <button id=drawTrendGaugeFinishButton disabled onClick=parent.finishDrawTrendGauge()>finish</button>
+</td>
+</tr>
+
+</table>
+</div>
+
+
+</body>
+<script>
+function writeTrendGaugeColorSelection()
+{
+   var DrawColors=parent.clrArray
+	for(var k=0;k<DrawColors.length;k++)
+	{
+		var name=DrawColors[k][0]
+		var myColor=DrawColors[k][1]
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+		option.text=k
+        trendGaugeFaceColorSelect.appendChild(option)
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+		option.text=k
+       trendGaugeRingColorSelect.appendChild(option)
+
+
+
+
+
+
+	}
+
+
+
+ 	trendGaugeRingColorSelect.selectedIndex=45
+	trendGaugeFaceColorSelect.selectedIndex=23
+
+	var clr=trendGaugeRingColorSelect.options[trendGaugeRingColorSelect.selectedIndex].value
+   trendGaugeRingColorBg.style.backgroundColor=clr
+	var clr2=trendGaugeFaceColorSelect.options[trendGaugeFaceColorSelect.selectedIndex].value
+   trendGaugeFaceColorBg.style.backgroundColor=clr2
+
+
+
+
+
+}
+
+
+
+function sendSize()
+{
+   writeTrendGaugeColorSelection()
+
+   var width=containerDiv.scrollWidth+15
+   var height=containerDiv.scrollHeight+30
+
+   parent.sizeFrame('addElemTrendGauge',width,height)
+
+
+     if(parent.EditTrendGauge==true)
+        parent.setEditTrendGauge()
+        else
+       parent.startTrendGaugeDraw()
+
+}
+
+
+</script>
+</html>

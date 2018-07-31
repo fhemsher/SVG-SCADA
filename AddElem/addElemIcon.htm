@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<style type="text/css">
+<!--
+body {
+-moz-box-shadow: 4px 4px 5px #888;
+-webkit-box-shadow: 4px 4px 5px #888;
+box-shadow: 4px 4px 5px #888;
+}
+-->
+</style>
+<head>
+   	<script charset="UTF-8" type="text/javascript" src="Icon/buildUnicodeIcons.js"></script>
+     <script src="../d3.v4.min.js"></script>
+
+  <title></title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body onload=sendSize()  style='padding:5px;border-radius:10px;border:2px solid lightblue;background-color:transparent;margin:0;font-family:arial'>
+<div id=containerDiv style=background:linen>
+<table id=drawIconTopTable style='padding:3px;width:99.4%;'><tr><td style='width:90%;' align=center><span id=iconDrawSpan>Select & Plant Icons</span></td><td align=right><button  onClick=parent.closeDrawIcon()>X</button></td></tr></table>
+<table style=width:300px;>
+<tr>
+<td colspan=2 ALIGN=CENTER>
+Unicode Type:<select onchange=unicodeTypeSelected() id="unicodeTypeSelect">
+<option value=dingbat >DINGBATS</option>
+<option value=geometric >GEOMETRIC</option>
+<option value=arrow >ARROWS</option>
+<option value=math >MATHEMATICAL</option>
+<option value=technical >TECHNICAL</option>
+<option value=symbol >SYMBOLS</option>
+
+
+</select>
+
+</td>
+</tr>
+<tr>
+<td rowspan=2>
+<div id=drawIconButtonDiv  style='position:relative;top:0px;left:0px;background:white;height:330px;width:60px;overflow-y:auto;overflow-x:hidden;'>
+<table id=dingbatTable cellpadding=0 cellspacing=2 style=width:40px;position:absolute;top:0px;left:0px;></table>
+<table id=geometricTable cellpadding=0 cellspacing=2 style=display:none;width:40px;position:absolute;top:0px;left:0px;></table>
+<table id=arrowTable cellpadding=0 cellspacing=2 style=display:none;width:40px;position:absolute;top:0px;left:0px;></table>
+<table id=mathTable cellpadding=0 cellspacing=2 style=display:none;width:40px;position:absolute;top:0px;left:0px;></table>
+<table id=technicalTable cellpadding=0 cellspacing=2 style=display:none;width:40px;position:absolute;top:0px;left:0px;></table>
+<table id=symbolTable cellpadding=0 cellspacing=2 style=display:none;width:40px;position:absolute;top:0px;left:0px;></table>
+
+</div>
+
+</td>
+<td valign=center align=center>
+ <div style=text-align:left><span id=editIconSpan>Select icon button, choose color/size, then click on drawing to plant it.</span></div><p></p>
+
+	<span id=drawIconFillBg >Color:</span>
+		<select  onChange=showDrawIconFillBg()  id=drawIconFillColorSelect><option title="none" >0</option></select>
+
+	Size:<select id=drawIconFontSizeSelect  >
+	<option>1</option>
+	<option>2</option>
+	<option>3</option>
+	<option>4</option>
+	<option>5</option>
+	<option>10</option>
+	<option>15</option>
+	<option>20</option>
+	<option>25</option>
+	<option selected>30</option>
+	<option>35</option>
+	<option>40</option>
+	<option>45</option>
+	<option>50</option>
+	<option>60</option>
+	<option>70</option>
+	<option>80</option>
+	<option>90</option>
+	<option>100</option>
+	<option>150</option>
+	<option>200</option>
+	<option>250</option>
+	<option>300</option>
+	<option>350</option>
+	<option>400</option>
+	<option>450</option>
+	<option>500</option>
+	</select>
+</td>
+</tr>
+
+
+
+<tr  align=center>
+	<td align=left>
+ <center><button disabled id=undoButton onClick=parent.undoIconButtonClicked()>undo</button></center>
+Toggle undo button to remove most recent planted icon(s).<p></p>
+
+ <input type="checkbox" id=dragIconCheck onClick=parent.dragIconChecked() />:Drag Icons<br>
+ <span id=deleteIconSpan style=background:red><input  type="checkbox" id=deleteIconCheck onClick=parent.deleteIconChecked() />:Delete Icons</span><br>
+ <input type="checkbox" id=resizeIconCheck onClick=parent.resizeIconChecked() />:Resize Icons<br>
+ <input type="checkbox" id=colorIconCheck onClick=parent.colorIconChecked() />:Color Icons<br>
+ <input type="checkbox" id=shadowIconCheck onClick=parent.shadowIconChecked() />:Add Shadow
+ <center>
+     <div id=topBotDiv style='visibility:hidden'>
+     <button id=drawIconTopButton style=background:white;font-size:120%;font-weight:bold;color:maroon  title='Move to top' onClick=parent.topDrawIcon()>&#x21E7;</button>
+	<button id=drawIconBotButton style=background:white;font-size:120%;font-weight:bold;color:maroon;   title='Move to bottom' onClick=parent.botDrawIcon()>&#x21E9;</button>
+     </div>
+<button onClick=parent.closeDrawIcon() >finish</button></center>
+
+
+ </td>
+</tr>
+
+
+</table>
+</div>
+
+<div style=position:absolute;top:0px;left:0px;visibility:hidden >
+<svg id=sizerSVG width=1 height=1 overflow="visible" ></svg>
+</div>
+</body>
+<script>
+var PlantUnicode
+function plantThisIcon(event)
+{
+  var buttons=document.getElementsByTagName("button")
+ for(var k=1;k<buttons.length;k++)
+ {
+      buttons[k].style.borderStyle=""
+      buttons[k].style.borderColor=""
+
+ }
+
+   if(event.target.nodeName=="text")
+    PlantUnicode=event.target.getAttribute("unicode")
+   else
+    PlantUnicode=event.target.firstChild.getAttribute("unicode")
+
+}
+
+
+
+
+
+function showDrawIconFillBg()
+{
+
+   	var clr=drawIconFillColorSelect.options[drawIconFillColorSelect.selectedIndex].value
+	drawIconFillBg.style.backgroundColor=clr
+
+
+}
+
+
+
+
+
+
+
+
+
+function writeIconColorSelection()
+{
+   var DrawColors=parent.clrArray
+	for(var k=1;k<DrawColors.length;k++)
+	{
+		var name=DrawColors[k][0]
+		var myColor=DrawColors[k][1]
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k+1
+		drawIconFillColorSelect.appendChild(option)
+        /*
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k+1
+        drawIconStrokeColorSelect.appendChild(option)
+        */
+	}
+	drawIconFillColorSelect.selectedIndex=40
+  //	drawIconStrokeColorSelect.selectedIndex=23
+	var clr=drawIconFillColorSelect.options[drawIconFillColorSelect.selectedIndex].value
+	drawIconFillBg.style.backgroundColor=clr
+  //	var clr=drawIconStrokeColorSelect.options[drawIconStrokeColorSelect.selectedIndex].value
+  //	drawIconStrokeBg.style.backgroundColor=clr
+}
+
+
+
+//onload=sendSize();writeIconColorSelection();initIconSelect()
+function sendSize()
+{
+   writeIconColorSelection()
+   var width=document.body.scrollWidth+10
+   var height=document.body.scrollHeight+10
+   parent.sizeFrame('addElemIcon',width,height)
+
+   buildDingbatButton()
+   buildArrowButton()
+   buildGeometricButton()
+   buildMathButton()
+   buildTechnicalButton()
+   buildSymbolButton()
+
+   if(parent.EditIcon==false)
+       parent.startIconDraw()
+}
+</script>
+</html>

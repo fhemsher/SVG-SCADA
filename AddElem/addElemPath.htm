@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+<meta charset=utf-8 />
+<style type="text/css">
+<!--
+body {
+-moz-box-shadow: 4px 4px 5px #888;
+-webkit-box-shadow: 4px 4px 5px #888;
+box-shadow: 4px 4px 5px #888;
+}
+-->
+</style>
+</head>
+<body   onload= writePathColorSelection();sendSize()  style='border-radius:10px;border:2px solid lightblue;background-color:transparent;padding:0;margin:0;font-family:arial'>
+<div id=containerDiv>
+<table  id=topTable style='background-color:linen;padding:3px;width:100%;'><tr><td style='width:80%;' align=center> <span id=editSpan>Add</span> Path&nbsp; <span id=rightAngleSpan><b>L</b>:<input title="right angle path" type=checkbox id=drawPathRightAngleCheck />[L]</span>
+</td><td style='width:20%' align=right><button  onClick=parent.closeIframe("addElemPath");parent.closeDrawPath()>X</button>[X]</td></tr></table>
+<table  style=border-radius:10px;width:100%;background-color:gainsboro>
+
+
+<tr style=background-color:linen>
+<td align=center ><span id=drawPathStrokeBg >Stroke Color:</span>
+<select  title="Stroke Color" onChange=parent.showDrawPathStrokeBg() id=drawPathStrokeSelect></select>
+width:
+  <select onChange=parent.drawPathStrokeWidthSelected() id=drawPathStrokeWidthSelect>
+		<option title="none" >0</option>
+		<option >0.5</option>
+		<option >1</option>
+		<option >1.5</option>
+		<option selected>2</option>
+		<option >2.5</option>
+		<option >3</option>
+		<option >4</option>
+		<option >5</option>
+		<option >6</option>
+		<option >7</option>
+		<option >8</option>
+		<option >9</option>
+		<option >10</option>
+		<option >15</option>
+		<option >20</option>
+		<option >25</option>
+		<option >30</option>
+		<option >35</option>
+		<option >40</option>
+		<option >45</option>
+		<option >50</option>
+	</select> <br>
+ Stroke Opacity:
+  <select onChange=parent.drawPathStrokeOpacitySelected() id=drawPathStrokeOpacitySelect>
+		<option >0.1</option>
+		<option>0.2</option>
+		<option >0.3</option>
+		<option >0.4</option>
+		<option>0.5</option>
+		<option >0.6</option>
+		<option >0.7</option>
+		<option >0.8</option>
+		<option >0.9</option>
+		<option  selected >1.0</option>
+    </select> <br>
+
+Dash[D]:<input type=checkbox id=drawPathStrokeDashCheck onClick=parent.drawPathStrokeDashChecked() />
+&nbsp;Arrow[A]:<input type=checkbox id=drawPathStrokeArrowCheck onClick=parent.drawPathStrokeArrowChecked() />
+&nbsp;Shadow:<input type=checkbox id=drawPathShadowCheck onClick=parent.drawPathShadowChecked() />
+
+</td>
+</tr>
+
+<tr style=background-color:linen>
+<td align=center >
+3D Pipeline:<input type="checkbox" id=drawPathPipe3DCheck onClick=parent.drawPathPipe3DChecked() />
+
+</td>
+</tr>
+<tr style=background-color:linen>
+<td align=center ><span id=drawPathFillBg >Fill Color:</span>
+<select  title="Fill Color" onChange=parent.showDrawPathFillBg() id=drawPathFillSelect></select>
+Opacity:
+  <select onChange=parent.drawPathOpacitySelected() id=drawPathOpacitySelect>
+		<option >0.1</option>
+		<option>0.2</option>
+		<option >0.3</option>
+		<option >0.4</option>
+		<option>0.5</option>
+		<option >0.6</option>
+		<option >0.7</option>
+		<option >0.8</option>
+		<option >0.9</option>
+		<option  selected >1.0</option>
+
+		</select>
+
+</td>
+</tr>
+<tr style=background-color:linen align=center>
+	<td>
+	<span id=drawPathTopButtons>
+		<button disabled id=drawPathPauseButton onClick=pauseDrawPathLocal()>pause[P]</button>
+		<button disabled id=drawPathUndoButton onClick=parent.undoDrawPath()>undo[U]</button>
+		<button id=drawPathEncloseButton disabled onClick=parent.encloseDrawPath()>enclose[E]</button>
+		<button id=smoothPathButton style='width:75px;' disabled onClick=parent.drawPathSmoothSelected()>smooth[S]</button>
+    </span>
+	</td>
+</tr>
+
+
+
+<tr style=background-color:linen align=center>
+<td>
+	<button id=drawPathCancelButton disabled title='cancel/remove this path' onClick=parent.cancelDrawPath()>cancel[C]</button>
+<button id=drawPathFinishButton disabled onClick=parent.finishDrawPath()>finish[F]</button>
+        <br>Drag This Path:<input disabled title="Drag this path" type="checkbox" id=dragAddPathCheck onClick=parent.dragAddPathChecked() />
+
+
+
+</td>
+</tr>
+
+
+
+<tr><td style=background-color:linen  align=center>[key]- Keyboard shortcut key</td></tr>
+</table>
+</div>
+</body>
+<script>
+
+function pauseDrawPathLocal()
+{
+	if(parent.PrevKeyPath==112)
+	{
+		parent.unPauseDrawPath()
+        parent.PrevKeyPath=null
+	}
+	else
+	{
+      	parent.pauseDrawPath()
+       	parent.PrevKeyPath=112
+	}
+}
+
+/*
+function writePathColorSelection()
+{
+   var DrawColors=parent.clrArray
+	for(var k=0;k<DrawColors.length;k++)
+	{
+		var name=DrawColors[k][0]
+		var myColor=DrawColors[k][1]
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+        drawPathStrokeSelect.appendChild(option)
+
+	}
+	drawPathStrokeSelect.selectedIndex=23
+	var clr=drawPathStrokeSelect.options[drawPathStrokeSelect.selectedIndex].value
+	drawPathStrokeBg.style.backgroundColor=clr
+}
+*/
+function writePathColorSelection()
+{
+   var DrawColors=parent.clrArray
+	for(var k=0;k<DrawColors.length;k++)
+	{
+		var name=DrawColors[k][0]
+		var myColor=DrawColors[k][1]
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+        drawPathStrokeSelect.appendChild(option)
+
+       	var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+		option.text=k
+
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+
+		option.text=k
+        drawPathFillSelect.appendChild(option)
+
+
+
+
+	}
+	drawPathStrokeSelect.selectedIndex=44
+	var clr=drawPathStrokeSelect.options[drawPathStrokeSelect.selectedIndex].value
+	drawPathStrokeBg.style.backgroundColor=clr
+}
+
+
+function sendSize()
+{
+	window.name = 'drawPathWindow';
+   var width=containerDiv.scrollWidth+10
+   var height=containerDiv.scrollHeight+10
+   parent.sizeFrame('addElemPath',width,height)
+   parent.startPathDraw()
+
+
+}
+</script>
+</html>

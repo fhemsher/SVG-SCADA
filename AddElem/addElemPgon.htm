@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Pgon Symbols</title>
+<style type="text/css">
+<!--
+body {
+-moz-box-shadow: 4px 4px 5px #888;
+-webkit-box-shadow: 4px 4px 5px #888;
+box-shadow: 4px 4px 5px #888;
+}
+-->
+</style>
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body onload=sendSize() style='font-family:arial'>
+<center>
+<div id=containerDiv style='padding:5px;border-radius:10px;border:1px solid black;background:linen'>
+<table style=width:100%><tr><td style=width:90% align=center><span id=editSpan>Create &amp; Plant Pgon Symbols</span></td><td align=right><button onClick=parent.closeDrawPgon()>X</button></td></tr></table>
+<div style='text-align:left;font-size:80%;width:260px'><i>From the drop down menu on left select a symbol, then choose its size and color(s)</i></div>
+
+ <TABLE border=2  style=width:90%>
+ <TR><TD align=center valign=top>
+ <div id=focusDiv style='border:1px solid black;background:white;width:60px;height:290px;overflow-y:auto;overflow-x:hidden' >
+<table id=nativeLibraryTable >
+<tr><td><div title="Create Me" onClick=selectNative("Star4_30") id=Star4_30Div style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Star4") id=Star4Div style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Star5")  id=Star5Div style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Star6") id=Star6Div style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Star10") id=Star10Div style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Star15") id=Star15Div style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Pgon3u") id=Pgon3uDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Pgon3d") id=Pgon3dDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Pgon3r") id=Pgon3rDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Pgon3l") id=Pgon3lDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Pgon4d") id=Pgon4dDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Pgon4") id=Pgon4Div style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Pgon6") id=Pgon6Div style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Circle") id=CircleDiv style='width:30px;height:30px;'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("EllipseHoriz") id=EllipseHorizDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("EllipseVert") id=EllipseVertDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("RhombHoriz") id=RhombHorizDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("RhombVert") id=RhombVertDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("CircleStar6") id=CircleStar6Div style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Pgon4vStar6") id=Pgon4vStar6Div style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Pgon4Star6") id=Pgon4Star6Div style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Pgon4vRhombHoriz") id=Pgon4vRhombHorizDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Pgon4vRhombVert") id=Pgon4vRhombVertDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("CircleRhombHoriz") id=CircleRhombHorizDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("CircleRhombVert") id=CircleRhombVertDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("CirclePgon3r") id=CirclePgon3rDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("CirclePgon3t") id=CirclePgon3tDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("CirclePgon3l") id=CirclePgon3lDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("CirclePgon3b") id=CirclePgon3bDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("CirclePgon4d") id=CirclePgon4dDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Pgon4dCircle") id=Pgon4dCircleDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("CircleEllipseVert") id=CircleEllipseVertDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("CircleEllipseHoriz") id=CircleEllipseHorizDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("CirclePgon4") id=Pgon4CircleDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("CirclePgon4") id=CirclePgon4Div style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Pgon6Circle") id=Pgon6CircleDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Pgon4CircleStar5") id=Pgon4CircleStar5Div style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("CirclePgon4vStar6") id=CirclePgon4vStar6Div style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Star6Circle") id=Star6CircleDiv style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Pgon6Star6") id=Pgon6Star6Div style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+<tr><td><div title="Create Me" onClick=selectNative("Pgon8Star4") id=Pgon8Star4Div style='width:30px;height:30px;overflow:hidden'></div> </td></tr>
+</table>
+</div>
+</TD>
+
+<TD VALIGN=TOP style=width:150px >
+<center>Size:
+<select  id="registerSymbolSizeSelect" >
+<option>10</option>
+<option>20</option>
+<option selected>30</option>
+<option>40</option>
+<option>50</option>
+<option>60</option>
+<option>70</option>
+<option>80</option>
+<option>90</option>
+<option>100</option>
+<option>120</option>
+<option>140</option>
+<option>160</option>
+<option>180</option>
+<option>200</option>
+<option>250</option>
+<option>300</option>
+<option>350</option>
+<option>400</option>
+<option>500</option>
+
+
+</select>px.
+
+</center>
+<div id=color1Div style=visibility:hidden >
+Color 1:<select onChange=symbolRegisterColor1Selected() disabled  title="symbol color #1"  id=symbolRegisterColor1Select>
+</select>
+<span id=symbolRegColor1Value style="background-color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+</div>
+<div id=color2Div style=visibility:hidden >
+Color 2:<select onChange=symbolRegisterColor2Selected() disabled  title="symbol color #2"  id=symbolRegisterColor2Select>
+</select>
+<span id=symbolRegColor2Value style="background-color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+</div>
+<div id=color3Div style=visibility:hidden >
+Color 3:<select onChange=symbolRegisterColor3Selected() disabled  title="symbol color #3"  id=symbolRegisterColor3Select>
+</select>
+<span id=symbolRegColor3Value style="background-color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
+</div>
+
+<BR><CENTER>
+
+
+<button disabled style='border-color:violet' id=registerSymbolButton onClick=registerSymbol();this.disabled=true >Create Symbol</button></CENTER>
+<div style='text-align:justify;font-size:70%;width:140px'><i>Select created symbol at right menu, then click on drawing to locate it.<br><br>Toggle 'undo' button to remove last symbol(s).</i></div>
+
+ <input type="checkbox" id=dragSymbolCheck onClick=parent.dragSymbolChecked() />:Drag Symbols<br>
+ <span id=deleteSymbolSpan style=background:red><input  type="checkbox" id=deleteSymbolCheck onClick=parent.deleteSymbolChecked() />:Delete Symbols</span><br>
+ <input type="checkbox" id=resizeSymbolCheck onClick=parent.resizeSymbolChecked() />:Resize Symbols<br>
+ <input type="checkbox" id=colorSymbolCheck onClick=parent.colorSymbolChecked() />:Color Symbols<br>
+ <input type="checkbox" id=shadowSymbolCheck onClick=parent.shadowSymbolChecked() />:Add Shadow
+ <center><button id=drawSymbolTopButton style=background:white;font-size:120%;font-weight:bold;color:maroon  title='Move to top' onClick=parent.topDrawSymbol()>&#x21E7;</button>
+	<button id=drawSymbolBotButton style=background:white;font-size:120%;font-weight:bold;color:maroon;   title='Move to bottom' onClick=parent.botDrawSymbol()>&#x21E9;</button>
+ </center>
+
+</TD>
+<td align=center valign=top>
+<div id=plantSymbolDiv style='background:white;border:3px inset violet;width:75px;height:280px;overflow-y:auto;overflow-x:hidden;'>
+<b>Symbols</b><hr>
+<table id=plantSymbolTable></table>
+
+</div>
+<button disabled id=undoButton onClick=parent.undoButtonClicked() title="remove last symbol" >undo</button>
+
+</td>
+
+
+</TR></TABLE>
+<center><button onclick=parent.closeDrawPgon()>finish</button>
+
+</div>
+
+
+<svg style='display:none' id=myAppSVG><defs id="SymbolDefs"></defs><defs id="defsShadow">
+<filter id="drop-shadow" height="150%" width="150%">
+<feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur"/>
+<feOffset in="blur" dx="5" dy="5" result="offsetBlur"/>
+<feMerge>
+<feMergeNode in="offsetBlur"/>
+<feMergeNode in="SourceGraphic"/>
+</feMerge>
+</filter>
+</defs></svg>
+
+
+</center>
+<p></p>
+
+<script id=myScript>
+document.addEventListener("onload",init(),false)
+
+function init()
+{
+
+	showNativeFiles()//-- and create an associated svg image for selection---
+	buildSymbolColorSelection()
+    //---insert: see handleSource.js---
+    if(parent.InsertSymbolArray.length>0)
+        initPlantSymbolTable()
+
+}
+
+var NativeIdSelect
+var NativeSymbolSelect
+function selectNative(myId)
+{
+	if(NativeIdSelect)
+	{
+		var myDiv=document.getElementById(NativeIdSelect+"Div")
+		myDiv.style.borderWidth=""
+		myDiv.style.borderStyle=""
+		myDiv.style.borderColor=""
+		symbolRegisterColor1Select.selectedIndex=1//--black---
+		symbolRegisterColor2Select.selectedIndex=2//--white---
+		symbolRegisterColor3Select.selectedIndex=1//--black---
+		symbolRegisterColor1Select.disabled=true
+		symbolRegisterColor2Select.disabled=true
+		symbolRegisterColor3Select.disabled=true
+		symbolRegColor1Value.style.backgroundColor="black"
+		symbolRegColor2Value.style.backgroundColor="white"
+		symbolRegColor3Value.style.backgroundColor="black"
+        color1Div.style.visibility="hidden"
+        color2Div.style.visibility="hidden"
+        color3Div.style.visibility="hidden"
+		var polys=NativeSymbolSelect.childNodes
+		polys.item(0).setAttribute("fill","black")
+		if(polys.length>1)
+			polys.item(1).setAttribute("fill","white")
+		if(polys.length>2)
+			polys.item(2).setAttribute("fill","black")
+	}
+
+	registerSymbolButton.disabled=false
+	NativeIdSelect=myId
+	NativeSymbolSelect=document.getElementById(NativeIdSelect)
+	var myDiv=document.getElementById(myId+"Div")
+	myDiv.style.borderWidth="3px"
+	myDiv.style.borderStyle="inset"
+	myDiv.style.borderColor="violet"
+
+	symbolRegisterColor1Select.disabled=false
+    color1Div.style.visibility="visible"
+	var polys=NativeSymbolSelect.getElementsByTagName("polygon")
+	if(polys.length>1)
+    {
+		symbolRegisterColor2Select.disabled=false
+         color2Div.style.visibility="visible"
+    }
+	if(polys.length>2)
+    {
+		symbolRegisterColor3Select.disabled=false
+        color3Div.style.visibility="visible"
+     }
+
+}
+
+function symbolRegisterColor1Selected()
+{
+	var color1=symbolRegisterColor1Select.options[symbolRegisterColor1Select.selectedIndex].value
+	symbolRegColor1Value.style.backgroundColor=color1
+	if(parent.ColorSymbols == false) NativeSymbolSelect.childNodes.item(0).setAttribute("fill",color1)
+}
+function symbolRegisterColor2Selected()
+{
+	var color2=symbolRegisterColor2Select.options[symbolRegisterColor2Select.selectedIndex].value
+	symbolRegColor2Value.style.backgroundColor=color2
+	if(parent.ColorSymbols == false)NativeSymbolSelect.childNodes.item(1).setAttribute("fill",color2)
+}
+function symbolRegisterColor3Selected()
+{
+	var color3=symbolRegisterColor3Select.options[symbolRegisterColor3Select.selectedIndex].value
+	symbolRegColor3Value.style.backgroundColor=color3
+	if(parent.ColorSymbols == false)NativeSymbolSelect.childNodes.item(2).setAttribute("fill",color3)
+}
+
+//---the native symbol Id + color(s) 2-digit number is used to create a unique Id---
+function registerSymbol()
+{
+	//--this is a <g> element with polygon(s)---
+	var clone=NativeSymbolSelect.cloneNode(true)
+	//---get colors and their numbers(for id)--
+	color1=symbolRegisterColor1Select.options[symbolRegisterColor1Select.selectedIndex].value
+	color1Num=symbolRegisterColor1Select.selectedIndex
+	color2=symbolRegisterColor2Select.options[symbolRegisterColor2Select.selectedIndex].value
+	color2Num=symbolRegisterColor2Select.selectedIndex
+	color3=symbolRegisterColor3Select.options[symbolRegisterColor3Select.selectedIndex].value
+	color3Num=symbolRegisterColor3Select.selectedIndex
+	var id=NativeSymbolSelect.id+"_"
+	var polys=clone.getElementsByTagName("polygon")
+	polys.item(0).setAttribute("fill",color1)
+	id+=color1Num+"_"
+	if(polys.length>1)
+	{
+		polys.item(1).setAttribute("fill",color2)
+		id+=color2Num
+	}
+	if(polys.length>2)
+	{
+		polys.item(2).setAttribute("fill",color3)
+		id+="_"+color3Num
+	}
+	clone.id=id //--color numbers appended---
+	//---size this symbol--
+	var registerSize=+registerSymbolSizeSelect.options[registerSymbolSizeSelect.selectedIndex].text
+
+	//---note: the selected symbols have been sized=30 for convenient user selection---
+	var resize=registerSize/30
+
+
+	if(resize!=1)
+	{
+		for(var k=0;k<clone.childNodes.length;k++)
+		{
+			var pgon=clone.childNodes.item(k)
+			pgon.setAttribute("transform","scale("+resize+")")
+			computePolyPoints(myAppSVG,pgon)
+		}
+	}
+
+
+	clone.setAttribute("size",registerSize)
+	clone.setAttribute("nativeId",id)
+
+	clone.removeAttribute("transform")
+	//---send registered symbol to server---
+	var registerSVG=document.createElementNS('http://www.w3.org/2000/svg',"svg")
+	registerSVG.appendChild(clone)
+
+	//--update defs---
+	SymbolDefs.appendChild(clone)
+	//---show defs---
+
+	//----place in this example's user table selection for planting---
+	var plantSymbol=clone.cloneNode(true)
+
+
+
+	//---place this in a root svg, used as inline image for table---
+	var plantSVG=document.createElementNS('http://www.w3.org/2000/svg',"svg")
+	plantSVG.appendChild(plantSymbol)
+
+	//---size this for convenient user selection: size=30---
+	var mySize=parseFloat(plantSymbol.getAttribute("size"))
+	if(mySize!=30)
+	{
+		var resize=30/mySize
+		for(var k=0;k<plantSymbol.childNodes.length;k++)
+		{
+			var pgon=plantSymbol.childNodes.item(k)
+			pgon.setAttribute("transform","scale("+resize+")")
+			computePolyPoints(plantSVG,pgon)
+		}
+	}
+
+	var defId=plantSymbol.id
+	plantSymbol.id=defId+"Plant"
+	plantSymbol.setAttribute("transform","translate(15 15)")
+	var  plantSymbolString=new XMLSerializer().serializeToString(plantSVG)
+	var tr = plantSymbolTable.insertRow(plantSymbolTable.rows.length);
+	var td = tr.insertCell(tr.cells.length);
+	td.innerHTML ="<div title='Plant Me' onClick=plantThisSymbol('"+defId+"') id="+defId+"Div style='width:30px;height:30px;overflow:hidden'>"+plantSymbolString+"</div>"+mySize+"px"
+	if(NativeIdSelect)
+	{
+		var myDiv=document.getElementById(NativeIdSelect+"Div")
+		myDiv.style.borderWidth=""
+		myDiv.style.borderStyle=""
+		myDiv.style.borderColor=""
+		symbolRegisterColor1Select.selectedIndex=1
+		symbolRegisterColor2Select.selectedIndex=2
+		symbolRegisterColor3Select.selectedIndex=1
+		symbolRegisterColor1Select.disabled=true
+		symbolRegisterColor2Select.disabled=true
+		symbolRegisterColor3Select.disabled=true
+		symbolRegColor1Value.style.backgroundColor="black"
+		symbolRegColor2Value.style.backgroundColor="white"
+		symbolRegColor3Value.style.backgroundColor="black"
+         color1Div.style.visibility="hidden"
+        color2Div.style.visibility="hidden"
+        color3Div.style.visibility="hidden"
+		var polys=NativeSymbolSelect.getElementsByTagName("polygon")
+		polys.item(0).setAttribute("fill","black")
+		if(polys.length>1)
+			polys.item(1).setAttribute("fill","white")
+		if(polys.length>2)
+			polys.item(2).setAttribute("fill","black")
+	}
+	NativeIdSelect=null
+    dragSymbolCheck.checked=false
+    deleteSymbolCheck.checked=false
+    resizeSymbolCheck.checked=false
+    colorSymbolCheck.checked=false
+    parent.deleteSymbolChecked()
+    parent.dragSymbolChecked()
+    parent.resizeSymbolChecked()
+    parent.colorSymbolChecked()
+
+    plantSymbolDiv.scrollTop = plantSymbolDiv.scrollHeight;
+
+}
+
+//----insert file; initialize table----
+
+function  initPlantSymbolTable()
+{   var nativeIdString=""
+    var symbols=parent.InsertSymbolArray
+    for(var k=0;k<symbols.length;k++)
+    {
+        var symbol=symbols[k]
+        var nativeId=symbol.getAttribute("nativeId")
+
+        if(nativeIdString.indexOf(nativeId)==-1)
+        {
+            nativeIdString+=nativeId
+            //defId=nativeId.split("_")[0]
+            var color1Num=+nativeId.split("_")[1]
+             var color2Num=+nativeId.split("_")[2]
+
+            var color3Num=+nativeId.split("_")[3]
+
+
+            undoButton.disabled = false
+               var defId=nativeId
+            registerInsertSymbol(symbol,defId,color1Num,color2Num,color3Num)
+
+        }
+
+    }
+
+
+}
+function registerInsertSymbol(symbol,defId,color1Num,color2Num,color3Num)
+{
+
+    //---insert in SymbolDefs---
+
+    var defSymbol=symbol.cloneNode(true)
+    defSymbol.id=defId
+    defSymbol.removeAttribute("onmousedown")
+    defSymbol.removeAttribute("transform")
+    defSymbol.removeAttribute("nativeId")
+    defSymbol.removeAttribute("nativeId")
+    defSymbol.setAttribute("size",30)
+
+        SymbolDefs.appendChild(defSymbol)
+
+
+
+
+
+
+
+  var plantSymbol=defSymbol.cloneNode(true)
+ plantSymbol.id=defId+"Plant"
+
+    var polys=plantSymbol.getElementsByTagName("polygon")
+    {
+        var color1=parent.clrArray[color1Num][1]
+        polys.item(0).setAttribute("fill",color1)
+    }
+
+		if(polys.length>1)
+        {
+        var color2=parent.clrArray[color2Num][1]
+			polys.item(1).setAttribute("fill",color2)
+
+        }
+		if(polys.length>2)
+        {
+        var color3=parent.clrArray[color3Num][1]
+
+			polys.item(2).setAttribute("fill",color3)
+        }
+
+
+
+	plantSymbol.setAttribute("transform","translate(15 15)")
+
+
+    	//---place this in a root svg, used as inline image for table---
+	var plantSVG=document.createElementNS('http://www.w3.org/2000/svg',"svg")
+	plantSVG.appendChild(plantSymbol)
+
+
+
+	var  plantSymbolString=new XMLSerializer().serializeToString(plantSVG)
+	var tr = plantSymbolTable.insertRow(plantSymbolTable.rows.length);
+	var td = tr.insertCell(tr.cells.length);
+	td.innerHTML ="<div title='Plant Me' onClick=plantThisSymbol('"+defId+"') id="+defId+"Div style='width:30px;height:30px;overflow:hidden'>"+plantSymbolString+"</div>30px"
+
+
+
+}
+
+//---hilight selected symbol to plant--
+var PlantMeId
+function plantThisSymbol(defId)
+{
+	if(PlantMeId)
+	{
+		var myDiv=document.getElementById(PlantMeId+"Div")
+		myDiv.style.borderWidth=""
+		myDiv.style.borderStyle=""
+		myDiv.style.borderColor=""
+	}
+	var myDiv=document.getElementById(defId+"Div")
+	myDiv.style.borderWidth="1"
+	myDiv.style.borderStyle="solid"
+	myDiv.style.borderColor="violet"
+
+	PlantMeId=defId
+
+    parent.mySVG.setAttribute("onclick","plantPgonSymbol(event)")
+
+
+}
+//---click on app svg---
+var UndoArray=[]
+function plantAppSymbol(event)
+{
+	var offsets = svgDiv.getBoundingClientRect();
+	var top = offsets.top;
+	var left = offsets.left;
+	//---requred for FF----
+	var eventObj = event || window.event;
+
+	var x = eventObj.clientX-left
+	var y = eventObj.clientY-top
+	//---time stamp @ id---
+	var utcMS=new Date().getTime()
+
+	var defG=document.getElementById(PlantMeId)
+	PlantMe=defG.cloneNode(true)
+	PlantMe.id=PlantMeId+"_"+utcMS
+    var scale=+PlantMe.getAttribute("size")/30
+	PlantMe.setAttribute("transform","translate("+x+" "+y+")scale("+scale+")")
+	parent.domAddSymbolG.appendChild(PlantMe)
+    UndoArray.push(PlantMe)
+    undoButton.disabled=false
+}
+function undoButtonClicked()
+{
+    if(UndoArray.length>0)
+    {
+    var undoMe=UndoArray[UndoArray.length-1]
+     UndoArray.pop()
+      AppSymbolG.removeChild(undoMe)
+   }
+     if(UndoArray.length==0)
+     undoButton.disabled=true
+}
+//---user size 30x30 px---
+function sizeMe(symbolG,size)
+{
+	var mySVG=symbolG.parentNode
+	for(var k=0;k<symbolG.childNodes.length;k++)
+	{
+		var pgon=symbolG.childNodes.item(k)
+		pgon.setAttribute("transform","scale("+size+")")
+		computePolyPoints(mySVG,pgon)
+	}
+}
+
+//---changes all transformed points to screen points---
+function computePolyPoints(mySVG,myPoly)
+{
+	var sCTM = myPoly.getCTM()
+	var pointsList = myPoly.points;
+	var n = pointsList.numberOfItems;
+	for(var m=0;m<n;m++)
+	{
+		var mySVGPoint = mySVG.createSVGPoint();
+		mySVGPoint.x = pointsList.getItem(m).x
+		mySVGPoint.y = pointsList.getItem(m).y
+		mySVGPointTrans = mySVGPoint.matrixTransform(sCTM)
+		pointsList.getItem(m).x=mySVGPointTrans.x
+		pointsList.getItem(m).y=mySVGPointTrans.y
+	}
+	//---force removal of transform--
+	myPoly.setAttribute("transform","")
+	myPoly.removeAttribute("transform")
+}
+
+//---show 40 .svg files in textarea---
+function showNativeFiles()
+{
+    var NativeID=[]
+	NativeID[0]="Star4"
+	NativeID[1]="Star5"
+	NativeID[2]="Star6"
+	NativeID[3]="Star10"
+	NativeID[4]="Star15"
+	NativeID[5]="Pgon3u"
+	NativeID[6]="Pgon3d"
+	NativeID[7]="Pgon3r"
+	NativeID[8]="Pgon3l"
+	NativeID[9]="Pgon4d"
+	NativeID[10]="Pgon4"
+	NativeID[11]="Pgon6"
+	NativeID[12]="Circle"
+	NativeID[13]="EllipseHoriz"
+	NativeID[14]="EllipseVert"
+	NativeID[15]="RhombHoriz"
+	NativeID[16]="RhombVert"
+	NativeID[17]="CircleStar6"
+	NativeID[18]="Pgon4vStar6"
+	NativeID[19]="Pgon4Star6"
+	NativeID[20]="Pgon4dCircle"
+	NativeID[21]="Pgon4vRhombHoriz"
+	NativeID[22]="Pgon4vRhombVert"
+	NativeID[23]="CircleRhombHoriz"
+	NativeID[24]="CircleRhombVert"
+	NativeID[25]="CirclePgon3r"
+	NativeID[26]="CirclePgon3t"
+	NativeID[27]="CirclePgon3l"
+	NativeID[28]="CirclePgon3b"
+	NativeID[29]="CirclePgon4d"
+	NativeID[30]="CircleEllipseVert"
+	NativeID[31]="CircleEllipseHoriz"
+	NativeID[32]="Pgon4Circle"
+	NativeID[33]="CirclePgon4"
+	NativeID[34]="Pgon6Circle"
+	NativeID[35]="Pgon4CircleStar5"
+	NativeID[36]="CirclePgon4vStar6"
+	NativeID[37]="Star6Circle"
+	NativeID[38]="Pgon6Star6"
+	NativeID[39]="Pgon8Star4"
+ NativeID[40]="Star4_30"
+
+	var loadXML = new XMLHttpRequest;
+	for(var k=0;k<NativeID.length;k++)
+	{
+		var SVGFile="PgonLibrary/"+NativeID[k]+".svg"
+		if (loadXML != null)
+		{
+			loadXML.open("GET", SVGFile, false);
+			loadXML.onreadystatechange = handler;
+			loadXML.send();
+		}
+	}
+	function handler()
+	{
+		if(loadXML.readyState == 4 && loadXML.status == 200)
+		{
+			var myDiv=document.getElementById(NativeID[k]+"Div")
+		  //	nativeLibraryValue.value+=loadXML.responseText
+			myDiv.innerHTML=loadXML.responseText
+			myNativeSymbolG=document.getElementById(NativeID[k])
+			///---increase size to 30----
+			sizeMe(myNativeSymbolG,30)
+			myNativeSymbolG.setAttribute("transform","translate(15 15)")
+		}
+	}
+}
+//--color numbers included in id---
+function buildSymbolColorSelection()
+{
+  	var colors=parent.clrArray
+
+	for(var k=0;k<colors.length;k++)
+	{
+		var name=colors[k][0]
+		var myColor=colors[k][1]
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+      //  if(parent.hexString.indexOf(myColor)!=-1)
+      //  option.style.color="white"
+
+		option.text=k
+		symbolRegisterColor1Select.appendChild(option)
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+		option.text=k
+       // if(parent.hexString.indexOf(myColor)!=-1)
+       // option.style.color="white"
+		symbolRegisterColor2Select.appendChild(option)
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+		option.text=k
+        //if(parent.hexString.indexOf(myColor)!=-1)
+        //option.style.color="white"
+		symbolRegisterColor3Select.appendChild(option)
+	}
+
+    	symbolRegisterColor1Select.selectedIndex=2//--black---
+		symbolRegisterColor2Select.selectedIndex=1//--white---
+		symbolRegisterColor3Select.selectedIndex=2//--black---
+}
+
+function sendSize()
+{
+
+
+         if(parent.SchematicSymbolArray.length!=0)
+         {
+            setTimeout(parent.buildSymbolTable,900)
+            undoButton.disabled=false
+        }
+   var width=400
+   var height=444
+
+   parent.sizeFrame('addElemPgon',width,height)
+    focusDiv.scrollTop=focusDiv.scrollHeight
+   setTimeout("focusDiv.scrollTop=0",800)
+
+
+
+}
+
+</script>
+
+</body>
+
+</html>

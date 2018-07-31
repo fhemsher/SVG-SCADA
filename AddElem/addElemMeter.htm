@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>Meter-Bar Gauge</title>
+  <style type="text/css">
+  <!--
+  #meterDiv {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+  -->
+  </style>
+</head>
+
+<body>
+
+<svg id="mySVG" width="400" height="400" onmouseup="endDrag()" onmousemove="drag(evt)">
+
+<foreignObject id="meterFO" x="50" y="200" width="300" height="20">
+
+
+<div id="meterDiv" style='font-family:font-weight:bold;padding:5px;border:1px solid red;' >
+This is My Meteer
+<meter style=width:300px;height:20px type="meter" value=".5" high=".8" ></meter>
+<center>Temperature 95deg.</center>
+
+
+</div>
+
+</foreignObject>
+
+</svg>
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Iframe Title</title>
+<meta charset=utf-8 />
+<style type="text/css">
+<!--
+body {
+-moz-box-shadow: 4px 4px 5px #888;
+-webkit-box-shadow: 4px 4px 5px #888;
+box-shadow: 4px 4px 5px #888;
+}
+-->
+</style>
+</head>
+<body onload=sendSize() style='padding:5px;border-radius:10px;border:2px solid lightblue;background-color:transparent;margin:0;font-family:arial'>
+<div id=containerDiv style=background:#ABCDEF>
+<table style='width:360px'>
+
+<tr>
+<td>
+<table style='width:100%;'>
+<tr ><td id=drawTankLevelTopTable style='width:90%;' align=center ><span id=drawTankLevelEditSpan>Draw Tank Levels</span>
+&nbsp; &nbsp; &nbsp; Scale:<select  onchange=parent.changeTankLevel()  id="tankLevelScaleSelect">
+<option>1.0</option>
+<option>0.9</option>
+<option>0.8</option>
+<option>0.7</option>
+<option>0.6</option>
+<option>0.5</option>
+<option>0.4</option>
+<option selected>0.3</option>
+<option>0.2</option>
+<option>0.1</option>
+</select>
+
+</td><td align=right> <button onClick=parent.closeDrawTankLevel()  >X</button></td></tr>
+<tr><td  align=center colspan=2>
+
+HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this element"  id=sourceHMICheck  />
+
+
+</td></tr>
+
+</table>
+</td>
+
+</tr>
+<TR><TD>
+
+<table  border=1 style='border-collapse: collapse;'>
+<tr >
+<td>Title</td>
+<td><input  onkeyup=parent.changeTankLevel()  id=titleValue type="text" style=width:200px; value="This Tank Level Title" /></td>
+</tr>
+<tr >
+<td>Units</td>
+<td><input onkeyup=parent.changeTankLevel()   id=unitValue type="text" style=width:200px; value="K Gallons" /></td>
+</tr >
+
+<tr >
+<td>Maximum Value</td>
+<td><input onkeyup=parent.changeTankLevel()   id=maxValue type="text" style=width:100px; value="120" /></td>
+</tr>
+<tr >
+<td>Initial Value</td>
+<td><input onkeyup=parent.changeTankLevel()   id=initValue type="text" style=width:100px; value="85" /></td>
+</tr>
+<tr >
+<td>Level Color</td>
+<td id=barTankColorBg><select id="barTankColorSelect" onChange=parent.barTankColorSelected()></select></td>
+</tr>
+<tr >
+<td>Face Color</td>
+<td id=faceColorBg><select id="faceColorSelect" onChange=parent.faceColorSelected()></select></td>
+</tr>
+<tr >
+<td>Setpoint (optional)</td>
+<td><input onkeyup=parent.changeTankLevel()   id=setPointValue type="text" style=width:100px; value="70" /></td>
+</tr>
+<tr >
+<td>maxAlert (optional)</td>
+<td><input onkeyup=parent.changeTankLevel()   id=maxAlertValue type="text" style=width:100px; value="105" /></td>
+</tr>
+<tr >
+<td>minAlert (optional)</td>
+<td><input onkeyup=parent.changeTankLevel()   id=minAlertValue type="text" style=width:100px; value="20" /></td>
+</tr>
+
+
+</table>
+</TD></TR>
+
+<tr align=center>
+<td>
+	<button id=drawTankLevelCancelButton disabled title='cancel/remove this circle' onClick=parent.cancelDrawTankLevel()>cancel</button>
+    <button style='background-color:red;visibility:hidden' id=drawTankLevelDeleteButton  onClick=parent.removeCurrentDrawTankLevel()>delete</button>
+	<button id=drawTankLevelTopButton style=background:white;font-size:120%;font-weight:bold;color:maroon;visibility:hidden  title='Move to top' onClick=parent.topDrawTankLevel()>&#x21E7;</button>
+	<button id=drawTankLevelBotButton style=background:white;font-size:120%;font-weight:bold;color:maroon;   title='Move to bottom' onClick=parent.botDrawTankLevel()>&#x21E9;</button>
+
+
+    <button id=drawTankLevelFinishButton disabled onClick=parent.finishDrawTankLevel()>finish</button>
+</td>
+</tr>
+
+</table>
+</div>
+
+
+</body>
+<script>
+function writeTankLevelColorSelection()
+{
+   var DrawColors=parent.clrArray
+	for(var k=0;k<DrawColors.length;k++)
+	{
+		var name=DrawColors[k][0]
+		var myColor=DrawColors[k][1]
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+		option.text=k
+        faceColorSelect.appendChild(option)
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+		option.text=k
+       barTankColorSelect.appendChild(option)
+
+
+	}
+
+    faceColorSelect.selectedIndex=88  //---skyBlue---
+    var clr=faceColorSelect.options[faceColorSelect.selectedIndex].value
+   faceColorBg.style.backgroundColor=clr
+
+   barTankColorSelect.selectedIndex=143  //---black---
+   var clr=barTankColorSelect.options[barTankColorSelect.selectedIndex].value
+   barTankColorBg.style.backgroundColor=clr
+
+}
+
+
+
+function sendSize()
+{
+   writeTankLevelColorSelection()
+
+   var width=containerDiv.scrollWidth+15
+   var height=containerDiv.scrollHeight+30
+
+   parent.sizeFrame('addElemTankLevel',width,height)
+
+
+     if(parent.EditTankLevel==true)
+        parent.setEditTankLevel()
+        else
+       parent.startTankLevelDraw()
+
+}
+
+
+</script>
+</html>

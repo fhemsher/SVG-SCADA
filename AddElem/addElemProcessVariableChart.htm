@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Iframe Title</title>
+<meta charset=utf-8 />
+<style type="text/css">
+<!--
+body {
+-moz-box-shadow: 4px 4px 5px #888;
+-webkit-box-shadow: 4px 4px 5px #888;
+box-shadow: 4px 4px 5px #888;
+}
+-->
+</style>
+</head>
+<body onload=sendSize() style='padding:5px;border-radius:10px;border:2px solid lightblue;background-color:transparent;margin:0;font-family:arial'>
+<div id=containerDiv  style='background:#ABCDEF'>
+<table style='width:360px'>
+
+<tr>
+<td colspan=2>
+<table style='width:100%;'>
+<tr ><td id=drawProcessVariableChartTopTable style='width:90%' align=center ><span id=drawProcessVariableChartEditSpan>Draw Process Charts</span>
+&nbsp; &nbsp; &nbsp; Scale:<select  onchange=parent.changeProcessVariableChart()  id="processVariableChartScaleSelect">
+<option>1.0</option>
+<option>0.9</option>
+<option>0.8</option>
+<option>0.7</option>
+<option>0.6</option>
+<option>0.5</option>
+<option>0.4</option>
+<option selected>0.3</option>
+<option>0.2</option>
+<option>0.1</option>
+</select>
+
+</td><td align=right> <button onClick=parent.closeDrawProcessVariableChart()  >X</button></td></tr>
+<tr><td align=center colspan=2>
+
+HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this element"  id=sourceHMICheck  />
+
+
+</td></tr>
+</table>
+</td>
+
+</tr>
+
+<tr>
+<td>Title</td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=titleValue type="text" style=width:200px; value="Process Chart Title" /></td>
+</tr>
+<tr>
+<td>Timeline</td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=timelineValue type="text" style=width:60px; value="60" /></td>
+</tr>
+<tr>
+<td>Timeline Units</td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=timelineUnitsValue type="text" style=width:60px; value="Minutes" /></td>
+</tr>
+
+<tr>
+<td>Face Color</td>
+<td id=faceColorBg><select id="faceColorProcessVariableChartSelect" onChange=parent.faceColorProcessVariableChartSelected()></select></td>
+</tr>
+
+
+<tr>
+<td>Left Variable Name</td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=leftNameValue type="text" style=width:60px; value="NAME" /></td>
+</tr>
+<tr>
+<td>Left Variable Min</td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=leftMinValue type="text" style=width:60px; value="0" /></td>
+</tr>
+<tr>
+<td>Left Variable Max</td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=leftMaxValue type="text" style=width:60px; value="100" /></td>
+</tr>
+<tr>
+<td>Left Setpoint</td>
+<td><input  onClick=parent.changeProcessVariableChart()  id=setpointCheck type="checkbox" />(optional)</td>
+</tr>
+
+<tr>
+<td>Right 1 Name</td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=right1NameValue type="text" style=width:60px; value="" />(optional)</td>
+</tr>
+<tr>
+<td>Right 1 Min</td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=right1MinValue type="text" style=width:60px; value="" />(optional)</td>
+</tr>
+<tr>
+<td>Right 1 Max</td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=right1MaxValue type="text" style=width:60px; value="" />(optional)</td>
+</tr>
+
+<tr>
+<td>Right 2 Name</td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=right2NameValue type="text" style=width:60px; value="" />(optional)</td>
+</tr>
+<tr>
+<td>Right 2 Min</td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=right2MinValue type="text" style=width:60px; value="" />(optional)</td>
+</tr>
+<tr>
+<td>Right 2  Max</td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=right2MaxValue type="text" style=width:60px; value="" />(optional)</td>
+</tr>
+
+
+<tr  align=center>
+<td colspan=2>
+	<button id=drawProcessVariableChartCancelButton disabled title='cancel/remove this circle' onClick=parent.cancelDrawProcessVariableChart()>cancel</button>
+    <button style='background-color:red;visibility:hidden' id=drawProcessVariableChartDeleteButton  onClick=parent.removeCurrentDrawProcessVariableChart()>delete</button>
+	<button id=drawProcessVariableChartTopButton style=background:white;font-size:120%;font-weight:bold;color:maroon;visibility:hidden  title='Move to top' onClick=parent.topDrawProcessVariableChart()>&#x21E7;</button>
+	<button id=drawProcessVariableChartBotButton style=background:white;font-size:120%;font-weight:bold;color:maroon;   title='Move to bottom' onClick=parent.botDrawProcessVariableChart()>&#x21E9;</button>
+
+    <button id=drawProcessVariableChartFinishButton disabled onClick=parent.finishDrawProcessVariableChart()>finish</button>
+</td>
+</tr>
+
+</table>
+</div>
+
+
+</body>
+<script>
+function writeProcessVariableChartColorSelection()
+{
+   var DrawColors=parent.clrArray
+	for(var k=0;k<DrawColors.length;k++)
+	{
+		var name=DrawColors[k][0]
+		var myColor=DrawColors[k][1]
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+		option.text=k
+        faceColorProcessVariableChartSelect.appendChild(option)
+
+
+
+
+	}
+
+    faceColorProcessVariableChartSelect.selectedIndex=22  //---gold---
+    var clr=faceColorProcessVariableChartSelect.options[faceColorProcessVariableChartSelect.selectedIndex].value
+   faceColorBg.style.backgroundColor=clr
+
+
+
+}
+
+
+
+function sendSize()
+{
+   writeProcessVariableChartColorSelection()
+
+   var width=containerDiv.scrollWidth+15
+   var height=containerDiv.scrollHeight+30
+
+   parent.sizeFrame('addElemProcessVariableChart',width,height)
+
+
+     if(parent.EditProcessVariableChart==true)
+        parent.setEditProcessVariableChart()
+        else
+       parent.startProcessVariableChartDraw()
+
+}
+
+
+</script>
+</html>
