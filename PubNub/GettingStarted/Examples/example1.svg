@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="mySVG" width="440" height="360" viewBox="0 0 440 360"><style xmlns="http://www.w3.org/1999/xhtml"></style><defs xmlns="http://www.w3.org/1999/xhtml"></defs><path fill="none" fill-opacity="1.0" stroke="#90EE90" stroke-width="15" stroke-opacity="1.0" d="M 205 44 L 205 28 L 385 28 L 385 219 L 295 219 L 295 247 L 40 247 L 40 44 z" filter="url(#pipe3D)" stroke-linejoin="round" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="2" stroke-opacity="1.0" stroke-dasharray="8 4" marker-end="url(#arrow000000)" d="M 121 205 L 121 161" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 283 28 L 313 28" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 178 248 L 142 248" rightAngle="true"/><text font-family="Arial" font-size="30" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.6" fill="#000000" transform="matrix(1 0 0 1 9 297)" rotateAngle="0" filter="null">Hot Water Supply Temperature</text><g title="Heater" parentid="" nativewidth="120" nativeheight="134" myscale="1.25" transform="matrix(1.25 0 0 1.25 221 101)"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Heater" class="Heating" height="134" width="120" viewBox="0 0 120 134.039" nativewidth="120" nativeheight="134" overflow="visible" myscale="1.0">
+    <defs>
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="lg1_79">
+            <stop stop-color="#ac3c48" offset="0"/>
+            <stop stop-color="#e96a76" offset="0.15"/>
+            <stop stop-color="#f3bbbf" offset="0.25"/>
+            <stop stop-color="#cb4857" offset="0.52"/>
+            <stop stop-color="#b5404c" offset="0.69"/>
+            <stop stop-color="#aa3b47" offset="0.8"/>
+            <stop stop-color="#a13843" offset="0.92"/>
+            <stop stop-color="#b9414e" offset="1"/>
+        </linearGradient>
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="lg2_79">
+            <stop stop-color="#98343f" offset="0"/>
+            <stop stop-color="#d04a59" offset="0.15"/>
+            <stop stop-color="#eb7e87" offset="0.25"/>
+            <stop stop-color="#c74755" offset="0.52"/>
+            <stop stop-color="#a13843" offset="0.69"/>
+            <stop stop-color="#a13843" offset="0.8"/>
+            <stop stop-color="#8b2f39" offset="0.92"/>
+            <stop stop-color="#72252d" offset="1"/>
+        </linearGradient>
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="lg3_79">
+            <stop stop-color="#ac3c48" offset="0"/>
+            <stop stop-color="#e96a76" offset="0.15"/>
+            <stop stop-color="#f3bbbf" offset="0.25"/>
+            <stop stop-color="#cb4857" offset="0.52"/>
+            <stop stop-color="#b5404c" offset="0.69"/>
+            <stop stop-color="#aa3b47" offset="0.8"/>
+            <stop stop-color="#a13843" offset="0.92"/>
+            <stop stop-color="#b9414e" offset="1"/>
+        </linearGradient>
+        <linearGradient x1="0%" y2="0%" x2="0%" y1="100%" id="lg4_79">
+            <stop stop-color="#c24552" offset="0"/>
+            <stop stop-color="#da4e5e" offset="0.22"/>
+            <stop stop-color="#f3bbbf" offset="0.57"/>
+            <stop stop-color="#ed8e95" offset="0.84"/>
+            <stop stop-color="#d24b5a" offset="1"/>
+        </linearGradient>
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="lg5_79">
+            <stop stop-color="#98343f" offset="0"/>
+            <stop stop-color="#d04a59" offset="0.15"/>
+            <stop stop-color="#eb7e87" offset="0.25"/>
+            <stop stop-color="#c74755" offset="0.52"/>
+            <stop stop-color="#a13843" offset="0.69"/>
+            <stop stop-color="#95333d" offset="0.8"/>
+            <stop stop-color="#8b2f39" offset="0.92"/>
+            <stop stop-color="#72252d" offset="1"/>
+        </linearGradient>
+    </defs>
+    <g transform="translate(1,1.04)">
+        <path transform="translate(22.26,8.29)" id="shape1" fill="url(#lg1_79)" d="M0,0L73.5,0L73.5,123.7L0,123.7L0,0z"/>
+        <path transform="translate(22.26,-0.04)" id="shape2" fill="url(#lg1_79)" d="M10,2.7C18.2,.8,27.1,-0,36.7,0C47.3,0,58.2,1.1,65.1,3.1C71.5,4.9,73.5,8.3,73.5,8.3L0,8.3C0,8.3,.3,4.9,10,2.7z"/>
+        <path transform="translate(28.27,22.43)" id="shape4" fill="url(#lg2_79)" d="M0,0L61.5,0L61.5,88.8L0,88.8L0,0z"/>
+        <path transform="translate(89.68,85.86)" id="shape5" fill="url(#lg3_79)" d="M0,0L28.3,0L28.3,14.1L0,14.1L0,0z"/>
+        <path transform="translate(-0,108.22)" id="shape6" fill="url(#lg3_79)" d="M0,0L28.3,0L28.3,14.1L0,14.1L0,0z"/>
+        <path transform="matrix(0,1,-1,0,46,26.1)" id="shape7" fill="url(#lg4_79)" d="M3.8,13.7C3.8,13.7,0,13.3,0,6.8C0,.3,3.8,0,3.8,0L3.8,3.2C3.8,3.2,2.2,3.5,2.2,6.9C2.2,10.2,3.8,10.3,3.8,10.3L3.8,13.7z"/>
+        <path transform="matrix(0,1,-1,0,65.7,26.1)" id="shape8" fill="url(#lg4_79)" d="M3.8,12.9C3.8,12.9,0,13.5,0,6.7C0,-0.2,4,0,4,0L3.8,3.2C3.8,3.2,2.4,3.2,2.4,6.6C2.4,9.9,3.8,9.7,3.8,9.7L3.8,12.9z"/>
+        <path transform="matrix(0,1,-1,0,85.8,26.1)" id="shape9" fill="url(#lg4_79)" d="M3.8,13.3C3.8,13.3,0,13,0,6.6C-0.2,.2,3.8,0,3.8,0L4,3.2C4,3.2,2.4,3.4,2.3,6.7C2.2,10,3.8,10,3.8,10L3.8,13.3z"/>
+        <path transform="matrix(0,1,-1,0,56.1,99.4)" id="shape10" fill="url(#lg4_79)" d="M-0,10C-0,10,1.4,9.7,1.4,6.7C1.4,3.6,-0,3.2,-0,3.2L-0,0C-0,0,3.9,-0.3,3.9,6.5C3.9,13.3,-0,13.3,-0,13.3L-0,10z"/>
+        <path transform="matrix(0,1,-1,0,75.8,99.4)" id="shape11" fill="url(#lg4_79)" d="M-0,10C-0,10,1.5,9.9,1.5,6.7C1.5,3.5,-0,3.2,-0,3.2L-0,0C-0,0,3.9,0,3.9,6.6C3.9,13.1,-0,13.3,-0,13.3L-0,10z"/>
+        <path transform="matrix(0,1,-1,0,35.5,29.7)" id="shape12" fill="url(#lg4_79)" d="M76.2,3.2L0,3.2L0,0L76.2,0L76.2,3.2z"/>
+        <path transform="matrix(0,1,-1,0,45.9,29.7)" id="shape13" fill="url(#lg4_79)" d="M69.7,3.2L0,3.2L0,0L69.7,0L69.7,3.2z"/>
+        <path transform="matrix(0,1,-1,0,55.9,29.7)" id="shape14" fill="url(#lg4_79)" d="M69.6,3.1L0,3.1L0,0L69.6,0L69.6,3.1z"/>
+        <path transform="matrix(0,1,-1,0,65.6,29.7)" id="shape15" fill="url(#lg4_79)" d="M69.8,3.3L0,3.3L0,0L69.8,0L69.8,3.3z"/>
+        <path transform="matrix(0,1,-1,0,75.6,29.7)" id="shape16" fill="url(#lg4_79)" d="M69.5,2.9L0,2.9L0,0L69.5,0L69.5,2.9z"/>
+        <path transform="matrix(0,1,-1,0,85.6,29.7)" id="shape17" fill="url(#lg4_79)" d="M76.2,2.9L0,2.9L0,0L76.2,0L76.2,2.9z"/>
+        <path transform="translate(28.33,105.26)" id="shape18" fill="url(#lg4_79)" d="M0,0L7.3,0L7.3,2.8L0,2.8L0,0z"/>
+        <path transform="translate(28.27,108.22)" id="shape19" fill="url(#lg5_79)" d="M0,0L61.5,0L61.5,17.4L0,17.4L0,0z"/>
+        <path transform="translate(82.72,105.26)" id="shape20" fill="url(#lg4_79)" d="M0,0L7,0L7,2.8L0,2.8L0,0z"/>
+        <path transform="translate(22.21,108.22)" id="shape21" fill="#e85464" d="M0,0L6.1,0L6.1,14.1L0,14.1L0,0z"/>
+        <path transform="translate(89.68,85.86)" id="shape22" fill="#e85464" d="M0,0L6.1,0L6.1,14.1L0,14.1L0,0z"/>
+    </g>
+</svg><rect width="120" height="134" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/></g><g title="Horizontal Pump" parentid="" nativewidth="154" nativeheight="106" myscale=".5" transform="matrix(0.5 0 0 0.5 164 17)"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Horizontal Pump" class="Pumps" height="106" width="154" viewBox="0 0 154 105.947" nativewidth="154" nativeheight="106" overflow="visible" myscale="1.0">
+    <defs>
+        <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="lg1_219">
+            <stop stop-color="#9aa1aa" offset="0"/>
+            <stop stop-color="#aeb5c0" offset="0.22"/>
+            <stop stop-color="#dce0e5" offset="0.57"/>
+            <stop stop-color="#cacfd7" offset="0.84"/>
+            <stop stop-color="#a7afb9" offset="1"/>
+        </linearGradient>
+        <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="lg2_219">
+            <stop stop-color="#8f969d" offset="0"/>
+            <stop stop-color="#d3d8de" offset="0.64"/>
+            <stop stop-color="#9aa0a8" offset="1"/>
+        </linearGradient>
+        <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="lg3_219">
+            <stop stop-color="#626974" offset="0"/>
+            <stop stop-color="#ccd0d5" offset="0.66"/>
+            <stop stop-color="#5e6670" offset="1"/>
+        </linearGradient>
+        <radialGradient fy="51" r="72.6" id="rg1" cy="51" cx="51" gradientUnits="userSpaceOnUse" fx="51">
+            <stop stop-color="#c7cbd1" offset="0"/>
+            <stop stop-color="#c4c7cd" offset="0.91"/>
+            <stop stop-color="#d4d8dd" offset="0.74"/>
+            <stop stop-color="#b6bcc4" offset="0.54"/>
+        </radialGradient>
+    </defs>
+    <g transform="translate(1.01,1)">
+        <g transform="matrix(-1,0,0,1,74.4,31.2)">
+            <path transform="matrix(0,-1,-1,0,68.3,40.6)" id="shape1" fill="url(#lg1_219)" d="M0,0L39.1,0L39.1,68.3L0,68.3L0,0z"/>
+            <path transform="matrix(0,-1,-1,0,74.4,42.9)" id="shape2" fill="url(#lg2_219)" d="M1.4,-0L41.5,-0C42.2,-0,42.9,1.3,42.9,3C42.9,4.7,42.2,6.1,41.5,6.1L1.4,6.1C.6,6.1,0,4.7,0,3C0,1.3,.6,-0,1.4,-0z"/>
+            <path transform="matrix(0,-1,-1,0,70.3,42.7)" id="shape3" fill="url(#lg3_219)" d="M42.5,0C42.4,1.1,41.9,1.9,41.1,1.9L1.4,1.9C.6,1.9,.1,1,0,0C0,0,42.5,0,42.5,0z"/>
+            <path transform="matrix(0,-1,-1,0,74.1,42.2)" id="shape4" fill="#ffffff" fill-opacity="0.32" d="M.7,0L40.8,0C41.2,0,41.5,.3,41.5,.6C41.5,.9,41.2,1.1,40.8,1.1L.7,1.1C.3,1.1,0,.9,0,.6C0,.3,.3,0,.7,0z"/>
+        </g>
+        <g transform="translate(77.55,0)">
+            <path transform="matrix(0,-1,-1,0,68.3,40.7)" id="shape5" fill="url(#lg1_219)" d="M0,0L39.1,0L39.1,68.3L0,68.3L0,0z"/>
+            <path transform="matrix(0,-1,-1,0,74.4,42.9)" id="shape6" fill="url(#lg2_219)" d="M1.4,-0L41.5,-0C42.2,-0,42.9,1.3,42.9,3C42.9,4.7,42.2,6.1,41.5,6.1L1.4,6.1C.6,6.1,0,4.7,0,3C0,1.3,.6,-0,1.4,-0z"/>
+            <path transform="matrix(0,-1,-1,0,70.3,42.7)" id="shape7" fill="url(#lg3_219)" d="M42.5,0C42.4,1.1,41.9,1.9,41.1,1.9L1.4,1.9C.6,1.9,.1,1,0,0C0,0,42.5,0,42.5,0z"/>
+            <path transform="matrix(0,-1,-1,0,74.1,42.2)" id="shape8" fill="#ffffff" fill-opacity="0.35" d="M.7,0L40.8,0C41.2,0,41.5,.3,41.5,.6C41.5,.9,41.2,1.1,40.8,1.1L.7,1.1C.3,1.1,0,.9,0,.6C0,.3,.3,0,.7,0z"/>
+        </g>
+        <g transform="translate(26.19,1.31)">
+            <path transform="matrix(0,-1,-1,0,102.8,102.6)" id="shape9" fill="url(#rg1)" stroke="#d4d6db" stroke-width="0.25" d="M0,51.4C0,23,23,0,51.3,0C79.7,0,102.6,23,102.6,51.4C102.6,79.8,79.7,102.8,51.3,102.8C23,102.8,0,79.8,0,51.4z"/>
+            <path transform="matrix(0,-1,-1,0,94.2,94)" id="shape10" fill="#ffffff" fill-opacity="0.27" d="M0,42.7C0,19.1,19.1,0,42.6,0C66.2,0,85.3,19.1,85.3,42.7C85.3,66.3,66.2,85.5,42.6,85.5C19.1,85.5,0,66.3,0,42.7z"/>
+            <path transform="matrix(0,-1,-1,0,85.9,93.9)" id="shape11" fill="#ffffff" fill-opacity="0.13" d="M0,34.5C-0.3,13,17.1,0,17.1,0L73.1,63.9C73.1,63.9,62.3,77.3,42.6,77.3C19.1,77.3,0,58.1,0,34.5z"/>
+        </g>
+    </g>
+</svg><rect width="154" height="106" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/></g><text font-size="50" font-family="Arial Unicode MS" stroke-width="1" fill="#0000CD" stroke="black" x="-22.203125" y="17" transform="matrix(1 0 0 1 204 45)">❋</text><g xmlns="http://www.w3.org/2000/svg" nativewidth="72" nativeheight="219" myscale="0.3" transform="matrix(0.3 0 0 0.3 -39.1 192.95)" category="Transmitter"><rect id="rect1520520864420" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="72" height="60" rx="10" ry="10" transform="matrix(1 0 0 1 501 39)"/><text id="text1520520897548" font-family="Arial" font-size="40" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 512 81)">TT</text><rect id="rect1520520967040" fill="#000000" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="19" height="37" transform="matrix(1 0 0 1 526 100)"/><rect id="rect1520521037307" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="38" height="91" rx="10" ry="10" transform="matrix(1 0 0 1 517 138)"/><rect id="rect1520521155532" fill="#FF0000" fill-opacity="1.0" stroke="#000000" stroke-width="0.5" x="0" y="0" width="27" height="10" transform="matrix(1 0 0 1 524 197)"/><text id="text1520521320528" font-family="Arial" font-size="25" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 527 253)">IC</text><text id="icon1520521093750" font-size="45" font-family="Arial Unicode MS" stroke-width="1" fill="#4169E1" stroke="black" x="-24.7421875" y="17" transform="matrix(1 0 0 1 539 177)" cursor="default">▼</text><rect width="72" height="219" stroke="none" fill="white" fill-opacity="0" transform="translate(501,39)" style="cursor: default;"/></g>
+
+<defs id="arrowDefs"><marker id="arrow000000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#000000" stroke-linejoin="bevel"><path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/></marker></defs><defs id="pipe3dDefs"><filter id="pipe3D"><feFlood flood-color="black"/><feComposite operator="out" in2="SourceGraphic"/><feGaussianBlur stdDeviation="6"/><feComposite operator="atop" in2="SourceGraphic"/></filter></defs>
+<g id="gaugeHWSGaugeContainer" transform='translate(120,98)' />
+
+</svg>

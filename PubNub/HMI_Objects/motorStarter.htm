@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <title>Motor Starter</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+ <script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.2.js"></script>
+ <script type="text/javascript" src="svg.js"></script>
+
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body  style='padding:10px;font-family:arial'>
+    <div id=container>
+
+<center>
+<h4>Motor Starter</h4>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+   This shows a field process motor starter with field disconnect, 3-position manual selector switch, and overload protection.  An interactive SVG SCADA drawing of the associated starter is displayed at the client computer. Both starters are connected to the Data Stream Network.
+
+</div>
+<table>
+<tr>
+<td valign=top >
+<div style="text-align:justify;width:360px;padding:10px;">
+   <b>Sequence Of Operation:</b><p></p>
+Initially the starters are shown with the field device manual selector at  the 'On' position.
+
+<br>
+Seven(7) status values are monitored:<br>
+1.) Manual disconnect opened/closed.<br>
+2.) Starter overload protection opened/closed.<br>
+3.) Manual 3-position switch at starter '(On)'.<br>
+4.) Manual 3-position switch at starter 'SCADA'.<br>
+5.) Manual 3-position switch at starter '(Off)'.<br>
+6.) SCADA ON/OFF button selected to 'ON'.<br>
+7.) SCADA ON/OFF button selected to 'OFF'.<br>
+
+
+
+<br> <br>
+
+Click below to <b>publish</b> the various changes in the status values:
+<table border=1>
+<tr><td align=center colspan=4>Field Device</td></tr>
+<tr><td>Manual Disconnect</td><td><input type="radio" name=manualDisconnectRadio id=manualDisconnectCloseRadio onClick=manualDisconnectCloseClicked() checked  />:Closed</td><td> <input type="radio"  name=manualDisconnectRadio id=manualDisconnectOpenRadio onClick=manualDisconnectOpenClicked()    />:Opened</td></tr>
+<tr><td>Selector<br>Switch</td><td colspan=3>
+<input type="radio"  name=selSwitchRadio  id=selSwitchOffRadio onClick=selSwitchOffRadioClicked()  checked    />:(Off)
+
+
+  &nbsp;<input type="radio"  name=selSwitchRadio  id=selSwitchScadaRadio onClick=selSwitchScadaRadioClicked()    />:SCADA<br>
+<input type="radio"  name=selSwitchRadio  id=selSwitchOnRadio onClick=selSwitchOnRadioClicked()     />:(On)
+
+</td></tr>
+
+<tr><td>Overload Protection</td><td style=background:red ><input type="checkbox"  name=cbcheck  id=tripCheck  onClick=overloadTripClicked()   />: Tripped</td><td> <input type="checkbox"  name=cbCheck  id=resetCheck onClick=overloadResetClicked()  disabled    />:Reset</td></tr>
+
+
+</table>
+
+<br><br>
+If the selector switch is in the 'SCADA' position, the SCADA operator can turn the Motor on or off via the ON/OFF  button.
+
+
+</div>
+
+</td>
+<td>
+<div id="svgDiv" style='border:1px solid black;width:800px;height:580px;'>
+<svg xmlns="http://www.w3.org/2000/svg" id="publishSVG" width="800" height="560" viewBox="0 0 800 560" style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><style xmlns="http://www.w3.org/1999/xhtml"></style><defs xmlns="http://www.w3.org/1999/xhtml"></defs>
+
+<g id="publishG"><g id="publishElemG" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+    <path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 225 486 L 245 434" stroke-opacity="1.0" rotateAngle="0"/>
+<rect stroke="#9400D3" stroke-width="2" fill="white" fill-opacity="0" stroke-dasharray="8 4" rx="8" ry="8" transform="matrix(1 0 0 1 508 153)" width="188" height="368" rotateAngle="0"/>
+<rect stroke="#FF0000" stroke-width="2" fill="white" fill-opacity="0" stroke-dasharray="8 4" rx="8" ry="8" transform="translate(488 114)" width="233" height="432" rotateAngle="0"/>
+<rect id=selSwitchRect stroke="#000000" stroke-width="2" fill="grey" fill-opacity="0.5" rx="4" ry="4" transform="translate(551 248)" width="83" height="80" rotateAngle="0"/>
+<path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 592 392 L 592 452" rightAngle="true" stroke-opacity="1.0" rotateAngle="0"/>
+<rect stroke="#000000" stroke-width="2" fill="#DCDCDC" fill-opacity="1.0" transform="matrix(1 0 0 1 112 168)" width="164" height="245" rotateAngle="0"/>
+<rect stroke="#000000" stroke-width="2" fill="#C0C0C0" fill-opacity="1.0" transform="matrix(1 0 0 1 157 254)" width="69" height="67" rotateAngle="0"/>
+<circle stroke="none" stroke-width="2" fill="#000000" fill-opacity="1.0" transform="matrix(1 0 0 1 192 214)" r="6"/>
+<circle stroke="none" stroke-width="2" fill="#000000" fill-opacity="1.0" transform="matrix(1 0 0 1 169 207)" r="6"/>
+<circle stroke="none" stroke-width="2" fill="#000000" fill-opacity="1.0" transform="matrix(1 0 0 1 190 299)" r="6"/>
+<circle stroke="none" stroke-width="2" fill="#000000" fill-opacity="1.0" transform="matrix(1 0 0 1 217 283)" r="6"/>
+<circle stroke="none" stroke-width="2" fill="#000000" fill-opacity="1.0" transform="matrix(1 0 0 1 165 287)" r="6"/>
+<circle stroke="none" stroke-width="2" fill="#000000" fill-opacity="1.0" transform="matrix(1 0 0 1 591 391)" r="6"/>
+<circle stroke="none" stroke-width="2" fill="#000000" fill-opacity="1.0" transform="matrix(1 0 0 1 590 348)" r="6"/>
+<circle stroke="none" stroke-width="2" fill="#000000" fill-opacity="1.0" transform="matrix(1 0 0 1 188 403)" r="6"/>
+<circle stroke="none" stroke-width="2" fill="#000000" fill-opacity="1.0" transform="matrix(1 0 0 1 189 348)" r="6"/>
+<text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 129 288)" rotateAngle="0">Off</text>
+<text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 233 290)" rotateAngle="0">On</text>
+<text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.3" fill="#000000" transform="matrix(1 0 0 1 167 318)" rotateAngle="0" filter="null">SCADA</text>
+<path id=processSwitchPath fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="2" marker-end="url(#arrow000000)" d="M 188 260 L 169 285"/>
+<path id="processDisconnectPath" fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 189 183 L 183 222"/>
+<text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 150 334)" rotateAngle="0">Selector Switch</text>
+<text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 207 197)" rotateAngle="0">Manual</text>
+<text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 203 209)" rotateAngle="0">Disconnect</text>
+<text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 206 373)" rotateAngle="0">Overload</text>
+<text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 210 385)" rotateAngle="0">Protection</text>
+<path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 188 347 L 188 367" rightAngle="true"/>
+<path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 188 381 L 188 400" rightAngle="true" stroke-opacity="1.0" rotateAngle="0"/>
+<path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 174 368 L 202 368" rightAngle="true"/>
+<path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 173 384 L 202 384" rightAngle="true" stroke-opacity="1.0" rotateAngle="0"/>
+<path id=processOverloadPath fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 175 369 L 200 384" stroke-opacity="1.0" rotateAngle="0"/>
+<circle stroke="#000000" stroke-width="2" fill="#FFFFFF" fill-opacity="1.0" transform="translate(189 261)" r="5"/>
+<text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 129 211)" rotateAngle="0">Open</text>
+<circle stroke="#000000" stroke-width="2" fill="#FFFFFF" fill-opacity="1.0" transform="matrix(1 0 0 1 189 183)" r="5"/>
+<circle stroke="#000000" stroke-width="2" fill="#808080" fill-opacity="1.0" transform="matrix(1 0 0 1 189 478)" r="38"/>
+<text id=motorOnOffText x=189 y=478 dy=24 text-anchor="middle" font-size=17>OFF</text>
+<text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 163 482)" rotateAngle="0">Motor</text>
+<path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 188 404 L 188 441" rightAngle="true"/>
+<path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 152 464 L 134 513"/>
+<path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="7" stroke-dasharray="8 4" d="M 28 31 L 769 31" rightAngle="true"/>
+<text font-family="Arial" font-size="25" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#FF0000" transform="matrix(1 0 0 1 276 23)" rotateAngle="0">Data Stream Network</text>
+<g id=onOffButton display="none" myScale=".4" transform="matrix(0.4 0 0 0.4 545 402)" myRotate="0" myStatus="on"><g><defs id="onOffButtonDefs"><filter id="onOffButtonDropShadow" height="40"><feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
+<feOffset dx="6" dy="10" result="offsetblur"/>
+<feMerge><feMergeNode/>
+<feMergeNode in="SourceGraphic"/>
+</feMerge></filter><linearGradient id="linearGradientOnOffButton"><stop style="stop-color:#000000;stop-opacity:0" offset="0"/>
+<stop style="stop-color:#000000;stop-opacity:0.5" offset="1"/>
+</linearGradient><linearGradient id="linearGradientOnOffButton2"><stop style="stop-color:#ffffff;stop-opacity:1" offset="0"/>
+<stop style="stop-color:#ffffff;stop-opacity:0" offset="1"/>
+</linearGradient><linearGradient x1="120" y1="10" x2="120" y2="50" id="linearGradientOnOffButtonHighlight" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#linearGradientOnOffButton2" gradientUnits="userSpaceOnUse"/>
+<radialGradient cx="120" cy="170" r="100" fx="120" fy="170" id="radialGradientOnOffButton" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#linearGradientOnOffButton" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,-0.72727275,2,0,-220,170)"/>
+</defs><rect id="offOnRect" fill="grey" width="220" height="80" ry="40" x="10" y="10" style="stroke:none" />
+<rect width="220" height="80" ry="40" x="10" y="10" id="ButtonGlow" pointer-events="none" style="fill:url(#radialGradientOnOffButton);stroke:none"/>
+<text x="120" y="66" id="buttonTextBG" pointer-events="none" xml:space="preserve" style="font-size:40px;text-align:center;text-anchor:middle;fill:#000000;stroke:none;font-family:Sans">(Off)</text>
+<text x="120" y="64.5" id="buttonText" pointer-events="none" xml:space="preserve" style="font-size:40px;text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;font-family:Sans">(Off)</text>
+<path d="m 50,15 140,0 c 11.08,0 22.51667,10.914008 20,20 C 208.16563,41.622482 201.08,40 190,40 L 50.00005,40 C 38.92005,40 31.834332,41.622512 30,35 27.483323,25.914009 38.92,15 50,15 z" id="ButtonHighlight" pointer-events="none" style="fill:url(#linearGradientOnOffButtonHighlight)"/>
+</g><rect id="buttonCoverRect"  fill="white" opacity="0" x="0" y="0" width="220" height="80"/>
+</g>
+<g title="Horizontal Pump" parentid="" transform="matrix(0.5 0 0 0.5 556 447)" filter="url(#drop-shadow)"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Horizontal Pump" class="Pumps" height="106" width="154" viewBox="0 0 154 105.947" nativewidth="154" nativeheight="106" overflow="visible" myscale="1.0">
+    <defs>
+        <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="lg1_219">
+            <stop stop-color="#9aa1aa" offset="0"/>
+
+            <stop stop-color="#aeb5c0" offset="0.22"/>
+
+            <stop stop-color="#dce0e5" offset="0.57"/>
+
+            <stop stop-color="#cacfd7" offset="0.84"/>
+
+            <stop stop-color="#a7afb9" offset="1"/>
+
+        </linearGradient>
+        <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="lg2_219">
+            <stop stop-color="#8f969d" offset="0"/>
+
+            <stop stop-color="#d3d8de" offset="0.64"/>
+
+            <stop stop-color="#9aa0a8" offset="1"/>
+
+        </linearGradient>
+        <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="lg3_219">
+            <stop stop-color="#626974" offset="0"/>
+
+            <stop stop-color="#ccd0d5" offset="0.66"/>
+
+            <stop stop-color="#5e6670" offset="1"/>
+
+        </linearGradient>
+        <radialGradient fy="51" r="72.6" id="rg1" cy="51" cx="51" gradientUnits="userSpaceOnUse" fx="51">
+            <stop stop-color="#c7cbd1" offset="0"/>
+
+            <stop stop-color="#c4c7cd" offset="0.91"/>
+
+            <stop stop-color="#d4d8dd" offset="0.74"/>
+
+            <stop stop-color="#b6bcc4" offset="0.54"/>
+
+        </radialGradient>
+    </defs>
+    <g transform="translate(1.01,1)">
+        <g transform="matrix(-1,0,0,1,74.4,31.2)">
+            <path transform="matrix(0,-1,-1,0,68.3,40.6)" id="shape1" fill="url(#lg1_219)" d="M0,0L39.1,0L39.1,68.3L0,68.3L0,0z"/>
+
+            <path transform="matrix(0,-1,-1,0,74.4,42.9)" id="shape2" fill="url(#lg2_219)" d="M1.4,-0L41.5,-0C42.2,-0,42.9,1.3,42.9,3C42.9,4.7,42.2,6.1,41.5,6.1L1.4,6.1C.6,6.1,0,4.7,0,3C0,1.3,.6,-0,1.4,-0z"/>
+
+            <path transform="matrix(0,-1,-1,0,70.3,42.7)" id="shape3" fill="url(#lg3_219)" d="M42.5,0C42.4,1.1,41.9,1.9,41.1,1.9L1.4,1.9C.6,1.9,.1,1,0,0C0,0,42.5,0,42.5,0z"/>
+
+            <path transform="matrix(0,-1,-1,0,74.1,42.2)" id="shape4" fill="#ffffff" fill-opacity="0.32" d="M.7,0L40.8,0C41.2,0,41.5,.3,41.5,.6C41.5,.9,41.2,1.1,40.8,1.1L.7,1.1C.3,1.1,0,.9,0,.6C0,.3,.3,0,.7,0z"/>
+
+        </g>
+        <g transform="translate(77.55,0)">
+            <path transform="matrix(0,-1,-1,0,68.3,40.7)" id="shape5" fill="url(#lg1_219)" d="M0,0L39.1,0L39.1,68.3L0,68.3L0,0z"/>
+
+            <path transform="matrix(0,-1,-1,0,74.4,42.9)" id="shape6" fill="url(#lg2_219)" d="M1.4,-0L41.5,-0C42.2,-0,42.9,1.3,42.9,3C42.9,4.7,42.2,6.1,41.5,6.1L1.4,6.1C.6,6.1,0,4.7,0,3C0,1.3,.6,-0,1.4,-0z"/>
+
+            <path transform="matrix(0,-1,-1,0,70.3,42.7)" id="shape7" fill="url(#lg3_219)" d="M42.5,0C42.4,1.1,41.9,1.9,41.1,1.9L1.4,1.9C.6,1.9,.1,1,0,0C0,0,42.5,0,42.5,0z"/>
+
+            <path transform="matrix(0,-1,-1,0,74.1,42.2)" id="shape8" fill="#ffffff" fill-opacity="0.35" d="M.7,0L40.8,0C41.2,0,41.5,.3,41.5,.6C41.5,.9,41.2,1.1,40.8,1.1L.7,1.1C.3,1.1,0,.9,0,.6C0,.3,.3,0,.7,0z"/>
+
+        </g>
+        <g transform="translate(26.19,1.31)">
+            <path transform="matrix(0,-1,-1,0,102.8,102.6)" id="shape9" fill="url(#rg1)" stroke="#d4d6db" stroke-width="0.25" d="M0,51.4C0,23,23,0,51.3,0C79.7,0,102.6,23,102.6,51.4C102.6,79.8,79.7,102.8,51.3,102.8C23,102.8,0,79.8,0,51.4z"/>
+
+            <path transform="matrix(0,-1,-1,0,94.2,94)" id="shape10" fill="#ffffff" fill-opacity="0.27" d="M0,42.7C0,19.1,19.1,0,42.6,0C66.2,0,85.3,19.1,85.3,42.7C85.3,66.3,66.2,85.5,42.6,85.5C19.1,85.5,0,66.3,0,42.7z"/>
+
+            <path transform="matrix(0,-1,-1,0,85.9,93.9)" id="shape11" fill="#ffffff" fill-opacity="0.13" d="M0,34.5C-0.3,13,17.1,0,17.1,0L73.1,63.9C73.1,63.9,62.3,77.3,42.6,77.3C19.1,77.3,0,58.1,0,34.5z"/>
+
+        </g>
+    </g>
+</svg><rect width="154" height="106" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+</g>
+<circle stroke="none" stroke-width="2" fill="#000000" fill-opacity="1.0" transform="matrix(1 0 0 1 591 301)" r="6"/>
+<circle stroke="none" stroke-width="2" fill="#000000" fill-opacity="1.0" transform="matrix(1 0 0 1 626 287)" r="6"/>
+<circle stroke="none" stroke-width="2" fill="#000000" fill-opacity="1.0" transform="matrix(1 0 0 1 560 285)" r="6"/>
+<circle stroke="none" stroke-width="2" fill="#000000" fill-opacity="1.0" transform="matrix(1 0 0 1 571 197)" r="6"/>
+<circle stroke="none" stroke-width="2" fill="#000000" fill-opacity="1.0" transform="matrix(1 0 0 1 596 203)" r="6"/>
+<g id="pilotLightDisconnect"  transform="matrix(8 0 0 8 615 184)" myStatus="ON" opacity="1.0"><circle cx="0" cy="0" r="1" fill="url(#greenGradient)"/>
+<line style="visibility:hidden" name="lineOff" x1="-.5" y1="-.5" x2=".5" y2=".5" stroke="black" stroke-width=".1"/>
+<line style="visibility:hidden" name="lineDisabled" x1=".5" y1="-.5" x2="-.5" y2=".5" stroke="black" stroke-width=".1"/>
+<circle style="visibility:hidden" name="circleDefective" cx="0" cy="0" r=".7" stroke="crimson" stroke-width=".2" fill="none"/>
+<line style="visibility:hidden" name="lineDefective" x1="-.5" y1="-.5" x2=".5" y2=".5" stroke="crimson" stroke-width=".08"/>
+</g><g id="pilotLightOverload"  transform="translate(621 372)scale(8)" myStatus="ALARM" opacity="1.0"><circle cx="0" cy="0" r="1" fill="url(#greenGradient)"/>
+<line style="visibility:hidden" name="lineOff" x1="-.5" y1="-.5" x2=".5" y2=".5" stroke="black" stroke-width=".1"/>
+<line style="visibility:hidden" name="lineDisabled" x1=".5" y1="-.5" x2="-.5" y2=".5" stroke="black" stroke-width=".1"/>
+<circle style="visibility:hidden" name="circleDefective" cx="0" cy="0" r=".7" stroke="crimson" stroke-width=".2" fill="none"/>
+<line style="visibility:hidden" name="lineDefective" x1="-.5" y1="-.5" x2=".5" y2=".5" stroke="crimson" stroke-width=".08"/>
+</g><path id=scadaDisconnectPath fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="4" d="M 591 174 L 589 211" stroke-opacity="1.0" rotateAngle="0"/>
+<text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 518 288)" rotateAngle="0">(Off)</text>
+<text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 641 288)" rotateAngle="0">(On)</text>
+<text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 564 321)" rotateAngle="0">SCADA</text>
+<path id=scadaSwitchPath fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="2" marker-end="url(#arrow000000)" d="M 591 256 L 565 282" stroke-opacity="1.0" rotateAngle="0"/>
+<text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.3" fill="#000000" transform="matrix(1 0 0 1 609 394)" rotateAngle="0" filter="null">Overloads</text>
+<text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.3" fill="#000000" transform="matrix(1 0 0 1 609 209)" rotateAngle="0" filter="null">Disconnect</text>
+<path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 591 347 L 591 366" rightAngle="true"/>
+<path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 592 376 L 592 391" rightAngle="true"/>
+<path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 580 364 L 606 364" rightAngle="true"/>
+<path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 580 378 L 607 378" rightAngle="true" stroke-opacity="1.0" rotateAngle="0"/>
+<path id=scadaOverloadPath fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 604 365 L 580 378" stroke-opacity="1.0" rotateAngle="0"/>
+<text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 542 243)" rotateAngle="0">Selector Switch</text>
+<text font-family="Arial" font-size="25" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#9932CC" transform="matrix(1 0 0 1 551 518)" rotateAngle="0">Browser</text>
+
+<text font-family="Arial" font-size="25" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#FF0000" transform="matrix(1 0 0 1 516 543)" rotateAngle="0">Javascript SDK</text>
+
+<text font-size="70" font-family="Arial Unicode MS" stroke-width="1.4000000000000001" fill="#FF0000" stroke="black" x="-34.640625" y="23.5" transform="matrix(1 0 0 1 190 106)">▲</text>
+<path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow000000)" d="M 175 168 L 175 129" rightAngle="true"/>
+<path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow000000)" d="M 204 130 L 204 168" rightAngle="true"/>
+<path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="1.5" marker-end="url(#arrowFF0000)" d="M 565 113 L 565 150" rightAngle="true" stroke-opacity="1.0" rotateAngle="0"/>
+<path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="1.5" marker-end="url(#arrowFF0000)" d="M 620 151 L 620 114" rightAngle="true"/>
+<path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="4" stroke-dasharray="8 4" d="M 588 30 L 588 113" rightAngle="true"/>
+<path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="4" stroke-dasharray="8 4" d="M 190 30 L 190 79" rightAngle="true"/>
+<text font-family="Arial" font-size="30" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 279 95)" rotateAngle="0">Motor Starter</text>
+<text font-family="Times New Roman" font-size="17" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 176 120)" rotateAngle="0">IoT</text>
+<text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 526 203)" rotateAngle="0" filter="null">Open</text>
+<circle stroke="#000000" stroke-width="2" fill="#FFFFFF" fill-opacity="1.0" transform="matrix(1 0 0 1 590 255)" r="5"/>
+<circle stroke="#000000" stroke-width="2" fill="#FFFFFF" fill-opacity="1.0" transform="matrix(1 0 0 1 590 173)" r="5"/>
+</g></g><defs id="pilotLightDefs"><radialGradient id="blueGradient" cx="50%" cy="50%" r="75%"><stop offset="0%" stop-color="rgb(0,0,255)" stop-opacity="1"/>
+<stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+</radialGradient><radialGradient id="greenGradient" cx="50%" cy="50%" r="75%"><stop offset="0%" stop-color="rgb(0,191,0)" stop-opacity="1"/>
+<stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+</radialGradient><radialGradient id="greyGradient" cx="50%" cy="50%" r="75%"><stop offset="0%" stop-color="rgb(255,255,255)" stop-opacity="1"/>
+<stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+</radialGradient><radialGradient id="redGradient" cx="50%" cy="50%" r="75%"><stop offset="0%" stop-color="rgb(255,0,0)" stop-opacity="1"/>
+<stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+</radialGradient><radialGradient id="violetGradient" cx="50%" cy="50%" r="75%"><stop offset="0%" stop-color="rgb(219,0,219)" stop-opacity="1"/>
+<stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+</radialGradient><radialGradient id="aquaGradient" cx="50%" cy="50%" r="75%"><stop offset="0%" stop-color="aqua" stop-opacity="1"/>
+<stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+</radialGradient></defs><defs id="arrowDefs"><marker id="arrow000000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#000000" stroke-linejoin="bevel"><path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker><marker id="arrow008000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#008000" stroke-linejoin="bevel"><path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker><marker id="arrowFF4500" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#FF4500" stroke-linejoin="bevel"><path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker><marker id="arrowFF0000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#FF0000" stroke-linejoin="bevel"><path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker></defs><defs id="defsShadow"><filter id="drop-shadow" height="150%" width="150%"><feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur"/>
+<feOffset in="blur" dx="5" dy="5" result="offsetBlur"/>
+<feMerge><feMergeNode in="offsetBlur"/>
+<feMergeNode in="SourceGraphic"/>
+</feMerge></filter></defs></svg>
+</div>
+
+</td>
+</tr></table>
+
+    <br><button title="Show Javascript Source" onclick=showSource()>Javascript Source</button> <button title="Close javascript source" disabled id=closeSourceButton onClick=closeSource()>X</button>
+
+ <div id=sourceDiv style=overflow:auto;width:100%;height:1px;visibility:hidden;overflow:hidden>
+  <br>Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:90%;text-align:left; ></div>
+</div>
+</center>
+    </div>
+<script id=myScript>
+//---JavaScript SDK  https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.2.js ---
+//--onload---
+var pubnub
+function initPublish()
+{
+    pubnub = new PubNub(
+    {
+        publishKey : 'pub-c-ea28c028-e01a-4d16-80ec-0ad017c8a0a1',
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+   })
+
+}
+
+//---channels---
+var utcms=new Date().getTime() //---timestamp for this example client---
+
+var Disconnect="Disconnect"+utcms
+var SelectSwitch="SelectSwitch"+utcms
+var Overload="Overload"+utcms
+var ScadaOnOff="ScadaOnOff"+utcms
+
+
+//===================PUBLISH==================
+function publishDisconnect(msg)
+{
+    var publishConfig =
+    {
+        channel : Disconnect ,  //---unique for this viewer "Disconnect"+timeStamp---
+        message :msg  
+    }
+    pubnub.publish(publishConfig)
+}
+
+function publishSelectSwitch(msg)
+{
+    var publishConfig =
+    {
+        channel : SelectSwitch ,  //---unique for this viewer "SelectSwitch"+timeStamp---
+        message :msg
+    }
+    pubnub.publish(publishConfig)
+}
+
+function publishOverload(msg)
+{
+    var publishConfig =
+    {
+        channel : Overload ,  //---unique for this viewer "Overload"+timeStamp---
+        message :msg
+    }
+    pubnub.publish(publishConfig)
+}
+
+
+//---published via SCADA---
+//---click on scada On/Off button
+function publishScadaOnOff(msg)
+{
+    var publishConfig =
+    {
+        channel : ScadaOnOff ,  //---unique for this viewer "ScadaOnOff"+timeStamp---
+        message :msg
+    }
+    pubnub.publish(publishConfig)
+}
+
+//============SUBSCRIBE================
+
+//---0nload---
+function initSubscribeDisconnect()
+{
+    subscribeDisconnect = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeDisconnect.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+            if(msg=="Closed")
+                scadaDisconnectClosed()
+            else
+                 scadaDisconnectOpened()
+        }
+    })
+    subscribeDisconnect.subscribe(
+    {
+        channels: [Disconnect]
+    })
+}
+//=========SCADA RESPONSE============
+function scadaDisconnectClosed()
+{
+    scadaDisconnectPath.setAttribute("d","M 591 174 L 589 211")
+    pilotLightDisconnect.getElementsByTagName("circle")[0].setAttribute("fill","url(#greenGradient)")
+    pilotLightDisconnect.getElementsByTagName("line")[0].setAttribute("style","visibility:hidden")
+
+    if(SelectorSwitch=="ON")
+    {
+        motorOnOffText.textContent="ON"
+        offOnRect.setAttribute("fill","green")
+        offOnRect.removeAttribute("filter")
+        buttonCoverRect.removeAttribute("cursor")
+
+        buttonTextBG.textContent="(On)"
+        buttonText.textContent="(On)"
+
+        if(ImpellerInit==false)
+         {
+            runImpeller()
+            ImpellerInit=true
+        }
+        else
+            MyImpeller.play()
+    }
+    else if(SelectorSwitch=="OFF")
+    {
+        motorOnOffText.textContent="OFF"
+        offOnRect.setAttribute("fill","red")
+        offOnRect.removeAttribute("filter")
+        buttonCoverRect.removeAttribute("cursor")
+
+        buttonTextBG.textContent="(Off)"
+        buttonText.textContent="(Off)"
+    }
+    else if(SelectorSwitch=="SCADA")
+    {
+        offOnRect.setAttribute("fill","red")
+        offOnRect.setAttribute("filter","url(#onOffButtonDropShadow)")
+        buttonCoverRect.setAttribute("cursor","pointer")
+        buttonCoverRect.setAttribute("onclick","startStopMotor()")
+        buttonTextBG.textContent="OFF"
+        buttonText.textContent="OFF"
+        motorOnOffText.textContent="OFF"
+    }
+
+}
+function scadaDisconnectOpened()
+{
+    offOnRect.setAttribute("fill","red")
+    offOnRect.removeAttribute("filter")
+    buttonTextBG.textContent="Disconnect"
+    buttonText.textContent="Disconnect"
+
+
+    scadaDisconnectPath.setAttribute("d","M 591 174 L 570 208")
+    pilotLightDisconnect.getElementsByTagName("circle")[0].setAttribute("fill","url(#redGradient)")
+    pilotLightDisconnect.getElementsByTagName("line")[0].setAttribute("style","visibility:visible")
+    if(ImpellerInit==true)
+    {
+        MyImpeller.pause()
+    }
+    Motor="OFF"
+    buttonCoverRect.removeAttribute("onclick")
+    motorOnOffText.textContent="OFF"
+
+}
+
+
+function initSubscribeSelectSwitch()
+{
+    subscribeSelectSwitch = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeSelectSwitch.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+            if(msg=="OFF")
+                scadaSelectSwitchOFF()
+            if(msg=="ON")
+                scadaSelectSwitchON()
+            if(msg=="SCADA")
+                scadaSelectSwitchSCADA()
+        }
+    })
+    subscribeSelectSwitch.subscribe(
+    {
+        channels: [SelectSwitch]
+    })
+}
+
+function scadaSelectSwitchOFF()
+{
+    scadaSwitchPath.setAttribute("d","M 591 256 L 565 282")
+    selSwitchRect.setAttribute("fill","grey")
+    motorOnOffText.textContent="OFF"
+    onOffButton.setAttribute("display","none")
+
+    offOnRect.setAttribute("fill","grey")
+    buttonCoverRect.removeAttribute("filter")
+    offOnRect.removeAttribute("cursor")
+    buttonTextBG.textContent="(Off)"
+    buttonText.textContent="(Off)"
+    SelectorSwitch="OFF"
+
+    if(ImpellerInit==true)
+    {
+        MyImpeller.pause()
+    }
+
+    Motor="OFF"
+    buttonCoverRect.removeAttribute("onclick")
+}
+
+function scadaSelectSwitchON()
+{
+    motorOnOffText.textContent="ON"
+
+    scadaSwitchPath.setAttribute("d","M 591 256 L 620 282")
+    selSwitchRect.setAttribute("fill","green")
+    onOffButton.setAttribute("display","none")
+    offOnRect.setAttribute("fill","green")
+    offOnRect.removeAttribute("filter")
+    buttonCoverRect.removeAttribute("cursor")
+    buttonTextBG.textContent="(On)"
+    buttonText.textContent="(On)"
+    SelectorSwitch="ON"
+    if(ImpellerInit==false)
+    {
+        runImpeller()
+        ImpellerInit=true
+    }
+    else
+        MyImpeller.play()
+
+    Motor="ON"
+}
+function scadaSelectSwitchSCADA()
+{
+    motorOnOffText.textContent="OFF"
+
+    scadaSwitchPath.setAttribute("d","M 591 256 L 591 295")
+    selSwitchRect.setAttribute("fill","white")
+    onOffButton.removeAttribute("display")
+    offOnRect.setAttribute("fill","red")
+    offOnRect.setAttribute("filter","url(#onOffButtonDropShadow)")
+    buttonCoverRect.setAttribute("cursor","pointer")
+    buttonCoverRect.setAttribute("onclick","startStopMotor()")
+    buttonTextBG.textContent="OFF"
+    buttonText.textContent="OFF"
+    SelectorSwitch="SCADA"
+
+    if(ImpellerInit==true)
+    {
+        MyImpeller.pause()
+    }
+
+    Motor="OFF"
+}
+function initSubscribeScadaOnOff()
+{
+
+    subscribeScadaOnOff = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeScadaOnOff.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+             motorOnOffText.textContent=msg
+        }
+    })
+    subscribeScadaOnOff.subscribe(
+    {
+        channels: [ScadaOnOff]
+    })
+
+}
+function initSubscribeOverload()
+{
+    subscribeOverload = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeOverload.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+            if(msg=="Opened")
+                scadaOverloadOpened()
+            if(msg=="Closed")
+                scadaOverloadClosed()
+
+        }
+    })
+    subscribeOverload.subscribe(
+    {
+        channels: [Overload]
+    })
+}
+var intervalTripped
+function scadaOverloadOpened()
+{
+
+    intervalTripped=setInterval(function()
+    {
+            var pilotLignt= pilotLightOverload.getElementsByTagName("circle")[0]
+
+        if( pilotLignt.getAttribute("fill")=='red')
+            pilotLignt.setAttribute("fill","url(#redGradient)" )
+        else
+            pilotLignt.setAttribute("fill","red")
+    },1000)
+
+
+    scadaOverloadPath.setAttribute("display","none")
+    pilotLightOverload.getElementsByTagName("circle")[0].setAttribute("fill","url(#redGradient)")
+    pilotLightOverload.getElementsByTagName("line")[0].setAttribute("style","visibility:visible")
+
+
+    motorOnOffText.textContent="OFF"
+    if(SelectorSwitch=="SCADA")
+    {
+        offOnRect.setAttribute("fill","red")
+        offOnRect.removeAttribute("filter")
+        buttonCoverRect.removeAttribute("cursor")
+
+        buttonTextBG.textContent="Overload"
+        buttonText.textContent="Overload"
+    }
+
+
+    if(ImpellerInit==true)
+    {
+        MyImpeller.pause()
+    }
+
+    Motor="OFF"
+    buttonCoverRect.removeAttribute("onclick")
+
+}
+function scadaOverloadClosed()
+{
+    scadaOverloadPath.removeAttribute("display")
+    pilotLightOverload.getElementsByTagName("circle")[0].setAttribute("fill","url(#greenGradient)")
+    pilotLightOverload.getElementsByTagName("line")[0].setAttribute("style","visibility:hidden")
+    if(SelectorSwitch=="ON")
+    {
+        offOnRect.setAttribute("fill","green")
+        offOnRect.removeAttribute("filter")
+        buttonCoverRect.removeAttribute("cursor")
+
+        buttonTextBG.textContent="(On)"
+        buttonText.textContent="(On)"
+
+        if(ImpellerInit==true)
+        {
+            MyImpeller.play()
+        }
+        else
+        {
+            runImpeller()
+            ImpellerInit=true
+        }
+        motorOnOffText.textContent="ON"
+        Motor="ON"
+    }
+    else if(SelectorSwitch=="OFF")
+    {
+        offOnRect.setAttribute("fill","red")
+        offOnRect.removeAttribute("filter")
+        buttonCoverRect.removeAttribute("cursor")
+        motorOnOffText.textContent="OFF"
+        buttonTextBG.textContent="(Off)"
+        buttonText.textContent="(Off)"
+    }
+    else if(SelectorSwitch=="SCADA")
+    {
+        offOnRect.setAttribute("fill","red")
+        offOnRect.setAttribute("filter","url(#onOffButtonDropShadow)")
+        buttonCoverRect.setAttribute("cursor","pointer")
+        buttonCoverRect.setAttribute("onclick","startStopMotor()")
+        buttonTextBG.textContent="OFF"
+        buttonText.textContent="OFF"
+        motorOnOffText.textContent="OFF"
+    }
+
+         MyOverload="Closed"
+        clearInterval(intervalTripped)
+
+}
+
+
+//---check radio buttons, checkboxes---
+var ManualDisconnect="Closed"
+function manualDisconnectCloseClicked()
+{
+    publishDisconnect("Closed")
+    ManualDisconnect="Closed"
+    processDisconnectPath.setAttribute("d","M 189 183 L 183 222")
+}
+function manualDisconnectOpenClicked()
+{
+    publishDisconnect("Opened")
+    ManualDisconnect="Opened"
+    processDisconnectPath.setAttribute("d","M 189 183 L 168 218")
+}
+
+var SelectorSwitch="OFF"
+function selSwitchOffRadioClicked()
+{
+    publishSelectSwitch("OFF")
+    processSwitchPath.setAttribute("d","M 188 260 L 169 285")
+}
+
+function selSwitchScadaRadioClicked()
+{
+    publishSelectSwitch("SCADA")
+    processSwitchPath.setAttribute("d","M 188 260 L 188 295")
+}
+
+function selSwitchOnRadioClicked()
+{
+    publishSelectSwitch("ON")
+    processSwitchPath.setAttribute("d","M 188 260 L 210 277")
+}
+ var Motor="OFF"
+ var ImpellerInit=false
+ //---click ON/OFF scada button---
+function startStopMotor()
+{
+    if(ManualDisconnect=="Closed"&&MyOverload=="Closed")
+    {
+
+
+        if(Motor=="OFF")
+        {
+            //motorOnOffText.textContent="ON"
+            buttonTextBG.textContent="ON"
+            buttonText.textContent="ON"
+            offOnRect.setAttribute("fill","green")
+
+            Motor="ON"
+            if(ImpellerInit==false)
+            {
+                runImpeller()
+                ImpellerInit=true
+            }
+            else
+                MyImpeller.play()
+
+        }
+        else
+        {
+            //motorOnOffText.textContent="OFF"
+            buttonTextBG.textContent="OFF"
+            buttonText.textContent="OFF"
+            offOnRect.setAttribute("fill","red")
+            MyImpeller.pause()
+            Motor="OFF"
+        }
+
+         publishScadaOnOff(Motor)
+    }
+}
+
+var MyOverload="Closed"
+function overloadTripClicked()
+{
+    MyOverload="Opened"
+    publishOverload("Opened")
+    processOverloadPath.setAttribute("display","none")
+    resetCheck.disabled=false
+    tripCheck.disabled=true
+    resetCheck.checked=false
+
+}
+function overloadResetClicked()
+{
+    MyOverload="Closed"
+    publishOverload("Closed")
+    processOverloadPath.removeAttribute("display")
+    tripCheck.checked=false
+    tripCheck.disabled=false
+    resetCheck.disabled=true
+}
+
+</script>
+<script>
+
+
+document.addEventListener("onload",init(),false)
+
+function init()
+{
+    initPublish()
+    initSubscribeDisconnect()
+    initSubscribeSelectSwitch()
+    initSubscribeOverload()
+    initSubscribeScadaOnOff()
+    placeAsImpeller()
+    showSourceJS()
+}
+
+//==============Impeller==============
+//--onload---
+//---impeller rotate center point---
+var cx
+var cy
+var MyImpeller
+function placeAsImpeller()
+{
+
+    var fontSize=50
+    var unicode="273D"
+    var code = parseInt(unicode, 16)
+    var icon = d3.select("#publishSVG").append("text")
+    .attr("id", "Impeller")
+    .attr("x", 596)
+    .attr("y", 470)
+    .attr("text-anchor", "middle")
+    .attr("font-size", fontSize)
+    .attr("font-family", "Arial Unicode MS")
+    .attr("dy",fontSize/2-4)
+    .attr("stroke-width", 1.2)
+    .attr("fill", "blue")
+    .attr("stroke", "black")
+    .text(String.fromCharCode(code))
+
+    //---get rotate center point---
+   var bb=Impeller.getBBox()
+
+   cx=bb.x+.5*bb.width
+   cy=bb.y+.5*bb.height
+    MyImpeller=SVG.adopt(document.getElementById("Impeller"))
+}
+
+function runImpeller()
+{
+
+    var duration=6000
+    var rotateAngle=6*360
+     MyImpeller.animate(duration).during(
+    function(pos) //---setter--
+    {
+        document.getElementById("Impeller").setAttribute("transform","rotate("+(rotateAngle*pos)+" "+cx+" "+cy+")")
+
+
+    })
+    .after(function(){
+        runImpeller()
+    })
+}
+function showSource()
+{
+  sourceDiv.style.visibility="visible"
+  sourceDiv.style.height=+sourceDiv.scrollHeight+"px"
+
+  closeSourceButton.disabled=false
+
+  var frameHeight=container.scrollHeight+100
+
+    d3.select(parent.frame4).transition().duration(1000).attr("height",frameHeight)
+
+
+}
+
+function closeSource()
+{
+   d3.select("#sourceDiv").transition().duration(1000).style("height","1px")
+   setTimeout('sourceDiv.style.visibility="hidden"',1000)
+  closeSourceButton.disabled=true
+
+   d3.select(parent.frame4).transition().duration(1000).attr("height",880)
+}
+
+
+
+</script>
+
+</body>
+
+</html>

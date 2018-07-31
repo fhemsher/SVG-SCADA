@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <title>Tuning PID Controller</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+ <script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.2.js"></script>
+
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body  style='padding:10px;font-family:arial'>
+    <div id=container>
+
+<center>
+<h4>Tuning PID Controller</h4>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+   This shows both the field process controller and an interactive SVG SCADA drawing of the associated PID controller. Both controllers are connected to the Data Stream Network.
+   Each controller includes tuning values (P,I,D), its Setpoint(SP), and Controller Output(CO). Each controller can be
+   selected for tuning, whereby the values can be manually changed. The companion controller's tuning values will be also be automatically changed.
+
+</div>
+<table>
+<tr>
+<td valign=top >
+<div style="text-align:justify;width:360px;padding:10px;">
+   <b>Sequence Of Operation:</b><p></p>
+Initially the controllers are shown with the SCADA controller monitoring (Subscribing) the current values (Publishing) at the process controller.
+As an operator, you can select to initiate tuning at either controller, by checking its 'Tune Controller' checkbox.
+<p></p>
+It displays and has access to adjust the following values associated with the controller:
+<br>1.) Controller Setpoint(SP) - When this radio button is checked it the setpoint is available for change.
+<br>2.) Proportional(P) Value - When this radio button is checked the value is available for change.
+<br>3.) Integral(I) Value (repeats/minute) - When the checkbox is un-checked the integral is is ignored. When the radio button is checked the value is available for change.
+<br>4.) Derivative(D) Value - When the checkbox is un-checked the derivative value is ignored. When the radio button is checked the value is available for change.
+<br>5.) Output(CO): 0 to 100% - When this radio button is checked it overrides the controller output (CO) and selects a manual mode.
+<br>
+<br>Choose the radio button for desired value to adjust. Select the increment, then use the <img src="../../Images/minusRound.png" width=20 height=20 /> or <img src="../../Images/plusRound.png" width=20 height=20 /> button to change value.
+
+</div>
+
+</td>
+<td>
+<div id="svgDiv" style='border:1px solid black;width:800px;height:580px;'>
+<svg xmlns="http://www.w3.org/2000/svg" id="mySVG" width="800" height="560" viewBox="0 0 800 560" style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><style xmlns="http://www.w3.org/1999/xhtml"></style><defs xmlns="http://www.w3.org/1999/xhtml"></defs>
+
+<g id="publishG"><g id="publishElemG" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><rect stroke="#FF0000" stroke-width="3" fill="white" fill-opacity="0" stroke-dasharray="8 4" rx="7.5" ry="7.5" transform="matrix(1 0 0 1 423 205)" width="359" height="317" rotateAngle="0"/>
+
+<path id="pathScadaSP" fill="none" opacity="1" stroke="#FF0000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrowFF0000)" d="M 532 306 L 532 209" rightAngle="true" rotateAngle="0"/>
+<path id="pathScadaP"  fill="none" opacity="1" stroke="#FF0000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrowFF0000)" d="M 555 307 L 555 209" rightAngle="true" rotateAngle="0"/>
+<path id="pathScadaI"  fill="none" opacity="1" stroke="#FF0000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrowFF0000)" d="M 578 306 L 578 207" rightAngle="true" rotateAngle="0"/>
+<path id="pathScadaD"  fill="none" opacity="1" stroke="#FF0000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrowFF0000)" d="M 621 305 L 621 210" rightAngle="true" rotateAngle="0"/>
+<path id="pathScadaCO"  fill="none" opacity="1" stroke="#FF0000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrowFF0000)" d="M 646 304 L 646 207" rightAngle="true" rotateAngle="0"/>
+<path id="pathScadaTune" fill="none" opacity="1" stroke="#FF0000" stroke-width="3" stroke-opacity="1.0" marker-end="url(#arrowFF0000)" d="M 668 306 L 668 207" rightAngle="true" rotateAngle="0"/>
+
+
+<path id="pathProcessSP"  fill="none" opacity="1" stroke="#000000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 152 331 L 152 221" rightAngle="true" rotateAngle="0"/>
+<path id="pathProcessP"  fill="none" opacity="1" stroke="#000000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 171 327 L 171 222" rightAngle="true"/>
+<path id="pathProcessI" fill="none" opacity="1" stroke="#000000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 191 325 L 191 221" rightAngle="true" rotateAngle="0"/>
+<path id="pathProcessD"  fill="none" opacity="1" stroke="#000000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 230 324 L 230 225" rightAngle="true" rotateAngle="0"/>
+<path id="pathProcessCO"  fill="none" opacity="1" stroke="#000000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 252 325 L 252 223" rightAngle="true" rotateAngle="0"/>
+<path id="pathProcessTune"  fill="none"  opacity="1"  stroke="#000000" stroke-width="3" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 272 329 L 272 223" rightAngle="true"/>
+
+
+
+
+<path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="5" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 38 29 L 767 29" rightAngle="true"/>
+<text font-family="Arial" font-size="20" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#FF0000" transform="matrix(1 0 0 1 301 17)" rotateAngle="0">Data Stream Network</text>
+<polygon stroke="#FF0000" stroke-width="2" fill="#FF0000" fill-opacity="1.0" vCnt="3" radius="100" transform="matrix(0.866025 0.5 -0.5 0.866025 209 170)" points="100 0 -50 -86.6025 -50 86.6025" rotateAngle="0"/>
+<path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="5" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 209 31 L 209 69" rightAngle="true"/>
+<path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="5" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 595 31 L 595 203" rightAngle="true" rotateAngle="0"/><text font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0.4" fill="#000000" transform="matrix(1 0 0 1 137 548)" rotateAngle="0" filter="null">Process Control</text><text font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0.4" fill="#000000" transform="matrix(1 0 0 1 532 549)" rotateAngle="0" filter="null">Interactive SCADA</text><text font-family="Arial" font-size="30" font-weight="bold" font-style="italic" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 181 137)" rotateAngle="0">IoT</text><rect stroke="#8A2BE2" stroke-width="3" fill="white" fill-opacity="0" stroke-dasharray="8 4" rx="7.5" ry="7.5" transform="matrix(1 0 0 1 434 307)" width="331" height="176" rotateAngle="0"/><text font-family="Arial" font-size="20" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#FF0000" transform="matrix(1 0 0 1 522 513)" rotateAngle="0">JavaScript SDK</text><text font-family="Arial" font-size="20" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#9400D3" transform="matrix(1 0 0 1 551 477)" rotateAngle="0">Browser</text>
+<text font-family="Arial" font-size="17" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.34" fill="#000000" transform="matrix(1 0 0 1 138 217)" rotateAngle="0" filter="null">SP</text><text font-family="Arial" font-size="17" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.34" fill="#000000" transform="matrix(1 0 0 1 167 217)" rotateAngle="0" filter="null">P</text><text font-family="Arial" font-size="17" font-weight="bold" font-style="normal" stroke="none" stroke-width="0.34" fill="#000000" transform="matrix(1 0 0 1 189 218)" rotateAngle="0" filter="null">I</text><text font-family="Arial" font-size="17" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 222 215)" rotateAngle="0">D</text><text font-family="Arial" font-size="17" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 238 215)" rotateAngle="0">CO</text>
+<text id="pubSubProcess"  visibility="visible" text-anchor="middle" font-family="Arial" font-size="13" font-style="normal" stroke="none" stroke-width="0.34" fill="#000000" transform="matrix(3.60822e-16 -1 1 3.60822e-16 287 270)" rotateAngle="0" filter="null">Publish</text>
+<text id="pubSubScada"  visibility="visible" text-anchor="middle"  font-family="Arial" font-size="13"  font-style="normal" stroke="none" stroke-width="0.34" fill="#000000" transform="matrix(3.60822e-16 -1 1 3.60822e-16 685 250)" rotateAngle="0" filter="null">Subscribe</text>
+
+<text font-family="Arial" font-size="17" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 513 199)" rotateAngle="0">SP</text><text font-family="Arial" font-size="17" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 547 200)" rotateAngle="0">P</text><text font-family="Arial" font-size="17" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 570 200)" rotateAngle="0">I</text><text font-family="Arial" font-size="17" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.34" fill="#000000" transform="matrix(1 0 0 1 610 199)" rotateAngle="0" filter="null">D</text><text font-family="Arial" font-size="17" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.34" fill="#000000" transform="matrix(1 0 0 1 634 200)" rotateAngle="0" filter="null">CO</text>
+<text font-family="Arial" font-size="30" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 271 90)" rotateAngle="0">Tuning PID Controller</text></g></g><defs id="arrowDefs"><marker id="arrow000000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#000000" stroke-linejoin="bevel">
+    <path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/></marker><marker id="arrowFF0000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#FF0000" stroke-linejoin="bevel">
+        <path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/></marker></defs>
+
+<g id=scadaPIDG transform="matrix(1 0 0 1 598 387)">
+<ellipse  id="pidEllipse" fill="#FFD700" stroke="#800000"  stroke-width="4" cx="0" cy="0" rx="152" ry="64"/>
+ <foreignObject id=foAdjust width=300 height=100 x=-130 y=-50>
+<table cellpadding=0>
+<tr><td align=center colspan=5>Tune Controller:<input type="checkbox" id=adjustScadaControllerCheck onClick=adjustScadaControllerChecked() /></td></tr>
+    <tr align=center>
+    <td>SP:<input  disabled style="margin-right: 0px;margin-left: 0px;"  type="radio" name=tuneScadaRadio id=tuneScadaSPClick onClick=tuneScadaSPClicked() /></td>
+    <td>P:<input style="margin-right: 0px;margin-left: 0px;"   disabled  type="radio" name=tuneScadaRadio  id=tuneScadaPClick onClick=tuneScadaPClicked()   /></td>
+    <td>I:<input disabled title="turn off Integral" onClick=turnScadaOffIntegralChecked() id=turnScadaOffIntegralCheck type="checkbox" checked style="margin-right: 0px;margin-left: 0px;"  /><input style="margin-right: 0px;margin-left: 0px;" disabled  type="radio" name=tuneScadaRadio  id=tuneScadaIClick onClick=tuneScadaIClicked()   /></td>
+    <td>D:<input disabled  title="turn off Derivative" onClick=turnScadaOffDerivativeChecked() id=turnScadaOffDerivativeCheck  type="checkbox" checked style="margin-right: 0px;margin-left: 0px;" /><input style="margin-right: 0px;margin-left: 0px;"  disabled  type="radio" name=tuneScadaRadio  id=tuneScadaDClick onClick=tuneScadaDClicked()   /></td>
+    <td>CO:<input  disabled type="radio" style="margin-right: 0px;margin-left: 0px;"  name=tuneScadaRadio   id=tuneScadaCOClick onClick=tuneScadaCOClicked()  /></td>
+    </tr>
+    <tr align=center>
+    <td><input onfocus=blur() type="text" style=width:40px id=tuneScadaSPValue value=100 /></td>
+    <td>&nbsp;&nbsp;<input onfocus=blur()  type="text" style=width:40px  id=tuneScadaPValue value=0.5 /></td>
+    <td><input onfocus=blur()  type="text" style=width:40px  id=tuneScadaIValue value=0.05 /></td>
+    <td><input onfocus=blur()  type="text" style=width:40px  id=tuneScadaDValue value=3 /></td>
+    <td>&nbsp;&nbsp;<input onfocus=blur()  type="text" style=width:40px  id=tuneScadaCOValue value=0 /></td>
+    </tr>
+    <tr><td align=center colspan=5>
+        <TABLE >
+        <TR>
+        <TD><button  onClick=controlScadaAdjust(-1) style=padding:0;width:30px;height:30px><img src="../../Images/minusRound.png" alt="" width=25 height=25 /></button></TD>
+        <TD>
+            <select id=incrementScadaSelect title="Increment value">
+              <option value="">.001</option>
+              <option value="">.01</option>
+              <option value="">.10</option>
+              <option value="">.50</option>
+              <option selected value="">1.0</option>
+              <option value="">5.0</option>
+              <option value="">10</option>
+
+            </select>
+        </TD>
+        <TD><button  onClick=controlScadaAdjust(1) style=padding:0;width:30px;height:30px><img src="../../Images/plusRound.png" alt="" width=25 height=25 /></button></TD>
+        </TR>
+        </TABLE>
+    </td></tr>
+</table>
+</foreignObject>
+</g>
+
+<g id=processPIDG transform="matrix(1 0 0 1 217 390)">
+<ellipse  id="pidEllipse" fill="#DCDCDC" stroke="#000000"  stroke-width="4" cx="0" cy="0" rx="152" ry="64"/>
+ <foreignObject id=foAdjust width=300 height=100 x=-130 y=-50>
+<table cellpadding=0>
+<tr><td align=center colspan=5>Tune Controller:<input type="checkbox" id=adjustProcessControllerCheck onClick=adjustProcessControllerChecked() /></td></tr>
+    <tr align=center>
+    <td>SP:<input  disabled style="margin-right: 0px;margin-left: 0px;"  type="radio" name=tuneProcessRadio id=tuneProcessSPClick onClick=tuneProcessSPClicked() /></td>
+    <td>P:<input style="margin-right: 0px;margin-left: 0px;"   disabled  type="radio" name=tuneProcessRadio  id=tuneProcessPClick onClick=tuneProcessPClicked()   /></td>
+    <td>I:<input disabled title="turn off Integral" onClick=turnProcessOffIntegralChecked() id=turnProcessOffIntegralCheck type="checkbox" checked style="margin-right: 0px;margin-left: 0px;"  /><input style="margin-right: 0px;margin-left: 0px;" disabled  type="radio" name=tuneProcessRadio  id=tuneProcessIClick onClick=tuneProcessIClicked()   /></td>
+    <td>D:<input disabled  title="turn off Derivative" onClick=turnProcessOffDerivativeChecked() id=turnProcessOffDerivativeCheck  type="checkbox" checked style="margin-right: 0px;margin-left: 0px;" /><input style="margin-right: 0px;margin-left: 0px;"  disabled  type="radio" name=tuneProcessRadio  id=tuneProcessDClick onClick=tuneProcessDClicked()   /></td>
+    <td>CO:<input  disabled type="radio" style="margin-right: 0px;margin-left: 0px;"  name=tuneProcessRadio   id=tuneProcessCOClick onClick=tuneProcessCOClicked()  /></td>
+    </tr>
+    <tr align=center>
+    <td><input onfocus=blur() type="text" style=width:40px id=tuneProcessSPValue value=100 /></td>
+    <td>&nbsp;&nbsp;<input onfocus=blur()  type="text" style=width:40px  id=tuneProcessPValue value=0.5 /></td>
+    <td><input onfocus=blur()  type="text" style=width:40px  id=tuneProcessIValue value=0.05 /></td>
+    <td><input onfocus=blur()  type="text" style=width:40px  id=tuneProcessDValue value=3 /></td>
+    <td>&nbsp;&nbsp;<input onfocus=blur()  type="text" style=width:40px  id=tuneProcessCOValue value=0 /></td>
+    </tr>
+    <tr><td align=center colspan=5>
+        <TABLE >
+        <TR>
+        <TD><button  onClick=controlProcessAdjust(-1) style=padding:0;width:30px;height:30px><img src="../../Images/minusRound.png" alt="" width=25 height=25 /></button></TD>
+        <TD>
+            <select id=incrementProcessSelect title="Increment value">
+              <option value="">.001</option>
+              <option value="">.01</option>
+              <option value="">.10</option>
+              <option value="">.50</option>
+              <option selected value="">1.0</option>
+              <option value="">5.0</option>
+              <option value="">10</option>
+
+            </select>
+        </TD>
+        <TD><button  onClick=controlProcessAdjust(1) style=padding:0;width:30px;height:30px><img src="../../Images/plusRound.png" alt="" width=25 height=25 /></button></TD>
+        </TR>
+        </TABLE>
+    </td></tr>
+</table>
+</foreignObject>
+</g>
+
+
+
+
+
+</svg>
+</div>
+
+</td>
+</tr></table>
+
+    <br><button title="Show Javascript Source" onclick=showSource()>Javascript Source</button> <button title="Close javascript source" disabled id=closeSourceButton onClick=closeSource()>X</button>
+
+ <div id=sourceDiv style=overflow:auto;width:100%;height:1px;visibility:hidden;overflow:hidden>
+  <br>Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:90%;text-align:left; ></div>
+</div>
+</center>
+    </div>
+<script id=myScript>
+//---JavaScript SDK  https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.2.js ---
+
+//--onload---
+var pubnub
+function initPublish()
+{
+    pubnub = new PubNub(
+    {
+        publishKey : 'pub-c-ea28c028-e01a-4d16-80ec-0ad017c8a0a1',
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+   })
+
+}
+
+//---channels---
+var utcms=new Date().getTime() //---timestamp for this example client---
+
+var P="P"+utcms
+var I="I"+utcms
+var D="D"+utcms
+var SP="SP"+utcms
+var CO="CO"+utcms
+var Tune="Tune"+utcms
+var Istatus="Istatus"+utcms
+var Dstatus="Dstatus"+utcms
+
+//---onload: Subscribe---
+var subscribeP
+function initSubscribeP()
+{
+    subscribeP = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeP.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+           tuneScadaPValue.value=msg
+           tuneProcessPValue.value=msg
+           pathScadaP.removeAttribute("opacity")
+           pathProcessP.removeAttribute("opacity")
+
+        }
+    })
+    subscribeP.subscribe(
+    {
+        channels: [P] //---unique for this viewer "P"+timeStamp---
+    })
+}
+var subscribeI
+function initSubscribeI()
+{
+    subscribeI = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeI.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+           tuneScadaIValue.value=msg
+           tuneProcessIValue.value=msg
+           pathScadaI.removeAttribute("opacity")
+           pathProcessI.removeAttribute("opacity")
+
+        }
+    })
+    subscribeI.subscribe(
+    {
+        channels: [I] //---unique for this viewer "I"+timeStamp---
+    })
+}
+var subscribeD
+function initSubscribeD()
+{
+    subscribeD = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeD.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+           tuneScadaDValue.value=msg
+           tuneProcessDValue.value=msg
+           pathScadaD.removeAttribute("opacity")
+           pathProcessD.removeAttribute("opacity")
+        }
+    })
+    subscribeD.subscribe(
+    {
+        channels: [D] //---unique for this viewer "D"+timeStamp---
+    })
+}
+var subscribeSP
+function initSubscribeSP()
+{
+    subscribeSP = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeSP.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+           tuneScadaSPValue.value=msg
+           tuneProcessSPValue.value=msg
+           pathScadaSP.removeAttribute("opacity")
+           pathProcessSP.removeAttribute("opacity")
+
+        }
+    })
+    subscribeSP.subscribe(
+    {
+        channels: [SP] //---unique for this viewer "SP"+timeStamp---
+    })
+}
+var subscribeCO
+function initSubscribeCO()
+{
+    subscribeCO = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeCO.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+
+            console.log("CO "+msg)
+           tuneScadaCOValue.value=msg
+           tuneProcessCOValue.value=msg
+           pathScadaCO.removeAttribute("opacity")
+           pathProcessCO.removeAttribute("opacity")
+        }
+    })
+    subscribeCO.subscribe(
+    {
+        channels: [CO] //---unique for this viewer "CO"+timeStamp---
+    })
+}
+var subscribeIstatus
+function initSubscribeIstatus()
+{
+    subscribeIstatus = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeIstatus.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+            console.log(msg)
+
+        }
+    })
+    subscribeIstatus.subscribe(
+    {
+        channels: [Istatus] //---unique for this viewer "Istatus"+timeStamp---
+    })
+}
+var subscribeDstatus
+function initSubscribeDstatus()
+{
+    subscribeDstatus = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeDstatus.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+            console.log(msg)
+
+        }
+    })
+    subscribeDstatus.subscribe(
+    {
+        channels: [Dstatus] //---unique for this viewer "Dstatus"+timeStamp---
+    })
+}
+var subscribeTune
+function initSubscribeTune()
+{
+    subscribeTune = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeTune.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+            if(msg=="AUTO")
+            {
+               initScadaLinesIn()
+               initProcessLinesOut()
+               pubSubScada.firstChild.textContent="Subscribe"
+               pubSubProcess.firstChild.textContent="Publish"
+
+            }
+
+        }
+    })
+    subscribeTune.subscribe(
+    {
+        channels: [Tune] //---unique for this viewer "Tune"+timeStamp---
+    })
+}
+
+//----Publish---
+
+function publishP()
+{
+    if(TuneScadaSelected=="P")
+        var messageP=+tuneScadaPValue.value
+    if(TuneProcessSelected=="P")
+        var messageP=+tuneProcessPValue.value
+
+    var publishConfig =
+    {
+        channel : P ,  //---unique for this viewer "P"+timeStamp---
+        message :messageP
+    }
+    pubnub.publish(publishConfig)
+}
+function publishI()
+{
+    if(TuneScadaSelected=="I")
+        var messageI=+tuneScadaIValue.value
+    if(TuneProcessSelected=="I")
+        var messageI=+tuneProcessIValue.value
+
+      var publishConfig =
+    {
+        channel : I ,  //---unique for this viewer "I"+timeStamp---
+        message :messageI
+    }
+    pubnub.publish(publishConfig)
+}
+function publishD()
+{
+    if(TuneScadaSelected=="D")
+        var messageD=+tuneScadaDValue.value
+    if(TuneProcessSelected=="D")
+        var messageD=+tuneProcessDValue.value
+
+    var publishConfig =
+    {
+        channel : D ,  //---unique for this viewer "D"+timeStamp---
+        message :messageD
+    }
+    pubnub.publish(publishConfig)
+}
+function publishSP()
+{
+    if(TuneScadaSelected=="SP")
+        var messageSP=+tuneScadaSPValue.value
+    if(TuneProcessSelected=="SP")
+        var messageSP=+tuneProcessSPValue.value
+
+    var publishConfig =
+    {
+        channel : SP ,  //---unique for this viewer "SP"+timeStamp---
+        message :messageSP
+    }
+    pubnub.publish(publishConfig)
+}
+function publishCO()
+{
+    if(TuneScadaSelected=="CO")
+        var messageCO=+tuneScadaCOValue.value
+    if(TuneProcessSelected=="CO")
+        var messageCO=+tuneProcessCOValue.value
+
+    var publishConfig =
+    {
+        channel : CO ,  //---unique for this viewer "CO"+timeStamp---
+        message :messageCO
+    }
+    pubnub.publish(publishConfig)
+}
+function publishIstatus()
+{
+   if(turnScadaOffIntegralCheck.checked||turnProcessOffIntegralCheck.checked)
+        var messageIstatus="OFF"
+   else
+        var messageIstatus="AUTO"
+
+    var publishConfig =
+    {
+        channel : Istatus ,  //---unique for this viewer "Istatus"+timeStamp---
+        message :messageIstatus
+    }
+    pubnub.publish(publishConfig)
+}
+function publishDstaus()
+{
+   if(turnScadaOffDerativeCheck.checked||turnProcessOffDerativeCheck.checked)
+        var messageDstatus="OFF"
+   else
+        var messageDstatus="AUTO"
+
+    var publishConfig =
+    {
+        channel : Dstatus ,  //---unique for this viewer "Dstatus"+timeStamp---
+        message :messageDstatus
+    }
+    pubnub.publish(publishConfig)
+}
+function publishTune()
+{
+
+   if(adjustScadaControllerCheck.checked||adjustProcessControllerCheck.checked)
+        var messageTune="TUNING"
+   else
+        var messageTune="AUTO"
+
+    var publishConfig =
+    {
+        channel : Tune ,  //---unique for this viewer "Tune"+timeStamp---
+        message :messageTune
+    }
+    pubnub.publish(publishConfig)
+}
+
+
+
+</script>
+<script>
+//============================TUNING SCADA CONTROLLER==================================
+var TuneScadaSelected
+function adjustScadaControllerChecked()
+{
+   if(adjustScadaControllerCheck.checked)
+   {
+        tuneScadaSPClick.disabled=false
+        tuneScadaPClick.disabled=false
+        tuneScadaIClick.disabled=false
+        tuneScadaDClick.disabled=false
+        tuneScadaCOClick.disabled=false
+        turnScadaOffIntegralCheck.disabled=false
+        turnScadaOffDerivativeCheck.disabled=false
+                processLinesIn()
+        scadaLinesOut()
+                pathScadaTune.setAttribute("opacity",1)
+        pathProcessTune.setAttribute("opacity",1)
+        adjustProcessControllerCheck.checked=false
+       // adjustProcessControllerChecked()
+        adjustProcessControllerCheck.disabled=true
+        pubSubProcess.setAttribute("visibility","visible")
+        pubSubProcess.firstChild.textContent="Subscribe"
+        pubSubScada.setAttribute("visibility","visible")
+        pubSubScada.firstChild.textContent="Publish"
+
+
+
+   }
+   else
+   {
+        tuneScadaSPClick.checked=false
+        tuneScadaPClick.checked=false
+        tuneScadaIClick.checked=false
+        tuneScadaDClick.checked=false
+        tuneScadaCOClick.checked=false
+
+        tuneScadaSPClick.disabled=true
+        tuneScadaPClick.disabled=true
+        tuneScadaIClick.disabled=true
+        tuneScadaDClick.disabled=true
+        tuneScadaCOClick.disabled=true
+
+        turnScadaOffIntegralCheck.disabled=true
+        turnScadaOffDerivativeCheck.disabled=true
+
+
+        adjustProcessControllerCheck.disabled=false
+
+
+   }
+     if(TuneScadaSelected)
+    {
+        var prevProcessValue=eval("tuneScada"+TuneScadaSelected+"Value")
+        prevProcessValue.style.border=""
+
+    }
+    tuneScadaSPValue.style.border=""
+    tuneScadaPValue.style.border=""
+    tuneScadaIValue.style.border=""
+    tuneScadaDValue.style.border=""
+    tuneScadaCOValue.style.border=""
+
+    TuneScadaSelected=null
+      if(!adjustScadaControllerCheck.checked && !adjustProcessControllerCheck.checked)
+    {
+           pathScadaTune.setAttribute("opacity",.2)
+      pathProcessTune.setAttribute("opacity",.2)
+
+    }
+     publishTune()
+}
+
+function turnScadaOffIntegralChecked()
+{
+   if(turnScadaOffIntegralCheck.checked)
+   {
+      tuneScadaIValue.style.background=""
+      turnScadaOffIntegralCheck.title="Turn off Integral"
+      tuneScadaIClick.disabled=false
+      pathScadaI.removeAttribute("stroke-dasharray")
+
+      tuneProcessIValue.style.background=""
+      turnProcessOffIntegralCheck.title="Turn off Integral"
+      turnProcessOffIntegralCheck.checked=true
+      pathProcessI.removeAttribute("stroke-dasharray")
+
+
+   }
+   else
+   {
+      tuneScadaIValue.style.background="gainsboro"
+      turnScadaOffIntegralCheck.title="Turn on Integral"
+      tuneScadaIClick.checked=false
+      tuneScadaIClick.disabled=true
+      pathScadaI.setAttribute("stroke-dasharray","5 5")
+
+      tuneProcessIValue.style.background="gainsboro"
+      turnProcessOffIntegralCheck.title="Turn on Integral"
+      turnProcessOffIntegralCheck.checked=false
+           pathProcessI.setAttribute("stroke-dasharray","5 5")
+
+
+   }
+      publishIstatus()
+}
+function turnScadaOffDerivativeChecked()
+{
+   if(turnScadaOffDerivativeCheck.checked)
+   {
+      tuneScadaDValue.style.background=""
+      turnScadaOffDerivativeCheck.title="Turn off Derivative"
+      tuneScadaDClick.disabled=false
+      pathScadaD.removeAttribute("stroke-dasharray")
+
+      tuneProcessDValue.style.background=""
+      turnProcessOffDerivativeCheck.title="Turn off Derivative"
+      turnProcessOffDerivativeCheck.checked=true
+       pathProcessD.removeAttribute("stroke-dasharray")
+
+   }
+   else
+   {
+        tuneScadaDValue.style.background="gainsboro"
+        turnScadaOffDerivativeCheck.title="Turn on Derivative"
+        tuneScadaDClick.checked=false
+        tuneScadaDClick.disabled=true
+        pathScadaD.setAttribute("stroke-dasharray","5 5")
+
+      tuneProcessDValue.style.background="gainsboro"
+      turnProcessOffDerivativeCheck.title="Turn on Derivative"
+      turnProcessOffDerivativeCheck.checked=false
+        pathProcessD.setAttribute("stroke-dasharray","5 5")
+
+   }
+    publishDstatus()
+}
+
+function controlScadaAdjust(factor)
+{
+    var increment=+incrementScadaSelect.options[incrementScadaSelect.selectedIndex].text
+    var change=factor*increment
+   resetOpacity()
+    if(TuneScadaSelected=="SP")
+    {
+        var spValue=(+tuneScadaSPValue.value)+change
+
+
+        tuneScadaSPValue.value=spValue//.toFixed(3)
+        publishSP()
+    }
+    if(TuneScadaSelected=="P")
+    {
+        var pValue=(+tuneScadaPValue.value)+change
+        tuneScadaPValue.value=pValue//.toFixed(3)
+         publishP()
+
+    }
+    if(TuneScadaSelected=="I")
+    {
+        var iValue=(+tuneScadaIValue.value)+change
+        tuneScadaIValue.value=iValue//.toFixed(3)
+         publishI()
+    }
+    if(TuneScadaSelected=="D")
+    {
+        var dValue=(+tuneScadaDValue.value)+change
+        tuneScadaDValue.value=dValue//.toFixed(3)
+         publishD()
+    }
+    if(TuneScadaSelected=="CO")
+    {
+        var outValue=(+tuneScadaCOValue.value)+change
+        tuneScadaCOValue.value=outValue//.toFixed(3)
+         publishCO()
+    }
+}
+
+function tuneScadaSPClicked()
+{
+    if(TuneScadaSelected)
+    {
+        var prevProcessValue=eval("tuneProcess"+TuneScadaSelected+"Value")
+        prevProcessValue.style.border=""
+    }
+    tuneScadaSPValue.style.border="2px solid black"
+    tuneScadaPValue.style.border=""
+    tuneScadaIValue.style.border=""
+    tuneScadaDValue.style.border=""
+    tuneScadaCOValue.style.border=""
+
+        TuneScadaSelected="SP"
+    tuneProcessSPValue.style.border="2px solid black"
+}
+
+function tuneScadaPClicked()
+{
+    if(TuneScadaSelected)
+    {
+        var prevProcessValue=eval("tuneProcess"+TuneScadaSelected+"Value")
+        prevProcessValue.style.border=""
+    }
+    tuneScadaSPValue.style.border=""
+    tuneScadaPValue.style.border="2px solid black"
+    tuneScadaIValue.style.border=""
+    tuneScadaDValue.style.border=""
+    tuneScadaCOValue.style.border=""
+        TuneScadaSelected="P"
+    tuneProcessPValue.style.border="2px solid black"
+}
+
+function tuneScadaIClicked()
+{
+    if(TuneScadaSelected)
+    {
+        var prevProcessValue=eval("tuneProcess"+TuneScadaSelected+"Value")
+        prevProcessValue.style.border=""
+    }
+    tuneScadaSPValue.style.border=""
+    tuneScadaPValue.style.border=""
+    tuneScadaIValue.style.border="2px solid black"
+    tuneScadaDValue.style.border=""
+    tuneScadaCOValue.style.border=""
+        TuneScadaSelected="I"
+    tuneProcessIValue.style.border="2px solid black"
+}
+
+function tuneScadaDClicked()
+{
+    if(TuneScadaSelected)
+    {
+        var prevProcessValue=eval("tuneProcess"+TuneScadaSelected+"Value")
+        prevProcessValue.style.border=""
+    }
+    tuneScadaSPValue.style.border=""
+    tuneScadaPValue.style.border=""
+    tuneScadaIValue.style.border=""
+    tuneScadaDValue.style.border="2px solid black"
+    tuneScadaCOValue.style.border=""
+
+        TuneScadaSelected="D"
+ tuneProcessDValue.style.border="2px solid black"
+
+ }
+
+function tuneScadaCOClicked()
+{
+    if(TuneScadaSelected)
+    {
+        var prevProcessValue=eval("tuneProcess"+TuneScadaSelected+"Value")
+        prevProcessValue.style.border=""
+    }
+    tuneScadaSPValue.style.border=""
+    tuneScadaPValue.style.border=""
+    tuneScadaIValue.style.border=""
+    tuneScadaDValue.style.border=""
+    tuneScadaCOValue.style.border="2px solid black"
+
+        TuneScadaSelected="CO"
+    tuneProcessCOValue.style.border="2px solid black"
+}
+
+//============================TUNING PROCESS CONTROLLER==================================
+var TuneProcessSelected
+function adjustProcessControllerChecked()
+{
+   if(adjustProcessControllerCheck.checked)
+   {
+        tuneProcessSPClick.disabled=false
+        tuneProcessPClick.disabled=false
+        tuneProcessIClick.disabled=false
+        tuneProcessDClick.disabled=false
+        tuneProcessCOClick.disabled=false
+        turnProcessOffIntegralCheck.disabled=false
+        turnProcessOffDerivativeCheck.disabled=false
+        processLinesOut()
+        scadaLinesIn()
+        pathScadaTune.setAttribute("opacity",1)
+        pathProcessTune.setAttribute("opacity",1)
+        adjustScadaControllerCheck.checked=false
+        //adjustScadaControllerChecked()
+        adjustScadaControllerCheck.disabled=true
+         pubSubProcess.setAttribute("visibility","visible")
+        pubSubProcess.firstChild.textContent="Publish"
+        pubSubScada.setAttribute("visibility","visible")
+        pubSubScada.firstChild.textContent="Subscribe"
+
+   }
+   else
+   {
+        tuneProcessSPClick.checked=false
+        tuneProcessPClick.checked=false
+        tuneProcessIClick.checked=false
+        tuneProcessDClick.checked=false
+        tuneProcessCOClick.checked=false
+
+        tuneProcessSPClick.disabled=true
+        tuneProcessPClick.disabled=true
+        tuneProcessIClick.disabled=true
+        tuneProcessDClick.disabled=true
+        tuneProcessCOClick.disabled=true
+
+        turnProcessOffIntegralCheck.disabled=true
+        turnProcessOffDerivativeCheck.disabled=true
+
+
+        adjustScadaControllerCheck.disabled=false
+       // publishTune()
+   }
+     if(TuneProcessSelected)
+    {
+        var prevScadaValue=eval("tuneScada"+TuneProcessSelected+"Value")
+        prevScadaValue.style.border=""
+
+    }
+
+    tuneProcessSPValue.style.border=""
+    tuneProcessPValue.style.border=""
+    tuneProcessIValue.style.border=""
+    tuneProcessDValue.style.border=""
+    tuneProcessCOValue.style.border=""
+     if(!adjustScadaControllerCheck.checked && !adjustProcessControllerCheck.checked)
+    {
+           pathScadaTune.setAttribute("opacity",.2)
+      pathProcessTune.setAttribute("opacity",.2)
+
+    }
+    TuneProcessSelected=null
+     publishTune()
+}
+
+
+function turnProcessOffIntegralChecked()
+{
+   if(turnProcessOffIntegralCheck.checked)
+   {
+      tuneProcessIValue.style.background=""
+      turnProcessOffIntegralCheck.title="Turn off Integral"
+      tuneProcessIClick.disabled=false
+
+      pathProcessI.removeAttribute("stroke-dasharray")
+
+      tuneScadaIValue.style.background=""
+      turnScadaOffIntegralCheck.title="Turn off Integral"
+     turnScadaOffIntegralCheck.checked=true
+
+      pathScadaI.removeAttribute("stroke-dasharray")
+
+   }
+   else
+   {
+      tuneProcessIValue.style.background="gainsboro"
+      turnProcessOffIntegralCheck.title="Turn on Integral"
+      tuneProcessIClick.checked=false
+      tuneProcessIClick.disabled=true
+      pathProcessI.setAttribute("stroke-dasharray","5 5")
+
+      tuneScadaIValue.style.background="gainsboro"
+      turnScadaOffIntegralCheck.title="Turn on Integral"
+     turnScadaOffIntegralCheck.checked=false
+           pathScadaI.setAttribute("stroke-dasharray","5 5")
+
+
+   }
+    publishIstatus()
+
+}
+function turnProcessOffDerivativeChecked()
+{
+   if(turnProcessOffDerivativeCheck.checked)
+   {
+      tuneProcessDValue.style.background=""
+      turnProcessOffDerivativeCheck.title="Turn off Derivative"
+      tuneProcessDClick.disabled=false
+      pathProcessD.removeAttribute("stroke-dasharray")
+
+      tuneScadaDValue.style.background=""
+      turnScadaOffDerivativeCheck.title="Turn off Derivative"
+      turnScadaOffDerivativeCheck.checked=true
+      pathScadaD.removeAttribute("stroke-dasharray")
+
+
+   }
+   else
+   {
+        tuneProcessDValue.style.background="gainsboro"
+        turnProcessOffDerivativeCheck.title="Turn on Derivative"
+        tuneProcessDClick.checked=false
+        tuneProcessDClick.disabled=true
+
+         pathProcessD.setAttribute("stroke-dasharray","5 5")
+      tuneScadaDValue.style.background="gainsboro"
+      turnScadaOffDerivativeCheck.title="Turn on Derivative"
+      turnScadaOffDerivativeCheck.checked=false
+              pathScadaD.setAttribute("stroke-dasharray","5 5")
+
+   }
+   publishDstatus()
+
+}
+
+function controlProcessAdjust(factor)
+{
+    var increment=+incrementProcessSelect.options[incrementProcessSelect.selectedIndex].text
+    var change=factor*increment
+   resetOpacity()
+    if(TuneProcessSelected=="SP")
+    {
+        var spValue=(+tuneProcessSPValue.value)+change
+
+        tuneProcessSPValue.value=spValue//.toFixed(3)
+        publishSP()
+
+    }
+    if(TuneProcessSelected=="P")
+    {
+        var pValue=(+tuneProcessPValue.value)+change
+        tuneProcessPValue.value=pValue//.toFixed(3)
+        publishP()
+    }
+    if(TuneProcessSelected=="I")
+    {
+        var iValue=(+tuneProcessIValue.value)+change
+        tuneProcessIValue.value=iValue//.toFixed(3)
+        publishI()
+    }
+    if(TuneProcessSelected=="D")
+    {
+        var dValue=(+tuneProcessDValue.value)+change
+        tuneProcessDValue.value=dValue//.toFixed(3)
+        publishD()
+    }
+    if(TuneProcessSelected=="CO")
+    {
+        var outValue=(+tuneProcessCOValue.value)+change
+        tuneProcessCOValue.value=outValue//.toFixed(3)
+        publishCO()
+    }
+
+
+}
+
+function tuneProcessSPClicked()
+{
+    if(TuneProcessSelected)
+    {
+        var prevScadaValue=eval("tuneScada"+TuneProcessSelected+"Value")
+        prevScadaValue.style.border=""
+    }
+
+    tuneProcessSPValue.style.border="2px solid black"
+    tuneProcessPValue.style.border=""
+    tuneProcessIValue.style.border=""
+    tuneProcessDValue.style.border=""
+    tuneProcessCOValue.style.border=""
+
+        TuneProcessSelected="SP"
+     tuneScadaSPValue.style.border="2px solid black"
+}
+
+function tuneProcessPClicked()
+{
+    if(TuneProcessSelected)
+    {
+        var prevScadaValue=eval("tuneScada"+TuneProcessSelected+"Value")
+        prevScadaValue.style.border=""
+    }
+    tuneProcessSPValue.style.border=""
+    tuneProcessPValue.style.border="2px solid black"
+    tuneProcessIValue.style.border=""
+    tuneProcessDValue.style.border=""
+    tuneProcessCOValue.style.border=""
+        TuneProcessSelected="P"
+    tuneScadaPValue.style.border="2px solid black"
+}
+
+function tuneProcessIClicked()
+{
+    if(TuneProcessSelected)
+    {
+        var prevScadaValue=eval("tuneScada"+TuneProcessSelected+"Value")
+        prevScadaValue.style.border=""
+    }
+    tuneProcessSPValue.style.border=""
+    tuneProcessPValue.style.border=""
+    tuneProcessIValue.style.border="2px solid black"
+    tuneProcessDValue.style.border=""
+    tuneProcessCOValue.style.border=""
+        TuneProcessSelected="I"
+    tuneScadaIValue.style.border="2px solid black"
+}
+
+function tuneProcessDClicked()
+{
+    if(TuneProcessSelected)
+    {
+        var prevScadaValue=eval("tuneScada"+TuneProcessSelected+"Value")
+        prevScadaValue.style.border=""
+    }
+    tuneProcessSPValue.style.border=""
+    tuneProcessPValue.style.border=""
+    tuneProcessIValue.style.border=""
+    tuneProcessDValue.style.border="2px solid black"
+    tuneProcessCOValue.style.border=""
+
+        TuneProcessSelected="D"
+    tuneScadaDValue.style.border="2px solid black"
+}
+
+function tuneProcessCOClicked()
+{
+    if(TuneProcessSelected)
+    {
+        var prevScadaValue=eval("tuneScada"+TuneProcessSelected+"Value")
+        prevScadaValue.style.border=""
+    }
+    tuneProcessSPValue.style.border=""
+    tuneProcessPValue.style.border=""
+    tuneProcessIValue.style.border=""
+    tuneProcessDValue.style.border=""
+    tuneProcessCOValue.style.border="2px solid black"
+
+        TuneProcessSelected="CO"
+    tuneScadaCOValue.style.border="2px solid black"
+}
+
+function initScadaLinesIn()
+{
+   var bb=pathScadaSP.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   pathScadaSP.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+   var bb=pathScadaP.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   pathScadaP.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+   var bb=pathScadaI.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   pathScadaI.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+   var bb=pathScadaD.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   pathScadaD.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+   var bb=pathScadaCO.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   pathScadaCO.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+
+   var bb=pathScadaTune.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   pathScadaTune.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+     pathScadaSP.removeAttribute("opacity")
+   pathScadaP.removeAttribute("opacity")
+   pathScadaI.removeAttribute("opacity")
+   pathScadaD.removeAttribute("opacity")
+   pathScadaCO.removeAttribute("opacity")
+   pathScadaTune.removeAttribute("opacity")
+}
+
+//----flip Arrow Lines----
+function scadaLinesIn()
+{
+   var bb=pathScadaSP.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   pathScadaSP.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+   var bb=pathScadaP.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   pathScadaP.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+   var bb=pathScadaI.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   pathScadaI.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+   var bb=pathScadaD.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   pathScadaD.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+   var bb=pathScadaCO.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   pathScadaCO.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+
+   var bb=pathScadaTune.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   pathScadaTune.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+     pathScadaSP.setAttribute("opacity",.2)
+   pathScadaP.setAttribute("opacity",.2)
+   pathScadaI.setAttribute("opacity",.2)
+   pathScadaD.setAttribute("opacity",.2)
+   pathScadaCO.setAttribute("opacity",.2)
+   pathScadaTune.setAttribute("opacity",.2)
+}
+
+function scadaLinesOut()
+{
+   pathScadaSP.removeAttribute("transform")
+   pathScadaP.removeAttribute("transform")
+   pathScadaI.removeAttribute("transform")
+   pathScadaD.removeAttribute("transform")
+   pathScadaCO.removeAttribute("transform")
+   pathScadaTune.removeAttribute("transform")
+
+   pathScadaSP.setAttribute("opacity",.2)
+   pathScadaP.setAttribute("opacity",.2)
+   pathScadaI.setAttribute("opacity",.2)
+   pathScadaD.setAttribute("opacity",.2)
+   pathScadaCO.setAttribute("opacity",.2)
+   pathScadaTune.setAttribute("opacity",.2)
+
+
+}
+
+function resetOpacity()
+{
+    pathScadaSP.setAttribute("opacity",.2)
+   pathScadaP.setAttribute("opacity",.2)
+   pathScadaI.setAttribute("opacity",.2)
+   pathScadaD.setAttribute("opacity",.2)
+   pathScadaCO.setAttribute("opacity",.2)
+   pathScadaTune.setAttribute("opacity",.2)
+        pathProcessSP.setAttribute("opacity",.2)
+   pathProcessP.setAttribute("opacity",.2)
+   pathProcessI.setAttribute("opacity",.2)
+   pathProcessD.setAttribute("opacity",.2)
+   pathProcessCO.setAttribute("opacity",.2)
+   pathProcessTune.setAttribute("opacity",.2)
+
+
+}
+
+function processLinesOut()
+{
+   pathProcessSP.removeAttribute("transform")
+   pathProcessP.removeAttribute("transform")
+   pathProcessI.removeAttribute("transform")
+   pathProcessD.removeAttribute("transform")
+   pathProcessCO.removeAttribute("transform")
+   pathProcessTune.removeAttribute("transform")
+
+     pathProcessSP.setAttribute("opacity",.2)
+   pathProcessP.setAttribute("opacity",.2)
+   pathProcessI.setAttribute("opacity",.2)
+   pathProcessD.setAttribute("opacity",.2)
+   pathProcessCO.setAttribute("opacity",.2)
+   pathProcessTune.setAttribute("opacity",.2)
+
+
+}
+function initProcessLinesOut()
+{
+   pathProcessSP.removeAttribute("transform")
+   pathProcessP.removeAttribute("transform")
+   pathProcessI.removeAttribute("transform")
+   pathProcessD.removeAttribute("transform")
+   pathProcessCO.removeAttribute("transform")
+   pathProcessTune.removeAttribute("transform")
+
+     pathProcessSP.removeAttribute("opacity")
+   pathProcessP.removeAttribute("opacity")
+   pathProcessI.removeAttribute("opacity")
+   pathProcessD.removeAttribute("opacity")
+   pathProcessCO.removeAttribute("opacity")
+   pathProcessTune.removeAttribute("opacity")
+
+
+}
+
+
+
+
+function processLinesIn()
+{
+   var bb=pathProcessSP.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   pathProcessSP.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+   var bb=pathProcessP.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   pathProcessP.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+   var bb=pathProcessI.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   pathProcessI.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+   var bb=pathProcessD.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   pathProcessD.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+   var bb=pathProcessCO.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   pathProcessCO.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+
+   var bb=pathProcessTune.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   pathProcessTune.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+       pathProcessSP.setAttribute("opacity",.2)
+   pathProcessP.setAttribute("opacity",.2)
+   pathProcessI.setAttribute("opacity",.2)
+   pathProcessD.setAttribute("opacity",.2)
+   pathProcessCO.setAttribute("opacity",.2)
+   pathProcessTune.setAttribute("opacity",.2)
+
+
+}
+
+
+document.addEventListener("onload",init(),false)
+
+
+function init()
+{
+ initScadaLinesIn()
+
+     initPublish()
+     initSubscribeP()
+     initSubscribeI()
+     initSubscribeD()
+     initSubscribeSP()
+     initSubscribeCO()
+     initSubscribeIstatus()
+     initSubscribeDstatus()
+     initSubscribeTune()
+
+
+    showSourceJS()
+}
+
+function showSource()
+{
+  sourceDiv.style.visibility="visible"
+  sourceDiv.style.height=+sourceDiv.scrollHeight+"px"
+
+  closeSourceButton.disabled=false
+
+  var frameHeight=container.scrollHeight+100
+
+    d3.select(parent.frame4).transition().duration(1000).attr("height",frameHeight)
+
+
+}
+
+function closeSource()
+{
+   d3.select("#sourceDiv").transition().duration(1000).style("height","1px")
+   setTimeout('sourceDiv.style.visibility="hidden"',1000)
+  closeSourceButton.disabled=true
+
+   d3.select(parent.frame4).transition().duration(1000).attr("height",880)
+}
+
+
+
+</script>
+
+</body>
+
+</html>

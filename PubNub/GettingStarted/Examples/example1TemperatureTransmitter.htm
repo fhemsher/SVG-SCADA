@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>Smart Field Device</title>
+  <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.2.js"></script>
+</head>
+
+<body>
+
+<CENTER>Temperature:<input type=text  id=temperatureValue value=0 style=width:30px >&deg;F
+
+</center>
+ <script>
+
+setInterval(
+function()
+{
+
+   pubnub.subscribe(
+    {
+        channels: ['transmitter']
+    });
+   pubnub.addListener(
+    {
+        status: function(statusEvent)
+        {
+
+            console.log(statusEvent)
+
+        }
+    })
+
+
+},2000)
+
+
+
+
+var pubnub
+function initialize()
+{
+    pubnub = new PubNub(
+    {
+        publishKey : 'pub-c-ea28c028-e01a-4d16-80ec-0ad017c8a0a1',
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+   })
+    pubnub.addListener(
+    {
+        status: function(statusEvent)
+        {
+             console.log(statusEvent)
+        }
+    })
+
+    console.log("Subscribing..");
+    pubnub.subscribe(
+    {
+        channels: ['transmitter']
+    });
+}
+
+var Message
+function publishData()
+{
+    Message= (Math.random() * 20) + 140
+    var publishConfig =
+    {
+        channel : "transmitter",
+        message :Message
+    }
+    pubnub.publish(publishConfig, function(status, response)
+    {
+        //console.log(status, response);
+        temperatureValue.value=Message
+
+    })
+}
+
+
+//---buttons--
+var PublishInterval
+function startSending()
+{
+    PublishInterval=setInterval(publishData,100)
+    stopSendingButton.disabled=false
+    startSendingButton.disabled=true
+}
+function stopSending()
+{
+    clearInterval(PublishInterval)
+    stopSendingButton.disabled=true
+    startSendingButton.disabled=false
+}
+
+
+document.addEventListener("onload",init(),false)
+function init()
+{
+    initialize()
+
+
+}
+ </script>
+</body>
+
+</html>

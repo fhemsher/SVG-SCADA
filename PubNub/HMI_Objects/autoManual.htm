@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <title>Auto/Manual Override</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+ <script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.2.js"></script>
+
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style>
+
+.ticks {
+  font: 10px sans-serif;
+}
+
+.track,
+.track-inset,
+.track-overlay {
+  stroke-linecap: round;
+}
+
+.track {
+  stroke: #000;
+  stroke-opacity: 0.3;
+  stroke-width: 12px;
+}
+
+.track-inset {
+  stroke: #ddd;
+  stroke-width: 8px;
+}
+
+.track-overlay {
+  pointer-events: stroke;
+  stroke-width: 50px;
+  stroke: transparent;
+  cursor: pointer;
+}
+
+.handle {
+
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.25px;
+}
+
+</style>
+
+
+</head>
+<body  style='padding:10px;font-family:arial'>
+    <div id=container>
+
+<center>
+<h4>Auto/Manual Override</h4>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+The Auto/Manual Override can function to adjust a control signal to a field control device.
+
+This shows both the field process auto/manual override, and an interactive SVG SCADA drawing of the associated Auto/Manual Override. Both are connected to the Data Stream Network.
+
+</div>
+<table>
+<tr>
+<td valign=top >
+<div style="text-align:justify;width:360px;padding:10px;">
+   <b>Sequence Of Operation:</b><p></p>
+Initially the A/M Overrides are shown in the 'Auto' mode, where the signal out is equal to the signal in. (A random signal generator is simulating the signal in value.)
+The signals  are being <b>published</b> at the field device, whereby  SCADA is <b>subscribing</b> to the values.
+<br><br>Three(3)  values are monitored:<br>
+1.) Auto or Manual selection.<br>
+2.) Control signal in value.<br>
+3.) Control signal out value.<br>
+<br>
+Either the Field Device A/M override or the SCADA A/M override can function to adjust the signal out value.
+Select  either 'Manual' button, then move the associated slider to override the signal out value.
+<br><br>
+Note: The A/M override includes bumpless transfer, where the signal out matches the signal in during A/M selection.
+
+</div>
+
+</td>
+<td>
+<div id="svgDiv" style='border:1px solid black;width:800px;height:560px;'>
+<svg xmlns="http://www.w3.org/2000/svg" id="mySVG" width="800" height="560" viewBox="0 0 800 560" style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><style xmlns="http://www.w3.org/1999/xhtml"></style><defs xmlns="http://www.w3.org/1999/xhtml"></defs>
+
+<g id="publishG"><g id="publishElemG" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><polygon stroke="#000000" stroke-width="2" fill="#FF0000" fill-opacity="1.0" vCnt="3" radius="70" transform="matrix(0.866025 0.5 -0.5 0.866025 172 171)" points="70 0 -35 -60.6218 -35 60.6218" rotateAngle="30.000010690579252"/><rect stroke="#FF0000" stroke-width="3" fill="white" fill-opacity="0" stroke-dasharray="8 4" rx="12" ry="12" transform="matrix(1 0 0 1 369 169)" width="399" height="338" rotateAngle="0"/><rect stroke="#8A2BE2" stroke-width="3" fill="white" fill-opacity="0" stroke-dasharray="8 4" rx="12" ry="12" transform="matrix(1 0 0 1 377 223)" width="381" height="251" rotateAngle="0"/><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.3" fill="#000000" transform="matrix(1 0 0 1 4 257)" rotateAngle="0" filter="null">
+Signal In</text><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.3" fill="#000000" transform="matrix(1 0 0 1 278 464)" rotateAngle="0" filter="null">
+Signal Out</text><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.4" fill="#000000" transform="matrix(1 0 0 1 121 437)" rotateAngle="0" filter="null">
+Field Device</text><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.3" fill="#000000" transform="matrix(1 0 0 1 382 258)" rotateAngle="0" filter="null">
+Signal In</text><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.3" fill="#000000" transform="matrix(1 0 0 1 678 461)" rotateAngle="0" filter="null">
+Signal Out</text><path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="5" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 42 47 L 781 47" rightAngle="true" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="5" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 172 45 L 172 104" rightAngle="true" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="5" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 721 47 L 721 168" rightAngle="true" rotateAngle="0"/><text font-family="Arial" font-size="20" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#FF0000" transform="matrix(1 0 0 1 279 32)" rotateAngle="0">
+Data Stream Network</text><text font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0.4" fill="#000000" transform="matrix(1 0 0 1 94 532)" rotateAngle="0" filter="null">
+Process Control</text><text font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 498 534)" rotateAngle="0">
+Interactive SCADA</text><text font-family="Arial" font-size="30" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.6" fill="#000000" transform="matrix(1 0 0 1 255 101)" rotateAngle="0" filter="null">
+Auto/Manual Override</text><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.3" fill="#000000" transform="matrix(1 0 0 1 522 158)" rotateAngle="0" filter="null">
+Auto/Manual</text><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.3" fill="#000000" transform="matrix(1 0 0 1 443 158)" rotateAngle="0" filter="null">
+Signal In</text><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.3" fill="#000000" transform="matrix(1 0 0 1 620 157)" rotateAngle="0" filter="null">
+Signal Out</text><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" stroke-opacity="1.0" stroke-dasharray="8 4" marker-end="url(#arrow000000)" d="M 14 263 L 14 306 L 67 306" rightAngle="true" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" stroke-opacity="1.0" stroke-dasharray="8 4" marker-end="url(#arrow000000)" d="M 270 388 L 310 388 L 310 446" rightAngle="true" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#00FF00" stroke-width="3" stroke-opacity="1.0" stroke-dasharray="8 4" marker-end="url(#arrow00FF00)" d="M 407 265 L 407 304 L 466 304" rightAngle="true" rotateAngle="0"/><path id=signalOutPath fill="none" fill-opacity="1.0" stroke="#00FF00" stroke-width="3" stroke-opacity="1.0" stroke-dasharray="8 4" marker-end="url(#arrow00FF00)" d="M 669 386 L 715 386 L 715 442" rightAngle="true" rotateAngle="0"/><text font-family="Arial" font-size="20" font-weight="bold" font-style="normal" stroke="none" stroke-width="0.4" fill="#FF0000" transform="matrix(1 0 0 1 509 497)" rotateAngle="0" filter="null">JavaScript SDK</text><text font-family="Arial" font-size="20" font-weight="bold" font-style="#FF0000" stroke="none" stroke-width="0" fill="#9400D3" transform="matrix(1 0 0 1 528 453)" rotateAngle="0">Browser</text><path id=scadaSignalInPath fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrowFF0000)" d="M 475 170 L 475 221" rightAngle="true"/><path id=scadaSignalOutPath  fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrowFF0000)" d="M 641 169 L 641 224" rightAngle="true"/><path id=scadaAMPath  fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrowFF0000)" d="M 560 167 L 560 219" rightAngle="true"/><path id=processSignalInPath fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 137 285 L 137 209" rightAngle="true" rotateAngle="0"/><path id=processAMPath fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 171 286 L 171 209" rightAngle="true"/><path id=processSignalOutPath fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 209 286 L 209 211" rightAngle="true" rotateAngle="0"/><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.3" fill="#000000" transform="matrix(1 0 0 1 132 201)" rotateAngle="0" filter="null">In</text><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.3" fill="#000000" transform="matrix(1 0 0 1 197 203)" rotateAngle="0" filter="null">Out</text><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.3" fill="#000000" transform="matrix(1 0 0 1 160 202)" rotateAngle="0" filter="null">A/M</text><text font-family="Times New Roman" font-size="25" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 152 154)" rotateAngle="0">IoT</text></g></g><defs id="arrowDefs"><marker id="arrow000000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#000000" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker><marker id="arrowFF0000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#FF0000" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker><marker id="arrow00FF00" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#00FF00" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker><marker id="arrowFF8C00" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#FF8C00" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker></defs></svg>
+</div>
+
+</td>
+</tr></table>
+
+    <br><button title="Show Javascript Source" onclick=showSource()>Javascript Source</button> <button title="Close javascript source" disabled id=closeSourceButton onClick=closeSource()>X</button>
+
+ <div id=sourceDiv style=overflow:auto;width:100%;height:1px;visibility:hidden;overflow:hidden>
+  <br>Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:90%;text-align:left; ></div>
+</div>
+</center>
+    </div>
+
+    <div id=autoManualScadaDiv style='position:absolute; top:425.5px;left:890.5px;border-radius:10px;background:skyblue;width:200px;border:3px solid blue'>
+     <table style=width:100% >
+    <tr><td><input id=signalScadaInValue  style='border:inset 3px;font-size:110%;text-align:center;font-weight:bold;color:lime;background:black;width:100px' value="50%" type="text" /> <button style="background:lime;border:4px inset;width:80px" onclick=autoScadaButtonClicked() id=autoScadaButton>Auto</button></td></tr>
+    <tr>
+        <td>
+      <svg id=autoManualScadaSVG width=190 height=40 ></svg>
+        </td>
+    </tr>
+    <tr><td align=right><button style='background:darkorange;border:4px outset;width:80px' onclick=manualScadaButtonClicked() id=manualScadaButton>Manual</button> <input id=signalScadaOutValue style='border:inset 3px;font-size:110%;text-align:center;font-weight:bold;color:lime;background:black;width:100px' value="50%" type="text" /></td></tr>
+    </table>
+  </div>
+
+    <div id=autoManualProcessDiv  style='position:absolute; top:425.5px;left:490.5px;border-radius:10px;background:grey;width:200px;border:3px solid gainsboro'>
+    <table style=width:100%>
+    <tr><td><input id=signalProcessInValue  style='background:gainsboro;border:inset 3px;font-size:110%;text-align:center;font-weight:bold;width:100px' value="50%" type="text" /> <button  style="border:4px inset;width:80px" onclick=autoProcessButtonClicked() id=autoProcessButton>Auto</button></td></tr>
+    <tr>
+        <td>
+      <svg id=autoManualProcessSVG width=190 height=40 ></svg>
+        </td>
+    </tr>
+    <tr><td align=right><button style='border:4px outset;width:80px' onclick=manualProcessButtonClicked() id=manualProcessButton>Manual</button> <input id=signalProcessOutValue style='background:gainsboro;border:inset 3px;font-size:110%;text-align:center;font-weight:bold;width:100px' value="50%" type="text" /></td></tr>
+    </table>
+  </div>
+
+<script id=myScript>
+//---JavaScript SDK  https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.2.js ---
+//--onload---
+var pubnub
+function initPublish()
+{
+    pubnub = new PubNub(
+    {
+        publishKey : 'pub-c-ea28c028-e01a-4d16-80ec-0ad017c8a0a1',
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+   })
+
+}
+
+//---channels---
+var utcms=new Date().getTime() //---timestamp for this example client---
+
+var ProcessOverride="ProcessOverride"+utcms
+var ScadaOverride="ScadaOverride"+utcms
+var SignalIn="SignalIn"+utcms
+var ScadaSignalOut="ScadaSignalOut"+utcms
+var ProcessSignalOut="ProcessSignalOut"+utcms
+
+
+//===================PUBLISH==================
+function publishProcessOverride(msg)
+{
+    var publishConfig =
+    {
+        channel : ProcessOverride ,  //---unique for this viewer "ProcessOverride"+timeStamp---
+        message :msg
+    }
+    pubnub.publish(publishConfig)
+}
+//---function publishing above---
+function autoProcessButtonClicked()
+{
+    OverrideProcess=false
+    autoProcessButton.style.border="inset 4px"
+    manualProcessButton.style.border="outset 4px"
+    var from=+signalProcessOutValue.value.split(units)[0]
+    var to=+signalProcessInValue.value.split(units)[0]
+    transitionSliderProcess(from,to)
+    dragHandleProcess.setAttribute("fill","white")
+     //---PUBLISH---
+     publishProcessOverride("Auto")
+}
+function manualProcessButtonClicked()
+{
+    OverrideProcess=true
+    autoProcessButton.style.border="outset 4px"
+    manualProcessButton.style.border="inset 4px"
+
+    var from=+signalProcessInValue.value.split(units)[0]
+    var to=+signalProcessOutValue.value.split(units)[0]
+    transitionSliderProcess(from,to)
+     //---PUBLISH---
+    publishProcessOverride("Manual")
+}
+
+
+function publishScadaOverride(msg)
+{
+    var publishConfig =
+    {
+        channel : ScadaOverride ,  //---unique for this viewer "ScadaOverride"+timeStamp---
+        message :msg
+    }
+    pubnub.publish(publishConfig)
+}
+//---function publishing above---
+function autoScadaButtonClicked()
+{
+    OverrideScada=false
+    autoScadaButton.style.border="inset 4px"
+    manualScadaButton.style.border="outset 4px"
+    var from=+signalScadaOutValue.value.split(units)[0]
+    var to=+signalScadaInValue.value.split(units)[0]
+    transitionSliderScada(from,to)
+    signalScadaOutValue.style.color="lime"
+    dragHandleScada.setAttribute("fill","white")
+
+    signalOutPath.setAttribute("stroke","#00FF00")
+    signalOutPath.setAttribute("marker-end","url(#arrow00FF00)")
+
+     //---PUBLISH---
+    publishScadaOverride("Auto")
+
+}
+function manualScadaButtonClicked()
+{
+    OverrideScada=true
+    autoScadaButton.style.border="outset 4px"
+    manualScadaButton.style.border="inset 4px"
+    signalScadaOutValue.style.color="darkorange"
+    dragHandleScada.setAttribute("fill","darkorange")
+
+    var from=+signalScadaInValue.value.split(units)[0]
+    var to=+signalScadaOutValue.value.split(units)[0]
+    transitionSliderScada(from,to)
+
+    signalOutPath.setAttribute("stroke","#FF8C00")
+    signalOutPath.setAttribute("marker-end","url(#arrowFF8C00)")
+     //---PUBLISH---
+    publishScadaOverride("Manual")
+
+}
+//--signal simulated generator: every 3 seconds---
+function publishSignalIn(msg)
+{
+    var publishConfig =
+    {
+        channel : SignalIn ,  //---unique for this viewer "SignalIn"+timeStamp---
+        message :msg
+    }
+    pubnub.publish(publishConfig)
+}
+
+function publishScadaSignalOut(msg)
+{
+    var publishConfig =
+    {
+        channel : ScadaSignalOut ,  //---unique for this viewer "ScadaSignalOut"+timeStamp---
+        message :msg
+    }
+    pubnub.publish(publishConfig)
+}
+//---User slider adjust: fires above ----
+function slideProcess(h)
+{
+    if(OverrideScada==false)
+    {
+        HandleProcess.attr("cx", TRxProcess(h));
+        signalProcessOutValue.value=h.toFixed(0) + units;
+
+        if(OverrideProcess==true)  //---PUBLISH---
+            publishScadaSignalOut(h.toFixed(0))
+    }
+}
+function publishProcessSignalOut(msg)
+{
+    var publishConfig =
+    {
+        channel : ProcessSignalOut ,  //---unique for this viewer "ProcessSignalOut"+timeStamp---
+        message :msg
+    }
+    pubnub.publish(publishConfig)
+}
+//---Scada operator ajusts override slider---
+function slideScada(h)
+{
+    if(OverrideProcess==false)
+    {
+        HandleScada.attr("cx", TRxScada(h));
+        signalScadaOutValue.value=h.toFixed(0) + units;
+
+        if(OverrideScada==true) //---PUBLISH---
+            publishProcessSignalOut(h.toFixed(0))
+    }
+}
+
+//============SUBSCRIBE================
+
+//---0nload---
+function initSubscribeProcessOverride()
+{
+    subscribeProcessOverride = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeProcessOverride.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+             setScadaOverride(msg) //---Subscribe Function: see below---
+        }
+    })
+    subscribeProcessOverride.subscribe(
+    {
+        channels: [ProcessOverride]
+    })
+}
+//----Subscribe function fired-------
+//--Process selected Auto/Manual---
+function setScadaOverride(msg)
+{
+    if(msg=="Manual")
+    {
+        autoScadaButton.disabled=true
+        manualScadaButton.disabled=true
+        SliderScada.attr("pointer-events","none")
+        HandleScada.attr("pointer-events","none")
+
+        autoScadaButton.style.border="outset 4px"
+        manualScadaButton.style.border="inset 4px"
+        signalScadaOutValue.style.color="darkorange"
+        dragHandleScada.setAttribute("fill","darkorange")
+        signalOutPath.setAttribute("stroke","#FF8C00")
+        signalOutPath.setAttribute("marker-end","url(#arrowFF8C00)")
+    }
+    else if(msg=="Auto")
+    {
+        autoScadaButton.disabled=false
+        manualScadaButton.disabled=false
+        SliderScada.attr("pointer-events",null)
+        HandleScada.attr("pointer-events",null)
+        autoScadaButton.style.border="inset 4px"
+        manualScadaButton.style.border="outset 4px"
+        signalScadaOutValue.style.color="lime"
+        dragHandleScada.setAttribute("fill","white")
+        signalOutPath.setAttribute("stroke","#00FF00")
+        signalOutPath.setAttribute("marker-end","url(#arrow00FF00)")
+    }
+
+    OverrideScada=false
+    autoManualProcessDiv.style.borderColor="red"
+    autoManualScadaDiv.style.borderColor="blue"
+
+    flipPublishScadaPaths()
+}
+
+
+function initSubscribeScadaOverride()
+{
+    subscribeScadaOverride = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeScadaOverride.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+             setProcessOverride(msg)   //---Subscribe Function: see below---
+        }
+    })
+    subscribeScadaOverride.subscribe(
+    {
+        channels: [ScadaOverride]
+    })
+}
+//--Subscribe function Scada Auto/Manual select---
+function setProcessOverride(msg)
+{
+    if(msg=="Manual")
+    {
+        autoProcessButton.disabled=true
+        manualProcessButton.disabled=true
+        SliderProcess.attr("pointer-events","none")
+        HandleProcess.attr("pointer-events","none")
+        autoProcessButton.style.border="outset 4px"
+        manualProcessButton.style.border="inset 4px"
+    }
+    else if(msg=="Auto")
+    {
+        autoProcessButton.disabled=false
+        manualProcessButton.disabled=false
+        SliderProcess.attr("pointer-events",null)
+        HandleProcess.attr("pointer-events",null)
+        autoProcessButton.style.border="inset 4px"
+        manualProcessButton.style.border="outset 4px"
+    }
+
+    OverrideProcess=false
+    flipPublishProcessPaths()
+    autoManualProcessDiv.style.borderColor="gainsboro"
+    autoManualScadaDiv.style.borderColor="red"
+
+}
+function initSubscribeSignalIn()
+{
+    subscribeSignalIn = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeSignalIn.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+            scadaSignalIn(msg)  //---Subscribe Function: see below---
+        }
+    })
+    subscribeSignalIn.subscribe(
+    {
+        channels: [SignalIn]
+    })
+}
+//---fired subscribe function---
+function scadaSignalIn(msg)
+{
+    var v1=+signalScadaInValue.value.split(units)[0]
+    transitionSliderScada(v1,msg)
+    signalScadaInValue.value=msg+units
+}
+
+function initSubscribeScadaSignalOut()
+{
+    subscribeScadaSignalOut = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeScadaSignalOut.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+           setProcessSignalOut(msg)  //---Subscribe Function: see below---
+        }
+    })
+    subscribeScadaSignalOut.subscribe(
+    {
+        channels: [ScadaSignalOut]
+    })
+}
+//---Subscribe function fired---
+function setProcessSignalOut(msg)
+{
+    var v1=+signalScadaOutValue.value.split(units)[0]
+    transitionSliderScada(v1,msg)
+    signalScadaOutValue.value=msg+units
+}
+
+function initSubscribeProcessSignalOut()
+{
+    subscribeProcessSignalOut = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeProcessSignalOut.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+           setScadaSignalOut(msg)  //---Subscribe Function: see below---
+        }
+    })
+    subscribeProcessSignalOut.subscribe(
+    {
+        channels: [ProcessSignalOut]
+    })
+}
+//---Subscribe function fired---
+function setScadaSignalOut(msg)
+{
+    var v1=+signalProcessOutValue.value.split(units)[0]
+    transitionSliderProcess(v1,msg)
+    signalProcessOutValue.value=msg+units
+}
+
+
+//==============Build auto/manual sliders===========
+var OverrideScada=false
+var SliderScada
+var HandleScada
+var TRxScada
+
+var units="\u0025" //---utf8---
+function buildScadaSlider()
+{
+    signalScadaInValue.value=50+units
+    signalScadaOutValue.value=50+units
+
+    var svg = d3.select("#autoManualScadaSVG")
+    console.log(svg)
+    width = 160
+    height = 40
+
+    TRxScada = d3.scaleLinear()
+    .domain([0, 100])
+    .range([0, width])
+    .clamp(true);
+
+    SliderScada = svg.append("g")
+    .attr("class", "slider")
+    .attr("transform", "translate(15 " + height / 2 + ")");
+
+    SliderScada.append("line")
+    .attr("class", "track")
+    .attr("x1", TRxScada.range()[0])
+    .attr("x2", TRxScada.range()[1])
+    .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-inset")
+    .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-overlay")
+    .call(d3.drag()
+    .on("start.interrupt", function() { SliderScada.interrupt(); })
+    .on("start drag", function() { if(OverrideScada==true)  slideScada(TRxScada.invert(d3.event.x)); }));
+
+    SliderScada.insert("g", ".track-overlay")
+    .attr("class", "ticks")
+    .attr("transform", "translate(0," + 18 + ")")
+    .selectAll("text")
+    .data(TRxScada.ticks(5))
+    .enter().append("text")
+    .attr("x", TRxScada)
+    .attr("text-anchor", "middle")
+    .text(function(d) { return d + units; });
+
+    HandleScada = SliderScada.insert("circle", ".track-overlay")
+    .attr("id", "dragHandleScada")
+    .attr("class", "handle")
+    .attr("fill", "white")
+    .attr("r", 9);
+
+    transitionSliderScada(0,50)
+}
+
+
+function transitionSliderScada(from,to)
+{
+    if(OverrideScada==false)
+        SliderScada.transition()
+        .duration(750)
+        .tween("slideScada", function()
+        {
+            var i = d3.interpolate(from, to);
+            return function(t) { slideScada(i(t)); };
+        });
+
+}
+
+
+//========================process=========================
+var OverrideProcess=false
+var SliderProcess
+var HandleProcess
+var TRxProcess
+
+var units="\u0025" //---utf8---
+function buildProcessSlider()
+{
+    signalProcessInValue.value=50+units
+    signalProcessOutValue.value=50+units
+
+    var svg = d3.select("#autoManualProcessSVG")
+
+    width = 160
+    height = 40
+
+    TRxProcess = d3.scaleLinear()
+    .domain([0, 100])
+    .range([0, width])
+    .clamp(true);
+
+    SliderProcess = svg.append("g")
+    .attr("class", "slider")
+    .attr("transform", "translate(15 " + height / 2 + ")");
+
+    SliderProcess.append("line")
+    .attr("class", "track")
+    .attr("x1", TRxProcess.range()[0])
+    .attr("x2", TRxProcess.range()[1])
+    .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-inset")
+    .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-overlay")
+    .call(d3.drag()
+    .on("start.interrupt", function() { SliderProcess.interrupt(); })
+    .on("start drag", function() { if(OverrideProcess==true)  slideProcess(TRxProcess.invert(d3.event.x)); }));
+
+    SliderProcess.insert("g", ".track-overlay")
+    .attr("class", "ticks")
+    .attr("transform", "translate(0," + 18 + ")")
+    .selectAll("text")
+    .data(TRxProcess.ticks(5))
+    .enter().append("text")
+    .attr("x", TRxProcess)
+    .attr("text-anchor", "middle")
+    .text(function(d) { return d + units; });
+
+    HandleProcess = SliderProcess.insert("circle", ".track-overlay")
+    .attr("id", "dragHandleProcess")
+    .attr("class", "handle")
+    .attr("fill", "white")
+    .attr("r", 9);
+
+    transitionSliderProcess(0,50)
+}
+
+function transitionSliderProcess(from,to)
+{
+    if(OverrideProcess==false)
+        SliderProcess.transition()
+        .duration(750)
+        .tween("slideProcess", function()
+        {
+            var i = d3.interpolate(from, to);
+               return function(t) { slideProcess(i(t)); };
+        });
+}
+
+</script>
+<script>
+
+function locateAM()
+{
+    var bb= svgDiv.getBoundingClientRect()
+    var x = bb.left
+    var y = bb.top
+    var xScada=468
+    var yScada=288
+    var xProcess=68
+    var yProcess=288
+   var xScroll = document.documentElement.scrollLeft;
+    var yScroll = document.documentElement.scrollTop;
+
+    var leftScada=x+xScada+xScroll
+    var topScada=y+yScada+yScroll
+
+    autoManualScadaDiv.style.left=leftScada+"px"
+    autoManualScadaDiv.style.top=topScada+"px"
+    var leftProcess=x+xProcess+xScroll
+    var topProcess=y+yProcess+yScroll
+    autoManualProcessDiv.style.left=leftProcess+"px"
+    autoManualProcessDiv.style.top=topProcess+"px"
+
+
+
+}
+
+
+function flipPublishProcessPaths()
+{
+   var bb=scadaAMPath.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   scadaAMPath.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+   var bb=scadaSignalOutPath.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   scadaSignalOutPath.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+       var bb=processAMPath.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   processAMPath.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+   var bb=processSignalOutPath.getBBox()
+   var cx=bb.x+.5*bb.width
+   var cy=bb.y+.5*bb.height
+   processSignalOutPath.setAttribute("transform","rotate(180 "+cx+","+cy+")")
+
+}
+
+function flipPublishScadaPaths()
+{
+   scadaAMPath.removeAttribute("transform")
+   scadaSignalOutPath.removeAttribute("transform")
+   processAMPath.removeAttribute("transform")
+   processSignalOutPath.removeAttribute("transform")
+}
+
+//---fired at simulated signal generator
+function processSignalIn(signalIn)
+{
+    var v1=+signalProcessInValue.value.split(units)[0]
+    transitionSliderProcess(v1,signalIn)
+    signalProcessInValue.value=signalIn+units
+}
+
+
+
+document.addEventListener("onload",init(),false)
+
+function init()
+{
+    initPublish()
+    initSubscribeProcessOverride()
+    initSubscribeScadaOverride()
+    initSubscribeSignalIn()
+    initSubscribeScadaSignalOut()
+    initSubscribeProcessSignalOut()
+
+
+   locateAM()
+   buildScadaSlider()
+   buildProcessSlider()
+
+   var signalGenerator=setInterval(
+   function()
+   {
+        var signalIn=Math.round(Math.random()*10)+45
+        processSignalIn(signalIn)
+        publishSignalIn(signalIn)
+   },3000)
+    showSourceJS()
+}
+
+function showSource()
+{
+  sourceDiv.style.visibility="visible"
+  sourceDiv.style.height=+sourceDiv.scrollHeight+"px"
+
+  closeSourceButton.disabled=false
+
+  var frameHeight=container.scrollHeight+100
+
+    d3.select(parent.frameAM).transition().duration(1000).attr("height",frameHeight)
+
+
+}
+
+function closeSource()
+{
+   d3.select("#sourceDiv").transition().duration(1000).style("height","1px")
+   setTimeout('sourceDiv.style.visibility="hidden"',1000)
+  closeSourceButton.disabled=true
+
+   d3.select(parent.frameAM).transition().duration(1000).attr("height",880)
+}
+
+
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,2640 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="publishSVG" width="800" height="560" viewBox="0 0 800 560" style="cursor: default; touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><style xmlns="http://www.w3.org/1999/xhtml">.gridVFD line {stroke: black;stroke-opacity: 0.5;}.gridVFD path {stroke-width: 0;}.axisBlue line{stroke: blue;}.axisBlue path{stroke: blue;}.chartLineLeft {fill: none;stroke: DarkViolet;stroke-width: 3;}.chartLineRight2 {fill: none;stroke: red;stroke-width: 3;}.chartLineRight1 {fill: none;stroke: blue;stroke-width: 3;}.axisred line{stroke: red;}.axisred path{stroke: red;}.axisBlue line{stroke: blue;}.axisBlue path{stroke: blue;}.axisDarkViolet line{stroke: DarkViolet;}.axisDarkViolet path{stroke: DarkViolet;}</style><defs xmlns="http://www.w3.org/1999/xhtml"></defs>
+    
+<g id="publishG"><g id="publishElemG" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1" stroke-opacity="1.0" stroke-dasharray="8 4" marker-end="url(#arrow000000)" d="M 137 20 L 220 20 L 220 117" rightAngle="true" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#ADFF2F" stroke-width="20" stroke-opacity="1.0" d="M 399 48 L 399 27 L 766 27 L 766 218 L 470 218 L 470 283 L 49 283 L 49 48 z" filter="url(#pipe3D)" stroke-linejoin="round" rightAngle="true" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="2" stroke-opacity="1.0" marker-end="url(#arrowFF0000)" d="M 582 151 L 681 151 L 681 177" rightAngle="true" rotateAngle="0"/><g xmlns="http://www.w3.org/2000/svg" transform="matrix(5.55112e-17 0.3 -0.3 5.55112e-17 147.5 -141.65)" parentid="component1520522111093">
+
+<rect id="rect1520520864420" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="72" height="60" rx="10" ry="10" transform="matrix(1 0 0 1 501 39)"/>
+
+<text id="text1520520897548" font-family="Arial" font-size="40" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 512 81)">
+
+TT</text>
+
+<rect id="rect1520520967040" fill="#000000" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="19" height="37" transform="matrix(1 0 0 1 526 100)"/>
+
+<rect id="rect1520521037307" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="38" height="91" rx="10" ry="10" transform="matrix(1 0 0 1 517 138)"/>
+
+<rect id="rect1520521155532" fill="#FF0000" fill-opacity="1.0" stroke="#000000" stroke-width="0.5" x="0" y="0" width="27" height="10" transform="matrix(1 0 0 1 524 197)"/>
+
+<text id="text1520521320528" font-family="Arial" font-size="25" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 527 253)">
+
+IC</text>
+
+<text id="icon1520521093750" font-size="45" font-family="Arial Unicode MS" stroke-width="1" fill="#4169E1" stroke="black" x="-24.7421875" y="17" transform="matrix(1 0 0 1 539 177)" cursor="default">
+
+▼</text>
+
+<rect width="72" height="219" fill="white" fill-opacity="0" transform="translate(501,39)" style="cursor: default;" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5"/>
+
+</g><g xmlns="http://www.w3.org/2000/svg" transform="matrix(0.3 0 0 0.3 241.9 226.95)" parentid="component1520522111093">
+
+<rect id="rect1520520864420" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="72" height="60" rx="10" ry="10" transform="matrix(1 0 0 1 501 39)"/>
+
+<text id="text1520520897548" font-family="Arial" font-size="40" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 512 81)">
+
+TT</text>
+
+<rect id="rect1520520967040" fill="#000000" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="19" height="37" transform="matrix(1 0 0 1 526 100)"/>
+
+<rect id="rect1520521037307" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="38" height="91" rx="10" ry="10" transform="matrix(1 0 0 1 517 138)"/>
+
+<rect id="rect1520521155532" fill="#FF0000" fill-opacity="1.0" stroke="#000000" stroke-width="0.5" x="0" y="0" width="27" height="10" transform="matrix(1 0 0 1 524 197)"/>
+
+<text id="text1520521320528" font-family="Arial" font-size="25" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 527 253)">
+
+IC</text>
+
+<text id="icon1520521093750" font-size="45" font-family="Arial Unicode MS" stroke-width="1" fill="#4169E1" stroke="black" x="-24.7421875" y="17" transform="matrix(1 0 0 1 539 177)" cursor="default">
+
+▼</text>
+
+<rect width="72" height="219" fill="white" fill-opacity="0" transform="translate(501,39)" style="cursor: default;" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5"/>
+
+</g><g title="Heat Exchanger" parentid="" transform="matrix(1.15 0 0 1.15 543.75 173.75)">
+
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Heat Exchanger" class="Heating" height="82" width="170" viewBox="0 0 170 82.0034" nativewidth="170" nativeheight="82" overflow="visible" myscale="1.0">
+
+
+    <defs>
+
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="lg1_105">
+
+
+            <stop stop-color="#b76c68" offset="0"/>
+
+
+            <stop stop-color="#f09995" offset="0.15"/>
+
+
+            <stop stop-color="#f6ccca" offset="0.25"/>
+
+
+            <stop stop-color="#d17c78" offset="0.44"/>
+
+
+            <stop stop-color="#ba6e6a" offset="0.6"/>
+
+
+            <stop stop-color="#9d5c59" offset="0.8"/>
+
+
+            <stop stop-color="#8f5451" offset="0.97"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="lg2_105">
+
+
+            <stop stop-color="#b76c68" offset="0"/>
+
+
+            <stop stop-color="#f09995" offset="0.15"/>
+
+
+            <stop stop-color="#f6ccca" offset="0.25"/>
+
+
+            <stop stop-color="#d17c78" offset="0.44"/>
+
+
+            <stop stop-color="#ba6e6a" offset="0.6"/>
+
+
+            <stop stop-color="#9d5c59" offset="0.8"/>
+
+
+            <stop stop-color="#8f5451" offset="0.97"/>
+
+
+            <stop stop-color="#be716d" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="lg3_105">
+
+
+            <stop stop-color="#b23e4b" offset="0"/>
+
+
+            <stop stop-color="#e96a76" offset="0.15"/>
+
+
+            <stop stop-color="#f3bbbf" offset="0.25"/>
+
+
+            <stop stop-color="#cb4857" offset="0.44"/>
+
+
+            <stop stop-color="#b5404c" offset="0.6"/>
+
+
+            <stop stop-color="#98343f" offset="0.8"/>
+
+
+            <stop stop-color="#8b2f39" offset="0.97"/>
+
+
+            <stop stop-color="#b9414e" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="lg4_105">
+
+
+            <stop stop-color="#a96460" offset="0"/>
+
+
+            <stop stop-color="#f2adaa" offset="0.01"/>
+
+
+            <stop stop-color="#dc837f" offset="0.05"/>
+
+
+            <stop stop-color="#d9817d" offset="0.9"/>
+
+
+            <stop stop-color="#d47e7a" offset="0.95"/>
+
+
+            <stop stop-color="#9d5c59" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="lg5_105">
+
+
+            <stop stop-color="#b76c68" offset="0"/>
+
+
+            <stop stop-color="#f09995" offset="0.15"/>
+
+
+            <stop stop-color="#f6ccca" offset="0.25"/>
+
+
+            <stop stop-color="#d17c78" offset="0.44"/>
+
+
+            <stop stop-color="#ba6e6a" offset="0.6"/>
+
+
+            <stop stop-color="#9d5c59" offset="0.8"/>
+
+
+            <stop stop-color="#8f5451" offset="0.97"/>
+
+
+        </linearGradient>
+
+
+    </defs>
+
+
+    <g transform="translate(1.04,1)">
+
+
+        <path transform="matrix(-1,0,0,1,168,18.3)" id="shape1" fill="url(#lg1_105)" d="M0,18.7C0,8.4,3.5,0,7.8,0C7.8,.5,7.6,37.3,7.8,37.4C3.5,37.4,0,29,0,18.7z"/>
+
+
+        <path transform="translate(7.46,18.25)" id="shape2" fill="url(#lg1_105)" d="M0,0L153.1,0L153.1,37.6L0,37.6L0,0z"/>
+
+
+        <path transform="translate(-0.04,18.25)" id="shape3" fill="url(#lg1_105)" d="M0,18.8C0,8.4,3.5,.1,7.8,.1C7.7,-1.9,8.1,37.7,7.8,37.6C3.5,37.6,0,29.1,0,18.8z"/>
+
+
+        <g transform="translate(26.16,16.44)">
+
+
+            <g transform="translate(8.72,0.66)">
+
+
+                <path transform="translate(-0.01,7.15)" id="shape4" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,14.3)" id="shape5" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,21.45)" id="shape6" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,28.61)" id="shape7" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,35.76)" id="shape8" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,-0.01)" id="shape9" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+            </g>
+
+
+            <g transform="translate(-0,0.66)">
+
+
+                <path transform="translate(-0.01,7.15)" id="shape10" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,14.3)" id="shape11" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,21.45)" id="shape12" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,28.61)" id="shape13" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,35.76)" id="shape14" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,-0.01)" id="shape15" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+            </g>
+
+
+            <path transform="translate(2.94,0)" id="shape16" fill="url(#lg3_105)" d="M.2,0L5.9,0C6.1,0,6.2,.2,6.2,.4L6.2,40.8C6.2,41,6.1,41.2,5.9,41.2L.2,41.2C.1,41.2,-0,41,-0,40.8L-0,.4C-0,.2,.1,0,.2,0z"/>
+
+
+            <path transform="translate(3.65,0)" id="shape17" fill="url(#lg2_105)" d="M.2,0L4.6,0C4.7,0,4.8,.2,4.8,.4L4.8,40.8C4.8,41,4.7,41.2,4.6,41.2L.2,41.2C.1,41.2,-0,41,-0,40.8L-0,.4C-0,.2,.1,0,.2,0z"/>
+
+
+        </g>
+
+
+        <path transform="translate(40.92,54.52)" id="shape18" fill="url(#lg4_105)" d="M0,22L5.8,22L5.8,0L0,0L0,22z"/>
+
+
+        <path transform="translate(37.85,76.22)" id="shape19" fill="url(#lg4_105)" d="M0,3.8L11.9,3.8L11.9,0L0,0L0,3.8z"/>
+
+
+        <path transform="translate(121.3,54.52)" id="shape20" fill="url(#lg4_105)" d="M0,22L5.8,22L5.8,0L0,0L0,22z"/>
+
+
+        <path transform="translate(118.24,76.22)" id="shape21" fill="url(#lg4_105)" d="M0,3.8L11.9,3.8L11.9,0L0,0L0,3.8z"/>
+
+
+        <g transform="translate(129.51,16.44)">
+
+
+            <g transform="translate(8.72,0.66)">
+
+
+                <path transform="translate(-0.01,7.15)" id="shape22" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,14.3)" id="shape23" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,21.45)" id="shape24" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,28.61)" id="shape25" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,35.76)" id="shape26" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,-0.01)" id="shape27" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+            </g>
+
+
+            <g transform="translate(-0,0.66)">
+
+
+                <path transform="translate(-0.01,7.15)" id="shape28" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,14.3)" id="shape29" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,21.45)" id="shape30" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,28.61)" id="shape31" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,35.76)" id="shape32" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,-0.01)" id="shape33" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+            </g>
+
+
+            <path transform="translate(2.94,0)" id="shape34" fill="url(#lg3_105)" d="M.2,0L5.9,0C6.1,0,6.2,.2,6.2,.4L6.2,40.8C6.2,41,6.1,41.2,5.9,41.2L.2,41.2C.1,41.2,-0,41,-0,40.8L-0,.4C-0,.2,.1,0,.2,0z"/>
+
+
+            <path transform="translate(3.65,0)" id="shape35" fill="url(#lg2_105)" d="M.2,0L4.6,0C4.7,0,4.8,.2,4.8,.4L4.8,40.8C4.8,41,4.7,41.2,4.6,41.2L.2,41.2C.1,41.2,-0,41,-0,40.8L-0,.4C-0,.2,.1,0,.2,0z"/>
+
+
+        </g>
+
+
+        <g transform="translate(53.12,55.82)">
+
+
+            <path transform="matrix(1,0,0,-1,2.5,10.3)" id="shape36" fill="url(#lg5_105)" d="M0,10.3L3.6,10.3L3.6,0L0,0L0,10.3z"/>
+
+
+            <path transform="matrix(1,0,0,-1,-0,12.3)" id="shape37" fill="url(#lg5_105)" d="M.3,-0L8.4,-0C8.6,-0,8.7,.1,8.7,.3L8.7,1.7C8.7,1.9,8.6,2.1,8.4,2.1L.3,2.1C.1,2.1,-0,1.9,-0,1.7L-0,.3C-0,.1,.1,-0,.3,-0z"/>
+
+
+        </g>
+
+
+        <g transform="translate(110.56,0.24)">
+
+
+            <path transform="translate(3.84,2.9)" id="shape38" fill="url(#lg5_105)" d="M0,15.4L9,15.4L9,0L0,0L0,15.4z"/>
+
+
+            <path transform="translate(0.02,-0.03)" id="shape39" fill="url(#lg5_105)" d="M.6,-0L15.9,-0C16.3,-0,16.6,.2,16.6,.5L16.6,2.6C16.6,2.8,16.3,3.1,15.9,3.1L.6,3.1C.3,3.1,-0,2.8,-0,2.6L-0,.5C-0,.2,.3,-0,.6,-0z"/>
+
+
+        </g>
+
+
+        <g transform="translate(141.06,0.03)">
+
+
+            <path transform="translate(3.84,2.9)" id="shape40" fill="url(#lg5_105)" d="M0,15.4L9,15.4L9,0L0,0L0,15.4z"/>
+
+
+            <path transform="translate(0.02,-0.03)" id="shape41" fill="url(#lg5_105)" d="M.6,-0L15.9,-0C16.3,-0,16.6,.2,16.6,.5L16.6,2.6C16.6,2.8,16.3,3.1,15.9,3.1L.6,3.1C.3,3.1,-0,2.8,-0,2.6L-0,.5C-0,.2,.3,-0,.6,-0z"/>
+
+
+        </g>
+
+
+    </g>
+
+
+</svg>
+
+<rect width="170" height="82" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+
+</g><g title="Horizontal Pump" parentid="" transform="matrix(0.6 0 0 0.6 351.3 15.3)">
+
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Horizontal Pump" class="Pumps" height="106" width="154" viewBox="0 0 154 105.947" nativewidth="154" nativeheight="106" overflow="visible" myscale="1.0">
+
+
+    <defs>
+
+
+        <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="lg1_219">
+
+
+            <stop stop-color="#9aa1aa" offset="0"/>
+
+
+            <stop stop-color="#aeb5c0" offset="0.22"/>
+
+
+            <stop stop-color="#dce0e5" offset="0.57"/>
+
+
+            <stop stop-color="#cacfd7" offset="0.84"/>
+
+
+            <stop stop-color="#a7afb9" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="lg2_219">
+
+
+            <stop stop-color="#8f969d" offset="0"/>
+
+
+            <stop stop-color="#d3d8de" offset="0.64"/>
+
+
+            <stop stop-color="#9aa0a8" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="lg3_219">
+
+
+            <stop stop-color="#626974" offset="0"/>
+
+
+            <stop stop-color="#ccd0d5" offset="0.66"/>
+
+
+            <stop stop-color="#5e6670" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <radialGradient fy="51" r="72.6" id="rg1" cy="51" cx="51" gradientUnits="userSpaceOnUse" fx="51">
+
+
+            <stop stop-color="#c7cbd1" offset="0"/>
+
+
+            <stop stop-color="#c4c7cd" offset="0.91"/>
+
+
+            <stop stop-color="#d4d8dd" offset="0.74"/>
+
+
+            <stop stop-color="#b6bcc4" offset="0.54"/>
+
+
+        </radialGradient>
+
+
+    </defs>
+
+
+    <g transform="translate(1.01,1)">
+
+
+        <g transform="matrix(-1,0,0,1,74.4,31.2)">
+
+
+            <path transform="matrix(0,-1,-1,0,68.3,40.6)" id="shape1" fill="url(#lg1_219)" d="M0,0L39.1,0L39.1,68.3L0,68.3L0,0z"/>
+
+
+            <path transform="matrix(0,-1,-1,0,74.4,42.9)" id="shape2" fill="url(#lg2_219)" d="M1.4,-0L41.5,-0C42.2,-0,42.9,1.3,42.9,3C42.9,4.7,42.2,6.1,41.5,6.1L1.4,6.1C.6,6.1,0,4.7,0,3C0,1.3,.6,-0,1.4,-0z"/>
+
+
+            <path transform="matrix(0,-1,-1,0,70.3,42.7)" id="shape3" fill="url(#lg3_219)" d="M42.5,0C42.4,1.1,41.9,1.9,41.1,1.9L1.4,1.9C.6,1.9,.1,1,0,0C0,0,42.5,0,42.5,0z"/>
+
+
+            <path transform="matrix(0,-1,-1,0,74.1,42.2)" id="shape4" fill="#ffffff" fill-opacity="0.32" d="M.7,0L40.8,0C41.2,0,41.5,.3,41.5,.6C41.5,.9,41.2,1.1,40.8,1.1L.7,1.1C.3,1.1,0,.9,0,.6C0,.3,.3,0,.7,0z"/>
+
+
+        </g>
+
+
+        <g transform="translate(77.55,0)">
+
+
+            <path transform="matrix(0,-1,-1,0,68.3,40.7)" id="shape5" fill="url(#lg1_219)" d="M0,0L39.1,0L39.1,68.3L0,68.3L0,0z"/>
+
+
+            <path transform="matrix(0,-1,-1,0,74.4,42.9)" id="shape6" fill="url(#lg2_219)" d="M1.4,-0L41.5,-0C42.2,-0,42.9,1.3,42.9,3C42.9,4.7,42.2,6.1,41.5,6.1L1.4,6.1C.6,6.1,0,4.7,0,3C0,1.3,.6,-0,1.4,-0z"/>
+
+
+            <path transform="matrix(0,-1,-1,0,70.3,42.7)" id="shape7" fill="url(#lg3_219)" d="M42.5,0C42.4,1.1,41.9,1.9,41.1,1.9L1.4,1.9C.6,1.9,.1,1,0,0C0,0,42.5,0,42.5,0z"/>
+
+
+            <path transform="matrix(0,-1,-1,0,74.1,42.2)" id="shape8" fill="#ffffff" fill-opacity="0.35" d="M.7,0L40.8,0C41.2,0,41.5,.3,41.5,.6C41.5,.9,41.2,1.1,40.8,1.1L.7,1.1C.3,1.1,0,.9,0,.6C0,.3,.3,0,.7,0z"/>
+
+
+        </g>
+
+
+        <g transform="translate(26.19,1.31)">
+
+
+            <path transform="matrix(0,-1,-1,0,102.8,102.6)" id="shape9" fill="url(#rg1)" stroke="#d4d6db" stroke-width="0.25" d="M0,51.4C0,23,23,0,51.3,0C79.7,0,102.6,23,102.6,51.4C102.6,79.8,79.7,102.8,51.3,102.8C23,102.8,0,79.8,0,51.4z"/>
+
+
+            <path transform="matrix(0,-1,-1,0,94.2,94)" id="shape10" fill="#ffffff" fill-opacity="0.27" d="M0,42.7C0,19.1,19.1,0,42.6,0C66.2,0,85.3,19.1,85.3,42.7C85.3,66.3,66.2,85.5,42.6,85.5C19.1,85.5,0,66.3,0,42.7z"/>
+
+
+            <path transform="matrix(0,-1,-1,0,85.9,93.9)" id="shape11" fill="#ffffff" fill-opacity="0.13" d="M0,34.5C-0.3,13,17.1,0,17.1,0L73.1,63.9C73.1,63.9,62.3,77.3,42.6,77.3C19.1,77.3,0,58.1,0,34.5z"/>
+
+
+        </g>
+
+
+    </g>
+
+
+</svg>
+
+<rect width="154" height="106" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+
+</g><g title="Control Valve" parentid="" transform="matrix(-0.5 0 0 0.5 665 74)">
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" title="Control Valve" class="Valves" height="172" viewBox="0 0 112 172.004" width="112" nativewidth="112" nativeheight="172" overflow="visible" myscale="1.0">
+
+
+    <defs>
+
+
+        <linearGradient x2="0%" y1="0%" id="lg1_417" y2="100%" x1="0%">
+
+
+            <stop stop-color="#c2b39f" offset="0"/>
+
+
+            <stop stop-color="#fdead3" offset="0.15"/>
+
+
+            <stop stop-color="#fef3e7" offset="0.25"/>
+
+
+            <stop stop-color="#deccb6" offset="0.52"/>
+
+
+            <stop stop-color="#c5b5a2" offset="0.69"/>
+
+
+            <stop stop-color="#baab98" offset="0.8"/>
+
+
+            <stop stop-color="#b0a190" offset="0.97"/>
+
+
+            <stop stop-color="#cabaa5" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="0%" y1="0%" id="lg2_417" y2="0%" x1="100%">
+
+
+            <stop stop-color="#b3a593" offset="0"/>
+
+
+            <stop stop-color="#fdeeda" offset="0.03"/>
+
+
+            <stop stop-color="#e9d7bf" offset="0.08"/>
+
+
+            <stop stop-color="#e5d3bc" offset="0.64"/>
+
+
+            <stop stop-color="#e0ceb8" offset="0.95"/>
+
+
+            <stop stop-color="#a69988" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="0%" y1="0%" id="lg3_417" y2="0%" x1="100%">
+
+
+            <stop stop-color="#c4aa84" offset="0"/>
+
+
+            <stop stop-color="#ffe0b3" offset="0.15"/>
+
+
+            <stop stop-color="#ffeed7" offset="0.25"/>
+
+
+            <stop stop-color="#dfc297" offset="0.52"/>
+
+
+            <stop stop-color="#c7ad86" offset="0.69"/>
+
+
+            <stop stop-color="#bca37e" offset="0.8"/>
+
+
+            <stop stop-color="#b19a77" offset="0.97"/>
+
+
+            <stop stop-color="#cbb189" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="0%" y1="0%" id="lg4_417" y2="0%" x1="100%">
+
+
+            <stop stop-color="#c2b39f" offset="0"/>
+
+
+            <stop stop-color="#fdead3" offset="0.15"/>
+
+
+            <stop stop-color="#fef3e7" offset="0.25"/>
+
+
+            <stop stop-color="#deccb6" offset="0.52"/>
+
+
+            <stop stop-color="#c5b5a2" offset="0.69"/>
+
+
+            <stop stop-color="#baab98" offset="0.8"/>
+
+
+            <stop stop-color="#b0a190" offset="0.97"/>
+
+
+            <stop stop-color="#cabaa5" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="0%" y1="0%" id="lg5_417" y2="0%" x1="100%">
+
+
+            <stop stop-color="#bda47f" offset="0"/>
+
+
+            <stop stop-color="#ffe0b3" offset="0.15"/>
+
+
+            <stop stop-color="#ffeed7" offset="0.25"/>
+
+
+            <stop stop-color="#dfc297" offset="0.52"/>
+
+
+            <stop stop-color="#c7ad86" offset="0.69"/>
+
+
+            <stop stop-color="#bca37e" offset="0.8"/>
+
+
+            <stop stop-color="#b19a77" offset="0.92"/>
+
+
+            <stop stop-color="#cbb189" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="0%" y1="0%" id="lg6_417" y2="100%" x1="0%">
+
+
+            <stop stop-color="#bda47f" offset="0"/>
+
+
+            <stop stop-color="#ffe0b3" offset="0.15"/>
+
+
+            <stop stop-color="#ffeed7" offset="0.25"/>
+
+
+            <stop stop-color="#dfc297" offset="0.52"/>
+
+
+            <stop stop-color="#c7ad86" offset="0.69"/>
+
+
+            <stop stop-color="#bca37e" offset="0.8"/>
+
+
+            <stop stop-color="#b19a77" offset="0.92"/>
+
+
+            <stop stop-color="#cbb189" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="4" y1="3" id="lg7_417" y2="1" x1="-0" gradientUnits="userSpaceOnUse">
+
+
+            <stop stop-color="#c7ad86" offset="0"/>
+
+
+            <stop stop-color="#ffe6c5" offset="0.15"/>
+
+
+            <stop stop-color="#ffe8c9" offset="0.25"/>
+
+
+            <stop stop-color="#dfc297" offset="0.52"/>
+
+
+            <stop stop-color="#c7ad86" offset="0.69"/>
+
+
+            <stop stop-color="#bca37e" offset="0.8"/>
+
+
+            <stop stop-color="#b19a77" offset="0.92"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="5" y1="4" id="lg8_417" y2="1" x1="-0" gradientUnits="userSpaceOnUse">
+
+
+            <stop stop-color="#c7ad86" offset="0"/>
+
+
+            <stop stop-color="#ffe6c5" offset="0.15"/>
+
+
+            <stop stop-color="#ffe8c9" offset="0.25"/>
+
+
+            <stop stop-color="#dfc297" offset="0.52"/>
+
+
+            <stop stop-color="#c7ad86" offset="0.69"/>
+
+
+            <stop stop-color="#bca37e" offset="0.8"/>
+
+
+            <stop stop-color="#b19a77" offset="0.92"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="0%" y1="0%" id="lg9_417" y2="0%" x1="100%">
+
+
+            <stop stop-color="#b59d79" offset="0"/>
+
+
+            <stop stop-color="#ffe5c1" offset="0.03"/>
+
+
+            <stop stop-color="#ebcc9f" offset="0.08"/>
+
+
+            <stop stop-color="#e7c99c" offset="0.64"/>
+
+
+            <stop stop-color="#e2c499" offset="0.95"/>
+
+
+            <stop stop-color="#a89170" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="0%" y1="0%" id="lg10_417" y2="0%" x1="100%">
+
+
+            <stop stop-color="#b39d73" offset="0"/>
+
+
+            <stop stop-color="#ebd0a1" offset="0.15"/>
+
+
+            <stop stop-color="#f4e5cf" offset="0.25"/>
+
+
+            <stop stop-color="#cdb384" offset="0.52"/>
+
+
+            <stop stop-color="#b69f75" offset="0.69"/>
+
+
+            <stop stop-color="#ac966e" offset="0.8"/>
+
+
+            <stop stop-color="#a28e68" offset="0.97"/>
+
+
+            <stop stop-color="#baa378" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="4" y1="-0" id="lg11_417" y2="5" x1="1" gradientUnits="userSpaceOnUse">
+
+
+            <stop stop-color="#9f5153" offset="0"/>
+
+
+            <stop stop-color="#7b030d" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="4" y1="-0" id="lg12_417" y2="5" x1="1" gradientUnits="userSpaceOnUse">
+
+
+            <stop stop-color="#91cfd1" offset="0"/>
+
+
+            <stop stop-color="#49aeb1" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="0%" y1="0%" id="lg13_417" y2="0%" x1="100%">
+
+
+            <stop stop-color="#000000" offset="0"/>
+
+
+            <stop stop-color="#454545" offset="0.15"/>
+
+
+            <stop stop-color="#b3b3b3" offset="0.25"/>
+
+
+            <stop stop-color="#000000" offset="0.52"/>
+
+
+            <stop stop-color="#000000" offset="0.69"/>
+
+
+            <stop stop-color="#000000" offset="0.8"/>
+
+
+            <stop stop-color="#000000" offset="0.92"/>
+
+
+            <stop stop-color="#000000" offset="1"/>
+
+
+        </linearGradient>
+
+
+    </defs>
+
+
+    <g transform="translate(1,1)">
+
+
+        <g transform="translate(0,136.05)">
+
+
+            <path id="shape1" d="M1.5,0L4.4,0C5.3,0,5.9,.3,5.9,.8L5.9,31.5C5.9,31.9,5.3,32.2,4.4,32.2L1.5,32.2C.7,32.2,0,31.9,0,31.5L0,.8C0,.3,.7,0,1.5,0z" fill="url(#lg1_417)" transform="translate(-0,0.86)"/>
+
+
+            <path id="shape2" d="M1.5,0L4.4,0C5.3,0,5.9,.3,5.9,.8L5.9,31.5C5.9,31.9,5.3,32.2,4.4,32.2L1.5,32.2C.7,32.2,0,31.9,0,31.5L0,.8C0,.3,.7,0,1.5,0z" fill="url(#lg1_417)" transform="translate(104.06,0.86)"/>
+
+
+            <path id="shape3" d="M8.1,0L0,0L0,17.1L8.1,17.1L8.1,0z" fill="url(#lg1_417)" transform="translate(5.78,8.44)"/>
+
+
+            <path id="shape4" d="M0,0L8.1,0L8.1,17.1L0,17.1L0,0z" fill="url(#lg1_417)" transform="translate(95.97,8.44)"/>
+
+
+            <path id="shape5" d="M2.9,0L0,0L0,28.6L2.9,28.6L2.9,0z" fill="url(#lg1_417)" transform="translate(93.07,2.66)"/>
+
+
+            <path id="shape6" d="M0,0L76.3,0L76.3,33.9L0,33.9L0,0z" fill="url(#lg1_417)" transform="translate(16.84,0)"/>
+
+
+            <path id="shape7" d="M0,0L1.1,0L1.1,33.9L0,33.9L0,0z" fill="url(#lg1_417)" transform="translate(92.5,0)"/>
+
+
+            <path id="shape8" d="M2.9,0L0,0L0,28.6L2.9,28.6L2.9,0z" fill="url(#lg1_417)" transform="translate(13.86,2.66)"/>
+
+
+            <path id="shape9" d="M0,0L1.1,0L1.1,33.9L0,33.9L0,0z" fill="url(#lg1_417)" transform="translate(16.79,0)"/>
+
+
+        </g>
+
+
+        <path id="shape10" d="M0,15.9L44.2,15.9L29.6,0L14.6,0L0,15.9z" fill="url(#lg2_417)" transform="translate(32.92,108.37)"/>
+
+
+        <path id="shape11" d="M0,28.3L15.1,28.3L15.1,0L0,0L0,28.3z" fill="url(#lg3_417)" transform="translate(47.46,35.97)"/>
+
+
+        <path id="shape12" d="M.4,-0L17.6,-0C17.8,-0,18,.1,18,.3L18,3.9C18,4.1,17.8,4.2,17.6,4.2L.4,4.2C.2,4.2,0,4.1,0,3.9L0,.3C0,.1,.2,-0,.4,-0z" fill="url(#lg4_417)" transform="translate(46,33.64)"/>
+
+
+        <path id="shape13" d="M0,0L2.7,0L2.7,11.3L0,11.3L0,0z" fill="url(#lg5_417)" transform="matrix(1,0,0,-1,55.4,14.9)"/>
+
+
+        <path id="shape14" d="M0,2.7L0,0L46.1,0L46.1,2.7L0,2.7z" fill="url(#lg6_417)" transform="matrix(1,0,0,-1,8.5,2.7)"/>
+
+
+        <path id="shape15" d="M0,0L2.7,0L2.7,82.2L0,82.2L0,0z" fill="url(#lg5_417)" transform="matrix(1,0,0,-1,4.7,85.7)"/>
+
+
+        <path id="shape16" d="M0,0C0,0,2.1,.1,3.1,1.2C4,2.4,3.9,4.2,3.9,4.2L1.2,4.2C1.2,4.2,1.2,3.2,0,2.7L0,0z" fill="url(#lg7_417)" transform="matrix(-1,0,0,1,8.7,-0)"/>
+
+
+        <path id="shape17" d="M0,0C0,0,2.2,.1,3.3,1.3C4.4,2.6,4.2,4.6,4.2,4.6L1.3,4.6C1.3,4.6,1.3,3.4,0,2.9L0,0z" fill="url(#lg8_417)" transform="translate(54,-0)"/>
+
+
+        <g transform="translate(31.67,14.89)">
+
+
+            <g transform="translate(0,9.64)">
+
+
+                <path id="shape18" d="M.4,-0L31.9,-0C32.1,-0,32.3,.2,32.3,.4L32.3,4.4C32.3,4.6,32.1,4.8,31.9,4.8L.4,4.8C.2,4.8,0,4.6,0,4.4L0,.4C0,.2,.2,-0,.4,-0z" fill="url(#lg4_417)" transform="translate(7.19,4.44)"/>
+
+
+                <path id="shape19" d="M.4,-0L46.2,-0C46.5,-0,46.7,.2,46.7,.4L46.7,4C46.7,4.2,46.5,4.4,46.2,4.4L.4,4.4C.2,4.4,0,4.2,0,4L0,.4C0,.2,.2,-0,.4,-0z" fill="url(#lg4_417)"/>
+
+
+            </g>
+
+
+            <g transform="matrix(1,0,0,-1,0,9.2)">
+
+
+                <path id="shape20" d="M.4,-0L31.9,-0C32.1,-0,32.3,.2,32.3,.4L32.3,4.4C32.3,4.6,32.1,4.8,31.9,4.8L.4,4.8C.2,4.8,0,4.6,0,4.4L0,.4C0,.2,.2,-0,.4,-0z" fill="url(#lg4_417)" transform="translate(7.19,4.44)"/>
+
+
+                <path id="shape21" d="M.4,-0L46.2,-0C46.5,-0,46.7,.2,46.7,.4L46.7,4C46.7,4.2,46.5,4.4,46.2,4.4L.4,4.4C.2,4.4,0,4.2,0,4L0,.4C0,.2,.2,-0,.4,-0z" fill="url(#lg4_417)"/>
+
+
+            </g>
+
+
+        </g>
+
+
+        <g transform="translate(39.18,63.48)">
+
+
+            <path id="shape22" d="M5.6,0L26.1,0L31.6,5.6L31.6,36.5L26.1,42.1L5.6,42.1L0,36.5L0,5.6L5.6,0z" fill="url(#lg2_417)" transform="translate(0,3.14)"/>
+
+
+            <path id="shape23" d="M.3,0L25.3,0C25.4,0,25.6,.1,25.6,.3L25.6,31.1C25.6,31.3,25.4,31.4,25.3,31.4L.3,31.4C.1,31.4,0,31.3,0,31.1L0,.3C0,.1,.1,0,.3,0z" fill="url(#lg2_417)" transform="translate(3.03,-0)"/>
+
+
+            <path id="shape24" d="M.3,0L3.4,0C3.5,0,3.7,.1,3.7,.3L3.7,12.1C3.7,12.3,3.5,12.4,3.4,12.4L.3,12.4C.1,12.4,0,12.3,0,12.1L0,.3C0,.1,.1,0,.3,0z" fill="url(#lg9_417)" transform="translate(6.5,31.4)"/>
+
+
+            <path id="shape25" d="M.3,0L3.4,0C3.5,0,3.7,.1,3.7,.3L3.7,12.1C3.7,12.3,3.5,12.4,3.4,12.4L.3,12.4C.1,12.4,0,12.3,0,12.1L0,.3C0,.1,.1,0,.3,0z" fill="url(#lg9_417)" transform="translate(21.6,31.4)"/>
+
+
+            <path id="shape26" d="M.3,-0L25.4,-0C25.5,-0,25.6,.1,25.6,.3L25.6,2.5C25.6,2.7,25.4,2.8,25.3,2.8L.3,2.8C.1,2.8,0,2.7,0,2.5L.1,.3C.1,.1,.2,-0,.3,-0z" fill="url(#lg9_417)" transform="translate(3.03,28.61)"/>
+
+
+        </g>
+
+
+        <path id="shape27" d="M0,2.7L0,0L34,0L34,2.7L0,2.7z" fill="url(#lg6_417)" transform="matrix(1,0,0,-1,8.5,89.4)"/>
+
+
+        <path id="shape28" d="M0,0C0,0,2.1,.1,3.1,1.2C4,2.4,3.9,4.2,3.9,4.2L1.2,4.2C1.2,4.2,1.2,3.2,0,2.7L0,0z" fill="url(#lg7_417)" transform="matrix(-1,0,0,-1,8.5,89.4)"/>
+
+
+        <path id="shape29" d="M44.2,0L0,0L0,8.7C0,8.7,.7,12.1,22.5,12.1C43.4,12.2,44.2,8.7,44.2,8.7L44.2,0z" fill="url(#lg4_417)" transform="translate(32.91,127.49)"/>
+
+
+        <path id="shape30" d="M.4,-0L46.6,-0C46.8,-0,47,.2,47,.4L47,3.4C47,3.6,46.8,3.8,46.6,3.8L.4,3.8C.2,3.8,0,3.6,0,3.4L0,.4C0,.2,.2,-0,.4,-0z" fill="url(#lg3_417)" transform="translate(31.32,123.71)"/>
+
+
+        <path id="shape31" d="M0,0L46.5,0L46.5,1.4L0,1.4L0,0z" fill="url(#lg10_417)" transform="translate(31.75,23.6)"/>
+
+
+        <g transform="translate(46.43,83.66)">
+
+
+            <path id="shape32" d="M-0,2.8C-0,1.3,1.3,-0,2.8,-0C4.4,-0,5.6,1.3,5.6,2.8C5.6,4.4,4.4,5.7,2.8,5.7C1.3,5.7,-0,4.4,-0,2.8z" fill="#7d040f" transform="translate(0,0)"/>
+
+
+            <path id="shape33" d="M-0,2.3C-0,1,1,-0,2.3,-0C3.6,-0,4.6,1,4.6,2.3C4.6,3.6,3.6,4.6,2.3,4.6C1,4.6,-0,3.6,-0,2.3z" stroke="#ffffff" fill="url(#lg11_417)" transform="translate(0.52,0.52)"/>
+
+
+        </g>
+
+
+        <g transform="translate(57.61,83.66)">
+
+
+            <path id="shape34" d="M-0,2.8C-0,1.3,1.3,-0,2.8,-0C4.4,-0,5.6,1.3,5.6,2.8C5.6,4.4,4.4,5.7,2.8,5.7C1.3,5.7,-0,4.4,-0,2.8z" fill="#276f71" transform="translate(0,0)"/>
+
+
+            <path id="shape35" d="M-0,2.3C-0,1,1,-0,2.3,-0C3.6,-0,4.6,1,4.6,2.3C4.6,3.6,3.6,4.6,2.3,4.6C1,4.6,-0,3.6,-0,2.3z" stroke="#ffffff" fill="url(#lg12_417)" transform="translate(0.52,0.52)"/>
+
+
+        </g>
+
+
+        <g transform="translate(52.15,65.46)">
+
+
+            <path id="shape36" d="M4.3,0C4.5,.2,4.4,.8,4.8,1.4C5.1,2,5.7,2.2,5.7,2.5C5.7,2.8,5.1,3,4.8,3.6C4.5,4.1,4.6,4.8,4.3,5C4,5.2,3.6,4.7,2.8,4.7C2.1,4.7,1.7,5.1,1.4,5C1.1,4.8,1.3,4.3,.9,3.6C.6,3,0,2.9,0,2.5C0,2.1,.5,2,.9,1.3C1.3,.7,1.2,.1,1.4,0C1.6,-0.1,2.1,.3,2.9,.3C3.7,.3,4.1,-0.1,4.3,0z" fill="url(#lg13_417)"/>
+
+
+            <path fill-opacity="0.2" id="shape37" d="M4,0C4.3,.2,4.2,.7,4.5,1.3C4.8,1.9,5.4,2.1,5.4,2.4C5.4,2.7,4.8,2.9,4.5,3.4C4.2,3.9,4.4,4.5,4,4.7C3.7,4.9,3.4,4.5,2.7,4.5C2,4.5,1.6,4.8,1.3,4.7C1.1,4.6,1.2,4,.8,3.4C.5,2.9,0,2.7,0,2.4C0,2,.5,1.9,.9,1.3C1.2,.6,1.2,.1,1.3,0C1.5,-0.1,2,.2,2.7,.2C3.5,.2,3.8,-0.1,4,0z" fill="#ffffff" transform="translate(0.15,0.13)"/>
+
+
+            <path id="shape38" d="M0,1.8C0,.8,.8,0,1.8,0C2.7,0,3.5,.8,3.5,1.8C3.5,2.7,2.7,3.5,1.8,3.5C.8,3.5,0,2.7,0,1.8z" stroke="#717070" fill="#3e3938" transform="translate(1.1,0.75)"/>
+
+
+            <path fill-opacity="0.17" id="shape39" d="M.4,1.6C.4,.8,-0.5,0,.3,0C1.2,0,1.9,.7,1.9,1.5C1.9,2.4,1.2,3,.3,3C-0.5,3,.4,2.5,.4,1.6z" fill="#ffffff" transform="translate(2.51,0.99)"/>
+
+
+        </g>
+
+
+    </g>
+
+
+</svg>
+
+<rect width="112" height="172" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+
+</g><g transform="matrix(0.4 0 0 0.4 401 157)">
+
+<ellipse id="pidEllipse" fill="gold" stroke="#800000" stroke-width="4" cx="0" cy="0" rx="152" ry="64"/>
+
+
+ <foreignObject class="noselect" id="foAdjust" width="300" height="100" x="-120" y="-50" pointer-events="none">
+
+
+<table xmlns="http://www.w3.org/1999/xhtml" cellpadding="0">
+
+
+<tbody>
+
+<tr>
+
+<td align="center" colspan="5">
+
+Tune Controller:<input type="checkbox" id="adjustControllerCheck" />
+
+</td>
+
+</tr>
+
+
+    <tr align="center">
+
+
+    <td>
+
+SP:<input disabled="" style="margin-right: 0px;margin-left: 0px;" type="radio" name="tuneRadio" id="tuneSPClick" />
+
+</td>
+
+
+    <td>
+
+P:<input style="margin-right: 0px;margin-left: 0px;" disabled="" type="radio" name="tuneRadio" id="tunePClick" />
+
+</td>
+
+
+    <td>
+
+I:<input disabled="" title="turn off Integral" id="turnOffIntegralCheck" type="checkbox" checked="" style="margin-right: 0px;margin-left: 0px;" />
+
+<input style="margin-right: 0px;margin-left: 0px;" disabled="" type="radio" name="tuneRadio" id="tuneIClick" />
+
+</td>
+
+
+    <td>
+
+D:<input disabled="" title="turn off Derivative" id="turnOffDerivativeCheck" type="checkbox" checked="" style="margin-right: 0px;margin-left: 0px;" />
+
+<input style="margin-right: 0px;margin-left: 0px;" disabled="" type="radio" name="tuneRadio" id="tuneDClick" />
+
+</td>
+
+
+    <td>
+
+CO:<input disabled="" type="radio" style="margin-right: 0px;margin-left: 0px;" name="tuneRadio" id="tuneCOClick" />
+
+</td>
+
+
+    </tr>
+
+
+    <tr align="center">
+
+
+    <td>
+
+<input type="text" style="width:40px" id="tuneSPValue" value="100.0" />
+
+</td>
+
+
+    <td>
+
+<input type="text" style="width:40px" id="tunePValue" value="1" />
+
+</td>
+
+
+    <td>
+
+<input type="text" style="width:40px" id="tuneIValue" value="10" />
+
+</td>
+
+
+    <td>
+
+<input type="text" style="width:40px" id="tuneDValue" value="1" />
+
+</td>
+
+
+    <td>
+
+<input type="text" style="width:40px" id="tuneCOValue" value="0" />
+
+</td>
+
+
+    </tr>
+
+
+    <tr>
+
+<td align="center" colspan="5">
+
+
+        <table>
+
+
+        <tbody>
+
+<tr>
+
+
+        <td>
+
+<button disabled="" style="padding:0;width:30px;height:30px">
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAABJ0AAASdAHeZh94AAAEXElEQVR4nM2ZW2gcVRjHT5KZvaQz23lw14Umbujig5bMRKglIWWX0sb6IG0JghKSiAi2EYsiKfYhSGtWvBViNguKCQgiqagI2ZZgagnONEF68TIbwb5s6gRix13B052TvWTSxIfZ7mU6e8vu7OTPPnxzzpzZH9/3zZxzvtOwtbUFdp4ajQbQFlbleJbjIIR8KJTbyNA0RVFej2fbj23YRhAFQZj+bvqHhTkhsmKy4ngzhltx3Io3mZruy/fluCwnNuSEvB6XXY7Hnj14tO/5PpfLpSMWy3Eff3bhtvgn6STMhLmcISmUkkTUQrSeHz5Xvv/KxRIE4aXTL0dBhHQSZT5aJUlEduAYHx1jGKY2WG+MvHk1dHXbQCq4I/SRcd8nVWFBCE8M9lbjJE2yZrTrx+/nKIoqdE+xDwSEsKf3aG2ZAACkk4gTa13PdPM8X+iegt5SmOLEWm2ZMpJEFAujhVlW8yXVxtKbKUNWKJraQTx1ZkhvJvAgmv2vDT7cpYE1Ewwu/bOkN5Mi0kncQcv+iQlVuzqIEML27o493c46MGW0uiiqkkztLX8gYHPXw0+5srmJt31nc1vysCCEkxen6hO+XJFO4lb4liAI2liGuEoR6SQ+8l/IXObl1hMH9u3uII2gAgCAyG/R5Zthxc56i+f5lCVpEBIAADSSjSzHpe1M69z8FStlMQgJAABIJ/HNzLeKncW6duOaZbeRWGbC/MfykmJnse7c/Qu34gYhpbUSXVGM7Fo+vrlGgOYiY/5l/2urcO37sFBbrEiviTCpsUom1uDAwDsjI1Vidb7aWaTXvMvEcpzX40kHkeU4YxNLkYlMe2uH7hPTWAxNJ++ljEUBAKwjWTHSuUVRVAImis+GHMe96/PpjLWuvFXZlG9YLxFQ1BabXbmsK1YKpZTlTRal1dEqJ2Rd/7WkHrHZFSOLRT/ebmx6yQnZvWevYmexDnsPJ2DCICQAAEjeSx3qPKTYeQubvU+7HU/ZDaICkdvRX4O/KLugvDTv7jiYQobF8cmWfZmdWR7W8OtvSSIyAglIIjpzajhzmYfFMEwL0Vp3JAAAsANHbplJ/a0aHx2rv8MkEZ0fPpfbosZiGKbL3VVPMklE7Y+2qypyGjWI+hQgMkyb4tbPVxZVZQiNCYeiqKmxz2PhejgsFkZfT06XWxphGOarT7/8+/e7ujJJInrv7KhmzbLg9Oz1eHynfauLok55Jomov6d/cGBAs7dEkZLn+ef6jtvcRG2LlLEwCrzvP37sWKF7SixmGIZZmGXtwFErnymltsvTM0WYSmMBAFwu10/B+ZM9J6sMqCSi1UXxhQMv3py/XrIGXsFxAYTQHwhMXpyqNKbKicF+9/4PRz4o8zij4sMVCGHw0qWJLwLRZASzYJgZw60YZsYwC9aEN21ubMrJjY0HPzkp222O3p4TQ68MFSl31wArl4/lOD4UCoVCEMLcLoqiaJpmaNrr8VREUwMsXbVD94n/AyR35wdcDvWLAAAAAElFTkSuQmCC" alt="" width="25" height="25" />
+
+</button>
+
+</td>
+
+
+        <td>
+
+
+            <select disabled="" id="incrementSelect" title="Increment value">
+
+
+              <option value="">
+
+.10</option>
+
+
+              <option value="">
+
+.50</option>
+
+
+              <option selected="" value="">
+
+1.0</option>
+
+
+              <option value="">
+
+5.0</option>
+
+
+              <option value="">
+
+10</option>
+
+
+
+            </select>
+
+
+        </td>
+
+
+        <td>
+
+<button disabled="" style="padding:0;width:30px;height:30px">
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAABJ0AAASdAHeZh94AAAFR0lEQVR4nM2ZXWzTVhSAT+rYjtM0sepuizqQ+REI7SdmL9NUpnR0FO2pMMo2FVakDbFNYkhj8MCmCgT0bQKmUmk/VSVAgiJtmkaQGApQWq9MGw8bydY9dCrCZBLZINN1VsWxHTd7SJe4TurYTls4iiLnXt+Tz+fce3zuua58Pg+PntQ9bIDK4q5l8CjPI4Ri8bi+cRnLsizbGg7Xotll14mCIJz7eig6diXx912cwgkvQVA4ThFuAtNUTckoiqSqkqpkFKahaXP7pm1bu1iWXUCsUZ4/9vmxieSEP+j3+EgrQ7JTcjqZbvY1H9p/yJb9LGEJgvDWnrdTkAoE/dZV60VMphlgThw9znHc/GB90PPh9fiwYyAD3PpQ26e9x2vCQght2dFZi5EqkpFTnug3l2maNrltzgCBENq45ZX5ZQKAQNAv+7ItG1+MxWK2sQpMsi87v0xFMjzo7ti22YSsghMXlKko5t6sgNW1a/vvf40vKFORjAFmOHKtvMvoxAuRyOIwAUAg6E9Bqu/kyfKuWdZCCHHrnmPXLV0EpqIINxL8pRHDm2CWtfr6++mVAbt6V9Gr+S/5wmf3a7vtDqdXBg70fmxoLGEhhAaHBh24j8RKLyImwNgdHgj6f5n8WRCEyljOTAUARG1YAOAP+j/pO1YZ63zkvANTaapmsJamanaVeHzkZf5yBaxYLJbzqHbVAYCSUfRYTXSTklEc6HE3YBciESNWdPgKRVNOsCTVXVfKJb0eryI5eTx/0H9l9KoR6/ubY96AEyy1DKK8xYp4fOT47fHiz5kHvXPvDr3a6sQyZKGGXiWj3L/9oJC1El4CwzGLahP3E0as7LQEYIYlTv7b6G90aeDKuXDNReXrAQBcAPWwbHYkXFa/HAAgC5CFPMoDls9jkHfnActrjTmTvyB9hBGr6sTqXN95sKfH/J6CXI1G5+oKv2OWN3vqyVGeL+TWdQAwyvPOJtb8CtlQWtGP6D6xDgC4UCgjSg+bBOSp0upxAwBN0xKSzEP89VvDyY/uERhJYiSJkfpY1RoO6zdbR3p7i9e56ZysyYomy5osa3I1LLm4ema056tFZq0x91vq15nrsgChxzrz3enittZWgMhOyawBa+njSyQpg1O4lfEYjlEBigpQAHD/9gNDL07hj61osoiilyZ/6TU/M+WfWfWss+lFeImqLVZEldTlT64wYr3c2iYhR1hlBi5vsSIZUXrphVYj1qaOjmnJSaGL8BK56VLszmQzzqwlIemNzteNWADQsrYlO1VlsZQLhmP6JZYSU9bnuF7WLFmj35mVsPa9vzedTDvQqOixUMqBBjGZ3vfePn1LCYvjuGZfswOlBms50MAAYygzzdqQCYLQsWeT3dQZ+8e9fm3bjIb0nT/QhK3hYjLdt7/PDAsAdu199+bkT4uzfS0wPfXE00MDZw3tRqzFKUAUmdRk7ofoWHkZwphB0DQ9cOILNCkuNBMAoElxaOBsxdJIhcSG47jIuW8Tt/5cUCYxmT564MhcNcvK+RbHcYf3HBZuJERHIcMKU1d7147u7rluMCtSxmKxjm2b6ZWB+S1SoknxzGenzQvPZtkpx3H8pREGmPmyWaHUxl8aqVoMr5I0syw7HLm2s31njQ4Vk2nhRqLz+a03h3+0cnpg9bgAIdTX3z84NGjXpwWvbWjZcLCnx/pxhr3DFYRQ5OLFU1+dEh7cxT1unHS7KRwncdzjxnBMy2m5bE7Nqur/34yHefPV7Tu6u83L3bVi6fli8fgoz8fjcYSQvoum6VAoxIVCreGwXZpasRZaHtF94n8WVXML5FmhBgAAAABJRU5ErkJggg==" alt="" width="25" height="25" />
+
+</button>
+
+</td>
+
+
+        </tr>
+
+
+        </tbody>
+
+</table>
+
+
+    </td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+
+
+</foreignObject>
+
+
+</g><g myStatus="off" transform="matrix(0.4 0 0 0.4 351 80)" myRotate="0" myScale=".3">
+
+
+<g cursor="move">
+
+
+<defs id="onOffButtonDefs">
+
+<filter id="onOffButtonDropShadow" height="40">
+
+
+  <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
+
+ <!-- stdDeviation is how much to blur -->
+
+
+  <feOffset dx="6" dy="10" result="offsetblur"/>
+
+ <!-- how much to offset -->
+
+
+  <feMerge>
+
+
+    <feMergeNode/>
+
+ <!-- this contains the offset blurred image -->
+
+
+    <feMergeNode in="SourceGraphic"/>
+
+ <!-- this contains the element that the filter is applied to -->
+
+
+  </feMerge>
+
+
+</filter>
+
+<linearGradient id="linearGradientOnOffButton">
+
+
+      <stop style="stop-color:#000000;stop-opacity:0" offset="0"/>
+
+
+      <stop style="stop-color:#000000;stop-opacity:0.5" offset="1"/>
+
+
+    </linearGradient>
+
+<linearGradient id="linearGradientOnOffButton2">
+
+
+      <stop style="stop-color:#ffffff;stop-opacity:1" offset="0"/>
+
+
+      <stop style="stop-color:#ffffff;stop-opacity:0" offset="1"/>
+
+
+    </linearGradient>
+
+<linearGradient xmlns:xlink="http://www.w3.org/1999/xlink" x1="120" y1="10" x2="120" y2="50" id="linearGradientOnOffButtonHighlight" xlink:href="#linearGradientOnOffButton2" gradientUnits="userSpaceOnUse"/>
+
+<radialGradient xmlns:xlink="http://www.w3.org/1999/xlink" cx="120" cy="170" r="100" fx="120" fy="170" id="radialGradientOnOffButton" xlink:href="#linearGradientOnOffButton" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,-0.72727275,2,0,-220,170)"/>
+
+
+  </defs>
+
+
+  <rect fill="red" width="220" height="80" ry="40" x="10" y="10" id="ButtonBase" style="stroke:none" filter="url(#onOffButtonDropShadow)"/>
+
+
+    <rect width="220" height="80" ry="40" x="10" y="10" id="ButtonGlow" pointer-events="none" style="fill:url(#radialGradientOnOffButton);stroke:none"/>
+
+
+    <text x="120" y="66" id="text3194" pointer-events="none" xml:space="preserve" style="font-size:40px;text-align:center;text-anchor:middle;fill:#000000;stroke:none;font-family:Sans">
+
+OFF</text>
+
+
+    <text x="120" y="64.5" id="text3198" pointer-events="none" xml:space="preserve" style="font-size:40px;text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;font-family:Sans">
+
+OFF</text>
+
+
+    <path d="m 50,15 140,0 c 11.08,0 22.51667,10.914008 20,20 C 208.16563,41.622482 201.08,40 190,40 L 50.00005,40 C 38.92005,40 31.834332,41.622512 30,35 27.483323,25.914009 38.92,15 50,15 z" id="ButtonHighlight" pointer-events="none" style="fill:url(#linearGradientOnOffButtonHighlight)"/>
+
+
+  </g>
+
+
+ <rect fill="white" opacity="0" x="0" y="0" width="220" height="80"/>
+
+
+</g><g width="72" height="72" label="HWS" min="60" max="220" majorTicks="5" minorTicks="10" ringColor="#9932CC" faceColor="#FF0000" diameter="80" units="℉" transform="matrix(1 0 0 1 280 177)">
+
+<circle cx="36" cy="36" r="34.92" style="fill: rgb(153, 50, 204); stroke: rgb(0, 0, 0); stroke-width: 0.5px;"/>
+
+<circle cx="36" cy="36" r="31.428" style="fill: rgb(255, 0, 0); stroke: rgb(224, 224, 224); stroke-width: 2px;"/>
+
+<text class="noselect" x="36" y="22" dy="4" text-anchor="middle" style="font-size: 8px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+
+HWS</text>
+
+<text class="noselect" x="36" y="43" dy="3.5" text-anchor="middle" style="font-size: 7px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+
+℉</text>
+
+<line x1="15.432549580233289" y1="52.21407053242456" x2="12.690222857597728" y2="54.37594660341449" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="13.669354095566323" y1="49.6842374099107" x2="10.69193464164183" y2="51.50880239789879" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="12.215730277521121" y1="46.964698526105245" x2="9.044494314523938" y2="48.42665832958594" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="11.091829838229927" y1="44.09315508267987" x2="7.770740483327252" y2="45.17224242703719" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="10.313233506239392" y1="41.1094155336024" x2="6.8883313070713115" y2="41.79067093808272" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="9.890735029529377" y1="38.05484371711226" x2="6.409499700133292" y2="38.3288228793939" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="9.830191540855466" y1="34.97178542526999" x2="6.340883746302861" y2="34.834690148639325" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="10.13244235981334" y1="31.902981360596353" x2="6.683434674455118" y2="31.356712208675866" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="10.793297357278977" y1="28.890974618033706" x2="7.43240367158284" y2="27.943104567104864" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="18.71548184067603" y1="53.284518159323966" x2="15.011656520820893" y2="56.98834347917911" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+
+<text class="noselect" x="20.44393365660843" y="51.55606634339157" dy="2.5" text-anchor="start" style="font-size: 9px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+
+60</text>
+
+<line x1="13.149329574763442" y1="23.20300968519475" x2="10.102573518065231" y2="21.496744309887383" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="14.811844917320126" y1="20.605904242460127" x2="11.986757572962809" y2="18.55335814145481" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="16.768093477879393" y1="18.222208474492255" x2="14.20383927492998" y2="15.851836271091223" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="18.990955614232494" y1="16.084967760935186" x2="16.723083029463492" y2="13.429630129059877" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="21.449615597216614" y1="14.22381085379634" x2="19.509564343512164" y2="11.320318967635849" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="24.109988811821268" y1="12.664539131506647" x2="22.52465398673077" y2="9.553144349040867" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="26.935194275140457" y1="11.42876891219014" x2="25.726553511825852" y2="8.152604767148823" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="29.886065920613834" y1="10.533631784784848" x2="29.070874710029013" y2="7.1381160227561615" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="32.92169556057923" y1="9.991537112350478" x2="32.51125496865646" y2="6.523742060663874" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="13.416688707294107" y1="26.645686179267745" x2="8.577407715999986" y2="24.641190360539404" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+
+<line x1="39.07830443942077" y1="9.991537112350478" x2="39.48874503134354" y2="6.523742060663874" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="42.113934079386155" y1="10.533631784784848" x2="42.929125289970976" y2="7.138116022756158" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="45.06480572485954" y1="11.42876891219014" x2="46.273446488174145" y2="8.152604767148823" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="47.89001118817873" y1="12.664539131506643" x2="49.47534601326923" y2="9.553144349040863" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="50.550384402783386" y1="14.22381085379634" x2="52.49043565648783" y2="11.320318967635853" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="53.00904438576751" y1="16.084967760935186" x2="55.276916970536504" y2="13.429630129059877" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="55.231906522120596" y1="18.22220847449225" x2="57.79616072507001" y2="15.851836271091212" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="57.18815508267987" y1="20.605904242460127" x2="60.013242427037184" y2="18.553358141454808" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="58.85067042523656" y1="23.20300968519475" x2="61.89742648193477" y2="21.496744309887383" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="36" y1="11.556000000000001" x2="36" y2="6.317999999999998" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+
+<line x1="61.20670264272103" y1="28.89097461803371" x2="64.56759632841715" y2="27.943104567104868" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="61.86755764018666" y1="31.90298136059635" x2="65.31656532554487" y2="31.356712208675866" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="62.169808459144534" y1="34.971785425269985" x2="65.65911625369714" y2="34.83469014863932" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="62.10926497047062" y1="38.054843717112256" x2="65.5905002998667" y2="38.32882287939389" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="61.68676649376061" y1="41.10941553360239" x2="65.11166869292869" y2="41.79067093808271" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="60.90817016177007" y1="44.093155082679885" x2="64.22925951667276" y2="45.1722424270372" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="59.78426972247888" y1="46.964698526105245" x2="62.95550568547606" y2="48.42665832958595" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="58.33064590443368" y1="49.68423740991069" x2="61.30806535835817" y2="51.50880239789879" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="56.56745041976671" y1="52.21407053242456" x2="59.30977714240227" y2="54.3759466034145" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="58.58331129270589" y1="26.64568617926774" x2="63.42259228400002" y2="24.6411903605394" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+
+<line x1="53.284518159323966" y1="53.284518159323966" x2="56.98834347917911" y2="56.98834347917911" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+
+<text class="noselect" x="51.55606634339158" y="51.55606634339157" dy="2.5" text-anchor="end" style="font-size: 9px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+
+220</text>
+
+<g class="pointerContainer">
+
+<path d="M0,-29.682000000000002L-0.247656053110506,-25.3880153438915C-0.495312106221012,-21.09403068778299,-0.990624212442024,-12.506061375565977,-1.2382802655525313,-6.9060460316744825C-1.4859363186630385,-1.3060306877829884,-1.4859363186630408,1.3060306877829884,-1.238280265552535,3.5886460316744824C-0.9906242124420288,5.871261375565976,-0.4953121062210144,7.824430687782988,-1.1842378929335002e-15,7.824430687782988C0.495312106221012,7.824430687782988,0.990624212442024,5.871261375565976,1.2382802655525313,3.5886460316744824C1.4859363186630385,1.3060306877829884,1.4859363186630408,-1.3060306877829884,1.238280265552535,-6.9060460316744825C0.9906242124420288,-12.506061375565977,0.4953121062210144,-21.09403068778299,0.2476560531105072,-25.388015343891496L0,-29.682000000000002" style="fill: rgb(220, 57, 18); stroke: rgb(198, 51, 16); fill-opacity: 0.7;" transform="translate(36, 36) rotate(-135)"/>
+
+<circle cx="36" cy="36" r="4.1904" style="fill: rgb(70, 132, 238); stroke: rgb(102, 102, 102); opacity: 1;"/>
+
+<text class="noselect" x="36" y="56" dy="7" text-anchor="middle" style="font-size: 11px; fill: rgb(0, 0, 0); stroke-width: 1px;">
+
+60</text>
+
+</g>
+
+</g><g xmlns="http://www.w3.org/2000/svg" transform="matrix(0.3 0 0 0.3 93.65 111.75)" parentid="component1520372636284">
+
+<rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="75" height="61" rx="10" ry="10" transform="matrix(1 0 0 1 62 448)" id="rect27"/>
+
+<rect fill="#000000" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="18" height="31" transform="matrix(1 0 0 1 92 509)" id="rect47"/>
+
+<rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="139" height="59" transform="matrix(1 0 0 1 30 541)" id="rect73"/>
+
+<text font-family="Arial" font-size="30" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 35 631)" id="text97">
+
+
+Magnetic</text>
+
+<defs>
+
+<pattern id="fill15203726186014" patternUnits="userSpaceOnUse" width="5" height="5" addto="fill">
+
+
+				<path d="M 0 2.5 c 0.625 -1.25 , 1.875 -1.25 , 2.5 0 c 0.625 1.25 , 1.875 1.25 , 2.5 0 M -2.5 2.5 c 0.625 1.25 , 1.875 1.25 , 2.5 0 M 5 2.5 c 0.625 -1.25 , 1.875 -1.25 , 2.5 0" fill="transparent" stroke-width="0.5" shape-rendering="auto" stroke="#0000FF" stroke-linecap="square"/>
+
+
+			</pattern>
+
+</defs>
+
+<rect fill="url(#fill15203726186014)" stroke="#0000FF" stroke-width="1" x="0" y="0" width="70" height="28" transform="matrix(1 0 0 1 65 556)" fill-opacity="null" id="rect121"/>
+
+<rect fill="#7FFF00" fill-opacity="1.0" stroke="#0000FF" stroke-width="1" x="0" y="0" width="5" height="37" transform="translate(133 551)" id="rect123"/>
+
+<rect fill="#FF0000" fill-opacity="1.0" stroke="#0000FF" stroke-width="1" x="0" y="0" width="5" height="37" transform="matrix(1 0 0 1 60 552)" id="rect125"/>
+
+<rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="21" height="98" transform="matrix(1 0 0 1 169 520)" id="rect127"/>
+
+<rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="21" height="98" transform="matrix(1 0 0 1 9 522)" id="rect129"/>
+
+<text font-family="Arial" font-size="40" font-weight="bold" font-style="normal" stroke="none" stroke-width="0.8" fill="#000000" transform="matrix(1 0 0 1 74 492)" filter="null" id="text141">
+
+
+FT</text>
+
+<text font-family="Arial" font-size="40" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#FF0000" transform="matrix(1 0 0 1 35 582)" id="text169">
+
+
++</text>
+
+<text font-family="Arial" font-size="50" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#00FF00" transform="matrix(1 0 0 1 143 583)" id="text171">
+
+
+-</text>
+
+<text font-size="30" font-family="Arial Unicode MS" stroke-width="0.8" fill="#0000FF" stroke="black" x="-17.8203125" y="13.5" transform="matrix(1 0 0 1 105 596)" id="icon19">
+
+
+⯊</text>
+
+<text font-size="30" font-family="Arial Unicode MS" stroke-width="0.8" fill="#0000FF" stroke="black" x="-17.8203125" y="13.5" transform="matrix(1 0 0 1 105 539)" id="icon21">
+
+
+⯋</text>
+
+<rect width="181" height="189" fill="white" fill-opacity="0" transform="translate(9,448)" style="cursor: default;" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5"/>
+
+<defs>
+
+
+			<marker id="arrow0000FF" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#0000FF" stroke-linejoin="bevel">
+
+
+				<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+
+
+			</marker>
+
+
+		</defs>
+
+</g><g width="72" height="72" label="GPM" min="0" max="600" majorTicks="5" minorTicks="10" ringColor="#9932CC" faceColor="#87CEFA" diameter="80" units="" transform="matrix(1 0 0 1 88 146)">
+
+<circle cx="36" cy="36" r="34.92" style="fill: rgb(153, 50, 204); stroke: rgb(0, 0, 0); stroke-width: 0.5px;"/>
+
+<circle cx="36" cy="36" r="31.428" style="fill: rgb(135, 206, 250); stroke: rgb(224, 224, 224); stroke-width: 2px;"/>
+
+<text class="noselect" x="36" y="22" dy="4" text-anchor="middle" style="font-size: 8px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+
+GPM</text>
+
+<line x1="15.432549580233289" y1="52.21407053242456" x2="12.690222857597728" y2="54.37594660341449" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="13.669354095566323" y1="49.6842374099107" x2="10.69193464164183" y2="51.50880239789879" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="12.215730277521121" y1="46.964698526105245" x2="9.044494314523938" y2="48.42665832958594" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="11.091829838229927" y1="44.09315508267987" x2="7.770740483327252" y2="45.17224242703719" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="10.313233506239392" y1="41.1094155336024" x2="6.8883313070713115" y2="41.79067093808272" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="9.890735029529377" y1="38.05484371711226" x2="6.409499700133292" y2="38.3288228793939" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="9.830191540855466" y1="34.97178542526999" x2="6.340883746302861" y2="34.834690148639325" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="10.13244235981334" y1="31.902981360596353" x2="6.683434674455118" y2="31.356712208675866" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="10.793297357278977" y1="28.890974618033706" x2="7.43240367158284" y2="27.943104567104864" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="18.71548184067603" y1="53.284518159323966" x2="15.011656520820893" y2="56.98834347917911" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+
+<text class="noselect" x="20.44393365660843" y="51.55606634339157" dy="2.5" text-anchor="start" style="font-size: 9px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+
+0</text>
+
+<line x1="13.149329574763442" y1="23.20300968519475" x2="10.102573518065231" y2="21.496744309887383" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="14.811844917320126" y1="20.605904242460127" x2="11.986757572962809" y2="18.55335814145481" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="16.768093477879393" y1="18.222208474492255" x2="14.20383927492998" y2="15.851836271091223" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="18.990955614232494" y1="16.084967760935186" x2="16.723083029463492" y2="13.429630129059877" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="21.449615597216614" y1="14.22381085379634" x2="19.509564343512164" y2="11.320318967635849" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="24.109988811821268" y1="12.664539131506647" x2="22.52465398673077" y2="9.553144349040867" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="26.935194275140457" y1="11.42876891219014" x2="25.726553511825852" y2="8.152604767148823" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="29.886065920613834" y1="10.533631784784848" x2="29.070874710029013" y2="7.1381160227561615" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="32.92169556057923" y1="9.991537112350478" x2="32.51125496865646" y2="6.523742060663874" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="13.416688707294107" y1="26.645686179267745" x2="8.577407715999986" y2="24.641190360539404" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+
+<line x1="39.07830443942077" y1="9.991537112350478" x2="39.48874503134354" y2="6.523742060663874" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="42.113934079386155" y1="10.533631784784848" x2="42.929125289970976" y2="7.138116022756158" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="45.06480572485954" y1="11.42876891219014" x2="46.273446488174145" y2="8.152604767148823" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="47.89001118817873" y1="12.664539131506643" x2="49.47534601326923" y2="9.553144349040863" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="50.550384402783386" y1="14.22381085379634" x2="52.49043565648783" y2="11.320318967635853" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="53.00904438576751" y1="16.084967760935186" x2="55.276916970536504" y2="13.429630129059877" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="55.231906522120596" y1="18.22220847449225" x2="57.79616072507001" y2="15.851836271091212" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="57.18815508267987" y1="20.605904242460127" x2="60.013242427037184" y2="18.553358141454808" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="58.85067042523656" y1="23.20300968519475" x2="61.89742648193477" y2="21.496744309887383" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="36" y1="11.556000000000001" x2="36" y2="6.317999999999998" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+
+<line x1="61.20670264272103" y1="28.89097461803371" x2="64.56759632841715" y2="27.943104567104868" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="61.86755764018666" y1="31.90298136059635" x2="65.31656532554487" y2="31.356712208675866" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="62.169808459144534" y1="34.971785425269985" x2="65.65911625369714" y2="34.83469014863932" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="62.10926497047062" y1="38.054843717112256" x2="65.5905002998667" y2="38.32882287939389" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="61.68676649376061" y1="41.10941553360239" x2="65.11166869292869" y2="41.79067093808271" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="60.90817016177007" y1="44.093155082679885" x2="64.22925951667276" y2="45.1722424270372" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="59.78426972247888" y1="46.964698526105245" x2="62.95550568547606" y2="48.42665832958595" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="58.33064590443368" y1="49.68423740991069" x2="61.30806535835817" y2="51.50880239789879" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="56.56745041976671" y1="52.21407053242456" x2="59.30977714240227" y2="54.3759466034145" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="58.58331129270589" y1="26.64568617926774" x2="63.42259228400002" y2="24.6411903605394" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+
+<line x1="53.284518159323966" y1="53.284518159323966" x2="56.98834347917911" y2="56.98834347917911" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+
+<text class="noselect" x="51.55606634339158" y="51.55606634339157" dy="2.5" text-anchor="end" style="font-size: 9px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+
+600</text>
+
+<g class="pointerContainer">
+
+<path d="M0,-29.682000000000002L-0.2476560531105072,-25.3880153438915C-0.4953121062210144,-21.09403068778299,-0.9906242124420288,-12.506061375565977,-1.238280265552536,-6.9060460316744825C-1.4859363186630432,-1.3060306877829884,-1.4859363186630432,1.3060306877829884,-1.238280265552536,3.5886460316744824C-0.9906242124420288,5.871261375565976,-0.4953121062210144,7.824430687782988,0,7.824430687782988C0.4953121062210144,7.824430687782988,0.9906242124420288,5.871261375565976,1.238280265552535,3.5886460316744824C1.4859363186630408,1.3060306877829884,1.4859363186630385,-1.3060306877829884,1.2382802655525313,-6.9060460316744825C0.990624212442024,-12.506061375565977,0.495312106221012,-21.09403068778299,0.247656053110506,-25.388015343891496L0,-29.682000000000002" style="fill: rgb(220, 57, 18); stroke: rgb(198, 51, 16); fill-opacity: 0.7;" transform="translate(36, 36) rotate(-135)"/>
+
+<circle cx="36" cy="36" r="4.1904" style="fill: rgb(70, 132, 238); stroke: rgb(102, 102, 102); opacity: 1;"/>
+
+<text class="noselect" x="36" y="56" dy="7" text-anchor="middle" style="font-size: 11px; fill: rgb(0, 0, 0); stroke-width: 1px;">
+
+0</text>
+
+</g>
+
+</g><g text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(0.6 0 0 0.6 199 310)" title="Heating Hot Water" timeline="60" timelineUnits="Minutes" faceColor="#B0E0E6" leftName="OAT(deg. F)" leftMin="-20" leftMax="120" setpoint="false" right1Name="Flow(GPM)" right1Min="0" right1Max="600" right2Name="HWS(F)" right2Min="60" right2Max="220" scale="0.6">
+
+<rect id="faceRect" height="410" width="700" rx="20" ry="20" fill="#B0E0E6" stroke="black" stroke-width="3"/>
+
+<text id="PVCTitle" x="350" dy="1em" font-family="arial" font-size="40" font-weight="bold" text-anchor="middle">
+
+Heating Hot Water</text>
+
+<g id="plotG" transform="translate(70,90)" pointer-events="none">
+
+<rect id="plotRect" width="450" height="260" stroke="none" fill="ghostWhite"/>
+
+<defs>
+
+<clipPath id="clip">
+
+<rect width="450" height="260"/>
+
+</clipPath>
+
+</defs>
+
+<g class="gridVFD" transform="translate(0,260)" fill="none" font-size="10" font-family="sans-serif" text-anchor="middle">
+
+<path class="domain" stroke="#000" d="M0.5,-260V0.5H450.5V-260"/>
+
+<g class="tick" opacity="1" transform="translate(0.5,0)">
+
+<line stroke="#000" y2="-260"/>
+
+<text fill="#000" y="3" dy="0.71em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(38,0)">
+
+<line stroke="#000" y2="-260"/>
+
+<text fill="#000" y="3" dy="0.71em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(75.5,0)">
+
+<line stroke="#000" y2="-260"/>
+
+<text fill="#000" y="3" dy="0.71em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(113,0)">
+
+<line stroke="#000" y2="-260"/>
+
+<text fill="#000" y="3" dy="0.71em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(150.5,0)">
+
+<line stroke="#000" y2="-260"/>
+
+<text fill="#000" y="3" dy="0.71em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(188,0)">
+
+<line stroke="#000" y2="-260"/>
+
+<text fill="#000" y="3" dy="0.71em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(225.5,0)">
+
+<line stroke="#000" y2="-260"/>
+
+<text fill="#000" y="3" dy="0.71em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(263,0)">
+
+<line stroke="#000" y2="-260"/>
+
+<text fill="#000" y="3" dy="0.71em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(300.5,0)">
+
+<line stroke="#000" y2="-260"/>
+
+<text fill="#000" y="3" dy="0.71em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(338,0)">
+
+<line stroke="#000" y2="-260"/>
+
+<text fill="#000" y="3" dy="0.71em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(375.5,0)">
+
+<line stroke="#000" y2="-260"/>
+
+<text fill="#000" y="3" dy="0.71em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(413,0)">
+
+<line stroke="#000" y2="-260"/>
+
+<text fill="#000" y="3" dy="0.71em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(450.5,0)">
+
+<line stroke="#000" y2="-260"/>
+
+<text fill="#000" y="3" dy="0.71em"/>
+
+</g>
+
+</g>
+
+<g class="gridVFD" fill="none" font-size="10" font-family="sans-serif" text-anchor="end">
+
+<path class="domain" stroke="#000" d="M450,260.5H0.5V0.5H450"/>
+
+<g class="tick" opacity="1" transform="translate(0,260.5)">
+
+<line stroke="#000" x2="450"/>
+
+<text fill="#000" x="-3" dy="0.32em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,241.92857142857144)">
+
+<line stroke="#000" x2="450"/>
+
+<text fill="#000" x="-3" dy="0.32em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,223.35714285714286)">
+
+<line stroke="#000" x2="450"/>
+
+<text fill="#000" x="-3" dy="0.32em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,204.78571428571428)">
+
+<line stroke="#000" x2="450"/>
+
+<text fill="#000" x="-3" dy="0.32em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,186.21428571428572)">
+
+<line stroke="#000" x2="450"/>
+
+<text fill="#000" x="-3" dy="0.32em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,167.64285714285714)">
+
+<line stroke="#000" x2="450"/>
+
+<text fill="#000" x="-3" dy="0.32em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,149.07142857142858)">
+
+<line stroke="#000" x2="450"/>
+
+<text fill="#000" x="-3" dy="0.32em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,130.5)">
+
+<line stroke="#000" x2="450"/>
+
+<text fill="#000" x="-3" dy="0.32em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,111.92857142857144)">
+
+<line stroke="#000" x2="450"/>
+
+<text fill="#000" x="-3" dy="0.32em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,93.35714285714283)">
+
+<line stroke="#000" x2="450"/>
+
+<text fill="#000" x="-3" dy="0.32em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,74.78571428571428)">
+
+<line stroke="#000" x2="450"/>
+
+<text fill="#000" x="-3" dy="0.32em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,56.21428571428572)">
+
+<line stroke="#000" x2="450"/>
+
+<text fill="#000" x="-3" dy="0.32em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,37.64285714285717)">
+
+<line stroke="#000" x2="450"/>
+
+<text fill="#000" x="-3" dy="0.32em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,19.071428571428555)">
+
+<line stroke="#000" x2="450"/>
+
+<text fill="#000" x="-3" dy="0.32em"/>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,0.5)">
+
+<line stroke="#000" x2="450"/>
+
+<text fill="#000" x="-3" dy="0.32em"/>
+
+</g>
+
+</g>
+
+<g class="x axis" transform="translate(0,260)" fill="none" font-size="10" font-family="sans-serif" text-anchor="middle">
+
+<path class="domain" stroke="#000" d="M0.5,6V0.5H450.5V6"/>
+
+<g class="tick" opacity="1" transform="translate(0.5,0)">
+
+<line stroke="#000" y2="6"/>
+
+<text fill="black" y="9" dy="0.71em" font-size="24" stroke="black" stroke-width=".5">
+
+0</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(38,0)">
+
+<line stroke="#000" y2="6"/>
+
+<text fill="black" y="9" dy="0.71em" font-size="24" stroke="black" stroke-width=".5">
+
+5</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(75.5,0)">
+
+<line stroke="#000" y2="6"/>
+
+<text fill="black" y="9" dy="0.71em" font-size="24" stroke="black" stroke-width=".5">
+
+10</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(113,0)">
+
+<line stroke="#000" y2="6"/>
+
+<text fill="black" y="9" dy="0.71em" font-size="24" stroke="black" stroke-width=".5">
+
+15</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(150.5,0)">
+
+<line stroke="#000" y2="6"/>
+
+<text fill="black" y="9" dy="0.71em" font-size="24" stroke="black" stroke-width=".5">
+
+20</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(188,0)">
+
+<line stroke="#000" y2="6"/>
+
+<text fill="black" y="9" dy="0.71em" font-size="24" stroke="black" stroke-width=".5">
+
+25</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(225.5,0)">
+
+<line stroke="#000" y2="6"/>
+
+<text fill="black" y="9" dy="0.71em" font-size="24" stroke="black" stroke-width=".5">
+
+30</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(263,0)">
+
+<line stroke="#000" y2="6"/>
+
+<text fill="black" y="9" dy="0.71em" font-size="24" stroke="black" stroke-width=".5">
+
+35</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(300.5,0)">
+
+<line stroke="#000" y2="6"/>
+
+<text fill="black" y="9" dy="0.71em" font-size="24" stroke="black" stroke-width=".5">
+
+40</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(338,0)">
+
+<line stroke="#000" y2="6"/>
+
+<text fill="black" y="9" dy="0.71em" font-size="24" stroke="black" stroke-width=".5">
+
+45</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(375.5,0)">
+
+<line stroke="#000" y2="6"/>
+
+<text fill="black" y="9" dy="0.71em" font-size="24" stroke="black" stroke-width=".5">
+
+50</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(413,0)">
+
+<line stroke="#000" y2="6"/>
+
+<text fill="black" y="9" dy="0.71em" font-size="24" stroke="black" stroke-width=".5">
+
+55</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(450.5,0)">
+
+<line stroke="#000" y2="6"/>
+
+<text fill="black" y="9" dy="0.71em" font-size="24" stroke="black" stroke-width=".5">
+
+60</text>
+
+</g>
+
+</g>
+
+<text x="225" y="305" font-family="arial" font-size="25" text-anchor="middle">
+
+Minutes</text>
+
+<text font-size="30" fill="DarkViolet" stroke="black" stroke-width="1" font-weight="bold" transform="translate(-60,-20)">
+
+OAT(deg. F)</text>
+
+<text font-size="30" fill="blue" stroke="black" stroke-width="1" font-weight="bold" transform="translate(340,-20)">
+
+Flow(GPM)</text>
+
+<text font-size="30" fill="red" stroke="black" stroke-width="1" font-weight="bold" transform="translate(510,-20)">
+
+HWS(F)</text>
+
+<g class="y axisDarkViolet" fill="none" font-size="10" font-family="sans-serif" text-anchor="end">
+
+<path class="domain" stroke="#000" d="M-6,260.5H0.5V0.5H-6"/>
+
+<g class="tick" opacity="1" transform="translate(0,260.5)">
+
+<line stroke="#000" x2="-6"/>
+
+<text fill="DarkViolet" x="-9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+-20</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,241.92857142857144)">
+
+<line stroke="#000" x2="-6"/>
+
+<text fill="DarkViolet" x="-9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+-10</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,223.35714285714286)">
+
+<line stroke="#000" x2="-6"/>
+
+<text fill="DarkViolet" x="-9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+0</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,204.78571428571428)">
+
+<line stroke="#000" x2="-6"/>
+
+<text fill="DarkViolet" x="-9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+10</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,186.21428571428572)">
+
+<line stroke="#000" x2="-6"/>
+
+<text fill="DarkViolet" x="-9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+20</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,167.64285714285714)">
+
+<line stroke="#000" x2="-6"/>
+
+<text fill="DarkViolet" x="-9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+30</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,149.07142857142858)">
+
+<line stroke="#000" x2="-6"/>
+
+<text fill="DarkViolet" x="-9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+40</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,130.5)">
+
+<line stroke="#000" x2="-6"/>
+
+<text fill="DarkViolet" x="-9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+50</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,111.92857142857144)">
+
+<line stroke="#000" x2="-6"/>
+
+<text fill="DarkViolet" x="-9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+60</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,93.35714285714283)">
+
+<line stroke="#000" x2="-6"/>
+
+<text fill="DarkViolet" x="-9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+70</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,74.78571428571428)">
+
+<line stroke="#000" x2="-6"/>
+
+<text fill="DarkViolet" x="-9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+80</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,56.21428571428572)">
+
+<line stroke="#000" x2="-6"/>
+
+<text fill="DarkViolet" x="-9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+90</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,37.64285714285717)">
+
+<line stroke="#000" x2="-6"/>
+
+<text fill="DarkViolet" x="-9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+100</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,19.071428571428555)">
+
+<line stroke="#000" x2="-6"/>
+
+<text fill="DarkViolet" x="-9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+110</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,0.5)">
+
+<line stroke="#000" x2="-6"/>
+
+<text fill="DarkViolet" x="-9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+120</text>
+
+</g>
+
+</g>
+
+<g class="y axis right axisBlue" transform="translate(460,0)" fill="none" font-size="10" font-family="sans-serif" text-anchor="start">
+
+<path class="domain" stroke="#000" d="M6,260.5H0.5V0.5H6"/>
+
+<g class="tick" opacity="1" transform="translate(0,260.5)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="blue" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+0</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,238.83333333333334)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="blue" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+50</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,217.16666666666669)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="blue" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+100</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,195.5)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="blue" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+150</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,173.83333333333334)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="blue" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+200</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,152.16666666666666)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="blue" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+250</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,130.5)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="blue" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+300</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,108.83333333333331)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="blue" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+350</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,87.16666666666669)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="blue" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+400</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,65.5)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="blue" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+450</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,43.833333333333314)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="blue" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+500</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,22.166666666666686)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="blue" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+550</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,0.5)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="blue" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+600</text>
+
+</g>
+
+</g>
+
+<g class="y axis right axisred" transform="translate(550,0)" fill="none" font-size="10" font-family="sans-serif" text-anchor="start">
+
+<path class="domain" stroke="#000" d="M6,260.5H0.5V0.5H6"/>
+
+<g class="tick" opacity="1" transform="translate(0,260.5)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="red" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+60</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,228)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="red" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+80</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,195.5)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="red" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+100</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,163)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="red" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+120</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,130.5)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="red" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+140</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,98)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="red" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+160</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,65.5)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="red" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+180</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,33)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="red" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+200</text>
+
+</g>
+
+<g class="tick" opacity="1" transform="translate(0,0.5)">
+
+<line stroke="#000" x2="6"/>
+
+<text fill="red" x="9" dy="0.32em" font-size="24" stroke="black" stroke-width=".5">
+
+220</text>
+
+</g>
+
+</g>
+
+<path clip-path="url(#clip)" class="chartLineLeft" d="M0,89.14285714285714C2.5,83.57142857142857,5,78,7.5,78C10,78,12.5,81.71428571428572,15,81.71428571428572C17.5,81.71428571428572,20,70.57142857142858,22.5,70.57142857142858C25,70.57142857142858,27.5,70.57142857142858,30,70.57142857142858C32.5,70.57142857142858,35,72.73809523809524,37.5,76.14285714285714C40,79.54761904761904,42.5,91,45,91C47.5,91,50,89.76190476190477,52.5,87.2857142857143C55,84.80952380952384,57.5,75.5238095238095,60,74.28571428571428C62.5,73.04761904761905,65,72.42857142857144,67.5,72.42857142857144C70,72.42857142857144,72.5,85.42857142857144,75,85.42857142857144C77.5,85.42857142857144,80,83.57142857142856,82.5,83.57142857142856C85,83.57142857142856,87.5,83.57142857142856,90,83.57142857142856C92.5,83.57142857142856,95,82.95238095238095,97.5,81.71428571428572C100,80.4761904761905,102.5,70.57142857142858,105,70.57142857142858C107.5,70.57142857142858,110,85.42857142857144,112.5,85.42857142857144C115,85.42857142857144,117.5,75.5238095238095,120,74.28571428571428C122.5,73.04761904761905,125,72.42857142857144,127.5,72.42857142857144C130,72.42857142857144,132.5,85.42857142857144,135,85.42857142857144C137.5,85.42857142857144,140,78,142.5,78C145,78,147.5,78,150,78C152.5,78,155,72.42857142857144,157.5,72.42857142857144C160,72.42857142857144,162.5,81.09523809523807,165,83.57142857142856C167.5,86.04761904761904,170,86.04761904761907,172.5,87.2857142857143C175,88.52380952380955,177.5,91,180,91C182.5,91,185,76.76190476190474,187.5,74.28571428571428C190,71.80952380952381,192.5,70.57142857142858,195,70.57142857142858C197.5,70.57142857142858,200,81.71428571428572,202.5,81.71428571428572C205,81.71428571428572,207.5,70.57142857142858,210,70.57142857142858C212.5,70.57142857142858,215,78.61904761904762,217.5,79.85714285714286C220,81.0952380952381,222.5,81.71428571428572,225,81.71428571428572C227.5,81.71428571428572,230.00000000000003,81.71428571428572,232.50000000000003,81.71428571428572C235.00000000000003,81.71428571428572,237.5,79.23809523809524,240,78C242.5,76.76190476190476,245.00000000000003,74.28571428571428,247.50000000000003,74.28571428571428C250.00000000000003,74.28571428571428,252.5,76.14285714285714,255,76.14285714285714C257.5,76.14285714285714,260,70.57142857142858,262.5,70.57142857142858C265,70.57142857142858,267.5,78,270,78C272.5,78,275,74.28571428571428,277.5,74.28571428571428C280,74.28571428571428,282.5,76.14285714285714,285,76.14285714285714C287.5,76.14285714285714,290,68.7142857142857,292.5,68.7142857142857C295,68.7142857142857,297.5,87.2857142857143,300,87.2857142857143C302.5,87.2857142857143,305,66.85714285714286,307.5,66.85714285714286C310,66.85714285714286,312.5,79.85714285714286,315,79.85714285714286C317.5,79.85714285714286,320,76.14285714285714,322.5,76.14285714285714C325,76.14285714285714,327.5,76.14285714285714,330,76.14285714285714C332.5,76.14285714285714,335,70.57142857142858,337.5,70.57142857142858C340,70.57142857142858,342.5,74.28571428571428,345,74.28571428571428C347.5,74.28571428571428,350,72.42857142857144,352.5,72.42857142857144C355,72.42857142857144,357.5,74.28571428571428,360,74.28571428571428C362.5,74.28571428571428,365,72.42857142857144,367.5,72.42857142857144C370,72.42857142857144,372.5,83.57142857142856,375,83.57142857142856C377.5,83.57142857142856,380,83.57142857142856,382.5,83.57142857142856C385,83.57142857142856,387.5,82.02380952380952,390,79.85714285714286C392.5,77.6904761904762,395,72.73809523809526,397.5,70.57142857142858C400,68.40476190476191,402.5,66.85714285714286,405,66.85714285714286C407.5,66.85714285714286,410,91,412.5,91C415,91,417.5,85.42857142857144,420,85.42857142857144C422.5,85.42857142857144,425,85.42857142857144,427.5,85.42857142857144C430,85.42857142857144,432.5,84.19047619047618,435,83.57142857142856C437.5,82.95238095238093,440,82.33333333333333,442.5,81.71428571428572"/>
+
+<path clip-path="url(#clip)" class="chartLineRight1" d="M0,119.16666666666669C2.5,116.13333333333335,5,113.10000000000002,7.5,113.10000000000002C10,113.10000000000002,12.5,114.11111111111113,15,116.13333333333333C17.5,118.15555555555552,20,129.13333333333335,22.5,129.13333333333335C25,129.13333333333335,27.5,108.76666666666668,30,108.76666666666668C32.5,108.76666666666668,35,117.43333333333334,37.5,117.43333333333334C40,117.43333333333334,42.5,113.82222222222221,45,113.53333333333333C47.5,113.24444444444445,50,113.3888888888889,52.5,113.10000000000002C55,112.81111111111115,57.5,104.43333333333331,60,104.43333333333331C62.5,104.43333333333331,65,117.86666666666667,67.5,117.86666666666667C70,117.86666666666667,72.5,114.39999999999998,75,114.39999999999998C77.5,114.39999999999998,80,120.9,82.5,120.9C85,120.9,87.5,105.73333333333332,90,105.73333333333332C92.5,105.73333333333332,95,109.85000000000001,97.5,111.80000000000001C100,113.75000000000001,102.5,114.83333333333334,105,117.43333333333334C107.5,120.03333333333333,110,127.4,112.5,127.4C115,127.4,117.5,111.80000000000001,120,111.80000000000001C122.5,111.80000000000001,125,120.03333333333333,127.5,120.03333333333333C130,120.03333333333333,132.5,119.74444444444445,135,119.16666666666669C137.5,118.58888888888892,140,108.76666666666668,142.5,107.03333333333333C145,105.29999999999998,147.5,104.43333333333331,150,104.43333333333331C152.5,104.43333333333331,155,120.9,157.5,120.9C160,120.9,162.5,115.69999999999999,165,115.69999999999999C167.5,115.69999999999999,170,121.76666666666668,172.5,121.76666666666668C175,121.76666666666668,177.5,109.20000000000002,180,109.20000000000002C182.5,109.20000000000002,185,125.23333333333335,187.5,125.23333333333335C190,125.23333333333335,192.5,110.50000000000003,195,108.76666666666668C197.5,107.03333333333333,200,106.16666666666666,202.5,106.16666666666666C205,106.16666666666666,207.5,125.23333333333335,210,125.23333333333335C212.5,125.23333333333335,215,104.86666666666667,217.5,104.86666666666667C220,104.86666666666667,222.5,127.54444444444447,225,127.83333333333334C227.5,128.1222222222222,230.00000000000003,128.26666666666665,232.50000000000003,128.26666666666665C235.00000000000003,128.26666666666665,237.5,126.67777777777775,240,124.79999999999998C242.5,122.9222222222222,245.00000000000003,117,247.50000000000003,117C250.00000000000003,117,252.5,127.83333333333334,255,127.83333333333334C257.5,127.83333333333334,260,125.23333333333335,262.5,125.23333333333335C265,125.23333333333335,267.5,127.83333333333334,270,127.83333333333334C272.5,127.83333333333334,275,112.23333333333332,277.5,112.23333333333332C280,112.23333333333332,282.5,122.63333333333333,285,122.63333333333333C287.5,122.63333333333333,290,109.63333333333333,292.5,109.63333333333333C295,109.63333333333333,297.5,126.53333333333333,300,126.53333333333333C302.5,126.53333333333333,305,112.66666666666666,307.5,112.66666666666666C310,112.66666666666666,312.5,115.33888888888889,315,117.86666666666667C317.5,120.39444444444446,320,127.83333333333334,322.5,127.83333333333334C325,127.83333333333334,327.5,106.31111111111109,330,105.73333333333332C332.5,105.15555555555555,335,104.86666666666667,337.5,104.86666666666667C340,104.86666666666667,342.5,104.86666666666667,345,104.86666666666667C347.5,104.86666666666667,350,125.66666666666666,352.5,125.66666666666666C355,125.66666666666666,357.5,106.6,360,106.6C362.5,106.6,365,108.62222222222222,367.5,109.63333333333333C370,110.64444444444443,372.5,111.22222222222221,375,112.66666666666666C377.5,114.1111111111111,380,118.29999999999998,382.5,118.29999999999998C385,118.29999999999998,387.5,104.86666666666667,390,104.86666666666667C392.5,104.86666666666667,395,116.13333333333333,397.5,116.13333333333333C400,116.13333333333333,402.5,107.03333333333333,405,107.03333333333333C407.5,107.03333333333333,410,117.86666666666667,412.5,117.86666666666667C415,117.86666666666667,417.5,106.16666666666666,420,106.16666666666666C422.5,106.16666666666666,425,115.84444444444445,427.5,117C430,118.15555555555555,432.5,118.73333333333332,435,118.73333333333332C437.5,118.73333333333332,440,116.13333333333333,442.5,113.53333333333333"/>
+
+<path clip-path="url(#clip)" class="chartLineRight2" d="M0,216.125C2.5,218.5625,5,221,7.5,221C10,221,12.5,206.375,15,206.375C17.5,206.375,20,225.875,22.5,225.875C25,225.875,27.5,225.875,30,225.875C32.5,225.875,35,208,37.5,208C40,208,42.5,222.625,45,222.625C47.5,222.625,50,214.5,52.5,214.5C55,214.5,57.5,217.75,60,217.75C62.5,217.75,65,203.125,67.5,203.125C70,203.125,72.5,204.20833333333334,75,206.375C77.5,208.54166666666666,80,216.66666666666666,82.5,217.75C85,218.83333333333334,87.5,219.375,90,219.375C92.5,219.375,95,219.375,97.5,219.375C100,219.375,102.5,217.75,105,217.75C107.5,217.75,110,219.375,112.5,219.375C115,219.375,117.5,214.5,120,212.875C122.5,211.25,125,211.52083333333334,127.5,209.625C130,207.72916666666666,132.5,201.5,135,201.5C137.5,201.5,140,204.75,142.5,208C145,211.25,147.5,221,150,221C152.5,221,155,216.125,157.5,216.125C160,216.125,162.5,216.66666666666666,165,217.75C167.5,218.83333333333334,170,224.25,172.5,224.25C175,224.25,177.5,208,180,208C182.5,208,185,221,187.5,221C190,221,192.5,206.375,195,206.375C197.5,206.375,200,209.625,202.5,209.625C205,209.625,207.5,203.125,210,203.125C212.5,203.125,215,203.66666666666666,217.5,204.75C220,205.83333333333334,222.5,215.85416666666666,225,219.375C227.5,222.89583333333334,230.00000000000003,225.875,232.50000000000003,225.875C235.00000000000003,225.875,237.5,216.39583333333331,240,212.875C242.5,209.35416666666666,245.00000000000003,204.75,247.50000000000003,204.75C250.00000000000003,204.75,252.5,217.75,255,217.75C257.5,217.75,260,217.75,262.5,217.75C265,217.75,267.5,219.375,270,219.375C272.5,219.375,275,208,277.5,208C280,208,282.5,225.875,285,225.875C287.5,225.875,290,223.97916666666666,292.5,221C295,218.02083333333334,297.5,210.97916666666666,300,208C302.5,205.02083333333334,305,203.125,307.5,203.125C310,203.125,312.5,206.375,315,209.625C317.5,212.875,320,222.625,322.5,222.625C325,222.625,327.5,219.375,330,216.125C332.5,212.875,335,203.125,337.5,203.125C340,203.125,342.5,211.25,345,214.5C347.5,217.75,350,222.625,352.5,222.625C355,222.625,357.5,222.625,360,222.625C362.5,222.625,365,221.54166666666666,367.5,219.375C370,217.20833333333334,372.5,203.125,375,203.125C377.5,203.125,380,217.75,382.5,221C385,224.25,387.5,225.875,390,225.875C392.5,225.875,395,206.375,397.5,206.375C400,206.375,402.5,207.72916666666666,405,209.625C407.5,211.52083333333334,410,217.75,412.5,217.75C415,217.75,417.5,216.125,420,216.125C422.5,216.125,425,224.25,427.5,224.25C430,224.25,432.5,219.375,435,219.375C437.5,219.375,440,221,442.5,222.625"/>
+
+</g>
+
+</g><text font-size="50" font-family="Arial Unicode MS" stroke-width="1" fill="#0000FF" stroke="black" x="-22.203125" y="17" transform="matrix(1 0 0 1 399 47)">
+
+✽</text><rect stroke="#000000" stroke-width="2" fill="url(#wrhof)" transform="matrix(1 0 0 1 23 104)" width="52" height="99" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1" stroke-opacity="1.0" stroke-dasharray="8 4" marker-end="url(#arrow000000)" d="M 462 157 L 499 157 L 499 116 L 630 116" rightAngle="true" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1" stroke-opacity="1.0" stroke-dasharray="8 4" marker-end="url(#arrow000000)" d="M 402 238 L 402 182" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1" stroke-opacity="1.0" stroke-dasharray="8 4" marker-end="url(#arrow000000)" d="M 401 213 L 350 213" rightAngle="true" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1" stroke-opacity="1.0" stroke-dasharray="8 4" marker-end="url(#arrow000000)" d="M 225 132 L 225 158 L 337 158" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1" stroke-opacity="1.0" stroke-dasharray="8 4" marker-end="url(#arrow000000)" d="M 123 246 L 123 214" rightAngle="true"/><g width="72" height="72" label="OAT" min="-20" max="120" majorTicks="5" minorTicks="10" ringColor="#9932CC" faceColor="#EE82EE" diameter="80" units="℉" transform="matrix(1 0 0 1 186 119)">
+
+<circle cx="36" cy="36" r="34.92" style="fill: rgb(153, 50, 204); stroke: rgb(0, 0, 0); stroke-width: 0.5px;"/>
+
+<circle cx="36" cy="36" r="31.428" style="fill: rgb(238, 130, 238); stroke: rgb(224, 224, 224); stroke-width: 2px;"/>
+
+<text class="noselect" x="36" y="22" dy="4" text-anchor="middle" style="font-size: 8px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+
+OAT</text>
+
+<text class="noselect" x="36" y="43" dy="3.5" text-anchor="middle" style="font-size: 7px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+
+℉</text>
+
+<line x1="15.432549580233289" y1="52.21407053242456" x2="12.690222857597728" y2="54.37594660341449" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="13.669354095566323" y1="49.6842374099107" x2="10.69193464164183" y2="51.50880239789879" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="12.215730277521121" y1="46.964698526105245" x2="9.044494314523938" y2="48.42665832958594" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="11.091829838229927" y1="44.09315508267987" x2="7.770740483327252" y2="45.17224242703719" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="10.313233506239392" y1="41.1094155336024" x2="6.8883313070713115" y2="41.79067093808272" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="9.890735029529377" y1="38.05484371711226" x2="6.409499700133292" y2="38.3288228793939" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="9.830191540855466" y1="34.97178542526999" x2="6.340883746302861" y2="34.834690148639325" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="10.13244235981334" y1="31.902981360596353" x2="6.683434674455118" y2="31.356712208675866" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="10.793297357278977" y1="28.890974618033706" x2="7.43240367158284" y2="27.943104567104868" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="18.71548184067603" y1="53.284518159323966" x2="15.011656520820893" y2="56.98834347917911" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+
+<text class="noselect" x="20.44393365660843" y="51.55606634339157" dy="2.5" text-anchor="start" style="font-size: 9px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+
+-20</text>
+
+<line x1="13.149329574763442" y1="23.20300968519475" x2="10.102573518065231" y2="21.496744309887383" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="14.811844917320126" y1="20.605904242460127" x2="11.986757572962809" y2="18.55335814145481" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="16.768093477879393" y1="18.222208474492255" x2="14.20383927492998" y2="15.851836271091223" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="18.990955614232494" y1="16.084967760935186" x2="16.723083029463492" y2="13.429630129059877" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="21.449615597216614" y1="14.22381085379634" x2="19.509564343512164" y2="11.320318967635849" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="24.10998881182126" y1="12.664539131506647" x2="22.524653986730762" y2="9.553144349040867" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="26.935194275140457" y1="11.42876891219014" x2="25.726553511825852" y2="8.152604767148823" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="29.886065920613834" y1="10.533631784784848" x2="29.070874710029013" y2="7.1381160227561615" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="32.92169556057923" y1="9.991537112350478" x2="32.51125496865646" y2="6.523742060663874" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="13.416688707294107" y1="26.64568617926775" x2="8.577407715999986" y2="24.641190360539404" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+
+<line x1="39.07830443942076" y1="9.991537112350478" x2="39.48874503134353" y2="6.523742060663874" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="42.113934079386155" y1="10.533631784784848" x2="42.929125289970976" y2="7.138116022756158" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="45.06480572485954" y1="11.42876891219014" x2="46.273446488174145" y2="8.152604767148823" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="47.89001118817873" y1="12.664539131506643" x2="49.47534601326923" y2="9.553144349040863" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="50.550384402783386" y1="14.22381085379634" x2="52.49043565648783" y2="11.320318967635853" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="53.00904438576751" y1="16.084967760935186" x2="55.276916970536504" y2="13.429630129059877" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="55.231906522120596" y1="18.22220847449225" x2="57.79616072507001" y2="15.851836271091212" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="57.18815508267987" y1="20.605904242460127" x2="60.013242427037184" y2="18.553358141454808" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="58.85067042523656" y1="23.20300968519475" x2="61.89742648193477" y2="21.496744309887383" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="36" y1="11.556000000000001" x2="36" y2="6.317999999999998" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+
+<line x1="61.20670264272103" y1="28.89097461803371" x2="64.56759632841715" y2="27.943104567104868" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="61.86755764018666" y1="31.90298136059635" x2="65.31656532554487" y2="31.356712208675866" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="62.169808459144534" y1="34.971785425269985" x2="65.65911625369714" y2="34.83469014863932" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="62.10926497047062" y1="38.054843717112256" x2="65.5905002998667" y2="38.32882287939389" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="61.68676649376061" y1="41.10941553360239" x2="65.11166869292869" y2="41.79067093808271" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="60.90817016177007" y1="44.093155082679885" x2="64.22925951667276" y2="45.1722424270372" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="59.78426972247888" y1="46.964698526105245" x2="62.95550568547606" y2="48.42665832958595" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="58.33064590443368" y1="49.68423740991069" x2="61.30806535835817" y2="51.50880239789879" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="56.56745041976671" y1="52.21407053242456" x2="59.30977714240227" y2="54.3759466034145" style="stroke: rgb(102, 102, 102); stroke-width: 1px;"/>
+
+<line x1="58.58331129270589" y1="26.64568617926774" x2="63.42259228400002" y2="24.6411903605394" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+
+<line x1="53.284518159323966" y1="53.284518159323966" x2="56.98834347917911" y2="56.98834347917911" style="stroke: rgb(51, 51, 51); stroke-width: 2px;"/>
+
+<text class="noselect" x="51.55606634339158" y="51.55606634339157" dy="2.5" text-anchor="end" style="font-size: 9px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+
+120</text>
+
+<g class="pointerContainer">
+
+<path d="M0,-29.682000000000002L-0.2476560531105072,-25.3880153438915C-0.4953121062210144,-21.09403068778299,-0.9906242124420288,-12.506061375565977,-1.238280265552536,-6.9060460316744825C-1.4859363186630432,-1.3060306877829884,-1.4859363186630432,1.3060306877829884,-1.238280265552536,3.5886460316744824C-0.9906242124420288,5.871261375565976,-0.4953121062210144,7.824430687782988,0,7.824430687782988C0.4953121062210144,7.824430687782988,0.9906242124420288,5.871261375565976,1.238280265552536,3.5886460316744824C1.4859363186630432,1.3060306877829884,1.4859363186630432,-1.3060306877829884,1.238280265552536,-6.9060460316744825C0.9906242124420288,-12.506061375565977,0.4953121062210144,-21.09403068778299,0.2476560531105072,-25.388015343891496L0,-29.682000000000002" style="fill: rgb(220, 57, 18); stroke: rgb(198, 51, 16); fill-opacity: 0.7;" transform="translate(36, 36) rotate(-135)"/>
+
+<circle cx="36" cy="36" r="4.1904" style="fill: rgb(70, 132, 238); stroke: rgb(102, 102, 102); opacity: 1;"/>
+
+<text class="noselect" x="36" y="56" dy="7" text-anchor="middle" style="font-size: 11px; fill: rgb(0, 0, 0); stroke-width: 1px;">
+
+-20</text>
+
+</g>
+
+</g><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1" stroke-opacity="1.0" d="M 73 106 L 24 200"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1" stroke-opacity="1.0" d="M 24 106 L 73 201"/><text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 17 16)" rotateAngle="0">
+
+Outside</text><text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 26 26)" rotateAngle="0">
+
+Air</text><text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 541 154)" rotateAngle="0">
+
+Steam</text><text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 277 155)" rotateAngle="0">
+
+Setpoint</text><text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 286 169)" rotateAngle="0">
+
+Adjust</text><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 83 125)" rotateAngle="0">
+
+Building</text><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 82 142)" rotateAngle="0">
+
+Heating</text><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 504 285)" rotateAngle="0">
+
+Steam-to-Hot Water Converter</text><g transform="matrix(0.5 0 0 0.5 554 69)" title="Valve Position" scale=".5" units="Percent(%)" max="100" faceColor="#87CEEB" numBorderColor="#1E90FF" numColor="#00FF00" numBgColor="#000000">
+
+<foreignObject id="digitalReadoutFO" overflow="visible" x="-100" y="-40" width="200" height="80">
+
+<div xmlns="http://www.w3.org/1999/xhtml" id="digitalReadoutContainerDiv" style="font-family: arial; border: 1px solid black; font-size: 16px; overflow: hidden; height: 80px; padding: 10px; background: rgb(135, 206, 235); border-radius: 8px; width: 100%; text-align: center;">
+
+<div id="digitalReadoutTitleDiv">
+
+Valve Position</div>
+
+<div id="digitalReadoutValue" style="border: 6px inset rgb(30, 144, 255); width: 180px; background: rgb(0, 0, 0); color: rgb(0, 255, 0); font-weight: bold; font-size: 30px;">
+
+100</div>
+
+<div id="digitalReadoutUnit">
+
+Percent(%)</div>
+
+</div>
+
+</foreignObject>
+
+<rect id="digitalReadoutCoverRect" x="-100" y="-40" width="200" height="80" stroke="none" fill="white" fill-opacity="0"/>
+
+</g><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="2" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 548 27 L 584 27" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="2" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 310 283 L 264 283" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="2" stroke-opacity="1.0" marker-end="url(#arrowFF0000)" d="M 718 175 L 718 152 L 743 152" rightAngle="true"/></g></g><defs id="arrowDefs"><marker id="arrowADFF2F" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#ADFF2F" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker><marker id="arrowFF0000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#FF0000" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker><marker id="arrow000000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#000000" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker><marker id="arrowADFF2F" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#ADFF2F" stroke-linejoin="bevel">
+
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+
+</marker><marker id="arrowFF0000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#FF0000" stroke-linejoin="bevel">
+
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+
+</marker><marker id="arrow000000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#000000" stroke-linejoin="bevel">
+
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+
+</marker></defs><defs id="defsPattern"><pattern id="wrhof" patternUnits="userSpaceOnUse" width="5" height="5" addTo="fill">
+<path d="M 0 2.5 c 0.625 -1.25 , 1.875 -1.25 , 2.5 0 c 0.625 1.25 , 1.875 1.25 , 2.5 0 M -2.5 2.5 c 0.625 1.25 , 1.875 1.25 , 2.5 0 M 5 2.5 c 0.625 -1.25 , 1.875 -1.25 , 2.5 0" fill="transparent" stroke-width="1.0" shape-rendering="auto" stroke="#FF0000" stroke-linecap="square"/>
+</pattern><pattern id="wrhof" patternUnits="userSpaceOnUse" width="5" height="5" addTo="fill">
+
+<path d="M 0 2.5 c 0.625 -1.25 , 1.875 -1.25 , 2.5 0 c 0.625 1.25 , 1.875 1.25 , 2.5 0 M -2.5 2.5 c 0.625 1.25 , 1.875 1.25 , 2.5 0 M 5 2.5 c 0.625 -1.25 , 1.875 -1.25 , 2.5 0" fill="transparent" stroke-width="1.0" shape-rendering="auto" stroke="#FF0000" stroke-linecap="square"/>
+
+</pattern></defs><defs id="pipe3dDefs"><filter id="pipe3D"><feFlood flood-color="black"/><feComposite operator="out" in2="SourceGraphic"/><feGaussianBlur stdDeviation="6"/><feComposite operator="atop" in2="SourceGraphic"/></filter></defs></svg>

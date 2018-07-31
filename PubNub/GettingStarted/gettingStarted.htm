@@ -1,0 +1,388 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Getting Started</title>
+</head>
+
+<body style=font-family:arial>
+    <center><h1><b>Interactive SVG SCADA Drawings - Getting Started</b></h1><br>
+<svg xmlns="http://www.w3.org/2000/svg" id="schematicSVG" width="800" height="430" viewBox="0 0 800 430" style="cursor: default; touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+
+    <style type="text/css">
+
+
+.grid line {
+stroke: lightgrey;
+stroke-opacity: 0.7;
+shape-rendering: crispEdges;
+}
+.grid path {
+stroke-width: 0;
+}
+.gridVFD line {
+stroke: black;
+stroke-opacity: 0.5;
+}
+.gridVFD path {
+stroke-width: 0;
+}
+.gaugeLine {
+fill: none;
+stroke: black;
+stroke-width: 1;
+}
+.axisRed line{
+stroke: red;
+}
+.axisRed path{
+stroke: red;
+}
+.axisBlue line{
+stroke: blue;
+}
+.axisBlue path{
+stroke: blue;
+}
+.axisPurple line{
+stroke: purple;
+}
+.axisPurple path{
+stroke: purple;
+}
+.chartLineLeft {
+fill: none;
+stroke: DarkViolet;
+stroke-width: 3;
+}
+.chartLineRight2 {
+fill: none;
+stroke: red;
+stroke-width: 3;
+}
+.chartLineRight1 {
+fill: none;
+stroke: blue;
+stroke-width: 3;
+}
+.chartLineCI {
+fill: none;
+stroke: purple;
+stroke-width: 3;
+}
+.chartLineVAC {
+fill: none;
+stroke: red;
+stroke-width: 3;
+}
+.chartLineHZ {
+fill: none;
+stroke: blue;
+stroke-width: 3;
+}
+.axisred line{
+stroke: red;
+}
+.axisred path{
+stroke: red;
+}
+.axisBlue line{
+stroke: blue;
+}
+.axisBlue path{
+stroke: blue;
+}
+.axisDarkViolet line{
+stroke: DarkViolet;
+}
+.axisDarkViolet path{
+stroke: DarkViolet;
+}
+
+</style>
+
+<defs id="endArrowDefs">
+<marker id="endArrow" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="violet" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)">
+<marker id="cloneArrow" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="RGB(0,0,0)" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker>
+</path>
+</marker>
+</defs>
+<defs id="pilotLightDefs">
+<radialGradient id="blueGradient" cx="50%" cy="50%" r="75%">
+<stop offset="0%" stop-color="rgb(0,0,255)" stop-opacity="1"/>
+<stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+</radialGradient>
+<radialGradient id="greenGradient" cx="50%" cy="50%" r="75%">
+<stop offset="0%" stop-color="rgb(0,191,0)" stop-opacity="1"/>
+<stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+</radialGradient>
+<radialGradient id="greyGradient" cx="50%" cy="50%" r="75%">
+<stop offset="0%" stop-color="rgb(255,255,255)" stop-opacity="1"/>
+<stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+</radialGradient>
+<radialGradient id="redGradient" cx="50%" cy="50%" r="75%">
+<stop offset="0%" stop-color="rgb(255,0,0)" stop-opacity="1"/>
+<stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+</radialGradient>
+<radialGradient id="violetGradient" cx="50%" cy="50%" r="75%">
+<stop offset="0%" stop-color="rgb(219,0,219)" stop-opacity="1"/>
+<stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+</radialGradient>
+<radialGradient id="aquaGradient" cx="50%" cy="50%" r="75%">
+<stop offset="0%" stop-color="aqua" stop-opacity="1"/>
+<stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/>
+</radialGradient>
+</defs>
+<defs id="arrowDefs">
+<marker id="arrow9400D3" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#9400D3" stroke-linejoin="bevel">
+
+
+
+
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+
+
+
+
+</marker>
+<marker id="arrow000000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#000000" stroke-linejoin="bevel">
+
+
+
+
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+
+
+
+
+</marker>
+</defs>
+<defs id="defsPattern"/>
+<defs id="defsGradient"/>
+<defs id="defsShadow">
+<filter id="drop-shadow" height="150%" width="150%">
+<feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur"/>
+<feOffset in="blur" dx="5" dy="5" result="offsetBlur"/>
+<feMerge>
+<feMergeNode in="offsetBlur"/>
+<feMergeNode in="SourceGraphic"/>
+</feMerge>
+</filter>
+</defs>
+<defs id="pipe3dDefs">
+<filter id="pipe3D">
+<feFlood flood-color="black"/>
+<feComposite operator="out" in2="SourceGraphic"/>
+<feGaussianBlur stdDeviation="6"/>
+<feComposite operator="atop" in2="SourceGraphic"/>
+</filter>
+</defs>
+<defs id="alarmWarningTrendDefs">
+<linearGradient id="warningMaxTrend" x1="84%" y1="24%" x2="82%" y2="72%">
+<stop offset="0%" stop-color="#FF0000" stop-opacity="1"/>
+<stop offset="100%" stop-color="#FFA500" stop-opacity="1" stop-offset="100%"/>
+</linearGradient>
+<linearGradient id="warningMinTrend" x1="84%" y1="24%" x2="82%" y2="72%">
+<stop offset="0%" stop-color="#FFA500" stop-opacity="1" stop-offset="0%"/>
+<stop offset="100%" stop-color="#FF0000" stop-opacity="1"/>
+</linearGradient>
+</defs>
+<defs id="alarmWarningBarDefs">
+<linearGradient id="warningMaxBar" y1="84%" x1="24%" y2="82%" x2="72%">
+<stop offset="0" stop-color="#FFA500" stop-opacity="1"/>
+<stop offset="100%" stop-color="#FF0000" stop-opacity="1" stop-offset="100%"/>
+</linearGradient>
+<linearGradient id="warningMinBar" y2="84%" x2="24%" y1="82%" x1="72%">
+<stop offset="0" stop-color="#FFA500" stop-opacity="1"/>
+<stop offset="100%" stop-color="#FF0000" stop-opacity="1" stop-offset="100%"/>
+</linearGradient>
+</defs>
+<defs id="alarmWarningTankLevelDefs">
+<linearGradient id="warningMaxTankLevel" x1="84%" y1="24%" x2="82%" y2="72%">
+<stop offset="0%" stop-color="#FF0000" stop-opacity="1"/>
+<stop offset="100%" stop-color="#FFA500" stop-opacity="1" stop-offset="100%"/>
+</linearGradient>
+<linearGradient id="warningMinTankLevel" x1="84%" y1="24%" x2="82%" y2="72%">
+<stop offset="0%" stop-color="#FFA500" stop-opacity="1" stop-offset="0%"/>
+<stop offset="100%" stop-color="#FF0000" stop-opacity="1"/>
+</linearGradient>
+</defs>
+<g id="zoomG">
+<g id="domElemG" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+<rect id="rect1524145621876" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="226" height="184" rx="10" ry="10" transform="matrix(1 0 0 1 510 62)" rotateAngle="0" class="rectElem"/>
+<path id="path1524069392355" fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="4" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 42 31 L 762 31" type="linear" rightAngle="true" class="pathElem" rotateAngle="0"/>
+<text id="text1524069455289" font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0.4" fill="#FF0000" transform="matrix(1 0 0 1 318 20)" rotateAngle="0" class="textElem" filter="null">
+
+
+Data Stream Network</text>
+<rect id="rect1524069529050" fill="white" fill-opacity="0" stroke="#9400D3" stroke-width="5" x="0" y="0" width="97" height="140" transform="translate(352 228)" rotateAngle="0" class="rectElem"/>
+<text id="text1524069590567" font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0.4" fill="#9400D3" transform="matrix(1 0 0 1 373 279)" rotateAngle="0" class="textElem" filter="null">
+
+
+Web</text>
+<text id="text1524069616134" font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0" fill="#9400D3" transform="matrix(1 0 0 1 367 312)" rotateAngle="0" class="textElem">
+
+
+
+
+Server</text>
+<rect id="rect1524069830956" fill="white" fill-opacity="0" stroke="#9400D3" stroke-width="2" x="0" y="0" width="171" height="104" stroke-dasharray="8 3" transform="matrix(1 0 0 1 537 90)" rotateAngle="0" class="rectElem" rx="10" ry="10"/>
+<text id="text1524069870671" font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0" fill="#9400D3" transform="matrix(1 0 0 1 582 213)" rotateAngle="0" class="textElem">
+
+
+
+
+Browser</text>
+<path id="path1524069917442" fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="3" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 85 31 L 85 49" type="linear" rightAngle="true" class="pathElem" rotateAngle="0"/>
+<rect id="rect1524070056157" fill="#00BFFF" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="142" height="80" rx="10" ry="10" transform="matrix(1 0 0 1 553 102)" rotateAngle="0" class="rectElem"/>
+<text id="text1524070102601" font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 585 134)" rotateAngle="0" class="textElem">
+
+
+
+
+SCADA</text>
+<text id="text1524070131618" font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 584 161)" rotateAngle="0" class="textElem">
+
+
+
+
+Drawing</text>
+<rect id="rect1524070264131" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="80" height="81" transform="matrix(1 0 0 1 48 148)" rotateAngle="0" class="rectElem"/>
+<text id="text1524070283336" font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.4" fill="#000000" transform="matrix(1 0 0 1 58 174)" rotateAngle="0" class="textElem" filter="null">
+
+
+
+
+Smart</text>
+<text id="text1524070304362" font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.4" fill="#000000" transform="matrix(1 0 0 1 52 196)" rotateAngle="0" class="textElem" filter="null">
+
+
+
+
+Control</text>
+<text id="text1524070322437" font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 57 219)" rotateAngle="0" class="textElem">
+
+
+
+
+Device</text>
+<rect id="rect1524070361049" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="92" height="97" transform="matrix(1 0 0 1 41 282)" rotateAngle="0" class="rectElem"/>
+<text id="text1524070394905" font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 58 306)" rotateAngle="0" class="textElem">
+
+
+
+
+Field</text>
+<text id="text1524070410515" font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 54 329)" rotateAngle="0" class="textElem">
+
+
+
+
+Device</text>
+<text id="text1524070442161" font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 43 355)" rotateAngle="0" class="textElem">
+
+
+
+
+(Actuator)</text>
+<path id="path1524070493794" fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="2" stroke-opacity="1.0" d="M 86 230 L 86 282" type="linear" rightAngle="true" marker-end="url(#arrow000000)" class="pathElem" rotateAngle="0"/>
+<path id="path1524070745672" fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 71 89 L 71 146" type="linear" rightAngle="true" class="pathElem" rotateAngle="0"/>
+<path id="path1524070755129" fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 101 148 L 101 92" type="linear" rightAngle="true" class="pathElem" rotateAngle="0"/>
+<text id="text1524071341985" font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 116 259)" rotateAngle="0" class="textElem">
+
+
+
+
+Process Control</text>
+<text id="text1524071466888" font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0.4" fill="#000000" transform="matrix(1 0 0 1 529 324)" rotateAngle="0" class="textElem" filter="null">
+
+
+
+
+Interactive SCADA</text>
+<text id="text1524076081916" font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.4" fill="#000000" transform="matrix(1 0 0 1 555 275)" rotateAngle="0" class="textElem" filter="null">
+
+
+
+Client Computer</text>
+<path id="path1524144068626" fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="4" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 403 31 L 403 131 L 521 131" type="linear" rightAngle="true" class="pathElem"/>
+<path id="path1524144110129" fill="none" fill-opacity="1.0" stroke="#9400D3" stroke-width="4" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 400 224 L 400 168 L 535 168" type="linear" rightAngle="true" class="pathElem" rotateAngle="0"/>
+<path id="path1524144153681" fill="none" fill-opacity="1.0" stroke="#9400D3" stroke-width="4" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 27 389 L 767 389" type="linear" rightAngle="true" class="pathElem"/>
+<path id="path1524144185518" fill="none" fill-opacity="1.0" stroke="#9400D3" stroke-width="4" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 401 369 L 401 387" type="linear" rightAngle="true" class="pathElem"/>
+<text id="text1524144311077" font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0" fill="#9400D3" transform="matrix(1 0 0 1 317 417)" rotateAngle="0" class="textElem" filter="null">
+
+
+Internet/Intranet</text>
+<text id="icon1524144394233" class="textElem" font-size="60" font-family="Arial Unicode MS" stroke-width="1.2" fill="#FF0000" stroke="black" x="-29.6875" y="20" transform="matrix(1 0 0 1 85 69)">
+
+
+▲</text>
+<rect id="rect1524145742632" fill="white" fill-opacity="0" stroke="#FF0000" stroke-width="2" x="0" y="0" width="195" height="144" stroke-dasharray="8 4" rx="10" ry="10" transform="matrix(1 0 0 1 524 77)" rotateAngle="0" class="rectElem"/>
+<text id="text1524146307624" font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0" fill="#FF0000" transform="matrix(1 0 0 1 552 240)" rotateAngle="0" class="textElem">
+
+JavaScript SDK</text>
+<text id="text1524161541692" font-family="Arial" font-size="15" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 73 85)" rotateAngle="0" class="textElem">
+IoT</text>
+</g>
+</g>
+</svg>
+<br>
+
+<div style=padding:10px;text-align:justify;width:80%;background:gainsboro >
+Each process control device that functions within the <a title="Internet of Things" href="https://en.wikipedia.org/wiki/Internet_of_things">IoT</a> concept, and interacts with SCADA, is  defined as a <a href="https://www.pubnub.com/solutions/iot/">Smart Device</a>. Each device is connected to a <a href="https://www.pubnub.com/products/global-data-stream-network/">Data Stream Network</a>,  both sending and receiving data.
+The SVG SCADA drawing is viewed, and is interactive, through any current modern browser.
+All interactive needs are performed at the client computer's browser with JavaScript.
+The client computer includes a <a href="https://www.pubnub.com/docs/web-javascript/pubnub-javascript-sdk">JavaScript SDK</a>, providing the ability for SCADA to send/receive data via the Data Stream Network.
+
+
+
+The facility's  server is a typical web server that holds SCADA images plus Javascript files, and stores process operating data.
+</div><p></p>
+<h3 style=color:red >Four(4) Basic Examples:</h3>
+<iframe id=frame1 src='Examples/example1a.htm' width=1200 height=650 style="border:3px solid gainsboro" ></iframe>
+<iframe id=frame2  src='Examples/example2a.htm' width=1200 height=650 style="border:3px solid gainsboro" ></iframe>
+<iframe id=frame3  src='Examples/example3a.htm' width=1200 height=710 style="border:3px solid gainsboro"  ></iframe>
+<iframe id=frame4  src='Examples/example4a.htm' width=1200 height=880 style="border:3px solid gainsboro"  ></iframe>
+<h3 style=color:red >HMI Objects</h3>
+<iframe id=frameTuning  src='../HMI_Objects/tuning.htm' width=1200 height=880 style="border:3px solid gainsboro"  ></iframe>
+<iframe id=frameVFD  src='../HMI_Objects/variableFrequencyDrive.htm' width=1200 height=880 style="border:3px solid gainsboro"  ></iframe>
+<iframe id=frameCB  src='../HMI_Objects/circuitBreaker.htm' width=1200 height=880 style="border:3px solid gainsboro"  ></iframe>
+<iframe id=frameAM  src='../HMI_Objects/autoManual.htm' width=1200 height=880 style="border:3px solid gainsboro"  ></iframe>
+<iframe id=frameStarter  src='../HMI_Objects/motorStarter.htm' width=1200 height=880 style="border:3px solid gainsboro"  ></iframe>
+
+</center>
+
+
+</body>
+<script>
+document.addEventListener("onload",init(),false)
+function init()
+{
+   frame1.width=screen.width-80
+   frame2.width=screen.width-80
+   frame3.width=screen.width-80
+   frame4.width=screen.width-80
+ frameTuning.width=screen.width-60
+ frameVFD.width=screen.width-60
+ frameCB.width=screen.width-60
+ frameAM.width=screen.width-60
+ frameStarter.width=screen.width-60
+
+}
+
+function closeFrame(num)
+{
+  eval("frame"+num)
+
+
+
+}
+
+
+</script>
+</html>

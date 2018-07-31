@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <title>Circuit Breaker</title>
+  <script type="text/javascript" src="../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../highlightCode.js"></script>
+  <link href='../../highlight.css' rel='stylesheet' />
+ <script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.2.js"></script>
+
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body  style='padding:10px;font-family:arial'>
+    <div id=container>
+
+<center>
+<h4>Circuit Breaker</h4>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+   This shows both the field process circuit breaker with field disconnect, and an interactive SVG SCADA drawing of the associated Circuit Breaker. Both circuit breakers are connected to the Data Stream Network.
+
+</div>
+<table>
+<tr>
+<td valign=top >
+<div style="text-align:justify;width:360px;padding:10px;">
+   <b>Sequence Of Operation:</b><p></p>
+Initially the circuit breakers are shown un-tripped.
+Four(4) status values are monitored:<br>
+1.) Manual power disconnect opened/closed.<br>
+2.) Circuit breaker lockout opened/closed.<br>
+3.) Circuit breaker tripped/un-tripped.<br>
+4.) SCADA resets circuit breaker.<br> <br>
+
+Click below to <b>publish</b> the various changes in the status values:
+<table border=1>
+<tr><td align=center colspan=4>Field Device</td></tr>
+<tr><td>Manual Disconnect</td><td><input type="radio" name=md23F1Radio id=md23F1CloseRadio onClick=manualDisconnectCloseClicked() checked  />:Closed</td><td> <input type="radio"  name=md23F1Radio id=md23F1OpenRadio onClick=manualDisconnectOpenClicked()    />:Opened</td></tr>
+<tr><td>Circuit Breaker Lockout</td><td><input type="radio"  name=lockout23F1Radio  id=lockout23F1CloseRadio onClick=lockoutCloseClicked()  checked    />:Closed</td><td> <input type="radio"  name=lockout23F1Radio  id=lockout23F1OpenRadio onClick=lockoutOpenClicked()    />:Opened</td></tr>
+<tr><td>Circuit Breaker</td><td style=background:red ><input type="checkbox"  name=cbcheck  id=tripCheck  onClick=circuitBreakerTripClicked()   />: Tripped</td><td> <input type="checkbox"  name=cbCheck  id=resetCheck onClick=circuitBreakerResetClicked()  disabled    />:Reset</td></tr>
+</table>
+
+<br><br>
+If the circuit breaker has tripped, as the SCADA operator, you can reset (<b>publish</b>) it closed by clicking on the
+SCADA image of the circuit breaker.
+
+</div>
+
+</td>
+<td>
+<div id="svgDiv" style='border:1px solid black;width:800px;height:580px;'>
+<svg xmlns="http://www.w3.org/2000/svg" id="mySVG" width="800" height="560" viewBox="0 0 800 560" style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><style xmlns="http://www.w3.org/1999/xhtml"></style><defs xmlns="http://www.w3.org/1999/xhtml"></defs>
+ <defs>
+<filter id="dropShadow" height="40">
+  <feGaussianBlur in="SourceAlpha" stdDeviation="10"/> <!-- stdDeviation is how much to blur -->
+  <feOffset dx="6" dy="10" result="offsetblur"/> <!-- how much to offset -->
+  <feMerge>
+    <feMergeNode/> <!-- this contains the offset blurred image -->
+    <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+  </feMerge>
+</filter>
+</defs>
+  <defs>
+
+<radialGradient id="radialGradientGreen" gradientUnits="userSpaceOnUse" cx="5" cy="100" r="10%">
+<stop stop-color="#FFFFFF" offset="0"/><stop stop-color="green" offset="1"/>
+</radialGradient>
+
+<radialGradient id="radialGradientRed" gradientUnits="userSpaceOnUse" cx="5" cy="100" r="10%">
+<stop stop-color="#FFFFFF" offset="0"/><stop stop-color="red" offset="1"/>
+</radialGradient>
+  </defs>
+
+ <defs>
+  <g id="circuitBreakerSCADA" >
+    <line id=disconnectLine x1=0 y1=-190 x2=-14 y2=-110 stroke="black" stroke-width="6" />
+    <line  id=disc2CBLine x1="0" y1="-120" x2=0 y2=-30 stroke='black' stroke-width="12" />
+
+ <circle  r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=-190 />
+  <circle  r="5" fill="black" stroke="black" stroke-width="1" cx=-45 cy=-130 />
+  <circle  r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=-120 />
+
+
+    <rect  id="baseCB"
+       width="100"
+       height="200"
+       fill="url(#radialGradientGreen)"
+       filter="url(#dropShadow)"
+       stroke="black"
+       stroke-width="3"
+       rx="6"
+       ry="6"
+       x="-50"
+       y="-50"
+       opacity="1"
+        />
+
+ <circle pointer-events="none" r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=-40 />
+  <circle pointer-events="none"   r="5" fill="black" stroke="black" stroke-width="1" cx=-40 cy=10 />
+  <circle  pointer-events="none" r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=30 />
+  <line pointer-events="none"  id=lockoutCBline x1=0 y1=-40 x2=-14 y2=35 stroke="black" stroke-width="6" />
+
+
+
+    <line pointer-events="none"  x1=0 y1=30 x2=0 y2=85 stroke="black" stroke-width="4" />
+    <line pointer-events="none"  x1=-20 y1=85 x2=20 y2=85 stroke="black" stroke-width="4" />
+    <line pointer-events="none"   x1=-20 y1=115 x2=20 y2=115 stroke="black" stroke-width="4" />
+    <line pointer-events="none"  id=tripLine x1=-20 y1=85 x2=20 y2=115 stroke="black" stroke-width="4" />
+   <line pointer-events="none"   x1=0 y1=115 x2=0 y2=150 stroke="black" stroke-width="4" />
+
+  </g>
+  <g id="circuitBreakerProcess">
+    <line id=disconnectLine x1=0 y1=-190 x2=-14 y2=-110 stroke="black" stroke-width="6" />
+    <line  id=disc2CBLine x1="0" y1="-120" x2=0 y2=0 stroke='black' stroke-width="12" />
+
+ <circle  r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=-190 />
+  <circle  r="5" fill="black" stroke="black" stroke-width="1" cx=-45 cy=-130 />
+  <circle  r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=-120 />
+
+
+    <rect  id="baseCB"
+       width="100"
+       height="200"
+       fill="grey"
+
+       stroke="black"
+       stroke-width="3"
+       rx="6"
+       ry="6"
+       x="-50"
+       y="-50"
+
+        />
+
+ <circle pointer-events="none" r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=-40 />
+  <circle pointer-events="none"   r="5" fill="black" stroke="black" stroke-width="1" cx=-40 cy=10 />
+  <circle  pointer-events="none" r="10" fill="black" stroke="black" stroke-width="1" cx=0 cy=30 />
+  <line pointer-events="none"  id=lockoutCBline x1=0 y1=-40 x2=-14 y2=35 stroke="black" stroke-width="6" />
+
+    <line pointer-events="none"  x1=0 y1=30 x2=0 y2=85 stroke="black" stroke-width="4" />
+    <line pointer-events="none"  x1=-20 y1=85 x2=20 y2=85 stroke="black" stroke-width="4" />
+    <line pointer-events="none"   x1=-20 y1=115 x2=20 y2=115 stroke="black" stroke-width="4" />
+    <line pointer-events="none"  id=tripLine x1=-20 y1=85 x2=20 y2=115 stroke="black" stroke-width="4" />
+   <line pointer-events="none"   x1=0 y1=115 x2=0 y2=150 stroke="black" stroke-width="4" />
+
+  </g>
+ </defs>
+<g id="publishG"><g id="publishElemG" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><rect stroke="#8A2BE2" stroke-width="3" fill="white" fill-opacity="0" stroke-dasharray="8 4" rx="5" ry="5" transform="matrix(1 0 0 1 516 224)" width="186" height="255" rotateAngle="0"/><rect stroke="#FF0000" stroke-width="3" fill="white" fill-opacity="0" stroke-dasharray="8 4" rx="5" ry="5" transform="matrix(1 0 0 1 479 162)" width="259" height="355" rotateAngle="0"/><rect stroke="#000000" stroke-width="2" fill="#DCDCDC" fill-opacity="1.0" transform="matrix(1 0 0 1 101 224)" width="206" height="273" rotateAngle="0"/>
+
+<path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="5" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 27 27 L 784 27" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="5" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 603 34 L 603 163" rightAngle="true" rotateAngle="0"/><polygon stroke="#FF0000" stroke-width="2" fill="#FF0000" fill-opacity="1.0" vCnt="3" radius="60" transform="matrix(0.866025 0.5 -0.5 0.866025 198 131)" points="60 0 -30 -51.9615 -30 51.9615" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="5" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 199 28 L 199 80" rightAngle="true" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 173 224 L 173 162" rightAngle="true" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 218 163 L 218 222" rightAngle="true" rotateAngle="0"/><text font-family="Arial" font-size="20" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#FF0000" transform="matrix(1 0 0 1 258 20)" rotateAngle="0">Data Stream Network</text><text font-family="Arial" font-size="30" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 286 91)" rotateAngle="0">Circuit Breaker</text><text font-family="Arial" font-size="20" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 118 542)" rotateAngle="0">Process Control</text><text font-family="Arial" font-size="20" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 527 546)" rotateAngle="0">Interactive SCADA</text><text font-family="Arial" font-size="17" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 155 489)" rotateAngle="0">Field Device</text><text font-family="Arial" font-size="20" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#FF0000" transform="matrix(1 0 0 1 541 510)" rotateAngle="0">JavaScript SDK</text><text font-family="Arial" font-size="20" font-weight="bold" font-style="normal" stroke="none" stroke-width="0.4" fill="#9932CC" transform="matrix(1 0 0 1 577 473)" rotateAngle="0" filter="null">Browser</text><path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrowFF0000)" d="M 572 224 L 572 163" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrowFF0000)" d="M 637 164 L 637 225" rightAngle="true"/><text font-family="Times New Roman" font-size="25" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 177 124)" rotateAngle="0">IoT</text>
+
+<text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 210 265)" rotateAngle="0">Power</text>
+
+<text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 200 280)" rotateAngle="0">Disconnect</text>
+<text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 110 365)" rotateAngle="0">Lockout</text>
+
+</g></g><defs id="arrowDefs"><marker id="arrow000000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#000000" stroke-linejoin="bevel"><path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/></marker><marker id="arrowFF0000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#FF0000" stroke-linejoin="bevel"><path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/></marker></defs>
+<defs>
+    <g xmlns="http://www.w3.org/2000/svg" id="pilotLightStatus"  myStatus="ON" opacity="1.0" class="hmiElem"><circle id="pilotLight" cx="0" cy="0" r="1" fill="url(#greenGradient)"/><line style="visibility:hidden" name="lineOff" x1="-.5" y1="-.5" x2=".5" y2=".5" stroke="black" stroke-width=".1"/><line style="visibility:hidden" name="lineDisabled" x1=".5" y1="-.5" x2="-.5" y2=".5" stroke="black" stroke-width=".1"/><circle style="visibility:hidden" name="circleDefective" cx="0" cy="0" r=".7" stroke="crimson" stroke-width=".2" fill="none"/><line style="visibility:hidden" name="lineDefective" x1="-.5" y1="-.5" x2=".5" y2=".5" stroke="crimson" stroke-width=".08"/></g>
+    <radialGradient id="redGradient" cx="50%" cy="50%" r="75%"><stop offset="0%" stop-color="rgb(255,0,0)" stop-opacity="1"/><stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/></radialGradient>
+    <radialGradient id="greenGradient" cx="50%" cy="50%" r="75%"><stop offset="0%" stop-color="rgb(0,191,0)" stop-opacity="1"/><stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/></radialGradient>
+</defs>
+
+
+</svg>
+</div>
+
+</td>
+</tr></table>
+
+    <br><button title="Show Javascript Source" onclick=showSource()>Javascript Source</button> <button title="Close javascript source" disabled id=closeSourceButton onClick=closeSource()>X</button>
+
+ <div id=sourceDiv style=overflow:auto;width:100%;height:1px;visibility:hidden;overflow:hidden>
+  <br>Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:90%;text-align:left; ></div>
+</div>
+</center>
+    </div>
+<script id=myScript>
+//---JavaScript SDK  https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.2.js ---
+//--onload---
+var pubnub
+function initPublish()
+{
+    pubnub = new PubNub(
+    {
+        publishKey : 'pub-c-ea28c028-e01a-4d16-80ec-0ad017c8a0a1',
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+   })
+
+}
+
+//---channels---
+var utcms=new Date().getTime() //---timestamp for this example client---
+
+var Disconnect="Disconnect"+utcms
+var Lockout="Lockout"+utcms
+var Tripped="Tripped"+utcms
+var ScadaReset="ScadaReset"+utcms
+
+
+//===================PUBLISH==================
+function publishDisconnect(msg)
+{
+    var publishConfig =
+    {
+        channel : Disconnect ,  //---unique for this viewer "Disconnect"+timeStamp---
+        message :msg  
+    }
+    pubnub.publish(publishConfig)
+}
+
+function publishLockout(msg)
+{
+    var publishConfig =
+    {
+        channel : Lockout ,  //---unique for this viewer "Lockout"+timeStamp---
+        message :msg
+    }
+    pubnub.publish(publishConfig)
+}
+
+function publishTripped(msg)
+{
+    var publishConfig =
+    {
+        channel : Tripped ,  //---unique for this viewer "Tripped"+timeStamp---
+        message :msg
+    }
+    pubnub.publish(publishConfig)
+}
+
+
+//---published via SCADA---
+//---click on scada Circuit breaker
+function publishScadaReset(msg)
+{
+    var publishConfig =
+    {
+        channel : ScadaReset ,  //---unique for this viewer "ScadaReset"+timeStamp---
+        message :msg
+    }
+    pubnub.publish(publishConfig)
+}
+
+//============SUBSCRIBE================
+
+//---0nload---
+function initSubscribeDisconnect()
+{
+    subscribeDisconnect = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeDisconnect.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+            scadaDisconnect(msg)
+        }
+    })
+    subscribeDisconnect.subscribe(
+    {
+        channels: [Disconnect]
+    })
+}
+
+function initSubscribeLockout()
+{
+    subscribeLockout = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeLockout.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+            scadaLockout(msg)
+        }
+    })
+    subscribeLockout.subscribe(
+    {
+        channels: [Lockout]
+    })
+}
+
+function initSubscribeTripped()
+{
+    subscribeTripped = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeTripped.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+           scadaTripped(msg)
+        }
+    })
+    subscribeTripped.subscribe(
+    {
+        channels: [Tripped]
+    })
+}
+
+
+function initSubscribeScadaReset()
+{
+    subscribeScadaReset = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeScadaReset.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+            resetFieldCircuitBreaker(msg) //---field Circuit Breaker reset at scada---
+        }
+    })
+    subscribeScadaReset.subscribe(
+    {
+        channels: [ScadaReset]
+    })
+}
+
+//---check radio buttons, checkboxes---
+function manualDisconnectCloseClicked()
+{
+    publishDisconnect("Closed")
+
+    var disconnectLine=processCB.getElementsByTagName("line")[0]
+
+    disconnectLine.setAttribute("x2",-14)
+    disconnectLine.setAttribute("y2",-110)
+}
+function manualDisconnectOpenClicked()
+{
+    publishDisconnect("Opened")
+
+    var disconnectLine=processCB.getElementsByTagName("line")[0]
+
+    disconnectLine.setAttribute("x2",-40)
+    disconnectLine.setAttribute("y2",-120)
+
+}
+function lockoutCloseClicked()
+{
+    var lockoutLine=processCB.getElementsByTagName("line")[2]
+
+    lockoutLine.setAttribute("x2",-14)
+    lockoutLine.setAttribute("y2",35)
+
+    publishLockout("Closed")
+
+}
+function lockoutOpenClicked()
+{
+    var lockoutLine=processCB.getElementsByTagName("line")[2]
+
+    lockoutLine.setAttribute("x2",-40)
+    lockoutLine.setAttribute("y2",20)
+
+    publishLockout("Opened")
+
+}
+
+var intervalTripped
+function circuitBreakerTripClicked()
+{
+    var tripline=processCB.getElementsByTagName("line")[6]
+    tripline.setAttribute("display","none")
+    intervalTripped=setInterval(tripping,1000)
+
+    publishTripped("Opened")
+    resetCheck.disabled=false
+    tripCheck.disabled=true
+    resetCheck.checked=false
+}
+function circuitBreakerResetClicked()
+{
+    var baseCB=scadaCB.getElementsByTagName("rect")[0]
+    var tripline=processCB.getElementsByTagName("line")[6]
+    tripline.removeAttribute("display")
+    tripCheck.checked=false
+    tripCheck.disabled=false
+
+    resetCheck.disabled=true
+    baseCB.setAttribute("opacity","1")
+    clearInterval(intervalTripped)
+    publishTripped("Closed")
+}
+function tripping()
+{
+    var baseCB=scadaCB.getElementsByTagName("rect")[0]
+        if(baseCB.getAttribute("fill")=="url(#radialGradientRed)")
+        baseCB.setAttribute("fill","red")
+    else
+        baseCB.setAttribute("fill","url(#radialGradientRed)")
+
+}
+
+function resetFieldCircuitBreaker(msg)
+{
+    var baseCB=scadaCB.getElementsByTagName("rect")[0]
+    var tripline=processCB.getElementsByTagName("line")[6]
+    tripline.removeAttribute("display")
+    tripCheck.checked=false
+    resetCheck.checked=false
+    clearInterval(intervalTripped)
+
+    tripCheck.disabled=false
+    resetCheck.disabled=true
+    var tripline=scadaCB.getElementsByTagName("line")[6]
+
+    tripline.removeAttribute("display")
+
+    baseCB.setAttribute("fill","url(#radialGradientGreen)")
+
+}
+
+function scadaDisconnect(msg)
+{
+    var disconnectLine=scadaCB.getElementsByTagName("line")[0]
+
+     var statusLight=pilotLightDisconnect.firstChild
+     var lineOffStatus=pilotLightDisconnect.childNodes.item(1)
+
+    if(msg=="Closed")
+    {
+        disconnectLine.setAttribute("x2",-14)
+        disconnectLine.setAttribute("y2",-110)
+
+       statusLight.setAttribute("fill","url(#greenGradient)")
+       lineOffStatus.setAttribute("style","visibility:hidden")
+    }
+    else
+    {
+        disconnectLine.setAttribute("x2",-40)
+        disconnectLine.setAttribute("y2",-120)
+        statusLight.setAttribute("fill","url(#redGradient)")
+        lineOffStatus.setAttribute("style","visibility:visible")
+
+    }
+}
+
+function scadaLockout(msg)
+{
+    var lockoutLine=scadaCB.getElementsByTagName("line")[2]
+    var statusLight=pilotLightLockout.firstChild
+    var lineOffStatus=pilotLightLockout.childNodes.item(1)
+
+     if(msg=="Opened")
+     {
+        lockoutLine.setAttribute("x2",-40)
+        lockoutLine.setAttribute("y2",20)
+        statusLight.setAttribute("fill","url(#redGradient)")
+        lineOffStatus.setAttribute("style","visibility:visible")
+
+     }
+     else
+     {
+        lockoutLine.setAttribute("x2",-14)
+        lockoutLine.setAttribute("y2",35)
+
+        statusLight.setAttribute("fill","url(#greenGradient)")
+        lineOffStatus.setAttribute("style","visibility:hidden")
+     }
+}
+
+function scadaTripped(msg)
+{
+    var tripline=scadaCB.getElementsByTagName("line")[6]
+    var baseCB=scadaCB.getElementsByTagName("rect")[0]
+    if(msg=="Opened")
+    {
+        tripline.setAttribute("display","none")
+        baseCB.setAttribute("fill","url(#radialGradientRed)")
+    }
+    else
+    {
+      tripline.removeAttribute("display")
+      baseCB.setAttribute("fill","url(#radialGradientGreen)")
+    }
+}
+</script>
+<script>
+
+var cbObjArray=[]
+//---cbObjArray[]=[label,locX,locY,scale]
+cbObjArray[0]=["processCB",199,350,.6]
+cbObjArray[1]=["scadaCB",612,340,.6]
+function createCircuitBreakers()
+{
+    for(var k=0;k<cbObjArray.length;k++)
+    {
+        if(k==0)
+            var cbG=circuitBreakerProcess.cloneNode(true)
+        if(k==1)
+        {
+            var cbG=circuitBreakerSCADA.cloneNode(true)
+            cbG.setAttribute("onclick","publishScadaReset('ScadaReset')")  // onClick="publishScadaReset('ScadaReset')"
+        }
+
+        var id=cbObjArray[k][0]
+        cbG.setAttribute("id",id)
+
+        mySVG.appendChild(cbG)
+        var bb=cbG.getBBox()
+        var cx=bb.x+.5*bb.width
+        var cy=bb.y+.5*bb.height
+
+        var locX=cbObjArray[k][1]
+        var locY=cbObjArray[k][2]
+        var scale=cbObjArray[k][3]
+        var transX=locX-cx*scale
+        var transY=locY-cy*scale
+        cbG.setAttribute("transform","translate("+(transX)+" "+(transY)+")scale("+scale+")")
+
+    }
+
+
+
+}
+
+function addPilotLights()
+{
+    pilotLightDisconnect=pilotLightStatus.cloneNode(true)
+     pilotLightDisconnect.id="pilotLightDisconnect"
+    pilotLightLockout=pilotLightStatus.cloneNode(true)
+     pilotLightLockout.id="pilotLightLockout"
+
+    pilotLightDisconnect.setAttribute("transform","translate(626,265)scale(10)")
+    pilotLightLockout.setAttribute("transform","translate(626,355)scale(10)")
+    mySVG.appendChild(pilotLightDisconnect)
+    mySVG.appendChild(pilotLightLockout)
+
+}
+
+document.addEventListener("onload",init(),false)
+
+function init()
+{
+    createCircuitBreakers()
+   addPilotLights()
+    initPublish()
+    initSubscribeDisconnect()
+    initSubscribeLockout()
+    initSubscribeTripped()
+
+    initSubscribeScadaReset()
+
+
+    showSourceJS()
+}
+
+function showSource()
+{
+  sourceDiv.style.visibility="visible"
+  sourceDiv.style.height=+sourceDiv.scrollHeight+"px"
+
+  closeSourceButton.disabled=false
+
+  var frameHeight=container.scrollHeight+100
+
+    d3.select(parent.frame4).transition().duration(1000).attr("height",frameHeight)
+
+
+}
+
+function closeSource()
+{
+   d3.select("#sourceDiv").transition().duration(1000).style("height","1px")
+   setTimeout('sourceDiv.style.visibility="hidden"',1000)
+  closeSourceButton.disabled=true
+
+   d3.select(parent.frame4).transition().duration(1000).attr("height",880)
+}
+
+
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,2075 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <title>SVG SCADA - Hot Water System &amp; Strip Chart Recorder</title>
+  <script type="text/javascript" src="../../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../../highlightCode.js"></script>
+  <link href='../../../highlight.css' rel='stylesheet' />
+
+    <script type="text/javascript" src="analogGaugeObject.js"></script>
+    <script type="text/javascript" src="processVariableChartObject.js"></script>
+ <script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.2.js"></script>
+ <script type="text/javascript" src="svg.js"></script>
+
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body  style='padding:10px;font-family:arial;overflow:hidden'>
+    <div id=container>
+
+<center>
+<h4>4.) SVG SCADA - Hot Water System &amp; Strip Chart Recorder</h4>
+<div style='width:90%;background-color:gainsboro;text-align:justify;padding:10px;border-radius:6px;'>
+   This shows a real-time interactive SVG SCADA drawing of the PID control loop for building's heating hot water system. The controller modulates
+   the steam control valve at the converter to maintain the desired hot water supply (HWS) temperature. The controller set point is adjusted from a reset
+   schedule based on outside air temperature (OAT). Included is a continuous strip chart that records the hot water supply temperature, the outside air temperature, and the hot water system flow.
+</div>
+<table>
+<tr>
+<td valign=top >
+<div style="text-align:justify;width:260px;padding:10px;">
+   <b>Sequence Of Operation:</b><p></p>
+  Initially the hot water pump is shown as "OFF" at the button.
+
+  As the operator, you can click the button to request the
+  pump be turned "ON".<p></p>
+
+
+  When the operator requests the pump ON action, the message "ON" is <b>published</b> via DSN. The  SVG SCADA drawing <b>subscribes</b> to the data.
+  When the message is received via DSN, the SVG SCADA changes the button status display from OFF(red) to ON(green).
+   Also the pump's impeller symbol will then be rotating, and flow arrows will move along the hot water piping.
+
+
+<p></p>
+ When the pump is ON (green), the data from the field-mounted transmitters are sent over the DSN every two(2) seconds. When the values arrive at the SVG SCADA drawing, the dial of the various gauges moves to display their associated values.
+ The position of the steam valve is also monitored each second, and displayed at the digital gauge.
+ The continuous strip chart displays its changing values at each minute (simulated: 2 seconds = 1 min).
+</div>
+
+</td>
+<td>
+<div id="svgDiv" style='border:1px solid black;width:800px;height:580px;'>
+<svg xmlns="http://www.w3.org/2000/svg" id="mySVG" width="800" height="560" viewBox="0 0 800 560" style="cursor: default; touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><style xmlns="http://www.w3.org/1999/xhtml">.gridVFD line {stroke: black;stroke-opacity: 0.5;}.gridVFD path {stroke-width: 0;}.axisBlue line{stroke: blue;}.axisBlue path{stroke: blue;}.chartLineLeft {fill: none;stroke: DarkViolet;stroke-width: 3;}.chartLineRight2 {fill: none;stroke: red;stroke-width: 3;}.chartLineRight1 {fill: none;stroke: blue;stroke-width: 3;}.axisred line{stroke: red;}.axisred path{stroke: red;}.axisBlue line{stroke: blue;}.axisBlue path{stroke: blue;}.axisDarkViolet line{stroke: DarkViolet;}.axisDarkViolet path{stroke: DarkViolet;}</style><defs xmlns="http://www.w3.org/1999/xhtml"></defs>
+
+<g id="publishG"><g id="publishElemG" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1" stroke-opacity="1.0" stroke-dasharray="8 4" marker-end="url(#arrow000000)" d="M 137 20 L 220 20 L 220 117" rightAngle="true" rotateAngle="0"/>
+<!--pipe-->
+<path id="pipe" fill="none" fill-opacity="1.0" stroke="#ADFF2F" stroke-width="20" stroke-opacity="1.0" d="M 399 48 L 399 27 L 766 27 L 766 218 L 470 218 L 470 283 L 49 283 L 49 48 z" filter="url(#pipe3D)" stroke-linejoin="round" rightAngle="true" rotateAngle="0"/>
+ <g id="pathArrowsG" />
+
+<path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="2" stroke-opacity="1.0" marker-end="url(#arrowFF0000)" d="M 582 151 L 681 151 L 681 177" rightAngle="true" rotateAngle="0"/><g xmlns="http://www.w3.org/2000/svg" transform="matrix(5.55112e-17 0.3 -0.3 5.55112e-17 147.5 -141.65)" parentid="component1520522111093">
+
+<rect id="rect1520520864420" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="72" height="60" rx="10" ry="10" transform="matrix(1 0 0 1 501 39)"/>
+
+<text id="text1520520897548" font-family="Arial" font-size="40" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 512 81)">
+
+TT</text>
+
+<rect id="rect1520520967040" fill="#000000" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="19" height="37" transform="matrix(1 0 0 1 526 100)"/>
+
+<rect id="rect1520521037307" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="38" height="91" rx="10" ry="10" transform="matrix(1 0 0 1 517 138)"/>
+
+<rect id="rect1520521155532" fill="#FF0000" fill-opacity="1.0" stroke="#000000" stroke-width="0.5" x="0" y="0" width="27" height="10" transform="matrix(1 0 0 1 524 197)"/>
+
+<text id="text1520521320528" font-family="Arial" font-size="25" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 527 253)">
+
+IC</text>
+
+<text id="icon1520521093750" font-size="45" font-family="Arial Unicode MS" stroke-width="1" fill="#4169E1" stroke="black" x="-24.7421875" y="17" transform="matrix(1 0 0 1 539 177)" cursor="default">
+
+▼</text>
+
+<rect width="72" height="219" fill="white" fill-opacity="0" transform="translate(501,39)" style="cursor: default;" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5"/>
+
+</g><g xmlns="http://www.w3.org/2000/svg" transform="matrix(0.3 0 0 0.3 241.9 226.95)" parentid="component1520522111093">
+
+<rect id="rect1520520864420" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="72" height="60" rx="10" ry="10" transform="matrix(1 0 0 1 501 39)"/>
+
+<text id="text1520520897548" font-family="Arial" font-size="40" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 512 81)">
+
+TT</text>
+
+<rect id="rect1520520967040" fill="#000000" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="19" height="37" transform="matrix(1 0 0 1 526 100)"/>
+
+<rect id="rect1520521037307" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="38" height="91" rx="10" ry="10" transform="matrix(1 0 0 1 517 138)"/>
+
+<rect id="rect1520521155532" fill="#FF0000" fill-opacity="1.0" stroke="#000000" stroke-width="0.5" x="0" y="0" width="27" height="10" transform="matrix(1 0 0 1 524 197)"/>
+
+<text id="text1520521320528" font-family="Arial" font-size="25" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 527 253)">
+
+IC</text>
+
+<text id="icon1520521093750" font-size="45" font-family="Arial Unicode MS" stroke-width="1" fill="#4169E1" stroke="black" x="-24.7421875" y="17" transform="matrix(1 0 0 1 539 177)" cursor="default">
+
+▼</text>
+
+<rect width="72" height="219" fill="white" fill-opacity="0" transform="translate(501,39)" style="cursor: default;" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5"/>
+
+</g>
+<!--Heat Exchanger-->
+<g title="Heat Exchanger" parentid="" transform="matrix(1.15 0 0 1.15 543.75 173.75)">
+
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Heat Exchanger" class="Heating" height="82" width="170" viewBox="0 0 170 82.0034" nativewidth="170" nativeheight="82" overflow="visible" myscale="1.0">
+
+
+    <defs>
+
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="lg1_105">
+
+
+            <stop stop-color="#b76c68" offset="0"/>
+
+
+            <stop stop-color="#f09995" offset="0.15"/>
+
+
+            <stop stop-color="#f6ccca" offset="0.25"/>
+
+
+            <stop stop-color="#d17c78" offset="0.44"/>
+
+
+            <stop stop-color="#ba6e6a" offset="0.6"/>
+
+
+            <stop stop-color="#9d5c59" offset="0.8"/>
+
+
+            <stop stop-color="#8f5451" offset="0.97"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="lg2_105">
+
+
+            <stop stop-color="#b76c68" offset="0"/>
+
+
+            <stop stop-color="#f09995" offset="0.15"/>
+
+
+            <stop stop-color="#f6ccca" offset="0.25"/>
+
+
+            <stop stop-color="#d17c78" offset="0.44"/>
+
+
+            <stop stop-color="#ba6e6a" offset="0.6"/>
+
+
+            <stop stop-color="#9d5c59" offset="0.8"/>
+
+
+            <stop stop-color="#8f5451" offset="0.97"/>
+
+
+            <stop stop-color="#be716d" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="lg3_105">
+
+
+            <stop stop-color="#b23e4b" offset="0"/>
+
+
+            <stop stop-color="#e96a76" offset="0.15"/>
+
+
+            <stop stop-color="#f3bbbf" offset="0.25"/>
+
+
+            <stop stop-color="#cb4857" offset="0.44"/>
+
+
+            <stop stop-color="#b5404c" offset="0.6"/>
+
+
+            <stop stop-color="#98343f" offset="0.8"/>
+
+
+            <stop stop-color="#8b2f39" offset="0.97"/>
+
+
+            <stop stop-color="#b9414e" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="lg4_105">
+
+
+            <stop stop-color="#a96460" offset="0"/>
+
+
+            <stop stop-color="#f2adaa" offset="0.01"/>
+
+
+            <stop stop-color="#dc837f" offset="0.05"/>
+
+
+            <stop stop-color="#d9817d" offset="0.9"/>
+
+
+            <stop stop-color="#d47e7a" offset="0.95"/>
+
+
+            <stop stop-color="#9d5c59" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="lg5_105">
+
+
+            <stop stop-color="#b76c68" offset="0"/>
+
+
+            <stop stop-color="#f09995" offset="0.15"/>
+
+
+            <stop stop-color="#f6ccca" offset="0.25"/>
+
+
+            <stop stop-color="#d17c78" offset="0.44"/>
+
+
+            <stop stop-color="#ba6e6a" offset="0.6"/>
+
+
+            <stop stop-color="#9d5c59" offset="0.8"/>
+
+
+            <stop stop-color="#8f5451" offset="0.97"/>
+
+
+        </linearGradient>
+
+
+    </defs>
+
+
+    <g transform="translate(1.04,1)">
+
+
+        <path transform="matrix(-1,0,0,1,168,18.3)" id="shape1" fill="url(#lg1_105)" d="M0,18.7C0,8.4,3.5,0,7.8,0C7.8,.5,7.6,37.3,7.8,37.4C3.5,37.4,0,29,0,18.7z"/>
+
+
+        <path transform="translate(7.46,18.25)" id="shape2" fill="url(#lg1_105)" d="M0,0L153.1,0L153.1,37.6L0,37.6L0,0z"/>
+
+
+        <path transform="translate(-0.04,18.25)" id="shape3" fill="url(#lg1_105)" d="M0,18.8C0,8.4,3.5,.1,7.8,.1C7.7,-1.9,8.1,37.7,7.8,37.6C3.5,37.6,0,29.1,0,18.8z"/>
+
+
+        <g transform="translate(26.16,16.44)">
+
+
+            <g transform="translate(8.72,0.66)">
+
+
+                <path transform="translate(-0.01,7.15)" id="shape4" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,14.3)" id="shape5" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,21.45)" id="shape6" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,28.61)" id="shape7" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,35.76)" id="shape8" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,-0.01)" id="shape9" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+            </g>
+
+
+            <g transform="translate(-0,0.66)">
+
+
+                <path transform="translate(-0.01,7.15)" id="shape10" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,14.3)" id="shape11" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,21.45)" id="shape12" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,28.61)" id="shape13" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,35.76)" id="shape14" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,-0.01)" id="shape15" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+            </g>
+
+
+            <path transform="translate(2.94,0)" id="shape16" fill="url(#lg3_105)" d="M.2,0L5.9,0C6.1,0,6.2,.2,6.2,.4L6.2,40.8C6.2,41,6.1,41.2,5.9,41.2L.2,41.2C.1,41.2,-0,41,-0,40.8L-0,.4C-0,.2,.1,0,.2,0z"/>
+
+
+            <path transform="translate(3.65,0)" id="shape17" fill="url(#lg2_105)" d="M.2,0L4.6,0C4.7,0,4.8,.2,4.8,.4L4.8,40.8C4.8,41,4.7,41.2,4.6,41.2L.2,41.2C.1,41.2,-0,41,-0,40.8L-0,.4C-0,.2,.1,0,.2,0z"/>
+
+
+        </g>
+
+
+        <path transform="translate(40.92,54.52)" id="shape18" fill="url(#lg4_105)" d="M0,22L5.8,22L5.8,0L0,0L0,22z"/>
+
+
+        <path transform="translate(37.85,76.22)" id="shape19" fill="url(#lg4_105)" d="M0,3.8L11.9,3.8L11.9,0L0,0L0,3.8z"/>
+
+
+        <path transform="translate(121.3,54.52)" id="shape20" fill="url(#lg4_105)" d="M0,22L5.8,22L5.8,0L0,0L0,22z"/>
+
+
+        <path transform="translate(118.24,76.22)" id="shape21" fill="url(#lg4_105)" d="M0,3.8L11.9,3.8L11.9,0L0,0L0,3.8z"/>
+
+
+        <g transform="translate(129.51,16.44)">
+
+
+            <g transform="translate(8.72,0.66)">
+
+
+                <path transform="translate(-0.01,7.15)" id="shape22" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,14.3)" id="shape23" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,21.45)" id="shape24" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,28.61)" id="shape25" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,35.76)" id="shape26" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,-0.01)" id="shape27" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+            </g>
+
+
+            <g transform="translate(-0,0.66)">
+
+
+                <path transform="translate(-0.01,7.15)" id="shape28" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,14.3)" id="shape29" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,21.45)" id="shape30" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,28.61)" id="shape31" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,35.76)" id="shape32" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+                <path transform="translate(-0.01,-0.01)" id="shape33" fill="url(#lg2_105)" d="M.2,0L2.8,0C3,0,3.1,.2,3.1,.4L3.1,3.7C3.1,3.9,3,4.1,2.8,4.1L.2,4.1C.1,4.1,0,3.9,0,3.7L0,.4C0,.2,.1,0,.2,0z"/>
+
+
+            </g>
+
+
+            <path transform="translate(2.94,0)" id="shape34" fill="url(#lg3_105)" d="M.2,0L5.9,0C6.1,0,6.2,.2,6.2,.4L6.2,40.8C6.2,41,6.1,41.2,5.9,41.2L.2,41.2C.1,41.2,-0,41,-0,40.8L-0,.4C-0,.2,.1,0,.2,0z"/>
+
+
+            <path transform="translate(3.65,0)" id="shape35" fill="url(#lg2_105)" d="M.2,0L4.6,0C4.7,0,4.8,.2,4.8,.4L4.8,40.8C4.8,41,4.7,41.2,4.6,41.2L.2,41.2C.1,41.2,-0,41,-0,40.8L-0,.4C-0,.2,.1,0,.2,0z"/>
+
+
+        </g>
+
+
+        <g transform="translate(53.12,55.82)">
+
+
+            <path transform="matrix(1,0,0,-1,2.5,10.3)" id="shape36" fill="url(#lg5_105)" d="M0,10.3L3.6,10.3L3.6,0L0,0L0,10.3z"/>
+
+
+            <path transform="matrix(1,0,0,-1,-0,12.3)" id="shape37" fill="url(#lg5_105)" d="M.3,-0L8.4,-0C8.6,-0,8.7,.1,8.7,.3L8.7,1.7C8.7,1.9,8.6,2.1,8.4,2.1L.3,2.1C.1,2.1,-0,1.9,-0,1.7L-0,.3C-0,.1,.1,-0,.3,-0z"/>
+
+
+        </g>
+
+
+        <g transform="translate(110.56,0.24)">
+
+
+            <path transform="translate(3.84,2.9)" id="shape38" fill="url(#lg5_105)" d="M0,15.4L9,15.4L9,0L0,0L0,15.4z"/>
+
+
+            <path transform="translate(0.02,-0.03)" id="shape39" fill="url(#lg5_105)" d="M.6,-0L15.9,-0C16.3,-0,16.6,.2,16.6,.5L16.6,2.6C16.6,2.8,16.3,3.1,15.9,3.1L.6,3.1C.3,3.1,-0,2.8,-0,2.6L-0,.5C-0,.2,.3,-0,.6,-0z"/>
+
+
+        </g>
+
+
+        <g transform="translate(141.06,0.03)">
+
+
+            <path transform="translate(3.84,2.9)" id="shape40" fill="url(#lg5_105)" d="M0,15.4L9,15.4L9,0L0,0L0,15.4z"/>
+
+
+            <path transform="translate(0.02,-0.03)" id="shape41" fill="url(#lg5_105)" d="M.6,-0L15.9,-0C16.3,-0,16.6,.2,16.6,.5L16.6,2.6C16.6,2.8,16.3,3.1,15.9,3.1L.6,3.1C.3,3.1,-0,2.8,-0,2.6L-0,.5C-0,.2,.3,-0,.6,-0z"/>
+
+
+        </g>
+
+
+    </g>
+
+
+</svg>
+
+<rect width="170" height="82" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+
+</g> <!--End Heat Exchanger-->
+
+ <!--Pump-->
+<g title="Horizontal Pump" parentid="" transform="matrix(0.6 0 0 0.6 351.3 15.3)">
+
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Horizontal Pump" class="Pumps" height="106" width="154" viewBox="0 0 154 105.947" nativewidth="154" nativeheight="106" overflow="visible" myscale="1.0">
+
+
+    <defs>
+
+
+        <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="lg1_219">
+
+
+            <stop stop-color="#9aa1aa" offset="0"/>
+
+
+            <stop stop-color="#aeb5c0" offset="0.22"/>
+
+
+            <stop stop-color="#dce0e5" offset="0.57"/>
+
+
+            <stop stop-color="#cacfd7" offset="0.84"/>
+
+
+            <stop stop-color="#a7afb9" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="lg2_219">
+
+
+            <stop stop-color="#8f969d" offset="0"/>
+
+
+            <stop stop-color="#d3d8de" offset="0.64"/>
+
+
+            <stop stop-color="#9aa0a8" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="lg3_219">
+
+
+            <stop stop-color="#626974" offset="0"/>
+
+
+            <stop stop-color="#ccd0d5" offset="0.66"/>
+
+
+            <stop stop-color="#5e6670" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <radialGradient fy="51" r="72.6" id="rg1" cy="51" cx="51" gradientUnits="userSpaceOnUse" fx="51">
+
+
+            <stop stop-color="#c7cbd1" offset="0"/>
+
+
+            <stop stop-color="#c4c7cd" offset="0.91"/>
+
+
+            <stop stop-color="#d4d8dd" offset="0.74"/>
+
+
+            <stop stop-color="#b6bcc4" offset="0.54"/>
+
+
+        </radialGradient>
+
+
+    </defs>
+
+
+    <g transform="translate(1.01,1)">
+
+
+        <g transform="matrix(-1,0,0,1,74.4,31.2)">
+
+
+            <path transform="matrix(0,-1,-1,0,68.3,40.6)" id="shape1" fill="url(#lg1_219)" d="M0,0L39.1,0L39.1,68.3L0,68.3L0,0z"/>
+
+
+            <path transform="matrix(0,-1,-1,0,74.4,42.9)" id="shape2" fill="url(#lg2_219)" d="M1.4,-0L41.5,-0C42.2,-0,42.9,1.3,42.9,3C42.9,4.7,42.2,6.1,41.5,6.1L1.4,6.1C.6,6.1,0,4.7,0,3C0,1.3,.6,-0,1.4,-0z"/>
+
+
+            <path transform="matrix(0,-1,-1,0,70.3,42.7)" id="shape3" fill="url(#lg3_219)" d="M42.5,0C42.4,1.1,41.9,1.9,41.1,1.9L1.4,1.9C.6,1.9,.1,1,0,0C0,0,42.5,0,42.5,0z"/>
+
+
+            <path transform="matrix(0,-1,-1,0,74.1,42.2)" id="shape4" fill="#ffffff" fill-opacity="0.32" d="M.7,0L40.8,0C41.2,0,41.5,.3,41.5,.6C41.5,.9,41.2,1.1,40.8,1.1L.7,1.1C.3,1.1,0,.9,0,.6C0,.3,.3,0,.7,0z"/>
+
+
+        </g>
+
+
+        <g transform="translate(77.55,0)">
+
+
+            <path transform="matrix(0,-1,-1,0,68.3,40.7)" id="shape5" fill="url(#lg1_219)" d="M0,0L39.1,0L39.1,68.3L0,68.3L0,0z"/>
+
+
+            <path transform="matrix(0,-1,-1,0,74.4,42.9)" id="shape6" fill="url(#lg2_219)" d="M1.4,-0L41.5,-0C42.2,-0,42.9,1.3,42.9,3C42.9,4.7,42.2,6.1,41.5,6.1L1.4,6.1C.6,6.1,0,4.7,0,3C0,1.3,.6,-0,1.4,-0z"/>
+
+
+            <path transform="matrix(0,-1,-1,0,70.3,42.7)" id="shape7" fill="url(#lg3_219)" d="M42.5,0C42.4,1.1,41.9,1.9,41.1,1.9L1.4,1.9C.6,1.9,.1,1,0,0C0,0,42.5,0,42.5,0z"/>
+
+
+            <path transform="matrix(0,-1,-1,0,74.1,42.2)" id="shape8" fill="#ffffff" fill-opacity="0.35" d="M.7,0L40.8,0C41.2,0,41.5,.3,41.5,.6C41.5,.9,41.2,1.1,40.8,1.1L.7,1.1C.3,1.1,0,.9,0,.6C0,.3,.3,0,.7,0z"/>
+
+
+        </g>
+
+
+        <g transform="translate(26.19,1.31)">
+
+
+            <path transform="matrix(0,-1,-1,0,102.8,102.6)" id="shape9" fill="url(#rg1)" stroke="#d4d6db" stroke-width="0.25" d="M0,51.4C0,23,23,0,51.3,0C79.7,0,102.6,23,102.6,51.4C102.6,79.8,79.7,102.8,51.3,102.8C23,102.8,0,79.8,0,51.4z"/>
+
+
+            <path transform="matrix(0,-1,-1,0,94.2,94)" id="shape10" fill="#ffffff" fill-opacity="0.27" d="M0,42.7C0,19.1,19.1,0,42.6,0C66.2,0,85.3,19.1,85.3,42.7C85.3,66.3,66.2,85.5,42.6,85.5C19.1,85.5,0,66.3,0,42.7z"/>
+
+
+            <path transform="matrix(0,-1,-1,0,85.9,93.9)" id="shape11" fill="#ffffff" fill-opacity="0.13" d="M0,34.5C-0.3,13,17.1,0,17.1,0L73.1,63.9C73.1,63.9,62.3,77.3,42.6,77.3C19.1,77.3,0,58.1,0,34.5z"/>
+
+
+        </g>
+
+
+    </g>
+
+
+</svg>
+
+<rect width="154" height="106" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+
+</g><!--End Pump-->
+
+<!--Valve-->
+<g title="Control Valve" parentid="" transform="matrix(-0.5 0 0 0.5 665 74)">
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" title="Control Valve" class="Valves" height="172" viewBox="0 0 112 172.004" width="112" nativewidth="112" nativeheight="172" overflow="visible" myscale="1.0">
+
+
+    <defs>
+
+
+        <linearGradient x2="0%" y1="0%" id="lg1_417" y2="100%" x1="0%">
+
+
+            <stop stop-color="#c2b39f" offset="0"/>
+
+
+            <stop stop-color="#fdead3" offset="0.15"/>
+
+
+            <stop stop-color="#fef3e7" offset="0.25"/>
+
+
+            <stop stop-color="#deccb6" offset="0.52"/>
+
+
+            <stop stop-color="#c5b5a2" offset="0.69"/>
+
+
+            <stop stop-color="#baab98" offset="0.8"/>
+
+
+            <stop stop-color="#b0a190" offset="0.97"/>
+
+
+            <stop stop-color="#cabaa5" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="0%" y1="0%" id="lg2_417" y2="0%" x1="100%">
+
+
+            <stop stop-color="#b3a593" offset="0"/>
+
+
+            <stop stop-color="#fdeeda" offset="0.03"/>
+
+
+            <stop stop-color="#e9d7bf" offset="0.08"/>
+
+
+            <stop stop-color="#e5d3bc" offset="0.64"/>
+
+
+            <stop stop-color="#e0ceb8" offset="0.95"/>
+
+
+            <stop stop-color="#a69988" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="0%" y1="0%" id="lg3_417" y2="0%" x1="100%">
+
+
+            <stop stop-color="#c4aa84" offset="0"/>
+
+
+            <stop stop-color="#ffe0b3" offset="0.15"/>
+
+
+            <stop stop-color="#ffeed7" offset="0.25"/>
+
+
+            <stop stop-color="#dfc297" offset="0.52"/>
+
+
+            <stop stop-color="#c7ad86" offset="0.69"/>
+
+
+            <stop stop-color="#bca37e" offset="0.8"/>
+
+
+            <stop stop-color="#b19a77" offset="0.97"/>
+
+
+            <stop stop-color="#cbb189" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="0%" y1="0%" id="lg4_417" y2="0%" x1="100%">
+
+
+            <stop stop-color="#c2b39f" offset="0"/>
+
+
+            <stop stop-color="#fdead3" offset="0.15"/>
+
+
+            <stop stop-color="#fef3e7" offset="0.25"/>
+
+
+            <stop stop-color="#deccb6" offset="0.52"/>
+
+
+            <stop stop-color="#c5b5a2" offset="0.69"/>
+
+
+            <stop stop-color="#baab98" offset="0.8"/>
+
+
+            <stop stop-color="#b0a190" offset="0.97"/>
+
+
+            <stop stop-color="#cabaa5" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="0%" y1="0%" id="lg5_417" y2="0%" x1="100%">
+
+
+            <stop stop-color="#bda47f" offset="0"/>
+
+
+            <stop stop-color="#ffe0b3" offset="0.15"/>
+
+
+            <stop stop-color="#ffeed7" offset="0.25"/>
+
+
+            <stop stop-color="#dfc297" offset="0.52"/>
+
+
+            <stop stop-color="#c7ad86" offset="0.69"/>
+
+
+            <stop stop-color="#bca37e" offset="0.8"/>
+
+
+            <stop stop-color="#b19a77" offset="0.92"/>
+
+
+            <stop stop-color="#cbb189" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="0%" y1="0%" id="lg6_417" y2="100%" x1="0%">
+
+
+            <stop stop-color="#bda47f" offset="0"/>
+
+
+            <stop stop-color="#ffe0b3" offset="0.15"/>
+
+
+            <stop stop-color="#ffeed7" offset="0.25"/>
+
+
+            <stop stop-color="#dfc297" offset="0.52"/>
+
+
+            <stop stop-color="#c7ad86" offset="0.69"/>
+
+
+            <stop stop-color="#bca37e" offset="0.8"/>
+
+
+            <stop stop-color="#b19a77" offset="0.92"/>
+
+
+            <stop stop-color="#cbb189" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="4" y1="3" id="lg7_417" y2="1" x1="-0" gradientUnits="userSpaceOnUse">
+
+
+            <stop stop-color="#c7ad86" offset="0"/>
+
+
+            <stop stop-color="#ffe6c5" offset="0.15"/>
+
+
+            <stop stop-color="#ffe8c9" offset="0.25"/>
+
+
+            <stop stop-color="#dfc297" offset="0.52"/>
+
+
+            <stop stop-color="#c7ad86" offset="0.69"/>
+
+
+            <stop stop-color="#bca37e" offset="0.8"/>
+
+
+            <stop stop-color="#b19a77" offset="0.92"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="5" y1="4" id="lg8_417" y2="1" x1="-0" gradientUnits="userSpaceOnUse">
+
+
+            <stop stop-color="#c7ad86" offset="0"/>
+
+
+            <stop stop-color="#ffe6c5" offset="0.15"/>
+
+
+            <stop stop-color="#ffe8c9" offset="0.25"/>
+
+
+            <stop stop-color="#dfc297" offset="0.52"/>
+
+
+            <stop stop-color="#c7ad86" offset="0.69"/>
+
+
+            <stop stop-color="#bca37e" offset="0.8"/>
+
+
+            <stop stop-color="#b19a77" offset="0.92"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="0%" y1="0%" id="lg9_417" y2="0%" x1="100%">
+
+
+            <stop stop-color="#b59d79" offset="0"/>
+
+
+            <stop stop-color="#ffe5c1" offset="0.03"/>
+
+
+            <stop stop-color="#ebcc9f" offset="0.08"/>
+
+
+            <stop stop-color="#e7c99c" offset="0.64"/>
+
+
+            <stop stop-color="#e2c499" offset="0.95"/>
+
+
+            <stop stop-color="#a89170" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="0%" y1="0%" id="lg10_417" y2="0%" x1="100%">
+
+
+            <stop stop-color="#b39d73" offset="0"/>
+
+
+            <stop stop-color="#ebd0a1" offset="0.15"/>
+
+
+            <stop stop-color="#f4e5cf" offset="0.25"/>
+
+
+            <stop stop-color="#cdb384" offset="0.52"/>
+
+
+            <stop stop-color="#b69f75" offset="0.69"/>
+
+
+            <stop stop-color="#ac966e" offset="0.8"/>
+
+
+            <stop stop-color="#a28e68" offset="0.97"/>
+
+
+            <stop stop-color="#baa378" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="4" y1="-0" id="lg11_417" y2="5" x1="1" gradientUnits="userSpaceOnUse">
+
+
+            <stop stop-color="#9f5153" offset="0"/>
+
+
+            <stop stop-color="#7b030d" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="4" y1="-0" id="lg12_417" y2="5" x1="1" gradientUnits="userSpaceOnUse">
+
+
+            <stop stop-color="#91cfd1" offset="0"/>
+
+
+            <stop stop-color="#49aeb1" offset="1"/>
+
+
+        </linearGradient>
+
+
+        <linearGradient x2="0%" y1="0%" id="lg13_417" y2="0%" x1="100%">
+
+
+            <stop stop-color="#000000" offset="0"/>
+
+
+            <stop stop-color="#454545" offset="0.15"/>
+
+
+            <stop stop-color="#b3b3b3" offset="0.25"/>
+
+
+            <stop stop-color="#000000" offset="0.52"/>
+
+
+            <stop stop-color="#000000" offset="0.69"/>
+
+
+            <stop stop-color="#000000" offset="0.8"/>
+
+
+            <stop stop-color="#000000" offset="0.92"/>
+
+
+            <stop stop-color="#000000" offset="1"/>
+
+
+        </linearGradient>
+
+
+    </defs>
+
+
+    <g transform="translate(1,1)">
+
+
+        <g transform="translate(0,136.05)">
+
+
+            <path id="shape1" d="M1.5,0L4.4,0C5.3,0,5.9,.3,5.9,.8L5.9,31.5C5.9,31.9,5.3,32.2,4.4,32.2L1.5,32.2C.7,32.2,0,31.9,0,31.5L0,.8C0,.3,.7,0,1.5,0z" fill="url(#lg1_417)" transform="translate(-0,0.86)"/>
+
+
+            <path id="shape2" d="M1.5,0L4.4,0C5.3,0,5.9,.3,5.9,.8L5.9,31.5C5.9,31.9,5.3,32.2,4.4,32.2L1.5,32.2C.7,32.2,0,31.9,0,31.5L0,.8C0,.3,.7,0,1.5,0z" fill="url(#lg1_417)" transform="translate(104.06,0.86)"/>
+
+
+            <path id="shape3" d="M8.1,0L0,0L0,17.1L8.1,17.1L8.1,0z" fill="url(#lg1_417)" transform="translate(5.78,8.44)"/>
+
+
+            <path id="shape4" d="M0,0L8.1,0L8.1,17.1L0,17.1L0,0z" fill="url(#lg1_417)" transform="translate(95.97,8.44)"/>
+
+
+            <path id="shape5" d="M2.9,0L0,0L0,28.6L2.9,28.6L2.9,0z" fill="url(#lg1_417)" transform="translate(93.07,2.66)"/>
+
+
+            <path id="shape6" d="M0,0L76.3,0L76.3,33.9L0,33.9L0,0z" fill="url(#lg1_417)" transform="translate(16.84,0)"/>
+
+
+            <path id="shape7" d="M0,0L1.1,0L1.1,33.9L0,33.9L0,0z" fill="url(#lg1_417)" transform="translate(92.5,0)"/>
+
+
+            <path id="shape8" d="M2.9,0L0,0L0,28.6L2.9,28.6L2.9,0z" fill="url(#lg1_417)" transform="translate(13.86,2.66)"/>
+
+
+            <path id="shape9" d="M0,0L1.1,0L1.1,33.9L0,33.9L0,0z" fill="url(#lg1_417)" transform="translate(16.79,0)"/>
+
+
+        </g>
+
+
+        <path id="shape10" d="M0,15.9L44.2,15.9L29.6,0L14.6,0L0,15.9z" fill="url(#lg2_417)" transform="translate(32.92,108.37)"/>
+
+
+        <path id="shape11" d="M0,28.3L15.1,28.3L15.1,0L0,0L0,28.3z" fill="url(#lg3_417)" transform="translate(47.46,35.97)"/>
+
+
+        <path id="shape12" d="M.4,-0L17.6,-0C17.8,-0,18,.1,18,.3L18,3.9C18,4.1,17.8,4.2,17.6,4.2L.4,4.2C.2,4.2,0,4.1,0,3.9L0,.3C0,.1,.2,-0,.4,-0z" fill="url(#lg4_417)" transform="translate(46,33.64)"/>
+
+
+        <path id="shape13" d="M0,0L2.7,0L2.7,11.3L0,11.3L0,0z" fill="url(#lg5_417)" transform="matrix(1,0,0,-1,55.4,14.9)"/>
+
+
+        <path id="shape14" d="M0,2.7L0,0L46.1,0L46.1,2.7L0,2.7z" fill="url(#lg6_417)" transform="matrix(1,0,0,-1,8.5,2.7)"/>
+
+
+        <path id="shape15" d="M0,0L2.7,0L2.7,82.2L0,82.2L0,0z" fill="url(#lg5_417)" transform="matrix(1,0,0,-1,4.7,85.7)"/>
+
+
+        <path id="shape16" d="M0,0C0,0,2.1,.1,3.1,1.2C4,2.4,3.9,4.2,3.9,4.2L1.2,4.2C1.2,4.2,1.2,3.2,0,2.7L0,0z" fill="url(#lg7_417)" transform="matrix(-1,0,0,1,8.7,-0)"/>
+
+
+        <path id="shape17" d="M0,0C0,0,2.2,.1,3.3,1.3C4.4,2.6,4.2,4.6,4.2,4.6L1.3,4.6C1.3,4.6,1.3,3.4,0,2.9L0,0z" fill="url(#lg8_417)" transform="translate(54,-0)"/>
+
+
+        <g transform="translate(31.67,14.89)">
+
+
+            <g transform="translate(0,9.64)">
+
+
+                <path id="shape18" d="M.4,-0L31.9,-0C32.1,-0,32.3,.2,32.3,.4L32.3,4.4C32.3,4.6,32.1,4.8,31.9,4.8L.4,4.8C.2,4.8,0,4.6,0,4.4L0,.4C0,.2,.2,-0,.4,-0z" fill="url(#lg4_417)" transform="translate(7.19,4.44)"/>
+
+
+                <path id="shape19" d="M.4,-0L46.2,-0C46.5,-0,46.7,.2,46.7,.4L46.7,4C46.7,4.2,46.5,4.4,46.2,4.4L.4,4.4C.2,4.4,0,4.2,0,4L0,.4C0,.2,.2,-0,.4,-0z" fill="url(#lg4_417)"/>
+
+
+            </g>
+
+
+            <g transform="matrix(1,0,0,-1,0,9.2)">
+
+
+                <path id="shape20" d="M.4,-0L31.9,-0C32.1,-0,32.3,.2,32.3,.4L32.3,4.4C32.3,4.6,32.1,4.8,31.9,4.8L.4,4.8C.2,4.8,0,4.6,0,4.4L0,.4C0,.2,.2,-0,.4,-0z" fill="url(#lg4_417)" transform="translate(7.19,4.44)"/>
+
+
+                <path id="shape21" d="M.4,-0L46.2,-0C46.5,-0,46.7,.2,46.7,.4L46.7,4C46.7,4.2,46.5,4.4,46.2,4.4L.4,4.4C.2,4.4,0,4.2,0,4L0,.4C0,.2,.2,-0,.4,-0z" fill="url(#lg4_417)"/>
+
+
+            </g>
+
+
+        </g>
+
+
+        <g transform="translate(39.18,63.48)">
+
+
+            <path id="shape22" d="M5.6,0L26.1,0L31.6,5.6L31.6,36.5L26.1,42.1L5.6,42.1L0,36.5L0,5.6L5.6,0z" fill="url(#lg2_417)" transform="translate(0,3.14)"/>
+
+
+            <path id="shape23" d="M.3,0L25.3,0C25.4,0,25.6,.1,25.6,.3L25.6,31.1C25.6,31.3,25.4,31.4,25.3,31.4L.3,31.4C.1,31.4,0,31.3,0,31.1L0,.3C0,.1,.1,0,.3,0z" fill="url(#lg2_417)" transform="translate(3.03,-0)"/>
+
+
+            <path id="shape24" d="M.3,0L3.4,0C3.5,0,3.7,.1,3.7,.3L3.7,12.1C3.7,12.3,3.5,12.4,3.4,12.4L.3,12.4C.1,12.4,0,12.3,0,12.1L0,.3C0,.1,.1,0,.3,0z" fill="url(#lg9_417)" transform="translate(6.5,31.4)"/>
+
+
+            <path id="shape25" d="M.3,0L3.4,0C3.5,0,3.7,.1,3.7,.3L3.7,12.1C3.7,12.3,3.5,12.4,3.4,12.4L.3,12.4C.1,12.4,0,12.3,0,12.1L0,.3C0,.1,.1,0,.3,0z" fill="url(#lg9_417)" transform="translate(21.6,31.4)"/>
+
+
+            <path id="shape26" d="M.3,-0L25.4,-0C25.5,-0,25.6,.1,25.6,.3L25.6,2.5C25.6,2.7,25.4,2.8,25.3,2.8L.3,2.8C.1,2.8,0,2.7,0,2.5L.1,.3C.1,.1,.2,-0,.3,-0z" fill="url(#lg9_417)" transform="translate(3.03,28.61)"/>
+
+
+        </g>
+
+
+        <path id="shape27" d="M0,2.7L0,0L34,0L34,2.7L0,2.7z" fill="url(#lg6_417)" transform="matrix(1,0,0,-1,8.5,89.4)"/>
+
+
+        <path id="shape28" d="M0,0C0,0,2.1,.1,3.1,1.2C4,2.4,3.9,4.2,3.9,4.2L1.2,4.2C1.2,4.2,1.2,3.2,0,2.7L0,0z" fill="url(#lg7_417)" transform="matrix(-1,0,0,-1,8.5,89.4)"/>
+
+
+        <path id="shape29" d="M44.2,0L0,0L0,8.7C0,8.7,.7,12.1,22.5,12.1C43.4,12.2,44.2,8.7,44.2,8.7L44.2,0z" fill="url(#lg4_417)" transform="translate(32.91,127.49)"/>
+
+
+        <path id="shape30" d="M.4,-0L46.6,-0C46.8,-0,47,.2,47,.4L47,3.4C47,3.6,46.8,3.8,46.6,3.8L.4,3.8C.2,3.8,0,3.6,0,3.4L0,.4C0,.2,.2,-0,.4,-0z" fill="url(#lg3_417)" transform="translate(31.32,123.71)"/>
+
+
+        <path id="shape31" d="M0,0L46.5,0L46.5,1.4L0,1.4L0,0z" fill="url(#lg10_417)" transform="translate(31.75,23.6)"/>
+
+
+        <g transform="translate(46.43,83.66)">
+
+
+            <path id="shape32" d="M-0,2.8C-0,1.3,1.3,-0,2.8,-0C4.4,-0,5.6,1.3,5.6,2.8C5.6,4.4,4.4,5.7,2.8,5.7C1.3,5.7,-0,4.4,-0,2.8z" fill="#7d040f" transform="translate(0,0)"/>
+
+
+            <path id="shape33" d="M-0,2.3C-0,1,1,-0,2.3,-0C3.6,-0,4.6,1,4.6,2.3C4.6,3.6,3.6,4.6,2.3,4.6C1,4.6,-0,3.6,-0,2.3z" stroke="#ffffff" fill="url(#lg11_417)" transform="translate(0.52,0.52)"/>
+
+
+        </g>
+
+
+        <g transform="translate(57.61,83.66)">
+
+
+            <path id="shape34" d="M-0,2.8C-0,1.3,1.3,-0,2.8,-0C4.4,-0,5.6,1.3,5.6,2.8C5.6,4.4,4.4,5.7,2.8,5.7C1.3,5.7,-0,4.4,-0,2.8z" fill="#276f71" transform="translate(0,0)"/>
+
+
+            <path id="shape35" d="M-0,2.3C-0,1,1,-0,2.3,-0C3.6,-0,4.6,1,4.6,2.3C4.6,3.6,3.6,4.6,2.3,4.6C1,4.6,-0,3.6,-0,2.3z" stroke="#ffffff" fill="url(#lg12_417)" transform="translate(0.52,0.52)"/>
+
+
+        </g>
+
+
+        <g transform="translate(52.15,65.46)">
+
+
+            <path id="shape36" d="M4.3,0C4.5,.2,4.4,.8,4.8,1.4C5.1,2,5.7,2.2,5.7,2.5C5.7,2.8,5.1,3,4.8,3.6C4.5,4.1,4.6,4.8,4.3,5C4,5.2,3.6,4.7,2.8,4.7C2.1,4.7,1.7,5.1,1.4,5C1.1,4.8,1.3,4.3,.9,3.6C.6,3,0,2.9,0,2.5C0,2.1,.5,2,.9,1.3C1.3,.7,1.2,.1,1.4,0C1.6,-0.1,2.1,.3,2.9,.3C3.7,.3,4.1,-0.1,4.3,0z" fill="url(#lg13_417)"/>
+
+
+            <path fill-opacity="0.2" id="shape37" d="M4,0C4.3,.2,4.2,.7,4.5,1.3C4.8,1.9,5.4,2.1,5.4,2.4C5.4,2.7,4.8,2.9,4.5,3.4C4.2,3.9,4.4,4.5,4,4.7C3.7,4.9,3.4,4.5,2.7,4.5C2,4.5,1.6,4.8,1.3,4.7C1.1,4.6,1.2,4,.8,3.4C.5,2.9,0,2.7,0,2.4C0,2,.5,1.9,.9,1.3C1.2,.6,1.2,.1,1.3,0C1.5,-0.1,2,.2,2.7,.2C3.5,.2,3.8,-0.1,4,0z" fill="#ffffff" transform="translate(0.15,0.13)"/>
+
+
+            <path id="shape38" d="M0,1.8C0,.8,.8,0,1.8,0C2.7,0,3.5,.8,3.5,1.8C3.5,2.7,2.7,3.5,1.8,3.5C.8,3.5,0,2.7,0,1.8z" stroke="#717070" fill="#3e3938" transform="translate(1.1,0.75)"/>
+
+
+            <path fill-opacity="0.17" id="shape39" d="M.4,1.6C.4,.8,-0.5,0,.3,0C1.2,0,1.9,.7,1.9,1.5C1.9,2.4,1.2,3,.3,3C-0.5,3,.4,2.5,.4,1.6z" fill="#ffffff" transform="translate(2.51,0.99)"/>
+
+
+        </g>
+
+
+    </g>
+
+
+</svg>
+
+<rect width="112" height="172" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+
+</g><!--End Valve-->
+
+
+<!--PID-->
+<g transform="matrix(0.4 0 0 0.4 401 157)">
+
+<ellipse id="pidEllipse" fill="gold" stroke="#800000" stroke-width="4" cx="0" cy="0" rx="152" ry="64"/>
+
+
+ <foreignObject class="noselect" id="foAdjust" width="300" height="100" x="-120" y="-50" pointer-events="none">
+
+
+<table xmlns="http://www.w3.org/1999/xhtml" cellpadding="0">
+
+
+<tbody>
+
+<tr>
+
+<td align="center" colspan="5">
+
+Tune Controller:<input type="checkbox" id="adjustControllerCheck" />
+
+</td>
+
+</tr>
+
+
+    <tr align="center">
+
+
+    <td>
+
+SP:<input disabled="" style="margin-right: 0px;margin-left: 0px;" type="radio" name="tuneRadio" id="tuneSPClick" />
+
+</td>
+
+
+    <td>
+
+P:<input style="margin-right: 0px;margin-left: 0px;" disabled="" type="radio" name="tuneRadio" id="tunePClick" />
+
+</td>
+
+
+    <td>
+
+I:<input disabled="" title="turn off Integral" id="turnOffIntegralCheck" type="checkbox" checked="" style="margin-right: 0px;margin-left: 0px;" />
+
+<input style="margin-right: 0px;margin-left: 0px;" disabled="" type="radio" name="tuneRadio" id="tuneIClick" />
+
+</td>
+
+
+    <td>
+
+D:<input disabled="" title="turn off Derivative" id="turnOffDerivativeCheck" type="checkbox" checked="" style="margin-right: 0px;margin-left: 0px;" />
+
+<input style="margin-right: 0px;margin-left: 0px;" disabled="" type="radio" name="tuneRadio" id="tuneDClick" />
+
+</td>
+
+
+    <td>
+
+CO:<input disabled="" type="radio" style="margin-right: 0px;margin-left: 0px;" name="tuneRadio" id="tuneCOClick" />
+
+</td>
+
+
+    </tr>
+
+
+    <tr align="center">
+
+
+    <td>
+
+<input type="text" style="width:40px" id="tuneSPValue" value="100.0" />
+
+</td>
+
+
+    <td>
+
+<input type="text" style="width:40px" id="tunePValue" value="1" />
+
+</td>
+
+
+    <td>
+
+<input type="text" style="width:40px" id="tuneIValue" value="10" />
+
+</td>
+
+
+    <td>
+
+<input type="text" style="width:40px" id="tuneDValue" value="1" />
+
+</td>
+
+
+    <td>
+
+<input type="text" style="width:40px" id="tuneCOValue" value="0" />
+
+</td>
+
+
+    </tr>
+
+
+    <tr>
+
+<td align="center" colspan="5">
+
+
+        <table>
+
+
+        <tbody>
+
+<tr>
+
+
+        <td>
+
+<button disabled="" style="padding:0;width:30px;height:30px">
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAABJ0AAASdAHeZh94AAAEXElEQVR4nM2ZW2gcVRjHT5KZvaQz23lw14Umbujig5bMRKglIWWX0sb6IG0JghKSiAi2EYsiKfYhSGtWvBViNguKCQgiqagI2ZZgagnONEF68TIbwb5s6gRix13B052TvWTSxIfZ7mU6e8vu7OTPPnxzzpzZH9/3zZxzvtOwtbUFdp4ajQbQFlbleJbjIIR8KJTbyNA0RVFej2fbj23YRhAFQZj+bvqHhTkhsmKy4ngzhltx3Io3mZruy/fluCwnNuSEvB6XXY7Hnj14tO/5PpfLpSMWy3Eff3bhtvgn6STMhLmcISmUkkTUQrSeHz5Xvv/KxRIE4aXTL0dBhHQSZT5aJUlEduAYHx1jGKY2WG+MvHk1dHXbQCq4I/SRcd8nVWFBCE8M9lbjJE2yZrTrx+/nKIoqdE+xDwSEsKf3aG2ZAACkk4gTa13PdPM8X+iegt5SmOLEWm2ZMpJEFAujhVlW8yXVxtKbKUNWKJraQTx1ZkhvJvAgmv2vDT7cpYE1Ewwu/bOkN5Mi0kncQcv+iQlVuzqIEML27o493c46MGW0uiiqkkztLX8gYHPXw0+5srmJt31nc1vysCCEkxen6hO+XJFO4lb4liAI2liGuEoR6SQ+8l/IXObl1hMH9u3uII2gAgCAyG/R5Zthxc56i+f5lCVpEBIAADSSjSzHpe1M69z8FStlMQgJAABIJ/HNzLeKncW6duOaZbeRWGbC/MfykmJnse7c/Qu34gYhpbUSXVGM7Fo+vrlGgOYiY/5l/2urcO37sFBbrEiviTCpsUom1uDAwDsjI1Vidb7aWaTXvMvEcpzX40kHkeU4YxNLkYlMe2uH7hPTWAxNJ++ljEUBAKwjWTHSuUVRVAImis+GHMe96/PpjLWuvFXZlG9YLxFQ1BabXbmsK1YKpZTlTRal1dEqJ2Rd/7WkHrHZFSOLRT/ebmx6yQnZvWevYmexDnsPJ2DCICQAAEjeSx3qPKTYeQubvU+7HU/ZDaICkdvRX4O/KLugvDTv7jiYQobF8cmWfZmdWR7W8OtvSSIyAglIIjpzajhzmYfFMEwL0Vp3JAAAsANHbplJ/a0aHx2rv8MkEZ0fPpfbosZiGKbL3VVPMklE7Y+2qypyGjWI+hQgMkyb4tbPVxZVZQiNCYeiqKmxz2PhejgsFkZfT06XWxphGOarT7/8+/e7ujJJInrv7KhmzbLg9Oz1eHynfauLok55Jomov6d/cGBAs7dEkZLn+ef6jtvcRG2LlLEwCrzvP37sWKF7SixmGIZZmGXtwFErnymltsvTM0WYSmMBAFwu10/B+ZM9J6sMqCSi1UXxhQMv3py/XrIGXsFxAYTQHwhMXpyqNKbKicF+9/4PRz4o8zij4sMVCGHw0qWJLwLRZASzYJgZw60YZsYwC9aEN21ubMrJjY0HPzkp222O3p4TQ68MFSl31wArl4/lOD4UCoVCEMLcLoqiaJpmaNrr8VREUwMsXbVD94n/AyR35wdcDvWLAAAAAElFTkSuQmCC" alt="" width="25" height="25" />
+
+</button>
+
+</td>
+
+
+        <td>
+
+
+            <select disabled="" id="incrementSelect" title="Increment value">
+
+
+              <option value="">
+
+.10</option>
+
+
+              <option value="">
+
+.50</option>
+
+
+              <option selected="" value="">
+
+1.0</option>
+
+
+              <option value="">
+
+5.0</option>
+
+
+              <option value="">
+
+10</option>
+
+
+
+            </select>
+
+
+        </td>
+
+
+        <td>
+
+<button disabled="" style="padding:0;width:30px;height:30px">
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAABJ0AAASdAHeZh94AAAFR0lEQVR4nM2ZXWzTVhSAT+rYjtM0sepuizqQ+REI7SdmL9NUpnR0FO2pMMo2FVakDbFNYkhj8MCmCgT0bQKmUmk/VSVAgiJtmkaQGApQWq9MGw8bydY9dCrCZBLZINN1VsWxHTd7SJe4TurYTls4iiLnXt+Tz+fce3zuua58Pg+PntQ9bIDK4q5l8CjPI4Ri8bi+cRnLsizbGg7Xotll14mCIJz7eig6diXx912cwgkvQVA4ThFuAtNUTckoiqSqkqpkFKahaXP7pm1bu1iWXUCsUZ4/9vmxieSEP+j3+EgrQ7JTcjqZbvY1H9p/yJb9LGEJgvDWnrdTkAoE/dZV60VMphlgThw9znHc/GB90PPh9fiwYyAD3PpQ26e9x2vCQght2dFZi5EqkpFTnug3l2maNrltzgCBENq45ZX5ZQKAQNAv+7ItG1+MxWK2sQpMsi87v0xFMjzo7ti22YSsghMXlKko5t6sgNW1a/vvf40vKFORjAFmOHKtvMvoxAuRyOIwAUAg6E9Bqu/kyfKuWdZCCHHrnmPXLV0EpqIINxL8pRHDm2CWtfr6++mVAbt6V9Gr+S/5wmf3a7vtDqdXBg70fmxoLGEhhAaHBh24j8RKLyImwNgdHgj6f5n8WRCEyljOTAUARG1YAOAP+j/pO1YZ63zkvANTaapmsJamanaVeHzkZf5yBaxYLJbzqHbVAYCSUfRYTXSTklEc6HE3YBciESNWdPgKRVNOsCTVXVfKJb0eryI5eTx/0H9l9KoR6/ubY96AEyy1DKK8xYp4fOT47fHiz5kHvXPvDr3a6sQyZKGGXiWj3L/9oJC1El4CwzGLahP3E0as7LQEYIYlTv7b6G90aeDKuXDNReXrAQBcAPWwbHYkXFa/HAAgC5CFPMoDls9jkHfnActrjTmTvyB9hBGr6sTqXN95sKfH/J6CXI1G5+oKv2OWN3vqyVGeL+TWdQAwyvPOJtb8CtlQWtGP6D6xDgC4UCgjSg+bBOSp0upxAwBN0xKSzEP89VvDyY/uERhJYiSJkfpY1RoO6zdbR3p7i9e56ZysyYomy5osa3I1LLm4ema056tFZq0x91vq15nrsgChxzrz3enittZWgMhOyawBa+njSyQpg1O4lfEYjlEBigpQAHD/9gNDL07hj61osoiilyZ/6TU/M+WfWfWss+lFeImqLVZEldTlT64wYr3c2iYhR1hlBi5vsSIZUXrphVYj1qaOjmnJSaGL8BK56VLszmQzzqwlIemNzteNWADQsrYlO1VlsZQLhmP6JZYSU9bnuF7WLFmj35mVsPa9vzedTDvQqOixUMqBBjGZ3vfePn1LCYvjuGZfswOlBms50MAAYygzzdqQCYLQsWeT3dQZ+8e9fm3bjIb0nT/QhK3hYjLdt7/PDAsAdu199+bkT4uzfS0wPfXE00MDZw3tRqzFKUAUmdRk7ofoWHkZwphB0DQ9cOILNCkuNBMAoElxaOBsxdJIhcSG47jIuW8Tt/5cUCYxmT564MhcNcvK+RbHcYf3HBZuJERHIcMKU1d7147u7rluMCtSxmKxjm2b6ZWB+S1SoknxzGenzQvPZtkpx3H8pREGmPmyWaHUxl8aqVoMr5I0syw7HLm2s31njQ4Vk2nhRqLz+a03h3+0cnpg9bgAIdTX3z84NGjXpwWvbWjZcLCnx/pxhr3DFYRQ5OLFU1+dEh7cxT1unHS7KRwncdzjxnBMy2m5bE7Nqur/34yHefPV7Tu6u83L3bVi6fli8fgoz8fjcYSQvoum6VAoxIVCreGwXZpasRZaHtF94n8WVXML5FmhBgAAAABJRU5ErkJggg==" alt="" width="25" height="25" />
+
+</button>
+
+</td>
+
+
+        </tr>
+
+
+        </tbody>
+
+</table>
+
+
+    </td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+
+
+</foreignObject>
+
+
+</g><!--end PID-->
+
+<!--Button-->
+<g myScale=".4" transform="matrix(0.4 0 0 0.4 351 80)" myRotate="0" myStatus="off">
+<g cursor="default">
+<defs id="onOffButtonDefs"><filter id="onOffButtonDropShadow" height="40">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="10"/> <!-- stdDeviation is how much to blur -->
+    <feOffset dx="6" dy="10" result="offsetblur"/> <!-- how much to offset -->
+    <feMerge>
+        <feMergeNode/> <!-- this contains the offset blurred image -->
+        <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+    </feMerge>
+</filter><linearGradient id="linearGradientOnOffButton">
+            <stop style="stop-color:#000000;stop-opacity:0" offset="0"/>
+            <stop style="stop-color:#000000;stop-opacity:0.5" offset="1"/>
+        </linearGradient><linearGradient id="linearGradientOnOffButton2">
+            <stop style="stop-color:#ffffff;stop-opacity:1" offset="0"/>
+            <stop style="stop-color:#ffffff;stop-opacity:0" offset="1"/>
+        </linearGradient><linearGradient x1="120" y1="10" x2="120" y2="50" id="linearGradientOnOffButtonHighlight" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#linearGradientOnOffButton2" gradientUnits="userSpaceOnUse"/><radialGradient cx="120" cy="170" r="100" fx="120" fy="170" id="radialGradientOnOffButton" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#linearGradientOnOffButton" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,-0.72727275,2,0,-220,170)"/>
+    </defs>
+    <rect  onClick="publishPump()" aria-pressed="false"  fill="red" width="220" height="80" ry="40" x="10" y="10" id="ButtonBase" style="stroke:none" filter="url(#onOffButtonDropShadow)"/>
+        <rect width="220" height="80" ry="40" x="10" y="10" id="ButtonGlow" pointer-events="none" style="fill:url(#radialGradientOnOffButton);stroke:none"/>
+        <text x="120" y="66" id="buttonText" pointer-events="none" xml:space="preserve" style="font-size:40px;text-align:center;text-anchor:middle;fill:#000000;stroke:none;font-family:Sans">OFF</text>
+        <text x="120" y="64.5" id="buttonTextOffset" pointer-events="none" xml:space="preserve" style="font-size:40px;text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;font-family:Sans">OFF</text>
+        <path d="m 50,15 140,0 c 11.08,0 22.51667,10.914008 20,20 C 208.16563,41.622482 201.08,40 190,40 L 50.00005,40 C 38.92005,40 31.834332,41.622512 30,35 27.483323,25.914009 38.92,15 50,15 z" id="ButtonHighlight" pointer-events="none" style="fill:url(#linearGradientOnOffButtonHighlight)"/>
+    </g>
+
+</g>
+
+
+
+
+<!--Flow Transmitter-->
+</g><g xmlns="http://www.w3.org/2000/svg" transform="matrix(0.3 0 0 0.3 93.65 111.75)" parentid="component1520372636284">
+
+<rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="75" height="61" rx="10" ry="10" transform="matrix(1 0 0 1 62 448)" id="rect27"/>
+
+<rect fill="#000000" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="18" height="31" transform="matrix(1 0 0 1 92 509)" id="rect47"/>
+
+<rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="139" height="59" transform="matrix(1 0 0 1 30 541)" id="rect73"/>
+
+<text font-family="Arial" font-size="30" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 35 631)" id="text97">
+
+
+Magnetic</text>
+
+<defs>
+
+<pattern id="fill15203726186014" patternUnits="userSpaceOnUse" width="5" height="5" addto="fill">
+
+
+				<path d="M 0 2.5 c 0.625 -1.25 , 1.875 -1.25 , 2.5 0 c 0.625 1.25 , 1.875 1.25 , 2.5 0 M -2.5 2.5 c 0.625 1.25 , 1.875 1.25 , 2.5 0 M 5 2.5 c 0.625 -1.25 , 1.875 -1.25 , 2.5 0" fill="transparent" stroke-width="0.5" shape-rendering="auto" stroke="#0000FF" stroke-linecap="square"/>
+
+
+			</pattern>
+
+</defs>
+
+<rect fill="url(#fill15203726186014)" stroke="#0000FF" stroke-width="1" x="0" y="0" width="70" height="28" transform="matrix(1 0 0 1 65 556)" fill-opacity="null" id="rect121"/>
+
+<rect fill="#7FFF00" fill-opacity="1.0" stroke="#0000FF" stroke-width="1" x="0" y="0" width="5" height="37" transform="translate(133 551)" id="rect123"/>
+
+<rect fill="#FF0000" fill-opacity="1.0" stroke="#0000FF" stroke-width="1" x="0" y="0" width="5" height="37" transform="matrix(1 0 0 1 60 552)" id="rect125"/>
+
+<rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="21" height="98" transform="matrix(1 0 0 1 169 520)" id="rect127"/>
+
+<rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="21" height="98" transform="matrix(1 0 0 1 9 522)" id="rect129"/>
+
+<text font-family="Arial" font-size="40" font-weight="bold" font-style="normal" stroke="none" stroke-width="0.8" fill="#000000" transform="matrix(1 0 0 1 74 492)" filter="null" id="text141">
+
+
+FT</text>
+
+<text font-family="Arial" font-size="40" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#FF0000" transform="matrix(1 0 0 1 35 582)" id="text169">
+
+
++</text>
+
+<text font-family="Arial" font-size="50" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#00FF00" transform="matrix(1 0 0 1 143 583)" id="text171">
+
+
+-</text>
+
+<text font-size="30" font-family="Arial Unicode MS" stroke-width="0.8" fill="#0000FF" stroke="black" x="-17.8203125" y="13.5" transform="matrix(1 0 0 1 105 596)" id="icon19">
+
+
+⯊</text>
+
+<text font-size="30" font-family="Arial Unicode MS" stroke-width="0.8" fill="#0000FF" stroke="black" x="-17.8203125" y="13.5" transform="matrix(1 0 0 1 105 539)" id="icon21">
+
+
+⯋</text>
+
+<rect width="181" height="189" fill="white" fill-opacity="0" transform="translate(9,448)" style="cursor: default;" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5"/>
+
+<defs>
+
+
+			<marker id="arrow0000FF" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#0000FF" stroke-linejoin="bevel">
+
+
+				<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+
+
+			</marker>
+
+
+		</defs>
+
+</g><!--End Flow Meter-->
+
+
+
+
+<rect stroke="#000000" stroke-width="2" fill="url(#wrhof)" transform="matrix(1 0 0 1 23 104)" width="52" height="99" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1" stroke-opacity="1.0" stroke-dasharray="8 4" marker-end="url(#arrow000000)" d="M 462 157 L 499 157 L 499 116 L 630 116" rightAngle="true" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1" stroke-opacity="1.0" stroke-dasharray="8 4" marker-end="url(#arrow000000)" d="M 402 238 L 402 182" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1" stroke-opacity="1.0" stroke-dasharray="8 4" marker-end="url(#arrow000000)" d="M 401 213 L 350 213" rightAngle="true" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1" stroke-opacity="1.0" stroke-dasharray="8 4" marker-end="url(#arrow000000)" d="M 225 132 L 225 158 L 337 158" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1" stroke-opacity="1.0" stroke-dasharray="8 4" marker-end="url(#arrow000000)" d="M 123 246 L 123 214" rightAngle="true"/>
+
+
+
+
+<path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1" stroke-opacity="1.0" d="M 73 106 L 24 200"/>
+<path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1" stroke-opacity="1.0" d="M 24 106 L 73 201"/>
+
+<text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 17 16)" rotateAngle="0">Outside</text><text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 26 26)" rotateAngle="0">Air</text><text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 541 154)" rotateAngle="0">Steam</text><text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 277 155)" rotateAngle="0">Setpoint</text><text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 286 169)" rotateAngle="0">Adjust</text><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 83 125)" rotateAngle="0">Building</text><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 82 142)" rotateAngle="0">Heating</text><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 504 285)" rotateAngle="0">Steam-to-Hot Water Converter</text>
+
+
+<!--Digital Readout -->
+<g transform="matrix(0.5 0 0 0.5 554 69)" title="Valve Position" scale=".5" units="Percentage Open %" max="100" faceColor="#87CEEB" numBorderColor="#1E90FF" numColor="#00FF00" numBgColor="#000000"><foreignObject id="digitalReadoutFO" overflow="visible" x="-100" y="-40" width="200" height="80"><div xmlns="http://www.w3.org/1999/xhtml" id="digitalReadoutContainerDiv" style="font-family: arial; border: 1px solid black; font-size: 16px; overflow: hidden; height: 80px; padding: 10px; background: rgb(135, 206, 235); border-radius: 8px; width: 100%; text-align: center;"><div id="digitalReadoutTitleDiv">Valve Position</div><div id="digitalReadoutValue" style="border: 6px inset rgb(30, 144, 255); width: 180px; background: rgb(0, 0, 0); color: rgb(0, 255, 0); font-weight: bold; font-size: 30px;">0</div><div id="digitalReadoutUnit">Percentage Open %</div></div></foreignObject><rect id="digitalReadoutCoverRect" x="-100" y="-40" width="200" height="80" stroke="none" fill="white" fill-opacity="0"/></g>
+
+
+
+
+
+
+<path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="2" stroke-opacity="1.0" marker-end="url(#arrowFF0000)" d="M 718 175 L 718 152 L 743 152" rightAngle="true"/></g></g>
+
+
+<defs id="arrowDefs"><marker id="arrowADFF2F" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#ADFF2F" stroke-linejoin="bevel"><path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/></marker><marker id="arrowFF0000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#FF0000" stroke-linejoin="bevel"><path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/></marker><marker id="arrow000000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#000000" stroke-linejoin="bevel"><path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/></marker><marker id="arrowADFF2F" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#ADFF2F" stroke-linejoin="bevel"><path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/></marker><marker id="arrowFF0000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#FF0000" stroke-linejoin="bevel"><path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/></marker><marker id="arrow000000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#000000" stroke-linejoin="bevel"><path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/></marker></defs><defs id="defsPattern"><pattern id="wrhof" patternUnits="userSpaceOnUse" width="5" height="5" addTo="fill"><path d="M 0 2.5 c 0.625 -1.25 , 1.875 -1.25 , 2.5 0 c 0.625 1.25 , 1.875 1.25 , 2.5 0 M -2.5 2.5 c 0.625 1.25 , 1.875 1.25 , 2.5 0 M 5 2.5 c 0.625 -1.25 , 1.875 -1.25 , 2.5 0" fill="transparent" stroke-width="1.0" shape-rendering="auto" stroke="#FF0000" stroke-linecap="square"/></pattern><pattern id="wrhof" patternUnits="userSpaceOnUse" width="5" height="5" addTo="fill"><path d="M 0 2.5 c 0.625 -1.25 , 1.875 -1.25 , 2.5 0 c 0.625 1.25 , 1.875 1.25 , 2.5 0 M -2.5 2.5 c 0.625 1.25 , 1.875 1.25 , 2.5 0 M 5 2.5 c 0.625 -1.25 , 1.875 -1.25 , 2.5 0" fill="transparent" stroke-width="1.0" shape-rendering="auto" stroke="#FF0000" stroke-linecap="square"/></pattern></defs><defs id="pipe3dDefs"><filter id="pipe3D"><feFlood flood-color="black"/><feComposite operator="out" in2="SourceGraphic"/><feGaussianBlur stdDeviation="6"/><feComposite operator="atop" in2="SourceGraphic"/></filter></defs>
+
+<g id="gaugeGPMGaugeContainer" transform='translate(120,165)' />
+<g id="gaugeHWSGaugeContainer" transform='translate(315,197)' />
+<g id="gaugeOATGaugeContainer" transform='translate(217,136)' />
+
+</svg>
+</div>
+
+</td>
+</tr></table>
+
+    <br><button title="Show Javascript Source" onclick=showSource()>Javascript Source</button> <button title="Close javascript source" disabled id=closeSourceButton onClick=closeSource()>X</button>
+
+ <div id=sourceDiv style=overflow:auto;width:100%;height:1px;visibility:hidden;overflow:hidden>
+  <br>Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:90%;text-align:left; ></div>
+</div>
+</center>
+    </div>
+<script id=myScript>
+//---JavaScript SDK  https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.2.js ---
+
+//--onload---
+var pubnubPublish
+function initPublish()
+{
+    pubnubPublish = new PubNub(
+    {
+        publishKey : 'pub-c-ea28c028-e01a-4d16-80ec-0ad017c8a0a1',
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+   })
+
+}
+//---onload---
+var pubnubSubscribeHWS
+function initSubscribeHWS()
+{
+    pubnubSubscribeHWS = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+
+    //**************the keys to kingdom*****************
+    pubnubSubscribeHWS.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var channelName = m.channel; //---The channel for which the message belongs---
+            var channelGroup = m.subscription; //---The channel group or wildcard subscription match (if exists)---
+            var pubTT = m.timetoken; //---Publish timetoken---
+            var msg = m.message; //---The Payload---
+            console.log(msg)
+            changeGaugeHWS(msg)
+        }
+
+    })
+    //*****************************************************
+
+    pubnubSubscribeHWS.subscribe(
+    {
+        channels: [HWS] //---unique for this viewer "HWS"+timeStamp---
+    })
+
+}
+
+var pubnubSubscribeOAT
+function initSubscribeOAT()
+{
+    pubnubSubscribeOAT = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+
+    //**************the keys to kingdom*****************
+    pubnubSubscribeOAT.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var channelName = m.channel; //---The channel for which the message belongs---
+            var channelGroup = m.subscription; //---The channel group or wildcard subscription match (if exists)---
+            var pubTT = m.timetoken; //---Publish timetoken---
+            var msg = m.message; //---The Payload---
+            console.log(msg)
+            changeGaugeOAT(msg)
+        }
+
+    })
+    //*****************************************************
+
+    pubnubSubscribeOAT.subscribe(
+    {
+        channels: [OAT] //---unique for this viewer "OAT"+timeStamp---
+    })
+
+}
+
+var pubnubSubscribeGPM
+function initSubscribeGPM()
+{
+    pubnubSubscribeGPM = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+
+    //**************the keys to kingdom*****************
+    pubnubSubscribeGPM.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var channelName = m.channel; //---The channel for which the message belongs---
+            var channelGroup = m.subscription; //---The channel group or wildcard subscription match (if exists)---
+            var pubTT = m.timetoken; //---Publish timetoken---
+            var msg = m.message; //---The Payload---
+            console.log(msg)
+            changeGaugeGPM(msg)
+        }
+
+    })
+    //*****************************************************
+
+    pubnubSubscribeGPM.subscribe(
+    {
+        channels: [GPM] //---unique for this viewer "GPM"+timeStamp---
+    })
+
+}
+
+
+
+//---onload---
+var pubnubSubscribePump
+function initSubscribePump()
+{
+    pubnubSubscribePump = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+
+    //**************the keys to kingdom*****************
+    pubnubSubscribePump.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var channelName = m.channel; //---The channel for which the message belongs---
+            var channelGroup = m.subscription; //---The channel group or wildcard subscription match (if exists)---
+            var pubTT = m.timetoken; //---Publish timetoken---
+            var msg = m.message; //---The Payload---
+            console.log(msg)
+            pumpStatusChange(msg)
+        }
+
+    })
+    //*****************************************************
+
+    pubnubSubscribePump.subscribe(
+    {
+        channels: [PUMP]  //---unique for this viewer "PUMP"+timeStamp---
+    })
+
+}
+
+//---onload---
+var pubnubSubscribeValve
+function initSubscribeValve()
+{
+    pubnubSubscribeValve = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+
+    //**************the keys to kingdom*****************
+    pubnubSubscribeValve.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var channelName = m.channel; //---The channel for which the message belongs---
+            var channelGroup = m.subscription; //---The channel group or wildcard subscription match (if exists)---
+            var pubTT = m.timetoken; //---Publish timetoken---
+            var msg = m.message; //---The Payload---
+            console.log(msg)
+             changeDigitalReadout(msg)
+        }
+
+    })
+    //*****************************************************
+
+    pubnubSubscribeValve.subscribe(
+    {
+        channels: [VALVE] //---unique for this viewer "VALVE"+timeStamp---
+    })
+
+}
+
+
+var MessagePump="OFF"
+//---operator clicks ON/OFF button---
+function publishPump()
+{
+    if(MessagePump=="OFF")
+        MessagePump="ON"
+    else
+        MessagePump="OFF"
+
+    var publishConfig =
+    {
+        channel : PUMP,   //---unique for this viewer "PUMP"+timeStamp---
+        message :MessagePump
+    }
+    pubnubPublish.publish(publishConfig, function(status, response)
+    {
+        console.log(status, response);
+    })
+}
+
+//---status: Message received---
+function pumpStatusChange(msg)  //---ON or OFF--
+{
+
+    if(msg=="OFF")
+    {
+        stopSendingGauge()
+        stopSendingValvePosition()
+        stopSendingChart()
+        MyArrows.pause()
+        ButtonBase.setAttribute("fill","red")
+
+    }
+   else if(msg=="ON")
+    {
+
+        changeGaugeHWS(130)
+        changeGaugeOAT(70)
+        changeGaugeGPM(200)
+        startSendingGauge()
+
+        changeDigitalReadout(40)
+        startSendingValvePosition()
+
+        startSendingChart()
+
+        if(!ScadaArrows) //---start run and initialize arrows--
+        {
+            runArrows()
+            document.getElementById("arrowLine1").setAttribute("display","block")
+            document.getElementById("arrowLine2").setAttribute("display","block")
+        }
+        else
+            MyArrows.play()
+
+        ButtonBase.setAttribute("fill","green")
+
+    }
+
+    buttonText.firstChild.nodeValue=msg
+    buttonTextOffset.firstChild.nodeValue=msg
+
+}
+
+
+var MessageHWS
+function publishHWS()
+{
+    MessageHWS= Math.round(Math.random()*40)+130
+    var publishConfig =
+    {
+        channel : HWS,  //---unique for this viewer "HWS"+timeStamp---
+        message :MessageHWS
+    }
+    pubnubPublish.publish(publishConfig, function(status, response)
+    {
+        console.log(status, response);
+
+    })
+}
+
+
+var MessageOAT
+function publishOAT()
+{
+    MessageOAT= Math.round(Math.random()*20)+70
+    var publishConfig =
+    {
+        channel : OAT,  //---unique for this viewer "OAT"+timeStamp---
+        message :MessageOAT
+    }
+    pubnubPublish.publish(publishConfig, function(status, response)
+    {
+        console.log(status, response);
+
+    })
+}
+
+
+var MessageGPM
+function publishGPM()
+{
+    MessageGPM= Math.round(Math.random()*40)+200
+    var publishConfig =
+    {
+        channel : GPM ,  //---unique for this viewer "GPM"+timeStamp---
+        message :MessageGPM
+    }
+    pubnubPublish.publish(publishConfig, function(status, response)
+    {
+        console.log(status, response);
+
+    })
+}
+
+
+var MessageValvePosition
+function publishValvePosition()
+{
+    MessageValvePosition= Math.round(Math.random() * 15) + 35
+    var publishConfig =
+    {
+        channel : VALVE,
+        message :MessageValvePosition
+    }
+    pubnubPublish.publish(publishConfig, function(status, response)
+    {
+        console.log(status, response);
+
+    })
+}
+
+
+//---HWS--
+function changeGaugeHWS(value)
+{
+    var key="gaugeHWS"
+    gauges[key].redraw(value);
+}
+//---OAT--
+function changeGaugeOAT(value)
+{
+    var key="gaugeOAT"
+    gauges[key].redraw(value);
+}
+//---GPM--
+function changeGaugeGPM(value)
+{
+    var key="gaugeGPM"
+    gauges[key].redraw(value);
+}
+
+var PublishGaugeInterval
+function startSendingGauge()
+{
+    PublishGaugeInterval=setInterval(
+    function()
+    {
+        publishHWS()
+        publishOAT()
+        publishGPM()
+    },2000)
+}
+function stopSendingGauge()
+{
+    clearInterval(PublishGaugeInterval)
+
+    changeGaugeHWS(60)
+    changeGaugeOAT(-20)
+    changeGaugeGPM(0)
+}
+    //---STEAM VALVE POSITION--
+var PublishValveInterval
+function startSendingValvePosition()
+{
+    PublishValveInterval=setInterval(publishValvePosition,1000)
+}
+function stopSendingValvePosition()
+{
+    clearInterval(PublishValveInterval)
+    changeDigitalReadout(0)
+}
+
+function changeDigitalReadout(value)
+{
+    digitalReadoutValue.innerHTML=value
+}
+
+//-----strip chart---
+var PublishChartInterval
+function startSendingChart()
+{
+    PublishChartInterval=setInterval(publishChart,2000)
+}
+function stopSendingChart()
+{
+    clearInterval(PublishChartInterval)
+
+}
+
+var MessageChart
+function publishChart()
+{
+    MessageChart="PublisChart" //---current HWS, OAT, GPM---
+    var publishConfig =
+    {
+        channel : "chart",
+        message :MessageChart
+    }
+    pubnubPublish.publish(publishConfig, function(status, response)
+    {
+        console.log(status, response);
+       slidePumpStripChart()
+    })
+}
+
+</script>
+<script>
+
+function insertFlowArrows()
+{
+    d3.select("#pathArrowsG").append("path")
+    .attr("id","arrowLine1")
+    .attr("fill","none")
+    .attr("display","none")
+    .attr("stroke","black")
+    .attr("stroke-width","2")
+    .attr("marker-end","url(#arrow000000)")
+    .attr("d","M0,0 15,0 30,0")
+    d3.select("#pathArrowsG").append("path")
+    .attr("id","arrowLine2")
+    .attr("fill","none")
+    .attr("display","none")
+    .attr("stroke","black")
+    .attr("stroke-width","2")
+    .attr("marker-end","url(#arrow000000)")
+    .attr("d","M0,0 15,0 30,0")
+}
+
+var ScadaArrows=false
+var MyArrows   //---onload:  MyArrows=SVG.adopt(pipe)  ---
+function runArrows()
+{
+    var duration=6000
+    var rotateAngle=6*360
+    ScadaArrows=true
+
+    var pathLength=pipe.getTotalLength()
+    var arrow2Offset=pipe.getTotalLength()*.33
+    MyArrows.animate(duration).during(
+    function(pos) //---setter--
+    {
+            var length=pathLength*pos
+            var Pnt0=pipe.getPointAtLength(length) //--start
+            var Pnt1=pipe.getPointAtLength(length+15) //--mid---
+            var Pnt2=pipe.getPointAtLength(length+30) //---end---
+            var d="M"+[Pnt0.x,Pnt0.y,Pnt1.x,Pnt1.y,Pnt2.x,Pnt2.y].toString()
+            arrowLine1.setAttribute("d",d)
+
+        if(length<(pathLength-arrow2Offset))
+        {
+            var Pnt0=pipe.getPointAtLength(length+arrow2Offset) //--start
+            var Pnt1=pipe.getPointAtLength(length+15+arrow2Offset) //--mid---
+            var Pnt2=pipe.getPointAtLength(length+30+arrow2Offset) //---end---
+            var d="M"+[Pnt0.x,Pnt0.y,Pnt1.x,Pnt1.y,Pnt2.x,Pnt2.y].toString()
+            arrowLine2.setAttribute("d",d)
+        }
+        else if(length>=(pathLength-arrow2Offset))
+        {
+            var myLength=length-arrow2Offset
+            var Pnt0=pipe.getPointAtLength(myLength-arrow2Offset) //--start
+            var Pnt1=pipe.getPointAtLength(myLength+15-arrow2Offset) //--mid---
+            var Pnt2=pipe.getPointAtLength(myLength+30-arrow2Offset) //---end---
+            var d="M"+[Pnt0.x,Pnt0.y,Pnt1.x,Pnt1.y,Pnt2.x,Pnt2.y].toString()
+            arrowLine2.setAttribute("d",d)
+        }
+        document.getElementById("Impeller").setAttribute("transform","rotate("+(rotateAngle*pos)+" "+cx+" "+cy+")")
+
+
+    })
+    .after(function(){
+        runArrows()
+    })
+}
+
+
+//==============Impeller==============
+//--onload---
+//---impeller rotate center point---
+var cx
+var cy
+function placeAsImpeller()
+{
+
+    var fontSize=60
+    var unicode="273D"
+    var code = parseInt(unicode, 16)
+    var icon = d3.select("#mySVG").append("text")
+    .attr("id", "Impeller")
+    .attr("x", 399)
+    .attr("y", 43)
+    .attr("text-anchor", "middle")
+    .attr("font-size", fontSize)
+    .attr("font-family", "Arial Unicode MS")
+    .attr("dy",fontSize/2-4)
+    .attr("stroke-width", 1.2)
+    .attr("fill", "blue")
+    .attr("stroke", "black")
+    .text(String.fromCharCode(code))
+
+    //---get rotate center point---
+   var bb=Impeller.getBBox()
+
+   cx=bb.x+.5*bb.width
+   cy=bb.y+.5*bb.height
+}
+
+//--createGauge(name, label, min, max,majorTicks,minorTicks,ringColor,faceColor,diameter,orangeZoneRange,redZoneRange,greenZoneRange,units)
+function createGauges() //----this application configuration----
+{
+    createGauge("gaugeOAT", "OAT",-20,120,5,10,"red","ghostwhite",80,null,null,null,"");
+//<g width="72" height="72" label="OAT" min="-20" max="120" majorTicks="5" minorTicks="10" ringColor="#9932CC" faceColor="#EE82EE" diameter="80" units="℉" transform="matrix(1 0 0 1 186 119)">
+
+
+ createGauge("gaugeHWS", "HWS",60,220,5,10,"darkviolet","ghostwhite",80,null,null,null,"");
+//<g width="72" height="72" label="HWS" min="60" max="220" majorTicks="5" minorTicks="10" ringColor="#9932CC" faceColor="#FF0000" diameter="80" units="℉" transform="matrix(1 0 0 1 280 177)">
+
+
+    createGauge("gaugeGPM", "GPM",0,600,5,10,"blue","ghostwhite",80,null,null,null,"");
+//<g width="72" height="72" label="GPM" min="0" max="600" majorTicks="5" minorTicks="10" ringColor="#9932CC" faceColor="#87CEFA" diameter="80" units="" transform="matrix(1 0 0 1 88 146)">
+
+}
+
+//---onload this page---
+function createStripChart() //----this application configuration----
+{
+    //buildProcessVariableChart(id, title, timeLine, timeLineUnits, faceColor, leftVariable, minLeft, maxLeft, setPointLeft, right1Variable, minRight1, maxRight1, right2Variable, minRight2, maxRight2, scale, transX, transY)<br>
+    buildProcessVariableChart("pumpPVC", "Hot Water System",60,"Minutes","#adff2f","HWS(\u00B0F)", 60, 220, null, "Flow(GPM)", 0, 600,  "OAT(\u00B0F)",-20, 120,.6,199,310);
+}
+
+
+document.addEventListener("onload",init(),false)
+
+//---channels---
+var HWS
+var OAT
+var GPM
+var PUMP
+var VALVE
+
+
+function init()
+{
+
+    HWS="HWS"+new Date().getTime()
+    OAT="OAT"+new Date().getTime()
+    GPM="GPM"+new Date().getTime()
+    PUMP="PUMP"+new Date().getTime()
+    VALVE="VALVE"+new Date().getTime()
+
+
+    initPublish()
+    initSubscribePump()
+    initSubscribeHWS()
+    initSubscribeOAT()
+    initSubscribeGPM()
+    initSubscribeValve()
+
+  createGauges()
+
+    placeAsImpeller()
+
+    insertFlowArrows()
+    MyArrows=SVG.adopt(pipe)
+    createStripChart()
+    showSourceJS()
+}
+
+function showSource()
+{
+  sourceDiv.style.visibility="visible"
+  sourceDiv.style.height=+sourceDiv.scrollHeight+"px"
+
+  closeSourceButton.disabled=false
+
+  var frameHeight=container.scrollHeight+100
+
+    d3.select(parent.frame4).transition().duration(1000).attr("height",frameHeight)
+
+
+}
+
+function closeSource()
+{
+   d3.select("#sourceDiv").transition().duration(1000).style("height","1px")
+   setTimeout('sourceDiv.style.visibility="hidden"',1000)
+  closeSourceButton.disabled=true
+
+   d3.select(parent.frame4).transition().duration(1000).attr("height",880)
+}
+
+
+
+</script>
+
+</body>
+
+</html>

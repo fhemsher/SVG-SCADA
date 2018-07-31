@@ -1,0 +1,455 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="mySVG" width="550" height="300" viewBox="0 0 550 300" style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+<style xmlns="http://www.w3.org/1999/xhtml">
+</style>
+<defs xmlns="http://www.w3.org/1999/xhtml">
+</defs>
+
+
+<g id="publishG">
+<g id="publishElemG" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+
+        <path id="pipe" fill="none" fill-opacity="1.0" stroke="#ADFF2F" stroke-width="15" stroke-opacity="1.0" d="M 335 58 L 335 38 L 496 38 L 496 118 L 434 118 L 434 211 L 238 211 L 238 261 L 48 261 L 48 56 L 335 56 z" filter="url(#pipe3D)" stroke-linejoin="round" rightangle="true" rotateangle="0">
+</path>
+
+<g id="pathArrowsG">
+<path id="arrowLine1" fill="none" display="none" stroke="black" stroke-width="1.5" marker-end="url(#arrow000000)" d="M0,0 15,0 30,0">
+</path>
+<path id="arrowLine2" fill="none" display="none" stroke="black" stroke-width="1.5" marker-end="url(#arrow000000)" d="M0,0 15,0 30,0">
+</path>
+</g>
+
+<g xmlns="http://www.w3.org/2000/svg" transform="matrix(-1 0 0 1 482.9 185)" parentid="componentISA141">
+
+        <path stroke="#000000" d="M27.5,0L0,0L0,37.6L27.5,37.6L27.5,0z" transform="translate(2.44,5.75)" fill="#FF0000" id="shape1" fill-opacity="1">
+</path>
+
+        <path stroke="#000000" d="M0,0L108.5,0L108.5,37.6L0,37.6L0,0z" transform="translate(32.08,5.72)" fill="#FF0000" id="shape2" fill-opacity="1">
+</path>
+
+        <g transform="translate(11.41,0)">
+
+            <path stroke="#000000" d="M0,5.7L0,0" transform="translate(4.28,0)" fill="none" id="shape3">
+</path>
+
+            <path stroke="#000000" d="M0,0L8.1,0" transform="translate(0,0)" fill="none" id="shape4">
+</path>
+
+        </g>
+
+        <g transform="translate(41.56,0)">
+
+            <path stroke="#000000" d="M0,5.7L0,0" transform="translate(4.28,0)" fill="none" id="shape5">
+</path>
+
+            <path stroke="#000000" d="M0,0L8.1,0" transform="translate(0,0)" fill="none" id="shape6">
+</path>
+
+        </g>
+
+        <g transform="matrix(1,0,0,-1,11.4,49.2)">
+
+            <path stroke="#000000" d="M0,5.7L0,0" transform="translate(4.28,0)" fill="none" id="shape7">
+</path>
+
+            <path stroke="#000000" d="M0,0L8.1,0" transform="translate(0,0)" fill="none" id="shape8">
+</path>
+
+        </g>
+
+        <g transform="matrix(1,0,0,-1,123.7,49.2)">
+
+            <path stroke="#000000" d="M0,5.7L0,0" transform="translate(4.28,0)" fill="none" id="shape9">
+</path>
+
+            <path stroke="#000000" d="M0,0L8.1,0" transform="translate(0,0)" fill="none" id="shape10">
+</path>
+
+        </g>
+
+        <path stroke="#000000" d="M0,0L0,48.2" transform="translate(29.74,0.2)" fill="none" id="shape11">
+</path>
+
+        <path stroke="#000000" d="M0,0L0,48.2" transform="translate(32.19,0.2)" fill="none" id="shape12">
+</path>
+
+        <path stroke="#000000" d="M0,0L0,48.2" transform="translate(0,0.44)" fill="none" id="shape13">
+</path>
+
+        <path stroke="#000000" d="M0,0L0,48.2" transform="translate(2.44,0.44)" fill="none" id="shape14">
+</path>
+
+        <path stroke="#000000" d="M27.1,0L7.7,0C7.7,0,-0,.4,-0,18.8C-0,37.1,7.7,37.6,7.7,37.6L27.1,37.6L27.1,0z" transform="matrix(-1,0,0,1,169.9,5.8)" fill="#FF0000" id="shape15" fill-opacity="1">
+</path>
+
+        <path stroke="#000000" d="M0,0L0,48.2" transform="translate(140.41,0.44)" fill="none" id="shape16">
+</path>
+
+        <path stroke="#000000" d="M0,0L0,48.2" transform="translate(142.86,0.44)" fill="none" id="shape17">
+</path>
+
+        <rect fill="white" fill-opacity="0" style="cursor: default;" width="169.89999389648438" height="49.20000076293945" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5">
+</rect>
+</g>
+<g title="Horizontal Pump" parentid="" transform="matrix(0.55 0 0 0.55 292.15 26.15)">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Horizontal Pump" class="Pumps" height="106" width="154" viewBox="0 0 154 105.947" nativewidth="154" nativeheight="106" overflow="visible" myscale="1.0">
+
+        <defs>
+
+                <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="lg1_219">
+
+                        <stop stop-color="#9aa1aa" offset="0">
+</stop>
+
+                        <stop stop-color="#aeb5c0" offset="0.22">
+</stop>
+
+                        <stop stop-color="#dce0e5" offset="0.57">
+</stop>
+
+                        <stop stop-color="#cacfd7" offset="0.84">
+</stop>
+
+                        <stop stop-color="#a7afb9" offset="1">
+</stop>
+
+                </linearGradient>
+
+                <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="lg2_219">
+
+                        <stop stop-color="#8f969d" offset="0">
+</stop>
+
+                        <stop stop-color="#d3d8de" offset="0.64">
+</stop>
+
+                        <stop stop-color="#9aa0a8" offset="1">
+</stop>
+
+                </linearGradient>
+
+                <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="lg3_219">
+
+                        <stop stop-color="#626974" offset="0">
+</stop>
+
+                        <stop stop-color="#ccd0d5" offset="0.66">
+</stop>
+
+                        <stop stop-color="#5e6670" offset="1">
+</stop>
+
+                </linearGradient>
+
+                <radialGradient fy="51" r="72.6" id="rg1" cy="51" cx="51" gradientUnits="userSpaceOnUse" fx="51">
+
+                        <stop stop-color="#c7cbd1" offset="0">
+</stop>
+
+                        <stop stop-color="#c4c7cd" offset="0.91">
+</stop>
+
+                        <stop stop-color="#d4d8dd" offset="0.74">
+</stop>
+
+                        <stop stop-color="#b6bcc4" offset="0.54">
+</stop>
+
+                </radialGradient>
+
+        </defs>
+
+        <g transform="translate(1.01,1)">
+
+                <g transform="matrix(-1,0,0,1,74.4,31.2)">
+
+                        <path transform="matrix(0,-1,-1,0,68.3,40.6)" id="shape1" fill="url(#lg1_219)" d="M0,0L39.1,0L39.1,68.3L0,68.3L0,0z">
+</path>
+
+                        <path transform="matrix(0,-1,-1,0,74.4,42.9)" id="shape2" fill="url(#lg2_219)" d="M1.4,-0L41.5,-0C42.2,-0,42.9,1.3,42.9,3C42.9,4.7,42.2,6.1,41.5,6.1L1.4,6.1C.6,6.1,0,4.7,0,3C0,1.3,.6,-0,1.4,-0z">
+</path>
+
+                        <path transform="matrix(0,-1,-1,0,70.3,42.7)" id="shape3" fill="url(#lg3_219)" d="M42.5,0C42.4,1.1,41.9,1.9,41.1,1.9L1.4,1.9C.6,1.9,.1,1,0,0C0,0,42.5,0,42.5,0z">
+</path>
+
+                        <path transform="matrix(0,-1,-1,0,74.1,42.2)" id="shape4" fill="#ffffff" fill-opacity="0.32" d="M.7,0L40.8,0C41.2,0,41.5,.3,41.5,.6C41.5,.9,41.2,1.1,40.8,1.1L.7,1.1C.3,1.1,0,.9,0,.6C0,.3,.3,0,.7,0z">
+</path>
+
+                </g>
+
+                <g transform="translate(77.55,0)">
+
+                        <path transform="matrix(0,-1,-1,0,68.3,40.7)" id="shape5" fill="url(#lg1_219)" d="M0,0L39.1,0L39.1,68.3L0,68.3L0,0z">
+</path>
+
+                        <path transform="matrix(0,-1,-1,0,74.4,42.9)" id="shape6" fill="url(#lg2_219)" d="M1.4,-0L41.5,-0C42.2,-0,42.9,1.3,42.9,3C42.9,4.7,42.2,6.1,41.5,6.1L1.4,6.1C.6,6.1,0,4.7,0,3C0,1.3,.6,-0,1.4,-0z">
+</path>
+
+                        <path transform="matrix(0,-1,-1,0,70.3,42.7)" id="shape7" fill="url(#lg3_219)" d="M42.5,0C42.4,1.1,41.9,1.9,41.1,1.9L1.4,1.9C.6,1.9,.1,1,0,0C0,0,42.5,0,42.5,0z">
+</path>
+
+                        <path transform="matrix(0,-1,-1,0,74.1,42.2)" id="shape8" fill="#ffffff" fill-opacity="0.35" d="M.7,0L40.8,0C41.2,0,41.5,.3,41.5,.6C41.5,.9,41.2,1.1,40.8,1.1L.7,1.1C.3,1.1,0,.9,0,.6C0,.3,.3,0,.7,0z">
+</path>
+
+                </g>
+
+                <g transform="translate(26.19,1.31)">
+
+                        <path transform="matrix(0,-1,-1,0,102.8,102.6)" id="shape9" fill="url(#rg1)" stroke="#d4d6db" stroke-width="0.25" d="M0,51.4C0,23,23,0,51.3,0C79.7,0,102.6,23,102.6,51.4C102.6,79.8,79.7,102.8,51.3,102.8C23,102.8,0,79.8,0,51.4z">
+</path>
+
+                        <path transform="matrix(0,-1,-1,0,94.2,94)" id="shape10" fill="#ffffff" fill-opacity="0.27" d="M0,42.7C0,19.1,19.1,0,42.6,0C66.2,0,85.3,19.1,85.3,42.7C85.3,66.3,66.2,85.5,42.6,85.5C19.1,85.5,0,66.3,0,42.7z">
+</path>
+
+                        <path transform="matrix(0,-1,-1,0,85.9,93.9)" id="shape11" fill="#ffffff" fill-opacity="0.13" d="M0,34.5C-0.3,13,17.1,0,17.1,0L73.1,63.9C73.1,63.9,62.3,77.3,42.6,77.3C19.1,77.3,0,58.1,0,34.5z">
+</path>
+
+                </g>
+
+        </g>
+
+</svg>
+<rect width="154" height="106" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;">
+</rect>
+</g>
+
+<g myscale=".4" transform="matrix(0.4 0 0 0.4 293 92)" myrotate="0" mystatus="off">
+
+<g cursor="default">
+
+<defs id="onOffButtonDefs">
+<filter id="onOffButtonDropShadow" height="40">
+
+    <feGaussianBlur in="SourceAlpha" stdDeviation="10">
+</feGaussianBlur>
+ <!-- stdDeviation is how much to blur -->
+
+    <feOffset dx="6" dy="10" result="offsetblur">
+</feOffset>
+ <!-- how much to offset -->
+
+    <feMerge>
+
+        <feMergeNode>
+</feMergeNode>
+ <!-- this contains the offset blurred image -->
+
+        <feMergeNode in="SourceGraphic">
+</feMergeNode>
+ <!-- this contains the element that the filter is applied to -->
+
+    </feMerge>
+
+</filter>
+<linearGradient id="linearGradientOnOffButton">
+
+            <stop style="stop-color:#000000;stop-opacity:0" offset="0">
+</stop>
+
+            <stop style="stop-color:#000000;stop-opacity:0.5" offset="1">
+</stop>
+
+        </linearGradient>
+<linearGradient id="linearGradientOnOffButton2">
+
+            <stop style="stop-color:#ffffff;stop-opacity:1" offset="0">
+</stop>
+
+            <stop style="stop-color:#ffffff;stop-opacity:0" offset="1">
+</stop>
+
+        </linearGradient>
+<linearGradient x1="120" y1="10" x2="120" y2="50" id="linearGradientOnOffButtonHighlight" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#linearGradientOnOffButton2" gradientUnits="userSpaceOnUse">
+</linearGradient>
+<radialGradient cx="120" cy="170" r="100" fx="120" fy="170" id="radialGradientOnOffButton" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#linearGradientOnOffButton" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,-0.72727275,2,0,-220,170)">
+</radialGradient>
+
+    </defs>
+
+    <rect onclick="publishPump()" aria-pressed="false" fill="red" width="220" height="80" ry="40" x="10" y="10" id="ButtonBase" style="stroke:none" filter="url(#onOffButtonDropShadow)">
+</rect>
+
+        <rect width="220" height="80" ry="40" x="10" y="10" id="ButtonGlow" pointer-events="none" style="fill:url(#radialGradientOnOffButton);stroke:none">
+</rect>
+
+        <text x="120" y="66" id="text3194" pointer-events="none" xml:space="preserve" style="font-size:40px;text-align:center;text-anchor:middle;fill:#000000;stroke:none;font-family:Sans">
+OFF</text>
+
+        <text x="120" y="64.5" id="text3198" pointer-events="none" xml:space="preserve" style="font-size:40px;text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;font-family:Sans">
+OFF</text>
+
+        <path d="m 50,15 140,0 c 11.08,0 22.51667,10.914008 20,20 C 208.16563,41.622482 201.08,40 190,40 L 50.00005,40 C 38.92005,40 31.834332,41.622512 30,35 27.483323,25.914009 38.92,15 50,15 z" id="ButtonHighlight" pointer-events="none" style="fill:url(#linearGradientOnOffButtonHighlight)">
+</path>
+
+    </g>
+
+</g>
+
+
+<g xmlns="http://www.w3.org/2000/svg" transform="matrix(0.3 0 0 0.3 122.7 124.2)" parentid="component1520525398327">
+<rect id="rect1520521353036" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="38" height="91" rx="10" ry="10" transform="matrix(1 0 0 1 60 407)">
+</rect>
+<rect id="rect1520521382334" fill="#000000" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="19" height="37" transform="matrix(1 0 0 1 69 370)">
+</rect>
+<rect id="rect1520521416875" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="72" height="60" rx="10" ry="10" transform="matrix(1 0 0 1 45 309)">
+</rect>
+<text id="text1520523964235" font-family="Arial" font-size="40" font-weight="bold" font-style="normal" stroke="none" stroke-width="0.8" fill="#000000" transform="matrix(1 0 0 1 52 352)" filter="null">
+TT</text>
+<ellipse id="ellipse1520524088195" stroke="#FF0000" stroke-width="2" fill="white" fill-opacity="0" transform="matrix(1 0 0 1 77 456)" rx="11" ry="22">
+</ellipse>
+<rect id="rect1520525024221" fill="#FF0000" fill-opacity="1.0" stroke="#FF0000" stroke-width="2" x="0" y="0" width="19" height="9" transform="matrix(1 0 0 1 68 479)">
+</rect>
+<text id="text1520525215133" font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 60 519)">
+RTD</text>
+<text id="icon1520524724060" font-size="45" font-family="Arial Unicode MS" stroke-width="0.9" fill="#FF0000" stroke="black" x="-6.53125" y="15" transform="matrix(1 0 0 1 76 455)" cursor="default">
+⦚</text>
+<text id="icon1520524875331" font-size="30" font-family="Arial Unicode MS" stroke-width="0.6" fill="#0000FF" stroke="black" x="-14.84375" y="10.5" transform="matrix(1 0 0 1 76 422)" cursor="default">
+▼</text>
+<rect width="72" height="214" fill="white" fill-opacity="0" transform="translate(45,309)" style="cursor: default;" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5">
+</rect>
+</g>
+
+
+<path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1.5" stroke-opacity="1.0" stroke-dasharray="8 4" marker-end="url(#arrow000000)" d="M 146 217 L 146 169" rightangle="true" rotateangle="0">
+</path>
+<text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 316 19)" rotateangle="0">
+Pump</text>
+<text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.4" fill="#000000" transform="matrix(1 0 0 1 258 255)" rotateangle="0" filter="null">
+Steam-to-Hot Water Convertor</text>
+</g>
+</g>
+<defs id="arrowDefs">
+<marker id="arrow000000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#000000" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)">
+</path>
+</marker>
+<marker id="arrow663399" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#663399" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)">
+</path>
+</marker>
+</defs>
+<defs id="pipe3dDefs">
+<filter id="pipe3D">
+<feFlood flood-color="black">
+</feFlood>
+<feComposite operator="out" in2="SourceGraphic">
+</feComposite>
+<feGaussianBlur stdDeviation="6">
+</feGaussianBlur>
+<feComposite operator="atop" in2="SourceGraphic">
+</feComposite>
+</filter>
+</defs>
+
+<g id="gaugeHWSGaugeContainer" transform="translate(101.56501245498657 79.22624969482422)" class="gauge" width="90" height="90">
+<circle cx="45" cy="45" r="43.65" style="fill: rgb(153, 50, 204); stroke: rgb(0, 0, 0); stroke-width: 0.5px;">
+</circle>
+<circle cx="45" cy="45" r="39.285" style="fill: yellow; stroke: rgb(224, 224, 224); stroke-width: 2px;">
+</circle>
+<path d="M19.739720118910263,31.41558460186742A37.1025,37.1025,0,0,1,-4.154161974622977,36.869207267564036L-3.1767120982411003,28.194099675196025A28.3725,28.3725,0,0,0,15.095080090931377,24.023682342604495Z" transform="translate(45, 45) rotate(270)" style="fill: rgb(255, 153, 0);">
+</path>
+<path d="M-4.154161974622977,36.869207267564036A37.1025,37.1025,0,0,1,-26.235429348973877,26.23542934897388L-20.06238714921532,20.06238714921532A28.3725,28.3725,0,0,0,-3.1767120982411003,28.194099675196025Z" transform="translate(45, 45) rotate(270)" style="fill: rgb(220, 57, 18);">
+</path>
+<text x="45" y="27.5" dy="5" text-anchor="middle" style="font-size: 10px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+HWS</text>
+<text x="45" y="53" dy="8" text-anchor="middle" style="font-size: 8px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+°F</text>
+<line x1="19.290686975291614" y1="65.2675881655307" x2="15.862778571997161" y2="67.96993325426811" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="17.086692619457907" y1="62.10529676238838" x2="13.364918302052292" y2="64.38600299737348" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="15.269662846901397" y1="58.70587315763154" x2="11.305617893154917" y2="60.53332291198241" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="13.864787297787412" y1="55.116443853349836" x2="9.71342560415907" y2="56.46530303379649" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="12.891541882799245" y1="51.386769417002995" x2="8.610414133839143" y2="52.2383386726034" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="12.363418786911723" y1="47.568554646390325" x2="8.01187462516662" y2="47.911028599242364" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="12.287739426069336" y1="43.71473178158749" x2="7.926104682878581" y2="43.54336268579916" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="12.665552949766685" y1="39.878726700745425" x2="8.354293343068903" y2="39.19589026084481" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="13.491621696598724" y1="36.11371827254213" x2="9.290504589478552" y2="34.92888070888108" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="23.394352300845043" y1="66.60564769915496" x2="18.76457065102612" y2="71.23542934897388" style="stroke: rgb(51, 51, 51); stroke-width: 2px;">
+</line>
+<text x="25.55491707076054" y="64.44508292923946" dy="3" text-anchor="start" style="font-size: 10px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+80</text>
+<line x1="16.436661968454306" y1="29.00376210649344" x2="12.628216897581545" y2="26.87093038735923" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="18.51480614665016" y1="25.757380303075163" x2="14.983446966203513" y2="23.191697676818517" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="20.96011684734926" y1="22.777760593115314" x2="17.75479909366249" y2="19.81479533886402" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="23.738694517790616" y1="20.106209701168986" x2="20.903853786829366" y2="16.78703766132485" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="26.812019496520772" y1="17.77976356724543" x2="24.386955429390206" y2="14.150398709544817" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="30.137486014776584" y1="15.830673914383311" x2="28.155817483413465" y2="11.941430436301083" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="33.66899284392557" y1="14.285961140237678" x2="32.158191889782316" y2="10.19075595893603" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="37.35758240076729" y1="13.167039730981067" x2="36.338593387536264" y2="8.92264502844521" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="41.15211945072404" y1="12.489421390438103" x2="40.639068710820574" y2="8.15467757582985" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="16.77086088411764" y1="33.30710772408469" x2="10.721759644999985" y2="30.801487950674257" style="stroke: rgb(51, 51, 51); stroke-width: 2px;">
+</line>
+<line x1="48.84788054927599" y1="12.48942139043811" x2="49.36093128917946" y2="8.15467757582985" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="52.642417599232694" y1="13.167039730981063" x2="53.66140661246372" y2="8.922645028445203" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="56.33100715607442" y1="14.285961140237678" x2="57.841808110217684" y2="10.19075595893603" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="59.86251398522341" y1="15.830673914383308" x2="61.84418251658653" y2="11.941430436301083" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="63.187980503479224" y1="17.779763567245432" x2="65.61304457060979" y2="14.15039870954482" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="66.26130548220942" y1="20.106209701169014" x2="69.09614621317067" y2="16.78703766132488" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="69.03988315265075" y1="22.777760593115314" x2="72.24520090633752" y2="19.81479533886402" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="71.48519385334984" y1="25.75738030307516" x2="75.01655303379648" y2="23.19169767681851" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="73.5633380315457" y1="29.00376210649344" x2="77.37178310241845" y2="26.870930387359234" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="45" y1="14.445000000000004" x2="45" y2="7.897500000000001" style="stroke: rgb(51, 51, 51); stroke-width: 2px;">
+</line>
+<line x1="76.50837830340129" y1="36.11371827254215" x2="80.70949541052144" y2="34.9288807088811" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="77.33444705023331" y1="39.87872670074544" x2="81.6457066569311" y2="39.195890260844834" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="77.71226057393066" y1="43.71473178158748" x2="82.07389531712141" y2="43.543362685799146" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="77.63658121308828" y1="47.56855464639032" x2="81.98812537483337" y2="47.911028599242364" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="77.10845811720075" y1="51.38676941700299" x2="81.38958586616086" y2="52.23833867260338" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="76.13521270221258" y1="55.116443853349864" x2="80.28657439584092" y2="56.465303033796516" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="74.73033715309859" y1="58.70587315763156" x2="78.69438210684507" y2="60.53332291198243" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="72.9133073805421" y1="62.10529676238837" x2="76.63508169794771" y2="64.38600299737348" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="70.70931302470838" y1="65.2675881655307" x2="74.13722142800283" y2="67.96993325426811" style="stroke: rgb(102, 102, 102); stroke-width: 1px;">
+</line>
+<line x1="73.22913911588236" y1="33.30710772408468" x2="79.27824035500001" y2="30.80148795067425" style="stroke: rgb(51, 51, 51); stroke-width: 2px;">
+</line>
+<line x1="66.60564769915496" y1="66.60564769915496" x2="71.23542934897388" y2="71.23542934897388" style="stroke: rgb(51, 51, 51); stroke-width: 2px;">
+</line>
+<text x="64.44508292923946" y="64.44508292923946" dy="3" text-anchor="end" style="font-size: 10px; fill: rgb(51, 51, 51); stroke-width: 0px;">
+220</text>
+<g class="pointerContainer">
+<path d="M0,-37.1025L-0.3095700663881331,-31.735019179864366C-0.6191401327762662,-26.36753835972873,-1.2382802655525325,-15.632576719457468,-1.5478503319406667,-8.632557539593101C-1.8574203983288011,-1.6325383597287342,-1.8574203983288033,1.6325383597287342,-1.5478503319406716,4.485807539593101C-1.2382802655525396,7.339076719457469,-0.6191401327762733,9.780538359728736,-5.921189464667502e-15,9.780538359728736C0.6191401327762615,9.780538359728736,1.23828026555253,7.339076719457469,1.5478503319406656,4.485807539593101C1.8574203983288011,1.6325383597287342,1.8574203983288033,-1.6325383597287342,1.5478503319406702,-8.632557539593101C1.2382802655525371,-15.632576719457468,0.6191401327762686,-26.36753835972873,0.3095700663881343,-31.735019179864366L0,-37.1025" style="fill: rgb(220, 57, 18); stroke: rgb(198, 51, 16); fill-opacity: 0.7;">
+</path>
+<circle cx="45" cy="45" r="5.2379999999999995" style="fill: rgb(70, 132, 238); stroke: rgb(102, 102, 102); opacity: 1;">
+</circle>
+<text x="45" y="69.75" dy="9" text-anchor="middle" style="font-size: 13px; fill: rgb(0, 0, 0); stroke-width: 1px;">
+80</text>
+</g>
+</g>
+
+
+<text id="Impeller" x="337" y="50" text-anchor="middle" font-size="60" font-family="Arial Unicode MS" dy="26" stroke-width="1.2" fill="blue" stroke="black">
+✽</text>
+</svg>
