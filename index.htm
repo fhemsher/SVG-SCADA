@@ -1,0 +1,962 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head> <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  <title>SVG Process Control Diagrams &amp; Specify SCADA Performance</title>
+  <script type="text/javascript" src="highlight.pack.js"></script>
+  <link href='highlight5000.css' rel='stylesheet' />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+<script charset="UTF-8" type="text/javascript" src="js00_utility/iframeSelection.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js00_utility/zoom.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js00_utility/hmiSymbolSelection.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js00_utility/color.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js00_utility/pathSeg.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js00_utility/select.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js00_utility/helperFuncts.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js00_utility/cookie.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js00_utility/print.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js00_utility/showHideHelp.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js01_start/jquery2.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js01_start/initD3Svg.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js01_start/grid.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js01_start/svg.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js01_start/openerSCADA.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js02_location/cursorLoc.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js02_location/transformAdd.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjZoom.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js04_svgSource/handleSource.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js04_svgSource/showSource.js"></script>
+<script charset="UTF-8" type="text/javascript" src="js04_svgSource/showHMISource.js"></script>
+ <script  charset="UTF-8" type="text/javascript" src="d3.v4.min.js"></script>
+
+
+ <style type="text/css">
+  .noselect {
+      /*---prevent text element focus under create/edit elements---*/
+-webkit-touch-callout: none; /* iOS Safari */
+-webkit-user-select: none; /* Safari */
+-khtml-user-select: none; /* Konqueror HTML */
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* Internet Explorer/Edge */
+user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+unselectable="on"
+onselectstart="return false;"
+onmousedown="return false;"
+ }
+ </style>
+
+</head>
+
+<body style='font-family:arial;background:#f0f8ff' >
+
+<DIV id=containerDiv  style=position:absolute;top:60px;left:0px >
+<TABLE>
+ <TR>
+ <TD valign=top>
+ <DIV ID="iframeDiv" style='position:relative;top:0px;left:0px;width:400px'>
+<div id=addElemIconFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemIconFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Icon/drawIcon.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjIcon.js"></script>
+<div id=addElemCircleFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemCircleFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Circle/drawCircle.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjCircle.js"></script>
+<div id=addElemEllipseFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemEllipseFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Ellipse/drawEllipse.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjEllipse.js"></script>
+<div id=addElemRectFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemRectFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Rect/drawRect.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjRect.js"></script>
+<div id=addElemBGimageFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemBGimageFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/BGimage/drawBGimage.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjBGimage.js"></script>
+
+
+
+
+<div id=addElemTextFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemTextFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Text/drawText.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjText.js"></script>
+<div id=addElemPathFrameDiv  style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemPathFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Path/drawPath.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Path/drawPathButton.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragPathPoint.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragAddPath.js"></script>
+<div id=addElemPathEditFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemPathEditFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Path/drawPathEdit.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Path/drawPathEditButton.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragPathPointEdit.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragPathEdit.js"></script>
+<div id=addElemPgonFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemPgonFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Pgon/drawPgon.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjPgon.js"></script>
+<div id=addElemControlFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemControlFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Control/drawControl.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjControl.js"></script>
+<div id=addElemPIDFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemPIDFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/PID/drawPID.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjPID.js"></script>
+<div id=addElemGaugeFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemGaugeFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Gauge/drawGauge.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Gauge/gaugeObject.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjGauge.js"></script>
+<div id=addElemTrendGaugeFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemTrendGaugeFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/TrendGauge/drawTrendGauge.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/TrendGauge/trendGaugeObject.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjTrendGauge.js"></script>
+
+<div id=addElemBarGaugeFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemBarGaugeFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/BarGauge/drawBarGauge.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/BarGauge/barGaugeObject.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjBarGauge.js"></script>
+
+<div id=addElemTankLevelFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemTankLevelFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/TankLevel/drawTankLevel.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/TankLevel/tankLevelObject.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjTankLevel.js"></script>
+
+<div id=addElemDigitalReadoutFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemDigitalReadoutFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/DigitalReadout/drawDigitalReadout.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/DigitalReadout/digitalReadoutObject.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjDigitalReadout.js"></script>
+
+<div id=addElemPilotLightFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemPilotLightFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/PilotLight/drawPilotLight.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjPilotLight.js"></script>
+
+<div id=addElemStatusStickFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemStatusStickFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/StatusStick/drawStatusStick.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjStatusStick.js"></script>
+
+<div id=addElemButtonFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemButtonFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Button/drawButton.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjButton.js"></script>
+
+<div id=addElemCircuitBreakerFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemCircuitBreakerFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/CircuitBreaker/drawCircuitBreaker.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjCircuitBreaker.js"></script>
+<div id=addElemAutoManualFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemAutoManualFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/AutoManual/drawAutoManual.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjAutoManual.js"></script>
+
+ <div id=addElemSubstationDigitalFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemSubstationDigitalFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/SubstationDigital/drawSubstationDigital.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjSubstationDigital.js"></script>
+ <div id=addElemVariableFrequencyFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemVariableFrequencyFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/VariableFrequency/drawVariableFrequency.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjVariableFrequency.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="AddElem/VariableFrequency/variableFrequencyObject.js"></script>
+ <div id=addElemProcessVariableChartFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemProcessVariableChartFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/ProcessVariableChart/drawProcessVariableChart.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjProcessVariableChart.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="AddElem/ProcessVariableChart/processVariableChartObject.js"></script>
+
+<div id=addElemTextureFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemTextureFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Texture/drawTexture.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Texture/textures.js"></script>
+<div id=addElemGradientFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemGradientFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Gradient/drawGradient.js"></script>
+<div id=addElemPolygonFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemPolygonFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Polygon/drawPolygon.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjPolygon.js"></script>
+<div id=addElemComponentFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemComponentFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Component/drawComponent.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjComponent.js"></script>
+<div id=editElemComponentFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=editElemComponentFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Component/editComponent.js"></script>
+    <script  charset="UTF-8" type="text/javascript" src="AddElem/Component/aspComponentRequest.js"></script>
+    <script  charset="UTF-8" type="text/javascript" src="AddElem/Component/updateComponent.js"></script>
+    <script  charset="UTF-8" type="text/javascript" src="AddElem/Component/writeComponentSymbols.js"></script>
+    <script  charset="UTF-8" type="text/javascript" src="AddElem/Component/writeComponentTextures.js"></script>
+    <script  charset="UTF-8" type="text/javascript" src="AddElem/Component/writeComponentGradients.js"></script>
+
+<div id=editElemIsaFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=editElemIsaFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Isa/editIsa.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjIsa.js"></script>
+
+<div id=editElemProcessFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=editElemProcessFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+    <script charset="UTF-8" type="text/javascript" src="AddElem/Process/process.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjProcess.js"></script>
+
+
+ </DIV>
+
+ </TD>
+ <TD>
+<div id=svgDiv style="border:1px solid black;width:800px;height:560px">
+<svg id=mySVG width=800 height=560 viewBox="0 0 800 560" style="cursor:default">
+    <style type="text/css" >
+<![CDATA[
+.grid line {
+stroke: lightgrey;
+stroke-opacity: 0.7;
+shape-rendering: crispEdges;
+}
+.grid path {
+stroke-width: 0;
+}
+.gridVFD line {
+stroke: black;
+stroke-opacity: 0.5;
+}
+.gridVFD path {
+stroke-width: 0;
+}
+.gaugeLine {
+fill: none;
+stroke: black;
+stroke-width: 1;
+}
+.axisRed line{
+stroke: red;
+}
+.axisRed path{
+stroke: red;
+}
+.axisBlue line{
+stroke: blue;
+}
+.axisBlue path{
+stroke: blue;
+}
+.axisPurple line{
+stroke: purple;
+}
+.axisPurple path{
+stroke: purple;
+}
+.chartLineLeft {
+fill: none;
+stroke: DarkViolet;
+stroke-width: 3;
+}
+.chartLineRight2 {
+fill: none;
+stroke: red;
+stroke-width: 3;
+}
+.chartLineRight1 {
+fill: none;
+stroke: blue;
+stroke-width: 3;
+}
+.chartLineCI {
+fill: none;
+stroke: purple;
+stroke-width: 3;
+}
+.chartLineVAC {
+fill: none;
+stroke: red;
+stroke-width: 3;
+}
+.chartLineHZ {
+fill: none;
+stroke: blue;
+stroke-width: 3;
+}
+.axisred line{
+stroke: red;
+}
+.axisred path{
+stroke: red;
+}
+.axisBlue line{
+stroke: blue;
+}
+.axisBlue path{
+stroke: blue;
+}
+.axisDarkViolet line{
+stroke: DarkViolet;
+}
+.axisDarkViolet path{
+stroke: DarkViolet;
+}
+
+.ticks-automanual {
+  font: 10px sans-serif;
+}
+
+.track,
+.track-inset,
+.track-overlay {
+  stroke-linecap: round;
+}
+
+.track {
+  stroke: #000;
+  stroke-opacity: 0.3;
+  stroke-width: 12px;
+}
+
+.track-inset {
+  stroke: #ddd;
+  stroke-width: 8px;
+}
+
+.track-overlay {
+  pointer-events: stroke;
+  stroke-width: 50px;
+  stroke: transparent;
+
+}
+
+.handle {
+
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.25px;
+}
+
+]]>
+</style>
+</svg>
+</div>
+<center>
+
+<p></p>
+
+
+
+ Drawing Width:<input type="text" value=800 id=svgWidthValue style='width:40px' />
+ Drawing Height:<input type="text" value=560 id=svgHeightValue style='width:40px' />&nbsp;<button id=setSVGSizeButton onClick=setSVGSizeButtonClicked() title="Set SVG drawing size">set</button>
+
+<TABLE style=width:800px;><TR>
+ <TD>
+  <button title="Show current drawing's SVG source" onClick=removeSCADA();svgCopy()>SVG Source</button>
+  <button title="Copy SVG for other applications" onClick=removeSCADA();publishSVG()>Publish</button>
+  <button id=clearButton title="Clear current SVG drawing"  onClick=removeSCADA();clearButtonClicked() >Clear/Start Over</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </TD>
+<TD>
+<table>
+    <tr>
+        <td><nobr>Save SVG As:</nobr></td>
+        <td><input id="inputFileNameToSaveAs" placeholder="Include your fileName.svg"></input></td>
+        <td><button Title="Save current drawing to your computer" onclick="saveSvgAsFile()">save</button></td>
+    </tr>
+ </table>
+</TD>
+ <TD>
+ <button title="Import/Edit an existing SVG schematic drawing" onClick=openExistingSVG()>Existing SVG</button></TD>
+</TR>
+<TR>
+<TD COLSPAN=3 ALIGN=CENTER>
+<div class="copy"  id=existingSVGDiv style="display:none">
+<textarea id=existingSVGValue placeholder="Paste existing  svg schematic source here..." style=width:90%;height:100px></textarea>
+<br> &nbsp; <button id=closeExistingDivButton style='visibility:hidden' title="Close" onclick=closeExistingDiv()>cancel</button>  <button style=color:blue; onClick=insertExistingSVG()><u>insert</u></button>
+</div>
+
+<div class="copy"  id=publishSVGDiv style="display:none">
+<center>Download this schematic to your computer for publication in other applications.</center>
+<textarea id=publishSVGValue style=width:90%;height:100px></textarea>
+ <table>
+    <tr>
+        <td><nobr>Publish SVG As:</nobr></td>
+        <td><input id="inputPublishFileNameToSaveAs" placeholder="Include your fileName.svg"></input></td>
+        <td><button Title="Save current drawing to your computer" onclick="publishSvgAsFile()">send</button></td>
+        <td><button id=closePublishDivButton style='visibility:hidden' title="Close" onclick=closePublishDiv()>Close</button></td>
+    </tr>
+ </table>
+</div>
+
+</TD>
+ </TR></TABLE>
+
+
+</TD>
+
+</TR>
+</TABLE>
+<center>
+<div id=svgSaveDiv class="copySource" style=display:none;height:1px;overflow:auto;width:1200px;text-align:left; /></div>
+  <div id=svgSourceDiv style=display:none;overflow:auto;width:1200px;text-align:left; /></div>
+
+  <div id=hmiSourceContainer style='background:#ABCDEF;border:1px solid black;border-radius:10px; padding:10px;position:fixed;top:300px;left:0px;display:none;width:360px;height:360px;text-align:left;' >
+         <table style=width:100%><tr><td align=center style=width:90%>HMI Element SVG Source</td><td align=right><button onClick=closeHMISource()>X</button></td></tr></table>
+        <textarea style=color:white;width:100%;height:300px;background:#002451 id=hmiSourceValue></textarea>
+  </div>
+
+
+<p></p>
+<div id=emDiv style='width:100%;text-align:right' ></div><p></p>
+<div style='text-align:left;position:relative;left:300px;width:450px;height;60px;background:ghostwhite;border-radius:8px;border:1px solid maroon;padding:10px'>
+I'm available as a consultant if you want to create a SCADA specification, or provide SVG SCADA for a project. <br> - <i>Francis Hemsher</i>
+</div>
+</center>
+
+<div id=svgHMIcloneDiv style=display:none></div>
+</DIV>
+<div id=hmiIntroDiv style='position:absolute;top:60px;left:10px;width:360px;background:white;border:1px solid blue;border-radius:15px;padding:10px;color:midnightblue'>
+<center><b><a href="https://www.w3schools.com/html/html5_svg.asp" title="SVG Process Control Diagrams W3C Standards" target="_blank" >SVG</a> Process Control Diagrams<br>&amp; Specify <a href="https://en.wikipedia.org/wiki/SCADA" title="SVG Process Control SCADA Specifications" target="_blank" >SCADA</a> Performance</b></center><p></p>
+<div style=text-align:justify; ><i>Create  process control diagrams using standard svg shape elements.  Libraries are provided where ISA symbols, components, and process equipment are available for your use.
+<p></p>Your associated SCADA drawings can also be created in SVG format, with you specifying their dynamic aspects. Included are HMI (Human-Machine Interface) symbols used to define
+various dynamic features within your SCADA drawing. Vendors can therefore provide your specified dynamic SCADA, conforming to <a href="https://www.w3.org/standards/webdesign/graphics.html" title="SVG Process Control SCADA Web Design W3C Standards" target="_blank" >W3C graphical web standards</a> for SVG + JavaScript.
+<p></p> To meet your specifications the completed project would then consist of SCADA dynamic drawings, its data acquisitions, plus user interface selections: All distributed within a <a href="https://nvlpubs.nist.gov/nistpubs/specialpublications/nist.sp.800-82r2.pdf" title="Guide To SCADA Security" target="_blank">secure</a> internet/intranet environment, conforming to <a href="https://en.wikipedia.org/wiki/Web_standards" title="SVG Schematics  W3C Standards" target="_blank" >W3C standards</a>.
+</i></div>
+<p></p>
+<img src="Images/controlDiagram.png" alt="SCADA Control Diagram" width="360" height="271" />
+<br><center>See Typical Examples:<br>
+<a href="zHMI/HWSystem/hwSystem.htm" target="_blank" title="SCADA Building Heating Hot Water" >Building Heating Hot Water</a><br>
+<a href="zHMI/CascadeFixedBed/cascadeFixedBed.htm" target="_blank" title="SCADA Fixed Bed Reactor"  >Fixed Bed Reactor</a><br>
+<a href="zHMI/Laboratory/laboratory.htm" target="_blank" title="SCADA Laboratory Environmental Control"  >Laboratory Environmental Control</a><br>
+<a href="http://svgDiscovery.com/HMI/Animation/examplesAnimateSCADA.htm" title="SCADA Animation"  target="_blank"> SCADA Animation Examples </a><br>
+<a href="PubNub/GettingStarted/gettingStarted.htm" title="Getting Started: SVG SCADA via the DSN"  target="_blank"><b>SVG SCADA &amp; Data Stream Network</b></a>
+</center>
+</div>
+
+
+
+<div id=helpDiv style='text-align:justify;background:white;visibility:hidden;position:absolute;top:60px;left:10px;width:360px;height:1px;border:1px solid blue;border-radius:15px;padding:10px;overflow:hidden'>
+<table style=width:100%><td style=width:90%; align=center><span style="font-weight:bold;color:red;font-family:times new roman">SVG</span> <span style=color:blue><i>SCADA</i></span></td><td align=right><button onclick=closeHelp()>X</button></td></table>
+<div style=text-align:justify>
+SVG SCADA drawings are interactive. They are firstly
+created using standard SVG shape elements. The resulting svg elements are then animated using a network for communication to/from field control devices and the SCADA operator's selections.
+</div>
+<p></p>
+<div style=background:linen;padding:5px;>
+<center><h7><b>1.) Creating SVG Shape Elements</b></h7></center>
+
+<div style=text-align:justify> Each element includes its unique pane to set &amp; edit its specific values. Click on the element's button to use its pane to create and place the element in the drawing.
+<u><i> After an element is created, it can be edited by moving the cursor over the element, then <b>right-click</b> the mouse  button.</u></i>
+</div>
+<p></p>
+<b>Paths</b> - Both linear and curved paths can be created by clicking their points on the drawing. Drag any point to modify its shape.
+<br>Paths can also create 3d-like pipelines:
+<center><img src="Images/pipe3d.png" alt="Control Diagram 3D Piping" /></center>
+<p></p><b>Symbols</b> - This a list of thirty(30) polygons that can be created and placed in the drawing.
+<center><img src="Images/symbols.png" alt="SVG Process Control SCADA Symbols" /></center>
+<p></p><b>Icons</b> - Over 500 icons created from groups of unicode text elements: DINGBATS, GEOMETRIC, ARROWS, MATHEMATICAL, TECHNICAL, and SYMBOLS.
+<center><img src="Images/icons.png" alt="SVG Control SCADA Icons" /></center>
+<p></p><b>Textures</b> - Three(3) types of pre-built patterns are available: circles, lines, and paths. The pattern is placed in either an element's fill or stroke.
+<p></p><b>Gradients</b> - Radial and linear gradients can be created to be placed in either an element's fill or stroke.
+<p></p> <b>Shadows</b> - Each element can be selected to include a drop-shadow.
+<p></p> <b>Save/Edit SVG Drawing</b> - You may save the drawing within an .svg drawing stored on your computer. It can then be edited in the future by placing the file in the textarea, under the 'Existing SVG' selection.
+<p></p> <b>Libraries</b> - Three(3) SVG image libraries are available:
+<div style=padding:4px;><center> <span style=padding:3px;background:#E0CAEA>ISA Symbol Library</span>
+<span style=padding:3px;background:#C3E6D3>Components Library</span>
+<p></p><span style=padding:3px;background:#7df9ff>Process Equipment Library</span></center></div>
+<p></p> <span style=padding:3px;background:#D8E7F6><b>HMI Symbols</b></span> -  These symbols can be customized and inserted into your drawing. Also they can be programmed as interactive at  central monitoring (SCADA)  via SVG + JavaScript.
+</div><p></p>
+<center><h7><b>2.) SVG SCADA Via Data Stream Network</b></h7></center>
+These are examples of communication to/from an operator's interactive SVG SCADA drawings.<br> It takes field transmitter values, equipment status, and client requests; sending this data to interact with the SVG SCADA drawing. It also obtains SCADA operator selections and sends the request to the associated field devices.
+JavaScript and SVG source are shown for each example.
+<center>
+<a href="PubNub/GettingStarted/gettingStarted.htm" title="Getting Started: SVG SCADA via the Data Stream Network"  target="_blank"><b>Getting Started</b></a>
+
+</center>
+
+</div>
+
+
+
+<center>
+
+
+<div id=selectDrawElemDiv style='width:100%;background:#f0f8ff;position:fixed;top:0px;left:0px;'><b><span style="font-size:140%;font-weight:bold;color:red;font-family:times new roman">SVG</span> <span style=font-size:140%;color:blue><i>SCADA</i></span></b><button onClick=openHelp() style=width:25px;height:25px;padding:0px;border:0px;background:transparent ><img src="Images/help.png" alt="SVG SCADA Control Diagrams"  width=25 height=25 /></button>
+&nbsp; &nbsp; &nbsp; &nbsp; <button onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=getIsaLibraryButton  style=background-color:#E0CAEA onClick=getIsaLibrary()>ISA Symbol Library</button><img id=openIsaButton onClick=openIsaHelp() align=center src="Images/help.png"  width=20 height=20  alt="SVG ISA SCADA Control Schematics" />
+&nbsp; &nbsp; &nbsp; &nbsp; <button onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=getComponentLibraryButton  style=background-color:#C3E6D3 onClick=getComponentLibrary()>Component Library</button><img id=openProcessButton onClick=openComponentHelp() align=center src="Images/help.png"  width=20 height=20  alt="SVG SCADA Control Components" />
+&nbsp; &nbsp; &nbsp; &nbsp; <button onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=getProcessLibraryButton  style=background-color:#7df9ff onClick=getProcessLibrary()>Process Equipment Library</button><img id=openProcessButton onClick=openProcessHelp() align=center src="Images/help.png"  width=20 height=20  alt="SVG SCADA Control Process Equipment" />
+
+
+
+<br>
+<select onChange=hmiSymbolSelected() onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor='gainsboro'    id="hmiSymbolSelect" style='border:3px outset gainsboro;background:#D8E7F6'>
+<option>Select HMI Symbol</option>
+<option value="Control" >1.) Controller</option>
+<option value="PID" >2.) PID</option>
+<option value="Gauge" >3.) Round Gauge</option>
+<option value="TrendGauge" >4.) Trend Gauge</option>
+<option value="BarGauge" >5.) Bar Gauge</option>
+<option value="TankLevel" >6.) Tank Level</option>
+<option value="DigitalReadout" >7.) Digital Readout</option>
+<option value="PilotLight" >8.) Pilot Light</option>
+<option value="StatusStick" >9.) Status Stick</option>
+<option value="Button" >10.) Button ON/OFF</option>
+<option value="CircuitBreaker" >11.) Circuit Breaker</option>
+<option value="SubstationDigital" >12.) Substation Digital Monitor</option>
+<option value="VariableFrequency" >13.) Variable Frequency Drive</option>
+<option value="ProcessVariableChart" >14.) Process Variable Chart</option>
+<option value="AutoManual" >15.) Auto/Manual Override</option>
+</select>
+<img id=openHMIButton title="HMI Symbols Table" onClick=openHMIHelp() align=center src="Images/help.png"  alt="Human Machine Interface SCADA Symbols"  width=20 height=20 />
+
+
+
+
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddCircleButton  style=background-color:linen onClick=openAddCircleDraw()>Circles</button>
+            <button onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddEllipseButton  style=background-color:linen onClick=openAddEllipseDraw()>Ellipses</button>
+            <button onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddRectButton  style=background-color:linen onClick=openAddRectDraw()>Rectangles</button>
+            <button onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddTextButton  style=background-color:linen onClick=openAddTextDraw()>Text</button>
+            <button onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddPathButton  style=background-color:linen onClick=openAddPathDraw()>Paths</button>
+            <button onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddPolygonButton  style=background-color:linen onClick=openAddPolygonDraw()>Polygons</button>
+            <button onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddPgonButton  style=background-color:linen onClick=openAddPgonDraw()>Symbols</button>
+            <button onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddIconButton  style=background-color:linen onClick=openAddIconDraw()>Icons</button>
+             &nbsp;&nbsp;<button title="Add pattern/texture fill to elements" onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddTextureButton  style=background-color:linen onClick=openAddTexture()><i>Textures</i></button>
+            <button title="Add Gradients" onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddGradientButton  style=background-color:linen onClick=openAddGradient()><i>Gradients</i></button>
+             &nbsp;&nbsp;
+            <button title="Create a component" onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddComponentButton   style=background-color:#C3E6D3 onClick=openAddComponentDraw();startComponentDraw()   ><i>Components</i></button>
+             &nbsp;&nbsp;
+            <button title="Import image from your computer as background template" onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddBGimageButton   style=background-color:ghostwhite onClick=openAddBGimage()   >Template Image</button>
+  </div>
+</center>
+
+
+<div id=componentHelpLibraryDiv style='visibility:hidden;position:absolute;top:60px;left:10px;width:360px;height:1px;background:#C3E6D3;;border:1px solid blue;border-radius:15px;padding:10px;overflow:hidden'>
+<table style=width:100%><td style=width:90%; align=center><h7><b>SVG Component Library</b></h7></td><td align=right><button onclick=closeComponentHelp()>X</button></td></table>
+<br><div style=text-align:justify>
+Components are custom symbols for transmitters, sensors, actuators, dampers, controlled devices etc.
+<center><img src="Images/components.svg"  width=300 height=200 alt="SVG Process Control SCADA Components" /></center>
+You may copy one or more components  from the library into your schematic. The component can be modified within your schematic as needed.
+</div><br>
+<button style=background:#C3E6D3>Component Library</button> -
+Selecting this will show images of all  custom components currently in the library. Click on the image in the table to add the component to your schematic.
+Then <b>right-click</b> on the added component to drag, copy, and resize it, followed by selecting <button>finish</button>.
+<p></p>  <b>Creating A Component</b> - Also, you can
+create a component from a segment of your schematic drawing via <button style=background:#C3E6D3>Components</button>.
+<hr>
+
+
+<p></p>  <b>Adding Your Component to Library</b> - You can
+send a segment of your schematic drawing as a component to the library for use by others via <button style=background:#C3E6D3>Components</button>.
+<p></p>  <b>Remove Your Component from Library</b> - After you have sent a component to the library, you may remove it at any time.
+ All of your added components are listed in a table at the bottom of the Component Library symbols. Select <button style=background:red>remove</button> to delete the symbol from the library.
+
+<p></p>
+ Copy this library for your use: <a href="LIBRARY/Component.svg" target="_blank">Component.svg</a>
+
+</div>
+
+
+<div id=isaHelpDiv style='visibility:hidden;position:absolute;top:60px;left:10px;width:360px;height:1px;background:#E0CAEA;;border:1px solid blue;border-radius:15px;padding:10px;overflow:hidden'>
+<table style=width:100%><td style=width:90%; align=center><h7><b>ISA Symbol Library</b></h7></td><td align=right><button onclick=closeIsaHelp()>X</button></td></table>
+<br><div style=text-align:justify>
+ISA symbols are SVG standard P&ID symbols for sensors, actuators, dampers, pumps, fans, convertors, etc.
+<center><img src="Images/ISO.png" alt="ISA SVG Control SCADA Symbols" /></center>
+You may copy one or more symbols  from the library into your schematic. The symbol can be modified within your schematic as needed.
+</div><br>
+<button style=background:#E0CAEA>ISA Symbol Library</button> -
+Selecting this will show images of all ISA/P&ID Standards in the library. Click on the image in the table to add the symbol to your schematic.
+Then <b>right-click</b> on the added symbol to drag, copy, color, and resize it.  Select <button>finish</button> after changes have been made.
+
+<p></p>
+ Copy this library for your use: <a href="LIBRARY/Isa.svg" target="_blank">Isa.svg</a>
+
+</div>
+
+
+
+
+
+
+<div  id=elemSizeDiv
+  style='box-shadow: 4px 4px 4px #888888;-webkit-box-shadow:2px 3px 4px #888888;
+  font-size:80%;z-index:20;padding:4px;position:absolute;top:0px;left:0px;visibility:hidden;
+  background-color:linen;border: solid 1px black;border-radius:5px;cursor:default;'>
+
+</div>
+<div id=savedTextureDiv style='padding:5px;border-radius:8px;border:2px lightblue solid;visibility:hidden;background:linen;position:fixed;top:5px;left:400px;width:800px;height:70px;overflow-y:hidden;'>
+<table id=savedTextureTable ><tr align=center></tr></table>
+</div>
+
+
+<div id=componentTableDiv style='padding:10px;border:1px solid blue;background:#bfff00;visibility:hidden;width:370px;height:540px;overflow-y:auto;position:absolute;top:5px;left:10px'>
+<table style=width:100%><tr><td style=width:90% align=center><b>Components Library</b></td><td align=right></td></tr></table>
+<table id=componentTable border=1 style=border-collapse:collapse;width:100% ></table>
+<br>
+Remove Your Component(s) from Library:
+<table class="copySource"  id=componentListTable border=1 style='display:none;border-collapse:collapse' cellpadding=5>
+</table>
+<button title="Close Component Library" id=componentTableCloseButton onmouseover=this.style.background="red"  onmouseout=this.style.background=""  style='visibility:hidden;position:fixed;top:70px;left:345px' onclick=closeComponentTable() >X</button>
+
+</div>
+
+<div id=processTableDiv  style='padding:10px;border:1px solid blue;background:#7df9ff;visibility:hidden;width:360px;height:560px;overflow-y:auto;overflow-x:hidden;position:absolute;top:65px;left:10px'>
+<table style=width:100%><tr><td style=width:90% align=center><b>Process  Library</b></td><td align=right></td></tr></table>
+
+<table id=processTable border=1 style=border-collapse:collapse;width:100% ></table>
+</div>
+<button title="Close Process Library" id=processTableCloseButton onmouseover=this.style.background="red"  onmouseout=this.style.background=""  style='visibility:hidden;position:fixed;top:70px;left:345px' onclick=closeProcessTable() >X</button>
+
+<div id=isaTableDiv  style='padding:10px;border:1px solid blue;background:#E0CAEA;visibility:hidden;width:360px;height:560px;overflow-y:auto;overflow-x:hidden;position:absolute;top:65px;left:10px'>
+<table style=width:100%><tr><td style=width:90% align=center><b>ISA Symbol Library</b></td><td align=right></td></tr></table>
+
+<table id=isaTable border=1 style=border-collapse:collapse;width:100% ></table>
+</div>
+<button title="Close ISA Library" id=isaTableCloseButton onmouseover=this.style.background="red"  onmouseout=this.style.background=""  style='visibility:hidden;position:fixed;top:70px;left:345px' onclick=closeIsaTable() >X</button>
+
+
+
+<div id=ProcessHelpLibraryDiv style='visibility:hidden;position:absolute;top:60px;left:10px;width:360px;height:1px;background:#7df9ff;border:1px solid blue;border-radius:15px;padding:10px;overflow:hidden'>
+<table style=width:100%><td style=width:90%; align=center><h7><b>Process Equipment Library</b></h7></td><td align=right><button onclick=closeProcessHelp()>X</button></td></table>
+<br><div style=text-align:justify>
+These are SVG images of process equipment used within P&ID schematics of industrial control and automation: Blowers, Chemicals, Process Heating, Process Cooling, Pumps, Tanks, and Valves.
+You may copy one or more images  from the library into your schematic. The images can be modified within your schematic as needed.
+</div>
+<center><img src="Images/process.svg" width=350 height=250 alt="Process Control SCADA Components" /></center>
+<button style=background-color:#7df9ff>Process Equipment Library</button> -
+Selecting this will show the process images currently in the library. Click on the image in the table to add one or more process symbols to your schematic.
+
+
+<p></p>To edit an image <b>right-click</b> on the added process equipment image to drag, copy, and resize it, followed by selecting <button>finish</button>.
+<p></p>
+ Copy this library for your use: <a href="LIBRARY/Process.svg" target="_blank">Process.svg</a>
+
+</div>
+
+
+<div id=hmiHelpDiv style='visibility:hidden;position:absolute;top:60px;left:10px;width:360px;height:1px;background:#D8E7F6;border:1px solid blue;border-radius:15px;padding:10px;overflow:auto'>
+<center><b>HMI SVG Symbols</b></center>
+<div style=text-align:justify >This shows a list of current  Human-Machine-Interface symbols used both in process control design, and the associated graphics at  central monitoring (SCADA).
+Each symbol  can be customized and inserted into your SVG control drawing.<br>
+Click image to see an  interactive example of how it is configured and applied at  central monitoring (SCADA).
+<br><i style=font-size:80%>Each symbol at central monitoring (SCADA) can be programmed as interactive via SVG + JavaScript</i><br>
+<center><a title="Animating SCADA Displays" href="http://svgDiscovery.com/HMI/Animation/examplesAnimateSCADA.htm" target="_blank"> SCADA Animation Examples </a></center><p></p>
+</div>
+<TABLE border=1 style=border:100%;border-collapse:collapse>
+<TR><TD>
+     <table style=width:100%; border=0 cellspacing=0>
+    <tr style=background:#ABEFD2 >
+        <td>1.) Controller</td>
+        <td align=right valign=middle  ><a title="Interactive Example at Central Monitoring (SCADA)" href="zHMI/AHUStaticPressure/ahuStaticPressure.htm" target="_blank"><svg width=100 height=50 ><ellipse cx=50 cy=25 rx=46 ry=20 stroke=maroon stroke-width=2 fill=gold></svg></a></td>
+    </tr>
+    <tr  style=background:#ABEFD2>
+        <td colspan=2>
+        An ellipsoid representing a process controller
+        </td>
+    </tr>
+   </table>
+</TD></TR>
+
+<TR><TD>
+   <table style=width:100%; border=0 cellspacing=0>
+<tr style=background:#CDEFAB >
+    <td>2.) PID</td>
+    <td align=right valign=center ><a title="Interactive Examples at Central Monitoring (SCADA)" href="zHMI/TuneController/tuneController.htm" target="_blank"><img src="Images/HMI/pid.png" width=110 height=50 alt="HMI PID Loop Controller SCADA Symbol" /></a></td>
+</tr>
+<tr  style=background:#CDEFAB>
+    <td colspan=2>
+   Tuning the PID loop: It  displays and has access to adjust the PID values plus setpoint and output
+    </td>
+</tr></table>
+</TD></TR>
+
+<TR><TD>
+   <table style=width:100%; border=0 cellspacing=0>
+<tr style=background:#ABEFD2 >
+    <td>3.) Round Gauge</td>
+    <td align=right valign=center ><a title="Interactive Example at Central Monitoring (SCADA)" href="zHMI/AnalogGaugeObject/analogGaugeObject.htm" target="_blank"><img src="Images/HMI/gauge.png" alt="SVG HMI Round Gauge SCADA Symbol"  /></a></td>
+</tr>
+<tr  style=background:#ABEFD2>
+    <td colspan=2>
+A round configurable gauge object with a dial on its face.
+    </td>
+</tr></table>
+ </TD></TR>
+
+<TR><TD>
+   <table style=width:100%; border=0 cellspacing=0>
+<tr style=background:#CDEFAB >
+    <td>4.) Trend Gauge</td>
+    <td align=right valign=center ><a title="Interactive Example at Central Monitoring (SCADA)" href="zHMI/TrendGaugeObject/trendGaugeObject.htm" target="_blank"><img src="Images/HMI/trendGauge.png"  alt="SVG HMI Trend Gauge Symbol"   /></a></td>
+</tr>
+<tr  style=background:#CDEFAB>
+    <td colspan=2>
+A rectangular configurable gauge object with a chart on its face.
+    </td>
+</tr></table>
+</TD></TR>
+
+<TR><TD>
+   <table style=width:100%; border=0 cellspacing=0>
+<tr style=background:#ABEFD2 >
+    <td>5.) Bar Gauge</td>
+    <td align=right valign=center ><a title="Interactive Example at Central Monitoring (SCADA)" href="zHMI/BarGauge/barGaugeObject.htm" target="_blank"><img src="Images/HMI/barGauge.png"  alt="SVG HMI Bar Gauge SCADA Symbol"   /></a></td>
+</tr>
+<tr  style=background:#ABEFD2>
+    <td colspan=2>
+A rectangular configurable horizontal gauge object with a bar on its face.
+    </td>
+</tr></table>
+</TD></TR>
+
+<TR><TD>
+   <table style=width:100%; border=0 cellspacing=0>
+<tr style=background:#CDEFAB >
+    <td>6.) Tank Level</td>
+    <td align=right valign=center ><a title="Interactive Example at Central Monitoring (SCADA)" href="zHMI/TankLevel/tankLevelObject.htm" target="_blank"><img src="Images/HMI/tankLevel.png"  alt="SVG HMI Tank Level SCADA Symbol"   /></a></td>
+</tr>
+<tr  style=background:#CDEFAB>
+    <td colspan=2>
+A  configurable tank with a built-in level gauge object.
+    </td>
+</tr></table>
+</TD></TR>
+
+
+<TR><TD>
+   <table style=width:100%; border=0 cellspacing=0>
+<tr style=background:#ABEFD2 >
+    <td>7.) Digital Readout</td>
+    <td align=right valign=center ><a title="Interactive Example at Central Monitoring (SCADA)" href="zHMI/DigitalReadout/digitalReadoutObject.htm" target="_blank"><img src="Images/HMI/digitalReadout.png"  alt="SVG HMI Digital Readout SCADA Symbol"   /></a></td>
+</tr>
+<tr  style=background:#ABEFD2>
+    <td colspan=2>
+A rectangular configurable digital readout object with digital numbers on its face.
+</td>
+</tr></table>
+
+</TD></TR>
+
+<TR><TD>
+   <table style=width:100%; border=0 cellspacing=0>
+<tr style=background:#CDEFAB >
+    <td>8.) Pilot Light</td>
+    <td align=right  ><a title="Interactive Example at Central Monitoring (SCADA)" href="zHMI/PilotLight/pilotLight.htm" target="_blank"><img src="Images/HMI/pilotLight.png"  alt="SVG HMI Pilot Light SCADA Symbol"   /></a></td>
+</tr>
+<tr  style=background:#CDEFAB>
+    <td colspan=2>
+A pilot light object that has five(5) states: ON, ALARM, INTERMITTENT, DEFECTIVE, and NORMAL OFF.
+    </td>
+</tr></table>
+</TD></TR>
+
+<TR><TD>
+   <table style=width:100%; border=0 cellspacing=0>
+<tr style=background:#ABEFD2 >
+    <td>9.) Status Stick</td>
+    <td align=right valign=center ><a title="Interactive Example at Central Monitoring (SCADA)" href="zHMI/StatusStick/statusStick.htm" target="_blank"><img src="Images/HMI/statusStick.png"  alt="SVG HMI Equipment Status SCADA Symbol"   /></a></td>
+</tr>
+<tr  style=background:#ABEFD2>
+    <td colspan=2>
+A strip object that displays all five(5) states: ON, ALARM, INTERMITTENT, DEFECTIVE, and NORMAL OFF.</td>
+</tr></table>
+</TD></TR>
+
+<TR><TD>
+   <table style=width:100%; border=0 cellspacing=0>
+<tr style=background:#CDEFAB >
+    <td>10.) Button ON/OFF</td>
+    <td align=right  ><a title="Interactive Example at Central Monitoring (SCADA)" href="zHMI/Button/buttonBasic.htm" target="_blank"><img src="Images/HMI/button.png"  alt="SVG HMI ON/OFF Button SCADA Symbol"   /></a></td>
+</tr>
+<tr  style=background:#CDEFAB>
+    <td colspan=2>
+  Manual push button - toggles ON(green) or OFF(red)
+    </td>
+</tr></table>
+</TD></TR>
+
+<TR><TD>
+   <table style=width:100%; border=0 cellspacing=0>
+<tr style=background:#ABEFD2 >
+    <td>11.) Circuit Breaker</td>
+    <td align=right valign=center ><a title="Interactive Example at Central Monitoring (SCADA)" href="zHMI/CircuitBreaker/circuitBreaker_RemoteStatus.htm" target="_blank"><img src="Images/HMI/circuitBreaker.png"  alt="SVG HMI Circuit Breaker SCADA Symbol"   /></a></td>
+</tr>
+<tr  style=background:#ABEFD2>
+    <td colspan=2>
+   Monitor circuit breaker and show status: ON (closed/green) or OFF (tripped/red)
+    </td>
+</tr></table>
+</TD></TR>
+
+<TR><TD>
+   <table style=width:100%; border=0 cellspacing=0>
+<tr style=background:#CDEFAB >
+    <td>12.) Substation Digital Monitor</td>
+    <td align=right valign=center ><a title="Interactive Example at Central Monitoring (SCADA)" href="zHMI/DigitalPanel/svg-foreignObject-table.htm" target="_blank"><img src="Images/HMI/substationDigital.png"  alt="SVG HMI Substation SCADA Symbol"   /></a></td>
+</tr>
+<tr  style=background:#CDEFAB>
+    <td colspan=2>
+  Substation panel showing AMPS (A, B, C, N) and MW, MVAR, MVA. Values displayed are digital values transmitted from a sensor
+    </td>
+</tr></table>
+</TD></TR>
+
+<TR><TD>
+   <table style=width:100%; border=0 cellspacing=0>
+<tr style=background:#ABEFD2 >
+    <td>13.) Variable Frequency Drive</td>
+    <td align=right valign=center ><a title="Interactive Example at Central Monitoring (SCADA)" href="zHMI/VariableFrequency/variableFrequencyDriveObject.htm" target="_blank"><img src="Images/HMI/vfd.png"  alt="SVG HMI Variable Frequency Drive SCADA Symbol"   /></a></td>
+</tr>
+<tr  style=background:#ABEFD2>
+    <td colspan=2>
+Plots and reads digital VFD values of: control output, hertz, and voltage. Includes status monitoring.
+    </td>
+</tr></table>
+</TD></TR>
+
+<TR><TD>
+   <table style=width:100%; border=0 cellspacing=0>
+<tr style=background:#CDEFAB >
+    <td>14.) Process Variable Chart</td>
+    <td align=right valign=center ><a title="Interactive Example at Central Monitoring (SCADA)" href="zHMI/ProcessVariableChart/processVariableChartObject.htm" target="_blank"><img src="Images/HMI/processVariableChart.png"  alt="SVG HMI Process Variable Chart SCADA Symbol"   /></a></td>
+</tr>
+<tr  style=background:#CDEFAB>
+    <td colspan=2>
+Plots a continuous strip chart for either 1, 2, or 3 measured variables along a timeline.    </td>
+</tr></table>
+</TD></TR>
+
+<TR><TD>
+   <table style=width:100%; border=0 cellspacing=0>
+<tr style=background:#CDEFAB >
+    <td>15.) Auto/Manual Override</td>
+    <td align=right valign=center ><a title="Interactive Example at Central Monitoring (SCADA)" href="zHMI/AutoManualOverride/autoManualOverride.htm" target="_blank"><img src="Images/HMI/autoManualOverride.png"  alt="SVG HMI Auto/Manual Override SCADA Symbol"   width="109" height="66" /></a></td>
+</tr>
+<tr  style=background:#CDEFAB>
+    <td colspan=2>
+The Auto/Manual Override can function to adjust a control signal to a field control device.
+It includes a slider to set the output signal during Manual selection.
+</td>
+</tr></table>
+</TD></TR>
+</TABLE><p></p>
+<i style=font-weight:bold;color:blue>The above will be continually updated based on your requests - Contact me to add new symbols.</i>
+
+</div>
+<button title="Close HMI Table" id=hmiTableCloseButton onmouseover=this.style.background="red"  onmouseout=this.style.background=""  style='visibility:hidden;position:fixed;top:65px;left:350px' onclick=closeHMIHelp() >X</button>
+
+
+<div style='position:fixed;top:5px;left:95%'><button onClick=zoomDrawing() title="Mousewheel Zoom Drawing" id=zoomButton style='background:transparent;border:0px;width:30px;height:30px;padding:0px'><img src="Images/zoomButton.png" width=25 height=25 alt="SVG HMI Zoom SCADA Graphs"   /></button> <button onClick=openZoomHelp() style=width:20px;height:20px;padding:0px;border:0px;background:transparent ><img src="Images/help.png"  width=20 height=20 alt="Zoom Scada Drawing"   /></button>   </div>
+
+<div id=zoomHelpDiv style='background:white;visibility:hidden;position:fixed;top:60px;left:70%;width:300px;height:1px;border:1px solid blue;border-radius:5px;padding:10px;overflow:hidden'>
+    <table style=width:100%><td style=width:90%; align=center><h7><b>Mousewheel Zoom</b></h7></td><td align=right><button onclick=closeZoomHelp()>X</button></td></table>
+    <div style=text-align:justify>
+    Select this to zoom into the drawing via the mousewheel.<p></p>When zoomed you may drag/drop any element: With the cursor
+    over the element <b>right-click</b> the mouse button, then drag the element.
+    <p></p>To close the Mousewheel zoom feature, click the red zoom button symbol.
+    </div>
+</div>
+
+
+
+</body>
+<script>
+
+
+
+
+//---onload---
+function hmiCloneSVG()
+{
+    var SVGFile="LIBRARY/HMIclone.svg"
+    var loadXML = new XMLHttpRequest;
+    loadXML.onload = callback;
+    loadXML.open("GET", SVGFile, true);
+    loadXML.send();
+    function callback()
+    {
+       svgHMIcloneDiv.innerHTML=loadXML.responseText
+
+    }
+
+}
+document.addEventListener("onload",init(),false)
+function init()
+{
+	initD3Svg()
+	createGridLayer()
+  loadOpenerSCADA()
+  hmiCloneSVG()
+
+	startCursorLoc()
+	writeEM()
+	showSourceSVG()
+	showSaveSVG()
+	$(".copy").children().bind('contextmenu', function(e){
+		e.stopPropagation();
+	});
+	$(".copySource").bind('contextmenu', function(e){
+		e.stopPropagation();
+	});
+	$("#componentDiv").children().bind('contextmenu', function(e){
+		e.stopPropagation();
+	});
+	$("#hmiSourceContainer").children().bind('contextmenu', function(e){
+		e.stopPropagation();
+	});
+
+	var cookieNameSet=getCookie("name")
+	var cookieEmailSet=getCookie("email")
+	if(cookieNameSet&&cookieEmailSet)
+		setCookieValues(cookieNameSet,cookieEmailSet)
+
+    d3.select("#textSVG").transition().duration(5000).attr("opacity",0)
+    setTimeout('mySVG.removeChild(textSVG)',5000)
+    setTimeout('d3.select("#openerScadaG").transition().duration(5000).attr("opacity",1)',3000)
+
+}
+function setSVGSizeButtonClicked()
+{
+	var svgWidth=svgWidthValue.value
+	var svgHeight=svgHeightValue.value
+	svgDiv.style.width=svgWidth+"px"
+	svgDiv.style.height=svgHeight+"px"
+	mySVG.setAttribute("width",svgWidth)
+	mySVG.setAttribute("height",svgHeight)
+	mySVG.setAttribute("viewBox", "0 0 "+svgWidth+" "+svgHeight)
+	createGridLayer()
+    showSourceSVG()
+    showSaveSVG()
+}
+
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+function base64Plus()
+{
+var xhr = new XMLHttpRequest();
+    xhr.open("GET", "Images/plusRound.png", true);
+    xhr.responseType = "blob";
+    xhr.onload = function (e) {
+
+            var reader = new FileReader();
+            reader.onload = function(event) {
+               var res = event.target.result;
+
+            }
+            var file = this.response;
+            reader.readAsDataURL(file)
+
+    };
+    xhr.send()
+
+}
+function base64Minus()
+{
+var xhr = new XMLHttpRequest();
+    xhr.open("GET", "Images/minusRound.png", true);
+    xhr.responseType = "blob";
+    xhr.onload = function (e) {
+
+            var reader = new FileReader();
+            reader.onload = function(event) {
+               var res = event.target.result;
+              console.log(res)
+            }
+            var file = this.response;
+            reader.readAsDataURL(file)
+
+    };
+    xhr.send()
+
+}
+function writeEM()
+{
+   var em="Contact: "
+    em+="fhem"
+    em+="sher"
+    em+="@"
+    em+="gm"
+    em+="ail."
+    em+="com"
+   emDiv.innerHTML=em +" &nbsp;&nbsp;<span style=color:maroon>Last Update: 5/32/2018</span>"
+
+}
+
+
+</script>
+
+
+</html>
