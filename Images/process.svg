@@ -1,0 +1,2782 @@
+<svg xmlns="http://www.w3.org/2000/svg"  width="350" height="250" viewBox="0 0 350 250" style="background:transparent">
+
+<g id="zoomzzzG">
+
+<g shape-rendering="geometricPrecision"  class="noselect">
+<g title="Pressure Blower" parentid="" nativewidth="110" nativeheight="154" myscale=".5" transform="matrix(0.5 0 0 0.5 15 10)" id="process1522169561362">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Pressure Blower" class="Blowers" height="154" width="110" viewBox="0 0 110 154.015" nativewidth="110" nativeheight="154" overflow="visible" myscale="1.0">
+
+    <defs>
+
+        <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="LLg1_17">
+
+            <stop stop-color="#686e75" offset="0"/>
+
+            <stop stop-color="#9ba3ad" offset="0.22"/>
+
+            <stop stop-color="#e6e8ec" offset="0.57"/>
+
+            <stop stop-color="#cad0d8" offset="0.84"/>
+
+            <stop stop-color="#858c95" offset="1"/>
+
+        </linearGradient>
+
+        <radialGradient fy="53" r="74.8" id="RRg1" cy="53" cx="53" gradientUnits="userSpaceOnUse" fx="53">
+
+            <stop stop-color="#b0b6bd" offset="0"/>
+
+            <stop stop-color="#b0b6bd" offset="0.91"/>
+
+            <stop stop-color="#d8dce1" offset="0.74"/>
+
+            <stop stop-color="#bcc2c9" offset="0.54"/>
+
+        </radialGradient>
+
+        <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="LLg2_17">
+
+            <stop stop-color="#8f969d" offset="0"/>
+
+            <stop stop-color="#d3d8de" offset="0.64"/>
+
+            <stop stop-color="#9aa0a8" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="LLg3_17">
+
+            <stop stop-color="#626974" offset="0"/>
+
+            <stop stop-color="#ccd0d5" offset="0.66"/>
+
+            <stop stop-color="#5e6670" offset="1"/>
+
+        </linearGradient>
+
+    </defs>
+
+    <g transform="translate(1,1.02)">
+
+        <path transform="translate(13.47,105.51)" id="shape1" fill="#9ea5ad" d="M0,0L79.6,0L79.6,41.4L0,41.4L0,0z"/>
+
+        <path transform="translate(17.14,105.51)" id="shape2" fill="#b0b6bd" d="M0,0L72.3,0L72.3,41.4L0,41.4L0,0z"/>
+
+        <path transform="translate(62.07,6.28)" id="shape3" fill="url(#LLg1_17)" d="M0,0L44.1,0L44.1,70.8L0,70.8L0,0z"/>
+
+        <path transform="translate(1.16,23.81)" id="shape4" fill="url(#RRg1)" stroke="#d4d6db" stroke-width="0.25" d="M0,53.2C0,23.8,23.5,0,52.5,0C81.5,0,105,23.8,105,53.2C105,82.6,81.5,106.5,52.5,106.5C23.5,106.5,0,82.6,0,53.2z"/>
+
+        <path transform="translate(0,146.24)" id="shape5" fill="#9ea5ad" d="M0,0L107.4,0L107.4,5.8L0,5.8L0,0z"/>
+
+        <path transform="translate(59.59,-0)" id="shape6" fill="url(#LLg2_17)" d="M1.6,-0L46.8,-0C47.7,-0,48.4,1.4,48.4,3.1C48.4,4.9,47.7,6.3,46.8,6.3L1.6,6.3C.7,6.3,0,4.9,0,3.1C0,1.4,.7,-0,1.6,-0z"/>
+
+        <path transform="translate(59.8,4.28)" id="shape7" fill="url(#LLg3_17)" d="M48,0C47.9,1.1,47.3,2,46.4,2L1.6,2C.7,2,.1,1,0,0C0,0,48,0,48,0z"/>
+
+        <path transform="translate(60.36,0.35)" id="shape8" fill="#ffffff" fill-opacity="0.75" d="M.7,0L46,0C46.4,0,46.8,.3,46.8,.6C46.8,.9,46.4,1.2,46,1.2L.7,1.2C.3,1.2,0,.9,0,.6C0,.3,.3,0,.7,0z"/>
+
+        <path transform="matrix(0,-1,-1,0,95.3,119.3)" id="shape9" fill="#87909c" d="M0,41.6C0,18.6,18.9,0,42.2,0C65.5,0,84.4,18.6,84.4,41.6C84.4,64.6,65.5,83.3,42.2,83.3C18.9,83.3,0,64.6,0,41.6z"/>
+
+        <path transform="matrix(0,-1,-1,0,86.6,110.4)" id="shape10" fill="#ffcccc" d="M0,32.9C0,14.7,14.9,0,33.4,0C51.8,0,66.7,14.7,66.7,32.9C66.7,51.1,51.8,65.8,33.4,65.8C14.9,65.8,0,51.1,0,32.9z"/>
+
+        <path transform="matrix(0,-1,-1,0,68.9,92.5)" id="shape11" fill="#99a0a9" d="M0,15.2C0,6.8,6.9,0,15.4,0C23.9,0,30.8,6.8,30.8,15.2C30.8,23.6,23.9,30.4,15.4,30.4C6.9,30.4,0,23.6,0,15.2z"/>
+
+        <path transform="matrix(0,-1,-1,0,59.1,82.5)" id="shape12" fill="#c8ced6" d="M0,5.4C0,2.4,2.5,0,5.5,0C8.5,0,11,2.4,11,5.4C11,8.4,8.5,10.8,5.5,10.8C2.5,10.8,0,8.4,0,5.4z"/>
+
+        <g transform="translate(21.83,45.45)">
+
+            <path transform="matrix(0,-1,-1,0,63,32.4)" id="shape13" fill="#5c646f" d="M.6,-0C1.4,-0,1.7,.3,1.7,.6L1.7,14.3C1.7,14.6,1.4,14.9,1.1,14.9C.3,14.9,-0,14.6,-0,14.3L-0,.6C-0,.3,.3,-0,.6,-0z"/>
+
+            <path transform="matrix(0,-1,-1,0,14.9,32.4)" id="shape14" fill="#5c646f" d="M.6,-0C1.4,-0,1.7,.3,1.7,.6L1.7,14.3C1.7,14.6,1.4,14.9,1.1,14.9C.3,14.9,-0,14.6,-0,14.3L-0,.6C-0,.3,.3,-0,.6,-0z"/>
+
+            <path transform="matrix(0,1,-1,0,32.7,49.1)" id="shape15" fill="#5c646f" d="M15.1,.6C15.1,1.4,14.9,1.7,14.5,1.7L.6,1.7C.3,1.7,0,1.4,0,1.1C0,.3,.3,-0,.6,-0L14.5,-0C14.9,-0,15.1,.3,15.1,.6z"/>
+
+            <path transform="matrix(0,1,-1,0,32.7,-0)" id="shape16" fill="#5c646f" d="M15.1,.6C15.1,1.4,14.9,1.7,14.5,1.7L.6,1.7C.3,1.7,0,1.4,0,1.1C0,.3,.3,-0,.6,-0L14.5,-0C14.9,-0,15.1,.3,15.1,.6z"/>
+
+            <path transform="translate(43.34,43.23)" id="shape17" fill="#5c646f" d="M.2,.5C.7,-0.1,1.1,-0.1,1.4,.2L11.1,10C11.3,10.2,11.3,10.6,11.1,10.9C10.5,11.5,10.1,11.5,9.8,11.2L.2,1.4C-0.1,1.2,-0.1,.8,.2,.5z"/>
+
+            <path transform="translate(9.04,8.3)" id="shape18" fill="#5c646f" d="M.2,.5C.7,-0.1,1.1,-0.1,1.4,.2L11,10C11.3,10.2,11.3,10.6,11,10.9C10.5,11.4,10.1,11.4,9.8,11.2L.2,1.4C-0.1,1.1,-0.1,.8,.2,.5z"/>
+
+            <path transform="matrix(-1,0,0,1,54.6,8.7)" id="shape19" fill="#5c646f" d="M11.1,10.9C10.5,11.5,10.1,11.5,9.9,11.2L.2,1.4C-0,1.2,-0,.8,.2,.5C.8,-0.1,1.2,-0.1,1.4,.2L11.1,10C11.3,10.2,11.3,10.6,11.1,10.9z"/>
+
+            <path transform="matrix(-1,0,0,1,20.5,43.1)" id="shape20" fill="#5c646f" d="M11.1,10.9C10.5,11.5,10.1,11.5,9.9,11.2L.2,1.4C-0,1.2,-0,.8,.2,.5C.8,-0.1,1.2,-0.1,1.4,.2L11.1,10C11.3,10.3,11.3,10.6,11.1,10.9z"/>
+
+        </g>
+
+        <path transform="matrix(0,-1,-1,0,57.3,80.8)" id="shape21" fill="#5c646f" d="M0,3.7C0,1.6,1.7,0,3.7,0C5.8,0,7.4,1.6,7.4,3.7C7.4,5.7,5.8,7.3,3.7,7.3C1.7,7.3,0,5.7,0,3.7z"/>
+
+    </g>
+
+</svg>
+<rect width="110" height="154" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+</g>
+<g title="Gravitational Separator" parentid="" nativewidth="94" nativeheight="186" myscale=".5" transform="matrix(0.5 0 0 0.5 81 8)" id="process1522169607105">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Gravitational Separator" class="Chemical" height="186" width="94" viewBox="0 0 94 186" nativewidth="94" nativeheight="186" overflow="visible" myscale="1.0">
+
+    <defs>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg1_59">
+
+            <stop stop-color="#4a9d9a" offset="0"/>
+
+            <stop stop-color="#75d1ce" offset="0.15"/>
+
+            <stop stop-color="#bfe6e4" offset="0.25"/>
+
+            <stop stop-color="#56b4b1" offset="0.44"/>
+
+            <stop stop-color="#4ba09d" offset="0.6"/>
+
+            <stop stop-color="#3e8784" offset="0.8"/>
+
+            <stop stop-color="#387b78" offset="0.97"/>
+
+            <stop stop-color="#4da4a1" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="81" y2="21" x2="-1" y1="7" id="LLg2_59" gradientUnits="userSpaceOnUse">
+
+            <stop stop-color="#4a9d9a" offset="0"/>
+
+            <stop stop-color="#75d1ce" offset="0.2"/>
+
+            <stop stop-color="#bfe6e4" offset="0.3"/>
+
+            <stop stop-color="#56b4b1" offset="0.44"/>
+
+            <stop stop-color="#4ba09d" offset="0.6"/>
+
+            <stop stop-color="#3e8784" offset="0.8"/>
+
+            <stop stop-color="#387b78" offset="0.97"/>
+
+            <stop stop-color="#4da4a1" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="81" y2="4" x2="-2" y1="34" id="LLg3_59" gradientUnits="userSpaceOnUse">
+
+            <stop stop-color="#4a9d9a" offset="0"/>
+
+            <stop stop-color="#75d1ce" offset="0.3"/>
+
+            <stop stop-color="#afe0de" offset="0.36"/>
+
+            <stop stop-color="#56b4b1" offset="0.47"/>
+
+            <stop stop-color="#4ba09d" offset="0.6"/>
+
+            <stop stop-color="#3e8784" offset="0.8"/>
+
+            <stop stop-color="#387b78" offset="0.97"/>
+
+            <stop stop-color="#4da4a1" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="52" y2="21" x2="1" y1="-3" id="LLg4_59" gradientUnits="userSpaceOnUse">
+
+            <stop stop-color="#4a9d9a" offset="0"/>
+
+            <stop stop-color="#75d1ce" offset="0.3"/>
+
+            <stop stop-color="#bfe6e4" offset="0.34"/>
+
+            <stop stop-color="#56b4b1" offset="0.52"/>
+
+            <stop stop-color="#4ba09d" offset="0.6"/>
+
+            <stop stop-color="#3e8784" offset="0.8"/>
+
+            <stop stop-color="#387b78" offset="0.97"/>
+
+            <stop stop-color="#4da4a1" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg5_59">
+
+            <stop stop-color="#4a9d9a" offset="0"/>
+
+            <stop stop-color="#75d1ce" offset="0.15"/>
+
+            <stop stop-color="#bfe6e4" offset="0.25"/>
+
+            <stop stop-color="#56b4b1" offset="0.44"/>
+
+            <stop stop-color="#4ba09d" offset="0.6"/>
+
+            <stop stop-color="#3e8784" offset="0.8"/>
+
+            <stop stop-color="#387b78" offset="0.97"/>
+
+            <stop stop-color="#4da4a1" offset="1"/>
+
+        </linearGradient>
+
+    </defs>
+
+    <g transform="translate(1,1)">
+
+        <path transform="translate(13.41,29.55)" id="shape1" fill="url(#LLg1_59)" d="M0,0L53,0L53,26.8L0,26.8L0,0z"/>
+
+        <path transform="translate(-0,84.77)" id="shape2" fill="url(#LLg1_59)" d="M0,0L79.8,0L79.8,56.8L0,56.8L0,0z"/>
+
+        <path transform="translate(-0,56.36)" id="shape3" fill="url(#LLg2_59)" d="M13.4,0L66.4,0L79.8,28.4L0,28.4L13.4,0z"/>
+
+        <path transform="translate(-0,141.57)" id="shape4" fill="url(#LLg3_59)" d="M0,0L79.8,0L42.8,38.5L37.1,38.5L0,0z"/>
+
+        <path transform="translate(13.41,11.23)" id="shape5" fill="url(#LLg4_59)" d="M14.3,0L38,0L53,18.3L0,18.3L14.3,0z"/>
+
+        <path transform="translate(27.7,-0)" id="shape6" fill="url(#LLg1_59)" d="M0,0L23.7,0L23.7,11.2L0,11.2L0,0z"/>
+
+        <path transform="translate(37.06,180.09)" id="shape7" fill="url(#LLg1_59)" d="M0,0L5.7,0L5.7,3.9L0,3.9L0,0z"/>
+
+        <path transform="translate(66.44,35.14)" id="shape8" fill="url(#LLg5_59)" d="M0,0L23,0L23,15.6L0,15.6L0,0z"/>
+
+        <path transform="translate(89.16,30.03)" id="shape9" fill="url(#LLg5_59)" d="M.5,0L2.3,0C2.6,0,2.8,.2,2.8,.5L2.8,25.3C2.8,25.6,2.6,25.9,2.3,25.9L.5,25.9C.2,25.9,0,25.6,0,25.3L0,.5C0,.2,.2,0,.5,0z"/>
+
+    </g>
+
+</svg>
+<rect width="94" height="186" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+</g>
+<g title="Boiler" parentid="" nativewidth="154" nativeheight="90" myscale=".5" transform="matrix(0.5 0 0 0.5 130 51)" id="process1522169617933">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Boiler" class="Heating" height="90" width="154" viewBox="0 0 154 90.0107" nativewidth="154" nativeheight="90" overflow="visible" myscale="1.0">
+
+    <defs>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg1_71">
+
+            <stop stop-color="#a6a6a5" offset="0"/>
+
+            <stop stop-color="#e2e2e1" offset="0.15"/>
+
+            <stop stop-color="#efefee" offset="0.25"/>
+
+            <stop stop-color="#c4c4c3" offset="0.52"/>
+
+            <stop stop-color="#aeaeae" offset="0.69"/>
+
+            <stop stop-color="#a4a4a4" offset="0.8"/>
+
+            <stop stop-color="#9b9b9a" offset="0.92"/>
+
+            <stop stop-color="#b2b2b2" offset="1"/>
+
+        </linearGradient>
+
+        <radialGradient fy="9" r="12.3" id="RRg1" cy="9" cx="9" gradientUnits="userSpaceOnUse" fx="9">
+
+            <stop stop-color="#cdcdcc" offset="0"/>
+
+            <stop stop-color="#cdcdcc" offset="0.91"/>
+
+            <stop stop-color="#ededec" offset="0.74"/>
+
+            <stop stop-color="#dbdbda" offset="0.54"/>
+
+        </radialGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg2_71">
+
+            <stop stop-color="#a0a0a0" offset="0.16"/>
+
+            <stop stop-color="#9d9d9d" offset="0.64"/>
+
+            <stop stop-color="#9a9a9a" offset="0.92"/>
+
+        </linearGradient>
+
+        <linearGradient x1="1" y2="-0" x2="11" y1="12" id="LLg3_71" gradientUnits="userSpaceOnUse">
+
+            <stop stop-color="#d8d8d8" offset="0"/>
+
+            <stop stop-color="#e9e9e9" offset="0.18"/>
+
+            <stop stop-color="#bababa" offset="0.72"/>
+
+            <stop stop-color="#a6a6a6" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg4_71">
+
+            <stop stop-color="#a6a6a5" offset="0"/>
+
+            <stop stop-color="#e2e2e1" offset="0.15"/>
+
+            <stop stop-color="#efefee" offset="0.25"/>
+
+            <stop stop-color="#c4c4c3" offset="0.52"/>
+
+            <stop stop-color="#aeaeae" offset="0.69"/>
+
+            <stop stop-color="#a4a4a4" offset="0.8"/>
+
+            <stop stop-color="#9b9b9a" offset="0.92"/>
+
+            <stop stop-color="#b2b2b2" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg5_71">
+
+            <stop stop-color="#aeaead" offset="0"/>
+
+            <stop stop-color="#f8f8f7" offset="0.03"/>
+
+            <stop stop-color="#e3e3e2" offset="0.08"/>
+
+            <stop stop-color="#dfdfde" offset="0.64"/>
+
+            <stop stop-color="#dadad9" offset="0.95"/>
+
+            <stop stop-color="#a2a2a1" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg6_71">
+
+            <stop stop-color="#a8a8a7" offset="0"/>
+
+            <stop stop-color="#f1f1f0" offset="0.03"/>
+
+            <stop stop-color="#dadad9" offset="0.08"/>
+
+            <stop stop-color="#d7d7d6" offset="0.64"/>
+
+            <stop stop-color="#d2d2d1" offset="0.95"/>
+
+            <stop stop-color="#9c9c9b" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg7_71">
+
+            <stop stop-color="#5f5f5f" offset="0"/>
+
+            <stop stop-color="#a9a9aa" offset="0.07"/>
+
+            <stop stop-color="#7d7d7e" offset="0.08"/>
+
+            <stop stop-color="#7b7b7c" offset="0.64"/>
+
+            <stop stop-color="#787879" offset="0.85"/>
+
+            <stop stop-color="#575758" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg8_71">
+
+            <stop stop-color="#c6c7c7" offset="0.07"/>
+
+            <stop stop-color="#a6a6a6" offset="0.08"/>
+
+            <stop stop-color="#a3a4a4" offset="0.64"/>
+
+            <stop stop-color="#9fa0a0" offset="0.85"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg9_71">
+
+            <stop stop-color="#898988" offset="0"/>
+
+            <stop stop-color="#d1d1d0" offset="0.03"/>
+
+            <stop stop-color="#b3b3b2" offset="0.08"/>
+
+            <stop stop-color="#b0b0b0" offset="0.64"/>
+
+            <stop stop-color="#acacac" offset="0.95"/>
+
+            <stop stop-color="#7f7f7e" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg10_71">
+
+            <stop stop-color="#aeaead" offset="0"/>
+
+            <stop stop-color="#f8f8f7" offset="0.03"/>
+
+            <stop stop-color="#e3e3e2" offset="0.08"/>
+
+            <stop stop-color="#dfdfde" offset="0.64"/>
+
+            <stop stop-color="#dadad9" offset="0.95"/>
+
+            <stop stop-color="#a2a2a1" offset="1"/>
+
+        </linearGradient>
+
+    </defs>
+
+    <g transform="translate(1.01,1.01)">
+
+        <g transform="translate(0,47.87)">
+
+            <path transform="matrix(0,-1,-1,0,20.2,7.3)" id="shape1" fill="url(#LLg1_71)" d="M0,0L7.3,0L7.3,11.6L0,11.6L0,0z"/>
+
+            <path transform="matrix(0,-1,-1,0,17.4,17.5)" id="shape2" fill="url(#RRg1)" stroke="#d4d6db" stroke-width="0.25" d="M0,8.7C0,3.9,3.9,0,8.7,0C13.6,0,17.5,3.9,17.5,8.7C17.5,13.5,13.6,17.4,8.7,17.4C3.9,17.4,0,13.5,0,8.7z"/>
+
+            <path transform="matrix(-1,0,0,-1,14.7,14.7)" id="shape3" fill="url(#LLg2_71)" d="M0,6C0,2.7,2.7,0,6,0C9.3,0,11.9,2.7,11.9,6C11.9,9.3,9.3,12,6,12C2.7,12,0,9.3,0,6z"/>
+
+            <path transform="matrix(-1,0,0,-1,14.3,14.3)" id="shape4" fill="url(#LLg3_71)" d="M0,5.6C0,2.5,2.5,0,5.6,0C8.6,0,11.1,2.5,11.1,5.6C11.1,8.7,8.6,11.2,5.6,11.2C2.5,11.2,0,8.7,0,5.6z"/>
+
+        </g>
+
+        <path transform="translate(24.34,11.88)" id="shape5" fill="url(#LLg4_71)" d="M0,0L124.1,0L124.1,63.4L0,63.4L0,0z"/>
+
+        <path transform="translate(21.33,10.96)" id="shape6" fill="url(#LLg4_71)" d="M1.4,0C2.4,0,3.1,.6,3.1,1.4L3.1,63.7C3.1,64.5,2.4,65.2,1.6,65.2C.6,65.2,-0,64.5,-0,63.7L-0,1.4C-0,.6,.6,0,1.4,0z"/>
+
+        <path transform="translate(148.45,10.96)" id="shape7" fill="url(#LLg4_71)" d="M1.4,0C2.4,0,3.1,.6,3.1,1.4L3.1,63.7C3.1,64.5,2.4,65.2,1.6,65.2C.6,65.2,-0,64.5,-0,63.7L-0,1.4C-0,.6,.6,0,1.4,0z"/>
+
+        <path transform="translate(42.01,3.89)" id="shape8" fill="url(#LLg1_71)" d="M0,0L10.4,0L10.4,8L0,8L0,0z"/>
+
+        <path transform="translate(62.92,5.39)" id="shape9" fill="url(#LLg1_71)" d="M0,0L23,0L23,6.5L0,6.5L0,0z"/>
+
+        <path transform="translate(91.22,1.55)" id="shape10" fill="url(#LLg1_71)" d="M0,0L10.4,0L10.4,10.3L0,10.3L0,0z"/>
+
+        <path transform="translate(106.14,1.55)" id="shape11" fill="url(#LLg1_71)" d="M0,0L10.4,0L10.4,10.3L0,10.3L0,0z"/>
+
+        <path transform="translate(123.63,5.39)" id="shape12" fill="url(#LLg5_71)" d="M0,0L20.7,0L20.7,6.5L0,6.5L0,0z"/>
+
+        <path transform="translate(61.66,3.79)" id="shape14" fill="url(#LLg1_71)" d="M.6,0L24.9,0C25.2,0,25.5,.3,25.5,.6C25.5,1.4,25.2,1.7,24.9,1.7L.6,1.7C.3,1.7,0,1.4,0,1C0,.3,.3,0,.6,0z"/>
+
+        <path transform="translate(40.68,2.25)" id="shape16" fill="url(#LLg1_71)" d="M.8,-0L12.3,-0C12.7,-0,13.1,.4,13.1,.8C13.1,1.3,12.7,1.6,12.3,1.6L.8,1.6C.4,1.6,0,1.3,0,.8C0,.4,.4,-0,.8,-0z"/>
+
+        <path transform="translate(104.81,-0)" id="shape19" fill="url(#LLg1_71)" d="M.8,-0L12.3,-0C12.7,-0,13.1,.4,13.1,.8C13.1,1.3,12.7,1.6,12.3,1.6L.8,1.6C.4,1.6,0,1.3,0,.8C0,.4,.4,-0,.8,-0z"/>
+
+        <path transform="translate(89.88,-0)" id="shape20" fill="url(#LLg1_71)" d="M.8,-0L12.3,-0C12.7,-0,13.1,.4,13.1,.8C13.1,1.3,12.7,1.6,12.3,1.6L.8,1.6C.4,1.6,0,1.3,0,.8C0,.4,.4,-0,.8,-0z"/>
+
+        <path transform="translate(121.95,3.45)" id="shape22" fill="url(#LLg6_71)" d="M1.1,0L22.9,0C23.5,0,24,.5,24,1.1C24,1.7,23.5,2.2,22.9,2.2L1.1,2.2C.5,2.2,0,1.7,0,1.1C0,.5,.5,0,1.1,0z"/>
+
+        <path transform="translate(20.79,74.11)" id="shape23" fill="url(#LLg7_71)" d="M6.4,0L124.8,0L131.2,13.9L0,13.9L6.4,0z"/>
+
+        <path transform="translate(27.19,69.24)" id="shape24" fill="url(#LLg8_71)" d="M0,4.9L118.5,4.9L118.5,0L0,0L0,4.9z"/>
+
+        <path transform="translate(19.49,20.12)" id="shape25" fill="url(#LLg9_71)" d="M1.8,0L0,0L0,47.8L1.8,47.8L1.8,0z"/>
+
+        <path transform="translate(11.24,24.53)" id="shape26" fill="url(#LLg10_71)" d="M8.2,0L0,0L0,14.7L8.2,14.7L8.2,0z"/>
+
+        <path transform="translate(11.24,24.53)" id="shape27" fill="url(#LLg9_71)" d="M.7,0L0,14.7L.7,0z"/>
+
+        <path transform="translate(10.08,23.9)" id="shape28" fill="url(#LLg10_71)" d="M.6,0C.9,0,1.2,.2,1.2,.6L1.2,15.4C1.2,15.7,.9,16,.6,16C.3,16,-0,15.7,-0,15.4L-0,.6C-0,.2,.3,0,.6,0z"/>
+
+    </g>
+
+</svg>
+<rect width="154" height="90" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+</g>
+<g title="Flameless Thermal Oxidizer" parentid="" nativewidth="120" nativeheight="134" myscale=".5" transform="matrix(0.5 0 0 0.5 220 10)" id="process1522169625071">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Flameless Thermal Oxidizer" class="Heating" viewBox="0 0 120 134.039" width="120" height="134" nativewidth="120" nativeheight="134" overflow="visible" myscale="1.0">
+
+    <defs>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg1_77">
+
+            <stop stop-color="#bdbdbd" offset="0"/>
+
+            <stop stop-color="#ffffff" offset="0.15"/>
+
+            <stop stop-color="#ffffff" offset="0.25"/>
+
+            <stop stop-color="#dfdfdf" offset="0.52"/>
+
+            <stop stop-color="#c7c7c7" offset="0.69"/>
+
+            <stop stop-color="#bcbcbc" offset="0.8"/>
+
+            <stop stop-color="#b1b1b1" offset="0.92"/>
+
+            <stop stop-color="#cbcbcb" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg2_77">
+
+            <stop stop-color="#a89170" offset="0"/>
+
+            <stop stop-color="#e5c79b" offset="0.15"/>
+
+            <stop stop-color="#ffe3ba" offset="0.25"/>
+
+            <stop stop-color="#dbbf94" offset="0.52"/>
+
+            <stop stop-color="#b19a77" offset="0.69"/>
+
+            <stop stop-color="#b19a77" offset="0.8"/>
+
+            <stop stop-color="#998566" offset="0.92"/>
+
+            <stop stop-color="#7e6d54" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg3_77">
+
+            <stop stop-color="#bdbdbd" offset="0"/>
+
+            <stop stop-color="#ffffff" offset="0.15"/>
+
+            <stop stop-color="#ffffff" offset="0.25"/>
+
+            <stop stop-color="#dfdfdf" offset="0.52"/>
+
+            <stop stop-color="#c7c7c7" offset="0.69"/>
+
+            <stop stop-color="#bcbcbc" offset="0.8"/>
+
+            <stop stop-color="#b1b1b1" offset="0.92"/>
+
+            <stop stop-color="#cbcbcb" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="0%" x2="0%" y1="100%" id="LLg4_77">
+
+            <stop stop-color="#d6ba90" offset="0"/>
+
+            <stop stop-color="#f0d1a2" offset="0.22"/>
+
+            <stop stop-color="#ffeed7" offset="0.57"/>
+
+            <stop stop-color="#ffe5c1" offset="0.84"/>
+
+            <stop stop-color="#e7c99c" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg5_77">
+
+            <stop stop-color="#a6824e" offset="0"/>
+
+            <stop stop-color="#e3b26d" offset="0.15"/>
+
+            <stop stop-color="#fdcf95" offset="0.25"/>
+
+            <stop stop-color="#d9ab68" offset="0.52"/>
+
+            <stop stop-color="#b08953" offset="0.69"/>
+
+            <stop stop-color="#a27f4c" offset="0.8"/>
+
+            <stop stop-color="#987647" offset="0.92"/>
+
+            <stop stop-color="#7d6139" offset="1"/>
+
+        </linearGradient>
+
+    </defs>
+
+    <g transform="translate(1,1.04)">
+
+        <path transform="translate(22.26,8.29)" fill="url(#LLg1_77)" d="M0,0L73.5,0L73.5,123.7L0,123.7L0,0z" id="shape1"/>
+
+        <path transform="translate(22.26,-0.04)" fill="url(#LLg1_77)" d="M10,2.7C18.2,.8,27.1,-0,36.7,0C47.3,0,58.2,1.1,65.1,3.1C71.5,4.9,73.5,8.3,73.5,8.3L0,8.3C0,8.3,.3,4.9,10,2.7z" id="shape2"/>
+
+        <path transform="translate(28.27,22.43)" fill="url(#LLg2_77)" d="M0,0L61.5,0L61.5,88.8L0,88.8L0,0z" id="shape4"/>
+
+        <path transform="translate(89.68,85.86)" fill="url(#LLg3_77)" d="M0,0L28.3,0L28.3,14.1L0,14.1L0,0z" id="shape5"/>
+
+        <path transform="translate(-0,108.22)" fill="url(#LLg3_77)" d="M0,0L28.3,0L28.3,14.1L0,14.1L0,0z" id="shape6"/>
+
+        <path transform="matrix(0,1,-1,0,46,26.1)" fill="url(#LLg4_77)" d="M3.8,13.7C3.8,13.7,0,13.3,0,6.8C0,.3,3.8,0,3.8,0L3.8,3.2C3.8,3.2,2.2,3.5,2.2,6.9C2.2,10.2,3.8,10.3,3.8,10.3L3.8,13.7z" id="shape7"/>
+
+        <path transform="matrix(0,1,-1,0,65.7,26.1)" fill="url(#LLg4_77)" d="M3.8,12.9C3.8,12.9,0,13.5,0,6.7C0,-0.2,4,0,4,0L3.8,3.2C3.8,3.2,2.4,3.2,2.4,6.6C2.4,9.9,3.8,9.7,3.8,9.7L3.8,12.9z" id="shape8"/>
+
+        <path transform="matrix(0,1,-1,0,85.8,26.1)" fill="url(#LLg4_77)" d="M3.8,13.3C3.8,13.3,0,13,0,6.6C-0.2,.2,3.8,0,3.8,0L4,3.2C4,3.2,2.4,3.4,2.3,6.7C2.2,10,3.8,10,3.8,10L3.8,13.3z" id="shape9"/>
+
+        <path transform="matrix(0,1,-1,0,56.1,99.4)" fill="url(#LLg4_77)" d="M-0,10C-0,10,1.4,9.7,1.4,6.7C1.4,3.6,-0,3.2,-0,3.2L-0,0C-0,0,3.9,-0.3,3.9,6.5C3.9,13.3,-0,13.3,-0,13.3L-0,10z" id="shape10"/>
+
+        <path transform="matrix(0,1,-1,0,75.8,99.4)" fill="url(#LLg4_77)" d="M-0,10C-0,10,1.5,9.9,1.5,6.7C1.5,3.5,-0,3.2,-0,3.2L-0,0C-0,0,3.9,0,3.9,6.6C3.9,13.1,-0,13.3,-0,13.3L-0,10z" id="shape11"/>
+
+        <path transform="matrix(0,1,-1,0,35.5,29.7)" fill="url(#LLg4_77)" d="M76.2,3.2L0,3.2L0,0L76.2,0L76.2,3.2z" id="shape12"/>
+
+        <path transform="matrix(0,1,-1,0,45.9,29.7)" fill="url(#LLg4_77)" d="M69.7,3.2L0,3.2L0,0L69.7,0L69.7,3.2z" id="shape13"/>
+
+        <path transform="matrix(0,1,-1,0,55.9,29.7)" fill="url(#LLg4_77)" d="M69.6,3.1L0,3.1L0,0L69.6,0L69.6,3.1z" id="shape14"/>
+
+        <path transform="matrix(0,1,-1,0,65.6,29.7)" fill="url(#LLg4_77)" d="M69.8,3.3L0,3.3L0,0L69.8,0L69.8,3.3z" id="shape15"/>
+
+        <path transform="matrix(0,1,-1,0,75.6,29.7)" fill="url(#LLg4_77)" d="M69.5,2.9L0,2.9L0,0L69.5,0L69.5,2.9z" id="shape16"/>
+
+        <path transform="matrix(0,1,-1,0,85.6,29.7)" fill="url(#LLg4_77)" d="M76.2,2.9L0,2.9L0,0L76.2,0L76.2,2.9z" id="shape17"/>
+
+        <path transform="translate(28.33,105.26)" fill="url(#LLg4_77)" d="M0,0L7.3,0L7.3,2.8L0,2.8L0,0z" id="shape18"/>
+
+        <path transform="translate(28.27,108.22)" fill="url(#LLg5_77)" d="M0,0L61.5,0L61.5,17.4L0,17.4L0,0z" id="shape19"/>
+
+        <path transform="translate(82.72,105.26)" fill="url(#LLg4_77)" d="M0,0L7,0L7,2.8L0,2.8L0,0z" id="shape20"/>
+
+        <path transform="translate(22.21,108.22)" fill="#888889" d="M0,0L6.1,0L6.1,14.1L0,14.1L0,0z" id="shape21"/>
+
+        <path transform="translate(89.68,85.86)" fill="#9e9f9f" d="M0,0L6.1,0L6.1,14.1L0,14.1L0,0z" id="shape22"/>
+
+    </g>
+
+</svg>
+<rect width="120" height="134" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+</g>
+<g title="Heat Exchanger" parentid="" nativewidth="92" nativeheight="172" myscale=".5" transform="matrix(0.5 0 0 0.5 295 3)" id="process1522169635884">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Heat Exchanger" class="Heating" viewBox="0 0 92 171.98" width="92" height="172" nativewidth="92" nativeheight="172" overflow="visible" myscale="1.0">
+
+    <defs>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg1_89">
+
+            <stop stop-color="#2480ae" offset="0"/>
+
+            <stop stop-color="#56b4ec" offset="0.15"/>
+
+            <stop stop-color="#b6d7f4" offset="0.25"/>
+
+            <stop stop-color="#2c98ce" offset="0.52"/>
+
+            <stop stop-color="#2687b7" offset="0.69"/>
+
+            <stop stop-color="#237fad" offset="0.8"/>
+
+            <stop stop-color="#2178a3" offset="0.92"/>
+
+            <stop stop-color="#278abb" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg2_89">
+
+            <stop stop-color="#bc8e2e" offset="0"/>
+
+            <stop stop-color="#fdc55e" offset="0.15"/>
+
+            <stop stop-color="#fee0b8" offset="0.25"/>
+
+            <stop stop-color="#dea939" offset="0.52"/>
+
+            <stop stop-color="#c59631" offset="0.69"/>
+
+            <stop stop-color="#ba8d2e" offset="0.8"/>
+
+            <stop stop-color="#b0852b" offset="0.92"/>
+
+            <stop stop-color="#ca9933" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg3_89">
+
+            <stop stop-color="#bc9c53" offset="0"/>
+
+            <stop stop-color="#fed681" offset="0.15"/>
+
+            <stop stop-color="#fee8c2" offset="0.25"/>
+
+            <stop stop-color="#deb863" offset="0.52"/>
+
+            <stop stop-color="#c6a457" offset="0.69"/>
+
+            <stop stop-color="#bb9b52" offset="0.8"/>
+
+            <stop stop-color="#b0924d" offset="0.92"/>
+
+            <stop stop-color="#cba859" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg4_89">
+
+            <stop stop-color="#4889b0" offset="0"/>
+
+            <stop stop-color="#76bfee" offset="0.15"/>
+
+            <stop stop-color="#bfddf5" offset="0.25"/>
+
+            <stop stop-color="#57a2cf" offset="0.52"/>
+
+            <stop stop-color="#4c90b9" offset="0.69"/>
+
+            <stop stop-color="#4788ae" offset="0.8"/>
+
+            <stop stop-color="#4380a4" offset="0.92"/>
+
+            <stop stop-color="#4e94bd" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg5_89">
+
+            <stop stop-color="#2480ae" offset="0"/>
+
+            <stop stop-color="#56b4ec" offset="0.15"/>
+
+            <stop stop-color="#b6d7f4" offset="0.25"/>
+
+            <stop stop-color="#2c98ce" offset="0.52"/>
+
+            <stop stop-color="#2687b7" offset="0.69"/>
+
+            <stop stop-color="#237fad" offset="0.8"/>
+
+            <stop stop-color="#2178a3" offset="0.92"/>
+
+            <stop stop-color="#278abb" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg6_89">
+
+            <stop stop-color="#176aa2" offset="0"/>
+
+            <stop stop-color="#4e9bdd" offset="0.15"/>
+
+            <stop stop-color="#b5ccec" offset="0.25"/>
+
+            <stop stop-color="#1d7ec0" offset="0.52"/>
+
+            <stop stop-color="#1970aa" offset="0.69"/>
+
+            <stop stop-color="#1769a1" offset="0.8"/>
+
+            <stop stop-color="#156397" offset="0.92"/>
+
+            <stop stop-color="#1a73ae" offset="1"/>
+
+        </linearGradient>
+
+    </defs>
+
+    <g transform="translate(1.02,1)">
+
+        <path transform="translate(4.13,9.83)" fill="url(#LLg1_89)" d="M.6,-0L15.4,-0C15.7,-0,16,.2,16,.6L16,8.6C16,8.9,15.7,9.2,15.4,9.2L.6,9.2C.3,9.2,0,8.9,0,8.6L0,.6C0,.2,.3,-0,.6,-0z" id="shape1"/>
+
+        <path transform="translate(7.64,6.98)" fill="url(#LLg2_89)" d="M.6,-0L8.4,-0C8.7,-0,8.9,.2,8.9,.6L8.9,2.3C8.9,2.6,8.7,2.8,8.4,2.8L.6,2.8C.2,2.8,-0,2.6,-0,2.3L-0,.6C-0,.2,.2,-0,.6,-0z" id="shape2"/>
+
+        <path transform="translate(5.58,0)" fill="url(#LLg3_89)" d="M.6,0L12.5,0C12.8,0,13.1,.3,13.1,.6L13.1,6.7C13.1,7,12.8,7.3,12.5,7.3L.6,7.3C.2,7.3,0,7,0,6.7L0,.6C0,.3,.2,0,.6,0z" id="shape3"/>
+
+        <path transform="translate(38.93,6.36)" fill="url(#LLg1_89)" d="M.6,-0L11.9,-0C12.2,-0,12.4,.2,12.4,.6L12.4,9.9C12.4,10.2,12.2,10.4,11.9,10.4L.6,10.4C.2,10.4,0,10.2,0,9.9L0,.6C0,.2,.2,-0,.6,-0z" id="shape4"/>
+
+        <path transform="translate(-0.02,18.55)" fill="url(#LLg1_89)" d="M.6,0L61,0C61.3,0,61.6,.3,61.6,.6L61.6,49.5C61.6,49.8,61.3,50.1,61,50.1L.6,50.1C.3,50.1,0,49.8,0,49.5L0,.6C0,.3,.3,0,.6,0z" id="shape5"/>
+
+        <path transform="translate(2.54,68.74)" fill="url(#LLg4_89)" d="M0,0L56.5,0L56.5,51.3L0,51.3L0,0z" id="shape6"/>
+
+        <path transform="translate(-0.02,119.91)" fill="url(#LLg1_89)" d="M.6,0L61,0C61.3,0,61.6,.3,61.6,.6L61.6,49.5C61.6,49.8,61.3,50.1,61,50.1L.6,50.1C.3,50.1,0,49.8,0,49.5L0,.6C0,.3,.3,0,.6,0z" id="shape7"/>
+
+        <g transform="translate(61.58,26.96)">
+
+            <path transform="translate(0,4.59)" fill="url(#LLg5_89)" d="M0,0L7.7,0L7.7,24.1L0,24.1L0,0z" id="shape8"/>
+
+            <path transform="translate(7.66,0)" fill="url(#LLg5_89)" d="M.6,0L20.2,0C20.5,0,20.8,.2,20.8,.6L20.8,32.7C20.8,33,20.5,33.3,20.2,33.3L.6,33.3C.3,33.3,0,33,0,32.7L0,.6C0,.2,.3,0,.6,0z" id="shape9"/>
+
+        </g>
+
+        <g transform="translate(61.58,128.31)">
+
+            <path transform="translate(0,4.59)" fill="url(#LLg5_89)" d="M0,0L7.7,0L7.7,24.1L0,24.1L0,0z" id="shape10"/>
+
+            <path transform="translate(7.66,0)" fill="url(#LLg5_89)" d="M.6,0L20.2,0C20.5,0,20.8,.2,20.8,.6L20.8,32.7C20.8,33,20.5,33.3,20.2,33.3L.6,33.3C.3,33.3,0,33,0,32.7L0,.6C0,.2,.3,0,.6,0z" id="shape11"/>
+
+        </g>
+
+        <path transform="translate(37.34,15.86)" fill="url(#LLg1_89)" d="M.6,-0L14.7,-0C15,-0,15.3,.2,15.3,.6L15.3,2.3C15.3,2.6,15,2.8,14.7,2.8L.6,2.8C.2,2.8,-0,2.6,-0,2.3L-0,.6C-0,.2,.2,-0,.6,-0z" id="shape12"/>
+
+        <g transform="translate(76.66,26.96)">
+
+            <path fill="url(#LLg6_89)" d="M0,0L1.4,0L1.4,33.3L0,33.3L0,0z" id="shape13"/>
+
+            <path transform="translate(3.54,0)" fill="url(#LLg6_89)" d="M0,0L1.4,0L1.4,33.3L0,33.3L0,0z" id="shape14"/>
+
+            <path transform="translate(7.09,0)" fill="url(#LLg6_89)" d="M0,0L1.4,0L1.4,33.3L0,33.3L0,0z" id="shape15"/>
+
+            <path transform="translate(10.63,0)" fill="url(#LLg6_89)" d="M0,0L1.4,0L1.4,33.3L0,33.3L0,0z" id="shape16"/>
+
+        </g>
+
+        <g transform="translate(76.66,128.31)">
+
+            <path fill="url(#LLg6_89)" d="M0,0L1.4,0L1.4,33.3L0,33.3L0,0z" id="shape17"/>
+
+            <path transform="translate(3.54,0)" fill="url(#LLg6_89)" d="M0,0L1.4,0L1.4,33.3L0,33.3L0,0z" id="shape18"/>
+
+            <path transform="translate(7.09,0)" fill="url(#LLg6_89)" d="M0,0L1.4,0L1.4,33.3L0,33.3L0,0z" id="shape19"/>
+
+            <path transform="translate(10.63,0)" fill="url(#LLg6_89)" d="M0,0L1.4,0L1.4,33.3L0,33.3L0,0z" id="shape20"/>
+
+        </g>
+
+    </g>
+
+</svg>
+<rect width="92" height="172" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+</g>
+<g title="Heat Exchanger" parentid="" nativewidth="154" nativeheight="88" myscale=".5" transform="matrix(0.5 0 0 0.5 17 117)" id="process1522169649983">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Heat Exchanger" class="Heating" height="88" width="154" viewBox="0 0 154 88.0508" nativewidth="154" nativeheight="88" overflow="visible" myscale="1.0">
+
+    <defs>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg1_109">
+
+            <stop stop-color="#c4c4c4" offset="0"/>
+
+            <stop stop-color="#ffffff" offset="0.15"/>
+
+            <stop stop-color="#ffffff" offset="0.25"/>
+
+            <stop stop-color="#dfdfdf" offset="0.44"/>
+
+            <stop stop-color="#c7c7c7" offset="0.6"/>
+
+            <stop stop-color="#a8a8a8" offset="0.8"/>
+
+            <stop stop-color="#999999" offset="0.97"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg2_109">
+
+            <stop stop-color="#c4c4c4" offset="0"/>
+
+            <stop stop-color="#ffffff" offset="0.15"/>
+
+            <stop stop-color="#ffffff" offset="0.25"/>
+
+            <stop stop-color="#dfdfdf" offset="0.44"/>
+
+            <stop stop-color="#c7c7c7" offset="0.6"/>
+
+            <stop stop-color="#a8a8a8" offset="0.8"/>
+
+            <stop stop-color="#999999" offset="0.97"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg3_109">
+
+            <stop stop-color="#9d9d9d" offset="0"/>
+
+            <stop stop-color="#d0d1d1" offset="0.15"/>
+
+            <stop stop-color="#e5e6e6" offset="0.25"/>
+
+            <stop stop-color="#b3b4b4" offset="0.44"/>
+
+            <stop stop-color="#9fa0a0" offset="0.6"/>
+
+            <stop stop-color="#868787" offset="0.8"/>
+
+            <stop stop-color="#7a7b7b" offset="0.97"/>
+
+            <stop stop-color="#a3a4a4" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg4_109">
+
+            <stop stop-color="#c4c4c4" offset="0"/>
+
+            <stop stop-color="#ffffff" offset="0.15"/>
+
+            <stop stop-color="#ffffff" offset="0.25"/>
+
+            <stop stop-color="#dfdfdf" offset="0.44"/>
+
+            <stop stop-color="#c7c7c7" offset="0.6"/>
+
+            <stop stop-color="#a8a8a8" offset="0.8"/>
+
+            <stop stop-color="#999999" offset="0.97"/>
+
+            <stop stop-color="#cbcbcb" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg5_109">
+
+            <stop stop-color="#898a8a" offset="0"/>
+
+            <stop stop-color="#d0d1d1" offset="0.15"/>
+
+            <stop stop-color="#d6d6d6" offset="0.25"/>
+
+            <stop stop-color="#b3b4b4" offset="0.44"/>
+
+            <stop stop-color="#939494" offset="0.6"/>
+
+            <stop stop-color="#777777" offset="0.8"/>
+
+            <stop stop-color="#646565" offset="0.97"/>
+
+            <stop stop-color="#7e7e7e" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg6_109">
+
+            <stop stop-color="#ba9a70" offset="0"/>
+
+            <stop stop-color="#d1ad7f" offset="0.22"/>
+
+            <stop stop-color="#eedcc9" offset="0.57"/>
+
+            <stop stop-color="#e5c9a8" offset="0.84"/>
+
+            <stop stop-color="#c9a67a" offset="1"/>
+
+        </linearGradient>
+
+        <radialGradient fy="6" r="8.1" id="RRg1" cy="6" cx="0" gradientUnits="userSpaceOnUse" fx="0">
+
+            <stop stop-color="#b19a77" offset="0"/>
+
+            <stop stop-color="#bca37e" offset="0.64"/>
+
+            <stop stop-color="#c7ad86" offset="0.62"/>
+
+            <stop stop-color="#dfc297" offset="0.49"/>
+
+            <stop stop-color="#ffe8c9" offset="0.32"/>
+
+            <stop stop-color="#ffe6c5" offset="0.1"/>
+
+            <stop stop-color="#a48e6e" offset="1"/>
+
+        </radialGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg7_109">
+
+            <stop stop-color="#aeaead" offset="0"/>
+
+            <stop stop-color="#f8f8f7" offset="0.03"/>
+
+            <stop stop-color="#e3e3e2" offset="0.08"/>
+
+            <stop stop-color="#dfdfde" offset="0.64"/>
+
+            <stop stop-color="#dadad9" offset="0.95"/>
+
+            <stop stop-color="#a2a2a1" offset="1"/>
+
+        </linearGradient>
+
+    </defs>
+
+    <g transform="translate(1.01,1)">
+
+        <g transform="matrix(-1,0,0,-1,18.8,63.2)">
+
+            <g transform="matrix(0,1,-1,0,18.7,14.5)">
+
+                <path transform="translate(3.02,2.32)" id="shape1" fill="url(#LLg1_109)" d="M0,12.3L7.1,12.3L7.1,0L0,0L0,12.3z"/>
+
+                <path transform="translate(0.02,-0.02)" id="shape2" fill="url(#LLg1_109)" d="M.5,-0L12.5,-0C12.8,-0,13,.2,13,.4L13,2C13,2.3,12.8,2.4,12.5,2.4L.5,2.4C.2,2.4,-0,2.3,-0,2L-0,.4C-0,.2,.2,-0,.5,-0z"/>
+
+            </g>
+
+            <g transform="matrix(0,1,-1,0,14.6,-0)">
+
+                <path transform="translate(2.13,2.32)" id="shape3" fill="url(#LLg1_109)" d="M0,12.3L5,12.3L5,0L0,0L0,12.3z"/>
+
+                <path transform="translate(0.01,-0.02)" id="shape4" fill="url(#LLg1_109)" d="M.3,-0L8.8,-0C9,-0,9.2,.2,9.2,.4L9.2,2C9.2,2.3,9,2.4,8.8,2.4L.3,2.4C.1,2.4,-0,2.3,-0,2L-0,.4C-0,.2,.1,-0,.3,-0z"/>
+
+            </g>
+
+        </g>
+
+        <g transform="matrix(0,1,-1,0,152,35.7)">
+
+            <path transform="translate(3.02,2.32)" id="shape5" fill="url(#LLg1_109)" d="M0,12.3L7.1,12.3L7.1,0L0,0L0,12.3z"/>
+
+            <path transform="translate(0.02,-0.02)" id="shape6" fill="url(#LLg1_109)" d="M.5,-0L12.5,-0C12.8,-0,13,.2,13,.4L13,2C13,2.3,12.8,2.4,12.5,2.4L.5,2.4C.2,2.4,-0,2.3,-0,2L-0,.4C-0,.2,.2,-0,.5,-0z"/>
+
+        </g>
+
+        <g transform="matrix(0,1,-1,0,147.8,21.2)">
+
+            <path transform="translate(2.13,2.32)" id="shape7" fill="url(#LLg1_109)" d="M0,12.3L5,12.3L5,0L0,0L0,12.3z"/>
+
+            <path transform="translate(0.01,-0.02)" id="shape8" fill="url(#LLg1_109)" d="M.3,-0L8.8,-0C9,-0,9.2,.2,9.2,.4L9.2,2C9.2,2.3,9,2.4,8.8,2.4L.3,2.4C.1,2.4,-0,2.3,-0,2L-0,.4C-0,.2,.1,-0,.3,-0z"/>
+
+        </g>
+
+        <path transform="matrix(-1,0,0,1,137.5,13.6)" id="shape9" fill="url(#LLg2_109)" d="M0,28.6C0,12.8,3.8,0,8.4,0C8.4,.8,8.2,57.1,8.4,57.3C3.8,57.3,0,44.4,0,28.6z"/>
+
+        <path transform="translate(25.36,13.49)" id="shape10" fill="url(#LLg2_109)" d="M0,0L100.5,0L100.5,57.5L0,57.5L0,0z"/>
+
+        <path transform="translate(13.99,13.49)" id="shape11" fill="url(#LLg2_109)" d="M0,28.7C0,12.9,3.8,.1,8.5,.1C8.4,-3,8.7,57.7,8.5,57.5C3.8,57.5,0,44.6,0,28.7z"/>
+
+        <path transform="translate(20.92,10.74)" id="shape12" fill="url(#LLg3_109)" d="M.3,0L6.4,0C6.6,0,6.7,.3,6.7,.6L6.7,62.3C6.7,62.7,6.6,63,6.4,63L.3,63C.1,63,-0,62.7,-0,62.3L-0,.6C-0,.3,.1,0,.3,0z"/>
+
+        <path transform="translate(21.69,10.74)" id="shape13" fill="url(#LLg4_109)" d="M.2,0L4.9,0C5.1,0,5.1,.3,5.1,.6L5.1,62.3C5.1,62.7,5.1,63,4.9,63L.2,63C.1,63,-0,62.7,-0,62.3L-0,.6C-0,.3,.1,0,.2,0z"/>
+
+        <path transform="translate(123.66,10.74)" id="shape14" fill="url(#LLg3_109)" d="M.3,0L6.4,0C6.6,0,6.7,.3,6.7,.6L6.7,62.3C6.7,62.7,6.6,63,6.4,63L.3,63C.1,63,-0,62.7,-0,62.3L-0,.6C-0,.3,.1,0,.3,0z"/>
+
+        <path transform="translate(124.43,10.74)" id="shape15" fill="url(#LLg4_109)" d="M.2,0L4.9,0C5.1,0,5.1,.3,5.1,.6L5.1,62.3C5.1,62.7,5.1,63,4.9,63L.2,63C.1,63,-0,62.7,-0,62.3L-0,.6C-0,.3,.1,0,.2,0z"/>
+
+        <path transform="translate(30.48,16.32)" id="shape16" fill="url(#LLg5_109)" d="M0,0L90.2,0L90.2,51.8L0,51.8L0,0z"/>
+
+        <g transform="translate(56.68,21.16)">
+
+            <path transform="matrix(-1,0.05,0.05,1,3.7,-0.1)" id="shape17" fill="url(#LLg6_109)" d="M1.6,0C3,0,3.7,.7,3.7,1.5L3.7,41.8C3.7,42.6,3,43.3,2.1,43.3C.7,43.3,-0,42.6,-0,41.8L-0,1.5C-0,.7,.7,0,1.6,0z"/>
+
+            <path transform="matrix(-1,0.05,0.05,1,11.8,-0.1)" id="shape18" fill="url(#LLg6_109)" d="M1.6,0C3,0,3.7,.7,3.7,1.5L3.7,41.8C3.7,42.6,3,43.3,2.1,43.3C.7,43.3,-0,42.6,-0,41.8L-0,1.5C-0,.7,.7,0,1.6,0z"/>
+
+            <path transform="matrix(-1,0.05,0.05,1,19.7,-0.1)" id="shape19" fill="url(#LLg6_109)" d="M1.6,0C3,0,3.7,.7,3.7,1.5L3.7,41.8C3.7,42.6,3,43.3,2.1,43.3C.7,43.3,-0,42.6,-0,41.8L-0,1.5C-0,.7,.7,0,1.6,0z"/>
+
+            <path transform="matrix(-1,0.05,0.05,1,27.6,-0.1)" id="shape20" fill="url(#LLg6_109)" d="M1.6,0C3,0,3.7,.7,3.7,1.5L3.7,41.8C3.7,42.6,3,43.3,2.1,43.3C.7,43.3,-0,42.6,-0,41.8L-0,1.5C-0,.7,.7,0,1.6,0z"/>
+
+            <path transform="matrix(-1,0.05,0.05,1,36,-0.1)" id="shape21" fill="url(#LLg6_109)" d="M1.6,0C3,0,3.7,.7,3.7,1.5L3.7,41.8C3.7,42.6,3,43.3,2.1,43.3C.7,43.3,-0,42.6,-0,41.8L-0,1.5C-0,.7,.7,0,1.6,0z"/>
+
+            <path transform="matrix(-1,0.05,0.05,1,43.9,-0.1)" id="shape22" fill="url(#LLg6_109)" d="M1.6,0C3,0,3.7,.7,3.7,1.5L3.7,41.8C3.7,42.6,3,43.3,2.1,43.3C.7,43.3,-0,42.6,-0,41.8L-0,1.5C-0,.7,.7,0,1.6,0z"/>
+
+        </g>
+
+        <path transform="matrix(0.99,0.14,-0.14,0.99,104.1,25.6)" id="shape23" fill="url(#LLg6_109)" d="M1.5,0C3,0,3.7,.7,3.7,1.6L3.7,37.3C3.7,38.1,3,38.8,2.1,38.8C.7,38.8,0,38.1,0,37.3L0,1.6C0,.7,.7,0,1.5,0z"/>
+
+        <path transform="matrix(-0.99,0.17,0.17,0.99,47,20.6)" id="shape24" fill="url(#LLg6_109)" d="M1.6,0C3,0,3.7,.7,3.7,1.5L3.7,42.4C3.7,43.3,3,44,2.1,44C.7,44,-0,43.3,-0,42.4L-0,1.5C-0,.7,.7,0,1.6,0z"/>
+
+        <g transform="translate(50.64,20.7)">
+
+            <path transform="matrix(0.99,0.14,-0.14,0.99,6,-0.2)" id="shape25" fill="url(#LLg6_109)" d="M1.6,0C3,0,3.7,.7,3.7,1.5L3.7,42.4C3.7,43.3,3,44,2.1,44C.7,44,-0,43.3,-0,42.4L-0,1.5C-0,.7,.7,0,1.6,0z"/>
+
+            <path transform="matrix(0.99,0.14,-0.14,0.99,14.1,-0.2)" id="shape26" fill="url(#LLg6_109)" d="M1.6,0C3,0,3.7,.7,3.7,1.5L3.7,42.4C3.7,43.3,3,44,2.1,44C.7,44,-0,43.3,-0,42.4L-0,1.5C-0,.7,.7,0,1.6,0z"/>
+
+            <path transform="matrix(0.99,0.14,-0.14,0.99,22.2,-0.2)" id="shape27" fill="url(#LLg6_109)" d="M1.6,0C3,0,3.7,.7,3.7,1.5L3.7,42.4C3.7,43.3,3,44,2.1,44C.7,44,-0,43.3,-0,42.4L-0,1.5C-0,.7,.7,0,1.6,0z"/>
+
+            <path transform="matrix(0.99,0.14,-0.14,0.99,30.3,-0.2)" id="shape28" fill="url(#LLg6_109)" d="M1.6,0C3,0,3.7,.7,3.7,1.5L3.7,42.4C3.7,43.3,3,44,2.1,44C.7,44,-0,43.3,-0,42.4L-0,1.5C-0,.7,.7,0,1.6,0z"/>
+
+            <path transform="matrix(0.99,0.14,-0.14,0.99,38.3,-0.2)" id="shape29" fill="url(#LLg6_109)" d="M1.6,0C3,0,3.7,.7,3.7,1.5L3.7,42.4C3.7,43.3,3,44,2.1,44C.7,44,-0,43.3,-0,42.4L-0,1.5C-0,.7,.7,0,1.6,0z"/>
+
+            <path transform="matrix(0.99,0.14,-0.14,0.99,46.4,-0.2)" id="shape30" fill="url(#LLg6_109)" d="M1.6,0C3,0,3.7,.7,3.7,1.5L3.7,42.4C3.7,43.3,3,44,2.1,44C.7,44,-0,43.3,-0,42.4L-0,1.5C-0,.7,.7,0,1.6,0z"/>
+
+        </g>
+
+        <path transform="translate(43.34,20.71)" id="shape31" fill="url(#LLg6_109)" d="M1.6,0C3,0,3.7,.7,3.7,1.5L3.7,49.9C3.7,50.7,3,51.4,2.1,51.4C.7,51.4,-0,50.7,-0,49.9L-0,1.5C-0,.7,.7,0,1.6,0z"/>
+
+        <g transform="translate(41.22,67.96)">
+
+            <path transform="translate(2.11,-0)" id="shape32" fill="url(#LLg6_109)" d="M0,0L3.7,0L3.7,17.2L0,17.2L0,0z"/>
+
+            <path transform="translate(0,17.09)" id="shape33" fill="url(#LLg6_109)" d="M.5,0L7.4,0C7.7,0,7.9,.2,7.9,.5C7.9,.7,7.7,.9,7.4,.9L.5,.9C.2,.9,-0,.7,-0,.5C-0,.2,.2,0,.5,0z"/>
+
+            <path transform="translate(2.11,0.21)" id="shape34" fill="#ba9a70" d="M0,0L3.7,0L3.7,2.8L0,2.8L0,0z"/>
+
+        </g>
+
+        <g transform="translate(102.56,68.16)">
+
+            <path transform="translate(2.12,0.24)" id="shape35" fill="url(#LLg6_109)" d="M0,0L3.7,0L3.7,16.7L0,16.7L0,0z"/>
+
+            <path transform="translate(0.01,16.89)" id="shape36" fill="url(#LLg6_109)" d="M.5,0L7.4,0C7.7,0,7.9,.2,7.9,.5C7.9,.7,7.7,.9,7.4,.9L.5,.9C.2,.9,-0,.7,-0,.5C-0,.2,.2,0,.5,0z"/>
+
+            <path transform="translate(2.12,-0)" id="shape37" fill="#ba9a70" d="M0,0L3.7,0L3.7,2.8L0,2.8L0,0z"/>
+
+        </g>
+
+        <path transform="matrix(0,-1,1,0,107,27.6)" id="shape38" fill="url(#LLg6_109)" d="M1.6,0C3,0,3.7,.7,3.7,1.6L3.7,13.7L0,13.7L-0,1.6C-0,.7,.7,0,1.6,0z"/>
+
+        <path transform="matrix(0.99,0.14,-0.14,0.99,103.7,28.2)" id="shape39" fill="url(#LLg6_109)" d="M1.6,0C3,0,3.7,.7,3.7,1.5L3.6,34.6C3.6,35.5,3,36.2,2.1,36.2C.7,36.2,-0,35.5,-0,34.6L0,1.5C0,.7,.7,0,1.6,0z"/>
+
+        <path transform="matrix(-1,0,0,1,108.9,23.9)" id="shape40" fill="url(#RRg1)" d="M0,0C0,0,2.9,.1,4.3,1.7C5.7,3.3,5.5,5.9,5.5,5.9L2.8,5.9L1.7,5.9C1.7,5.9,1.7,4.4,0,3.8L0,0z"/>
+
+        <g transform="translate(53.93,0)">
+
+            <path transform="translate(0,0)" id="shape41" fill="url(#LLg7_109)" d="M0,13.6L15.4,13.6L15.4,0L11.7,0L0,10.1L0,13.6z"/>
+
+            <path transform="translate(15.45,-0)" id="shape42" fill="url(#LLg7_109)" d="M0,0L1.5,0L1.5,9.2L0,9.2L0,0z"/>
+
+        </g>
+
+        <g transform="matrix(1,0,0,-1,53.9,84.5)">
+
+            <path transform="translate(0,0)" id="shape43" fill="url(#LLg7_109)" d="M0,13.6L15.4,13.6L15.4,0L11.7,0L0,10.1L0,13.6z"/>
+
+            <path transform="translate(15.45,-0)" id="shape44" fill="url(#LLg7_109)" d="M0,0L1.5,0L1.5,9.2L0,9.2L0,0z"/>
+
+        </g>
+
+    </g>
+
+</svg>
+<rect width="154" height="88" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+</g>
+<g title="Condenser" parentid="" nativewidth="172" nativeheight="82" myscale=".5" transform="matrix(0.5 0 0 0.5 118 112)" id="process1522169665221">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Condenser" class="Heating" height="82" width="172" viewBox="0 0 172 81.9723" nativewidth="172" nativeheight="82" overflow="visible" myscale="1.0">
+
+    <defs>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg1_127">
+
+            <stop stop-color="#9eb4bd" offset="0"/>
+
+            <stop stop-color="#d2ecf7" offset="0.15"/>
+
+            <stop stop-color="#e6f4fa" offset="0.25"/>
+
+            <stop stop-color="#b5ced7" offset="0.44"/>
+
+            <stop stop-color="#a1b7c0" offset="0.6"/>
+
+            <stop stop-color="#879aa2" offset="0.8"/>
+
+            <stop stop-color="#7b8d94" offset="0.97"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg2_127">
+
+            <stop stop-color="#9eb4bd" offset="0"/>
+
+            <stop stop-color="#d2ecf7" offset="0.15"/>
+
+            <stop stop-color="#e6f4fa" offset="0.25"/>
+
+            <stop stop-color="#b5ced7" offset="0.44"/>
+
+            <stop stop-color="#a1b7c0" offset="0.6"/>
+
+            <stop stop-color="#879aa2" offset="0.8"/>
+
+            <stop stop-color="#7b8d94" offset="0.97"/>
+
+            <stop stop-color="#a5bbc4" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg3_127">
+
+            <stop stop-color="#6895b4" offset="0"/>
+
+            <stop stop-color="#94c7ec" offset="0.15"/>
+
+            <stop stop-color="#cae1f4" offset="0.25"/>
+
+            <stop stop-color="#77aace" offset="0.44"/>
+
+            <stop stop-color="#6997b7" offset="0.6"/>
+
+            <stop stop-color="#587f9a" offset="0.8"/>
+
+            <stop stop-color="#50748d" offset="0.97"/>
+
+            <stop stop-color="#6c9bbb" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg4_127">
+
+            <stop stop-color="#6a8892" offset="0"/>
+
+            <stop stop-color="#a8cfdc" offset="0.15"/>
+
+            <stop stop-color="#b3d4e0" offset="0.25"/>
+
+            <stop stop-color="#8bb1bf" offset="0.44"/>
+
+            <stop stop-color="#72929d" offset="0.6"/>
+
+            <stop stop-color="#5b757e" offset="0.8"/>
+
+            <stop stop-color="#4d636b" offset="0.97"/>
+
+            <stop stop-color="#617c86" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="0%" x2="0%" y1="100%" id="LLg5_127">
+
+            <stop stop-color="#ba9a70" offset="0"/>
+
+            <stop stop-color="#d1ad7f" offset="0.22"/>
+
+            <stop stop-color="#eedcc9" offset="0.57"/>
+
+            <stop stop-color="#e5c9a8" offset="0.84"/>
+
+            <stop stop-color="#c9a67a" offset="1"/>
+
+        </linearGradient>
+
+    </defs>
+
+    <g transform="translate(1.03,1)">
+
+        <g transform="translate(0,19.91)">
+
+            <path transform="matrix(-1,0,0,1,170,2.7)" id="shape1" fill="url(#LLg1_127)" d="M0,27.3C0,12.2,4.6,0,10.2,0C10.2,.8,9.9,54.4,10.2,54.6C4.6,54.6,0,42.3,0,27.3z"/>
+
+            <path transform="translate(9.78,2.64)" id="shape2" fill="url(#LLg1_127)" d="M0,0L146.1,0L146.1,54.8L0,54.8L0,0z"/>
+
+            <path transform="translate(-0.03,2.64)" id="shape3" fill="url(#LLg1_127)" d="M0,27.4C0,12.3,4.6,.1,10.2,.1C10.2,-2.8,10.6,55,10.2,54.8C4.6,54.8,0,42.5,0,27.4z"/>
+
+            <g transform="translate(4.52,0.96)">
+
+                <path transform="translate(-0.01,10.42)" id="shape4" fill="url(#LLg2_127)" d="M.3,0L3.7,0C3.9,0,4,.2,4,.5L4,5.4C4,5.7,3.9,6,3.7,6L.3,6C.1,6,0,5.7,0,5.4L0,.5C0,.2,.1,0,.3,0z"/>
+
+                <path transform="translate(-0.01,20.86)" id="shape5" fill="url(#LLg2_127)" d="M.3,0L3.7,0C3.9,0,4,.2,4,.5L4,5.4C4,5.7,3.9,6,3.7,6L.3,6C.1,6,0,5.7,0,5.4L0,.5C0,.2,.1,0,.3,0z"/>
+
+                <path transform="translate(-0.01,31.29)" id="shape6" fill="url(#LLg2_127)" d="M.3,0L3.7,0C3.9,0,4,.2,4,.5L4,5.4C4,5.7,3.9,6,3.7,6L.3,6C.1,6,0,5.7,0,5.4L0,.5C0,.2,.1,0,.3,0z"/>
+
+                <path transform="translate(-0.01,41.72)" id="shape7" fill="url(#LLg2_127)" d="M.3,0L3.7,0C3.9,0,4,.2,4,.5L4,5.4C4,5.7,3.9,6,3.7,6L.3,6C.1,6,0,5.7,0,5.4L0,.5C0,.2,.1,0,.3,0z"/>
+
+                <path transform="translate(-0.01,52.15)" id="shape8" fill="url(#LLg2_127)" d="M.3,0L3.7,0C3.9,0,4,.2,4,.5L4,5.4C4,5.7,3.9,6,3.7,6L.3,6C.1,6,0,5.7,0,5.4L0,.5C0,.2,.1,0,.3,0z"/>
+
+                <path transform="translate(-0.01,-0.01)" id="shape9" fill="url(#LLg2_127)" d="M.3,0L3.7,0C3.9,0,4,.2,4,.5L4,5.4C4,5.7,3.9,6,3.7,6L.3,6C.1,6,0,5.7,0,5.4L0,.5C0,.2,.1,0,.3,0z"/>
+
+            </g>
+
+            <path transform="translate(8.37,0)" id="shape10" fill="url(#LLg3_127)" d="M.3,0L7.8,0C8,0,8.1,.3,8.1,.6L8.1,59.4C8.1,59.8,8,60.1,7.8,60.1L.3,60.1C.1,60.1,-0,59.8,-0,59.4L-0,.6C-0,.3,.1,0,.3,0z"/>
+
+            <path transform="translate(9.3,0)" id="shape11" fill="url(#LLg2_127)" d="M.2,0L6,0C6.1,0,6.2,.3,6.2,.6L6.2,59.4C6.2,59.8,6.1,60.1,6,60.1L.2,60.1C.1,60.1,-0,59.8,-0,59.4L-0,.6C-0,.3,.1,0,.2,0z"/>
+
+            <g transform="translate(160.81,0.96)">
+
+                <path transform="translate(-0.01,10.42)" id="shape12" fill="url(#LLg2_127)" d="M.3,0L3.7,0C3.9,0,4,.2,4,.5L4,5.4C4,5.7,3.9,6,3.7,6L.3,6C.1,6,0,5.7,0,5.4L0,.5C0,.2,.1,0,.3,0z"/>
+
+                <path transform="translate(-0.01,20.86)" id="shape13" fill="url(#LLg2_127)" d="M.3,0L3.7,0C3.9,0,4,.2,4,.5L4,5.4C4,5.7,3.9,6,3.7,6L.3,6C.1,6,0,5.7,0,5.4L0,.5C0,.2,.1,0,.3,0z"/>
+
+                <path transform="translate(-0.01,31.29)" id="shape14" fill="url(#LLg2_127)" d="M.3,0L3.7,0C3.9,0,4,.2,4,.5L4,5.4C4,5.7,3.9,6,3.7,6L.3,6C.1,6,0,5.7,0,5.4L0,.5C0,.2,.1,0,.3,0z"/>
+
+                <path transform="translate(-0.01,41.72)" id="shape15" fill="url(#LLg2_127)" d="M.3,0L3.7,0C3.9,0,4,.2,4,.5L4,5.4C4,5.7,3.9,6,3.7,6L.3,6C.1,6,0,5.7,0,5.4L0,.5C0,.2,.1,0,.3,0z"/>
+
+                <path transform="translate(-0.01,52.15)" id="shape16" fill="url(#LLg2_127)" d="M.3,0L3.7,0C3.9,0,4,.2,4,.5L4,5.4C4,5.7,3.9,6,3.7,6L.3,6C.1,6,0,5.7,0,5.4L0,.5C0,.2,.1,0,.3,0z"/>
+
+                <path transform="translate(-0.01,-0.01)" id="shape17" fill="url(#LLg2_127)" d="M.3,0L3.7,0C3.9,0,4,.2,4,.5L4,5.4C4,5.7,3.9,6,3.7,6L.3,6C.1,6,0,5.7,0,5.4L0,.5C0,.2,.1,0,.3,0z"/>
+
+            </g>
+
+            <path transform="translate(153.22,0)" id="shape18" fill="url(#LLg3_127)" d="M.3,0L7.8,0C8,0,8.1,.3,8.1,.6L8.1,59.4C8.1,59.8,8,60.1,7.8,60.1L.3,60.1C.1,60.1,-0,59.8,-0,59.4L-0,.6C-0,.3,.1,0,.3,0z"/>
+
+            <path transform="translate(154.15,0)" id="shape19" fill="url(#LLg2_127)" d="M.2,0L6,0C6.1,0,6.2,.3,6.2,.6L6.2,59.4C6.2,59.8,6.1,60.1,6,60.1L.2,60.1C.1,60.1,-0,59.8,-0,59.4L-0,.6C-0,.3,.1,0,.2,0z"/>
+
+        </g>
+
+        <path transform="translate(44.07,25.24)" id="shape20" fill="url(#LLg4_127)" d="M0,0L81.9,0L81.9,49.4L0,49.4L0,0z"/>
+
+        <g transform="translate(61.04,-0)">
+
+            <path transform="matrix(0,-1,1,0,35.6,72.4)" id="shape21" fill="url(#LLg5_127)" d="M3.4,12.3C3.4,12.3,0,11.9,0,6.1C0,.3,3.4,0,3.4,0L3.4,2.9C3.4,2.9,2,3.1,2,6.1C2,9.1,3.4,9.3,3.4,9.3L3.4,12.3z"/>
+
+            <path transform="matrix(0,-1,1,0,18,72.4)" id="shape22" fill="url(#LLg5_127)" d="M3.4,11.6C3.4,11.6,0,12.1,0,6C0,-0.1,3.7,0,3.7,0L3.4,2.9C3.4,2.9,2.2,2.9,2.2,5.9C2.2,8.9,3.4,8.7,3.4,8.7L3.4,11.6z"/>
+
+            <path transform="matrix(0,-1,1,0,-0,72.4)" id="shape23" fill="url(#LLg5_127)" d="M3.4,11.9C3.4,11.9,0,11.7,0,5.9C-0.2,.1,3.4,0,3.4,0L3.7,2.9C3.7,2.9,2.2,3,2.1,6C2,9,3.4,9,3.4,9L3.4,11.9z"/>
+
+            <path transform="matrix(0,-1,1,0,45,69.1)" id="shape24" fill="url(#LLg5_127)" d="M69.1,2.8L0,2.8L0,0L69.1,0L69.1,2.8z"/>
+
+            <path transform="matrix(0,-1,1,0,0.1,69.1)" id="shape25" fill="url(#LLg5_127)" d="M69.1,2.6L0,2.6L0,0L69.1,0L69.1,2.6z"/>
+
+            <g transform="translate(9.12,31.8)">
+
+                <path transform="matrix(0,-1,1,0,26.6,37.3)" id="shape26" fill="url(#LLg5_127)" d="M37.3,2.9L0,2.9L0,0L37.3,0L37.3,2.9z"/>
+
+                <path transform="matrix(0,-1,1,0,17.6,37.3)" id="shape27" fill="url(#LLg5_127)" d="M37.2,2.8L0,2.8L0,0L37.2,0L37.2,2.8z"/>
+
+                <path transform="matrix(0,-1,1,0,9,37.3)" id="shape28" fill="url(#LLg5_127)" d="M37.3,2.9L0,2.9L0,0L37.3,0L37.3,2.9z"/>
+
+                <path transform="matrix(0,-1,1,0,-0,37.3)" id="shape29" fill="url(#LLg5_127)" d="M37.2,2.6L0,2.6L0,0L37.2,0L37.2,2.6z"/>
+
+            </g>
+
+            <path transform="matrix(0,-1,1,0,26.6,32.2)" id="shape30" fill="url(#LLg5_127)" d="M-0,9C-0,9,1.3,8.7,1.3,6C1.3,3.2,-0,2.9,-0,2.9L-0,0C-0,0,3.5,-0.2,3.5,5.8C3.5,11.9,-0,11.9,-0,11.9L-0,9z"/>
+
+            <path transform="matrix(0,-1,1,0,9,32.2)" id="shape31" fill="url(#LLg5_127)" d="M-0,9C-0,9,1.4,8.9,1.4,6C1.4,3.1,-0,2.9,-0,2.9L-0,0C-0,0,3.5,0,3.5,5.9C3.5,11.7,-0,11.9,-0,11.9L-0,9z"/>
+
+        </g>
+
+        <path transform="matrix(0,-1,1,0,61.2,25.4)" id="shape32" fill="#81aab9" stroke="#81aab9" stroke-width="0.25" d="M2.8,2.6L0,2.6L0,0L2.8,0L2.8,2.6z"/>
+
+        <path transform="matrix(0,-1,1,0,106.2,25.4)" id="shape33" fill="#81aab9" stroke="#81aab9" stroke-width="0.25" d="M2.8,2.6L0,2.6L0,0L2.8,0L2.8,2.6z"/>
+
+    </g>
+
+</svg>
+<rect width="172" height="82" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+</g>
+<g title="Cooling Tower" parentid="" nativewidth="116" nativeheight="154" myscale=".5" transform="matrix(0.5 0 0 0.5 219 82)" id="process1522169674449">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Cooling Tower" class="Cooling" height="154" width="116" viewBox="0 0 116 153.955" nativewidth="116" nativeheight="154" overflow="visible" myscale="1.0">
+
+    <defs>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg1_143">
+
+            <stop stop-color="#c4c4c4" offset="0"/>
+
+            <stop stop-color="#ffffff" offset="0.33"/>
+
+            <stop stop-color="#ffffff" offset="0.39"/>
+
+            <stop stop-color="#dfdfdf" offset="0.51"/>
+
+            <stop stop-color="#a8a8a8" offset="0.8"/>
+
+            <stop stop-color="#999999" offset="0.97"/>
+
+            <stop stop-color="#cbcbcb" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg2_143">
+
+            <stop stop-color="#c2b39f" offset="0"/>
+
+            <stop stop-color="#fdead3" offset="0.33"/>
+
+            <stop stop-color="#fef3e7" offset="0.39"/>
+
+            <stop stop-color="#deccb6" offset="0.51"/>
+
+            <stop stop-color="#a69988" offset="0.8"/>
+
+            <stop stop-color="#988c7c" offset="0.97"/>
+
+            <stop stop-color="#cabaa5" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg3_143">
+
+            <stop stop-color="#9aa29c" offset="0"/>
+
+            <stop stop-color="#ced7d0" offset="0.15"/>
+
+            <stop stop-color="#e4e9e5" offset="0.25"/>
+
+            <stop stop-color="#b1b9b2" offset="0.44"/>
+
+            <stop stop-color="#9da59e" offset="0.6"/>
+
+            <stop stop-color="#848b85" offset="0.8"/>
+
+            <stop stop-color="#787f7a" offset="0.97"/>
+
+            <stop stop-color="#a1a9a2" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg4_143">
+
+            <stop stop-color="#b6b6b6" offset="0"/>
+
+            <stop stop-color="#efefef" offset="0.15"/>
+
+            <stop stop-color="#f6f6f6" offset="0.25"/>
+
+            <stop stop-color="#d0d0d0" offset="0.44"/>
+
+            <stop stop-color="#b9b9b9" offset="0.6"/>
+
+            <stop stop-color="#9c9c9c" offset="0.8"/>
+
+            <stop stop-color="#8f8f8f" offset="0.97"/>
+
+            <stop stop-color="#bebebe" offset="1"/>
+
+        </linearGradient>
+
+    </defs>
+
+    <g transform="translate(1,1)">
+
+        <path transform="translate(0,4.24)" id="shape1" fill="url(#LLg1_143)" d="M22.9,0L91.1,0C91.1,0,75.8,83.2,114,147.7L0,147.7C0,147.7,31.5,59.4,22.9,0z"/>
+
+        <path transform="translate(22.82,1.17)" id="shape2" fill="url(#LLg2_143)" d="M1.2,-0L67.1,-0C67.8,-0,68.4,.5,68.4,1.2C68.4,2.5,67.8,3.1,67.1,3.1L1.2,3.1C.5,3.1,0,2.5,0,1.8C0,.5,.5,-0,1.2,-0z"/>
+
+        <path transform="translate(0,141.61)" id="shape3" fill="url(#LLg2_143)" d="M0,10.3L114,10.3C114,10.3,109.4,2.7,108.3,0L3.4,0C3.4,0,1,8.4,0,10.3z"/>
+
+        <path transform="translate(24.26,-0)" id="shape4" fill="url(#LLg3_143)" d="M0,4.4L2.5,4.4L2.5,0L0,0L0,4.4z"/>
+
+        <path transform="translate(31.68,0)" id="shape5" fill="url(#LLg3_143)" d="M0,4.4L2.5,4.4L2.5,0L0,0L0,4.4z"/>
+
+        <path transform="translate(37.55,0)" id="shape6" fill="url(#LLg3_143)" d="M0,4.4L2.5,4.4L2.5,0L0,0L0,4.4z"/>
+
+        <path transform="translate(45.32,0)" id="shape7" fill="url(#LLg3_143)" d="M0,4.4L2.5,4.4L2.5,0L0,0L0,4.4z"/>
+
+        <path transform="translate(52.18,0)" id="shape8" fill="url(#LLg3_143)" d="M0,4.4L2.5,4.4L2.5,0L0,0L0,4.4z"/>
+
+        <path transform="translate(59.17,0)" id="shape9" fill="url(#LLg3_143)" d="M0,4.4L2.5,4.4L2.5,0L0,0L0,4.4z"/>
+
+        <path transform="translate(66.15,0)" id="shape10" fill="url(#LLg3_143)" d="M0,4.4L2.5,4.4L2.5,0L0,0L0,4.4z"/>
+
+        <path transform="translate(73.13,0)" id="shape11" fill="url(#LLg3_143)" d="M0,4.4L2.5,4.4L2.5,0L0,0L0,4.4z"/>
+
+        <path transform="translate(80.11,0)" id="shape12" fill="url(#LLg3_143)" d="M0,4.4L2.5,4.4L2.5,0L0,0L0,4.4z"/>
+
+        <path transform="translate(87.09,0)" id="shape13" fill="url(#LLg3_143)" d="M0,4.4L2.5,4.4L2.5,0L0,0L0,4.4z"/>
+
+        <g transform="translate(32.1,4.37)">
+
+            <path transform="translate(31.28,0)" id="shape14" fill="url(#LLg4_143)" d="M0,0L2.9,0L2.9,137.3L0,137.3L0,0z"/>
+
+            <path transform="translate(15.64,0)" id="shape15" fill="url(#LLg4_143)" d="M0,0L2.9,0L2.9,137.3L0,137.3L0,0z"/>
+
+            <path transform="translate(0,0)" id="shape16" fill="url(#LLg4_143)" d="M0,0L2.9,0L2.9,137.3L0,137.3L0,0z"/>
+
+            <path transform="translate(46.92,0)" id="shape17" fill="url(#LLg4_143)" d="M0,0L2.9,0L2.9,137.3L0,137.3L0,0z"/>
+
+        </g>
+
+    </g>
+
+</svg>
+<rect width="116" height="154" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+</g>
+<g title="Yellow Pump" parentid="" nativewidth="106" nativeheight="134" myscale=".5" transform="matrix(0.5 0 0 0.5 286 97)" id="process1522169703731">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Yellow Pump" class="Pumps" height="134" width="106" viewBox="0 0 106 133.993" nativewidth="106" nativeheight="134" overflow="visible" myscale="1.0">
+
+    <defs>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg1_231">
+
+            <stop stop-color="#b59d79" offset="0"/>
+
+            <stop stop-color="#ffe5c1" offset="0.03"/>
+
+            <stop stop-color="#ebcc9f" offset="0.08"/>
+
+            <stop stop-color="#e7c99c" offset="0.64"/>
+
+            <stop stop-color="#e2c499" offset="0.95"/>
+
+            <stop stop-color="#a89170" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="LLg2_231">
+
+            <stop stop-color="#d6ba90" offset="0"/>
+
+            <stop stop-color="#f0d1a2" offset="0.22"/>
+
+            <stop stop-color="#ffeed7" offset="0.57"/>
+
+            <stop stop-color="#ffe5c1" offset="0.84"/>
+
+            <stop stop-color="#e7c99c" offset="1"/>
+
+        </linearGradient>
+
+        <radialGradient fy="52" r="73.7" id="RRg1" cy="52" cx="52" gradientUnits="userSpaceOnUse" fx="52">
+
+            <stop stop-color="#e5c79b" offset="0"/>
+
+            <stop stop-color="#e5c79b" offset="0.91"/>
+
+            <stop stop-color="#ffe8c9" offset="0.74"/>
+
+            <stop stop-color="#f3d4a5" offset="0.54"/>
+
+        </radialGradient>
+
+        <linearGradient x1="45" y2="49" x2="2" y1="-2" id="LLg3_231" gradientUnits="userSpaceOnUse">
+
+            <stop stop-color="#bda47f" offset="0"/>
+
+            <stop stop-color="#ffe0b3" offset="0.15"/>
+
+            <stop stop-color="#dfc297" offset="0.52"/>
+
+            <stop stop-color="#c7ad86" offset="0.69"/>
+
+            <stop stop-color="#bca37e" offset="0.8"/>
+
+            <stop stop-color="#b19a77" offset="0.92"/>
+
+            <stop stop-color="#cbb189" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="37" y2="41" x2="2" y1="-2" id="LLg4_231" gradientUnits="userSpaceOnUse">
+
+            <stop stop-color="#a5854c" offset="0"/>
+
+            <stop stop-color="#e1ba79" offset="0.15"/>
+
+            <stop stop-color="#c39d5b" offset="0.52"/>
+
+            <stop stop-color="#ae8b50" offset="0.69"/>
+
+            <stop stop-color="#a4834b" offset="0.8"/>
+
+            <stop stop-color="#9a7c47" offset="0.92"/>
+
+            <stop stop-color="#b28f52" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="0%" x2="100%" y1="0%" id="LLg5_231">
+
+            <stop stop-color="#bb9c6e" offset="0"/>
+
+            <stop stop-color="#d2b07d" offset="0.22"/>
+
+            <stop stop-color="#eeddc8" offset="0.57"/>
+
+            <stop stop-color="#e6cba7" offset="0.84"/>
+
+            <stop stop-color="#caa978" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="1" y2="-1" x2="5" y1="7" id="LLg6_231" gradientUnits="userSpaceOnUse">
+
+            <stop stop-color="#c4aa84" offset="0"/>
+
+            <stop stop-color="#ffe0b3" offset="0.15"/>
+
+            <stop stop-color="#ffeed7" offset="0.25"/>
+
+            <stop stop-color="#dfc297" offset="0.44"/>
+
+            <stop stop-color="#c7ad86" offset="0.6"/>
+
+            <stop stop-color="#a89170" offset="0.8"/>
+
+            <stop stop-color="#998566" offset="0.97"/>
+
+        </linearGradient>
+
+    </defs>
+
+    <g transform="translate(1,1.02)">
+
+        <g transform="translate(3.62,118.38)">
+
+            <path transform="translate(-0.01,-0)" id="shape1" fill="url(#LLg1_231)" d="M.3,0L28.1,0C28.3,0,28.5,.2,28.5,.4L28.5,13.2C28.5,13.4,28.3,13.6,28.1,13.6L.3,13.6C.1,13.6,0,13.4,0,13.2L0,.4C0,.2,.1,0,.3,0z"/>
+
+            <path transform="translate(68.27,-0)" id="shape2" fill="url(#LLg1_231)" d="M.3,0L28.1,0C28.3,0,28.5,.2,28.5,.4L28.5,13.2C28.5,13.4,28.3,13.6,28.1,13.6L.3,13.6C.1,13.6,0,13.4,0,13.2L0,.4C0,.2,.1,0,.3,0z"/>
+
+        </g>
+
+        <path transform="translate(33.08,4.1)" id="shape3" fill="url(#LLg2_231)" d="M0,23L37.8,23L37.8,0L0,0L0,23z"/>
+
+        <path transform="translate(0,20.72)" id="shape4" fill="url(#RRg1)" stroke="#d4d6db" stroke-width="0.25" d="M0,52.2C0,23.4,23.3,0,52,0C80.7,0,104,23.4,104,52.2C104,81.1,80.7,104.4,52,104.4C23.3,104.4,0,81.1,0,52.2z"/>
+
+        <path transform="translate(12.1,32.85)" id="shape5" fill="#dbb57b" stroke="#dbb57b" d="M0,40.1C0,17.9,17.9,0,39.9,0C61.9,0,79.8,17.9,79.8,40.1C79.8,62.2,61.9,80.2,39.9,80.2C17.9,80.2,0,62.2,0,40.1z"/>
+
+        <path transform="translate(13.43,34.19)" id="shape6" fill="#ffdead" stroke="#ffdead" d="M0,38.7C0,17.3,17.3,0,38.6,0C59.9,0,77.1,17.3,77.1,38.7C77.1,60.1,59.9,77.5,38.6,77.5C17.3,77.5,0,60.1,0,38.7z"/>
+
+        <path transform="translate(28.67,49.51)" id="shape7" fill="url(#LLg3_231)" d="M0,23.4C0,10.5,10.4,0,23.3,0C36.2,0,46.7,10.5,46.7,23.4C46.7,36.4,36.2,46.9,23.3,46.9C10.4,46.9,0,36.4,0,23.4z"/>
+
+        <path transform="translate(32.51,53.36)" id="shape8" fill="url(#LLg4_231)" d="M0,19.6C0,8.8,8.7,0,19.5,0C30.2,0,39,8.8,39,19.6C39,30.4,30.2,39.2,19.5,39.2C8.7,39.2,0,30.4,0,19.6z"/>
+
+        <path transform="translate(30.58,-0.02)" id="shape9" fill="url(#LLg2_231)" d="M1.1,0L41.7,0C42.3,0,42.8,.5,42.8,1.1L42.8,6.8C42.8,7.4,42.3,7.9,41.7,7.9L1.1,7.9C.5,7.9,0,7.4,0,6.8L0,1.1C0,.5,.5,0,1.1,0z"/>
+
+        <path transform="translate(33.08,7.93)" id="shape10" fill="url(#LLg5_231)" d="M0,2.3L37.8,2.3L37.8,0L0,0L0,2.3z"/>
+
+        <path transform="translate(26.07,120.76)" id="shape11" fill="url(#LLg1_231)" d="M.5,0L51.3,0C51.6,0,51.9,.1,51.9,.2L51.9,8.6C51.9,8.7,51.6,8.9,51.3,8.9L.5,8.9C.2,8.9,0,8.7,0,8.6L0,.2C0,.1,.2,0,.5,0z"/>
+
+        <g transform="translate(17.37,38.11)">
+
+            <path transform="matrix(0,1,1,0,31.5,0)" id="shape12" fill="url(#LLg6_231)" d="M-0.1,3.2C-0.1,1.4,1.4,-0,3.1,-0C4.9,-0,6.3,1.4,6.3,3.2C6.3,4.9,4.9,6.3,3.1,6.3C1.4,6.3,-0.1,4.9,-0.1,3.2z"/>
+
+            <path transform="matrix(0,1,1,0,51.5,8.1)" id="shape13" fill="url(#LLg6_231)" d="M-0.1,3.2C-0.1,1.4,1.4,-0,3.1,-0C4.9,-0,6.3,1.4,6.3,3.2C6.3,4.9,4.9,6.3,3.1,6.3C1.4,6.3,-0.1,4.9,-0.1,3.2z"/>
+
+            <path transform="matrix(0,1,1,0,10.3,9.1)" id="shape14" fill="url(#LLg6_231)" d="M-0.1,3.2C-0.1,1.4,1.4,-0,3.1,-0C4.9,-0,6.3,1.4,6.3,3.2C6.3,4.9,4.9,6.3,3.1,6.3C1.4,6.3,-0.1,4.9,-0.1,3.2z"/>
+
+            <path transform="matrix(0,1,1,0,-0,31.5)" id="shape15" fill="url(#LLg6_231)" d="M-0.1,3.2C-0.1,1.4,1.4,-0,3.1,-0C4.9,-0,6.3,1.4,6.3,3.2C6.3,4.9,4.9,6.3,3.1,6.3C1.4,6.3,-0.1,4.9,-0.1,3.2z"/>
+
+            <path transform="matrix(0,1,1,0,10.3,53.8)" id="shape16" fill="url(#LLg6_231)" d="M-0.1,3.2C-0.1,1.4,1.4,-0,3.1,-0C4.9,-0,6.3,1.4,6.3,3.2C6.3,4.9,4.9,6.3,3.1,6.3C1.4,6.3,-0.1,4.9,-0.1,3.2z"/>
+
+            <path transform="matrix(0,1,1,0,31.5,63.2)" id="shape17" fill="url(#LLg6_231)" d="M-0.1,3.2C-0.1,1.4,1.4,-0,3.1,-0C4.9,-0,6.3,1.4,6.3,3.2C6.3,4.9,4.9,6.3,3.1,6.3C1.4,6.3,-0.1,4.9,-0.1,3.2z"/>
+
+            <path transform="matrix(0,1,1,0,62.9,31.5)" id="shape18" fill="url(#LLg6_231)" d="M-0.1,3.2C-0.1,1.4,1.4,-0,3.1,-0C4.9,-0,6.3,1.4,6.3,3.2C6.3,4.9,4.9,6.3,3.1,6.3C1.4,6.3,-0.1,4.9,-0.1,3.2z"/>
+
+            <path transform="matrix(0,1,1,0,51.5,54.5)" id="shape19" fill="url(#LLg6_231)" d="M-0.1,3.2C-0.1,1.4,1.4,-0,3.1,-0C4.9,-0,6.3,1.4,6.3,3.2C6.3,4.9,4.9,6.3,3.1,6.3C1.4,6.3,-0.1,4.9,-0.1,3.2z"/>
+
+        </g>
+
+    </g>
+
+</svg>
+<rect width="106" height="134" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+</g>
+<g title="Glass-Lined Tank" parentid="" nativewidth="100" nativeheight="154" myscale=".5" transform="matrix(0.5 0 0 0.5 26 169)" id="process1522169715131">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Glass-Lined Tank" class="Tanks" height="154" width="100" viewBox="0 0 100 154" nativewidth="100" nativeheight="154" overflow="visible" myscale="1.0">
+
+    <defs>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg1_261">
+
+            <stop stop-color="#292525" offset="0"/>
+
+            <stop stop-color="#868584" offset="0.03"/>
+
+            <stop stop-color="#383433" offset="0.08"/>
+
+            <stop stop-color="#373332" offset="0.64"/>
+
+            <stop stop-color="#363130" offset="0.95"/>
+
+            <stop stop-color="#252221" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg2_261">
+
+            <stop stop-color="#434242" offset="0"/>
+
+            <stop stop-color="#6d6c6c" offset="0.15"/>
+
+            <stop stop-color="#898888" offset="0.26"/>
+
+            <stop stop-color="#747373" offset="0.41"/>
+
+            <stop stop-color="#5b5b5b" offset="0.6"/>
+
+            <stop stop-color="#484747" offset="0.8"/>
+
+            <stop stop-color="#393939" offset="0.93"/>
+
+            <stop stop-color="#6a6969" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg3_261">
+
+            <stop stop-color="#a1b7c0" offset="0"/>
+
+            <stop stop-color="#dcf0f8" offset="0.15"/>
+
+            <stop stop-color="#def1f9" offset="0.25"/>
+
+            <stop stop-color="#b5ced7" offset="0.52"/>
+
+            <stop stop-color="#a1b7c0" offset="0.69"/>
+
+            <stop stop-color="#98adb5" offset="0.8"/>
+
+            <stop stop-color="#8fa3ab" offset="0.92"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg4_261">
+
+            <stop stop-color="#c7c7c7" offset="0"/>
+
+            <stop stop-color="#ffffff" offset="0.15"/>
+
+            <stop stop-color="#ffffff" offset="0.25"/>
+
+            <stop stop-color="#dfdfdf" offset="0.52"/>
+
+            <stop stop-color="#c7c7c7" offset="0.69"/>
+
+            <stop stop-color="#bcbcbc" offset="0.8"/>
+
+            <stop stop-color="#b1b1b1" offset="0.92"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg5_261">
+
+            <stop stop-color="#221f1f" offset="0"/>
+
+            <stop stop-color="#3b3736" offset="0.15"/>
+
+            <stop stop-color="#6a6767" offset="0.26"/>
+
+            <stop stop-color="#44403f" offset="0.41"/>
+
+            <stop stop-color="#312d2c" offset="0.6"/>
+
+            <stop stop-color="#252221" offset="0.8"/>
+
+            <stop stop-color="#1d1a19" offset="0.93"/>
+
+            <stop stop-color="#3a3534" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg6_261">
+
+            <stop stop-color="#9e9e9e" offset="0"/>
+
+            <stop stop-color="#f6f6f6" offset="0.15"/>
+
+            <stop stop-color="#ffffff" offset="0.26"/>
+
+            <stop stop-color="#ffffff" offset="0.41"/>
+
+            <stop stop-color="#d1d1d1" offset="0.6"/>
+
+            <stop stop-color="#a8a8a8" offset="0.8"/>
+
+            <stop stop-color="#898989" offset="0.93"/>
+
+            <stop stop-color="#f0f0f0" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg7_261">
+
+            <stop stop-color="#8f313b" offset="0"/>
+
+            <stop stop-color="#e05160" offset="0.15"/>
+
+            <stop stop-color="#ea7680" offset="0.26"/>
+
+            <stop stop-color="#e85867" offset="0.41"/>
+
+            <stop stop-color="#be4351" offset="0.6"/>
+
+            <stop stop-color="#98343f" offset="0.8"/>
+
+            <stop stop-color="#7c2932" offset="0.93"/>
+
+            <stop stop-color="#da4e5e" offset="1"/>
+
+        </linearGradient>
+
+    </defs>
+
+    <g transform="translate(1,1)">
+
+        <g transform="translate(4.77,139.74)">
+
+            <path transform="translate(0,0)" id="shape1" fill="url(#LLg1_261)" d="M.4,0L10.2,0C10.4,0,10.6,.2,10.6,.4L10.6,11.9C10.6,12.1,10.4,12.3,10.2,12.3L.4,12.3C.2,12.3,0,12.1,0,11.9L0,.4C0,.2,.2,0,.4,0z"/>
+
+            <path transform="translate(77.85,0)" id="shape2" fill="url(#LLg1_261)" d="M.4,0L10.2,0C10.4,0,10.6,.2,10.6,.4L10.6,11.9C10.6,12.1,10.4,12.3,10.2,12.3L.4,12.3C.2,12.3,0,12.1,0,11.9L0,.4C0,.2,.2,0,.4,0z"/>
+
+        </g>
+
+        <path transform="translate(37.38,1.73)" id="shape3" fill="url(#LLg2_261)" d="M.3,-0L22.9,-0C23.1,-0,23.2,.1,23.2,.3L23.2,3.5C23.2,3.7,23.1,3.8,22.9,3.8L.3,3.8C.1,3.8,0,3.7,0,3.5L0,.3C0,.1,.1,-0,.3,-0z"/>
+
+        <path transform="matrix(1,0,0,-1,1.7,12.4)" id="shape4" fill="url(#LLg3_261)" d="M94.6,0C94.6,0,93.9,8.1,47.2,8.1C.4,8.1,0,0,0,0L94.6,0z"/>
+
+        <path transform="translate(34.43,0)" id="shape5" fill="url(#LLg2_261)" d="M.4,0L28.8,0C29,0,29.1,.2,29.1,.4C29.1,1.5,29,1.7,28.8,1.7L.4,1.7C.2,1.7,0,1.5,0,1.4C0,.2,.2,0,.4,0z"/>
+
+        <g transform="translate(1.37,10.17)">
+
+            <path id="shape6" fill="url(#LLg4_261)" d="M.3,-0L3.2,-0C3.4,-0,3.5,.1,3.5,.3L3.5,3L-0,3L-0,.3C-0,.1,.1,-0,.3,-0z"/>
+
+            <path transform="translate(11.34,0)" id="shape7" fill="url(#LLg4_261)" d="M.3,-0L3.2,-0C3.4,-0,3.5,.1,3.5,.3L3.5,3L-0,3L-0,.3C-0,.1,.1,-0,.3,-0z"/>
+
+            <path transform="translate(23.13,0)" id="shape8" fill="url(#LLg4_261)" d="M.3,-0L3.2,-0C3.4,-0,3.5,.1,3.5,.3L3.5,3L-0,3L-0,.3C-0,.1,.1,-0,.3,-0z"/>
+
+            <path transform="translate(37.12,0)" id="shape9" fill="url(#LLg4_261)" d="M.3,-0L3.2,-0C3.4,-0,3.5,.1,3.5,.3L3.5,3L-0,3L-0,.3C-0,.1,.1,-0,.3,-0z"/>
+
+            <path transform="translate(54.64,0)" id="shape10" fill="url(#LLg4_261)" d="M.3,-0L3.2,-0C3.4,-0,3.5,.1,3.5,.3L3.5,3L-0,3L-0,.3C-0,.1,.1,-0,.3,-0z"/>
+
+            <path transform="translate(68.63,0)" id="shape11" fill="url(#LLg4_261)" d="M.3,-0L3.2,-0C3.4,-0,3.5,.1,3.5,.3L3.5,3L-0,3L-0,.3C-0,.1,.1,-0,.3,-0z"/>
+
+            <path transform="translate(80.42,0)" id="shape12" fill="url(#LLg4_261)" d="M.3,-0L3.2,-0C3.4,-0,3.5,.1,3.5,.3L3.5,3L-0,3L-0,.3C-0,.1,.1,-0,.3,-0z"/>
+
+            <path transform="translate(91.76,0)" id="shape13" fill="url(#LLg4_261)" d="M.3,-0L3.2,-0C3.4,-0,3.5,.1,3.5,.3L3.5,3L-0,3L-0,.3C-0,.1,.1,-0,.3,-0z"/>
+
+        </g>
+
+        <path transform="translate(1.77,14.93)" id="shape14" fill="url(#LLg5_261)" d="M0,0L94.5,0L94.5,122.1L0,122.1L0,0z"/>
+
+        <g transform="translate(1.77,22.74)">
+
+            <path id="shape15" fill="url(#LLg6_261)" d="M0,0L94.5,0L94.5,2.4L0,2.4L0,0z"/>
+
+            <path transform="translate(0,11.75)" id="shape16" fill="url(#LLg6_261)" d="M0,0L94.5,0L94.5,2.4L0,2.4L0,0z"/>
+
+            <path transform="translate(0,23.51)" id="shape17" fill="url(#LLg6_261)" d="M0,0L94.5,0L94.5,2.4L0,2.4L0,0z"/>
+
+            <path transform="translate(0,35.26)" id="shape18" fill="url(#LLg6_261)" d="M0,0L94.5,0L94.5,2.4L0,2.4L0,0z"/>
+
+            <path transform="translate(0,47.02)" id="shape19" fill="url(#LLg6_261)" d="M0,0L94.5,0L94.5,2.4L0,2.4L0,0z"/>
+
+            <path transform="translate(0,58.77)" id="shape20" fill="url(#LLg6_261)" d="M0,0L94.5,0L94.5,2.4L0,2.4L0,0z"/>
+
+            <path transform="translate(0,70.53)" id="shape21" fill="url(#LLg6_261)" d="M0,0L94.5,0L94.5,2.4L0,2.4L0,0z"/>
+
+            <path transform="translate(0,82.28)" id="shape22" fill="url(#LLg6_261)" d="M0,0L94.5,0L94.5,2.4L0,2.4L0,0z"/>
+
+            <path transform="translate(0,94.04)" id="shape23" fill="url(#LLg6_261)" d="M0,0L94.5,0L94.5,2.4L0,2.4L0,0z"/>
+
+            <path transform="translate(0,105.79)" id="shape24" fill="url(#LLg6_261)" d="M0,0L94.5,0L94.5,2.4L0,2.4L0,0z"/>
+
+        </g>
+
+        <g transform="translate(1.35,15.4)">
+
+            <path transform="translate(-0,0)" id="shape25" fill="url(#LLg7_261)" d="M0,0L1.4,0L1.4,122.1L0,122.1L0,0z"/>
+
+            <path transform="translate(5.42,0)" id="shape26" fill="url(#LLg7_261)" d="M0,0L1.4,0L1.4,122.1L0,122.1L0,0z"/>
+
+            <path transform="translate(13.93,0)" id="shape27" fill="url(#LLg7_261)" d="M0,0L1.4,0L1.4,122.1L0,122.1L0,0z"/>
+
+            <path transform="translate(24.65,0)" id="shape28" fill="url(#LLg7_261)" d="M0,0L1.4,0L1.4,122.1L0,122.1L0,0z"/>
+
+            <path transform="translate(38.45,0)" id="shape29" fill="url(#LLg7_261)" d="M0,0L1.4,0L1.4,122.1L0,122.1L0,0z"/>
+
+            <path transform="translate(55.47,0)" id="shape30" fill="url(#LLg7_261)" d="M0,0L1.4,0L1.4,122.1L0,122.1L0,0z"/>
+
+            <path transform="translate(69.72,0)" id="shape31" fill="url(#LLg7_261)" d="M0,0L1.4,0L1.4,122.1L0,122.1L0,0z"/>
+
+            <path transform="translate(80,0)" id="shape32" fill="url(#LLg7_261)" d="M0,0L1.4,0L1.4,122.1L0,122.1L0,0z"/>
+
+            <path transform="translate(88.51,0)" id="shape33" fill="url(#LLg7_261)" d="M0,0L1.4,0L1.4,122.1L0,122.1L0,0z"/>
+
+            <path transform="translate(93.93,0)" id="shape34" fill="url(#LLg7_261)" d="M0,0L1.4,0L1.4,122.1L0,122.1L0,0z"/>
+
+        </g>
+
+        <path transform="translate(0,12.42)" id="shape35" fill="url(#LLg7_261)" d="M.4,-0L97.6,-0C97.8,-0,98,.2,98,.3L98,2.6C98,2.8,97.8,3,97.6,3L.4,3C.2,3,0,2.8,0,2.6L0,.3C0,.2,.2,-0,.4,-0z"/>
+
+        <path transform="translate(0,137.22)" id="shape36" fill="url(#LLg7_261)" d="M.4,-0L97.6,-0C97.8,-0,98,.2,98,.3L98,2.6C98,2.8,97.8,3,97.6,3L.4,3C.2,3,0,2.8,0,2.6L0,.3C0,.2,.2,-0,.4,-0z"/>
+
+    </g>
+
+</svg>
+<rect width="100" height="154" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+</g>
+<g title="Reactor 3" parentid="" nativewidth="90" nativeheight="154" myscale=".5" transform="matrix(0.5 0 0 0.5 85 161)" id="process1522169724993">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Reactor 3" class="Tanks" height="154" width="90" viewBox="0 0 90 154.01" nativewidth="90" nativeheight="154" overflow="visible" myscale="1.0">
+
+    <defs>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg1_275">
+
+            <stop stop-color="#c5b5a2" offset="0"/>
+
+            <stop stop-color="#fdefdd" offset="0.15"/>
+
+            <stop stop-color="#fef0df" offset="0.25"/>
+
+            <stop stop-color="#deccb6" offset="0.52"/>
+
+            <stop stop-color="#c5b5a2" offset="0.69"/>
+
+            <stop stop-color="#baab98" offset="0.8"/>
+
+            <stop stop-color="#b0a190" offset="0.92"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg2_275">
+
+            <stop stop-color="#c5b5a2" offset="0"/>
+
+            <stop stop-color="#fdefdd" offset="0.15"/>
+
+            <stop stop-color="#fef0df" offset="0.25"/>
+
+            <stop stop-color="#deccb6" offset="0.52"/>
+
+            <stop stop-color="#c5b5a2" offset="0.69"/>
+
+            <stop stop-color="#baab98" offset="0.8"/>
+
+            <stop stop-color="#b0a190" offset="0.92"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg3_275">
+
+            <stop stop-color="#b3a593" offset="0"/>
+
+            <stop stop-color="#fdeeda" offset="0.03"/>
+
+            <stop stop-color="#e9d7bf" offset="0.08"/>
+
+            <stop stop-color="#e5d3bc" offset="0.64"/>
+
+            <stop stop-color="#e0ceb8" offset="0.95"/>
+
+            <stop stop-color="#a69988" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg4_275">
+
+            <stop stop-color="#9c8561" offset="0"/>
+
+            <stop stop-color="#d6ba90" offset="0.15"/>
+
+            <stop stop-color="#e8dac8" offset="0.25"/>
+
+            <stop stop-color="#b89d74" offset="0.52"/>
+
+            <stop stop-color="#a48b66" offset="0.69"/>
+
+            <stop stop-color="#9b8360" offset="0.8"/>
+
+            <stop stop-color="#927c5a" offset="0.92"/>
+
+            <stop stop-color="#a88f69" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg5_275">
+
+            <stop stop-color="#9c8561" offset="0"/>
+
+            <stop stop-color="#d6ba90" offset="0.15"/>
+
+            <stop stop-color="#e8dac8" offset="0.25"/>
+
+            <stop stop-color="#b89d74" offset="0.52"/>
+
+            <stop stop-color="#a48b66" offset="0.69"/>
+
+            <stop stop-color="#9b8360" offset="0.8"/>
+
+            <stop stop-color="#927c5a" offset="0.92"/>
+
+            <stop stop-color="#a88f69" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg6_275">
+
+            <stop stop-color="#93784d" offset="0"/>
+
+            <stop stop-color="#cbaa7a" offset="0.15"/>
+
+            <stop stop-color="#e2d3c0" offset="0.25"/>
+
+            <stop stop-color="#ae8e5c" offset="0.52"/>
+
+            <stop stop-color="#9b7e51" offset="0.69"/>
+
+            <stop stop-color="#92774c" offset="0.8"/>
+
+            <stop stop-color="#897047" offset="0.92"/>
+
+            <stop stop-color="#9e8153" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg7_275">
+
+            <stop stop-color="#a5906a" offset="0"/>
+
+            <stop stop-color="#eed8b3" offset="0.03"/>
+
+            <stop stop-color="#d7bd8c" offset="0.08"/>
+
+            <stop stop-color="#d4ba89" offset="0.64"/>
+
+            <stop stop-color="#cfb586" offset="0.95"/>
+
+            <stop stop-color="#9a8662" offset="1"/>
+
+        </linearGradient>
+
+    </defs>
+
+    <g transform="translate(1,1.02)">
+
+        <g transform="translate(62.66,60.8)">
+
+            <path transform="translate(1.55,2.03)" id="shape1" fill="url(#LLg1_275)" d="M0,10.9L2.9,10.9L2.9,0L0,0L0,10.9z"/>
+
+            <path transform="translate(-0.02,0)" id="shape2" fill="url(#LLg1_275)" d="M.3,0L5.8,0C5.9,0,6.1,.1,6.1,.3L6.1,2.3C6.1,2.5,5.9,2.6,5.8,2.6L.3,2.6C.1,2.6,-0,2.5,-0,2.3L-0,.3C-0,.1,.1,0,.3,0z"/>
+
+        </g>
+
+        <g transform="translate(19.21,60.8)">
+
+            <path transform="translate(1.55,2.03)" id="shape3" fill="url(#LLg1_275)" d="M0,10.9L2.9,10.9L2.9,0L0,0L0,10.9z"/>
+
+            <path transform="translate(-0.02,0)" id="shape4" fill="url(#LLg1_275)" d="M.3,0L5.8,0C5.9,0,6.1,.1,6.1,.3L6.1,2.3C6.1,2.5,5.9,2.6,5.8,2.6L.3,2.6C.1,2.6,-0,2.5,-0,2.3L-0,.3C-0,.1,.1,0,.3,0z"/>
+
+        </g>
+
+        <path transform="translate(15.08,64.26)" id="shape5" fill="url(#LLg1_275)" d="M0,8.2C0,8.2,0,.1,19.3,0C19.3,0,38.2,0,38.2,0C57.5,.1,57.5,8.2,57.5,8.2L57.5,75.9C57.5,75.9,57.1,87.7,28.7,87.7C.3,87.7,0,75.9,0,75.9L0,8.2z"/>
+
+        <path transform="translate(15.04,138.76)" id="shape7" fill="url(#LLg2_275)" d="M0,0L57.6,0L57.6,2.1L0,2.1L0,0z"/>
+
+        <path transform="translate(15.04,131.37)" id="shape8" fill="url(#LLg2_275)" d="M0,0L57.6,0L57.6,2.1L0,2.1L0,0z"/>
+
+        <path transform="translate(15.04,123.99)" id="shape9" fill="url(#LLg2_275)" d="M0,0L57.6,0L57.6,2.1L0,2.1L0,0z"/>
+
+        <path transform="translate(15.04,116.61)" id="shape10" fill="url(#LLg2_275)" d="M0,0L57.6,0L57.6,2.1L0,2.1L0,0z"/>
+
+        <path transform="translate(15.04,109.22)" id="shape11" fill="url(#LLg2_275)" d="M0,0L57.6,0L57.6,2.1L0,2.1L0,0z"/>
+
+        <path transform="translate(15.04,101.84)" id="shape12" fill="url(#LLg2_275)" d="M0,0L57.6,0L57.6,2.1L0,2.1L0,0z"/>
+
+        <path transform="translate(-0,78.94)" id="shape13" fill="url(#LLg3_275)" d="M15.4,0L15.4,13.8L0,13.8L10.3,0L15.4,0z"/>
+
+        <path transform="matrix(-1,0,0,1,88,78.9)" id="shape14" fill="url(#LLg3_275)" d="M15.4,0L15.4,13.8L0,13.8L10.3,0L15.4,0z"/>
+
+        <g transform="translate(34.5,-0)">
+
+            <path transform="matrix(0,-1,-1,0,18.6,24.7)" id="shape15" fill="url(#LLg4_275)" d="M0,0L19.5,0L19.5,18.5L0,18.5L0,0z"/>
+
+            <path transform="matrix(0,-1,-1,0,18.6,7.2)" id="shape16" fill="url(#LLg4_275)" d="M0,0L4.7,0C4.7,0,7.1,.1,7.2,9.3C7.3,18.5,4.7,18.5,4.7,18.5L0,18.5L0,0z"/>
+
+            <g transform="matrix(0,-1,-1,0,15.2,22.3)"/>
+
+            <path transform="matrix(0,-1,-1,0,18.6,24.7)" id="shape24" fill="url(#LLg4_275)" d="M0,0L2.4,0L2.4,18.5L0,18.5L0,0z"/>
+
+            <path transform="matrix(0,-1,-1,0,17.3,24.7)" id="shape25" fill="url(#LLg4_275)" d="M.2,-0L2.2,-0C2.3,-0,2.4,.1,2.4,.2L2.4,1.5C2.4,1.6,2.3,1.7,2.2,1.7L.2,1.7C.1,1.7,-0,1.6,-0,1.5L-0,.2C-0,.1,.1,-0,.2,-0z"/>
+
+            <path transform="matrix(0,-1,-1,0,2.8,24.7)" id="shape26" fill="url(#LLg4_275)" d="M.2,-0L2.2,-0C2.3,-0,2.4,.1,2.4,.2L2.4,1.5C2.4,1.6,2.3,1.7,2.2,1.7L.2,1.7C.1,1.7,-0,1.6,-0,1.5L-0,.2C-0,.1,.1,-0,.2,-0z"/>
+
+            <path transform="matrix(0,1,-1,0,15.9,28.7)" id="shape27" fill="url(#LLg4_275)" d="M.4,0C.6,0,.8,.2,.8,.4L.8,12.6C.8,12.8,.6,13,.4,13C.2,13,-0,12.8,-0,12.6L-0,.4C-0,.2,.2,0,.4,0z"/>
+
+            <path transform="translate(0.95,25.06)" id="shape28" fill="url(#LLg5_275)" d="M16.9,0C16.9,0,16.3,2.1,14.5,3.7C14.5,3.7,2.4,3.7,2.4,3.7C.4,1.8,0,0,0,0L16.9,0z"/>
+
+            <path transform="matrix(1,-0,0,1,-0,24.6)" id="shape29" fill="url(#LLg6_275)" d="M18.8,.2C18.8,.5,18.7,.6,18.6,.6L.2,.6C.1,.6,0,.5,0,.4C0,.1,.1,-0,.2,-0L18.6,-0C18.7,-0,18.8,.1,18.8,.2z"/>
+
+            <path transform="matrix(0,-1,-1,0,22.6,22.6)" id="shape30" fill="url(#LLg7_275)" d="M0,4.8L10.5,4.8L10.5,0L0,0L0,4.8z"/>
+
+            <path transform="matrix(0,-1,-1,0,23.4,23)" id="shape31" fill="url(#LLg7_275)" d="M0,0L11.1,0C11.1,0,11.1,0,11.1,.1C11.1,.8,11.1,.9,11.1,.9L0,.9C0,.9,0,.8,0,.8C0,0,0,0,0,0z"/>
+
+            <path transform="matrix(0,-1,-1,0,21.9,12.2)" id="shape32" fill="url(#LLg4_275)" d="M0,2.6L.9,0L0,2.6z"/>
+
+        </g>
+
+        <path transform="translate(35.9,56.69)" id="shape33" fill="url(#LLg1_275)" d="M0,7.6L15.9,7.6L15.9,0L0,0L0,7.6z"/>
+
+        <path transform="translate(37.14,30.97)" id="shape34" fill="url(#LLg1_275)" d="M0,25.9L13.4,25.9L13.4,0L0,0L0,25.9z"/>
+
+        <path transform="translate(36.26,29.52)" id="shape35" fill="url(#LLg1_275)" d="M.1,0L15.1,0C15.1,0,15.2,.1,15.2,.1L15.2,1.8C15.2,1.8,15.1,1.9,15.1,1.9L.1,1.9C.1,1.9,0,1.8,0,1.8L0,.1C0,.1,.1,0,.1,0z"/>
+
+        <path transform="translate(40.6,34.16)" id="shape36" fill="#000000" fill-opacity="0.38" d="M.1,0L6.4,0C6.5,0,6.5,.1,6.5,.1L6.5,8C6.5,8.1,6.5,8.1,6.4,8.1L.1,8.1C.1,8.1,0,8.1,0,8L0,.1C0,.1,.1,0,.1,0z"/>
+
+        <path transform="translate(40.6,46.6)" id="shape37" fill="#000000" fill-opacity="0.38" d="M.1,0L6.4,0C6.5,0,6.5,.1,6.5,.1L6.5,8C6.5,8.1,6.5,8.1,6.4,8.1L.1,8.1C.1,8.1,0,8.1,0,8L0,.1C0,.1,.1,0,.1,0z"/>
+
+        <g transform="translate(40.8,61.65)">
+
+            <path transform="translate(1.56,2)" id="shape40" fill="url(#LLg1_275)" d="M0,5.5L2.9,5.5L2.9,0L0,0L0,5.5z"/>
+
+            <path transform="translate(-0.01,-0.03)" id="shape41" fill="url(#LLg1_275)" d="M.3,0L5.8,0C5.9,0,6.1,.1,6.1,.3L6.1,2.3C6.1,2.5,5.9,2.6,5.8,2.6L.3,2.6C.1,2.6,-0,2.5,-0,2.3L-0,.3C-0,.1,.1,0,.3,0z"/>
+
+        </g>
+
+    </g>
+
+</svg>
+<rect width="90" height="154" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+</g>
+<g title="Silo With Straight Ladder" parentid="" nativewidth="72" nativeheight="162" myscale=".5" transform="matrix(0.5 0 0 0.5 150 163)" id="process1522169734003">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Silo With Straight Ladder" class="Tanks" height="162" width="72" viewBox="0 0 72 162.024" nativewidth="72" nativeheight="162" overflow="visible" myscale="1.0">
+
+    <defs>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg1_287">
+
+            <stop stop-color="#bc9a6b" offset="0"/>
+
+            <stop stop-color="#f4d6b0" offset="0.15"/>
+
+            <stop stop-color="#f5d9b7" offset="0.25"/>
+
+            <stop stop-color="#d3ad79" offset="0.52"/>
+
+            <stop stop-color="#bc9a6b" offset="0.69"/>
+
+            <stop stop-color="#b19165" offset="0.8"/>
+
+            <stop stop-color="#a7895f" offset="0.92"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg2_287">
+
+            <stop stop-color="#c7ad86" offset="0"/>
+
+            <stop stop-color="#ffe6c5" offset="0.15"/>
+
+            <stop stop-color="#ffe8c9" offset="0.25"/>
+
+            <stop stop-color="#dfc297" offset="0.52"/>
+
+            <stop stop-color="#c7ad86" offset="0.69"/>
+
+            <stop stop-color="#bca37e" offset="0.8"/>
+
+            <stop stop-color="#b19a77" offset="0.92"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg3_287">
+
+            <stop stop-color="#bea277" offset="0"/>
+
+            <stop stop-color="#f7ddb9" offset="0.15"/>
+
+            <stop stop-color="#f7dfbf" offset="0.25"/>
+
+            <stop stop-color="#d6b686" offset="0.52"/>
+
+            <stop stop-color="#bea277" offset="0.69"/>
+
+            <stop stop-color="#b39870" offset="0.8"/>
+
+            <stop stop-color="#a99069" offset="0.92"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg4_287">
+
+            <stop stop-color="#b9b9b9" offset="0"/>
+
+            <stop stop-color="#f2f2f2" offset="0.15"/>
+
+            <stop stop-color="#f3f3f3" offset="0.25"/>
+
+            <stop stop-color="#d0d0d0" offset="0.52"/>
+
+            <stop stop-color="#b9b9b9" offset="0.69"/>
+
+            <stop stop-color="#afafaf" offset="0.8"/>
+
+            <stop stop-color="#a5a5a5" offset="0.92"/>
+
+        </linearGradient>
+
+    </defs>
+
+    <g transform="translate(1,1.03)">
+
+        <path transform="translate(4.29,-0.03)" id="shape1" fill="url(#LLg1_287)" d="M0,11C0,4.9,13.7,0,30.7,0C47.6,0,61.4,4.9,61.4,11C61.4,17,0,17,0,11z"/>
+
+        <path transform="translate(5.56,12.53)" id="shape2" fill="url(#LLg1_287)" d="M0,0L58.9,0L58.9,8.9L0,8.9L0,0z"/>
+
+        <path transform="translate(4.36,19.66)" id="shape3" fill="url(#LLg2_287)" d="M61.3,0L61.3,134.9L0,134.9L0,0L61.3,0z"/>
+
+        <path transform="translate(0,154.28)" id="shape4" fill="url(#LLg3_287)" d="M2.8,0L67.2,0C68.7,0,70,1.3,70,2.8C70,4.4,68.7,5.7,67.2,5.7L2.8,5.7C1.3,5.7,0,4.4,0,2.8C0,1.3,1.3,0,2.8,0z"/>
+
+        <path transform="translate(3.38,9.67)" id="shape5" fill="url(#LLg2_287)" d="M1.4,-0.1L61.8,-0.1C62.6,-0.1,63.2,.8,63.2,1.9C63.2,2.9,62.6,3.8,61.8,3.8L1.4,3.8C.6,3.8,0,2.9,0,1.9C0,.8,.6,-0.1,1.4,-0.1z"/>
+
+        <path transform="translate(4.36,47.86)" id="shape6" fill="url(#LLg1_287)" d="M61.3,0L61.3,2.1L0,2.1L0,0L61.3,0z"/>
+
+        <path transform="translate(4.36,85.16)" id="shape7" fill="url(#LLg1_287)" d="M61.3,0L61.3,2.1L0,2.1L0,0L61.3,0z"/>
+
+        <path transform="translate(4.36,122.46)" id="shape8" fill="url(#LLg1_287)" d="M61.3,0L61.3,2.1L0,2.1L0,0L61.3,0z"/>
+
+        <g transform="translate(22.93,15.88)">
+
+            <g transform="translate(2.04,12.46)">
+
+                <path transform="matrix(0,-1,1,0,0.2,90.2)" id="shape9" fill="url(#LLg4_287)" d="M1.4,0C2.4,0,3.1,.2,3.1,.4L3.1,20.7C3.1,20.9,2.4,21.1,1.6,21.1C.6,21.1,0,20.9,0,20.7L0,.4C0,.2,.6,0,1.4,0z"/>
+
+                <path transform="matrix(0,-1,1,0,0.4,107.7)" id="shape10" fill="url(#LLg4_287)" d="M1.4,0C2.4,0,3.1,.2,3.1,.4L3.1,20.7C3.1,20.9,2.4,21.1,1.6,21.1C.6,21.1,0,20.9,0,20.7L0,.4C0,.2,.6,0,1.4,0z"/>
+
+                <path transform="matrix(0,-1,1,0,0.5,124.7)" id="shape11" fill="url(#LLg4_287)" d="M1.4,0C2.4,0,3.1,.2,3.1,.4L3.1,20.7C3.1,20.9,2.4,21.1,1.6,21.1C.6,21.1,0,20.9,0,20.7L0,.4C0,.2,.6,0,1.4,0z"/>
+
+                <path transform="matrix(0,-1,1,0,0.4,72.8)" id="shape12" fill="url(#LLg4_287)" d="M1.4,0C2.4,0,3.1,.2,3.1,.4L3.1,20.7C3.1,20.9,2.4,21.1,1.6,21.1C.6,21.1,0,20.9,0,20.7L0,.4C0,.2,.6,0,1.4,0z"/>
+
+                <path transform="matrix(0,-1,1,0,-0,55.4)" id="shape13" fill="url(#LLg4_287)" d="M1.4,0C2.4,0,3.1,.2,3.1,.4L3.1,20.7C3.1,20.9,2.4,21.1,1.6,21.1C.6,21.1,0,20.9,0,20.7L0,.4C0,.2,.6,0,1.4,0z"/>
+
+                <path transform="matrix(0,-1,1,0,-0,37.8)" id="shape14" fill="url(#LLg4_287)" d="M1.4,0C2.4,0,3.1,.2,3.1,.4L3.1,20.7C3.1,20.9,2.4,21.1,1.6,21.1C.6,21.1,0,20.9,0,20.7L0,.4C0,.2,.6,0,1.4,0z"/>
+
+                <path transform="matrix(0,-1,1,0,-0,20.4)" id="shape15" fill="url(#LLg4_287)" d="M1.4,0C2.4,0,3.1,.2,3.1,.4L3.1,20.7C3.1,20.9,2.4,21.1,1.6,21.1C.6,21.1,0,20.9,0,20.7L0,.4C0,.2,.6,0,1.4,0z"/>
+
+                <path transform="matrix(0,-1,1,0,0.4,3.1)" id="shape16" fill="url(#LLg4_287)" d="M1.4,0C2.4,0,3.1,.2,3.1,.4L3.1,20.7C3.1,20.9,2.4,21.1,1.6,21.1C.6,21.1,0,20.9,0,20.7L0,.4C0,.2,.6,0,1.4,0z"/>
+
+            </g>
+
+            <path transform="translate(0,0)" id="shape17" fill="url(#LLg4_287)" d="M1.6,0C2.4,0,3.2,.7,3.2,1.6L3.2,142.5C3.2,143.4,2.4,144.1,1.6,144.1C.7,144.1,0,143.4,0,142.5L0,1.6C0,.7,.7,0,1.6,0z"/>
+
+            <path transform="translate(20.95,0)" id="shape18" fill="url(#LLg4_287)" d="M1.6,0C2.4,0,3.2,.7,3.2,1.6L3.2,142.5C3.2,143.4,2.4,144.1,1.6,144.1C.7,144.1,0,143.4,0,142.5L0,1.6C0,.7,.7,0,1.6,0z"/>
+
+        </g>
+
+    </g>
+
+</svg>
+<rect width="72" height="162" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+</g>
+<g title="Tank With Rivets And Ladder" parentid="" nativewidth="128" nativeheight="154" myscale=".5" transform="matrix(0.5 0 0 0.5 279 170)" id="process1522169759583">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Tank With Rivets And Ladder" class="Tanks" height="154" width="128" viewBox="0 0 128 154" nativewidth="128" nativeheight="154" overflow="visible" myscale="1.0">
+
+    <defs>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg1_363">
+
+            <stop stop-color="#bc9c53" offset="0"/>
+
+            <stop stop-color="#fed681" offset="0.15"/>
+
+            <stop stop-color="#fee8c2" offset="0.25"/>
+
+            <stop stop-color="#deb863" offset="0.52"/>
+
+            <stop stop-color="#c6a457" offset="0.69"/>
+
+            <stop stop-color="#bb9b52" offset="0.8"/>
+
+            <stop stop-color="#b0924d" offset="0.92"/>
+
+            <stop stop-color="#cba859" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg2_363">
+
+            <stop stop-color="#c4aa84" offset="0"/>
+
+            <stop stop-color="#ffe0b3" offset="0.15"/>
+
+            <stop stop-color="#ffe6c3" offset="0.25"/>
+
+            <stop stop-color="#dfc297" offset="0.44"/>
+
+            <stop stop-color="#c7ad86" offset="0.6"/>
+
+            <stop stop-color="#a89170" offset="0.8"/>
+
+            <stop stop-color="#998566" offset="0.97"/>
+
+            <stop stop-color="#cbb189" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg3_363">
+
+            <stop stop-color="#b9b9b9" offset="0"/>
+
+            <stop stop-color="#f2f2f2" offset="0.15"/>
+
+            <stop stop-color="#f3f3f3" offset="0.25"/>
+
+            <stop stop-color="#d0d0d0" offset="0.52"/>
+
+            <stop stop-color="#b9b9b9" offset="0.69"/>
+
+            <stop stop-color="#afafaf" offset="0.8"/>
+
+            <stop stop-color="#a5a5a5" offset="0.92"/>
+
+        </linearGradient>
+
+        <linearGradient x1="4" y2="3" x2="-0" y1="1" id="LLg4_363" gradientUnits="userSpaceOnUse">
+
+            <stop stop-color="#bc9c53" offset="0"/>
+
+            <stop stop-color="#fed681" offset="0.15"/>
+
+            <stop stop-color="#fee8c2" offset="0.25"/>
+
+            <stop stop-color="#deb863" offset="0.52"/>
+
+            <stop stop-color="#c6a457" offset="0.69"/>
+
+            <stop stop-color="#bb9b52" offset="0.8"/>
+
+            <stop stop-color="#b0924d" offset="0.92"/>
+
+            <stop stop-color="#cba859" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg5_363">
+
+            <stop stop-color="#bc9c53" offset="0"/>
+
+            <stop stop-color="#fed681" offset="0.15"/>
+
+            <stop stop-color="#fee8c2" offset="0.25"/>
+
+            <stop stop-color="#deb863" offset="0.52"/>
+
+            <stop stop-color="#c6a457" offset="1"/>
+
+        </linearGradient>
+
+    </defs>
+
+    <g transform="translate(1,1)">
+
+        <path transform="translate(10.16,3.99)" id="shape1" fill="url(#LLg1_363)" d="M1.2,-0L105.7,-0C106.3,-0,106.9,.5,106.9,1.2L106.9,4.4C106.9,5.1,106.3,5.6,105.7,5.6L1.2,5.6C.5,5.6,0,5.1,0,4.4L0,1.2C0,.5,.5,-0,1.2,-0z"/>
+
+        <path transform="translate(0,9.63)" id="shape2" fill="url(#LLg2_363)" d="M10.1,0L115.9,0C121.5,0,126,4.6,126,10.3L126,131.6C126,137.3,121.5,141.9,115.9,141.9L10.1,141.9C4.5,141.9,0,137.3,0,131.6L0,10.3C0,4.6,4.5,0,10.1,0z"/>
+
+        <g transform="translate(49.63,0)">
+
+            <g transform="translate(2.26,13.14)">
+
+                <path transform="matrix(0,-1,1,0,0.3,95.2)" id="shape3" fill="url(#LLg3_363)" d="M1.5,0C2.6,0,3.2,.2,3.2,.4L3.2,22.9C3.2,23.2,2.6,23.4,1.7,23.4C.7,23.4,0,23.2,0,22.9L0,.4C0,.2,.7,0,1.5,0z"/>
+
+                <path transform="matrix(0,-1,1,0,0.4,113.6)" id="shape4" fill="url(#LLg3_363)" d="M1.5,0C2.6,0,3.2,.2,3.2,.4L3.2,22.9C3.2,23.2,2.6,23.4,1.7,23.4C.7,23.4,0,23.2,0,22.9L0,.4C0,.2,.7,0,1.5,0z"/>
+
+                <path transform="matrix(0,-1,1,0,0.6,131.5)" id="shape5" fill="url(#LLg3_363)" d="M1.5,0C2.6,0,3.2,.2,3.2,.4L3.2,22.9C3.2,23.2,2.6,23.4,1.7,23.4C.7,23.4,0,23.2,0,22.9L0,.4C0,.2,.7,0,1.5,0z"/>
+
+                <path transform="matrix(0,-1,1,0,0.4,76.8)" id="shape6" fill="url(#LLg3_363)" d="M1.5,0C2.6,0,3.2,.2,3.2,.4L3.2,22.9C3.2,23.2,2.6,23.4,1.7,23.4C.7,23.4,0,23.2,0,22.9L0,.4C0,.2,.7,0,1.5,0z"/>
+
+                <path transform="matrix(0,-1,1,0,-0,58.4)" id="shape7" fill="url(#LLg3_363)" d="M1.5,0C2.6,0,3.2,.2,3.2,.4L3.2,22.9C3.2,23.2,2.6,23.4,1.7,23.4C.7,23.4,0,23.2,0,22.9L0,.4C0,.2,.7,0,1.5,0z"/>
+
+                <path transform="matrix(0,-1,1,0,-0,39.9)" id="shape8" fill="url(#LLg3_363)" d="M1.5,0C2.6,0,3.2,.2,3.2,.4L3.2,22.9C3.2,23.2,2.6,23.4,1.7,23.4C.7,23.4,0,23.2,0,22.9L0,.4C0,.2,.7,0,1.5,0z"/>
+
+                <path transform="matrix(0,-1,1,0,-0,21.6)" id="shape9" fill="url(#LLg3_363)" d="M1.5,0C2.6,0,3.2,.2,3.2,.4L3.2,22.9C3.2,23.2,2.6,23.4,1.7,23.4C.7,23.4,0,23.2,0,22.9L0,.4C0,.2,.7,0,1.5,0z"/>
+
+                <path transform="matrix(0,-1,1,0,0.4,3.2)" id="shape10" fill="url(#LLg3_363)" d="M1.5,0C2.6,0,3.2,.2,3.2,.4L3.2,22.9C3.2,23.2,2.6,23.4,1.7,23.4C.7,23.4,0,23.2,0,22.9L0,.4C0,.2,.7,0,1.5,0z"/>
+
+            </g>
+
+            <path transform="translate(0,0)" id="shape11" fill="url(#LLg3_363)" d="M1.7,0C2.7,0,3.5,.7,3.5,1.7L3.5,150.3C3.5,151.2,2.7,152,1.7,152C.8,152,0,151.2,0,150.3L0,1.7C0,.7,.8,0,1.7,0z"/>
+
+            <path transform="translate(23.2,0)" id="shape12" fill="url(#LLg3_363)" d="M1.7,0C2.7,0,3.5,.7,3.5,1.7L3.5,150.3C3.5,151.2,2.7,152,1.7,152C.8,152,0,151.2,0,150.3L0,1.7C0,.7,.8,0,1.7,0z"/>
+
+        </g>
+
+        <g transform="translate(13.44,9.73)">
+
+            <path transform="translate(4.33,0)" id="shape13" fill="#f1a500" d="M0,0L.8,141.7L0,0z"/>
+
+            <g transform="translate(0,3.33)">
+
+                <g transform="translate(-0.01,-0.01)">
+
+                    <path id="shape14" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                    <path transform="translate(0.07,0.07)" id="shape15" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                    <path transform="translate(0.48,0.7)" id="shape16" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                    <path transform="translate(0.54,0.75)" id="shape17" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+                </g>
+
+                <g transform="translate(-0.01,11.96)">
+
+                    <path id="shape18" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                    <path transform="translate(0.07,0.07)" id="shape19" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                    <path transform="translate(0.48,0.7)" id="shape20" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                    <path transform="translate(0.54,0.75)" id="shape21" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+                </g>
+
+                <g transform="translate(-0.01,23.93)">
+
+                    <path id="shape22" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                    <path transform="translate(0.07,0.07)" id="shape23" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                    <path transform="translate(0.48,0.7)" id="shape24" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                    <path transform="translate(0.54,0.75)" id="shape25" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+                </g>
+
+                <g transform="translate(-0.01,35.91)">
+
+                    <path id="shape26" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                    <path transform="translate(0.07,0.07)" id="shape27" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                    <path transform="translate(0.48,0.7)" id="shape28" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                    <path transform="translate(0.54,0.75)" id="shape29" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+                </g>
+
+                <g transform="translate(-0.01,47.89)">
+
+                    <path id="shape30" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                    <path transform="translate(0.07,0.07)" id="shape31" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                    <path transform="translate(0.48,0.7)" id="shape32" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                    <path transform="translate(0.54,0.75)" id="shape33" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+                </g>
+
+                <g transform="translate(-0.01,59.85)">
+
+                    <path id="shape34" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                    <path transform="translate(0.07,0.07)" id="shape35" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                    <path transform="translate(0.48,0.7)" id="shape36" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                    <path transform="translate(0.54,0.75)" id="shape37" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+                </g>
+
+                <g transform="translate(-0.01,71.83)">
+
+                    <path id="shape38" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                    <path transform="translate(0.07,0.07)" id="shape39" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                    <path transform="translate(0.48,0.7)" id="shape40" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                    <path transform="translate(0.54,0.75)" id="shape41" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+                </g>
+
+                <g transform="translate(-0.01,83.8)">
+
+                    <path id="shape42" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                    <path transform="translate(0.07,0.07)" id="shape43" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                    <path transform="translate(0.48,0.7)" id="shape44" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                    <path transform="translate(0.54,0.75)" id="shape45" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+                </g>
+
+                <g transform="translate(-0.01,95.77)">
+
+                    <path id="shape46" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                    <path transform="translate(0.07,0.07)" id="shape47" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                    <path transform="translate(0.48,0.7)" id="shape48" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                    <path transform="translate(0.54,0.75)" id="shape49" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+                </g>
+
+            </g>
+
+            <g transform="translate(-0.01,111.13)">
+
+                <path id="shape50" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                <path transform="translate(0.07,0.07)" id="shape51" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                <path transform="translate(0.48,0.7)" id="shape52" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                <path transform="translate(0.54,0.75)" id="shape53" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+            </g>
+
+            <g transform="translate(-0.01,123.1)">
+
+                <path id="shape54" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                <path transform="translate(0.07,0.07)" id="shape55" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                <path transform="translate(0.48,0.7)" id="shape56" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                <path transform="translate(0.54,0.75)" id="shape57" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+            </g>
+
+            <g transform="translate(-0.01,135.08)">
+
+                <path id="shape58" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                <path transform="translate(0.07,0.07)" id="shape59" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                <path transform="translate(0.48,0.7)" id="shape60" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                <path transform="translate(0.54,0.75)" id="shape61" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+            </g>
+
+        </g>
+
+        <g transform="translate(103.35,9.73)">
+
+            <path transform="translate(4.33,0)" id="shape62" fill="#f1a500" d="M0,0L.8,141.7L0,0z"/>
+
+            <g transform="translate(0,3.33)">
+
+                <g transform="translate(-0.01,-0.01)">
+
+                    <path id="shape63" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                    <path transform="translate(0.07,0.07)" id="shape64" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                    <path transform="translate(0.48,0.7)" id="shape65" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                    <path transform="translate(0.54,0.75)" id="shape66" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+                </g>
+
+                <g transform="translate(-0.01,11.96)">
+
+                    <path id="shape67" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                    <path transform="translate(0.07,0.07)" id="shape68" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                    <path transform="translate(0.48,0.7)" id="shape69" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                    <path transform="translate(0.54,0.75)" id="shape70" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+                </g>
+
+                <g transform="translate(-0.01,23.93)">
+
+                    <path id="shape71" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                    <path transform="translate(0.07,0.07)" id="shape72" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                    <path transform="translate(0.48,0.7)" id="shape73" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                    <path transform="translate(0.54,0.75)" id="shape74" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+                </g>
+
+                <g transform="translate(-0.01,35.91)">
+
+                    <path id="shape75" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                    <path transform="translate(0.07,0.07)" id="shape76" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                    <path transform="translate(0.48,0.7)" id="shape77" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                    <path transform="translate(0.54,0.75)" id="shape78" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+                </g>
+
+                <g transform="translate(-0.01,47.89)">
+
+                    <path id="shape79" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                    <path transform="translate(0.07,0.07)" id="shape80" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                    <path transform="translate(0.48,0.7)" id="shape81" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                    <path transform="translate(0.54,0.75)" id="shape82" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+                </g>
+
+                <g transform="translate(-0.01,59.85)">
+
+                    <path id="shape83" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                    <path transform="translate(0.07,0.07)" id="shape84" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                    <path transform="translate(0.48,0.7)" id="shape85" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                    <path transform="translate(0.54,0.75)" id="shape86" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+                </g>
+
+                <g transform="translate(-0.01,71.83)">
+
+                    <path id="shape87" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                    <path transform="translate(0.07,0.07)" id="shape88" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                    <path transform="translate(0.48,0.7)" id="shape89" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                    <path transform="translate(0.54,0.75)" id="shape90" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+                </g>
+
+                <g transform="translate(-0.01,83.8)">
+
+                    <path id="shape91" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                    <path transform="translate(0.07,0.07)" id="shape92" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                    <path transform="translate(0.48,0.7)" id="shape93" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                    <path transform="translate(0.54,0.75)" id="shape94" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+                </g>
+
+                <g transform="translate(-0.01,95.77)">
+
+                    <path id="shape95" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                    <path transform="translate(0.07,0.07)" id="shape96" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                    <path transform="translate(0.48,0.7)" id="shape97" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                    <path transform="translate(0.54,0.75)" id="shape98" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+                </g>
+
+            </g>
+
+            <g transform="translate(-0.01,111.13)">
+
+                <path id="shape99" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                <path transform="translate(0.07,0.07)" id="shape100" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                <path transform="translate(0.48,0.7)" id="shape101" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                <path transform="translate(0.54,0.75)" id="shape102" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+            </g>
+
+            <g transform="translate(-0.01,123.1)">
+
+                <path id="shape103" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                <path transform="translate(0.07,0.07)" id="shape104" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                <path transform="translate(0.48,0.7)" id="shape105" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                <path transform="translate(0.54,0.75)" id="shape106" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+            </g>
+
+            <g transform="translate(-0.01,135.08)">
+
+                <path id="shape107" fill="#c88828" d="M-0,2.1C-0,.9,.9,0,2,0C3.2,0,4.1,.9,4.1,2.1C4.1,3.2,3.2,4.1,2,4.1C.9,4.1,-0,3.2,-0,2.1z"/>
+
+                <path transform="translate(0.07,0.07)" id="shape108" fill="url(#LLg4_363)" d="M-0,2C-0,.9,.9,0,2,0C3.1,0,3.9,.9,3.9,2C3.9,3.1,3.1,4,2,4C.9,4,-0,3.1,-0,2z"/>
+
+                <path transform="translate(0.48,0.7)" id="shape109" fill="#c88828" d="M2.3,0L3.1,1.4L2.3,2.7L.8,2.7L0,1.4L.8,0L2.3,0z"/>
+
+                <path transform="translate(0.54,0.75)" id="shape110" fill="url(#LLg5_363)" d="M2.2,0L3,1.3L2.2,2.6L.7,2.6L0,1.3L.7,0L2.2,0z"/>
+
+            </g>
+
+        </g>
+
+    </g>
+
+</svg>
+<rect width="128" height="154" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+</g>
+<g title="Reinforced Spherical Tank" parentid="" nativewidth="130" nativeheight="154" myscale=".5" transform="matrix(0.5 0 0 0.5 205 168)" id="process1522169778241">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" title="Reinforced Spherical Tank" class="Tanks" height="154" width="130" viewBox="0 0 130 153.977" nativewidth="130" nativeheight="154" overflow="visible" myscale="1.0">
+
+    <defs>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg1_327">
+
+            <stop stop-color="#c4aa84" offset="0"/>
+
+            <stop stop-color="#ffe0b3" offset="0.15"/>
+
+            <stop stop-color="#ffe6c3" offset="0.25"/>
+
+            <stop stop-color="#dfc297" offset="0.44"/>
+
+            <stop stop-color="#c7ad86" offset="0.6"/>
+
+            <stop stop-color="#a89170" offset="0.8"/>
+
+            <stop stop-color="#998566" offset="0.97"/>
+
+            <stop stop-color="#cbb189" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg2_327">
+
+            <stop stop-color="#b38541" offset="0"/>
+
+            <stop stop-color="#f3bb6f" offset="0.15"/>
+
+            <stop stop-color="#f8dabd" offset="0.25"/>
+
+            <stop stop-color="#d49e4f" offset="0.52"/>
+
+            <stop stop-color="#bd8c45" offset="0.69"/>
+
+            <stop stop-color="#b28441" offset="0.8"/>
+
+            <stop stop-color="#a87d3d" offset="0.92"/>
+
+            <stop stop-color="#c19047" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="0%" y2="100%" x2="0%" y1="0%" id="LLg3_327">
+
+            <stop stop-color="#c4aa84" offset="0"/>
+
+            <stop stop-color="#ffe0b3" offset="0.15"/>
+
+            <stop stop-color="#ffe6c3" offset="0.25"/>
+
+            <stop stop-color="#dfc297" offset="0.44"/>
+
+            <stop stop-color="#c7ad86" offset="0.6"/>
+
+            <stop stop-color="#a89170" offset="0.8"/>
+
+            <stop stop-color="#998566" offset="0.97"/>
+
+            <stop stop-color="#cbb189" offset="1"/>
+
+        </linearGradient>
+
+        <linearGradient x1="100%" y2="0%" x2="0%" y1="0%" id="LLg4_327">
+
+            <stop stop-color="#b39d73" offset="0"/>
+
+            <stop stop-color="#ebd0a1" offset="0.15"/>
+
+            <stop stop-color="#efd9b5" offset="0.25"/>
+
+            <stop stop-color="#cdb384" offset="0.44"/>
+
+            <stop stop-color="#b69f75" offset="0.6"/>
+
+            <stop stop-color="#9a8662" offset="0.8"/>
+
+            <stop stop-color="#8c7a59" offset="0.97"/>
+
+            <stop stop-color="#baa378" offset="1"/>
+
+        </linearGradient>
+
+    </defs>
+
+    <g transform="translate(1,1.02)">
+
+        <g transform="translate(1.28,68.81)">
+
+            <path transform="translate(1.09,0)" id="shape1" fill="url(#LLg1_327)" d="M0,0L15.3,0L15.3,80.5L0,80.5L0,0z"/>
+
+            <path transform="translate(-0.03,80.28)" id="shape2" fill="url(#LLg2_327)" d="M1.4,0L16,0C16.8,0,17.5,.6,17.5,1.4C17.5,2.2,16.8,2.9,16,2.9L1.4,2.9C.6,2.9,-0,2.2,-0,1.4C-0,.6,.6,0,1.4,0z"/>
+
+            <path transform="translate(1.09,39.54)" id="shape3" fill="url(#LLg2_327)" d="M0,0L15.3,0L15.3,1.4L0,1.4L0,0z"/>
+
+            <path transform="translate(1.09,0)" id="shape4" fill="url(#LLg2_327)" d="M0,0L15.3,0L15.3,1.4L0,1.4L0,0z"/>
+
+        </g>
+
+        <g transform="translate(108.77,68.81)">
+
+            <path transform="translate(1.09,0)" id="shape5" fill="url(#LLg1_327)" d="M0,0L15.3,0L15.3,80.5L0,80.5L0,0z"/>
+
+            <path transform="translate(-0.03,80.28)" id="shape6" fill="url(#LLg2_327)" d="M1.4,0L16,0C16.8,0,17.5,.6,17.5,1.4C17.5,2.2,16.8,2.9,16,2.9L1.4,2.9C.6,2.9,-0,2.2,-0,1.4C-0,.6,.6,0,1.4,0z"/>
+
+            <path transform="translate(1.09,39.54)" id="shape7" fill="url(#LLg2_327)" d="M0,0L15.3,0L15.3,1.4L0,1.4L0,0z"/>
+
+            <path transform="translate(1.09,0)" id="shape8" fill="url(#LLg2_327)" d="M0,0L15.3,0L15.3,1.4L0,1.4L0,0z"/>
+
+        </g>
+
+        <path transform="translate(51.83,0)" id="shape9" fill="url(#LLg1_327)" d="M.8,-0L23.5,-0C23.9,-0,24.3,.3,24.3,.8L24.3,9.9C24.3,10.4,23.9,10.7,23.5,10.7L.8,10.7C.4,10.7,0,10.4,0,9.9L0,.8C0,.3,.4,-0,.8,-0z"/>
+
+        <path transform="translate(0.79,6.91)" id="shape10" fill="url(#LLg1_327)" d="M0,63.1C0,28.2,28.3,0,63.2,0C98.1,0,126.4,28.2,126.4,63.1C126.4,97.9,98.1,126.1,63.2,126.1C28.3,126.1,0,97.9,0,63.1z"/>
+
+        <path transform="matrix(0,-1,-1,0,66,134.3)" id="shape11" fill="url(#LLg3_327)" d="M.8,-0L127.9,-0C128.3,-0,128.7,.6,128.7,1.3L128.7,2.6C128.7,3.4,128.3,4,127.9,4L.8,4C.3,4,0,3.4,0,2.6L0,1.3C0,.6,.3,-0,.8,-0z"/>
+
+        <g transform="translate(0,18.62)">
+
+            <path transform="translate(23.84,-0.01)" id="shape12" fill="url(#LLg4_327)" d="M.5,-0L79.8,-0C80.1,-0,80.3,.4,80.3,.8C80.3,2.1,80.1,2.5,79.8,2.5L.5,2.5C.2,2.5,0,2.1,0,1.7C0,.4,.2,-0,.5,-0z"/>
+
+            <path transform="translate(0,50.06)" id="shape13" fill="url(#LLg4_327)" d="M.8,-0L127.2,-0C127.6,-0,128,.4,128,.8C128,2.1,127.6,2.5,127.2,2.5L.8,2.5C.3,2.5,0,2.1,0,1.7C0,.4,.3,-0,.8,-0z"/>
+
+            <path transform="translate(2.05,33.46)" id="shape14" fill="url(#LLg4_327)" d="M.7,-0L123.1,-0C123.5,-0,123.9,.4,123.9,.8C123.9,2.1,123.5,2.5,123.1,2.5L.7,2.5C.3,2.5,0,2.1,0,1.7C0,.4,.3,-0,.7,-0z"/>
+
+            <path transform="translate(2.05,66.94)" id="shape15" fill="url(#LLg4_327)" d="M.7,-0L123.1,-0C123.5,-0,123.9,.4,123.9,.8C123.9,2.1,123.5,2.5,123.1,2.5L.7,2.5C.3,2.5,0,2.1,0,1.7C0,.4,.3,-0,.7,-0z"/>
+
+            <path transform="translate(9.15,16.73)" id="shape16" fill="url(#LLg4_327)" d="M.7,-0L109,-0C109.4,-0,109.7,.4,109.7,.8C109.7,2.1,109.4,2.5,109,2.5L.7,2.5C.3,2.5,0,2.1,0,1.7C0,.4,.3,-0,.7,-0z"/>
+
+            <path transform="translate(9.15,83.68)" id="shape17" fill="url(#LLg4_327)" d="M.7,-0L109,-0C109.4,-0,109.7,.4,109.7,.8C109.7,2.1,109.4,2.5,109,2.5L.7,2.5C.3,2.5,0,2.1,0,1.7C0,.4,.3,-0,.7,-0z"/>
+
+            <path transform="translate(23.84,100.12)" id="shape18" fill="url(#LLg4_327)" d="M.5,-0L79.8,-0C80.1,-0,80.3,.4,80.3,.8C80.3,2.1,80.1,2.5,79.8,2.5L.5,2.5C.2,2.5,0,2.1,0,1.7C0,.4,.2,-0,.5,-0z"/>
+
+        </g>
+
+        <g transform="translate(55.28,68.81)">
+
+            <path transform="translate(1.09,0)" id="shape19" fill="url(#LLg1_327)" d="M0,0L15.3,0L15.3,80.5L0,80.5L0,0z"/>
+
+            <path transform="translate(-0.03,80.28)" id="shape20" fill="url(#LLg2_327)" d="M1.4,0L16,0C16.8,0,17.5,.6,17.5,1.4C17.5,2.2,16.8,2.9,16,2.9L1.4,2.9C.6,2.9,-0,2.2,-0,1.4C-0,.6,.6,0,1.4,0z"/>
+
+            <path transform="translate(1.09,39.54)" id="shape21" fill="url(#LLg2_327)" d="M0,0L15.3,0L15.3,1.4L0,1.4L0,0z"/>
+
+            <path transform="translate(1.09,0)" id="shape22" fill="url(#LLg2_327)" d="M0,0L15.3,0L15.3,1.4L0,1.4L0,0z"/>
+
+        </g>
+
+    </g>
+
+</svg>
+<rect width="130" height="154" stroke="none" stroke-width="2" fill="white" fill-opacity="0" style="cursor: default;"/>
+</g>
+</g>
+</g>
+</svg>

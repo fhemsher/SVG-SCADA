@@ -1,0 +1,227 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="componentSVG" style="background:transparent" width="300" height="200" viewBox="0 0 300 200" >
+
+<g text-rendering="geometricPrecision" shape-rendering="geometricPrecision"  class="noselect">
+<g xmlns="http://www.w3.org/2000/svg" id="component1522165239804" nativewidth="72" nativeheight="250" myscale="0.35" transform="matrix(0.35 0 0 0.35 -114.14 -76.71)" category="Sensor + Transmitter" name="Francis Hemsher" email="fhemsher@gmail.com" utcms="1521216533949" parentid="component1521216533949">
+<path id="path1521215439395" fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="3" stroke-opacity="1.0" d="M 383.3999938964844 351.79998779296875 L 383.3999938964844 422.79998779296875 L 397.3999938964844 422.79998779296875 L 397.3999938964844 421.79998779296875" type="linear" rightangle="true"/>
+<path id="path1521215457596" fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="3" stroke-opacity="1.0" d="M 416.3999938964844 351.79998779296875 L 416.3999938964844 442.79998779296875 L 401.3999938964844 442.79998779296875" type="linear" rightangle="true"/>
+<rect id="rect1521215093778" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="71.99996948242188" height="62" rx="10" ry="10" transform="matrix(1 0 0 1 364.4 245.6)"/>
+<rect id="rect1521215134882" fill="#000000" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="20" height="42" transform="translate(389.3999938964844 308.6000061035156)"/>
+<defs>
+<pattern id="fill15212162805704" patternUnits="userSpaceOnUse" width="6" height="6" addto="fill">
+<path d="M 0,3 l 6,0" stroke-width="1.0" shape-rendering="auto" stroke="#0000FF" stroke-linecap="square"/>
+</pattern>
+</defs>
+<rect id="rect1521215200050" fill="url(#fill15212162805704)" stroke="#000000" stroke-width="2" x="0" y="0" width="67" height="143.99999618530273" transform="matrix(1 0 0 1 369.4 351.6)" fill-opacity="null"/>
+<text id="text1521216238145" font-family="Arial" font-size="35" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 366.4 287.8)">
+AFT</text>
+<rect width="72" height="250" fill="white" fill-opacity="0" transform="translate(364.3999938964844,245.60000610351562)" style="cursor: default;" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5"/>
+</g>
+<g xmlns="http://www.w3.org/2000/svg" id="component1522165266509" nativewidth="181" nativeheight="199" myscale="0.35" transform="matrix(0.35 0 0 0.35 63.375 -55.875)" category="Transmitter" name="Francis Hemsher" email="fhemsher@gmail.com" utcms="1520372596604" parentid="component1520372596604">
+<path fill="none" fill-opacity="1.0" stroke="#0000FF" stroke-width="6" stroke-opacity="1.0" d="M 60 328 L 60 375" type="linear" rightangle="true" id="path3"/>
+<path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="6" stroke-opacity="1.0" d="M 125 333 L 125 376" type="linear" rightangle="true" id="path5"/>
+<path fill="none" fill-opacity="1.0" stroke="#0000FF" stroke-width="2" stroke-opacity="1.0" marker-end="url(#arrow0000FF)" d="M 77 377 L 114 377" type="linear" rightangle="true" id="path41"/>
+<rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="75" height="61" rx="10" ry="10" transform="matrix(1 0 0 1 57 233)" id="rect29"/>
+<rect fill="#000000" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="18" height="31" transform="matrix(1 0 0 1 86 295)" id="rect49"/>
+<rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="139" height="59" transform="matrix(1 0 0 1 28 326)" id="rect75"/>
+<text font-family="Arial" font-size="30" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.6" fill="#000000" transform="matrix(1 0 0 1 41 426)" filter="null" id="text95">
+
+Thermal</text>
+<text font-family="Arial" font-size="40" font-weight="bold" font-style="normal" stroke="none" stroke-width="0.8" fill="#0000FF" transform="matrix(1 0 0 1 98 367)" filter="null" id="text107">
+
+t</text>
+<rect fill="#0000FF" fill-opacity="1.0" stroke="#0000FF" stroke-width="2" x="0" y="0" width="14" height="9" transform="translate(54 328)" id="rect109"/>
+<rect fill="#FF0000" fill-opacity="1.0" stroke="#FF0000" stroke-width="2" x="0" y="0" width="14" height="10" transform="translate(119 327)" id="rect111"/>
+<rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="21" height="98" transform="matrix(1 0 0 1 167 308)" id="rect113"/>
+<rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="21" height="98" transform="matrix(1 0 0 1 7 305)" id="rect115"/>
+<text font-family="Arial" font-size="40" font-weight="bold" font-style="normal" stroke="none" stroke-width="0.8" fill="#000000" transform="matrix(1 0 0 1 69 277)" filter="null" id="text133">
+
+FT</text>
+<text font-size="40" font-family="Arial Unicode MS" stroke-width="0.8" fill="#0000FF" stroke="black" x="-16.703125" y="13.5" transform="matrix(1 0 0 1 84 353)" id="icon7">
+
+△</text>
+<rect width="181" height="199" fill="white" fill-opacity="0" transform="translate(7,233)" style="cursor: default;" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5"/>
+<defs>
+
+			<marker id="arrow0000FF" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#0000FF" stroke-linejoin="bevel">
+
+				<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+
+			</marker>
+
+		</defs>
+</g>
+<g xmlns="http://www.w3.org/2000/svg" id="component1522165284909" nativewidth="152" nativeheight="246" myscale="0.35" transform="matrix(0.35 0 0 0.35 129.65 -22.35)" category="Transmitter" name="Francis Hemsher" email="fhemsher@gmail.com" utcms="1520460488309" parentid="component1520460488309">
+<ellipse stroke="#000000" stroke-width="2" fill="#00FF00" transform="matrix(1 0 0 1 102 254)" rx="27" ry="59" fill-opacity="0.1" id="ellipse61"/>
+<text font-family="Arial" font-size="35" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.7000000000000001" fill="#000000" transform="matrix(1 0 0 1 26 337)" filter="null" id="text63">
+
+Resonant</text>
+<rect fill="#0000FF" fill-opacity="1.0" stroke="none" stroke-width="2" x="0" y="0" width="11" height="76" transform="matrix(1 0 0 1 114 218)" rx="10" ry="10" id="rect65"/>
+<rect fill="#0000FF" fill-opacity="1.0" stroke="none" stroke-width="2" x="0" y="0" width="20" height="20" transform="matrix(1 0 0 1 97 245)" id="rect67"/>
+<defs>
+<pattern id="fill15204604314414" patternUnits="userSpaceOnUse" width="5" height="5" addto="fill">
+
+				<path d="M 1.25 1.25 l 2.5 0 l 0 2.5 l -2.5 0 Z" fill="transparent" stroke-width="1.0" shape-rendering="auto" stroke="#FF4500" stroke-linecap="square"/>
+
+			</pattern>
+</defs>
+<ellipse stroke="#FF0000" stroke-width="1" fill="url(#fill15204604314414)" transform="matrix(1 0 0 1 87 255)" rx="11" ry="33" id="ellipse69"/>
+<circle stroke="#000000" stroke-width="2" fill="white" fill-opacity="0" transform="matrix(1 0 0 1 101 256)" r="58" id="circle117"/>
+<rect fill="#000000" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="20" height="34" transform="matrix(1 0 0 1 92 164)" id="rect119"/>
+<rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="80" height="65" rx="10" ry="10" transform="matrix(1 0 0 1 63 98)" id="rect121"/>
+<text font-family="Arial" font-size="40" font-weight="bold" font-style="normal" stroke="none" stroke-width="0.8" fill="#000000" transform="matrix(1 0 0 1 80 143)" id="text173" filter="null">
+
+PT</text>
+<text font-family="Times New Roman" font-size="17" font-weight="bold" font-style="normal" stroke="none" stroke-width="0.34" fill="#000000" transform="matrix(3.60822e-16 1 -1 3.60822e-16 60 220)" id="text189" filter="null">
+
+Reference</text>
+<text font-family="Times New Roman" font-size="17" font-weight="bold" font-style="normal" stroke="none" stroke-width="0.34" fill="#000000" transform="matrix(3.60822e-16 1 -1 3.60822e-16 134 218)" id="text191" filter="null">
+
+Measured</text>
+<rect fill="#FFFFFF" fill-opacity="1.0" stroke="#000000" stroke-width="1" x="0" y="0" width="20" height="20" id="rect1520458655434" transform="matrix(1 0 0 1 157 244)"/>
+<rect fill="#FFFFFF" fill-opacity="1.0" stroke="#000000" stroke-width="1" x="0" y="0" width="20" height="20" id="rect1520458655998" transform="matrix(1 0 0 1 25 242)"/>
+<rect width="152" height="246" fill="white" fill-opacity="0" transform="translate(25,98)" style="cursor: default;" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5"/>
+</g>
+<g xmlns="http://www.w3.org/2000/svg" id="component1522165296784" nativewidth="251.4375" nativeheight="254" myscale="0.35" transform="matrix(0.35 0 0 0.35 201.567 -115.5)" category="Transmitter" name="Francis Hemsher" email="fhemsher@gmail.com" utcms="1520460576909" parentid="component1520460576909">
+<ellipse stroke="#000000" stroke-width="2" fill="#00FF00" transform="matrix(1 0 0 1 111 522)" rx="27" ry="59" fill-opacity="0.1" id="ellipse59"/>
+<defs>
+<pattern id="fill15204605569811" patternUnits="userSpaceOnUse" width="8" height="8" addto="fill">
+
+				<path d="M 0,8 l 8,-8 M -2,2 l 4,-4 M 6,10 l 4,-4" stroke-width="2.0" shape-rendering="auto" stroke="#FF4500" stroke-linecap="square"/>
+
+				<path d="M 0,-2 l 8,4M 0,2 l 8,4 M 0,6 l 8,4" stroke-width="2.0" shape-rendering="auto" stroke="#FF4500" stroke-linecap="square"/>
+
+			</pattern>
+</defs>
+<rect fill="url(#fill15204605569811)" stroke="#FF0000" stroke-width="1" x="0" y="0" width="33" height="61" transform="matrix(1 0 0 1 88 492)" fill-opacity="null" id="rect71"/>
+<rect fill="#FFFFFF" fill-opacity="1.0" stroke="#000000" stroke-width="1" x="0" y="0" width="38" height="18" transform="matrix(1 0 0 1 86 513)" id="rect73"/>
+<rect fill="#0000FF" fill-opacity="1.0" stroke="none" stroke-width="2" x="0" y="0" width="47" height="11" transform="matrix(1 0 0 1 88 517)" id="rect75"/>
+<rect fill="#4169E1" fill-opacity="1.0" stroke="none" stroke-width="2" x="0" y="0" width="6" height="20" transform="matrix(1 0 0 1 131 513)" id="rect77"/>
+<text font-family="Arial" font-size="35" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.7000000000000001" fill="#000000" transform="matrix(1 0 0 1 9 610)" filter="null" id="text79">
+
+Electromagnetic</text>
+<circle stroke="#000000" stroke-width="2" fill="white" fill-opacity="0" transform="matrix(1 0 0 1 110 523)" r="58" id="circle87"/>
+<rect fill="#000000" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="20" height="34" transform="matrix(1 0 0 1 101 430)" id="rect109"/>
+<rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="80" height="65" rx="10" ry="10" transform="matrix(1 0 0 1 69 363)" id="rect111"/>
+<rect fill="#FFFFFF" fill-opacity="1.0" stroke="#000000" stroke-width="1" x="0" y="0" width="20" height="20" transform="matrix(1 0 0 1 167 512)" id="rect113"/>
+<rect fill="#FFFFFF" fill-opacity="1.0" stroke="#000000" stroke-width="1" x="0" y="0" width="20" height="20" transform="matrix(1 0 0 1 34 513)" id="rect115"/>
+<text font-family="Arial" font-size="40" font-weight="bold" font-style="normal" stroke="none" stroke-width="0.8" fill="#000000" transform="matrix(1 0 0 1 85 410)" id="text177" filter="null">
+
+PT</text>
+<text font-family="Times New Roman" font-size="17" font-weight="bold" font-style="normal" stroke="none" stroke-width="0.34" fill="#000000" transform="matrix(3.60822e-16 1 -1 3.60822e-16 70 486)" id="text197" filter="null">
+
+Reference</text>
+<text font-family="Times New Roman" font-size="17" font-weight="bold" font-style="normal" stroke="none" stroke-width="0.34" fill="#000000" transform="matrix(3.60822e-16 1 -1 3.60822e-16 141 486)" id="text199" filter="null">
+
+Measured</text>
+<rect width="251.4375" height="254" fill="white" fill-opacity="0" transform="translate(9,363)" style="cursor: default;" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5"/>
+</g>
+<g xmlns="http://www.w3.org/2000/svg" id="component1522165307846" nativewidth="100" nativeheight="197" myscale="0.35" transform="matrix(0.35 0 0 0.35 -64.5 109.175)" category="Transmitter" name="Francis Hemsher" email="fhemsher@gmail.com" utcms="1520518410418" parentid="component1520518410418">
+<defs>
+<marker id="arrownone" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="none" stroke-linejoin="bevel">
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+</marker>
+</defs>
+<path id="path1520515861211" fill="#A9A9A9" fill-opacity="1.0" stroke="#A9A9A9" stroke-width="2" stroke-opacity="1.0" d="M 236 137 L 250 167 L 288 167 L 304 141 L 280 128 L 258 128" type="linear"/>
+<path id="path1520516011022" fill="#FF0000" fill-opacity="1.0" stroke="#FF0000" stroke-width="2" d="M239,215L243.6666,211.8334C248.3334,208.6666,257.667,202.3334,268.167,202.1666C278.667,202,290.333,208,296.167,211L302,214" type="basis" lineard="M 239 215 L 267 196 L 302 214"/>
+<path id="path1520516046871" fill="#FF0000" fill-opacity="1.0" stroke="#FF0000" stroke-width="2" stroke-opacity="1.0" d="M 240 216 L 259 226 L 284 225 L 294 221 L 303 214 z" type="linear"/>
+<defs>
+<pattern id="fill15205182915723" patternUnits="userSpaceOnUse" width="6" height="6" addto="fill">
+<path d="M 0 3 c 0.75 -1.5 , 2.25 -1.5 , 3 0
+c 0.75 1.5 , 2.25 1.5 , 3 0 M -3 3
+c 0.75 1.5 , 2.25 1.5 , 3 0 M 6 3
+c 0.75 -1.5 , 2.25 -1.5 , 3 0" fill="transparent" stroke-width="1.0" shape-rendering="auto" stroke="#0000FF" stroke-linecap="square"/>
+</pattern>
+</defs>
+<path id="path1520517620685" fill="url(#fill15205182915723)" stroke="none" stroke-width="1" stroke-opacity="1.0" marker-end="url(#arrownone)" d="M 250 168 L 251 207 L 271 201 L 288 206 L 287 168 z" type="linear"/>
+<rect id="rect1520515534706" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="74" height="61" rx="10" ry="10" transform="translate(230 31)"/>
+<rect id="rect1520515573578" fill="#000000" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="19" height="36" transform="translate(260 92)"/>
+<text id="text1520515630767" font-family="Arial" font-size="35" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 237 72)">
+NIR</text>
+<circle id="circle1520515704536" stroke="#000000" stroke-width="2" fill="white" transform="matrix(1 0 0 1 270 178)" r="50" fill-opacity="0"/>
+<rect width="100" height="197" fill="white" fill-opacity="0" transform="translate(220,31)" style="cursor: default;" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5"/>
+</g>
+<g xmlns="http://www.w3.org/2000/svg" id="component1522165314082" nativewidth="113.90625" nativeheight="200" myscale="0.35" transform="matrix(0.35 0 0 0.35 -66.1632 106.75)" category="Transmitter" name="Francis Hemsher" email="fhemsher@gmail.com" utcms="1520520633879" parentid="component1520520633879">
+<rect id="rect1520519641396" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="73" height="61" rx="10" ry="10" transform="matrix(1 0 0 1 375 35)"/>
+<text id="text1520519680729" font-family="Arial" font-size="35" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 377 75)">
+ATR</text>
+<rect id="rect1520519729765" fill="#000000" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="19" height="38" transform="translate(403 96)"/>
+<circle id="circle1520519769189" stroke="#000000" stroke-width="2" fill="white" fill-opacity="0" transform="matrix(1 0 0 1 412 184)" r="51"/>
+<polygon id="polygon1520519897452" stroke="#2E8B57" stroke-width="2" fill="#2E8B57" fill-opacity="0.4" vcnt="6" radius="25" transform="matrix(1 0 0 1 410 182)" points="25 0 12.5 -21.6506 -12.5 -21.6506 -25 -3.06162e-15 -12.5 21.6506 12.5 21.6506"/>
+<rect id="rect1520520127003" fill="#A9A9A9" fill-opacity="1.0" stroke="#A9A9A9" stroke-width="2" x="0" y="0" width="11" height="37" transform="matrix(1 0 0 1 449 163)"/>
+<defs>
+<pattern id="fill15205205699736" patternUnits="userSpaceOnUse" width="6" height="6" addto="fill">
+<path d="M 0 3 c 0.75 -1.5 , 2.25 -1.5 , 3 0
+c 0.75 1.5 , 2.25 1.5 , 3 0 M -3 3
+c 0.75 1.5 , 2.25 1.5 , 3 0 M 6 3
+c 0.75 -1.5 , 2.25 -1.5 , 3 0" fill="transparent" stroke-width="1.0" shape-rendering="auto" stroke="#FF4500" stroke-linecap="square"/>
+</pattern>
+</defs>
+<rect id="rect1520520166409" fill="url(#fill15205205699736)" stroke="none" stroke-width="2" x="0" y="0" width="85" height="22" transform="matrix(1 0 0 1 365 169)" fill-opacity="null"/>
+<text id="icon1520519985416" font-size="30" font-family="Arial Unicode MS" stroke-width="0.6" fill="#4169E1" stroke="black" x="-12.9140625" y="10.5" transform="matrix(1 0 0 1 362 182)" cursor="default">
+◗</text>
+<rect width="113.90625" height="200" fill="white" fill-opacity="0" transform="translate(349.09375,35)" style="cursor: default;" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5"/>
+</g>
+<g xmlns="http://www.w3.org/2000/svg" id="component1522165324806" nativewidth="72" nativeheight="214" myscale="0.35" transform="matrix(0.35 0 0 0.35 88.65 12.4)" category="Transmitter" name="Francis Hemsher" email="fhemsher@gmail.com" utcms="1520525398327" parentid="component1520525398327">
+<rect id="rect1520521353036" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="38" height="91" rx="10" ry="10" transform="matrix(1 0 0 1 60 407)"/>
+<rect id="rect1520521382334" fill="#000000" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="19" height="37" transform="matrix(1 0 0 1 69 370)"/>
+<rect id="rect1520521416875" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="72" height="60" rx="10" ry="10" transform="matrix(1 0 0 1 45 309)"/>
+<text id="text1520523964235" font-family="Arial" font-size="40" font-weight="bold" font-style="normal" stroke="none" stroke-width="0.8" fill="#000000" transform="matrix(1 0 0 1 52 352)" filter="null">
+TT</text>
+<ellipse id="ellipse1520524088195" stroke="#FF0000" stroke-width="2" fill="white" fill-opacity="0" transform="matrix(1 0 0 1 77 456)" rx="11" ry="22"/>
+<rect id="rect1520525024221" fill="#FF0000" fill-opacity="1.0" stroke="#FF0000" stroke-width="2" x="0" y="0" width="19" height="9" transform="matrix(1 0 0 1 68 479)"/>
+<text id="text1520525215133" font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 60 519)">
+RTD</text>
+<text id="icon1520524724060" font-size="45" font-family="Arial Unicode MS" stroke-width="0.9" fill="#FF0000" stroke="black" x="-6.53125" y="15" transform="matrix(1 0 0 1 76 455)" cursor="default">
+⦚</text>
+<text id="icon1520524875331" font-size="30" font-family="Arial Unicode MS" stroke-width="0.6" fill="#0000FF" stroke="black" x="-14.84375" y="10.5" transform="matrix(1 0 0 1 76 422)" cursor="default">
+▼</text>
+<rect width="72" height="214" fill="white" fill-opacity="0" transform="translate(45,309)" style="cursor: default;" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5"/>
+</g>
+<g xmlns="http://www.w3.org/2000/svg" id="component1522165338655" nativewidth="111.21875" nativeheight="191" myscale="0.35" transform="matrix(0.35 0 0 0.35 31.5727 93.675)" category="Transmitter" name="Francis Hemsher" email="fhemsher@gmail.com" utcms="1520608269663" parentid="component1520608269663">
+<rect id="rect1520607119860" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="72" height="59" rx="10" ry="10" transform="matrix(1 0 0 1 364 84)"/>
+<rect id="rect1520607161198" fill="#000000" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="21" height="37" transform="matrix(1 0 0 1 389 143)"/>
+<circle id="circle1520607212029" stroke="#000000" stroke-width="2" fill="white" fill-opacity="0" transform="matrix(1 0 0 1 402 227)" r="48"/>
+<circle id="circle1520607254650" stroke="none" stroke-width="2" fill="#696969" fill-opacity="1.0" transform="translate(402 225)" r="26"/>
+<circle id="circle1520607327350" stroke="none" stroke-width="2" fill="#FFFFFF" fill-opacity="1.0" transform="matrix(1 0 0 1 407.405 241.713)" r="6"/>
+<circle id="circle1520607327605" stroke="none" stroke-width="2" fill="#FFFFFF" fill-opacity="1.0" transform="matrix(1 0 0 1 419.138 230.749)" r="6"/>
+<circle id="circle1520607327854" stroke="none" stroke-width="2" fill="#FFFFFF" fill-opacity="1.0" transform="matrix(1 0 0 1 417.421 215.441)" r="6"/>
+<circle id="circle1520607328086" stroke="none" stroke-width="2" fill="#FFFFFF" fill-opacity="1.0" transform="matrix(1 0 0 1 384 227)" r="6"/>
+<circle id="circle1520607328326" stroke="none" stroke-width="2" fill="#FFFFFF" fill-opacity="1.0" transform="matrix(1 0 0 1 388.99 211.856)" r="6"/>
+<circle id="circle1520607328550" stroke="none" stroke-width="2" fill="#FFFFFF" fill-opacity="1.0" transform="matrix(1 0 0 1 402.856 206.436)" r="6"/>
+<circle id="circle1520607379420" stroke="none" stroke-width="2" fill="#FFFFFF" fill-opacity="1.0" transform="matrix(1 0 0 1 392.262 240.421)" r="6"/>
+<rect id="rect1520607578698" fill="#0000FF" fill-opacity="1.0" stroke="none" stroke-width="2" x="0" y="0" width="13" height="31" transform="matrix(1 0 0 1 435.34 209.495)"/>
+<circle id="circle1520607828769" stroke="none" stroke-width="2" fill="#000000" fill-opacity="1.0" transform="matrix(1 0 0 1 402.34 225.155)" r="5"/>
+<text id="text1520607982223" font-family="Arial" font-size="30" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 368 121)">
+RST</text>
+<text id="text1520608088129" font-family="Arial" font-size="17" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 376 264)">
+Optical</text>
+<text id="icon1520607635930" font-size="40" font-family="Arial Unicode MS" stroke-width="0.8" fill="#FF0000" stroke="black" x="-17.2265625" y="13.5" transform="matrix(1 0 0 1 356 226)" cursor="default">
+◗</text>
+<rect width="111.21875" height="191" fill="white" fill-opacity="0" transform="translate(338.78125,84)" style="cursor: default;" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5"/>
+</g>
+<g xmlns="http://www.w3.org/2000/svg" id="component1522165363691" nativewidth="138.171875" nativeheight="209" myscale="0.35" transform="matrix(0.35 0 0 0.35 102.356 46.475)" category="Transmitter" name="Francis Hemsher" email="fhemsher@gmail.com" utcms="1521190472420" parentid="component1521190472420">
+<path id="path1521189316370" fill="#808080" fill-opacity="1.0" stroke="#000000" stroke-width="2" stroke-opacity="1.0" d="M 333 320 L 470 320 L 470 406 L 439 406 L 439 363 L 365 363 L 365 409 L 333 409 z" type="linear" rightangle="true"/>
+<rect id="rect1521189040543" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="72" height="54" rx="10" ry="10" transform="matrix(1 0 0 1 363 227)"/>
+<rect id="rect1521189069321" fill="#000000" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="20" height="37" transform="translate(391 282)"/>
+<defs>
+<pattern id="fill15211904252113" patternUnits="userSpaceOnUse" width="5" height="5" addto="fill">
+<path d="M 0 2.5 c 0.625 -1.25 , 1.875 -1.25 , 2.5 0 c 0.625 1.25 , 1.875 1.25 , 2.5 0 M -2.5 2.5 c 0.625 1.25 , 1.875 1.25 , 2.5 0 M 5 2.5 c 0.625 -1.25 , 1.875 -1.25 , 2.5 0" fill="transparent" stroke-width="1.0" shape-rendering="auto" stroke="#FF0000" stroke-linecap="square"/>
+</pattern>
+</defs>
+<rect id="rect1521189650834" fill="url(#fill15211904252113)" stroke="none" stroke-width="2" x="0" y="0" width="69" height="31" transform="matrix(1 0 0 1 368 371)"/>
+<rect id="rect1521189891094" fill="#FFD700" fill-opacity="1.0" stroke="#000000" stroke-width="0.5" x="0" y="0" width="10" height="30" transform="matrix(1 0 0 1 404 328)"/>
+<text id="text1521190099662" font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 340 432)">
+Through-beam</text>
+<text id="text1521190148869" font-family="Arial" font-size="35" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 367 266)">
+PxT</text>
+<text id="icon1521189379732" font-size="30" font-family="Arial Unicode MS" stroke-width="0.6" fill="#FFD700" stroke="black" x="-12.9140625" y="10.5" transform="matrix(1 0 0 1 392 342)" cursor="default">
+▶</text>
+<text id="icon1521189424492" font-size="50" font-family="Arial Unicode MS" stroke-width="0.8" fill="#FF0000" stroke="black" x="-17.2265625" y="13.5" transform="matrix(1 0 0 1 361 392)" cursor="default">
+◗</text>
+<text id="icon1521189472952" font-size="50" font-family="Arial Unicode MS" stroke-width="1" fill="#0000FF" stroke="black" x="-21.53125" y="17" transform="translate(438 387)" cursor="default">
+◖</text>
+<rect width="138.171875" height="209" fill="white" fill-opacity="0" transform="translate(333,227)" style="cursor: default;" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5"/>
+</g>
+</g>
+
+</svg>
