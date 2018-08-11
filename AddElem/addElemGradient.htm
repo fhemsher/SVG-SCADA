@@ -36,6 +36,7 @@
 
 </div></td>
 </tr>
+
 <tr>
 <td>
 <b>Stop 2</b> <span id=stop2ColorBG>Color</span>
@@ -44,8 +45,18 @@
 <input onmouseover="setOffset2Value()" onmousemove="setOffset2Value()"  id=offset2SliderValue style=width:180px; type="range" name="points" min="0" max="100" step=1 value=100><input  id=offset2Value style=width:30px type="text" value=100 />% <b>offset </b><br>
 <input onmouseover="setOpacity2Value()" onmousemove="setOpacity2Value()"  id=opacity2SliderValue style=width:180px; type="range" name="points" min="0" max="1" step=.1 value=1><input style=width:30px type="text" value=1 id=opacity2Value /> <b>opacity </b><br>
 </td>
-
 </tr>
+
+<tr>
+<td>
+<b>(3D)<input type="checkbox" id=stop3Check onclick=stop3Checked() />:Stop 3</b> <span id=stop3ColorBG>Color</span>
+<select name="" id="stop3ColorSelect" onChange=resetGradient()>
+</select><br>
+<input onmouseover="setOffset3Value()" onmousemove="setOffset3Value()"  id=offset3SliderValue style=width:180px; type="range" name="points" min="0" max="100" step=1 value=100><input  id=offset3Value style=width:30px type="text" value=100 />% <b>offset </b><br>
+<input onmouseover="setOpacity3Value()" onmousemove="setOpacity3Value()"  id=opacity3SliderValue style=width:180px; type="range" name="points" min="0" max="1" step=.1 value=1><input style=width:30px type="text" value=1 id=opacity3Value /> <b>opacity </b><br>
+</td>
+</tr>
+
 <tr id=radialTR >
 <td align=left><center>Radial Gradient</center>
 <input onmouseover="setCxValue()" onmousemove="setCxValue()"  id=cxSliderValue style=width:180px; type="range" name="points" min="0" max="100" step=1 value=50><input id=cxValue style=width:30px type="text" value=50 />% <b>cx</b><br>
@@ -79,8 +90,8 @@ Spread Method:<br>
 </td><td style=width:130px;height:120px>
 <svg width=150 height=120 overflow=visible>
  <defs>
-<radialGradient id=gradientRadial cx=50% cy=50% r=75% fx=50% fy=50% ><stop id=stop1Radial offset=0% stop-color="rgb(255,0,0)" stop-opacity=1 /><stop id=stop2Radial offset=100% stop-color="rgb(0,0,0)" stop-opacity=1 /></radialGradient>
-<linearGradient id=gradientLinear x1=0% y1=0% x2=100% y2=100% ><stop id=stop1Linear offset=0% stop-color="rgb(255,0,0)" stop-opacity=1 /><stop id=stop2Linear offset=100% stop-color="rgb(0,0,0)" stop-opacity=1 /></linearGradient>
+<radialGradient id=gradientRadial cx=50% cy=50% r=75% fx=50% fy=50% gradientUnits="objectBoundingBox" ><stop id=stop1Radial offset=0% stop-color="rgb(255,0,0)" stop-opacity=1 /><stop id=stop2Radial offset=100% stop-color="rgb(0,0,0)" stop-opacity=1 /></radialGradient>
+<linearGradient id=gradientLinear x1=0% y1=0% x2=100% y2=100% gradientUnits="objectBoundingBox"><stop id=stop1Linear offset=0% stop-color="rgb(255,0,0)" stop-opacity=1 /><stop id=stop2Linear offset=100% stop-color="rgb(0,0,0)" stop-opacity=1 /></linearGradient>
 </defs>
 <defs id=defsGradientSave />
 
@@ -121,6 +132,17 @@ function setOpacity2Value()
    opacity2Value.value=opacity2SliderValue.value
 
 }
+function setOffset3Value()
+{
+    offset3Value.value=offset3SliderValue.value
+    resetGradient()
+}
+function setOpacity3Value()
+{
+   opacity3Value.value=opacity3SliderValue.value
+
+}
+
 function setCxValue()
 {
    cxValue.value=cxSliderValue.value
@@ -248,6 +270,18 @@ function resetGradient()
       stop2ColorBG.style.background=stop2Color
    var stop2Offset=offset2Value.value+"%"
    var stop2Opacity=opacity2Value.value
+   if(stop3Check.checked)
+   {
+        var stop3Color=stop3ColorSelect.options[stop3ColorSelect.selectedIndex].value
+        stop3ColorBG.style.background=stop3Color
+        var stop3Offset=offset3Value.value+"%"
+        var stop3Opacity=opacity3Value.value
+        stop3Radial.setAttribute("offset",stop3Offset)
+        stop3Radial.setAttribute("stop-color",stop3Color)
+        stop3Radial.setAttribute("stop-opacity",stop3Opacity)
+   }
+
+
    var cx=cxValue.value+"%"
    var cy=cyValue.value+"%"
    var r=rValue.value+"%"
@@ -319,6 +353,92 @@ function resetGradient()
 
    saveGradientButton.disabled=false
 }
+//=================stop3================
+
+function stop3Checked()
+{
+   if(stop3Check.checked)
+   {
+        stop1ColorSelect.selectedIndex=117
+        var stop1Color=stop1ColorSelect.options[117].value
+        stop1ColorBG.style.background=stop1Color
+        stop1Radial.setAttribute("stop-color",stop1Color)
+        stop1Radial.setAttribute("offset","0%")
+        stop1Radial.setAttribute("opacity","1")
+        offset1Value.value=0
+        opacity1Value.value=1
+        offset1SliderValue.value=0
+        opacity1SliderValue.value=1
+
+        stop2ColorSelect.selectedIndex=63
+        var stop2Color=stop2ColorSelect.options[63].value
+        stop2ColorBG.style.background=stop2Color
+        stop2Radial.setAttribute("stop-color",stop2Color)
+        stop2Radial.setAttribute("offset","40%")
+        stop2Radial.setAttribute("opacity","1")
+        offset2Value.value=40
+        opacity2Value.value=1
+        offset2SliderValue.value=40
+        opacity2SliderValue.value=1
+
+        gradientRadial.setAttribute("cx","30%")
+        gradientRadial.setAttribute("cy","30%")
+        gradientRadial.setAttribute("r","100%")
+        gradientRadial.setAttribute("fx","30%")
+        gradientRadial.setAttribute("fy","30")
+
+        gradientLinear.setAttribute("x1","0%")
+        gradientLinear.setAttribute("y1","0%")
+        gradientLinear.setAttribute("x2","100%")
+        gradientLinear.setAttribute("y2","100%")
+        cxValue.value=30
+        cyValue.value=30
+        rValue.value= 100
+        fxValue.value=30
+        fyValue.value= 30
+        x1Value.value=0
+        y1Value.value=0
+        x2Value.value=100
+        y2Value.value=100
+        cxSliderValue.value=30
+        cySliderValue.value=30
+        rSliderValue.value= 100
+        fxSliderValue.value=30
+        fySliderValue.value= 30
+        x1SliderValue.value=0
+        y1SliderValue.value=0
+        x2SliderValue.value=100
+        y2SliderValue.value=100
+        stop3ColorSelect.selectedIndex=65
+        var stop3Color=stop3ColorSelect.options[65].value
+        stop3ColorBG.style.background=stop3Color
+
+        var stop3R=document.createElementNS(parent.NS,"stop")
+        stop3R.setAttribute("id","stop3Radial")
+        stop3R.setAttribute("offset","100%")
+        stop3R.setAttribute("stop-color",stop3Color)
+        stop3R.setAttribute("stop-opacity","1")
+        gradientRadial.appendChild(stop3R)
+        var stop3L=document.createElementNS(parent.NS,"stop")
+        stop3L.setAttribute("id","stop3Linear")
+        stop3L.setAttribute("offset","100%")
+        stop3L.setAttribute("stop-color",stop3Color)
+        stop3L.setAttribute("stop-opacity","1")
+        gradientLinear.appendChild(stop3L)
+
+        offset3SliderValue.value=100
+        opacity3SliderValue.value=1
+
+    }
+    else
+    {
+        gradientRadial.removeChild(stop3Radial)
+        gradientLinear.removeChild(stop3Linear)
+    }
+
+    resetGradient()
+}
+
 var MyGradient
 var GradientTarget
 
@@ -329,11 +449,11 @@ function writeGradientColorSelection()
 	{
 		var name=DrawColors[k][0]
 		var myColor=DrawColors[k][1]
+
 		var option=document.createElement("OPTION")
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
-
 		option.text=k
         stop1ColorSelect.appendChild(option)
 
@@ -341,9 +461,15 @@ function writeGradientColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
-
 		option.text=k
         stop2ColorSelect.appendChild(option)
+
+		var option=document.createElement("OPTION")
+		option.style.backgroundColor=myColor
+		option.value=myColor
+		option.title=name+" "+myColor
+		option.text=k
+        stop3ColorSelect.appendChild(option)
 
 	}
 	stop1ColorSelect.selectedIndex=7
@@ -353,6 +479,10 @@ function writeGradientColorSelection()
 	stop2ColorSelect.selectedIndex=143
 	var clr=stop2ColorSelect.options[stop2ColorSelect.selectedIndex].value
 	stop2ColorBG.style.backgroundColor=clr
+
+	stop3ColorSelect.selectedIndex=64
+	var clr=stop3ColorSelect.options[stop3ColorSelect.selectedIndex].value
+	stop3ColorBG.style.backgroundColor=clr
 
 
 }

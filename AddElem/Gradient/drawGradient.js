@@ -1,7 +1,7 @@
 ///---X button and iframe close all---
 function closeDrawGradient()
 {
-       var cw = addElemGradientCw
+    var cw = addElemGradientCw
     if(addElemGradientViz==true)
     {
         //cw.savedGradientTable.style.visibility = "hidden"
@@ -13,19 +13,16 @@ function closeDrawGradient()
             var elem = elems.item(k)
             elem.removeAttribute("onclick")
             var myClass = elem.getAttribute("class")
-             var myId = elem.id
-            if(myClass=="isaElem")
-            {
-                elem.lastChild.removeAttribute("onclick")
-                elem.lastChild.setAttribute("onmousedown", "editIsaDraw("+myId+",evt)")
-            }
-             if(myClass=="circleElem") elem.setAttribute("onmousedown", "editCircleDraw("+myId+",evt)")
-             if(myClass=="ellipseElem") elem.setAttribute("onmousedown", "editEllipseDraw("+myId+",evt)")
-             if(myClass=="rectElem") elem.setAttribute("onmousedown", "editRectDraw("+myId+",evt)")
-             if(myClass=="textElem") elem.setAttribute("onmousedown", "editTextDraw("+myId+",evt)")
-             if(myClass=="polygonElem") elem.setAttribute("onmousedown", "editPolygonDraw("+myId+",evt)")
-             if(myClass=="iconElem") elem.setAttribute("onmousedown", "editIconStart(evt)")
-             if(myClass=="pathElem") elem.setAttribute("onmousedown", "startPathDrawEdit("+myId+",evt)")
+            var myId = elem.id
+
+            if(myClass=="circleElem") elem.setAttribute("onmousedown", "editCircleDraw("+myId+",evt)")
+                if(myClass=="ellipseElem") elem.setAttribute("onmousedown", "editEllipseDraw("+myId+",evt)")
+                if(myClass=="rectElem") elem.setAttribute("onmousedown", "editRectDraw("+myId+",evt)")
+                if(myClass=="textElem") elem.setAttribute("onmousedown", "editTextDraw("+myId+",evt)")
+                if(myClass=="polygonElem") elem.setAttribute("onmousedown", "editPolygonDraw("+myId+",evt)")
+                if(myClass=="iconElem") elem.setAttribute("onmousedown", "editIconStart(evt)")
+                if(myClass=="pathElem") elem.setAttribute("onmousedown", "startPathDrawEdit("+myId+",evt)")
+                if(myClass=="arcElem") elem.setAttribute("onmousedown", "editArcDraw("+myId+",evt)")
 
         }
 
@@ -36,30 +33,19 @@ function closeDrawGradient()
 var DrawGradient = false
 function startGradientDraw()
 {
- DrawGradient = true
+    DrawGradient = true
     var elems = domElemG.childNodes
     for(k = 0; k<elems.length; k++)
     {
         var elem = elems.item(k)
-        var myClass=elem.getAttribute("class")
-        if(myClass!="componentElem"&&myClass!="processtElem")
+        var myClass = elem.getAttribute("class")
+        if(myClass!="componentElem"&&myClass!="schematicElem")
         {
-            if(myClass=="isaElem")
-            {
-                elem.lastChild.removeAttribute("onmousedown")
-                elem.lastChild.setAttribute("onclick", "placeGradient(evt)")
-
-            }
-            else
-            {
-                elem.removeAttribute("onmousedown")
-                elem.setAttribute("onclick", "placeGradient(evt)")
-            }
+            elem.removeAttribute("onmousedown")
+            elem.setAttribute("onclick", "placeGradient(evt)")
 
         }
     }
-
-
 
 }
 
@@ -69,8 +55,6 @@ function saveGradientButtonClicked()
 
     var cw = addElemGradientCw
     MyGradient = cw.MyGradient
-
-
 
     UseGradientID = "gradient"+new Date().getTime()
 
@@ -116,17 +100,17 @@ function placeGradient(evt)
     if(UseGradientID)
     {
         var target = evt.target
-       if(target.parentNode.id.indexOf("isa")!=-1&& (Where=="fill") )
+        if(target.parentNode.id.indexOf("isa")!=-1&& (Where=="fill"))
         {
-           var isa=target.parentNode
-           var paths=isa.getElementsByTagName("path")
-          for(var j=0;j<paths.length;j++)
-          {
-            var path=paths[j]
-            if(path.getAttribute("fill")!="none")
-                  path.setAttribute("fill", "url(#"+UseGradientID+")")
+            var isa = target.parentNode
+            var paths = isa.getElementsByTagName("path")
+            for(var j = 0; j<paths.length; j++)
+            {
+                var path = paths[j]
+                if(path.getAttribute("fill")!="none")
+                    path.setAttribute("fill", "url(#"+UseGradientID+")")
 
-          }
+            }
         }
         else if(Where=="fill")
         {
@@ -137,6 +121,5 @@ function placeGradient(evt)
             target.setAttribute("stroke", "url(#"+UseGradientID+")")
 
     }
-
 
 }
