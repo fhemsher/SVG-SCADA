@@ -11,6 +11,8 @@ To run the application, in **localhost** select the index.htm file.
 
 You may then create/save/edit SVG SCADA drawings.
 
+![](http://svg-scada.com/Images/scada.png)
+
 To preview how this application works go to: http://svg-scada.com
 
 NOTE:To store your svg images for the Component library, the Windows IIS must have 
