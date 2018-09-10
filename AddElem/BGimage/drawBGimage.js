@@ -48,7 +48,7 @@ function placeDrawBGimage()
 
 
 
- function loadImageFile() {
+ function loadBGImageFile() {
 
     var cw=addElemBGimageCw
 
