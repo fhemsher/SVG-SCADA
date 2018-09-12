@@ -28,6 +28,7 @@ var ActiveElem = null
 var Wrapper //---svg wrapper---
 var DrawX
 var DragDot //---used for circles/rects---
+var ImgDragArrow
 var MySVG
 //---called via onload---
 function initD3Svg()
@@ -449,6 +450,16 @@ var defs=MySVG.append("defs")
    .attr("opacity","1")
    .attr("filter","url(#drop-shadow)")
    .text("SVG + JavaScript = SCADA")
+    ImgDragArrow=MySVG.append("image")
+    .attr("id","imgDragArrow")
+    .attr("href","Images/ImgDragArrow.png")
+    .attr("class","dragTargetObj")
+    .attr("width","25")
+    .attr("height","25")
+    .attr("x","-12.5")
+    .attr("y","-12.5")
+    .style("visibility", "hidden")
+    .style("cursor", "nw-resize")
 
    var svgText=MySVG.append("text")
    .attr("id","textSVG")
