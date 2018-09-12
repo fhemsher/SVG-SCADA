@@ -38,7 +38,7 @@ function startCursorLoc()
                 if(addElemDigitalReadoutViz==true)trackDrawDigitalReadout()
                 if(addElemAutoManualViz==true)trackDrawAutoManual()
                 if(ZoomDrawing==true)trackZoom()
-
+                 if(addElemBGimageViz==true)trackDrawBGimage()  
         }
     );
 
