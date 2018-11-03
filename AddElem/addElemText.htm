@@ -55,12 +55,16 @@ box-shadow: 4px 4px 5px #888;
 </td><td align=right><button  onClick=parent.closeIframe("addElemText");parent.closeDrawText()>X</button></td></tr>
 <tr><td colspan=2 id=textClickOnTD style=font-size:80% align=center><i>Click on drawing to locate text</i></td></tr></table>
 <table id=botTextTable style=width:360px;background:linen>
+
+
+
+
 <tr >
 <td valign=bottom align=center>
  Color:<span id=drawTextFillBg > Fill </span> &nbsp;
 <select   onChange=parent.showDrawTextFillBg();focusText() id=drawTextFillSelect></select>
 
-<b>Bold</b>:<input type="checkbox" id=drawTextBoldCheck onClick=parent.drawTextBoldChecked();focusText() />
+<b>Bold</b>:<input  type="checkbox" id=drawTextBoldCheck onClick=parent.drawTextBoldChecked();focusText() />
 <i>Italic</i>:<input type="checkbox" id=drawTextItalicCheck onClick=parent.drawTextItalicChecked();focusText() />
 <br>
  Color:<span id=drawTextStrokeBg > Stroke </span> &nbsp;
@@ -107,10 +111,10 @@ box-shadow: 4px 4px 5px #888;
 	</td>
 </tr>
 
-
 <tr  align=center>
 	<td>
-        Shadow:<input type="checkbox" id=shadowDrawTextCheck onClick=parent.shadowDrawTextChecked();focusText() />
+        Shadow:<input type="checkbox" id=shadowDrawTextCheck onClick=backgroundDrawTextCheck.checked=false;parent.shadowDrawTextChecked();focusText() />
+        Background:<input title="White backkground for text" type="checkbox" id=backgroundDrawTextCheck onClick=shadowDrawTextCheck.checked=false;parent.backgroundDrawTextChecked();focusText() />
         <br>
 		<button id=deleteDrawTextButton  title='remove this text' onClick=parent.removeCurrentDrawText() style='visibility:hidden;background-color:red'>delete</button>
 	<button id=drawTextTopButton style=background:white;font-size:120%;font-weight:bold;color:maroon;visibility:hidden  title='Move to top' onClick=parent.topDrawText()>&#x21E7;</button>
@@ -121,8 +125,927 @@ box-shadow: 4px 4px 5px #888;
 </tr>
 
 </table>
-</div>
+<center><a title="Include special characters" href="javascript:includeSpecialChar()">Special Characters</a></center>
 
+    <div id=specialCharDiv style=visibility:hidden;background:white;width:100%;height:1px;overflow-y:scroll>
+    <center>Click to insert character into text.
+    <table style=width:100%;cursor:pointer;font-size:140%;border-collapse:collapse; cellpadding=2 border=1 >
+ <tr><td align=center colspan=12 >Superscript</td></tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""   onclick=insert('2070');this.style.color="red";this.fontWeight="bold" title="SUPERSCRIPT ZERO">⁰</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""   onclick=insert('B9');this.style.color="red";this.fontWeight="bold" title="SUPERSCRIPT ONE">¹</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""   onclick=insert('B2');this.style.color="red";this.fontWeight="bold" title="SUPERSCRIPT TWO">²</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""   onclick=insert('B3');this.style.color="red";this.fontWeight="bold" title="SUPERSCRIPT THREE">³</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""   onclick=insert('2074');this.style.color="red";this.fontWeight="bold" title="SUPERSCRIPT FOUR">⁴</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2075');this.style.color="red";this.fontWeight="bold" title="SUPERSCRIPT FIVE">⁵</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2076');this.style.color="red";this.fontWeight="bold" title="SUPERSCRIPT SIX">⁶</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2077');this.style.color="red";this.fontWeight="bold" title="SUPERSCRIPT SEVEN">⁷</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2078');this.style.color="red";this.fontWeight="bold" title="SUPERSCRIPT EIGHT">⁸</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2079');this.style.color="red";this.fontWeight="bold" title="SUPERSCRIPT NINE">⁹</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('207A');this.style.color="red";this.fontWeight="bold" title="SUPERSCRIPT PLUS SIGN">⁺</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('207B');this.style.color="red";this.fontWeight="bold" title="SUPERSCRIPT MINUS">⁻</td>
+</tr><tr>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('207C');this.style.color="red";this.fontWeight="bold" title="SUPERSCRIPT EQUALS SIGN">⁼</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('207D');this.style.color="red";this.fontWeight="bold" title="SUPERSCRIPT LEFT PARENTHESIS">⁽</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('207E');this.style.color="red";this.fontWeight="bold" title="SUPERSCRIPT RIGHT PARENTHESIS">⁾</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('207F');this.style.color="red";this.fontWeight="bold" title="SUPERSCRIPT LATIN SMALL LETTER N">ⁿ</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2071');this.style.color="red";this.fontWeight="bold" title="SUPERSCRIPT LATIN SMALL LETTER I">ⁱ</td>
+
+
+<td colspan=7></td>
+
+</tr>
+
+ <tr><td align=center colspan=12 >Subscript</td></tr>
+<tr >
+    <td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2080');this.style.color="red";this.fontWeight="bold" title="SUBSCRIPT ZERO">₀</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2081');this.style.color="red";this.fontWeight="bold" title="SUBSCRIPT ONE">₁</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2082');this.style.color="red";this.fontWeight="bold" title="SUBSCRIPT TWO">₂</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2083');this.style.color="red";this.fontWeight="bold" title="SUBSCRIPT THREE">₃</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2084');this.style.color="red";this.fontWeight="bold" title="SUBSCRIPT FOUR">₄</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2085');this.style.color="red";this.fontWeight="bold" title="SUBSCRIPT FIVE">₅</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2086');this.style.color="red";this.fontWeight="bold" title="SUBSCRIPT SIX">₆</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2087');this.style.color="red";this.fontWeight="bold" title="SUBSCRIPT SEVEN">₇</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2088');this.style.color="red";this.fontWeight="bold" title="SUBSCRIPT EIGHT">₈</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2089');this.style.color="red";this.fontWeight="bold" title="SUBSCRIPT NINE">₉</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('208A');this.style.color="red";this.fontWeight="bold" title="SUBSCRIPT PLUS SIGN">₊</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('208B');this.style.color="red";this.fontWeight="bold" title="SUBSCRIPT MINUS">₋</td>
+
+</tr>
+<tr>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('208C');this.style.color="red";this.fontWeight="bold" title="SUBSCRIPT EQUALS SIGN">₌</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('208D');this.style.color="red";this.fontWeight="bold" title="SUBSCRIPT LEFT PARENTHESIS">₍</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('208E');this.style.color="red";this.fontWeight="bold" title="SUBSCRIPT RIGHT PARENTHESIS">₎</td>
+
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2090');this.style.color="red";this.fontWeight="bold" title="LATIN SUBSCRIPT SMALL LETTER A">ₐ</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2091');this.style.color="red";this.fontWeight="bold" title="LATIN SUBSCRIPT SMALL LETTER E">ₑ</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2095');this.style.color="red";this.fontWeight="bold" title="LATIN SUBSCRIPT SMALL LETTER H">ₕ</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('1D62');this.style.color="red";this.fontWeight="bold" title="LATIN SUBSCRIPT SMALL LETTER I">ᵢ</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2C7C');this.style.color="red";this.fontWeight="bold" title="LATIN SUBSCRIPT SMALL LETTER J">ⱼ</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2096');this.style.color="red";this.fontWeight="bold" title="LATIN SUBSCRIPT SMALL LETTER K">ₖ</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2097');this.style.color="red";this.fontWeight="bold" title="LATIN SUBSCRIPT SMALL LETTER L">ₗ</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2098');this.style.color="red";this.fontWeight="bold" title="LATIN SUBSCRIPT SMALL LETTER M">ₘ</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2099');this.style.color="red";this.fontWeight="bold" title="LATIN SUBSCRIPT SMALL LETTER N">ₙ</td>
+</tr>
+<tr>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2092');this.style.color="red";this.fontWeight="bold" title="LATIN SUBSCRIPT SMALL LETTER O">ₒ</td>
+
+<td   onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('209A');this.style.color="red";this.fontWeight="bold" title="LATIN SUBSCRIPT SMALL LETTER P">ₚ</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('1D63');this.style.color="red";this.fontWeight="bold" title="LATIN SUBSCRIPT SMALL LETTER R">ᵣ</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('209B');this.style.color="red";this.fontWeight="bold" title="LATIN SUBSCRIPT SMALL LETTER S">ₛ</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('209C');this.style.color="red";this.fontWeight="bold" title="LATIN SUBSCRIPT SMALL LETTER T">ₜ</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('1D64');this.style.color="red";this.fontWeight="bold" title="LATIN SUBSCRIPT SMALL LETTER U">ᵤ</td>
+
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('1D65');this.style.color="red";this.fontWeight="bold" title="LATIN SUBSCRIPT SMALL LETTER V">ᵥ</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2093');this.style.color="red";this.fontWeight="bold" title="LATIN SUBSCRIPT SMALL LETTER X">ₓ</td>
+<td  onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2094');this.style.color="red";this.fontWeight="bold" title="LATIN SUBSCRIPT SMALL LETTER SCHWA">ₔ</td>
+
+<td COLSPAN=3></td>
+  </tr>
+    </table>
+    <table style=cursor:pointer;font-size:90%;border-collapse:collapse; cellpadding=2 border=1 >
+
+<tr><td align=center colspan=15 >Commonly used Greek letters</td></tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3B1');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER ALPHA">α</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3B2');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER BETA">β</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3B3');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER GAMMA">γ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3B4');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER DELTA">δ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3B5');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER EPSILON">ε</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3B6');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER ZETA">ζ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3B7');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER ETA">η</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3B8');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER THETA">θ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3B9');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER IOTA">ι</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3BA');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER KAPPA">κ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3BB');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER LAMDA">λ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3BC');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER MU">μ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3BD');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER NU">ν</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3BE');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER XI">ξ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3BF');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER OMICRON">ο</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3C0');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER PI">π</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3C1');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER RHO">ρ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3C2');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER FINAL SIGMA">ς</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3C4');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER TAU">τ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3C5');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER UPSILON">υ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3C6');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER PHI">φ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3C7');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER CHI">χ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3C8');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER PSI">ψ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3C9');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER OMEGA">ω</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('03A3');this.style.color="red";this.fontWeight="bold" title="GREEK CAPITAL LETTER SIGMA">Σ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('0394');this.style.color="red";this.fontWeight="bold" title="GREEK CAPITAL LETTER DELTA">Δ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('03A6');this.style.color="red";this.fontWeight="bold" title="GREEK CAPITAL LETTER PHI">Φ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('03A9');this.style.color="red";this.fontWeight="bold" title="GREEK CAPITAL LETTER OMEGA">Ω</td>
+
+
+
+<td colspan=2></td>
+    </tr>
+
+<tr><td align=center colspan=15 >Roots, Numbers, &amp; Operators</td></tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('221A');this.style.color="red";this.fontWeight="bold" title="SQUARE ROOT">√</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('221B');this.style.color="red";this.fontWeight="bold" title="CUBE ROOT">∛</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('221C');this.style.color="red";this.fontWeight="bold" title="FOURTH ROOT">∜</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2115');this.style.color="red";this.fontWeight="bold" title="DOUBLE-STRUCK CAPITAL N">ℕ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2124');this.style.color="red";this.fontWeight="bold" title="DOUBLE-STRUCK CAPITAL Z">ℤ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('211A');this.style.color="red";this.fontWeight="bold" title="DOUBLE-STRUCK CAPITAL Q">ℚ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('211D');this.style.color="red";this.fontWeight="bold" title="DOUBLE-STRUCK CAPITAL R">ℝ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2102');this.style.color="red";this.fontWeight="bold" title="DOUBLE-STRUCK CAPITAL C">ℂ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2148');this.style.color="red";this.fontWeight="bold" title="DOUBLE-STRUCK ITALIC SMALL I">ⅈ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2149');this.style.color="red";this.fontWeight="bold" title="DOUBLE-STRUCK ITALIC SMALL J">ⅉ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('212F');this.style.color="red";this.fontWeight="bold" title="SCRIPT SMALL E">ℯ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2147');this.style.color="red";this.fontWeight="bold" title="DOUBLE-STRUCK ITALIC SMALL E">ⅇ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2107');this.style.color="red";this.fontWeight="bold" title="EULER CONSTANT">ℇ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('221E');this.style.color="red";this.fontWeight="bold" title="INFINITY">∞</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29DC');this.style.color="red";this.fontWeight="bold" title="INCOMPLETE INFINITY">⧜</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29DD');this.style.color="red";this.fontWeight="bold" title="TIE OVER INFINITY">⧝</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29DE');this.style.color="red";this.fontWeight="bold" title="INFINITY NEGATED WITH VERTICAL BAR">⧞</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('D7');this.style.color="red";this.fontWeight="bold" title="MULTIPLICATION SIGN">×</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2715');this.style.color="red";this.fontWeight="bold" title="MULTIPLICATION X">✕</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2716');this.style.color="red";this.fontWeight="bold" title="HEAVY MULTIPLICATION X">✖</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('F7');this.style.color="red";this.fontWeight="bold" title="DIVISION SIGN">÷</td>
+<td colspan=9></td>
+</tr>
+<tr><td align=center colspan=15 >Circled/Squared</td></tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2295');this.style.color="red";this.fontWeight="bold" title="CIRCLED PLUS">⊕</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2296');this.style.color="red";this.fontWeight="bold" title="CIRCLED MINUS">⊖</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2297');this.style.color="red";this.fontWeight="bold" title="CIRCLED TIMES">⊗</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2298');this.style.color="red";this.fontWeight="bold" title="CIRCLED DIVISION SLASH">⊘</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2299');this.style.color="red";this.fontWeight="bold" title="CIRCLED DOT OPERATOR">⊙</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('229A');this.style.color="red";this.fontWeight="bold" title="CIRCLED RING OPERATOR">⊚</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('229B');this.style.color="red";this.fontWeight="bold" title="CIRCLED ASTERISK OPERATOR">⊛</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('229C');this.style.color="red";this.fontWeight="bold" title="CIRCLED EQUALS">⊜</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('229D');this.style.color="red";this.fontWeight="bold" title="CIRCLED DASH">⊝</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('229E');this.style.color="red";this.fontWeight="bold" title="SQUARED PLUS">⊞</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('229F');this.style.color="red";this.fontWeight="bold" title="SQUARED MINUS">⊟</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22A0');this.style.color="red";this.fontWeight="bold" title="SQUARED TIMES">⊠</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22A1');this.style.color="red";this.fontWeight="bold" title="SQUARED DOT OPERATOR">⊡</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2212');this.style.color="red";this.fontWeight="bold" title="MINUS SIGN">−</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2215');this.style.color="red";this.fontWeight="bold" title="DIVISION SLASH">∕</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2217');this.style.color="red";this.fontWeight="bold" title="ASTERISK OPERATOR">∗</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2218');this.style.color="red";this.fontWeight="bold" title="RING OPERATOR">∘</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2219');this.style.color="red";this.fontWeight="bold" title="BULLET OPERATOR">∙</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22C5');this.style.color="red";this.fontWeight="bold" title="DOT OPERATOR">⋅</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22C6');this.style.color="red";this.fontWeight="bold" title="STAR OPERATOR">⋆</td>
+ <td colspan=10></td>
+</tr>
+<tr><td align=center colspan=15 >Sets</td></tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2205');this.style.color="red";this.fontWeight="bold" title="EMPTY SET">∅</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2135');this.style.color="red";this.fontWeight="bold" title="ALEF SYMBOL">ℵ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2208');this.style.color="red";this.fontWeight="bold" title="ELEMENT OF">∈</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('220B');this.style.color="red";this.fontWeight="bold" title="CONTAINS AS MEMBER">∋</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2209');this.style.color="red";this.fontWeight="bold" title="NOT AN ELEMENT OF">∉</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('220C');this.style.color="red";this.fontWeight="bold" title="DOES NOT CONTAIN AS MEMBER">∌</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22F6');this.style.color="red";this.fontWeight="bold" title="ELEMENT OF WITH OVERBAR">⋶</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22FD');this.style.color="red";this.fontWeight="bold" title="CONTAINS WITH OVERBAR">⋽</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22F2');this.style.color="red";this.fontWeight="bold" title="ELEMENT OF WITH LONG HORIZONTAL STROKE">⋲</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22FA');this.style.color="red";this.fontWeight="bold" title="CONTAINS WITH LONG HORIZONTAL STROKE">⋺</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22F3');this.style.color="red";this.fontWeight="bold" title="ELEMENT OF WITH VERTICAL BAR AT END OF HORIZONTAL STROKE">⋳</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22FB');this.style.color="red";this.fontWeight="bold" title="CONTAINS WITH VERTICAL BAR AT END OF HORIZONTAL STROKE">⋻</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('220A');this.style.color="red";this.fontWeight="bold" title="SMALL ELEMENT OF">∊</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('220D');this.style.color="red";this.fontWeight="bold" title="SMALL CONTAINS AS MEMBER">∍</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22F7');this.style.color="red";this.fontWeight="bold" title="SMALL ELEMENT OF WITH OVERBAR">⋷</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22FE');this.style.color="red";this.fontWeight="bold" title="SMALL CONTAINS WITH OVERBAR">⋾</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22F4');this.style.color="red";this.fontWeight="bold" title="SMALL ELEMENT OF WITH VERTICAL BAR AT END OF HORIZONTAL STROKE">⋴</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22FC');this.style.color="red";this.fontWeight="bold" title="SMALL CONTAINS WITH VERTICAL BAR AT END OF HORIZONTAL STROKE">⋼</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22F5');this.style.color="red";this.fontWeight="bold" title="ELEMENT OF WITH DOT ABOVE">⋵</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22F8');this.style.color="red";this.fontWeight="bold" title="ELEMENT OF WITH UNDERBAR">⋸</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22F9');this.style.color="red";this.fontWeight="bold" title="ELEMENT OF WITH TWO HORIZONTAL STROKES">⋹</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AD9');this.style.color="red";this.fontWeight="bold" title="ELEMENT OF OPENING DOWNWARDS">⫙</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27D2');this.style.color="red";this.fontWeight="bold" title="ELEMENT OF OPENING UPWARDS">⟒</td>
+<td colspan=7></td>
+</tr>
+<tr><td align=center colspan=15 >relation of sets</td></tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2282');this.style.color="red";this.fontWeight="bold" title="SUBSET OF">⊂</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2283');this.style.color="red";this.fontWeight="bold" title="SUPERSET OF">⊃</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2286');this.style.color="red";this.fontWeight="bold" title="SUBSET OF OR EQUAL TO">⊆</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2287');this.style.color="red";this.fontWeight="bold" title="SUPERSET OF OR EQUAL TO">⊇</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2288');this.style.color="red";this.fontWeight="bold" title="NEITHER A SUBSET OF NOR EQUAL TO">⊈</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2289');this.style.color="red";this.fontWeight="bold" title="NEITHER A SUPERSET OF NOR EQUAL TO">⊉</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('228A');this.style.color="red";this.fontWeight="bold" title="SUBSET OF WITH NOT EQUAL TO">⊊</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('228B');this.style.color="red";this.fontWeight="bold" title="SUPERSET OF WITH NOT EQUAL TO">⊋</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2284');this.style.color="red";this.fontWeight="bold" title="NOT A SUBSET OF">⊄</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2285');this.style.color="red";this.fontWeight="bold" title="NOT A SUPERSET OF">⊅</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AC5');this.style.color="red";this.fontWeight="bold" title="SUBSET OF ABOVE EQUALS SIGN">⫅</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AC6');this.style.color="red";this.fontWeight="bold" title="SUPERSET OF ABOVE EQUALS SIGN">⫆</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2ACB');this.style.color="red";this.fontWeight="bold" title="SUBSET OF ABOVE NOT EQUAL TO">⫋</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2ACC');this.style.color="red";this.fontWeight="bold" title="SUPERSET OF ABOVE NOT EQUAL TO">⫌</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AC3');this.style.color="red";this.fontWeight="bold" title="SUBSET OF OR EQUAL TO WITH DOT ABOVE">⫃</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AC4');this.style.color="red";this.fontWeight="bold" title="SUPERSET OF OR EQUAL TO WITH DOT ABOVE">⫄</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AC7');this.style.color="red";this.fontWeight="bold" title="SUBSET OF ABOVE TILDE OPERATOR">⫇</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AC8');this.style.color="red";this.fontWeight="bold" title="SUPERSET OF ABOVE TILDE OPERATOR">⫈</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AC9');this.style.color="red";this.fontWeight="bold" title="SUBSET OF ABOVE ALMOST EQUAL TO">⫉</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2ACA');this.style.color="red";this.fontWeight="bold" title="SUPERSET OF ABOVE ALMOST EQUAL TO">⫊</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27C3');this.style.color="red";this.fontWeight="bold" title="OPEN SUBSET">⟃</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27C4');this.style.color="red";this.fontWeight="bold" title="OPEN SUPERSET">⟄</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2ACF');this.style.color="red";this.fontWeight="bold" title="CLOSED SUBSET">⫏</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AD0');this.style.color="red";this.fontWeight="bold" title="CLOSED SUPERSET">⫐</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AD1');this.style.color="red";this.fontWeight="bold" title="CLOSED SUBSET OR EQUAL TO">⫑</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AD2');this.style.color="red";this.fontWeight="bold" title="CLOSED SUPERSET OR EQUAL TO">⫒</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AD3');this.style.color="red";this.fontWeight="bold" title="SUBSET ABOVE SUPERSET">⫓</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AD4');this.style.color="red";this.fontWeight="bold" title="SUPERSET ABOVE SUBSET">⫔</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AD5');this.style.color="red";this.fontWeight="bold" title="SUBSET ABOVE SUBSET">⫕</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AD6');this.style.color="red";this.fontWeight="bold" title="SUPERSET ABOVE SUPERSET">⫖</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AD7');this.style.color="red";this.fontWeight="bold" title="SUPERSET BESIDE SUBSET">⫗</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AD8');this.style.color="red";this.fontWeight="bold" title="SUPERSET BESIDE AND JOINED BY DASH WITH SUBSET">⫘</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22D0');this.style.color="red";this.fontWeight="bold" title="DOUBLE SUBSET">⋐</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22D1');this.style.color="red";this.fontWeight="bold" title="DOUBLE SUPERSET">⋑</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27C8');this.style.color="red";this.fontWeight="bold" title="REVERSE SOLIDUS PRECEDING SUBSET">⟈</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27C9');this.style.color="red";this.fontWeight="bold" title="SUPERSET PRECEDING SOLIDUS">⟉</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('222A');this.style.color="red";this.fontWeight="bold" title="UNION">∪</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A41');this.style.color="red";this.fontWeight="bold" title="UNION WITH MINUS SIGN">⩁</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A42');this.style.color="red";this.fontWeight="bold" title="UNION WITH OVERBAR">⩂</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A45');this.style.color="red";this.fontWeight="bold" title="UNION WITH LOGICAL OR">⩅</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A4C');this.style.color="red";this.fontWeight="bold" title="CLOSED UNION WITH SERIFS">⩌</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A4F');this.style.color="red";this.fontWeight="bold" title="DOUBLE SQUARE UNION">⩏</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A50');this.style.color="red";this.fontWeight="bold" title="CLOSED UNION WITH SERIFS AND SMASH PRODUCT">⩐</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2229');this.style.color="red";this.fontWeight="bold" title="INTERSECTION">∩</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A40');this.style.color="red";this.fontWeight="bold" title="INTERSECTION WITH DOT">⩀</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A43');this.style.color="red";this.fontWeight="bold" title="INTERSECTION WITH OVERBAR">⩃</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A44');this.style.color="red";this.fontWeight="bold" title="INTERSECTION WITH LOGICAL AND">⩄</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A4D');this.style.color="red";this.fontWeight="bold" title="CLOSED INTERSECTION WITH SERIFS">⩍</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A4E');this.style.color="red";this.fontWeight="bold" title="DOUBLE SQUARE INTERSECTION">⩎</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2216');this.style.color="red";this.fontWeight="bold" title="SET MINUS">∖</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A46');this.style.color="red";this.fontWeight="bold" title="UNION ABOVE INTERSECTION">⩆</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A47');this.style.color="red";this.fontWeight="bold" title="INTERSECTION ABOVE UNION">⩇</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A48');this.style.color="red";this.fontWeight="bold" title="UNION ABOVE BAR ABOVE INTERSECTION">⩈</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A49');this.style.color="red";this.fontWeight="bold" title="INTERSECTION ABOVE BAR ABOVE UNION">⩉</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A4A');this.style.color="red";this.fontWeight="bold" title="UNION BESIDE AND JOINED WITH UNION">⩊</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A4B');this.style.color="red";this.fontWeight="bold" title="INTERSECTION BESIDE AND JOINED WITH INTERSECTION">⩋</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2ABD');this.style.color="red";this.fontWeight="bold" title="SUBSET WITH DOT">⪽</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2ABE');this.style.color="red";this.fontWeight="bold" title="SUPERSET WITH DOT">⪾</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2ABF');this.style.color="red";this.fontWeight="bold" title="SUBSET WITH PLUS SIGN BELOW">⪿</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AC0');this.style.color="red";this.fontWeight="bold" title="SUPERSET WITH PLUS SIGN BELOW">⫀</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AC1');this.style.color="red";this.fontWeight="bold" title="SUBSET WITH MULTIPLICATION SIGN BELOW">⫁</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AC2');this.style.color="red";this.fontWeight="bold" title="SUPERSET WITH MULTIPLICATION SIGN BELOW">⫂</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22D2');this.style.color="red";this.fontWeight="bold" title="DOUBLE INTERSECTION">⋒</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22D3');this.style.color="red";this.fontWeight="bold" title="DOUBLE UNION">⋓</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22C2');this.style.color="red";this.fontWeight="bold" title="N-ARY INTERSECTION">⋂</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22C3');this.style.color="red";this.fontWeight="bold" title="N-ARY UNION">⋃</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('228C');this.style.color="red";this.fontWeight="bold" title="MULTISET">⊌</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('228D');this.style.color="red";this.fontWeight="bold" title="MULTISET MULTIPLICATION">⊍</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('228E');this.style.color="red";this.fontWeight="bold" title="MULTISET UNION">⊎</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A03');this.style.color="red";this.fontWeight="bold" title="N-ARY UNION OPERATOR WITH DOT">⨃</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A04');this.style.color="red";this.fontWeight="bold" title="N-ARY UNION OPERATOR WITH PLUS">⨄</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A05');this.style.color="red";this.fontWeight="bold" title="N-ARY SQUARE INTERSECTION OPERATOR">⨅</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A06');this.style.color="red";this.fontWeight="bold" title="N-ARY SQUARE UNION OPERATOR">⨆</td>
+<td colspan=2></td>
+</tr>
+<tr>
+
+</tr>
+<tr><td align=center colspan=15 >Joins &amp; Order</td></tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A1D');this.style.color="red";this.fontWeight="bold" title="JOIN">⨝</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27D5');this.style.color="red";this.fontWeight="bold" title="LEFT OUTER JOIN">⟕</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27D6');this.style.color="red";this.fontWeight="bold" title="RIGHT OUTER JOIN">⟖</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27D7');this.style.color="red";this.fontWeight="bold" title="FULL OUTER JOIN">⟗</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('227A');this.style.color="red";this.fontWeight="bold" title="PRECEDES">≺</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('227B');this.style.color="red";this.fontWeight="bold" title="SUCCEEDS">≻</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('227C');this.style.color="red";this.fontWeight="bold" title="PRECEDES OR EQUAL TO">≼</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('227D');this.style.color="red";this.fontWeight="bold" title="SUCCEEDS OR EQUAL TO">≽</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('227E');this.style.color="red";this.fontWeight="bold" title="PRECEDES OR EQUIVALENT TO">≾</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('227F');this.style.color="red";this.fontWeight="bold" title="SUCCEEDS OR EQUIVALENT TO">≿</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2280');this.style.color="red";this.fontWeight="bold" title="DOES NOT PRECEDE">⊀</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2281');this.style.color="red";this.fontWeight="bold" title="DOES NOT SUCCEED">⊁</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22DE');this.style.color="red";this.fontWeight="bold" title="EQUAL TO OR PRECEDES">⋞</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22DF');this.style.color="red";this.fontWeight="bold" title="EQUAL TO OR SUCCEEDS">⋟</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22E0');this.style.color="red";this.fontWeight="bold" title="DOES NOT PRECEDE OR EQUAL">⋠</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22E1');this.style.color="red";this.fontWeight="bold" title="DOES NOT SUCCEED OR EQUAL">⋡</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22E8');this.style.color="red";this.fontWeight="bold" title="PRECEDES BUT NOT EQUIVALENT TO">⋨</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22E9');this.style.color="red";this.fontWeight="bold" title="SUCCEEDS BUT NOT EQUIVALENT TO">⋩</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AAF');this.style.color="red";this.fontWeight="bold" title="PRECEDES ABOVE SINGLE-LINE EQUALS SIGN">⪯</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AB0');this.style.color="red";this.fontWeight="bold" title="SUCCEEDS ABOVE SINGLE-LINE EQUALS SIGN">⪰</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AB1');this.style.color="red";this.fontWeight="bold" title="PRECEDES ABOVE SINGLE-LINE NOT EQUAL TO">⪱</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AB2');this.style.color="red";this.fontWeight="bold" title="SUCCEEDS ABOVE SINGLE-LINE NOT EQUAL TO">⪲</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AB3');this.style.color="red";this.fontWeight="bold" title="PRECEDES ABOVE EQUALS SIGN">⪳</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AB4');this.style.color="red";this.fontWeight="bold" title="SUCCEEDS ABOVE EQUALS SIGN">⪴</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AB5');this.style.color="red";this.fontWeight="bold" title="PRECEDES ABOVE NOT EQUAL TO">⪵</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AB6');this.style.color="red";this.fontWeight="bold" title="SUCCEEDS ABOVE NOT EQUAL TO">⪶</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AB7');this.style.color="red";this.fontWeight="bold" title="PRECEDES ABOVE ALMOST EQUAL TO">⪷</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AB8');this.style.color="red";this.fontWeight="bold" title="SUCCEEDS ABOVE ALMOST EQUAL TO">⪸</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AB9');this.style.color="red";this.fontWeight="bold" title="PRECEDES ABOVE NOT ALMOST EQUAL TO">⪹</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2ABA');this.style.color="red";this.fontWeight="bold" title="SUCCEEDS ABOVE NOT ALMOST EQUAL TO">⪺</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2ABB');this.style.color="red";this.fontWeight="bold" title="DOUBLE PRECEDES">⪻</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2ABC');this.style.color="red";this.fontWeight="bold" title="DOUBLE SUCCEEDS">⪼</td>
+<td colspan=13></td>
+</tr>
+
+<tr><td align=center colspan=15 >Equivilance &amp; Relations</td></tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('003C');this.style.color="red";this.fontWeight="bold" title="LESS-THAN">&lt;</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('003E');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN">&gt;</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('226E');this.style.color="red";this.fontWeight="bold" title="NOT LESS-THAN">≮</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('226F');this.style.color="red";this.fontWeight="bold" title="NOT GREATER-THAN">≯</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2264');this.style.color="red";this.fontWeight="bold" title="LESS-THAN OR EQUAL TO">≤</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2265');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN OR EQUAL TO">≥</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2270');this.style.color="red";this.fontWeight="bold" title="NEITHER LESS-THAN NOR EQUAL TO">≰</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2271');this.style.color="red";this.fontWeight="bold" title="NEITHER GREATER-THAN NOR EQUAL TO">≱</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A87');this.style.color="red";this.fontWeight="bold" title="LESS-THAN AND SINGLE-LINE NOT EQUAL TO">⪇</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A88');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN AND SINGLE-LINE NOT EQUAL TO">⪈</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2266');this.style.color="red";this.fontWeight="bold" title="LESS-THAN OVER EQUAL TO">≦</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2267');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN OVER EQUAL TO">≧</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2268');this.style.color="red";this.fontWeight="bold" title="LESS-THAN BUT NOT EQUAL TO">≨</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2269');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN BUT NOT EQUAL TO">≩</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22DC');this.style.color="red";this.fontWeight="bold" title="EQUAL TO OR LESS-THAN">⋜</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22DD');this.style.color="red";this.fontWeight="bold" title="EQUAL TO OR GREATER-THAN">⋝</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A99');this.style.color="red";this.fontWeight="bold" title="DOUBLE-LINE EQUAL TO OR LESS-THAN">⪙</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A9A');this.style.color="red";this.fontWeight="bold" title="DOUBLE-LINE EQUAL TO OR GREATER-THAN">⪚</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2276');this.style.color="red";this.fontWeight="bold" title="LESS-THAN OR GREATER-THAN">≶</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2277');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN OR LESS-THAN">≷</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2278');this.style.color="red";this.fontWeight="bold" title="NEITHER LESS-THAN NOR GREATER-THAN">≸</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2279');this.style.color="red";this.fontWeight="bold" title="NEITHER GREATER-THAN NOR LESS-THAN">≹</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22DA');this.style.color="red";this.fontWeight="bold" title="LESS-THAN EQUAL TO OR GREATER-THAN">⋚</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22DB');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN EQUAL TO OR LESS-THAN">⋛</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A8B');this.style.color="red";this.fontWeight="bold" title="LESS-THAN ABOVE DOUBLE-LINE EQUAL ABOVE GREATER-THAN">⪋</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A8C');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN ABOVE DOUBLE-LINE EQUAL ABOVE LESS-THAN">⪌</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A91');this.style.color="red";this.fontWeight="bold" title="LESS-THAN ABOVE GREATER-THAN ABOVE DOUBLE-LINE EQUAL">⪑</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A92');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN ABOVE LESS-THAN ABOVE DOUBLE-LINE EQUAL">⪒</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A93');this.style.color="red";this.fontWeight="bold" title="LESS-THAN ABOVE SLANTED EQUAL ABOVE GREATER-THAN ABOVE SLANTED EQUAL">⪓</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A94');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN ABOVE SLANTED EQUAL ABOVE LESS-THAN ABOVE SLANTED EQUAL">⪔</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A85');this.style.color="red";this.fontWeight="bold" title="LESS-THAN OR APPROXIMATE">⪅</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A86');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN OR APPROXIMATE">⪆</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A89');this.style.color="red";this.fontWeight="bold" title="LESS-THAN AND NOT APPROXIMATE">⪉</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A8A');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN AND NOT APPROXIMATE">⪊</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2272');this.style.color="red";this.fontWeight="bold" title="LESS-THAN OR EQUIVALENT TO">≲</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2273');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN OR EQUIVALENT TO">≳</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22E6');this.style.color="red";this.fontWeight="bold" title="LESS-THAN BUT NOT EQUIVALENT TO">⋦</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22E7');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN BUT NOT EQUIVALENT TO">⋧</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2274');this.style.color="red";this.fontWeight="bold" title="NEITHER LESS-THAN NOR EQUIVALENT TO">≴</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2275');this.style.color="red";this.fontWeight="bold" title="NEITHER GREATER-THAN NOR EQUIVALENT TO">≵</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A9D');this.style.color="red";this.fontWeight="bold" title="SIMILAR OR LESS-THAN">⪝</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A9E');this.style.color="red";this.fontWeight="bold" title="SIMILAR OR GREATER-THAN">⪞</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A9F');this.style.color="red";this.fontWeight="bold" title="SIMILAR ABOVE LESS-THAN ABOVE EQUALS SIGN">⪟</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AA0');this.style.color="red";this.fontWeight="bold" title="SIMILAR ABOVE GREATER-THAN ABOVE EQUALS SIGN">⪠</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A8D');this.style.color="red";this.fontWeight="bold" title="LESS-THAN ABOVE SIMILAR OR EQUAL">⪍</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A8E');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN ABOVE SIMILAR OR EQUAL">⪎</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A8F');this.style.color="red";this.fontWeight="bold" title="LESS-THAN ABOVE SIMILAR ABOVE GREATER-THAN">⪏</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A90');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN ABOVE SIMILAR ABOVE LESS-THAN">⪐</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A7D');this.style.color="red";this.fontWeight="bold" title="LESS-THAN OR SLANTED EQUAL TO">⩽</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A7E');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN OR SLANTED EQUAL TO">⩾</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AF9');this.style.color="red";this.fontWeight="bold" title="DOUBLE-LINE SLANTED LESS-THAN OR EQUAL TO">⫹</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AFA');this.style.color="red";this.fontWeight="bold" title="DOUBLE-LINE SLANTED GREATER-THAN OR EQUAL TO">⫺</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A95');this.style.color="red";this.fontWeight="bold" title="SLANTED EQUAL TO OR LESS-THAN">⪕</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A96');this.style.color="red";this.fontWeight="bold" title="SLANTED EQUAL TO OR GREATER-THAN">⪖</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A9B');this.style.color="red";this.fontWeight="bold" title="DOUBLE-LINE SLANTED EQUAL TO OR LESS-THAN">⪛</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A9C');this.style.color="red";this.fontWeight="bold" title="DOUBLE-LINE SLANTED EQUAL TO OR GREATER-THAN">⪜</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AA3');this.style.color="red";this.fontWeight="bold" title="DOUBLE NESTED LESS-THAN WITH UNDERBAR">⪣</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AA4');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN OVERLAPPING LESS-THAN">⪤</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AA5');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN BESIDE LESS-THAN">⪥</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AA6');this.style.color="red";this.fontWeight="bold" title="LESS-THAN CLOSED BY CURVE">⪦</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AA7');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN CLOSED BY CURVE">⪧</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AA8');this.style.color="red";this.fontWeight="bold" title="LESS-THAN CLOSED BY CURVE ABOVE SLANTED EQUAL">⪨</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AA9');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN CLOSED BY CURVE ABOVE SLANTED EQUAL">⪩</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AAA');this.style.color="red";this.fontWeight="bold" title="SMALLER THAN">⪪</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AAB');this.style.color="red";this.fontWeight="bold" title="LARGER THAN">⪫</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AAC');this.style.color="red";this.fontWeight="bold" title="SMALLER THAN OR EQUAL TO">⪬</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AAD');this.style.color="red";this.fontWeight="bold" title="LARGER THAN OR EQUAL TO">⪭</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AA1');this.style.color="red";this.fontWeight="bold" title="DOUBLE NESTED LESS-THAN">⪡</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AA2');this.style.color="red";this.fontWeight="bold" title="DOUBLE NESTED GREATER-THAN">⪢</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AF7');this.style.color="red";this.fontWeight="bold" title="TRIPLE NESTED LESS-THAN">⫷</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AF8');this.style.color="red";this.fontWeight="bold" title="TRIPLE NESTED GREATER-THAN">⫸</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A79');this.style.color="red";this.fontWeight="bold" title="LESS-THAN WITH CIRCLE INSIDE">⩹</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A7A');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN WITH CIRCLE INSIDE">⩺</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A7B');this.style.color="red";this.fontWeight="bold" title="LESS-THAN WITH QUESTION MARK ABOVE">⩻</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A7C');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN WITH QUESTION MARK ABOVE">⩼</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('226A');this.style.color="red";this.fontWeight="bold" title="MUCH LESS-THAN">≪</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('226B');this.style.color="red";this.fontWeight="bold" title="MUCH GREATER-THAN">≫</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22D8');this.style.color="red";this.fontWeight="bold" title="VERY MUCH LESS-THAN">⋘</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22D9');this.style.color="red";this.fontWeight="bold" title="VERY MUCH GREATER-THAN">⋙</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('226C');this.style.color="red";this.fontWeight="bold" title="BETWEEN">≬</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22D6');this.style.color="red";this.fontWeight="bold" title="LESS-THAN WITH DOT">⋖</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22D7');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN WITH DOT">⋗</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A7F');this.style.color="red";this.fontWeight="bold" title="LESS-THAN OR SLANTED EQUAL TO WITH DOT INSIDE">⩿</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A80');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN OR SLANTED EQUAL TO WITH DOT INSIDE">⪀</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A97');this.style.color="red";this.fontWeight="bold" title="SLANTED EQUAL TO OR LESS-THAN WITH DOT INSIDE">⪗</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A98');this.style.color="red";this.fontWeight="bold" title="SLANTED EQUAL TO OR GREATER-THAN WITH DOT INSIDE">⪘</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A81');this.style.color="red";this.fontWeight="bold" title="LESS-THAN OR SLANTED EQUAL TO WITH DOT ABOVE">⪁</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A82');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN OR SLANTED EQUAL TO WITH DOT ABOVE">⪂</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A83');this.style.color="red";this.fontWeight="bold" title="LESS-THAN OR SLANTED EQUAL TO WITH DOT ABOVE RIGHT">⪃</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A84');this.style.color="red";this.fontWeight="bold" title="GREATER-THAN OR SLANTED EQUAL TO WITH DOT ABOVE LEFT">⪄</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('225D');this.style.color="red";this.fontWeight="bold" title="EQUAL TO BY DEFINITION">≝</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('225E');this.style.color="red";this.fontWeight="bold" title="MEASURED BY">≞</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('225F');this.style.color="red";this.fontWeight="bold" title="QUESTIONED EQUAL TO">≟</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2260');this.style.color="red";this.fontWeight="bold" title="NOT EQUAL TO">≠</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2239');this.style.color="red";this.fontWeight="bold" title="EXCESS">∹</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('224E');this.style.color="red";this.fontWeight="bold" title="GEOMETRICALLY EQUIVALENT TO">≎</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('224F');this.style.color="red";this.fontWeight="bold" title="DIFFERENCE BETWEEN">≏</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AAE');this.style.color="red";this.fontWeight="bold" title="EQUALS SIGN WITH BUMPY ABOVE">⪮</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2250');this.style.color="red";this.fontWeight="bold" title="APPROACHES THE LIMIT">≐</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2251');this.style.color="red";this.fontWeight="bold" title="GEOMETRICALLY EQUAL TO">≑</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2252');this.style.color="red";this.fontWeight="bold" title="APPROXIMATELY EQUAL TO OR THE IMAGE OF">≒</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2253');this.style.color="red";this.fontWeight="bold" title="IMAGE OF OR APPROXIMATELY EQUAL TO">≓</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2254');this.style.color="red";this.fontWeight="bold" title="COLON EQUALS">≔</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2255');this.style.color="red";this.fontWeight="bold" title="EQUALS COLON">≕</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2256');this.style.color="red";this.fontWeight="bold" title="RING IN EQUAL TO">≖</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2257');this.style.color="red";this.fontWeight="bold" title="RING EQUAL TO">≗</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2258');this.style.color="red";this.fontWeight="bold" title="CORRESPONDS TO">≘</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2259');this.style.color="red";this.fontWeight="bold" title="ESTIMATES">≙</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('225A');this.style.color="red";this.fontWeight="bold" title="EQUIANGULAR TO">≚</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('225B');this.style.color="red";this.fontWeight="bold" title="STAR EQUALS">≛</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('225C');this.style.color="red";this.fontWeight="bold" title="DELTA EQUAL TO">≜</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A6C');this.style.color="red";this.fontWeight="bold" title="SIMILAR MINUS SIMILAR">⩬</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A6D');this.style.color="red";this.fontWeight="bold" title="CONGRUENT WITH DOT ABOVE">⩭</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A6E');this.style.color="red";this.fontWeight="bold" title="EQUALS WITH ASTERISK">⩮</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A71');this.style.color="red";this.fontWeight="bold" title="EQUALS SIGN ABOVE PLUS SIGN">⩱</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A72');this.style.color="red";this.fontWeight="bold" title="PLUS SIGN ABOVE EQUALS SIGN">⩲</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A66');this.style.color="red";this.fontWeight="bold" title="EQUALS SIGN WITH DOT BELOW">⩦</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A74');this.style.color="red";this.fontWeight="bold" title="DOUBLE COLON EQUAL">⩴</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A75');this.style.color="red";this.fontWeight="bold" title="TWO CONSECUTIVE EQUALS SIGNS">⩵</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A76');this.style.color="red";this.fontWeight="bold" title="THREE CONSECUTIVE EQUALS SIGNS">⩶</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A77');this.style.color="red";this.fontWeight="bold" title="EQUALS SIGN WITH TWO DOTS ABOVE AND TWO DOTS BELOW">⩷</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2261');this.style.color="red";this.fontWeight="bold" title="IDENTICAL TO">≡</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2262');this.style.color="red";this.fontWeight="bold" title="NOT IDENTICAL TO">≢</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A67');this.style.color="red";this.fontWeight="bold" title="IDENTICAL WITH DOT ABOVE">⩧</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('224D');this.style.color="red";this.fontWeight="bold" title="EQUIVALENT TO">≍</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('226D');this.style.color="red";this.fontWeight="bold" title="NOT EQUIVALENT TO">≭</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2263');this.style.color="red";this.fontWeight="bold" title="STRICTLY EQUIVALENT TO">≣</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A78');this.style.color="red";this.fontWeight="bold" title="EQUIVALENT WITH FOUR DOTS ABOVE">⩸</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2241');this.style.color="red";this.fontWeight="bold" title="NOT TILDE">≁</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2242');this.style.color="red";this.fontWeight="bold" title="MINUS TILDE">≂</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2243');this.style.color="red";this.fontWeight="bold" title="ASYMPTOTICALLY EQUAL TO">≃</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2244');this.style.color="red";this.fontWeight="bold" title="NOT ASYMPTOTICALLY EQUAL TO">≄</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22CD');this.style.color="red";this.fontWeight="bold" title="REVERSED TILDE EQUALS">⋍</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2245');this.style.color="red";this.fontWeight="bold" title="APPROXIMATELY EQUAL TO">≅</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2246');this.style.color="red";this.fontWeight="bold" title="APPROXIMATELY BUT NOT ACTUALLY EQUAL TO">≆</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2247');this.style.color="red";this.fontWeight="bold" title="NEITHER APPROXIMATELY NOR ACTUALLY EQUAL TO">≇</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2248');this.style.color="red";this.fontWeight="bold" title="ALMOST EQUAL TO">≈</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2249');this.style.color="red";this.fontWeight="bold" title="NOT ALMOST EQUAL TO">≉</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('224A');this.style.color="red";this.fontWeight="bold" title="ALMOST EQUAL OR EQUAL TO">≊</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('224B');this.style.color="red";this.fontWeight="bold" title="TRIPLE TILDE">≋</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('224C');this.style.color="red";this.fontWeight="bold" title="ALL EQUAL TO">≌</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A6F');this.style.color="red";this.fontWeight="bold" title="ALMOST EQUAL TO WITH CIRCUMFLEX ACCENT">⩯</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A70');this.style.color="red";this.fontWeight="bold" title="APPROXIMATELY EQUAL OR EQUAL TO">⩰</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('223B');this.style.color="red";this.fontWeight="bold" title="HOMOTHETIC">∻</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('228F');this.style.color="red";this.fontWeight="bold" title="SQUARE IMAGE OF">⊏</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2290');this.style.color="red";this.fontWeight="bold" title="SQUARE ORIGINAL OF">⊐</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2291');this.style.color="red";this.fontWeight="bold" title="SQUARE IMAGE OF OR EQUAL TO">⊑</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2292');this.style.color="red";this.fontWeight="bold" title="SQUARE ORIGINAL OF OR EQUAL TO">⊒</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2293');this.style.color="red";this.fontWeight="bold" title="SQUARE CAP">⊓</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2294');this.style.color="red";this.fontWeight="bold" title="SQUARE CUP">⊔</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22E2');this.style.color="red";this.fontWeight="bold" title="NOT SQUARE IMAGE OF OR EQUAL TO">⋢</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22E3');this.style.color="red";this.fontWeight="bold" title="NOT SQUARE ORIGINAL OF OR EQUAL TO">⋣</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22E4');this.style.color="red";this.fontWeight="bold" title="SQUARE IMAGE OF OR NOT EQUAL TO">⋤</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22E5');this.style.color="red";this.fontWeight="bold" title="SQUARE ORIGINAL OF OR NOT EQUAL TO">⋥</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AF4');this.style.color="red";this.fontWeight="bold" title="TRIPLE VERTICAL BAR BINARY RELATION">⫴</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AF5');this.style.color="red";this.fontWeight="bold" title="TRIPLE VERTICAL BAR WITH HORIZONTAL STROKE">⫵</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22B2');this.style.color="red";this.fontWeight="bold" title="NORMAL SUBGROUP OF">⊲</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22B3');this.style.color="red";this.fontWeight="bold" title="CONTAINS AS NORMAL SUBGROUP">⊳</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22B4');this.style.color="red";this.fontWeight="bold" title="NORMAL SUBGROUP OF OR EQUAL TO">⊴</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22B5');this.style.color="red";this.fontWeight="bold" title="CONTAINS AS NORMAL SUBGROUP OR EQUAL TO">⊵</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22EA');this.style.color="red";this.fontWeight="bold" title="NOT NORMAL SUBGROUP OF">⋪</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22EB');this.style.color="red";this.fontWeight="bold" title="DOES NOT CONTAIN AS NORMAL SUBGROUP">⋫</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22EC');this.style.color="red";this.fontWeight="bold" title="NOT NORMAL SUBGROUP OF OR EQUAL TO">⋬</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22ED');this.style.color="red";this.fontWeight="bold" title="DOES NOT CONTAIN AS NORMAL SUBGROUP OR EQUAL">⋭</td>
+</tr>
+<tr><td align=center colspan=15 >Logic</td></tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('AC');this.style.color="red";this.fontWeight="bold" title="NOT SIGN">¬</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AEC');this.style.color="red";this.fontWeight="bold" title="DOUBLE STROKE NOT SIGN">⫬</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AED');this.style.color="red";this.fontWeight="bold" title="REVERSED DOUBLE STROKE NOT SIGN">⫭</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22A8');this.style.color="red";this.fontWeight="bold" title="TRUE">⊨</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22AD');this.style.color="red";this.fontWeight="bold" title="NOT TRUE">⊭</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2200');this.style.color="red";this.fontWeight="bold" title="FOR ALL">∀</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2201');this.style.color="red";this.fontWeight="bold" title="COMPLEMENT">∁</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2203');this.style.color="red";this.fontWeight="bold" title="THERE EXISTS">∃</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2204');this.style.color="red";this.fontWeight="bold" title="THERE DOES NOT EXIST">∄</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2234');this.style.color="red";this.fontWeight="bold" title="THEREFORE">∴</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2235');this.style.color="red";this.fontWeight="bold" title="BECAUSE">∵</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22A6');this.style.color="red";this.fontWeight="bold" title="ASSERTION">⊦</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22AC');this.style.color="red";this.fontWeight="bold" title="DOES NOT PROVE">⊬</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22A7');this.style.color="red";this.fontWeight="bold" title="MODELS">⊧</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22A9');this.style.color="red";this.fontWeight="bold" title="FORCES">⊩</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22AE');this.style.color="red";this.fontWeight="bold" title="DOES NOT FORCE">⊮</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22AB');this.style.color="red";this.fontWeight="bold" title="DOUBLE VERTICAL BAR DOUBLE RIGHT TURNSTILE">⊫</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22AF');this.style.color="red";this.fontWeight="bold" title="NEGATED DOUBLE VERTICAL BAR DOUBLE RIGHT TURNSTILE">⊯</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22AA');this.style.color="red";this.fontWeight="bold" title="TRIPLE VERTICAL BAR RIGHT TURNSTILE">⊪</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22B0');this.style.color="red";this.fontWeight="bold" title="PRECEDES UNDER RELATION">⊰</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22B1');this.style.color="red";this.fontWeight="bold" title="SUCCEEDS UNDER RELATION">⊱</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2227');this.style.color="red";this.fontWeight="bold" title="LOGICAL AND">∧</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2228');this.style.color="red";this.fontWeight="bold" title="LOGICAL OR">∨</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22BB');this.style.color="red";this.fontWeight="bold" title="XOR">⊻</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22BC');this.style.color="red";this.fontWeight="bold" title="NAND">⊼</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22BD');this.style.color="red";this.fontWeight="bold" title="NOR">⊽</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22CE');this.style.color="red";this.fontWeight="bold" title="CURLY LOGICAL OR">⋎</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22CF');this.style.color="red";this.fontWeight="bold" title="CURLY LOGICAL AND">⋏</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27D1');this.style.color="red";this.fontWeight="bold" title="AND WITH DOT">⟑</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27C7');this.style.color="red";this.fontWeight="bold" title="OR WITH DOT INSIDE">⟇</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A51');this.style.color="red";this.fontWeight="bold" title="LOGICAL AND WITH DOT ABOVE">⩑</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A52');this.style.color="red";this.fontWeight="bold" title="LOGICAL OR WITH DOT ABOVE">⩒</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A53');this.style.color="red";this.fontWeight="bold" title="DOUBLE LOGICAL AND">⩓</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A54');this.style.color="red";this.fontWeight="bold" title="DOUBLE LOGICAL OR">⩔</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A55');this.style.color="red";this.fontWeight="bold" title="TWO INTERSECTING LOGICAL AND">⩕</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A56');this.style.color="red";this.fontWeight="bold" title="TWO INTERSECTING LOGICAL OR">⩖</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A57');this.style.color="red";this.fontWeight="bold" title="SLOPING LARGE OR">⩗</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A58');this.style.color="red";this.fontWeight="bold" title="SLOPING LARGE AND">⩘</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A59');this.style.color="red";this.fontWeight="bold" title="LOGICAL OR OVERLAPPING LOGICAL AND">⩙</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A5A');this.style.color="red";this.fontWeight="bold" title="LOGICAL AND WITH MIDDLE STEM">⩚</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A5B');this.style.color="red";this.fontWeight="bold" title="LOGICAL OR WITH MIDDLE STEM">⩛</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A5C');this.style.color="red";this.fontWeight="bold" title="LOGICAL AND WITH HORIZONTAL DASH">⩜</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A5D');this.style.color="red";this.fontWeight="bold" title="LOGICAL OR WITH HORIZONTAL DASH">⩝</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A5E');this.style.color="red";this.fontWeight="bold" title="LOGICAL AND WITH DOUBLE OVERBAR">⩞</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A5F');this.style.color="red";this.fontWeight="bold" title="LOGICAL AND WITH UNDERBAR">⩟</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A60');this.style.color="red";this.fontWeight="bold" title="LOGICAL AND WITH DOUBLE UNDERBAR">⩠</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A62');this.style.color="red";this.fontWeight="bold" title="LOGICAL OR WITH DOUBLE OVERBAR">⩢</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A63');this.style.color="red";this.fontWeight="bold" title="LOGICAL OR WITH DOUBLE UNDERBAR">⩣</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A07');this.style.color="red";this.fontWeight="bold" title="TWO LOGICAL AND OPERATOR">⨇</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A08');this.style.color="red";this.fontWeight="bold" title="TWO LOGICAL OR OPERATOR">⨈</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22C0');this.style.color="red";this.fontWeight="bold" title="N-ARY LOGICAL AND">⋀</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22C1');this.style.color="red";this.fontWeight="bold" title="N-ARY LOGICAL OR">⋁</td>
+<td colspan=8></td>
+</tr>
+
+<tr><td align=center colspan=15 >Geometry</td></tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2223');this.style.color="red";this.fontWeight="bold" title="DIVIDES">∣</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2224');this.style.color="red";this.fontWeight="bold" title="DOES NOT DIVIDE">∤</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AEE');this.style.color="red";this.fontWeight="bold" title="DOES NOT DIVIDE WITH REVERSED NEGATION SLASH">⫮</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2305');this.style.color="red";this.fontWeight="bold" title="PROJECTIVE">⌅</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2306');this.style.color="red";this.fontWeight="bold" title="PERSPECTIVE">⌆</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2113');this.style.color="red";this.fontWeight="bold" title="SCRIPT SMALL L">ℓ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2ADB');this.style.color="red";this.fontWeight="bold" title="TRANSVERSAL INTERSECTION">⫛</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('221D');this.style.color="red";this.fontWeight="bold" title="PROPORTIONAL TO">∝</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2236');this.style.color="red";this.fontWeight="bold" title="RATIO">∶</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2237');this.style.color="red";this.fontWeight="bold" title="PROPORTION">∷</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('223A');this.style.color="red";this.fontWeight="bold" title="GEOMETRIC PROPORTION">∺</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2225');this.style.color="red";this.fontWeight="bold" title="PARALLEL TO">∥</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2226');this.style.color="red";this.fontWeight="bold" title="NOT PARALLEL TO">∦</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AF2');this.style.color="red";this.fontWeight="bold" title="PARALLEL WITH HORIZONTAL STROKE">⫲</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AF3');this.style.color="red";this.fontWeight="bold" title="PARALLEL WITH TILDE OPERATOR">⫳</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22D5');this.style.color="red";this.fontWeight="bold" title="EQUAL AND PARALLEL TO">⋕</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27C2');this.style.color="red";this.fontWeight="bold" title="PERPENDICULAR">⟂</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AE1');this.style.color="red";this.fontWeight="bold" title="PERPENDICULAR WITH S">⫡</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('299C');this.style.color="red";this.fontWeight="bold" title="RIGHT ANGLE VARIANT WITH SQUARE">⦜</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('221F');this.style.color="red";this.fontWeight="bold" title="RIGHT ANGLE">∟</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22BE');this.style.color="red";this.fontWeight="bold" title="RIGHT ANGLE WITH ARC">⊾</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('299D');this.style.color="red";this.fontWeight="bold" title="MEASURED RIGHT ANGLE WITH DOT">⦝</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22BF');this.style.color="red";this.fontWeight="bold" title="RIGHT TRIANGLE">⊿</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2220');this.style.color="red";this.fontWeight="bold" title="ANGLE">∠</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2221');this.style.color="red";this.fontWeight="bold" title="MEASURED ANGLE">∡</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('299B');this.style.color="red";this.fontWeight="bold" title="MEASURED ANGLE OPENING LEFT">⦛</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('299E');this.style.color="red";this.fontWeight="bold" title="ANGLE WITH S INSIDE">⦞</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('299F');this.style.color="red";this.fontWeight="bold" title="ACUTE ANGLE">⦟</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29A2');this.style.color="red";this.fontWeight="bold" title="TURNED ANGLE">⦢</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29A3');this.style.color="red";this.fontWeight="bold" title="REVERSED ANGLE">⦣</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29A4');this.style.color="red";this.fontWeight="bold" title="ANGLE WITH UNDERBAR">⦤</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29A5');this.style.color="red";this.fontWeight="bold" title="REVERSED ANGLE WITH UNDERBAR">⦥</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29A6');this.style.color="red";this.fontWeight="bold" title="OBLIQUE ANGLE OPENING UP">⦦</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29A7');this.style.color="red";this.fontWeight="bold" title="OBLIQUE ANGLE OPENING DOWN">⦧</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29A8');this.style.color="red";this.fontWeight="bold" title="MEASURED ANGLE WITH OPEN ARM ENDING IN ARROW POINTING UP AND RIGHT">⦨</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29A9');this.style.color="red";this.fontWeight="bold" title="MEASURED ANGLE WITH OPEN ARM ENDING IN ARROW POINTING UP AND LEFT">⦩</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29AA');this.style.color="red";this.fontWeight="bold" title="MEASURED ANGLE WITH OPEN ARM ENDING IN ARROW POINTING DOWN AND RIGHT">⦪</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29AB');this.style.color="red";this.fontWeight="bold" title="MEASURED ANGLE WITH OPEN ARM ENDING IN ARROW POINTING DOWN AND LEFT">⦫</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29AC');this.style.color="red";this.fontWeight="bold" title="MEASURED ANGLE WITH OPEN ARM ENDING IN ARROW POINTING RIGHT AND UP">⦬</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29AD');this.style.color="red";this.fontWeight="bold" title="MEASURED ANGLE WITH OPEN ARM ENDING IN ARROW POINTING LEFT AND UP">⦭</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29AE');this.style.color="red";this.fontWeight="bold" title="MEASURED ANGLE WITH OPEN ARM ENDING IN ARROW POINTING RIGHT AND DOWN">⦮</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29AF');this.style.color="red";this.fontWeight="bold" title="MEASURED ANGLE WITH OPEN ARM ENDING IN ARROW POINTING LEFT AND DOWN">⦯</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2993');this.style.color="red";this.fontWeight="bold" title="LEFT ARC LESS-THAN BRACKET">⦓</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2994');this.style.color="red";this.fontWeight="bold" title="RIGHT ARC GREATER-THAN BRACKET">⦔</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2995');this.style.color="red";this.fontWeight="bold" title="DOUBLE LEFT ARC GREATER-THAN BRACKET">⦕</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2996');this.style.color="red";this.fontWeight="bold" title="DOUBLE RIGHT ARC LESS-THAN BRACKET">⦖</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27C0');this.style.color="red";this.fontWeight="bold" title="THREE DIMENSIONAL ANGLE">⟀</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2222');this.style.color="red";this.fontWeight="bold" title="SPHERICAL ANGLE">∢</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29A0');this.style.color="red";this.fontWeight="bold" title="SPHERICAL ANGLE OPENING LEFT">⦠</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29A1');this.style.color="red";this.fontWeight="bold" title="SPHERICAL ANGLE OPENING UP">⦡</td>
+<td colspan=10></td>
+</tr>
+<tr><td align=center colspan=15 >Operators</td></tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2308');this.style.color="red";this.fontWeight="bold" title="LEFT CEILING">⌈</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2309');this.style.color="red";this.fontWeight="bold" title="RIGHT CEILING">⌉</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('230A');this.style.color="red";this.fontWeight="bold" title="LEFT FLOOR">⌊</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('230B');this.style.color="red";this.fontWeight="bold" title="RIGHT FLOOR">⌋</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2ACD');this.style.color="red";this.fontWeight="bold" title="SQUARE LEFT OPEN BOX OPERATOR">⫍</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2ACE');this.style.color="red";this.fontWeight="bold" title="SQUARE RIGHT OPEN BOX OPERATOR">⫎</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('222B');this.style.color="red";this.fontWeight="bold" title="INTEGRAL">∫</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('222C');this.style.color="red";this.fontWeight="bold" title="DOUBLE INTEGRAL">∬</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('222D');this.style.color="red";this.fontWeight="bold" title="TRIPLE INTEGRAL">∭</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('222E');this.style.color="red";this.fontWeight="bold" title="CONTOUR INTEGRAL">∮</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('222F');this.style.color="red";this.fontWeight="bold" title="SURFACE INTEGRAL">∯</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2230');this.style.color="red";this.fontWeight="bold" title="VOLUME INTEGRAL">∰</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2231');this.style.color="red";this.fontWeight="bold" title="CLOCKWISE INTEGRAL">∱</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2232');this.style.color="red";this.fontWeight="bold" title="CLOCKWISE CONTOUR INTEGRAL">∲</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2233');this.style.color="red";this.fontWeight="bold" title="ANTICLOCKWISE CONTOUR INTEGRAL">∳</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A0B');this.style.color="red";this.fontWeight="bold" title="SUMMATION WITH INTEGRAL">⨋</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A0C');this.style.color="red";this.fontWeight="bold" title="QUADRUPLE INTEGRAL OPERATOR">⨌</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A0D');this.style.color="red";this.fontWeight="bold" title="FINITE PART INTEGRAL">⨍</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A0E');this.style.color="red";this.fontWeight="bold" title="INTEGRAL WITH DOUBLE STROKE">⨎</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A0F');this.style.color="red";this.fontWeight="bold" title="INTEGRAL AVERAGE WITH SLASH">⨏</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A10');this.style.color="red";this.fontWeight="bold" title="CIRCULATION FUNCTION">⨐</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A11');this.style.color="red";this.fontWeight="bold" title="ANTICLOCKWISE INTEGRATION">⨑</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A12');this.style.color="red";this.fontWeight="bold" title="LINE INTEGRATION WITH RECTANGULAR PATH AROUND POLE">⨒</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A13');this.style.color="red";this.fontWeight="bold" title="LINE INTEGRATION WITH SEMICIRCULAR PATH AROUND POLE">⨓</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A14');this.style.color="red";this.fontWeight="bold" title="LINE INTEGRATION NOT INCLUDING THE POLE">⨔</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A15');this.style.color="red";this.fontWeight="bold" title="INTEGRAL AROUND A POINT OPERATOR">⨕</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A16');this.style.color="red";this.fontWeight="bold" title="QUATERNION INTEGRAL OPERATOR">⨖</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A17');this.style.color="red";this.fontWeight="bold" title="INTEGRAL WITH LEFTWARDS ARROW WITH HOOK">⨗</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A18');this.style.color="red";this.fontWeight="bold" title="INTEGRAL WITH TIMES SIGN">⨘</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A19');this.style.color="red";this.fontWeight="bold" title="INTEGRAL WITH INTERSECTION">⨙</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A1A');this.style.color="red";this.fontWeight="bold" title="INTEGRAL WITH UNION">⨚</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A1B');this.style.color="red";this.fontWeight="bold" title="INTEGRAL WITH OVERBAR">⨛</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A1C');this.style.color="red";this.fontWeight="bold" title="INTEGRAL WITH UNDERBAR">⨜</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2202');this.style.color="red";this.fontWeight="bold" title="PARTIAL DIFFERENTIAL">∂</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2032');this.style.color="red";this.fontWeight="bold" title="PRIME">′</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2033');this.style.color="red";this.fontWeight="bold" title="DOUBLE PRIME">″</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2034');this.style.color="red";this.fontWeight="bold" title="TRIPLE PRIME">‴</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2206');this.style.color="red";this.fontWeight="bold" title="INCREMENT">∆</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A2F');this.style.color="red";this.fontWeight="bold" title="VECTOR OR CROSS PRODUCT">⨯</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2207');this.style.color="red";this.fontWeight="bold" title="NABLA">∇</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22B9');this.style.color="red";this.fontWeight="bold" title="HERMITIAN CONJUGATE MATRIX">⊹</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('223C');this.style.color="red";this.fontWeight="bold" title="TILDE OPERATOR">∼</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('223D');this.style.color="red";this.fontWeight="bold" title="REVERSED TILDE">∽</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A6A');this.style.color="red";this.fontWeight="bold" title="TILDE OPERATOR WITH DOT ABOVE">⩪</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A6B');this.style.color="red";this.fontWeight="bold" title="TILDE OPERATOR WITH RISING DOTS">⩫</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A73');this.style.color="red";this.fontWeight="bold" title="EQUALS SIGN ABOVE TILDE OPERATOR">⩳</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22C4');this.style.color="red";this.fontWeight="bold" title="DIAMOND OPERATOR">⋄</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AF6');this.style.color="red";this.fontWeight="bold" title="TRIPLE COLON OPERATOR">⫶</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AFC');this.style.color="red";this.fontWeight="bold" title="LARGE TRIPLE VERTICAL BAR OPERATOR">⫼</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AFE');this.style.color="red";this.fontWeight="bold" title="WHITE VERTICAL BAR">⫾</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2240');this.style.color="red";this.fontWeight="bold" title="WREATH PRODUCT">≀</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A3F');this.style.color="red";this.fontWeight="bold" title="AMALGAMATION OR COPRODUCT">⨿</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A3C');this.style.color="red";this.fontWeight="bold" title="INTERIOR PRODUCT">⨼</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A3D');this.style.color="red";this.fontWeight="bold" title="RIGHTHAND INTERIOR PRODUCT">⨽</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29E2');this.style.color="red";this.fontWeight="bold" title="SHUFFLE PRODUCT">⧢</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22C9');this.style.color="red";this.fontWeight="bold" title="LEFT NORMAL FACTOR SEMIDIRECT PRODUCT">⋉</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22CA');this.style.color="red";this.fontWeight="bold" title="RIGHT NORMAL FACTOR SEMIDIRECT PRODUCT">⋊</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22CB');this.style.color="red";this.fontWeight="bold" title="LEFT SEMIDIRECT PRODUCT">⋋</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22CC');this.style.color="red";this.fontWeight="bold" title="RIGHT SEMIDIRECT PRODUCT">⋌</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2211');this.style.color="red";this.fontWeight="bold" title="N-ARY SUMMATION">∑</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A0A');this.style.color="red";this.fontWeight="bold" title="MODULO TWO SUM">⨊</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A01');this.style.color="red";this.fontWeight="bold" title="N-ARY CIRCLED PLUS OPERATOR">⨁</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A00');this.style.color="red";this.fontWeight="bold" title="N-ARY CIRCLED DOT OPERATOR">⨀</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A02');this.style.color="red";this.fontWeight="bold" title="N-ARY CIRCLED TIMES OPERATOR">⨂</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('220F');this.style.color="red";this.fontWeight="bold" title="N-ARY PRODUCT">∏</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2210');this.style.color="red";this.fontWeight="bold" title="N-ARY COPRODUCT">∐</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A09');this.style.color="red";this.fontWeight="bold" title="N-ARY TIMES OPERATOR">⨉</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2502');this.style.color="red";this.fontWeight="bold" title="BOX SIDE">│</td>
+
+<td colspan=7></td>
+</tr>
+<tr><td align=center colspan=15 >Miscellaneous</td></tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29F4');this.style.color="red";this.fontWeight="bold" title="RULE-DELAYED">⧴</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A22');this.style.color="red";this.fontWeight="bold" title="PLUS SIGN WITH SMALL CIRCLE ABOVE">⨢</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A23');this.style.color="red";this.fontWeight="bold" title="PLUS SIGN WITH CIRCUMFLEX ACCENT ABOVE">⨣</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A24');this.style.color="red";this.fontWeight="bold" title="PLUS SIGN WITH TILDE ABOVE">⨤</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A25');this.style.color="red";this.fontWeight="bold" title="PLUS SIGN WITH DOT BELOW">⨥</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A26');this.style.color="red";this.fontWeight="bold" title="PLUS SIGN WITH TILDE BELOW">⨦</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A27');this.style.color="red";this.fontWeight="bold" title="PLUS SIGN WITH SUBSCRIPT TWO">⨧</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A28');this.style.color="red";this.fontWeight="bold" title="PLUS SIGN WITH BLACK TRIANGLE">⨨</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A2D');this.style.color="red";this.fontWeight="bold" title="PLUS SIGN IN LEFT HALF CIRCLE">⨭</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A2E');this.style.color="red";this.fontWeight="bold" title="PLUS SIGN IN RIGHT HALF CIRCLE">⨮</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2214');this.style.color="red";this.fontWeight="bold" title="DOT PLUS">∔</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29FA');this.style.color="red";this.fontWeight="bold" title="DOUBLE PLUS">⧺</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29FB');this.style.color="red";this.fontWeight="bold" title="TRIPLE PLUS">⧻</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2238');this.style.color="red";this.fontWeight="bold" title="DOT MINUS">∸</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A29');this.style.color="red";this.fontWeight="bold" title="MINUS SIGN WITH COMMA ABOVE">⨩</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A2A');this.style.color="red";this.fontWeight="bold" title="MINUS SIGN WITH DOT BELOW">⨪</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A2B');this.style.color="red";this.fontWeight="bold" title="MINUS SIGN WITH FALLING DOTS">⨫</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A2C');this.style.color="red";this.fontWeight="bold" title="MINUS SIGN WITH RISING DOTS">⨬</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A30');this.style.color="red";this.fontWeight="bold" title="MULTIPLICATION SIGN WITH DOT ABOVE">⨰</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A31');this.style.color="red";this.fontWeight="bold" title="MULTIPLICATION SIGN WITH UNDERBAR">⨱</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A32');this.style.color="red";this.fontWeight="bold" title="SEMIDIRECT PRODUCT WITH BOTTOM CLOSED">⨲</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A33');this.style.color="red";this.fontWeight="bold" title="SMASH PRODUCT">⨳</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22C7');this.style.color="red";this.fontWeight="bold" title="DIVISION TIMES">⋇</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27CC');this.style.color="red";this.fontWeight="bold" title="LONG DIVISION">⟌</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27E0');this.style.color="red";this.fontWeight="bold" title="LOZENGE DIVIDED BY HORIZONTAL RULE">⟠</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('220E');this.style.color="red";this.fontWeight="bold" title="END OF PROOF">∎</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('B1');this.style.color="red";this.fontWeight="bold" title="PLUS-MINUS SIGN">±</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2213');this.style.color="red";this.fontWeight="bold" title="MINUS-OR-PLUS SIGN">∓</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22EE');this.style.color="red";this.fontWeight="bold" title="VERTICAL ELLIPSIS">⋮</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22EF');this.style.color="red";this.fontWeight="bold" title="MIDLINE HORIZONTAL ELLIPSIS">⋯</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22F0');this.style.color="red";this.fontWeight="bold" title="UP RIGHT DIAGONAL ELLIPSIS">⋰</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22F1');this.style.color="red";this.fontWeight="bold" title="DOWN RIGHT DIAGONAL ELLIPSIS">⋱</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('223F');this.style.color="red";this.fontWeight="bold" title="SINE WAVE">∿</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22A3');this.style.color="red";this.fontWeight="bold" title="LEFT TACK">⊣</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22A2');this.style.color="red";this.fontWeight="bold" title="RIGHT TACK">⊢</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22A5');this.style.color="red";this.fontWeight="bold" title="UP TACK">⊥</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22A4');this.style.color="red";this.fontWeight="bold" title="DOWN TACK">⊤</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27D8');this.style.color="red";this.fontWeight="bold" title="LARGE UP TACK">⟘</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27D9');this.style.color="red";this.fontWeight="bold" title="LARGE DOWN TACK">⟙</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27DB');this.style.color="red";this.fontWeight="bold" title="LEFT AND RIGHT TACK">⟛</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27DD');this.style.color="red";this.fontWeight="bold" title="LONG RIGHT TACK">⟝</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27DE');this.style.color="red";this.fontWeight="bold" title="LONG LEFT TACK">⟞</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27DF');this.style.color="red";this.fontWeight="bold" title="UP TACK WITH CIRCLE ABOVE">⟟</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AE7');this.style.color="red";this.fontWeight="bold" title="SHORT DOWN TACK WITH OVERBAR">⫧</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AE8');this.style.color="red";this.fontWeight="bold" title="SHORT UP TACK WITH UNDERBAR">⫨</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AE9');this.style.color="red";this.fontWeight="bold" title="SHORT UP TACK ABOVE SHORT DOWN TACK">⫩</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AEA');this.style.color="red";this.fontWeight="bold" title="DOUBLE DOWN TACK">⫪</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AEB');this.style.color="red";this.fontWeight="bold" title="DOUBLE UP TACK">⫫</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2ADE');this.style.color="red";this.fontWeight="bold" title="SHORT LEFT TACK">⫞</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2ADF');this.style.color="red";this.fontWeight="bold" title="SHORT DOWN TACK">⫟</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AE0');this.style.color="red";this.fontWeight="bold" title="SHORT UP TACK">⫠</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AE2');this.style.color="red";this.fontWeight="bold" title="VERTICAL BAR TRIPLE RIGHT TURNSTILE">⫢</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AE3');this.style.color="red";this.fontWeight="bold" title="DOUBLE VERTICAL BAR LEFT TURNSTILE">⫣</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AE4');this.style.color="red";this.fontWeight="bold" title="VERTICAL BAR DOUBLE LEFT TURNSTILE">⫤</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AE5');this.style.color="red";this.fontWeight="bold" title="DOUBLE VERTICAL BAR DOUBLE LEFT TURNSTILE">⫥</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27DA');this.style.color="red";this.fontWeight="bold" title="LEFT AND RIGHT DOUBLE TURNSTILE">⟚</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2981');this.style.color="red";this.fontWeight="bold" title="Z NOTATION SPOT">⦁</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2982');this.style.color="red";this.fontWeight="bold" title="Z NOTATION TYPE COLON">⦂</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A3E');this.style.color="red";this.fontWeight="bold" title="Z NOTATION RELATIONAL COMPOSITION">⨾</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A1F');this.style.color="red";this.fontWeight="bold" title="Z NOTATION SCHEMA COMPOSITION">⨟</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A20');this.style.color="red";this.fontWeight="bold" title="Z NOTATION SCHEMA PIPING">⨠</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A21');this.style.color="red";this.fontWeight="bold" title="Z NOTATION SCHEMA PROJECTION">⨡</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A64');this.style.color="red";this.fontWeight="bold" title="Z NOTATION DOMAIN ANTIRESTRICTION">⩤</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A65');this.style.color="red";this.fontWeight="bold" title="Z NOTATION RANGE ANTIRESTRICTION">⩥</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2987');this.style.color="red";this.fontWeight="bold" title="Z NOTATION LEFT IMAGE BRACKET">⦇</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2988');this.style.color="red";this.fontWeight="bold" title="Z NOTATION RIGHT IMAGE BRACKET">⦈</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2989');this.style.color="red";this.fontWeight="bold" title="Z NOTATION LEFT BINDING BRACKET">⦉</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('298A');this.style.color="red";this.fontWeight="bold" title="Z NOTATION RIGHT BINDING BRACKET">⦊</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29F5');this.style.color="red";this.fontWeight="bold" title="REVERSE SOLIDUS OPERATOR">⧵</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29F6');this.style.color="red";this.fontWeight="bold" title="SOLIDUS WITH OVERBAR">⧶</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29F7');this.style.color="red";this.fontWeight="bold" title="REVERSE SOLIDUS WITH HORIZONTAL STROKE">⧷</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29F8');this.style.color="red";this.fontWeight="bold" title="BIG SOLIDUS">⧸</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AFD');this.style.color="red";this.fontWeight="bold" title="DOUBLE SOLIDUS OPERATOR">⫽</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AFB');this.style.color="red";this.fontWeight="bold" title="TRIPLE SOLIDUS BINARY RELATION">⫻</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29F9');this.style.color="red";this.fontWeight="bold" title="BIG REVERSE SOLIDUS">⧹</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22B6');this.style.color="red";this.fontWeight="bold" title="ORIGINAL OF">⊶</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22B7');this.style.color="red";this.fontWeight="bold" title="IMAGE OF">⊷</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22B8');this.style.color="red";this.fontWeight="bold" title="MULTIMAP">⊸</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27DC');this.style.color="red";this.fontWeight="bold" title="LEFT MULTIMAP">⟜</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29DF');this.style.color="red";this.fontWeight="bold" title="DOUBLE-ENDED MULTIMAP">⧟</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29B0');this.style.color="red";this.fontWeight="bold" title="REVERSED EMPTY SET">⦰</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29B1');this.style.color="red";this.fontWeight="bold" title="EMPTY SET WITH OVERBAR">⦱</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29B2');this.style.color="red";this.fontWeight="bold" title="EMPTY SET WITH SMALL CIRCLE ABOVE">⦲</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29B3');this.style.color="red";this.fontWeight="bold" title="EMPTY SET WITH RIGHT ARROW ABOVE">⦳</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29B4');this.style.color="red";this.fontWeight="bold" title="EMPTY SET WITH LEFT ARROW ABOVE">⦴</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29B5');this.style.color="red";this.fontWeight="bold" title="CIRCLE WITH HORIZONTAL BAR">⦵</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29B6');this.style.color="red";this.fontWeight="bold" title="CIRCLED VERTICAL BAR">⦶</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29B7');this.style.color="red";this.fontWeight="bold" title="CIRCLED PARALLEL">⦷</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29B8');this.style.color="red";this.fontWeight="bold" title="CIRCLED REVERSE SOLIDUS">⦸</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29B9');this.style.color="red";this.fontWeight="bold" title="CIRCLED PERPENDICULAR">⦹</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29BA');this.style.color="red";this.fontWeight="bold" title="CIRCLE DIVIDED BY HORIZONTAL BAR AND TOP HALF DIVIDED BY VERTICAL BAR">⦺</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29BB');this.style.color="red";this.fontWeight="bold" title="CIRCLE WITH SUPERIMPOSED X">⦻</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A34');this.style.color="red";this.fontWeight="bold" title="MULTIPLICATION SIGN IN LEFT HALF CIRCLE">⨴</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A35');this.style.color="red";this.fontWeight="bold" title="MULTIPLICATION SIGN IN RIGHT HALF CIRCLE">⨵</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A36');this.style.color="red";this.fontWeight="bold" title="CIRCLED MULTIPLICATION SIGN WITH CIRCUMFLEX ACCENT">⨶</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A37');this.style.color="red";this.fontWeight="bold" title="MULTIPLICATION SIGN IN DOUBLE CIRCLE">⨷</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A38');this.style.color="red";this.fontWeight="bold" title="CIRCLED DIVISION SIGN">⨸</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29BC');this.style.color="red";this.fontWeight="bold" title="CIRCLED ANTICLOCKWISE-ROTATED DIVISION SIGN">⦼</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29BD');this.style.color="red";this.fontWeight="bold" title="UP ARROW THROUGH CIRCLE">⦽</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29C0');this.style.color="red";this.fontWeight="bold" title="CIRCLED LESS-THAN">⧀</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29C1');this.style.color="red";this.fontWeight="bold" title="CIRCLED GREATER-THAN">⧁</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29C2');this.style.color="red";this.fontWeight="bold" title="CIRCLE WITH SMALL CIRCLE TO THE RIGHT">⧂</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29C3');this.style.color="red";this.fontWeight="bold" title="CIRCLE WITH TWO HORIZONTAL STROKES TO THE RIGHT">⧃</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29E1');this.style.color="red";this.fontWeight="bold" title="INCREASES AS">⧡</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29E3');this.style.color="red";this.fontWeight="bold" title="EQUALS SIGN AND SLANTED PARALLEL">⧣</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29E4');this.style.color="red";this.fontWeight="bold" title="EQUALS SIGN AND SLANTED PARALLEL WITH TILDE ABOVE">⧤</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29E5');this.style.color="red";this.fontWeight="bold" title="IDENTICAL TO AND SLANTED PARALLEL">⧥</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29E6');this.style.color="red";this.fontWeight="bold" title="GLEICH STARK">⧦</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29E7');this.style.color="red";this.fontWeight="bold" title="THERMODYNAMIC">⧧</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29FE');this.style.color="red";this.fontWeight="bold" title="TINY">⧾</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A1E');this.style.color="red";this.fontWeight="bold" title="LARGE LEFT TRIANGLE OPERATOR">⨞</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29CA');this.style.color="red";this.fontWeight="bold" title="TRIANGLE WITH DOT ABOVE">⧊</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29CB');this.style.color="red";this.fontWeight="bold" title="TRIANGLE WITH UNDERBAR">⧋</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29CC');this.style.color="red";this.fontWeight="bold" title="S IN TRIANGLE">⧌</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29CD');this.style.color="red";this.fontWeight="bold" title="TRIANGLE WITH SERIFS AT BOTTOM">⧍</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A39');this.style.color="red";this.fontWeight="bold" title="PLUS SIGN IN TRIANGLE">⨹</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A3A');this.style.color="red";this.fontWeight="bold" title="MINUS SIGN IN TRIANGLE">⨺</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A3B');this.style.color="red";this.fontWeight="bold" title="MULTIPLICATION SIGN IN TRIANGLE">⨻</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29CE');this.style.color="red";this.fontWeight="bold" title="RIGHT TRIANGLE ABOVE LEFT TRIANGLE">⧎</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29CF');this.style.color="red";this.fontWeight="bold" title="LEFT TRIANGLE BESIDE VERTICAL BAR">⧏</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('29D0');this.style.color="red";this.fontWeight="bold" title="VERTICAL BAR BESIDE RIGHT TRIANGLE">⧐</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A61');this.style.color="red";this.fontWeight="bold" title="SMALL VEE WITH UNDERBAR">⩡</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A68');this.style.color="red";this.fontWeight="bold" title="TRIPLE HORIZONTAL BAR WITH DOUBLE VERTICAL STROKE">⩨</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A69');this.style.color="red";this.fontWeight="bold" title="TRIPLE HORIZONTAL BAR WITH TRIPLE VERTICAL STROKE">⩩</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2ADC');this.style.color="red";this.fontWeight="bold" title="FORKING">⫝̸</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2ADD');this.style.color="red";this.fontWeight="bold" title="NONFORKING">⫝</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AE6');this.style.color="red";this.fontWeight="bold" title="LONG DASH FROM LEFT MEMBER OF DOUBLE VERTICAL">⫦</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AEF');this.style.color="red";this.fontWeight="bold" title="VERTICAL LINE WITH CIRCLE ABOVE">⫯</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AF0');this.style.color="red";this.fontWeight="bold" title="VERTICAL LINE WITH CIRCLE BELOW">⫰</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2AF1');this.style.color="red";this.fontWeight="bold" title="DOWN TACK WITH CIRCLE BELOW">⫱</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('223E');this.style.color="red";this.fontWeight="bold" title="INVERTED LAZY S">∾</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22BA');this.style.color="red";this.fontWeight="bold" title="INTERCALATE">⊺</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('22D4');this.style.color="red";this.fontWeight="bold" title="PITCHFORK">⋔</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2ADA');this.style.color="red";this.fontWeight="bold" title="PITCHFORK WITH TEE TOP">⫚</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27CA');this.style.color="red";this.fontWeight="bold" title="VERTICAL BAR WITH HORIZONTAL STROKE">⟊</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27D4');this.style.color="red";this.fontWeight="bold" title="UPPER LEFT CORNER WITH DOT">⟔</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27D3');this.style.color="red";this.fontWeight="bold" title="LOWER RIGHT CORNER WITH DOT">⟓</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27E1');this.style.color="red";this.fontWeight="bold" title="WHITE CONCAVE-SIDED DIAMOND">⟡</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27E2');this.style.color="red";this.fontWeight="bold" title="WHITE CONCAVE-SIDED DIAMOND WITH LEFTWARDS TICK">⟢</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27E3');this.style.color="red";this.fontWeight="bold" title="WHITE CONCAVE-SIDED DIAMOND WITH RIGHTWARDS TICK">⟣</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27E4');this.style.color="red";this.fontWeight="bold" title="WHITE SQUARE WITH LEFTWARDS TICK">⟤</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('27E5');this.style.color="red";this.fontWeight="bold" title="WHITE SQUARE WITH RIGHTWARDS TICK">⟥</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('211D');this.style.color="red";this.fontWeight="bold" title="DOUBLE-STRUCK CAPITAL R">ℝ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2148');this.style.color="red";this.fontWeight="bold" title="DOUBLE-STRUCK ITALIC SMALL I">ⅈ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('3C0');this.style.color="red";this.fontWeight="bold" title="GREEK SMALL LETTER PI">π</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('211D');this.style.color="red";this.fontWeight="bold" title="DOUBLE-STRUCK CAPITAL R">ℝ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2148');this.style.color="red";this.fontWeight="bold" title="DOUBLE-STRUCK ITALIC SMALL I">ⅈ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2149');this.style.color="red";this.fontWeight="bold" title="DOUBLE-STRUCK ITALIC SMALL J">ⅉ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('212D');this.style.color="red";this.fontWeight="bold" title="BLACK-LETTER CAPITAL C">ℭ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2111');this.style.color="red";this.fontWeight="bold" title="BLACK-LETTER CAPITAL I">ℑ</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('210C');this.style.color="red";this.fontWeight="bold" title="BLACK-LETTER CAPITAL H">ℌ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('211C');this.style.color="red";this.fontWeight="bold" title="BLACK-LETTER CAPITAL R">ℜ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2128');this.style.color="red";this.fontWeight="bold" title="BLACK-LETTER CAPITAL Z">ℨ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2113');this.style.color="red";this.fontWeight="bold" title="SCRIPT SMALL L">ℓ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2131');this.style.color="red";this.fontWeight="bold" title="SCRIPT CAPITAL F">ℱ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2112');this.style.color="red";this.fontWeight="bold" title="SCRIPT CAPITAL L">ℒ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('211B');this.style.color="red";this.fontWeight="bold" title="SCRIPT CAPITAL R">ℛ</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('7E');this.style.color="red";this.fontWeight="bold" title="TILDE">~</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('223C');this.style.color="red";this.fontWeight="bold" title="TILDE OPERATOR">∼</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('223D');this.style.color="red";this.fontWeight="bold" title="REVERSED TILDE">∽</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('301C');this.style.color="red";this.fontWeight="bold" title="WAVE DASH">〜</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('223F');this.style.color="red";this.fontWeight="bold" title="SINE WAVE">∿</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2248');this.style.color="red";this.fontWeight="bold" title="ALMOST EQUAL TO">≈</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A73');this.style.color="red";this.fontWeight="bold" title="EQUALS SIGN ABOVE TILDE OPERATOR">⩳</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('224C');this.style.color="red";this.fontWeight="bold" title="ALL EQUAL TO">≌</td>
+</tr>
+<tr>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A6F');this.style.color="red";this.fontWeight="bold" title="ALMOST EQUAL TO WITH CIRCUMFLEX ACCENT">⩯</td>
+<td onmouseover=this.style.background="gainsboro" onmouseout=this.style.background=""  onclick=insert('2A70');this.style.color="red";this.fontWeight="bold" title="APPROXIMATELY EQUAL OR EQUAL TO">⩰</td>
+
+ <td colspan=13></td>
+</tr>
+
+
+
+    </table>
+   </center>
+    </div>
+</div>
 </body>
 <script>
 
@@ -142,9 +1065,13 @@ function drawTextKeyPress(event)
 		parent.TextBlinker.attr("dy",0)
 
 		var myChar=String.fromCharCode(KeyPress);
-		drawTextWriteTextValue.value+=myChar;
-		parent.WriteText=drawTextWriteTextValue.value
-		parent.ActiveTspan.text(drawTextWriteTextValue.value )
+
+
+
+            drawTextWriteTextValue.value+=myChar;
+            parent.WriteText=drawTextWriteTextValue.value
+		    parent.ActiveTspan.text(drawTextWriteTextValue.value )
+
 
 		finishDrawTextButton.disabled=false
 		cancelDrawTextButton.disabled=false
@@ -166,21 +1093,14 @@ function drawTextKeyPress(event)
 
 function drawTextKeyUp(event)
 {
-   var myKey=(event.charCode) ? event.which : event.keyCode  //===ff===
+  var myKey=(event.charCode) ? event.which : event.keyCode  //===ff===
 
    if(myKey==8)   //----backspace---
    {
+
          parent.WriteText=drawTextWriteTextValue.value
 		 parent.ActiveTspan.text(drawTextWriteTextValue.value )
-         if(parent.TspanCnt>0 && drawTextWriteTextValue.value=="")
-		 {
-            parent.removeLastTspan()
 
-
-		 }
-
-        if(parent.DrawTextEdit==true)
-			PrevEditRow.innerText=parent.WriteText
     }
 
  return false
@@ -188,6 +1108,28 @@ function drawTextKeyUp(event)
 
 }
 
+function insert(ucode)
+{
+    if(parent.ActiveElem)
+    {
+        parent.TextBlinker.attr("dx","-.5")
+        parent.TextBlinker.attr("dy",0)
+
+        var code=parseInt(ucode,16)
+        var symbolText=String.fromCharCode(code)
+
+        drawTextWriteTextValue.value+=symbolText;
+        parent.WriteText=drawTextWriteTextValue.value
+        parent.ActiveTspan.text(drawTextWriteTextValue.value )
+
+        finishDrawTextButton.disabled=false
+        cancelDrawTextButton.disabled=false
+        //var td=document.getElementById("td"+ucode)
+        //td.style.color="violet"
+        focusText()
+    }
+
+}
 function writeTextColorSelection()
 {
    var DrawColors=parent.clrArray
@@ -200,6 +1142,7 @@ function writeTextColorSelection()
 		option.value=myColor
 		option.title=name+" "+myColor
 
+
 		option.text=k
          drawTextStrokeSelect.appendChild(option)
 
@@ -207,6 +1150,7 @@ function writeTextColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+
 
 		option.text=k
         drawTextFillSelect.appendChild(option)
@@ -231,6 +1175,21 @@ parent.startTextDraw()
    		parent.setEditText()
         else
           parent.startTextDraw()
+
+
+
+}
+
+function includeSpecialChar()
+{
+   specialCharDiv.style.height="300px"
+    specialCharDiv.style.visibility="visible"
+
+
+    var width=containerDiv.scrollWidth+10
+   var height=containerDiv.scrollHeight+10
+      parent.sizeFrame('addElemText',width,height)
+
 
 
 

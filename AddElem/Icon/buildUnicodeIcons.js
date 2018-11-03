@@ -1,3 +1,5 @@
+
+
 function unicodeTypeSelected()
 {
     dingbatTable.style.display = "none"
@@ -6,6 +8,7 @@ function unicodeTypeSelected()
     mathTable.style.display = "none"
     technicalTable.style.display = "none"
     symbolTable.style.display = "none"
+    parent.IconType=unicodeTypeSelect.options[unicodeTypeSelect.selectedIndex].value
     table = eval(unicodeTypeSelect.options[unicodeTypeSelect.selectedIndex].value+"Table")
     table.style.display = "block"
     drawIconButtonDiv.scrollTop = 0
@@ -25,7 +28,8 @@ function buildDingbatButton()
     {
 
         var unicode = dingbatArray[k]
-        IconUnicode.push(unicode)
+         IconUnicode.push(unicode)
+
         var code = parseInt(unicode, 16)
         var icon = svg.append("text")
         .attr("id", "icon_"+unicode)
@@ -50,7 +54,7 @@ function buildDingbatButton()
         buttonCell.style.height = "40px"
         buttonCell.style.overflow = "hidden"
 
-        buttonCell.innerHTML = '<button onclick=plantThisIcon(event);this.style.borderStyle="inset";this.style.borderColor="violet" style="padding:0px;background:white;border-width:3px;width:40px;height:40px"><svg  width=30 height=30 overflow="hidden" xmlns="http://www.w3.org/2000/svg"  ><text font-size="'+fontSize+'" font-family="Arial Unicode MS" stroke-width="'+strokeWidth+'" fill="#C64DDB" stroke="black" unicode="'+unicode+'" x="'+(-bb.x)+'" y="'+(-bb.y)+'">'+String.fromCharCode(code)+'</text></svg></button>'
+        buttonCell.innerHTML = '<button id=button'+unicode+'  title='+unicode+' onclick=plantThisIcon(event);this.style.borderStyle="inset";this.style.borderColor="violet" style="padding:0px;background:white;border-width:3px;width:40px;height:40px"><svg  width=30 height=30 overflow="hidden" xmlns="http://www.w3.org/2000/svg"  ><text id=iconText'+unicode+'  font-size="'+fontSize+'" font-family="Arial Unicode MS" stroke-width="'+strokeWidth+'" fill="#C64DDB" stroke="black" unicode="'+unicode+'" x="'+(-bb.x)+'" y="'+(-bb.y)+'">'+String.fromCharCode(code)+'</text></svg></button>'
     }
 }
 
@@ -92,7 +96,7 @@ function buildGeometricButton()
         buttonCell.style.height = "40px"
         buttonCell.style.overflow = "hidden"
 
-        buttonCell.innerHTML = '<button onclick=plantThisIcon(event);this.style.borderStyle="inset";this.style.borderColor="violet" style="padding:0px;background:white;border-width:3px;width:40px;height:40px"><svg  width=30 height=30 overflow="hidden" xmlns="http://www.w3.org/2000/svg"  ><text font-size="'+fontSize+'" font-family="Arial Unicode MS" stroke-width="'+strokeWidth+'" fill="#C64DDB" stroke="black" unicode="'+unicode+'" x="'+(-bb.x)+'" y="'+(-bb.y)+'">'+String.fromCharCode(code)+'</text></svg></button>'
+        buttonCell.innerHTML = '<button id=button'+unicode+'  title='+unicode+'  onclick=plantThisIcon(event);this.style.borderStyle="inset";this.style.borderColor="violet" style="padding:0px;background:white;border-width:3px;width:40px;height:40px"><svg  width=30 height=30 overflow="hidden" xmlns="http://www.w3.org/2000/svg"  ><text id=iconText'+unicode+'  font-size="'+fontSize+'" font-family="Arial Unicode MS" stroke-width="'+strokeWidth+'" fill="#C64DDB" stroke="black" unicode="'+unicode+'" x="'+(-bb.x)+'" y="'+(-bb.y)+'">'+String.fromCharCode(code)+'</text></svg></button>'
     }
 }
 
@@ -135,7 +139,7 @@ function buildArrowButton()
         buttonCell.style.height = "40px"
         buttonCell.style.overflow = "hidden"
 
-        buttonCell.innerHTML = '<button onclick=plantThisIcon(event);this.style.borderStyle="inset";this.style.borderColor="violet" style="padding:0px;background:white;border-width:3px;width:40px;height:40px"><svg  width=30 height=30 overflow="hidden" xmlns="http://www.w3.org/2000/svg"  ><text font-size="'+fontSize+'" font-family="Arial Unicode MS" stroke-width="'+strokeWidth+'" fill="#C64DDB" stroke="black" unicode="'+unicode+'" x="'+(-bb.x)+'" y="'+(-bb.y)+'">'+String.fromCharCode(code)+'</text></svg></button>'
+        buttonCell.innerHTML = '<button id=button'+unicode+'  title='+unicode+'  onclick=plantThisIcon(event);this.style.borderStyle="inset";this.style.borderColor="violet" style="padding:0px;background:white;border-width:3px;width:40px;height:40px"><svg  width=30 height=30 overflow="hidden" xmlns="http://www.w3.org/2000/svg"  ><text id=iconText'+unicode+'  font-size="'+fontSize+'" font-family="Arial Unicode MS" stroke-width="'+strokeWidth+'" fill="#C64DDB" stroke="black" unicode="'+unicode+'" x="'+(-bb.x)+'" y="'+(-bb.y)+'">'+String.fromCharCode(code)+'</text></svg></button>'
     }
 }
 
@@ -178,7 +182,7 @@ function buildMathButton()
         buttonCell.style.height = "40px"
         buttonCell.style.overflow = "hidden"
 
-        buttonCell.innerHTML = '<button onclick=plantThisIcon(event);this.style.borderStyle="inset";this.style.borderColor="violet" style="padding:0px;background:white;border-width:3px;width:40px;height:40px"><svg  width=30 height=30 overflow="hidden" xmlns="http://www.w3.org/2000/svg"  ><text font-size="'+fontSize+'" font-family="Arial Unicode MS" stroke-width="'+strokeWidth+'" fill="#C64DDB" stroke="black" unicode="'+unicode+'" x="'+(-bb.x)+'" y="'+(-bb.y)+'">'+String.fromCharCode(code)+'</text></svg></button>'
+        buttonCell.innerHTML = '<button id=button'+unicode+'  title='+unicode+'  onclick=plantThisIcon(event);this.style.borderStyle="inset";this.style.borderColor="violet" style="padding:0px;background:white;border-width:3px;width:40px;height:40px"><svg  width=30 height=30 overflow="hidden" xmlns="http://www.w3.org/2000/svg"  ><text id=iconText'+unicode+'  font-size="'+fontSize+'" font-family="Arial Unicode MS" stroke-width="'+strokeWidth+'" fill="#C64DDB" stroke="black" unicode="'+unicode+'" x="'+(-bb.x)+'" y="'+(-bb.y)+'">'+String.fromCharCode(code)+'</text></svg></button>'
     }
 }
 
@@ -220,7 +224,7 @@ function buildTechnicalButton()
         buttonCell.style.height = "40px"
         buttonCell.style.overflow = "hidden"
 
-        buttonCell.innerHTML = '<button onclick=plantThisIcon(event);this.style.borderStyle="inset";this.style.borderColor="violet" style="padding:0px;background:white;border-width:3px;width:40px;height:40px"><svg  width=30 height=30 overflow="hidden" xmlns="http://www.w3.org/2000/svg"  ><text font-size="'+fontSize+'" font-family="Arial Unicode MS" stroke-width="'+strokeWidth+'" fill="#C64DDB" stroke="black" unicode="'+unicode+'" x="'+(-bb.x)+'" y="'+(-bb.y)+'">'+String.fromCharCode(code)+'</text></svg></button>'
+        buttonCell.innerHTML = '<button id=button'+unicode+' title='+unicode+'  onclick=plantThisIcon(event);this.style.borderStyle="inset";this.style.borderColor="violet" style="padding:0px;background:white;border-width:3px;width:40px;height:40px"><svg  width=30 height=30 overflow="hidden" xmlns="http://www.w3.org/2000/svg"  ><text id=iconText'+unicode+'  font-size="'+fontSize+'" font-family="Arial Unicode MS" stroke-width="'+strokeWidth+'" fill="#C64DDB" stroke="black" unicode="'+unicode+'" x="'+(-bb.x)+'" y="'+(-bb.y)+'">'+String.fromCharCode(code)+'</text></svg></button>'
     }
 }
 
@@ -261,6 +265,6 @@ function buildSymbolButton()
         buttonCell.style.height = "40px"
         buttonCell.style.overflow = "hidden"
 
-        buttonCell.innerHTML = '<button onclick=plantThisIcon(event);this.style.borderStyle="inset";this.style.borderColor="violet" style="padding:0px;background:white;border-width:3px;width:40px;height:40px"><svg  width=30 height=30 overflow="hidden" xmlns="http://www.w3.org/2000/svg"  ><text font-size="'+fontSize+'" font-family="Arial Unicode MS" stroke-width="'+strokeWidth+'" fill="#C64DDB" stroke="black" unicode="'+unicode+'" x="'+(-bb.x)+'" y="'+(-bb.y)+'">'+String.fromCharCode(code)+'</text></svg></button>'
+        buttonCell.innerHTML = '<button id=button'+unicode+'  title='+unicode+'  onclick=plantThisIcon(event);this.style.borderStyle="inset";this.style.borderColor="violet" style="padding:0px;background:white;border-width:3px;width:40px;height:40px"><svg  width=30 height=30 overflow="hidden" xmlns="http://www.w3.org/2000/svg"  ><text id=iconText'+unicode+' font-size="'+fontSize+'" font-family="Arial Unicode MS" stroke-width="'+strokeWidth+'" fill="#C64DDB" stroke="black" unicode="'+unicode+'" x="'+(-bb.x)+'" y="'+(-bb.y)+'">'+String.fromCharCode(code)+'</text></svg></button>'
     }
 }

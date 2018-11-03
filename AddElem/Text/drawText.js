@@ -2,13 +2,35 @@ function shadowDrawTextChecked()
 {
 
     var cw = addElemTextCw
-  if(ActiveElem)
-  {
-    if(cw.shadowDrawTextCheck.checked )
-        ActiveElem.attr('filter', "url(#drop-shadow)")
-    else
-      activeElem.removeAttribute('filter')
-  }
+    if(ActiveElem)
+    {
+        if(cw.shadowDrawTextCheck.checked)
+            ActiveElem.attr('filter', "url(#drop-shadow)")
+            else
+                activeElem.removeAttribute('filter')
+    }
+}
+function backgroundDrawTextChecked()
+{
+
+    var cw = addElemTextCw
+    if(ActiveElem)
+    {
+        if(cw.backgroundDrawTextCheck.checked)
+        {
+            ActiveElem.attr('filter', "url(#textBg)")
+            ActiveElem.attr("font-weight", "bold")
+            ActiveElem.attr("stroke", "white")
+            ActiveElem.attr("stroke-width", "1")
+
+        }
+        else
+        {
+            activeElem.removeAttribute('filter')
+            ActiveElem.attr("stroke", "none")
+            ActiveElem.attr("font-weight", null)
+        }
+    }
 }
 
 //---during drag of element add class 'noselect' to text elements---
@@ -20,7 +42,7 @@ function addNoSelectAtText()
 
         var elem = domElemG.childNodes.item(k)
 
-        if(elem.nodeName=="text")
+        if(elem.nodeName=="text"&&elem.getAttribute("class").indexOf("path")==-1&&elem.getAttribute("class")!="iconElem")
             elem.setAttribute("class", "noselect")
 
     }
@@ -33,7 +55,7 @@ function removeNoSelectAtText()
     {
 
         var elem = domElemG.childNodes.item(k)
-        if(elem.nodeName=="text")
+        if(elem.nodeName=="text"&&elem.getAttribute("class").indexOf("path")==-1&&elem.getAttribute("class")!="iconElem")
             elem.setAttribute("class", "textElem")
 
     }
@@ -113,6 +135,7 @@ function removeLastTspan()
     var lastTspan = tspans.item(tspanCnt-2) //---last tspan before blinker---
     var currentTspan = tspans.item(tspanCnt-3)
     activeText.removeChild(lastTspan)
+
     currentTspan.setAttribute("id", "activeTspan")
 
     ActiveTspan = d3.select("#activeTspan")
@@ -140,7 +163,7 @@ function startTextDraw()
 {
     activeElem = null
     ActiveElem = null
-    
+
     mySVG.setAttribute('onclick', "placeDrawText()")
     RotateAngle = 0
     TspanCnt = 0;
@@ -232,21 +255,22 @@ function placeDrawText()
 
     mySVG.removeAttribute("onclick")
     cw.drawTextWriteTextValue.value = ""
-    cw.shadowDrawTextCheck.checked=false
+    cw.shadowDrawTextCheck.checked = false
     cw.drawTextWriteTextValue.addEventListener("keypress", cw.drawTextKeyPress, false)
     cw.drawTextWriteTextValue.addEventListener("keyup", cw.drawTextKeyUp, false)
 
     var fontSize = parseInt(cw.drawTextFontSizeSelect.options[cw.drawTextFontSizeSelect.selectedIndex].text, 10)
     var fontFamily = cw.drawTextFontFamilySelect.options[cw.drawTextFontFamilySelect.selectedIndex].value
-    var textStrokeColor=cw.drawTextStrokeSelect.options[cw.drawTextStrokeSelect.selectedIndex].value
-   if(ActiveElem)
-      ActiveElem.attr('stroke', textStrokeColor)
-   if(ActiveElem && textStrokeColor!="none")
-   {         var strokeWidth = .02*fontSize
-            ActiveElem.attr('strokeWidth', strokeWidth)
+    var textStrokeColor = cw.drawTextStrokeSelect.options[cw.drawTextStrokeSelect.selectedIndex].value
+    if(ActiveElem)
+        ActiveElem.attr('stroke', textStrokeColor)
+        if(ActiveElem && textStrokeColor!="none")
+    {
+        var strokeWidth = .02*fontSize
+        ActiveElem.attr('strokeWidth', strokeWidth)
 
-   }
-    textFillColor = cw.drawTextFillSelect.options[cw.drawTextFillSelect.selectedIndex].value
+    }
+    var textFillColor = cw.drawTextFillSelect.options[cw.drawTextFillSelect.selectedIndex].value
     if(cw.drawTextBoldCheck.checked)
     {
         FontWeight = "bold"
@@ -273,37 +297,47 @@ function placeDrawText()
         if(ActiveElem)
             ActiveElem.attr('font-style', "normal")
     }
-   var textStrokeColor=cw.drawTextStrokeSelect.options[cw.drawTextStrokeSelect.selectedIndex].value
+    var textStrokeColor = cw.drawTextStrokeSelect.options[cw.drawTextStrokeSelect.selectedIndex].value
 
-   if(textStrokeColor!="none")
-    var strokeWidth = .02*fontSize
-  else
-    var strokeWidth=0
+    if(textStrokeColor!="none")
+        var strokeWidth = .02*fontSize
+        else
+            var strokeWidth = 0
 
-    ActiveElem = ActiveElemG.append("g")
-    .attr("id", "activeElem")
-    .attr("fill", textFillColor)
-    .attr("stroke", textStrokeColor)
-   .attr("stroke-width", strokeWidth)
-    .attr("font-size", fontSize)
-    .attr("font-family", fontFamily)
-    .attr("font-weight", FontWeight)
-    .attr("font-style", FontStyle)
-    .attr("transform", "translate(0 0)")
-    .attr("class", "dragTargetObj")
+            ActiveElem = ActiveElemG.append("g")
+            .attr("id", "activeElem")
+            .attr("fill", textFillColor)
+            .attr("stroke", textStrokeColor)
+            .attr("stroke-width", strokeWidth)
+            .attr("font-size", fontSize)
+            .attr("font-family", fontFamily)
+            .attr("font-weight", FontWeight)
+            .attr("font-style", FontStyle)
+            .attr("transform", "translate(0 0)")
+            .attr("class", "dragTargetObj")
 
-    activeElem = document.getElementById("activeElem")
+            activeElem = document.getElementById("activeElem")
+            if(cw.shadowDrawTextCheck.checked)
+            ActiveElem.attr('filter', 'url(#drop-shadow)')
+            else if(cw.backgroundDrawTextCheck.checked)
+            {
+                ActiveElem.attr('filter', 'url(#textBg)')
+                ActiveElem.attr("font-weight", "bold")
+                ActiveElem.attr("stroke", "white")
+                ActiveElem.attr("stroke-width", "1")
 
-    TextElem = ActiveElem.append("svg:text")
-    .attr("id", "activeText")
-    .attr("x", 0)
-    .attr("y", 0)
+            }
 
-    ActiveTspan = TextElem.append("tspan")
-    .attr("id", "activeTspan")
-    activeTspan = document.getElementById("activeTspan")
-    //---blinker---!
-    var blink = "|";
+            TextElem = ActiveElem.append("svg:text")
+            .attr("id", "activeText")
+            .attr("x", 0)
+            .attr("y", 0)
+
+            ActiveTspan = TextElem.append("tspan")
+            .attr("id", "activeTspan")
+            activeTspan = document.getElementById("activeTspan")
+            //---blinker---!
+            var blink = "|";
 
     TextBlinker = TextElem.append("tspan")
     .text(blink)
@@ -337,10 +371,10 @@ function placeDrawText()
     DrawX.style("display", "inline")
     DrawX.attr("transform", ActiveElem.attr("transform"))
 
-   // cw.shadowDrawTextButton.disabled = false
+    // cw.shadowDrawTextButton.disabled = false
     cw.finishDrawTextButton.disabled = false
     cw.cancelDrawTextButton.disabled = false
-            cw.drawTextBotButton.disabled=false
+    cw.drawTextBotButton.disabled = false
 
     DrawText = true
     cw.focusText()
@@ -384,7 +418,7 @@ function textReset()
 
     TextBlinker.attr("font-size", fontSize)
 
- showDrawTextStrokeBg()
+    showDrawTextStrokeBg()
     ActiveElem.attr("font-weight", FontWeight)
     ActiveElem.attr("font-size", fontSize)
     ActiveElem.attr("font-style", FontStyle)
@@ -408,6 +442,7 @@ function closeDrawText()
         var elemTimelinded = false
 
     }
+
     clearInterval(TextBlinkerInterval)
     ActiveElem = null
 
@@ -421,13 +456,12 @@ function closeDrawText()
     cw.finishDrawTextButton.disabled = true
     cw.cancelDrawTextButton.disabled = true
     cw.deleteDrawTextButton.style.visibility = "hidden"
-        cw.drawTextTopButton.style.visibility = "hidden"
-       // cw.drawEllipseBotButton.style.visibility = "hidden"
-            cw.drawTextBotButton.disabled=true
-
+    cw.drawTextTopButton.style.visibility = "hidden"
+    // cw.drawEllipseBotButton.style.visibility = "hidden"
+    cw.drawTextBotButton.disabled = true
 
     DrawText = false
-      cw.shadowDrawTextCheck.checked=false
+
     cw.drawTextWriteTextValue.removeEventListener("keypress", cw.drawTextKeyPress)
     cw.drawTextWriteTextValue.removeEventListener("keyup", cw.drawTextKeyUp)
 
@@ -441,7 +475,7 @@ function closeDrawText()
     cw.botTextTable.style.backgroundColor = "linen"
     cw.containerDiv.style.backgroundColor = "linen"
     cw.editTextSpan.innerHTML = "Write"
-    cw.textClickOnTD.style.visibility="visible"
+    cw.textClickOnTD.style.visibility = "visible"
 
     if(EditText==true&&TextDeleted==false)
     {
@@ -467,7 +501,7 @@ function cancelDrawText()
 
     cw.finishDrawTextButton.disabled = true
     cw.cancelDrawTextButton.disabled = true
-    cw.drawTextBotButton.disabled=true
+    cw.drawTextBotButton.disabled = true
     DrawText = false
     DrawX.attr("stroke", "violet")
 
@@ -521,17 +555,27 @@ function finishDrawText()
                 finishedElem.attr("stroke-width", ActiveElem.attr("stroke-width"))
                 finishedElem.attr("fill", ActiveElem.attr("fill"))
                 finishedElem.attr("transform", ActiveElem.attr("transform"))
-                finishedElem.attr("filter", ActiveElem.attr("filter"))
+                if(cw.shadowDrawTextCheck.checked)
+                    finishedElem.attr('filter', 'url(#drop-shadow)')
+                    else if(cw.backgroundDrawTextCheck.checked)
+                    {
+                        finishedElem.attr('filter', 'url(#textBg)')
 
-                finishedElem.attr("onmousedown", "editTextDraw("+id+",evt)")
+                        finishedElem.attr("font-weight", "bold")
+                        finishedElem.attr("stroke", "white")
 
-                finishedElem.style("cursor", "default")
-                finishedElem.style("visibility", null)
-                finishedElem.text(WriteText)
+                        finishedElem.attr("stroke-width", "1")
+                    }
+                    finishedElem.attr("onmousedown", "editTextDraw("+id+",evt)")
 
-                //---is this text rotated?---
-                var ctm = activeElem.getCTM()
-                RAD2DEG = 180 / Math.PI;
+                    finishedElem.style("cursor", "default")
+                    finishedElem.style("visibility", null)
+
+                    finishedElem.text(WriteText)
+
+                    //---is this text rotated?---
+                    var ctm = activeElem.getCTM()
+                    RAD2DEG = 180 / Math.PI;
                 var rotatedDeg = Math.atan2(ctm.b, ctm.a) * RAD2DEG;
 
                 finishedElem.attr("rotateAngle", rotatedDeg)
@@ -543,7 +587,7 @@ function finishDrawText()
 
                 cw.finishDrawTextButton.disabled = true
                 cw.cancelDrawTextButton.disabled = true
-                cw.drawTextBotButton.disabled=true
+                cw.drawTextBotButton.disabled = true
                 coverOff()
                 WriteText = "";
                 NextLine = false
@@ -610,27 +654,26 @@ function editTextDraw(elemObjEdit, evt) //--right button/mousedown on text---
         else
             setEditText()
     }
-    if(isRightMB&&ZoomDrawing==true ) //---zoom drag
+    if(isRightMB&&ZoomDrawing==true) //---zoom drag
     {
         mySVG.setAttribute("onmousedown", "startDragZoom(evt)")
         mySVG.setAttribute("onmousemove", "dragZoom(evt)")
         mySVG.setAttribute("onmouseup", "endDragZoom(evt)")
         d3.select("#mySVG").on("mousedown.zoom", null)
 
-        var dragTarget=evt.target
+        var dragTarget = evt.target
 
-        var classed=dragTarget.getAttribute("class")
+        var classed = dragTarget.getAttribute("class")
         dragTarget.removeAttribute("class")
-
 
         dragTarget.setAttribute("class", "dragTargetObj")
 
         dragTarget.removeAttribute("onmousedown")
-        dragTarget.setAttribute("style","cursor:move")
-       dragTarget.setAttribute("opacity",.4)
+        dragTarget.setAttribute("style", "cursor:move")
+        dragTarget.setAttribute("opacity", .4)
         DrawX.style("display", "none")
 
-        ZoomDraggedElems.push([dragTarget,"editTextDraw("+elemObjEdit.id+",evt)",classed])
+        ZoomDraggedElems.push([dragTarget, "editTextDraw("+elemObjEdit.id+",evt)", classed])
     }
 
 }
@@ -644,13 +687,13 @@ function setEditText()
     cw.botTextTable.style.backgroundColor = "orange"
     cw.drawTextTopTable.style.backgroundColor = "orange"
     cw.containerDiv.style.backgroundColor = "orange"
-    cw.textClickOnTD.style.visibility="hidden"
+    cw.textClickOnTD.style.visibility = "hidden"
     cw.editTextSpan.innerHTML = "Edit This"
     mySVG.removeAttribute('onclick')
 
     var elemObjEdit = document.getElementById(DrawTextEditId)
-
     EditTextObj = elemObjEdit.cloneNode(true)
+
     EditTextObj.setAttribute("id", "activeElem")
     EditTextObj.removeAttribute("onmousedown")
     elemObjEdit.style.visibility = "hidden"
@@ -661,34 +704,38 @@ function setEditText()
     var fontWeight = elemObjEdit.getAttribute("font-weight")
     var fontStyle = elemObjEdit.getAttribute("font-style")
     var fontSize = +elemObjEdit.getAttribute("font-size")
-    var shadow = elemObjEdit.getAttribute("filter")
-    if(shadow)
-        cw.shadowDrawTextCheck.checked=true
-    else
-        cw.shadowDrawTextCheck.checked=false
+    var filter = elemObjEdit.getAttribute("filter")
+    if(filter=="url(#drop-shadow)")
+        cw.shadowDrawTextCheck.checked = true
+        else
+            cw.shadowDrawTextCheck.checked = false
+            if(filter=="url(#textBg)")
+            cw.backgroundDrawTextCheck.checked = true
+            else
+                cw.backgroundDrawTextCheck.checked = false
 
-    var strokeWidth=fontSize*.02
-    //----reset selections---
-    for(var k = 0; k<cw.drawTextFontSizeSelect.options.length; k++)
-    {
-        var size = cw.drawTextFontSizeSelect.options[k].text
-        if(size==fontSize)
-        {
-            cw.drawTextFontSizeSelect.selectedIndex = k
-            break
-        }
-    }
+                var strokeWidth = fontSize*.02
+                //----reset selections---
+                for(var k = 0; k<cw.drawTextFontSizeSelect.options.length; k++)
+            {
+                var size = cw.drawTextFontSizeSelect.options[k].text
+                if(size==fontSize)
+                {
+                    cw.drawTextFontSizeSelect.selectedIndex = k
+                    break
+                }
+            }
 
-    for(var k = 0; k<cw.drawTextFontFamilySelect.options.length; k++)
-    {
-        var family = cw.drawTextFontFamilySelect.options[k].text
-        if(family==fontFamily)
+            for(var k = 0; k<cw.drawTextFontFamilySelect.options.length; k++)
         {
-            cw.drawTextFontFamilySelect.selectedIndex = k
-            break
+            var family = cw.drawTextFontFamilySelect.options[k].text
+            if(family==fontFamily)
+            {
+                cw.drawTextFontFamilySelect.selectedIndex = k
+                break
+            }
         }
-    }
-    for(var k = 0; k<cw.drawTextFillSelect.options.length; k++)
+        for(var k = 0; k<cw.drawTextFillSelect.options.length; k++)
     {
         var fill = cw.drawTextFillSelect.options[k].value
         if(fill==textFillColor)
@@ -708,8 +755,6 @@ function setEditText()
             break
         }
     }
-
-
 
     if(fontWeight=="bold")
         cw.drawTextBoldCheck.checked = true
@@ -751,10 +796,12 @@ function setEditText()
 
     ActiveTspan = TextElem.append("tspan")
     .attr("id", "activeTspan")
-    .text(elemObjEdit.textContent)
+    .text(EditTextObj.textContent)
 
-    WriteText = elemObjEdit.textContent
+    WriteText = elemObjEdit.firstChild.textContent
+
     cw.drawTextWriteTextValue.value = WriteText
+
     activeTspan = document.getElementById("activeTspan")
     //---blinker---!
     var blink = "|";
@@ -763,7 +810,7 @@ function setEditText()
     .text(blink)
     .style("visibility", "visible")
     .attr("id", "textBlinker")
-    .attr("dx", "5")
+    .attr("dx", "-.5")
     .attr("stroke", "none")
     .attr("fill", textFillColor)
     .attr("fill-opacity", 1)
@@ -787,11 +834,9 @@ function setEditText()
     cw.deleteDrawTextButton.style.visibility = "visible"
     cw.finishDrawTextButton.disabled = false
     cw.cancelDrawTextButton.disabled = false
-            cw.drawTextBotButton.disabled=false
-               cw.drawTextTopButton.style.visibility = "visible"
-        cw.drawTextBotButton.style.visibility = "visible"
-
-    cw.drawTextWriteTextValue.value = ""
+    cw.drawTextBotButton.disabled = false
+    cw.drawTextTopButton.style.visibility = "visible"
+    cw.drawTextBotButton.style.visibility = "visible"
 
     cw.drawTextWriteTextValue.addEventListener("keypress", cw.drawTextKeyPress, false)
     cw.drawTextWriteTextValue.addEventListener("keyup", cw.drawTextKeyUp, false)
@@ -802,6 +847,7 @@ function setEditText()
     DrawX.attr("transform", ActiveElem.attr("transform"))
     coverOn()
     cw.focusText()
+
 }
 
 function finishEditText()
@@ -813,6 +859,13 @@ function finishEditText()
             var cw = addElemTextCw
 
             EditThisText.setAttribute("onmousedown", "editTextDraw("+DrawTextEditId+",evt)")
+            var endScript = false
+
+            if(EditThisText.lastChild.nodeName=='tspan')
+            {
+                endScript = EditThisText.lastChild
+                EditThisText.removeChild(endScript)
+            }
 
             EditThisText.setAttribute("font-size", ActiveElem.attr("font-size"))
             EditThisText.setAttribute("stroke", ActiveElem.attr("stroke"))
@@ -830,6 +883,11 @@ function finishEditText()
             EditThisText.setAttribute("class", "textElem")
 
             EditThisText.setAttribute("rotateAngle", RotateAngle)
+            if(endScript)
+            {
+                EditThisText.appendChild(endScript)
+
+            }
 
             domActiveElemG.removeChild(activeElem)
             ActiveElem = null
@@ -893,13 +951,10 @@ function removeCurrentDrawText()
 function topDrawText()
 {
 
-       finishEditText()
-      var elemObjEdit = document.getElementById(DrawTextEditId)
-
-
+    finishEditText()
+    var elemObjEdit = document.getElementById(DrawTextEditId)
 
     domElemG.appendChild(elemObjEdit)
-
 
 }
 function botDrawText()
@@ -907,21 +962,17 @@ function botDrawText()
     if(EditText)
     {
 
-          finishEditText()
+        finishEditText()
         var elemObjEdit = document.getElementById(DrawTextEditId)
-        domElemG.insertBefore(elemObjEdit,domElemG.firstChild)
+        domElemG.insertBefore(elemObjEdit, domElemG.firstChild)
 
-
-   }
-   else
-   {
+    }
+    else
+    {
         finishDrawText()
-        domElemG.insertBefore(domElemG.lastChild,domElemG.firstChild)
-   }
+        domElemG.insertBefore(domElemG.lastChild, domElemG.firstChild)
+    }
 }
-
-
-
 
 function rotateTextAdjust(factor)
 {
@@ -959,6 +1010,7 @@ function showDrawTextFillBg()
         }
 
 }
+
 function showDrawTextStrokeBg()
 {
     var cw = addElemTextCw
@@ -967,25 +1019,22 @@ function showDrawTextStrokeBg()
         cw.drawTextStrokeBg.style.backgroundColor = stroke
         else
             cw.drawTextStrokeBg.style.backgroundColor = ""
-        if(cw.drawTextStrokeSelect.selectedIndex==0)
+            if(cw.drawTextStrokeSelect.selectedIndex==0)
         {
             ActiveElem.attr("stroke", "none")
             ActiveElem.attr("stroke-width", 0)
 
         }
         else
-        if(ActiveElem)
+            if(ActiveElem)
         {
             ActiveElem.attr('stroke', stroke)
-          var fontSize = +cw.drawTextFontSizeSelect.options[cw.drawTextFontSizeSelect.selectedIndex].text
-           ActiveElem.attr('stroke-width', fontSize*.02)
-
+            var fontSize = +cw.drawTextFontSizeSelect.options[cw.drawTextFontSizeSelect.selectedIndex].text
+            ActiveElem.attr('stroke-width', fontSize*.02)
 
         }
 
 }
-
-
 
 function drawTextFillSelected()
 {
