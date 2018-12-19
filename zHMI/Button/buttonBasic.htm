@@ -35,9 +35,90 @@ Create an SVG image of an interactive SVG button, from a rectangle  that include
 </div>
 <table><tr>
 <td>
+<div id=objSVGDiv style=width:400px;height:60px>
+<svg id=mySVGObj width=400 height=60>
+<defs id="onOffButtonDefs"><filter id="onOffButtonDropShadow" height="40">
+  <feGaussianBlur in="SourceAlpha" stdDeviation="10"/> <!-- stdDeviation is how much to blur -->
+  <feOffset dx="6" dy="10" result="offsetblur"/> <!-- how much to offset -->
+  <feMerge>
+    <feMergeNode/> <!-- this contains the offset blurred image -->
+    <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+  </feMerge>
+</filter><linearGradient
+       id="linearGradientOnOffButton">
+      <stop
+         style="stop-color:#000000;stop-opacity:0"
+         offset="0" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0.5"
+         offset="1" />
+    </linearGradient><linearGradient
+       id="linearGradientOnOffButton2">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="1" />
+    </linearGradient><linearGradient
+       x1="120"
+       y1="10"
+       x2="120"
+       y2="50"
+       id="linearGradientOnOffButtonHighlight"
+       xlink:href="#linearGradientOnOffButton2"
+       gradientUnits="userSpaceOnUse" /><radialGradient
+       cx="120"
+       cy="170"
+       r="100"
+       fx="120"
+       fy="170"
+       id="radialGradientOnOffButton"
+       xlink:href="#linearGradientOnOffButton"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,-0.72727275,2,0,-220,170)" />
+  </defs>
+<symbol id="disabledButtonSymbol" viewBox="0 0 260 120" >
+<g cursor="none" >
+  <rect  fill="grey" width="220" height="80" ry="40" x="10" y="10" id="ButtonBase" style="stroke:none" filter="url(#onOffButtonDropShadow)" />
+    <rect width="220" height="80" ry="40" x="10" y="10" id="ButtonGlow" pointer-events="none" style="fill:url(#radialGradientOnOffButton);stroke:none" />
+    <text x="120" y="66" id="textDisable" pointer-events="none" xml:space="preserve" style="font-size:40px;text-align:center;text-anchor:middle;fill:#000000;stroke:none;font-family:Sans">DISABLED</text>
+    <text x="120" y="64.5" id="textDisable" pointer-events="none" xml:space="preserve" style="font-size:40px;text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;font-family:Sans">DISABLED</text>
+    <path d="m 50,15 140,0 c 11.08,0 22.51667,10.914008 20,20 C 208.16563,41.622482 201.08,40 190,40 L 50.00005,40 C 38.92005,40 31.834332,41.622512 30,35 27.483323,25.914009 38.92,15 50,15 z" id="ButtonHighlight" pointer-events="none" style="fill:url(#linearGradientOnOffButtonHighlight)" />
+  </g>
+</symbol>
+<symbol id="offButtonSymbol" viewBox="0 0 260 120" >
+<g cursor="pointer" >
+  <rect  fill="red" width="220" height="80" ry="40" x="10" y="10" id="ButtonBase" style="stroke:none" filter="url(#onOffButtonDropShadow)" />
+    <rect width="220" height="80" ry="40" x="10" y="10" id="ButtonGlow" pointer-events="none" style="fill:url(#radialGradientOnOffButton);stroke:none" />
+    <text x="120" y="66" id="text3194" pointer-events="none" xml:space="preserve" style="font-size:40px;text-align:center;text-anchor:middle;fill:#000000;stroke:none;font-family:Sans">OFF</text>
+    <text x="120" y="64.5" id="text3198" pointer-events="none" xml:space="preserve" style="font-size:40px;text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;font-family:Sans">OFF</text>
+    <path d="m 50,15 140,0 c 11.08,0 22.51667,10.914008 20,20 C 208.16563,41.622482 201.08,40 190,40 L 50.00005,40 C 38.92005,40 31.834332,41.622512 30,35 27.483323,25.914009 38.92,15 50,15 z" id="ButtonHighlight" pointer-events="none" style="fill:url(#linearGradientOnOffButtonHighlight)" />
+  </g>
+</symbol>
+<symbol id="onButtonSymbol" viewBox="0 0 260 120" >
+<g cursor="pointer" >
+  <rect fill="green" width="220" height="80" ry="40" x="10" y="10" id="ButtonBase" style="stroke:none" filter="url(#onOffButtonDropShadow)" />
+    <rect width="220" height="80" ry="40" x="10" y="10" id="ButtonGlow" pointer-events="none" style="fill:url(#radialGradientOnOffButton);stroke:none" />
+    <text x="120" y="66" id="text3194" pointer-events="none" xml:space="preserve" style="font-size:40px;text-align:center;text-anchor:middle;fill:#000000;stroke:none;font-family:Sans">ON</text>
+    <text x="120" y="64.5" id="text3198" pointer-events="none" xml:space="preserve" style="font-size:40px;text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;font-family:Sans">ON</text>
+    <path d="m 50,15 140,0 c 11.08,0 22.51667,10.914008 20,20 C 208.16563,41.622482 201.08,40 190,40 L 50.00005,40 C 38.92005,40 31.834332,41.622512 30,35 27.483323,25.914009 38.92,15 50,15 z" id="ButtonHighlight" pointer-events="none" style="fill:url(#linearGradientOnOffButtonHighlight)" />
+  </g>
+</symbol>
+
+<use href="#disabledButtonSymbol" x=0 y=10 width="120" height="50" />
+<use href="#offButtonSymbol" x=150 y=10 width="120" height="50" />
+<use href="#onButtonSymbol" x=280 y=10 width="120" height="50" />
+</svg>
+</div>
+
 <div class="noselect"  style="padding:10px;width:400px;text-align:justify">
 
 <b>Scenerio:</b><br />
+If the motor's starter is in its manual OFF or ON selection, the SCADA ON/OFF button is shown as "DISABLED". It cannot
+be selected by the SCADA operator.
+<p></p>
+
 The user places cursor over the button, then toggels the button to ON(green) or OFF(red).
 The button displays "ON" or "OFF" text. Note: Added button click sound.
 <p></p>
@@ -60,8 +141,6 @@ intended to connect to an image representing where the feed connects.)
   </feMerge>
 </filter>
 </defs>
-
-
   <defs
      id="defs4">
     <linearGradient
