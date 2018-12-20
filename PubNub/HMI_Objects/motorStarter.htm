@@ -33,7 +33,7 @@
 Initially the starters are shown with the field device manual selector at  the 'On' position.
 
 <br>
-Seven(7) status values are monitored:<br>
+Eight(8) status values are monitored:<br>
 1.) Manual disconnect opened/closed.<br>
 2.) Starter overload protection opened/closed.<br>
 3.) Manual 3-position switch at starter '(On)'.<br>
@@ -41,6 +41,7 @@ Seven(7) status values are monitored:<br>
 5.) Manual 3-position switch at starter '(Off)'.<br>
 6.) SCADA ON/OFF button selected to 'ON'.<br>
 7.) SCADA ON/OFF button selected to 'OFF'.<br>
+8.) Motor Voltage Status: Motor on/off verification.<br>
 
 
 
@@ -66,8 +67,8 @@ Click below to <b>publish</b> the various changes in the status values:
 
 <br><br>
 If the selector switch is in the 'SCADA' position, the SCADA operator can turn the Motor on or off via the ON/OFF  button.
-
-
+<br><br>
+Motor voltage status controls the SCADA motor's rotating icon on/off.
 </div>
 
 </td>
@@ -111,13 +112,16 @@ If the selector switch is in the 'SCADA' position, the SCADA operator can turn t
 <text font-family="Arial" font-size="12" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 129 211)" rotateAngle="0">Open</text>
 <circle stroke="#000000" stroke-width="2" fill="#FFFFFF" fill-opacity="1.0" transform="matrix(1 0 0 1 189 183)" r="5"/>
 <circle stroke="#000000" stroke-width="2" fill="#808080" fill-opacity="1.0" transform="matrix(1 0 0 1 189 478)" r="38"/>
-<text id=motorOnOffText x=189 y=478 dy=24 text-anchor="middle" font-size=17>OFF</text>
+
+<rect id=motorVoltageRect x=170 y=518 width=40 height=40 fill=gainsboro stroke-width=1 stroke='black' />
+<text id=motorVoltageText x=260 y=518 dy=24 text-anchor="middle" stroke="none" stroke-width="0" fill="#000000" font-size=15>Motor Voltage</text>
+<text id=motorOnOffText x=189 y=518 dy=24 text-anchor="middle" font-size=17>OFF</text>
 <text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 163 482)" rotateAngle="0">Motor</text>
 <path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 188 404 L 188 441" rightAngle="true"/>
 <path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 152 464 L 134 513"/>
 <path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="7" stroke-dasharray="8 4" d="M 28 31 L 769 31" rightAngle="true"/>
 <text font-family="Arial" font-size="25" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#FF0000" transform="matrix(1 0 0 1 276 23)" rotateAngle="0">Data Stream Network</text>
-<g id=onOffButton display="none" myScale=".4" transform="matrix(0.4 0 0 0.4 545 402)" myRotate="0" myStatus="on"><g><defs id="onOffButtonDefs"><filter id="onOffButtonDropShadow" height="40"><feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
+<g id=onOffButton  myScale=".4" transform="matrix(0.4 0 0 0.4 545 402)" myRotate="0" myStatus="on"><g><defs id="onOffButtonDefs"><filter id="onOffButtonDropShadow" height="40"><feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
 <feOffset dx="6" dy="10" result="offsetblur"/>
 <feMerge><feMergeNode/>
 <feMergeNode in="SourceGraphic"/>
@@ -129,8 +133,8 @@ If the selector switch is in the 'SCADA' position, the SCADA operator can turn t
 <radialGradient cx="120" cy="170" r="100" fx="120" fy="170" id="radialGradientOnOffButton" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#linearGradientOnOffButton" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,-0.72727275,2,0,-220,170)"/>
 </defs><rect id="offOnRect" fill="grey" width="220" height="80" ry="40" x="10" y="10" style="stroke:none" />
 <rect width="220" height="80" ry="40" x="10" y="10" id="ButtonGlow" pointer-events="none" style="fill:url(#radialGradientOnOffButton);stroke:none"/>
-<text x="120" y="66" id="buttonTextBG" pointer-events="none" xml:space="preserve" style="font-size:40px;text-align:center;text-anchor:middle;fill:#000000;stroke:none;font-family:Sans">(Off)</text>
-<text x="120" y="64.5" id="buttonText" pointer-events="none" xml:space="preserve" style="font-size:40px;text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;font-family:Sans">(Off)</text>
+<text x="120" y="66" id="buttonTextBG" pointer-events="none" xml:space="preserve" style="font-size:40px;text-align:center;text-anchor:middle;fill:#000000;stroke:none;font-family:Sans">Disabled</text>
+<text x="120" y="64.5" id="buttonText" pointer-events="none" xml:space="preserve" style="font-size:40px;text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;font-family:Sans">Disabled</text>
 <path d="m 50,15 140,0 c 11.08,0 22.51667,10.914008 20,20 C 208.16563,41.622482 201.08,40 190,40 L 50.00005,40 C 38.92005,40 31.834332,41.622512 30,35 27.483323,25.914009 38.92,15 50,15 z" id="ButtonHighlight" pointer-events="none" style="fill:url(#linearGradientOnOffButtonHighlight)"/>
 </g><rect id="buttonCoverRect"  fill="white" opacity="0" x="0" y="0" width="220" height="80"/>
 </g>
@@ -408,12 +412,12 @@ function scadaDisconnectClosed()
     else if(SelectorSwitch=="OFF")
     {
         motorOnOffText.textContent="OFF"
-        offOnRect.setAttribute("fill","red")
+        offOnRect.setAttribute("fill","grey")
         offOnRect.removeAttribute("filter")
         buttonCoverRect.removeAttribute("cursor")
 
-        buttonTextBG.textContent="(Off)"
-        buttonText.textContent="(Off)"
+        buttonTextBG.textContent="Disabled"
+        buttonText.textContent="Disabled"
     }
     else if(SelectorSwitch=="SCADA")
     {
@@ -429,7 +433,7 @@ function scadaDisconnectClosed()
 }
 function scadaDisconnectOpened()
 {
-    offOnRect.setAttribute("fill","red")
+    offOnRect.setAttribute("fill","grey")
     offOnRect.removeAttribute("filter")
     buttonTextBG.textContent="Disconnect"
     buttonText.textContent="Disconnect"
@@ -481,13 +485,14 @@ function scadaSelectSwitchOFF()
     scadaSwitchPath.setAttribute("d","M 591 256 L 565 282")
     selSwitchRect.setAttribute("fill","grey")
     motorOnOffText.textContent="OFF"
-    onOffButton.setAttribute("display","none")
+    //onOffButton.setAttribute("display","none")
+    //onOffButton.setAttribute("display","none")
 
     offOnRect.setAttribute("fill","grey")
     buttonCoverRect.removeAttribute("filter")
     offOnRect.removeAttribute("cursor")
-    buttonTextBG.textContent="(Off)"
-    buttonText.textContent="(Off)"
+    buttonTextBG.textContent="Disabled"
+    buttonText.textContent="Disabled"
     SelectorSwitch="OFF"
 
     if(ImpellerInit==true)
@@ -505,12 +510,12 @@ function scadaSelectSwitchON()
 
     scadaSwitchPath.setAttribute("d","M 591 256 L 620 282")
     selSwitchRect.setAttribute("fill","green")
-    onOffButton.setAttribute("display","none")
-    offOnRect.setAttribute("fill","green")
+   // onOffButton.setAttribute("display","none")
+    offOnRect.setAttribute("fill","grey")
     offOnRect.removeAttribute("filter")
     buttonCoverRect.removeAttribute("cursor")
-    buttonTextBG.textContent="(On)"
-    buttonText.textContent="(On)"
+    buttonTextBG.textContent="Disabled"
+    buttonText.textContent="Disabled"
     SelectorSwitch="ON"
     if(ImpellerInit==false)
     {
@@ -613,15 +618,14 @@ function scadaOverloadOpened()
 
 
     motorOnOffText.textContent="OFF"
-    if(SelectorSwitch=="SCADA")
-    {
-        offOnRect.setAttribute("fill","red")
+
+        offOnRect.setAttribute("fill","grey")
         offOnRect.removeAttribute("filter")
         buttonCoverRect.removeAttribute("cursor")
 
         buttonTextBG.textContent="Overload"
         buttonText.textContent="Overload"
-    }
+
 
 
     if(ImpellerInit==true)
@@ -640,12 +644,12 @@ function scadaOverloadClosed()
     pilotLightOverload.getElementsByTagName("line")[0].setAttribute("style","visibility:hidden")
     if(SelectorSwitch=="ON")
     {
-        offOnRect.setAttribute("fill","green")
+        offOnRect.setAttribute("fill","grey")
         offOnRect.removeAttribute("filter")
         buttonCoverRect.removeAttribute("cursor")
 
-        buttonTextBG.textContent="(On)"
-        buttonText.textContent="(On)"
+        buttonTextBG.textContent="Disabled"
+        buttonText.textContent="Disabled"
 
         if(ImpellerInit==true)
         {
@@ -661,12 +665,12 @@ function scadaOverloadClosed()
     }
     else if(SelectorSwitch=="OFF")
     {
-        offOnRect.setAttribute("fill","red")
+        offOnRect.setAttribute("fill","grey")
         offOnRect.removeAttribute("filter")
         buttonCoverRect.removeAttribute("cursor")
         motorOnOffText.textContent="OFF"
-        buttonTextBG.textContent="(Off)"
-        buttonText.textContent="(Off)"
+        buttonTextBG.textContent="Disabled"
+        buttonText.textContent="Disabled"
     }
     else if(SelectorSwitch=="SCADA")
     {
