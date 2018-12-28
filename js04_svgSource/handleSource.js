@@ -69,22 +69,6 @@ function clearButtonClicked()
        zoomButton.style.background="transparent"
        ZoomDrawing=false
    }
-    //---clear previous symbols ---
-   if(addElemPgonLoad == true)
-   {
-      var cw=addElemPgonCw
-       var rows=cw.plantSymbolTable.rows
-       for(k=rows.length-1;k>=0;k--)
-       {
-           cw.plantSymbolTable.deleteRow(k)
-       }
-       var defs=cw.SymbolDefs.childNodes
-       for(k=defs.length-1;k>=0;k--)
-       {
-           cw.SymbolDefs.removeChild(defs.item(k))
-       }
-      addElemPgonLoad=false
-   }
 
    	for(var k=domActiveElemG.childNodes.length-1;k>=0;k--)
 	{
@@ -437,12 +421,7 @@ function insertExistingSVG()
                                 if(myClass=="rectElem")el.setAttribute("onmousedown","editRectDraw("+id+",evt)")
                                 if(myClass=="textElem")el.setAttribute("onmousedown","editTextDraw("+id+",evt)")
                                 if(myClass=="polygonElem")el.setAttribute("onmousedown","editPolygonDraw("+id+",evt)")
-                                if(myClass=="pgonElem")
-                                {
-                                   InsertSymbolArray.push(el) //---create plant symbol Table---
-
-                                 el.setAttribute("onmousedown","editPgonStart("+id+",evt)")
-                                }
+                                if(myClass=="symbolElem")el.setAttribute("onmousedown","editSymbolDraw("+id+",evt)")
                                 if(myClass=="componentElem")
                                 {
                                     	var gz=el.getElementsByTagName("rect")
