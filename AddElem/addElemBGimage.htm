@@ -20,15 +20,15 @@ box-shadow: 4px 4px 5px #888;
 <tr>
 <td>
 <table style='width:100%;background-color:gainsboro'>
-<tr ><td id=drawBGimageTopTable style='width:90%;background-color:ghostwhite' align=center><span id=drawBGimageEditSpan>Background Template Image</span></td><td align=right> <button onClick=parent.closeDrawBGimage()  >X</button></td></tr>
+<tr ><td id=drawBGImageTopTable style='width:90%;background-color:ghostwhite' align=center><span id=drawBGImageEditSpan>Background Template Image</span></td><td align=right> <button onClick=parent.closeDrawBGImage()  >X</button></td></tr>
 </table>
 </td>
 
 </tr>
 <tr>
 <td>
-<input id=bgImgFile type="file" onchange="parent.loadBGimageFile()">
- <center><div id=editTemplateCheckDiv style=visibility:hidden;padding:2px;background:orange><input type="checkbox" id=editTemplateCheck onClick=parent.setEditBGimage()  />:Edit Template</div></center>
+<input id=bgImgFile type="file" onchange="parent.loadBGImageFile()">
+ <center><div id=editTemplateCheckDiv style=visibility:hidden;padding:2px;background:orange><input type="checkbox" id=editTemplateCheck onClick=parent.setEditBGImage()  />:Edit Template</div></center>
 </td>
 
 
@@ -43,7 +43,7 @@ Height:<input disabled type="text" style=width:60px id=bgImageHeightValue />
 <tr>
 <td align=center >
 Opacity:
-  <select onChange=parent.drawBGimageOpacitySelected() id=drawBGimageOpacitySelect>
+  <select onChange=parent.drawBGImageOpacitySelected() id=drawBGImageOpacitySelect>
         <option >0.1</option>
         <option>0.2</option>
         <option >0.3</option>
@@ -62,25 +62,25 @@ Opacity:
 
 <tr>
     <td valign=bottom align=center>Rotate
-        &nbsp;&nbsp;<button  onClick=parent.rotateBGimageAdjust(-1) style='height:25px;width:25px;padding:0px'><img width=20 height=20 src="../Images/minusRound.png" /></button>
-        <select title="rotate toggle value" id=rotateDrawBGimageAdjustSelect >
+        &nbsp;&nbsp;<button  onClick=parent.rotateBGImageAdjust(-1) style='height:25px;width:25px;padding:0px'><img width=20 height=20 src="../Images/minusRound.png" /></button>
+        <select title="rotate toggle value" id=rotateDrawBGImageAdjustSelect >
         <option>.5</option>
         <option>1</option>
         <option>2</option>
         <option selected>5</option>
         <option>10</option>
         </select>
-        <button onClick=parent.rotateBGimageAdjust(1)   style='height:25px;width:25px;padding:0px'><img width=20 height=20 src="../Images/plusRound.png" /></button>
-        &nbsp;<input id=adjustedRotateBGimageValue disabled type=text style='width:40px;' value=0 />&deg;
+        <button onClick=parent.rotateBGImageAdjust(1)   style='height:25px;width:25px;padding:0px'><img width=20 height=20 src="../Images/plusRound.png" /></button>
+        &nbsp;<input id=adjustedRotateBGImageValue disabled type=text style='width:40px;' value=0 />&deg;
     </td>
 </tr>
 
 
 <tr align=center>
 <td>
-    <button id=drawBGimageCancelButton disabled title='cancel/remove this image' onClick=parent.cancelDrawBGimage()>cancel</button>
-    <button style='background-color:red;visibility:hidden' id=drawBGimageDeleteButton  onClick=parent.removeCurrentDrawBGimage()>delete</button>
-    <button id=drawBGimageFinishButton disabled onClick=parent.finishDrawBGimage()>finish</button>
+    <button id=drawBGImageCancelButton disabled title='cancel/remove this image' onClick=parent.cancelDrawBGImage()>cancel</button>
+    <button style='background-color:red;visibility:hidden' id=drawBGImageDeleteButton  onClick=parent.removeCurrentDrawBGImage()>delete</button>
+    <button id=drawBGImageFinishButton disabled onClick=parent.finishDrawBGImage()>finish</button>
 </td>
 </tr>
 
@@ -99,12 +99,12 @@ function sendSize()
     var width=containerDiv.scrollWidth+15
     var height=containerDiv.scrollHeight+30
 
-    parent.sizeFrame('addElemBGimage',width,height)
+    parent.sizeFrame('addElemBGImage',width,height)
 
-     if(parent.EditBGimage==true)
-   		parent.setEditBGimage()
+     if(parent.EditBGImage==true)
+   		parent.setEditBGImage()
         else
-          parent.startBGimageDraw()
+          parent.startBGImageDraw()
 
 }
 </script>
