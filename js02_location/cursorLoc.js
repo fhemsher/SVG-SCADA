@@ -14,7 +14,7 @@ function startCursorLoc()
                 if(addElemCircleViz==true)trackDrawCircle()
                 if(addElemEllipseViz==true)trackDrawEllipse()
                 if(addElemRectViz==true)trackDrawRect()
-                if(addElemBGimageViz==true)trackDrawBGimage()
+                if(addElemBGImageViz==true)trackDrawBGImage()
                 if(DrawTextStarted==true)trackDrawText()
                 if(DrawPath==true||DrawPathStart==true)trackDrawPath()
                 if(DrawPathEdit==true)trackDrawPathEdit()
@@ -38,7 +38,7 @@ function startCursorLoc()
                 if(addElemDigitalReadoutViz==true)trackDrawDigitalReadout()
                 if(addElemAutoManualViz==true)trackDrawAutoManual()
                 if(ZoomDrawing==true)trackZoom()
-                 if(addElemBGimageViz==true)trackDrawBGimage()  
+                 
         }
     );
 
