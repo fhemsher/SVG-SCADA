@@ -1,16 +1,16 @@
 
-var ActiveBGimage
-function placeDrawBGimage()
+var ActiveBGImage
+function placeDrawBGImage()
 {
      bgImageG=document.getElementById("bgImageG")
     if(bgImageG.childNodes.length>0)
          bgImageG.removeChild(bgImageG.childNodes[0])
 
 
-    var cw = addElemBGimageCw
+    var cw = addElemBGImageCw
     coverOn()
 
-    var opacity = cw.drawBGimageOpacitySelect.options[cw.drawBGimageOpacitySelect.selectedIndex].text
+    var opacity = cw.drawBGImageOpacitySelect.options[cw.drawBGImageOpacitySelect.selectedIndex].text
 
 
     ActiveElem = ActiveElemG.append("g")
@@ -18,14 +18,14 @@ function placeDrawBGimage()
     .attr("class", "dragTargetObj")
     .attr("pointer-events", null)
 
-    ActiveBGimage = ActiveElem.append("image")
-    .attr("id", "activeBGimage")
+    ActiveBGImage = ActiveElem.append("image")
+    .attr("id", "activeBGImage")
     .style("cursor", "move")
     .attr("opacity", opacity)
     .attr("x", 0)
     .attr("y", 0)
-    .attr("height", BGimageHeight)
-    .attr("width", BGimageWidth)
+    .attr("height", BGImageHeight)
+    .attr("width", BGImageWidth)
     .attr("href",ImageHREF)
 
 
@@ -39,7 +39,7 @@ function placeDrawBGimage()
 
 
          ImgDragArrow.attr("class", "dragTargetObj")
-        ImgDragArrow.attr("transform", "translate("+(SVGx+BGimageWidth)+" "+(SVGy+BGimageHeight)+")")
+        ImgDragArrow.attr("transform", "translate("+(SVGx+BGImageWidth)+" "+(SVGy+BGImageHeight)+")")
         ImgDragArrow.style("visibility", "visible")
 
 
@@ -53,27 +53,27 @@ function placeDrawBGimage()
 
 
 
-        BGimageCorner =[0, 0]
+        BGImageCorner =[0, 0]
 
 
         mySVG.removeAttribute('onclick')
 
-        mySVG.setAttribute("onmousedown", "startDragBGimage(evt)")
-        mySVG.setAttribute("onmousemove", "dragBGimage(evt)")
-        mySVG.setAttribute("onmouseup", "endDragBGimage(evt)")
+        mySVG.setAttribute("onmousedown", "startDragBGImage(evt)")
+        mySVG.setAttribute("onmousemove", "dragBGImage(evt)")
+        mySVG.setAttribute("onmouseup", "endDragBGImage(evt)")
 
-        cw.drawBGimageCancelButton.disabled = false
-        cw.drawBGimageFinishButton.disabled = false
+        cw.drawBGImageCancelButton.disabled = false
+        cw.drawBGImageFinishButton.disabled = false
 
 }
 
 var ImageHREF
-var BGimageWidth
-var BGimageHeight
-function loadBGimageFile()
+var BGImageWidth
+var BGImageHeight
+function loadBGImageFile()
 {
 
-    var cw = addElemBGimageCw
+    var cw = addElemBGImageCw
 
     var file = cw.document.querySelector('input[type=file]').files[0];
     var reader = new FileReader();
@@ -83,15 +83,33 @@ function loadBGimageFile()
             ImageHREF = reader.result
              var image = new Image();
             image.src = reader.result;
-            image.onload = function() {
+            image.onload = function()
+            {
 
-                BGimageWidth=image.naturalWidth
-                BGimageHeight=image.naturalHeight
-                cw.bgImageWidthValue.value = BGimageWidth
-                cw.bgImageHeightValue.value = BGimageHeight
+                var initWidth=image.naturalWidth
+                var initHeight=image.naturalHeight
+                if(initWidth>600||initHeight>600)
+                {
+                 if(initWidth>=initHeight)
+                    var maxSize=initWidth
+                    else
+                    var maxSize=initHeight
+
+                     var sizeRatio=600/maxSize
+                    BGImageWidth=initWidth*sizeRatio
+                    BGImageHeight=initHeight*sizeRatio
+
+                }
+                else
+                {
+                    BGImageWidth=image.naturalWidth
+                    BGImageHeight=image.naturalHeight
+                }
+
+
+                cw.bgImageWidthValue.value = BGImageWidth.toFixed(0)
+                cw.bgImageHeightValue.value = BGImageHeight.toFixed(0)
             }
-
-
         }
         , false);
 
@@ -103,30 +121,26 @@ function loadBGimageFile()
 }
 
 
-
-
-
-
 ///---X button and iframe close all---
-function closeDrawBGimage()
+function closeDrawBGImage()
 {
-    if(addElemBGimageViz==true)
+    if(addElemBGImageViz==true)
     {
         RotateAngle = 0
-        closeIframe("addElemBGimage");
-        var cw = addElemBGimageCw
+        closeIframe("addElemBGImage");
+        var cw = addElemBGImageCw
 
-        if(EditBGimage==true && BGimageDeleted==false)
+        if(EditBGImage==true && BGImageDeleted==false)
         {
-            var elemObjEdit = document.getElementById(DrawBGimageEditId)
+            var elemObjEdit = document.getElementById(DrawBGImageEditId)
             elemObjEdit.style.visibility = ""
 
-            elemObjEdit.setAttribute("onmousedown", "editBGimageDraw("+DrawBGimageEditId+",evt)")
+            elemObjEdit.setAttribute("onmousedown", "editBGImageDraw("+DrawBGImageEditId+",evt)")
         }
         DraggingObj = false
-        DrawBGimage = false
-        EditBGimage = false
-        BGimageDeleted = false
+        DrawBGImage = false
+        EditBGImage = false
+        BGImageDeleted = false
 
         mySVG.removeAttribute("onmousedown")
         mySVG.removeAttribute("onmousemove")
@@ -150,29 +164,29 @@ function closeDrawBGimage()
             ImgDragArrow.attr("transform", null)
             ImgDragArrow.attr("x", -12.5)
             ImgDragArrow.attr("y", -12.5)
-             var cw = addElemBGimageCw
+             var cw = addElemBGImageCw
 
 
-            cw.drawBGimageFinishButton.disabled = true
-            cw.drawBGimageCancelButton.disabled = true
-            cw.drawBGimageDeleteButton.style.visibility = "hidden"
-            cw.drawBGimageEditSpan.innerText = "Background Template Image"
-            cw.drawBGimageTopTable.style.backgroundColor = "ghostwhite"
+            cw.drawBGImageFinishButton.disabled = true
+            cw.drawBGImageCancelButton.disabled = true
+            cw.drawBGImageDeleteButton.style.visibility = "hidden"
+            cw.drawBGImageEditSpan.innerText = "Background Template Image"
+            cw.drawBGImageTopTable.style.backgroundColor = "ghostwhite"
             cw.containerDiv.style.backgroundColor = "ghostwhite"
 
             coverOff()
             //domWrapper.style.display = "none"
 
-            cw.adjustedRotateBGimageValue.value = 0
-            closeIframe("addElemBGimage")
+            cw.adjustedRotateBGImageValue.value = 0
+            closeIframe("addElemBGImage")
     }
 }
 
 //---on add icon DrawX follows cursor
-function trackDrawBGimage()
+function trackDrawBGImage()
 {
 
-    if(ActiveElem==null&&EditBGimage==false && BGimageDeleted==false)
+    if(ActiveElem==null&&EditBGImage==false && BGImageDeleted==false)
     {
         DrawX.style("display", "inline")
       DrawX.attr("transform", "translate("+SVGx+" "+SVGy+")")
@@ -180,30 +194,30 @@ function trackDrawBGimage()
     }
 }
 
-var EditBGimage = false
-var DrawBGimage = false
-var BGimageDeleted = false
+var EditBGImage = false
+var DrawBGImage = false
+var BGImageDeleted = false
 
-var ActiveBGimage
+var ActiveBGImage
 
-function startBGimageDraw()
+function startBGImageDraw()
 {
     RotateAngle = 0
-   // elemSizeDiv.innerHTML = "w = <input id=drawBGimageWidthValue type='text' style='width:30px;border=0' /> h = <input id=drawBGimageHeightValue type='text' style='width:30px;border=0' />"
+   // elemSizeDiv.innerHTML = "w = <input id=drawBGImageWidthValue type='text' style='width:30px;border=0' /> h = <input id=drawBGImageHeightValue type='text' style='width:30px;border=0' />"
 
-    var cw = addElemBGimageCw
-    if(EditBGimage==false)
+    var cw = addElemBGImageCw
+    if(EditBGImage==false)
     {
         activeElem = null
 
         ActiveElem = null
-        DrawBGimage = true
-        mySVG.setAttribute('onclick', " placeDrawBGimage()") //---click to add more icons for this session---
+        DrawBGImage = true
+        mySVG.setAttribute('onclick', " placeDrawBGImage()") //---click to add more icons for this session---
         DrawX.style("display", "inline")
     }
 
-    if(cw.adjustedRotateBGimageValue)
-        cw.adjustedRotateBGimageValue.value = 0
+    if(cw.adjustedRotateBGImageValue)
+        cw.adjustedRotateBGImageValue.value = 0
       cw.bgImgFile.value=""
       cw.bgImageWidthValue.value=""
       cw.bgImageHeightValue.value=""
@@ -213,20 +227,20 @@ function startBGimageDraw()
 //--click on svg---
 
 
-function finishDrawBGimage()
+function finishDrawBGImage()
 {
 
-    if(EditBGimage==true)
-        finishEditBGimage()
+    if(EditBGImage==true)
+        finishEditBGImage()
         else if(document.getElementById("activeElem"))
         {
-            var cw = addElemBGimageCw
+            var cw = addElemBGImageCw
             activeElem.removeAttribute("class")
 
-            var finishedElem = document.getElementById("activeBGimage").cloneNode(true)
+            var finishedElem = document.getElementById("activeBGImage").cloneNode(true)
 
-            DrawBGimageEditId = "bgImage"+new Date().getTime()
-            finishedElem.setAttribute("id", DrawBGimageEditId)
+            DrawBGImageEditId = "bgImage"+new Date().getTime()
+            finishedElem.setAttribute("id", DrawBGImageEditId)
 
             if(activeElem.getAttribute("transform"))
             finishedElem.setAttribute("transform", activeElem.getAttribute("transform"))
@@ -244,8 +258,8 @@ function finishDrawBGimage()
             DrawX.style("display", "none")
             ImgDragArrow.style("visibility", "hidden")
 
-            cw.drawBGimageFinishButton.disabled = true
-            cw.drawBGimageCancelButton.disabled = true
+            cw.drawBGImageFinishButton.disabled = true
+            cw.drawBGImageCancelButton.disabled = true
             coverOff()
 
             mySVG.appendChild(imgDragArrow)
@@ -253,17 +267,17 @@ function finishDrawBGimage()
             ActiveElem = null
             activeElem = null
             bgImageG.appendChild(finishedElem)
-            closeDrawBGimage()
+            closeDrawBGImage()
         }
 
-        addElemBGimageCw.editTemplateCheck.checked=false
+        addElemBGImageCw.editTemplateCheck.checked=false
 
 }
 
-function cancelDrawBGimage()
+function cancelDrawBGImage()
 {
-    if(EditBGimage==true)
-        cancelEditBGimage()
+    if(EditBGImage==true)
+        cancelEditBGImage()
         else if(document.getElementById("activeElem"))
         {
             mySVG.appendChild(imgDragArrow)
@@ -273,31 +287,31 @@ function cancelDrawBGimage()
 
             ActiveElem = null
 
-            mySVG.setAttribute('onclick', "placeDrawBGimage()") //---click to add more icons for this session---
+            mySVG.setAttribute('onclick', "placeDrawBGImage()") //---click to add more icons for this session---
             ImgDragArrow.style("visibility", "hidden")
             ImgDragArrow.attr("transform", null)
             //DrawX.style("visibility","hidden")
             DrawX.attr("transform", null)
-            var cw = addElemBGimageCw
-            cw.drawBGimageFinishButton.disabled = true
-            cw.drawBGimageCancelButton.disabled = true
-            cw.adjustedRotateBGimageValue.value = 0
+            var cw = addElemBGImageCw
+            cw.drawBGImageFinishButton.disabled = true
+            cw.drawBGImageCancelButton.disabled = true
+            cw.adjustedRotateBGImageValue.value = 0
             coverOff()
             cw.bgImgFile.value=""
               cw.bgImageWidthValue.value=""
               cw.bgImageHeightValue.value=""
 
         }
-    addElemBGimageCw.editTemplateCheck.checked=false
+    addElemBGImageCw.editTemplateCheck.checked=false
 }
 
-function rotateBGimageAdjust(factor)
+function rotateBGImageAdjust(factor)
 {
-    var cw = addElemBGimageCw
-    var mult = parseFloat(cw.rotateDrawBGimageAdjustSelect.options[cw.rotateDrawBGimageAdjustSelect.selectedIndex].text)
+    var cw = addElemBGImageCw
+    var mult = parseFloat(cw.rotateDrawBGImageAdjustSelect.options[cw.rotateDrawBGImageAdjustSelect.selectedIndex].text)
     var rotateAdd = parseFloat(factor)*mult
 
-    cw.adjustedRotateBGimageValue.value = rotateAdd+parseFloat(cw.adjustedRotateBGimageValue.value)
+    cw.adjustedRotateBGImageValue.value = rotateAdd+parseFloat(cw.adjustedRotateBGImageValue.value)
 
     if(ActiveElem)
     {
@@ -307,30 +321,30 @@ function rotateBGimageAdjust(factor)
 }
 //====================edit/update rect===============================
 
-var EditBGimage = false
-var DrawBGimageEditId
-var EditThisBGimage
+var EditBGImage = false
+var DrawBGImageEditId
+var EditThisBGImage
 
-//---after iframe loaded see sendSize() at addElemBGimage.htm---
-var EditBGimageObj
-function setEditBGimage()
+//---after iframe loaded see sendSize() at addElemBGImage.htm---
+var EditBGImageObj
+function setEditBGImage()
 {
     coverOn()
     mySVG.removeAttribute('onclick')
-    var cw = addElemBGimageCw
-    var elemObjEdit = document.getElementById(DrawBGimageEditId)
+    var cw = addElemBGImageCw
+    var elemObjEdit = document.getElementById(DrawBGImageEditId)
 
-    EditBGimage=true
+    EditBGImage=true
 
     ActiveElem = ActiveElemG.append("g")
     .attr("id", "activeElem")
     .attr("transform", elemObjEdit.getAttribute("transform"))
     .attr("class", "dragTargetObj")
     activeElem = document.getElementById("activeElem")
-    EditBGimageObj = elemObjEdit.cloneNode(true)
-    activeElem.appendChild(EditBGimageObj).setAttribute("id", "activeBGimage")
+    EditBGImageObj = elemObjEdit.cloneNode(true)
+    activeElem.appendChild(EditBGImageObj).setAttribute("id", "activeBGImage")
 
-    ActiveBGimage = d3.select("#activeBGimage")
+    ActiveBGImage = d3.select("#activeBGImage")
     .attr("transform", null)
     .attr("class", null)
     .attr("onmouseover", null)
@@ -345,29 +359,29 @@ function setEditBGimage()
     var rotatedDeg = Math.atan2(ctm.b, ctm.a) * RAD2DEG;
 
     if(!rotatedDeg) rotatedDeg = 0
-        cw.adjustedRotateBGimageValue.value = rotatedDeg
+        cw.adjustedRotateBGImageValue.value = rotatedDeg
 
         elemObjEdit.style.visibility = "hidden"
 
 
 
-        //  domActiveElemG.appendChild(EditBGimageObj)
+        //  domActiveElemG.appendChild(EditBGImageObj)
         ActiveElem = d3.select("#activeElem")
         activeElem = document.getElementById("activeElem")
 
-        cw.drawBGimageCancelButton.disabled = false
-        cw.drawBGimageFinishButton.disabled = false
+        cw.drawBGImageCancelButton.disabled = false
+        cw.drawBGImageFinishButton.disabled = false
 
-           cw.drawBGimageDeleteButton.style.visibility="visible"
-
-
-                var opacity = EditBGimageObj.getAttribute("opacity")
+           cw.drawBGImageDeleteButton.style.visibility="visible"
 
 
+                var opacity = EditBGImageObj.getAttribute("opacity")
 
 
-            cw.drawBGimageEditSpan.innerHTML = "Edit Background Template"
-            cw.drawBGimageTopTable.style.backgroundColor = "orange"
+
+
+            cw.drawBGImageEditSpan.innerHTML = "Edit Background Template"
+            cw.drawBGImageTopTable.style.backgroundColor = "orange"
 
             cw.containerDiv.style.backgroundColor = "orange"
             DrawX.attr("stroke", "darkorange")
@@ -375,44 +389,44 @@ function setEditBGimage()
             DrawX.attr("transform", ActiveElem.attr("transform"))
 
             //--place ImgDragArrow----
-            var width = parseFloat(ActiveBGimage.attr("width"))
-            var height = parseFloat(ActiveBGimage.attr("height"))
+            var width = parseFloat(ActiveBGImage.attr("width"))
+            var height = parseFloat(ActiveBGImage.attr("height"))
              imgDragArrow.setAttribute("x",width-12.5)
         imgDragArrow.setAttribute("y",height-12.5)
          imgDragArrow.setAttribute("transform",activeElem.getAttribute("transform"))
 
 
-            setBGimageEditDrag()
+            setBGImageEditDrag()
 
 }
 
-function setBGimageEditDrag()
+function setBGImageEditDrag()
 {
 
     activeElem.removeAttribute("onmousedown")
     ImgDragArrow.style("visibility", "visible")
 
     //---timeout??---
-    mySVG.setAttribute("onmousedown", "startDragBGimage(evt)")
-    mySVG.setAttribute("onmousemove", "dragBGimage(evt)")
-    mySVG.setAttribute("onmouseup", "endDragBGimage(evt)")
-    ActiveBGimage.style("cursor", "move")
+    mySVG.setAttribute("onmousedown", "startDragBGImage(evt)")
+    mySVG.setAttribute("onmousemove", "dragBGImage(evt)")
+    mySVG.setAttribute("onmouseup", "endDragBGImage(evt)")
+    ActiveBGImage.style("cursor", "move")
 
 }
-function finishEditBGimage()
+function finishEditBGImage()
 {
 
     if(document.getElementById("activeElem"))
     {
-        var cw = addElemBGimageCw
+        var cw = addElemBGImageCw
         activeElem.removeAttribute("class")
-        var finishedElem = document.getElementById(DrawBGimageEditId)//.cloneNode(true)
+        var finishedElem = document.getElementById(DrawBGImageEditId)//.cloneNode(true)
         finishedElem.setAttribute("transform", ActiveElem.attr("transform"))
-        finishedElem.setAttribute("width", ActiveBGimage.attr("width"))
-        finishedElem.setAttribute("height", ActiveBGimage.attr("height"))
+        finishedElem.setAttribute("width", ActiveBGImage.attr("width"))
+        finishedElem.setAttribute("height", ActiveBGImage.attr("height"))
         finishedElem.setAttribute("class", "addElem")
 
-     finishedElem.setAttribute("opacity", ActiveBGimage.attr("opacity"))
+     finishedElem.setAttribute("opacity", ActiveBGImage.attr("opacity"))
 
 
             finishedElem.setAttribute("rotateAngle", RotateAngle)
@@ -424,70 +438,70 @@ function finishEditBGimage()
             finishedElem.style.cursor = "default"
             finishedElem.style.visibility = ""
             //---is this a timelined elem---
-           // finishedElem.setAttribute("onmousedown", "editBGimageDraw("+DrawBGimageEditId+",evt)")
-            finishedElem.setAttribute("id", DrawBGimageEditId)
-            UpdateThisBGimage = finishedElem
-            //updateBGimage()
-            //domAddElemG.insertBefore(finishedElem, EditThisBGimage)
-            //domAddElemG.removeChild(EditThisBGimage)
+           // finishedElem.setAttribute("onmousedown", "editBGImageDraw("+DrawBGImageEditId+",evt)")
+            finishedElem.setAttribute("id", DrawBGImageEditId)
+            UpdateThisBGImage = finishedElem
+            //updateBGImage()
+            //domAddElemG.insertBefore(finishedElem, EditThisBGImage)
+            //domAddElemG.removeChild(EditThisBGImage)
 
-            EditBGimage = false
+            EditBGImage = false
 
     }
-    closeDrawBGimage()
+    closeDrawBGImage()
 }
 
-function resetEditBGimage()
+function resetEditBGImage()
 {
 
-    var cw = addElemBGimageCw
-    EditBGimage = false
-    cw.editBGimageSpan.innerText = "Draw BGimages"
-    cw.drawBGimageTopTable.style.backgroundColor = "honeydew"
+    var cw = addElemBGImageCw
+    EditBGImage = false
+    cw.editBGImageSpan.innerText = "Draw BGImages"
+    cw.drawBGImageTopTable.style.backgroundColor = "honeydew"
     ActiveElem = null
     activeElem = null
     DrawX.style("display", "none")
     DrawX.attr("stroke", "violet")
     ImgDragArrow.style("visibility", "hidden")
 
-    cw.drawBGimageCopyButton.style.visibility = "hidden"
-    cw.drawBGimageDeleteButton.style.visibility = "hidden"
-    cw.drawBGimageCancelButton.disabled = false
-    cw.drawBGimageFinishButton.disabled = false
-    DrawBGimage = true
+    cw.drawBGImageCopyButton.style.visibility = "hidden"
+    cw.drawBGImageDeleteButton.style.visibility = "hidden"
+    cw.drawBGImageCancelButton.disabled = false
+    cw.drawBGImageFinishButton.disabled = false
+    DrawBGImage = true
 
 
     //---click to add more circles for this session---
 
 }
 
-function cancelEditBGimage()
+function cancelEditBGImage()
 {
 
- closeDrawBGimage()
+ closeDrawBGImage()
 
 }
 
 
 //=======================delete rect==================
-var BGimageDeleted = false
+var BGImageDeleted = false
 //---button---
-function removeCurrentDrawBGimage()
+function removeCurrentDrawBGImage()
 {
 
-    var cw = addElemBGimageCw
+    var cw = addElemBGImageCw
     mySVG.appendChild(imgDragArrow)
     domActiveElemG.removeChild(activeElem)
-    var elemObjEdit = document.getElementById(DrawBGimageEditId)
+    var elemObjEdit = document.getElementById(DrawBGImageEditId)
     bgImageG.removeChild(elemObjEdit)
-    BGimageDeleted = true
+    BGImageDeleted = true
        cw.editTemplateCheck.checked=false
             cw.editTemplateCheckDiv.style.visibility="hidden"
-           EditBGimage = false
-            DrawBGimage = false
+           EditBGImage = false
+            DrawBGImage = false
 
-            DrawBGimageEditId=null
-    closeDrawBGimage()
+            DrawBGImageEditId=null
+    closeDrawBGImage()
 
 }
 
