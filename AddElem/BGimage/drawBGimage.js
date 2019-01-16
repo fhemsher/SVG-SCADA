@@ -119,6 +119,12 @@ function loadBGImageFile()
 
     }
 }
+function drawBGImageOpacitySelected()
+{
+     var cw = addElemBGImageCw
+     var opacity=cw.drawBGImageOpacitySelect.options[cw.drawBGImageOpacitySelect.selectedIndex].text
+      ActiveBGImage.attr("opacity",opacity)
+}
 
 
 ///---X button and iframe close all---
