@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <title>Status Field Device</title>
+ <script type="text/javascript" src="../../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../../highlightCode.js"></script>
+  <link href='../../../highlight.css' rel='stylesheet' />
+ <script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.2.js"></script>
+
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body onload=showSourceJS()  style='padding:10px;font-family:arial'>
+    <div id=container>
+
+<center>
+<h4>Basic IoT: Monitor ON/OFF Status</h4>
+
+<div style=padding:10px;text-align:justify;width:80%;background:gainsboro >
+A field binary device is structured to show its status via a SCADA 'Pilot Light' (An SVG circle, changing its fill color based on the device status).
+The IoT has both a <b>Subscribe</b> and <b>Publish</b> value, available on a client computer's unique <b>Channel</b>.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<table>
+<tr>
+<td valign=top >
+<div style="text-align:justify;width:360px;padding:10px;">
+<center><button id=initButton onclick=initIot()>Initialize IoT</button>
+<br>
+<span id=connectedSpan></span>
+</center><p></p>
+
+   <b>Sequence Of Operation:</b><p></p>
+Initially the status field device is shown as open contact, with the SCADA Pilot Light as red.
+
+The field device contact is monitored as opened/closed.<br>
+
+
+Click below to the simulate the change of the device status.  This will <b>publish</b> the change.
+<br><center><table border=1>
+<tr><td align=center colspan=4>Field Device Status</td></tr>
+<tr><td style=padding:2px;background:green><input disabled type="radio" name=onOffRadio id=onRadio onClick=publishOnOff("ON") />:ON</td></tr>
+<tr><td style=padding:2px;background:red  ><input disabled type="radio"   name=onOffRadio id=offRadio onClick=publishOnOff("OFF")  />:OFF</td></tr>
+</table>
+</center>
+
+</div>
+
+</td>
+<td>
+<div id="svgDiv" style='border:1px solid black;width:700px;height:400px;'>
+<svg xmlns="http://www.w3.org/2000/svg" id="publishSVG" width="700" height="400" viewBox="0 0 700 400" style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><style xmlns="http://www.w3.org/1999/xhtml"></style><defs xmlns="http://www.w3.org/1999/xhtml"></defs>
+
+<g id="publishG"><g id="publishElemG" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><circle id="pilotLight" stroke="#000000" stroke-width="2" fill="url(#gradientGrey)" transform="translate(523 200)" r="30"/><rect stroke="#000000" stroke-width="2" fill="#C0C0C0" fill-opacity="1.0" rx="4" ry="4" transform="matrix(1 0 0 1 125 199)" width="109" height="66" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 140 233 L 170 233" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 191 233 L 216 233" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 169 217 L 169 250" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="3" d="M 192 216 L 192 249" rightAngle="true"/><path id="contact" fill="none" fill-opacity="1.0" stroke="none" stroke-width="3" d="M 167 216 L 191 252"/><g xmlns="http://www.w3.org/2000/svg" transform="matrix(1 0 0 1 -226 -131)" parentid="component1551029200392"><path fill="#FF0000" fill-opacity="1.0" stroke="#000000" stroke-width="2" d="M 349 281 L 451 281 L 399 190 z" type="linear"/><text font-family="Times New Roman" font-size="30" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 377 259)">IoT</text><rect width="102" height="91" stroke="none" fill="white" fill-opacity="0" transform="translate(349,190)" style="cursor: default;"/></g><path fill="none" fill-opacity="1.0" stroke="#DC143C" stroke-width="2" marker-end="url(#arrowDC143C)" d="M 179 198 L 179 150" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#DC143C" stroke-width="6" d="M 47 29 L 657 29" stroke-dasharray="8 4" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#DC143C" stroke-width="3" stroke-dasharray="8 4" d="M 173 59 L 173 30" rightAngle="true"/><rect stroke="#000000" stroke-width="3" fill="white" fill-opacity="0" rx="4" ry="4" transform="matrix(1 0 0 1 416 68)" width="229" height="270" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#DC143C" stroke-width="3" stroke-dasharray="8 4" d="M 348 28 L 348 199 L 349 199" rightAngle="true" stroke-opacity="1.0" rotateAngle="0"/><rect stroke="#DC143C" stroke-width="3" fill="white" fill-opacity="0" rx="4" ry="4" transform="translate(432 82)" width="202" height="222" stroke-dasharray="8 4" rotateAngle="0"/><rect stroke="#8A2BE2" stroke-width="3" fill="white" fill-opacity="0" stroke-dasharray="8 4" rx="4" ry="4" transform="translate(452 109)" width="161" height="175" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#DC143C" stroke-width="2" marker-end="url(#arrowDC143C)" d="M 350 200 L 430 200" rightAngle="true"/><text font-family="Arial" font-size="20" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#9370DB" transform="matrix(1 0 0 1 483 135)" rotateAngle="0">Browser</text><text font-family="Arial" font-size="20" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#DC143C" transform="matrix(1 0 0 1 462 323)" rotateAngle="0">JavaScript SDK</text><text font-family="Arial" font-size="25" font-weight="bold" font-style="normal" stroke="none" stroke-width="0.5" fill="#DC143C" transform="matrix(1 0 0 1 220 21)" rotateAngle="0" filter="null">Data Stream Network</text><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 465 360)" rotateAngle="0">Client Computer</text><text font-family="Arial" font-size="25" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 434 388)" rotateAngle="0">Interactive Scada</text><text font-family="Arial" font-size="25" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 111 344)" rotateAngle="0">Field Device</text><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 482 249)" rotateAngle="0">Pilot Light</text><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 112 303)" rotateAngle="0">ON/OFF Status</text><circle stroke="#000000" stroke-width="2" fill="#000000" fill-opacity="1.0" transform="translate(141 233)" r="10"/><circle stroke="#000000" stroke-width="2" fill="#000000" fill-opacity="1.0" transform="matrix(1 0 0 1 220 232)" r="10"/></g></g><defs id="arrowDefs"><marker id="arrow7B68EE" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#7B68EE" stroke-linejoin="bevel"><path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/></marker><marker id="arrowDC143C" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#DC143C" stroke-linejoin="bevel"><path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/></marker></defs><defs id="defsGradient"><radialGradient id="gradientRed" cx="50%" cy="50%" r="75%" fx="50%" fy="50%" gradientUnits="objectBoundingBox"><stop offset="0%" stop-color="rgb(255,0,0)" stop-opacity="1"/><stop offset="100%" stop-color="rgb(0,0,0)" stop-opacity="1"/></radialGradient><radialGradient id="gradientGreen" cx="50%" cy="50%" r="75%" fx="50%" fy="50%" gradientUnits="objectBoundingBox"><stop offset="0%" stop-color="#009000" stop-opacity="1"/><stop offset="100%" stop-color="#000000" stop-opacity="1"/></radialGradient><radialGradient id="gradientGrey" cx="50%" cy="50%" r="75%" fx="50%" fy="50%" gradientUnits="objectBoundingBox"><stop offset="0%" stop-color="#D3D3D3" stop-opacity="1"/><stop offset="100%" stop-color="#000000" stop-opacity="1"/></radialGradient></defs></svg>
+</div>
+
+</td>
+</tr></table>
+
+    <br><button title="Show Javascript Source" onclick=showSource()>Javascript Source</button> <button title="Close javascript source" disabled id=closeSourceButton onClick=closeSource()>X</button>
+
+ <div id=sourceDiv style=overflow:auto;width:100%;height:1px;visibility:hidden;overflow:hidden>
+  <br>Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:90%;text-align:left; ></div>
+</div>
+</center>
+    </div>
+<script id=myScript>
+//---JavaScript SDK  https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.2.js ---
+
+//---channels---
+var utcms=new Date().getTime() //---timestamp for this example client---
+
+var Status="Status"+utcms
+
+
+//--on initIoT button clicked---
+var pubnub
+function initIot()
+{
+    pubnub = new PubNub(
+    {
+        publishKey : 'pub-c-ea28c028-e01a-4d16-80ec-0ad017c8a0a1',
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+   })
+
+    pubnub.addListener(
+    {
+        status: function(statusEvent)
+        {
+            connectedSpan.innerHTML="<i>...CONNECTED...</i>"
+            offRadio.checked=true
+            pilotLight.setAttribute("fill","url(#gradientRed)")
+            initSubscribeOnOff()
+        }
+    })
+
+    console.log("Subscribing..");
+    pubnub.subscribe(
+    {
+        channels: [Status]
+
+    });
+
+   initButton.disabled=true
+   onRadio.disabled=false
+   offRadio.disabled=false
+
+}
+
+//===================PUBLISH==================
+//---ON or OFF radio button clicked---
+function publishOnOff(msg)
+{
+     //---show/hide Status field device closed conact line---
+     if(msg=="ON")
+        contact.setAttribute("stroke","black")
+     else if(msg=="OFF")
+         contact.setAttribute("stroke","none")
+
+    var publishConfig =
+    {
+        channel : Status ,  //---unique for this viewer "Status"+timeStamp---
+        message :msg
+    }
+    pubnub.publish(publishConfig)
+    initSubscribeOnOff()
+
+}
+
+//============SUBSCRIBE================
+var subscribeOnOff
+function initSubscribeOnOff()
+{
+    subscribeOnOff = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeOnOff.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+            scadaStatus(msg)
+        }
+    })
+    subscribeOnOff.subscribe(
+    {
+        channels: [Status]
+    })
+}
+
+//---controls Pilot Light---
+function scadaStatus(msg)
+{
+     if(msg=="ON")
+        pilotLight.setAttribute("fill","url(#gradientGreen)")
+     else if(msg=="OFF")
+        pilotLight.setAttribute("fill","url(#gradientRed)")
+}
+
+</script>
+<script>
+
+function showSource()
+{
+  sourceDiv.style.visibility="visible"
+  sourceDiv.style.height=+sourceDiv.scrollHeight+"px"
+
+  closeSourceButton.disabled=false
+
+  var frameHeight=container.scrollHeight+100
+
+    d3.select(parent.frame0).transition().duration(1000).attr("height",frameHeight)
+
+
+}
+
+function closeSource()
+{
+   d3.select("#sourceDiv").transition().duration(1000).style("height","1px")
+   setTimeout('sourceDiv.style.visibility="hidden"',1000)
+  closeSourceButton.disabled=true
+
+   d3.select(parent.frame0).transition().duration(1000).attr("height",880)
+}
+
+</script>
+
+</body>
+
+</html>

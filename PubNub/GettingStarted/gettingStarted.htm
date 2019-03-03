@@ -8,7 +8,7 @@
 </head>
 
 <body style=font-family:arial>
-    <center><h1><b>Interactive SVG SCADA Drawings - Getting Started</b></h1><br>
+    <center><h1><b>SVG SCADA & IoT Data Stream Network - Getting Started</b></h1><br>
 <svg xmlns="http://www.w3.org/2000/svg" id="schematicSVG" width="800" height="430" viewBox="0 0 800 430" style="cursor: default; touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
 
     <style type="text/css">
@@ -334,7 +334,7 @@ IoT</text>
 <br>
 
 <div style=padding:10px;text-align:justify;width:80%;background:gainsboro >
-Each process control device that functions within the <a title="Internet of Things" href="https://en.wikipedia.org/wiki/Internet_of_things">IoT</a> concept, and interacts with SCADA, is  defined as a <a href="https://www.pubnub.com/solutions/iot/">Smart Device</a>. Each device is connected to a <a href="https://www.pubnub.com/products/global-data-stream-network/">Data Stream Network</a>,  both sending and receiving data.
+Each process control device that functions within the <a title="Internet of Things" href="https://en.wikipedia.org/wiki/Internet_of_things">IoT</a> concept, and interacts with SCADA, is  defined as a <a href="https://www.pubnub.com/solutions/iot/">Smart Device</a>. Each device is connected to a <a href="https://www.pubnub.com/products/global-data-stream-network/">Data Stream Network</a> cloud,  both sending and receiving data.
 The SVG SCADA drawing is viewed, and is interactive, through any current modern browser.
 All interactive needs are performed at the client computer's browser with JavaScript.
 The client computer includes a <a href="https://www.pubnub.com/docs/web-javascript/pubnub-javascript-sdk">JavaScript SDK</a>, providing the ability for SCADA to send/receive data via the Data Stream Network.
@@ -343,7 +343,12 @@ The client computer includes a <a href="https://www.pubnub.com/docs/web-javascri
 
 The facility's  server is a typical web server that holds SCADA images plus Javascript files, and stores process operating data.
 </div><p></p>
-<h3 style=color:red >Four(4) Basic Examples:</h3>
+
+<iframe id=frame0 src='Examples/example0.htm' width=1200 height=650 style="border:3px solid gainsboro" ></iframe>
+<iframe id=frame0a src='Examples/example0a.htm' width=1200 height=650 style="border:3px solid gainsboro" ></iframe>
+<iframe id=frame0b src='Examples/example0b.htm' width=1200 height=680 style="border:3px solid gainsboro" ></iframe>
+
+<h3 style=color:red >Four(4) Basic SCADA Examples:</h3>
 <iframe id=frame1 src='Examples/example1a.htm' width=1200 height=650 style="border:3px solid gainsboro" ></iframe>
 <iframe id=frame2  src='Examples/example2a.htm' width=1200 height=650 style="border:3px solid gainsboro" ></iframe>
 <iframe id=frame3  src='Examples/example3a.htm' width=1200 height=710 style="border:3px solid gainsboro"  ></iframe>
@@ -363,6 +368,9 @@ The facility's  server is a typical web server that holds SCADA images plus Java
 document.addEventListener("onload",init(),false)
 function init()
 {
+   frame0.width=screen.width-80
+   frame0a.width=screen.width-80
+   frame0b.width=screen.width-80
    frame1.width=screen.width-80
    frame2.width=screen.width-80
    frame3.width=screen.width-80
@@ -375,13 +383,6 @@ function init()
 
 }
 
-function closeFrame(num)
-{
-  eval("frame"+num)
-
-
-
-}
 
 
 </script>

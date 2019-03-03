@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <title>Transmitter Field Device</title>
+ <script type="text/javascript" src="../../../highlight.pack.js"></script>
+  <script type="text/javascript" src="../../../highlightCode.js"></script>
+  <link href='../../../highlight.css' rel='stylesheet' />
+ <script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.2.js"></script>
+
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body onload=showSourceJS()  style='padding:10px;font-family:arial'>
+    <div id=container>
+
+<center>
+<h4>Basic IoT: Monitor Transmitter Value</h4>
+
+<div style=padding:10px;text-align:justify;width:80%;background:gainsboro >
+A field analog device is structured to show its value via a SCADA 'Digital Meter' (Changing its digital value based on the device output).
+The IoT has both a <b>Subscribe</b> and <b>Publish</b> value, available on a client computer's unique <b>Channel</b>.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<table>
+<tr>
+<td valign=top >
+<div style="text-align:justify;width:360px;padding:10px;">
+<center><button id=initButton onclick=initIot()>Initialize IoT</button>
+<br>
+<span id=connectedSpan></span>
+</center><p></p>
+
+   <b>Sequence Of Operation:</b><p></p>
+The field device is a Infrared Temperature Transmitter with a span from 0 to 500 &deg;.
+<br>
+
+
+Adjust the slider below to the simulate the change of the device output value.  This will <b>publish</b> the change.
+<br><center><table border=1>
+<tr><td align=center colspan=2>Field Device Output</td></tr>
+<tr><td align=center >Temperature: <input disabled  onmousedown="TemperatureAdjust=true" onmouseup="temperatureRangeValue.value=this.value;publishTemperature(this.value)"  id=temperatureRangeValue style=width:180px type="range" value=250  min="1" step=.5 max="500"> <input style=width:40px id=temperatureValue type="text" value=250.0 />&deg;</td></tr>
+</table>
+</center>
+
+</div>
+
+</td>
+<td>
+<div id="svgDiv" style='border:1px solid black;width:700px;height:400px;'>
+<svg xmlns="http://www.w3.org/2000/svg" id="publishSVG" width="700" height="400" viewBox="0 0 700 400" style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><style xmlns="http://www.w3.org/1999/xhtml"></style><defs xmlns="http://www.w3.org/1999/xhtml"></defs>
+
+<g id="publishG"><g id="publishElemG" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><g xmlns="http://www.w3.org/2000/svg" transform="matrix(1 0 0 1 -247 -160)" parentid="component1551029200392"><path fill="#FF0000" fill-opacity="1.0" stroke="#000000" stroke-width="2" d="M 349 281 L 451 281 L 399 190 z" type="linear"/><text font-family="Times New Roman" font-size="30" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 377 259)">IoT</text><rect width="102" height="91" stroke="none" fill="white" fill-opacity="0" transform="translate(349,190)" style="cursor: default;"/></g><g xmlns="http://www.w3.org/2000/svg" transform="matrix(0.55 0 0 0.55 -206.45 28.9)" parentid="component1520527215989"><rect id="rect1520521381274" fill="#000000" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="19" height="37" transform="matrix(1 0 0 1 648 371)"/><rect id="rect1520521415489" fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="72" height="60" rx="10" ry="10" transform="matrix(1 0 0 1 623 310)"/><text id="text1520523988649" font-family="Arial" font-size="40" font-weight="bold" font-style="normal" stroke="none" stroke-width="0.8" fill="#000000" transform="matrix(1 0 0 1 633 352)" filter="null">TT</text><rect id="rect1520526070541" fill="#C0C0C0" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="54" height="44" transform="matrix(1 0 0 1 631 408)"/><text id="text1520527167209" font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 650 490)">IR</text><text id="icon1520526326954" font-size="40" font-family="Arial Unicode MS" stroke-width="0.8" fill="#0000FF" stroke="black" x="-17.8203125" y="13.5" transform="matrix(1 0 0 1 672 453)" cursor="default">⯋</text><text id="icon1520526355732" font-size="40" font-family="Arial Unicode MS" stroke-width="0.8" fill="#FF0000" stroke="black" x="-17.8203125" y="13.5" transform="matrix(1 0 0 1 645 454)" cursor="default">⯋</text><text id="icon1520527008528" font-size="50" font-family="Arial Unicode MS" stroke-width="0.8" fill="#FF0000" stroke="black" x="-11.078125" y="13.5" transform="matrix(1 0 0 1 643 438)" cursor="default">⭣</text><text id="icon1520527031167" font-size="50" font-family="Arial Unicode MS" stroke-width="0.8" fill="#0000FF" stroke="black" x="-11.078125" y="13.5" transform="matrix(1 0 0 1 672 437)" cursor="default">⭡</text><rect width="72" height="184" fill="white" fill-opacity="0" transform="translate(623,310)" style="cursor: default;" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5"/></g><rect stroke="#000000" stroke-width="2" fill="white" fill-opacity="0" rx="4" ry="4" transform="translate(416 70)" width="236" height="282" rotateAngle="0"/><rect stroke="#DC143C" stroke-width="3" fill="white" fill-opacity="0" stroke-dasharray="8 4" rx="4" ry="4" transform="translate(437 100)" width="203" height="211" rotateAngle="0"/><rect stroke="#8A2BE2" stroke-width="3" fill="white" fill-opacity="0" stroke-dasharray="8 4" rx="4" ry="4" transform="translate(457 127)" width="163" height="159" rotateAngle="0"/><g transform="translate(533 189.99999982629504)scale(.6)" title="Digital Readout" scale=".6" units="Degrees F" max="500" faceColor="#87CEEB" numBorderColor="#1E90FF" numColor="#00FF00" numBgColor="#000000">
+
+<foreignObject id="digitalReadoutFO" overflow="visible" x="-100" y="-40" width="200" height="80"><div xmlns="http://www.w3.org/1999/xhtml" id="digitalReadoutContainerDiv" style="font-family: arial; border: 1px solid black; font-size: 16px; overflow: hidden; height: 80px; padding: 10px; background: rgb(135, 206, 235); border-radius: 8px; width: 100%; text-align: center;"><div id="digitalReadoutTitleDiv">Digital Readout</div>
+<div id="digitalReadoutValue" style="border: 6px inset rgb(30, 144, 255); width: 180px; background: rgb(0, 0, 0); color: grey; font-weight: bold; font-size: 30px;">000.0</div><div id="digitalReadoutUnit">Degrees F</div></div></foreignObject>
+
+<rect id="digitalReadoutCoverRect" x="-100" y="-40" width="200" height="80" stroke="none" fill="white" fill-opacity="0"/></g><path fill="none" fill-opacity="1.0" stroke="#DC143C" stroke-width="5" stroke-dasharray="8 4" d="M 30 29 L 682 29" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#DC143C" stroke-width="2" marker-end="url(#arrowDC143C)" d="M 157 200 L 157 124" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#DC143C" stroke-width="2" marker-end="url(#arrowDC143C)" d="M 349 27 L 349 198 L 435 198" rightAngle="true" stroke-opacity="1.0" rotateAngle="0"/><text font-family="Arial" font-size="20" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#DC143C" transform="matrix(1 0 0 1 236 20)" rotateAngle="0">Data Stream Network</text><text font-family="Arial" font-size="15" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#DC143C" transform="matrix(1 0 0 1 483 329)" rotateAngle="0">Javascript SDK</text><text font-family="Arial" font-size="15" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#8A2BE2" transform="matrix(1 0 0 1 501 277)" rotateAngle="0">Browser</text><text font-family="Arial" font-size="17" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 478 370)" rotateAngle="0">Client Computer</text><text font-family="Arial" font-size="15" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 73 314)" rotateAngle="0">Infrared Temperature Transmitter</text><text font-family="Arial" font-size="20" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 106 346)" rotateAngle="0">Field Device</text><text font-family="Arial" font-size="20" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 457 391)" rotateAngle="0">Interactive SCADA</text></g></g><defs id="arrowDefs"><marker id="arrowDC143C" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#DC143C" stroke-linejoin="bevel"><path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/></marker></defs></svg>
+</div>
+
+</td>
+</tr></table>
+
+    <br><button title="Show Javascript Source" onclick=showSource()>Javascript Source</button> <button title="Close javascript source" disabled id=closeSourceButton onClick=closeSource()>X</button>
+
+ <div id=sourceDiv style=overflow:auto;width:100%;height:1px;visibility:hidden;overflow:hidden>
+  <br>Javascript:
+  <div id=jsCodeDiv style=overflow:auto;width:90%;text-align:left; ></div>
+</div>
+</center>
+    </div>
+<script id=myScript>
+//---JavaScript SDK  https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.2.js ---
+
+//---channels---
+var utcms=new Date().getTime() //---timestamp for this example client---
+
+var Temperature="Temperature"+utcms
+
+
+//--on initIoT button clicked---
+var pubnub
+function initIot()
+{
+    pubnub = new PubNub(
+    {
+        publishKey : 'pub-c-ea28c028-e01a-4d16-80ec-0ad017c8a0a1',
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+   })
+
+    pubnub.addListener(
+    {
+        status: function(statusEvent)
+        {
+            connectedSpan.innerHTML="<i>...CONNECTED...</i>"
+            temperatureRangeValue.disabled=false
+            digitalReadoutValue.style.color="lime"
+            digitalReadoutValue.innerHTML="250.0"
+            initSubscribeTemperature()
+        }
+    })
+
+    console.log("Subscribing..");
+    pubnub.subscribe(
+    {
+        channels: [Temperature]
+
+    });
+
+   initButton.disabled=true
+}
+
+//===================PUBLISH==================
+//---Slider value---
+var TemperatureAdjust=false
+function publishTemperature(msg)
+{
+
+    if(TemperatureAdjust==true)
+    {
+        temperatureValue.value=msg
+
+        var publishConfig =
+        {
+            channel : Temperature ,  //---unique for this viewer "Status"+timeStamp---
+            message :msg
+        }
+        pubnub.publish(publishConfig)
+        initSubscribeTemperature()
+    }
+}
+
+//============SUBSCRIBE================
+var subscribeTemperature
+function initSubscribeTemperature()
+{
+    subscribeTemperature = new PubNub(
+    {
+        subscribeKey : 'sub-c-0da31452-3beb-11e8-a60e-fec077c63a9e',
+        ssl: true
+    })
+    subscribeTemperature.addListener(
+    {
+        message: function(m)
+        {
+            //---handle message---
+            var msg = m.message; //---The Payload---
+            scadaTemperature(msg)
+        }
+    })
+    subscribeTemperature.subscribe(
+    {
+        channels: [Temperature]
+    })
+}
+
+//---controls Digital Readout---
+function scadaTemperature(msg)
+{
+   digitalReadoutValue.innerHTML=msg
+}
+
+</script>
+<script>
+
+function showSource()
+{
+  sourceDiv.style.visibility="visible"
+  sourceDiv.style.height=+sourceDiv.scrollHeight+"px"
+
+  closeSourceButton.disabled=false
+
+  var frameHeight=container.scrollHeight+100
+
+    d3.select(parent.frame0a).transition().duration(1000).attr("height",frameHeight)
+
+
+}
+
+function closeSource()
+{
+   d3.select("#sourceDiv").transition().duration(1000).style("height","1px")
+   setTimeout('sourceDiv.style.visibility="hidden"',1000)
+  closeSourceButton.disabled=true
+
+   d3.select(parent.frame0a).transition().duration(1000).attr("height",880)
+}
+
+</script>
+
+</body>
+
+</html>
