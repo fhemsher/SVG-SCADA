@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style type="text/css">
+<!--
+body {
+-moz-box-shadow: 4px 4px 5px #888;
+-webkit-box-shadow: 4px 4px 5px #888;
+box-shadow: 4px 4px 5px #888;
+}
+-->
+</style>
+  <title>Iframe Title</title>
+<meta charset=utf-8 />
+</head>
+<body onload=sendSize() style='padding:5px;border-radius:10px;border:2px solid lightblue;background-color:transparent;margin:0;font-family:arial'>
+<div id=containerDiv style=background-color:linen>
+
+<table style='width:300px;'>
+<tr>
+<td>
+<table style='width:100%;background-color:gainsboro'>
+<tr ><td id=drawImageTopTable style='width:90%;background-color:linen' align=center><span id=drawImageEditSpan>Add Images</span></td><td align=right> <button onClick=parent.closeDrawImage()  >X</button></td></tr>
+</table>
+</td>
+
+</tr>
+<tr>
+<td>
+<input id=imgFile type="file" onchange="parent.loadImageFile()">
+</td>
+
+
+</tr>
+<tr><td align=center >
+Width:<input disabled type="text" style=width:60px id=imageWidthValue />
+Height:<input disabled type="text" style=width:60px id=imageHeightValue />
+
+
+
+</td></tr>
+<tr>
+<td align=center >
+Opacity:
+  <select onChange=parent.drawImageOpacitySelected() id=drawImageOpacitySelect>
+		<option >0.1</option>
+		<option>0.2</option>
+		<option >0.3</option>
+		<option >0.4</option>
+		<option>0.5</option>
+		<option >0.6</option>
+		<option >0.7</option>
+		<option >0.8</option>
+		<option >0.9</option>
+		<option  selected >1.0</option>
+
+		</select>
+
+</td>
+</tr>
+
+<tr>
+	<td valign=bottom align=center>Rotate
+		&nbsp;&nbsp;<button  onClick=parent.rotateImageAdjust(-1) style='height:25px;width:25px;padding:0px'><img width=20 height=20 src="../Images/minusRound.png" /></button>
+		<select title="rotate toggle value" id=rotateDrawImageAdjustSelect >
+		<option>.5</option>
+		<option>1</option>
+		<option>2</option>
+		<option selected>5</option>
+		<option>10</option>
+		</select>
+		<button onClick=parent.rotateImageAdjust(1)   style='height:25px;width:25px;padding:0px'><img width=20 height=20 src="../Images/plusRound.png" /></button>
+		&nbsp;<input id=adjustedRotateImageValue disabled type=text style='width:40px;' value=0 />&deg;
+	</td>
+</tr>
+
+
+<tr align=center>
+<td>
+	<button id=drawImageCancelButton disabled title='cancel/remove this image' onClick=parent.cancelDrawImage()>cancel</button>
+	<button style='background-color:red;visibility:hidden' id=drawImageDeleteButton  onClick=parent.removeCurrentDrawImage()>delete</button>
+	<button id=drawImageTopButton style=background:white;font-size:120%;font-weight:bold;color:maroon;visibility:hidden  title='Move to top' onClick=parent.topDrawImage()>&#x21E7;</button>
+	<button id=drawImageBotButton style=background:white;font-size:120%;font-weight:bold;color:maroon   title='Move to bottom' onClick=parent.botDrawImage()>&#x21E9;</button>
+    <button id=drawImageFinishButton disabled onClick=parent.finishDrawImage()>finish</button>
+</td>
+</tr>
+
+</table>
+</div>
+
+
+</body>
+<script>
+
+
+function sendSize()
+{
+
+
+    var width=containerDiv.scrollWidth+15
+    var height=containerDiv.scrollHeight+30
+
+    parent.sizeFrame('addElemImage',width,height)
+
+     if(parent.EditImage==true)
+   		parent.setEditImage()
+        else
+          parent.startImageDraw()
+
+}
+</script>
+</html>

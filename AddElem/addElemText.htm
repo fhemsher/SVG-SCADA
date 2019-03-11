@@ -19,7 +19,7 @@ box-shadow: 4px 4px 5px #888;
 
 <table id=drawTextTopTable style='padding:3px;background-color:linen;width:360px;'><tr>
 <td style='width:90%;' align=center>
-&nbsp;&nbsp;&nbsp;<span id=editTextSpan>Draw </span> Text<input type=text maxlength=100 id=drawTextWriteTextValue style='color:linen;border-width:0px;width:1px;font-family:lucida Console;font-size:100%;overflow:hidden' />
+&nbsp;&nbsp;&nbsp;<span id=editTextSpan>Draw </span> Text<input type="text" autocomplete="off"  maxlength=100 id=drawTextWriteTextValue style='color:linen;border-width:0px;width:1px;font-family:lucida Console;font-size:100%;overflow:hidden' />
 &nbsp;Size:<select id=drawTextFontSizeSelect onChange=parent.drawTextFontSizeSelected();focusText() >
 <option>1</option>
 <option>2</option>
@@ -107,7 +107,7 @@ box-shadow: 4px 4px 5px #888;
 		<option>10</option>
 		</select>
 		<button onClick=parent.rotateTextAdjust(1);focusText()   style='height:25px;width:25px;padding:0px'><img width=20 height=20 src="../Images/plusRound.png" /></button>
-		&nbsp;<input id=adjustedRotateTextValue disabled type=text style='width:40px;' value=0 />&deg;
+		&nbsp;<input id=adjustedRotateTextValue disabled type="text" autocomplete="off"  style='width:40px;' value=0 />&deg;
 	</td>
 </tr>
 
@@ -1141,6 +1141,8 @@ function writeTextColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+   if(parent.hexString.indexOf(myColor)!=-1)
+                option.style.color="white"
 
 
 		option.text=k
@@ -1150,12 +1152,13 @@ function writeTextColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
-
+   if(parent.hexString.indexOf(myColor)!=-1)
+                option.style.color="white"
 
 		option.text=k
         drawTextFillSelect.appendChild(option)
 	}
-	drawTextFillSelect.selectedIndex=143
+	drawTextFillSelect.selectedIndex=1
 	var clr=drawTextFillSelect.options[drawTextFillSelect.selectedIndex].value
 	drawTextFillBg.style.backgroundColor=clr
 }

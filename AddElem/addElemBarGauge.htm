@@ -53,23 +53,23 @@ HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this elem
 <table border=1 style='border-collapse: collapse;'>
 <tr >
 <td>Title</td>
-<td><input  onkeyup=parent.changeBarGauge()  id=titleValue type="text" style=width:200px; value="This is Gauge Title" /></td>
+<td><input  onkeyup=parent.changeBarGauge()  id=titleValue type="text" autocomplete="off"  style=width:200px; value="This is Gauge Title" /></td>
 </tr>
 <tr >
 <td>Units</td>
-<td><input onkeyup=parent.changeBarGauge()   id=unitValue type="text" style=width:200px; value="degrees .F" /></td>
+<td><input onkeyup=parent.changeBarGauge()   id=unitValue type="text" autocomplete="off"  style=width:200px; value="degrees .F" /></td>
 </tr >
 <tr >
 <td>Minimum Value</td>
-<td><input onkeyup=parent.changeBarGauge()   id=minValue type="text" style=width:100px; value="-20" /></td>
+<td><input onkeyup=parent.changeBarGauge()   id=minValue type="text" autocomplete="off"  style=width:100px; value="-20" /></td>
 </tr>
 <tr >
 <td>Maximum Value</td>
-<td><input onkeyup=parent.changeBarGauge()   id=maxValue type="text" style=width:100px; value="120" /></td>
+<td><input onkeyup=parent.changeBarGauge()   id=maxValue type="text" autocomplete="off"  style=width:100px; value="120" /></td>
 </tr>
 <tr >
 <td>Initial Value</td>
-<td><input onkeyup=parent.changeBarGauge()   id=initValue type="text" style=width:100px; value="115" /></td>
+<td><input onkeyup=parent.changeBarGauge()   id=initValue type="text" autocomplete="off"  style=width:100px; value="115" /></td>
 </tr>
 <tr >
 <td>Bar Color</td>
@@ -81,15 +81,15 @@ HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this elem
 </tr>
 <tr >
 <td>Setpoint (optional)</td>
-<td><input onkeyup=parent.changeBarGauge()   id=setPointValue type="text" style=width:100px; value="58" /></td>
+<td><input onkeyup=parent.changeBarGauge()   id=setPointValue type="text" autocomplete="off"  style=width:100px; value="58" /></td>
 </tr>
 <tr >
 <td>maxAlert (optional)</td>
-<td><input onkeyup=parent.changeBarGauge()   id=maxAlertValue type="text" style=width:100px; value="105" /></td>
+<td><input onkeyup=parent.changeBarGauge()   id=maxAlertValue type="text" autocomplete="off"  style=width:100px; value="105" /></td>
 </tr>
 <tr >
 <td>minAlert (optional)</td>
-<td><input onkeyup=parent.changeBarGauge()   id=minAlertValue type="text" style=width:100px; value="-5" /></td>
+<td><input onkeyup=parent.changeBarGauge()   id=minAlertValue type="text" autocomplete="off"  style=width:100px; value="-5" /></td>
 </tr>
 
 
@@ -124,6 +124,8 @@ function writeBarGaugeColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
         faceColorSelect.appendChild(option)
 
@@ -131,6 +133,8 @@ function writeBarGaugeColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
        barColorSelect.appendChild(option)
 
@@ -141,7 +145,7 @@ function writeBarGaugeColorSelection()
     var clr=faceColorSelect.options[faceColorSelect.selectedIndex].value
    faceColorBg.style.backgroundColor=clr
 
-   barColorSelect.selectedIndex=143  //---black---
+   barColorSelect.selectedIndex=1 //---black---
    var clr=barColorSelect.options[barColorSelect.selectedIndex].value
    barColorBg.style.backgroundColor=clr
 

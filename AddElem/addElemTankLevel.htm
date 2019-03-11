@@ -51,20 +51,20 @@ HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this elem
 <table  border=1 style='border-collapse: collapse;'>
 <tr >
 <td>Title</td>
-<td><input  onkeyup=parent.changeTankLevel()  id=titleValue type="text" style=width:200px; value="This Tank Level Title" /></td>
+<td><input  onkeyup=parent.changeTankLevel()  id=titleValue type="text" autocomplete="off"  style=width:200px; value="This Tank Level Title" /></td>
 </tr>
 <tr >
 <td>Units</td>
-<td><input onkeyup=parent.changeTankLevel()   id=unitValue type="text" style=width:200px; value="K Gallons" /></td>
+<td><input onkeyup=parent.changeTankLevel()   id=unitValue type="text" autocomplete="off"  style=width:200px; value="K Gallons" /></td>
 </tr >
 
 <tr >
 <td>Maximum Value</td>
-<td><input onkeyup=parent.changeTankLevel()   id=maxValue type="text" style=width:100px; value="120" /></td>
+<td><input onkeyup=parent.changeTankLevel()   id=maxValue type="text" autocomplete="off"  style=width:100px; value="120" /></td>
 </tr>
 <tr >
 <td>Initial Value</td>
-<td><input onkeyup=parent.changeTankLevel()   id=initValue type="text" style=width:100px; value="85" /></td>
+<td><input onkeyup=parent.changeTankLevel()   id=initValue type="text" autocomplete="off"  style=width:100px; value="85" /></td>
 </tr>
 <tr >
 <td>Level Color</td>
@@ -76,15 +76,15 @@ HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this elem
 </tr>
 <tr >
 <td>Setpoint (optional)</td>
-<td><input onkeyup=parent.changeTankLevel()   id=setPointValue type="text" style=width:100px; value="70" /></td>
+<td><input onkeyup=parent.changeTankLevel()   id=setPointValue type="text" autocomplete="off"  style=width:100px; value="70" /></td>
 </tr>
 <tr >
 <td>maxAlert (optional)</td>
-<td><input onkeyup=parent.changeTankLevel()   id=maxAlertValue type="text" style=width:100px; value="105" /></td>
+<td><input onkeyup=parent.changeTankLevel()   id=maxAlertValue type="text" autocomplete="off"  style=width:100px; value="105" /></td>
 </tr>
 <tr >
 <td>minAlert (optional)</td>
-<td><input onkeyup=parent.changeTankLevel()   id=minAlertValue type="text" style=width:100px; value="20" /></td>
+<td><input onkeyup=parent.changeTankLevel()   id=minAlertValue type="text" autocomplete="off"  style=width:100px; value="20" /></td>
 </tr>
 
 
@@ -120,6 +120,8 @@ function writeTankLevelColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
         faceColorSelect.appendChild(option)
 
@@ -127,6 +129,8 @@ function writeTankLevelColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
        barTankColorSelect.appendChild(option)
 
@@ -137,7 +141,7 @@ function writeTankLevelColorSelection()
     var clr=faceColorSelect.options[faceColorSelect.selectedIndex].value
    faceColorBg.style.backgroundColor=clr
 
-   barTankColorSelect.selectedIndex=143  //---black---
+   barTankColorSelect.selectedIndex=1  //---black---
    var clr=barTankColorSelect.options[barTankColorSelect.selectedIndex].value
    barTankColorBg.style.backgroundColor=clr
 

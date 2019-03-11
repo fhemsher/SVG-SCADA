@@ -158,33 +158,24 @@ function writePolygonColorSelection()
 	{
 		var name=DrawColors[k][0]
 		var myColor=DrawColors[k][1]
-		var option=document.createElement("OPTION")
-		option.style.backgroundColor=myColor
-		option.value=myColor
-		option.title=name+" "+myColor
-
-		option.text=k
-
 
 		var option=document.createElement("OPTION")
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 
 		option.text=k
         drawPolygonStrokeSelect.appendChild(option)
 
-       	var option=document.createElement("OPTION")
-		option.style.backgroundColor=myColor
-		option.value=myColor
-		option.title=name+" "+myColor
-		option.text=k
-
 
 		var option=document.createElement("OPTION")
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                        if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 
 		option.text=k
         drawPolygonFillSelect.appendChild(option)
@@ -193,9 +184,10 @@ function writePolygonColorSelection()
 
 
 	}
-	drawPolygonStrokeSelect.selectedIndex=41
+	drawPolygonStrokeSelect.selectedIndex=353
 	var clr=drawPolygonStrokeSelect.options[drawPolygonStrokeSelect.selectedIndex].value
 	drawPolygonStrokeBg.style.backgroundColor=clr
+   
 }
 
 

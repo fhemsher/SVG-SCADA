@@ -40,23 +40,23 @@ HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this elem
 <td align=center>
        <table style='width:330px;border-collapse: collapse;' cellpadding=3 id=roundGaugeTable  border=1>
        <tr><td colspan=2 align=center>Configure Round Gauge</td></tr>
-        <tr><td>Name:<input type=text id=gaugeNameValue style='width:80px;' value="gaugeOAT" /></td>
-        <td>Label:<input type=text id=gaugeLabelValue style='width:50px;' value="OAT" /></td></tr>
-        <tr><td>Units:<input type=text id=gaugeUnitValue style='cursor:default;width:50px;' title="&#[unicode];" value="&#8457;" /></td>
-        <td> Dia:<input type=text style=width:30px id=gaugeDiaValue  value="100" />px.</td></tr>
-        <tr><td>Min<input type=text id=gaugeMinValue style='width:50px;' value="-20" /></td>
-        <td>Max <input type=text id=gaugeMaxValue style='width:50px;' value="120" /></td></tr>
-       <tr><td>Major Ticks:<input type=text id=gaugeMajorTickValue style='width:30px;' value="5" /></td>
-        <td>Minor Ticks:<input type=text id=gaugeMinorTickValue style='width:30px;' value="10" /></td></tr>
+        <tr><td>Name:<input type="text" autocomplete="off"  id=gaugeNameValue style='width:80px;' value="gaugeOAT" /></td>
+        <td>Label:<input type="text" autocomplete="off"  id=gaugeLabelValue style='width:50px;' value="OAT" /></td></tr>
+        <tr><td>Units:<input type="text" autocomplete="off"  id=gaugeUnitValue style='cursor:default;width:50px;' title="&#[unicode];" value="&#8457;" /></td>
+        <td> Dia:<input type="text" autocomplete="off"  style=width:30px id=gaugeDiaValue  value="100" />px.</td></tr>
+        <tr><td>Min<input type="text" autocomplete="off"  id=gaugeMinValue style='width:50px;' value="-20" /></td>
+        <td>Max <input type="text" autocomplete="off"  id=gaugeMaxValue style='width:50px;' value="120" /></td></tr>
+       <tr><td>Major Ticks:<input type="text" autocomplete="off"  id=gaugeMajorTickValue style='width:30px;' value="5" /></td>
+        <td>Minor Ticks:<input type="text" autocomplete="off"  id=gaugeMinorTickValue style='width:30px;' value="10" /></td></tr>
         <tr><td>Ring <span id=ringColorBg>Color</span>: <select id=ringColorSelect onChange=parent.ringColorSelected()></select></td>
         <td>Face <span id=faceColorBg>Color</span>:<select id=faceColorGaugeSelect onChange=parent.faceColorGaugeSelected()></select>
          </td></tr>
         <tr>
             <td colspan=2 align=center>
                 <table>
-                <tr style="background:orange"><td>Orange Zone Band:</td><td><input id=gaugeOrangeZoneValue type=text style=width:80px placeholder="start,end" /> </td></tr>
-                <tr style="background:red"><td>Red Zone Band:</td><td><input id=gaugeRedZoneValue type=text style=width:80px placeholder="start,end" /> </td></tr>
-                <tr style="background:lime"><td>Green Zone Band:</td><td><input id=gaugeGreenZoneValue type=text style=width:80px placeholder="start,end" /> </td></tr>
+                <tr style="background:orange"><td>Orange Zone Band:</td><td><input id=gaugeOrangeZoneValue type="text" autocomplete="off"  style=width:80px placeholder="start,end" /> </td></tr>
+                <tr style="background:red"><td>Red Zone Band:</td><td><input id=gaugeRedZoneValue type="text" autocomplete="off"  style=width:80px placeholder="start,end" /> </td></tr>
+                <tr style="background:lime"><td>Green Zone Band:</td><td><input id=gaugeGreenZoneValue type="text" autocomplete="off"  style=width:80px placeholder="start,end" /> </td></tr>
                 </table>
              </td>
        </tr>
@@ -98,6 +98,8 @@ function writeGaugeColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
         faceColorGaugeSelect.appendChild(option)
 
@@ -105,6 +107,8 @@ function writeGaugeColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
        ringColorSelect.appendChild(option)
 
@@ -118,7 +122,7 @@ function writeGaugeColorSelection()
 
 	}
 	ringColorSelect.selectedIndex=45
-	faceColorGaugeSelect.selectedIndex=23
+	faceColorGaugeSelect.selectedIndex=49
 
 	var clr=ringColorSelect.options[ringColorSelect.selectedIndex].value
    ringColorBg.style.backgroundColor=clr

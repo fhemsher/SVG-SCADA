@@ -454,6 +454,8 @@ function writeGradientColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                         if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
         stop1ColorSelect.appendChild(option)
 
@@ -461,6 +463,8 @@ function writeGradientColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                         if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
         stop2ColorSelect.appendChild(option)
 
@@ -468,19 +472,21 @@ function writeGradientColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                         if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
         stop3ColorSelect.appendChild(option)
 
 	}
-	stop1ColorSelect.selectedIndex=7
+	stop1ColorSelect.selectedIndex=140
 	var clr=stop1ColorSelect.options[stop1ColorSelect.selectedIndex].value
 	stop1ColorBG.style.backgroundColor=clr
 
-	stop2ColorSelect.selectedIndex=143
+	stop2ColorSelect.selectedIndex=1
 	var clr=stop2ColorSelect.options[stop2ColorSelect.selectedIndex].value
 	stop2ColorBG.style.backgroundColor=clr
 
-	stop3ColorSelect.selectedIndex=64
+	stop3ColorSelect.selectedIndex=134
 	var clr=stop3ColorSelect.options[stop3ColorSelect.selectedIndex].value
 	stop3ColorBG.style.backgroundColor=clr
 

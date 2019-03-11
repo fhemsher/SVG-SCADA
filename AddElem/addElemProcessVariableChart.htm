@@ -48,15 +48,15 @@ HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this elem
 
 <tr>
 <td>Title</td>
-<td><input  onkeyup=parent.changeProcessVariableChart()  id=titleValue type="text" style=width:200px; value="Process Chart Title" /></td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=titleValue type="text" autocomplete="off"  style=width:200px; value="Process Chart Title" /></td>
 </tr>
 <tr>
 <td>Timeline</td>
-<td><input  onkeyup=parent.changeProcessVariableChart()  id=timelineValue type="text" style=width:60px; value="60" /></td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=timelineValue type="text" autocomplete="off"  style=width:60px; value="60" /></td>
 </tr>
 <tr>
 <td>Timeline Units</td>
-<td><input  onkeyup=parent.changeProcessVariableChart()  id=timelineUnitsValue type="text" style=width:60px; value="Minutes" /></td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=timelineUnitsValue type="text" autocomplete="off"  style=width:60px; value="Minutes" /></td>
 </tr>
 
 <tr>
@@ -67,15 +67,15 @@ HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this elem
 
 <tr>
 <td>Left Variable Name</td>
-<td><input  onkeyup=parent.changeProcessVariableChart()  id=leftNameValue type="text" style=width:60px; value="NAME" /></td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=leftNameValue type="text" autocomplete="off"  style=width:60px; value="NAME" /></td>
 </tr>
 <tr>
 <td>Left Variable Min</td>
-<td><input  onkeyup=parent.changeProcessVariableChart()  id=leftMinValue type="text" style=width:60px; value="0" /></td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=leftMinValue type="text" autocomplete="off"  style=width:60px; value="0" /></td>
 </tr>
 <tr>
 <td>Left Variable Max</td>
-<td><input  onkeyup=parent.changeProcessVariableChart()  id=leftMaxValue type="text" style=width:60px; value="100" /></td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=leftMaxValue type="text" autocomplete="off"  style=width:60px; value="100" /></td>
 </tr>
 <tr>
 <td>Left Setpoint</td>
@@ -84,28 +84,28 @@ HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this elem
 
 <tr>
 <td>Right 1 Name</td>
-<td><input  onkeyup=parent.changeProcessVariableChart()  id=right1NameValue type="text" style=width:60px; value="" />(optional)</td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=right1NameValue type="text" autocomplete="off"  style=width:60px; value="" />(optional)</td>
 </tr>
 <tr>
 <td>Right 1 Min</td>
-<td><input  onkeyup=parent.changeProcessVariableChart()  id=right1MinValue type="text" style=width:60px; value="" />(optional)</td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=right1MinValue type="text" autocomplete="off"  style=width:60px; value="" />(optional)</td>
 </tr>
 <tr>
 <td>Right 1 Max</td>
-<td><input  onkeyup=parent.changeProcessVariableChart()  id=right1MaxValue type="text" style=width:60px; value="" />(optional)</td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=right1MaxValue type="text" autocomplete="off"  style=width:60px; value="" />(optional)</td>
 </tr>
 
 <tr>
 <td>Right 2 Name</td>
-<td><input  onkeyup=parent.changeProcessVariableChart()  id=right2NameValue type="text" style=width:60px; value="" />(optional)</td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=right2NameValue type="text" autocomplete="off"  style=width:60px; value="" />(optional)</td>
 </tr>
 <tr>
 <td>Right 2 Min</td>
-<td><input  onkeyup=parent.changeProcessVariableChart()  id=right2MinValue type="text" style=width:60px; value="" />(optional)</td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=right2MinValue type="text" autocomplete="off"  style=width:60px; value="" />(optional)</td>
 </tr>
 <tr>
 <td>Right 2  Max</td>
-<td><input  onkeyup=parent.changeProcessVariableChart()  id=right2MaxValue type="text" style=width:60px; value="" />(optional)</td>
+<td><input  onkeyup=parent.changeProcessVariableChart()  id=right2MaxValue type="text" autocomplete="off"  style=width:60px; value="" />(optional)</td>
 </tr>
 
 
@@ -137,6 +137,8 @@ function writeProcessVariableChartColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
         faceColorProcessVariableChartSelect.appendChild(option)
 
@@ -145,7 +147,7 @@ function writeProcessVariableChartColorSelection()
 
 	}
 
-    faceColorProcessVariableChartSelect.selectedIndex=22  //---gold---
+    faceColorProcessVariableChartSelect.selectedIndex=39  //---gold---
     var clr=faceColorProcessVariableChartSelect.options[faceColorProcessVariableChartSelect.selectedIndex].value
    faceColorBg.style.backgroundColor=clr
 

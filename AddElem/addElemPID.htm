@@ -95,26 +95,24 @@ function writePIDColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 
 		option.text=k
         drawPIDStrokeSelect.appendChild(option)
-
-       	var option=document.createElement("OPTION")
-		option.style.backgroundColor=myColor
-		option.value=myColor
-		option.title=name+" "+myColor
-		option.text=k
 
 
 		var option=document.createElement("OPTION")
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 
 		option.text=k
         drawPIDFillSelect.appendChild(option)
 	}
-	drawPIDFillSelect.selectedIndex=22
+	drawPIDFillSelect.selectedIndex=216
 	drawPIDStrokeSelect.selectedIndex=116
 	var clr=drawPIDStrokeSelect.options[drawPIDStrokeSelect.selectedIndex].value
 	drawPIDStrokeBg.style.backgroundColor=clr

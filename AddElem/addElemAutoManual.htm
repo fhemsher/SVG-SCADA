@@ -104,7 +104,8 @@ function writeAutoManualColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
-
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
 
        drawAutoManualRingSelect.appendChild(option)
@@ -115,7 +116,8 @@ function writeAutoManualColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
-
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
         drawAutoManualFillSelect.appendChild(option)
 
@@ -123,7 +125,7 @@ function writeAutoManualColorSelection()
 
 	}
 	drawAutoManualFillSelect.selectedIndex=88
-	drawAutoManualRingSelect.selectedIndex=95
+	drawAutoManualRingSelect.selectedIndex=79
 	 	var clrFill=drawAutoManualFillSelect.options[drawAutoManualFillSelect.selectedIndex].value
 	drawAutoManualFillBg.style.backgroundColor=clrFill
    	 	var clrRing=drawAutoManualRingSelect.options[drawAutoManualRingSelect.selectedIndex].value

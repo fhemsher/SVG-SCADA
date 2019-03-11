@@ -42,18 +42,18 @@ HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this elem
 <tr id=trendGaugeSelectTR >
 <td align=center>
        <table style='width:330px;;border-collapse: collapse;' cellpadding=3 id=trendGaugeTable  border=1>
-        <tr><td colspan=2>Title:<input type=text id=trendGaugeTitleValue style='width:180px;' value="Supply Hot Water" /></td></tr>
-        <tr><td colspan=2 >Units Of Measurement:<input type=text id=trendGaugeUnitValue style='cursor:default;width:50px;' value="&deg;F" /></td></tr>
-        <tr><td>Width:<input type=text style=width:30px id=trendGaugeWidthValue  value="100" /></td>
-        <td>Height:<input type=text style=width:30px id=trendGaugeHeightValue  value="50" /></td></tr>
-        <tr><td>Min<input type=text id=trendGaugeMinValue style='width:50px;' value="60" /></td>
-        <td>Max <input type=text id=trendGaugeMaxValue style='width:50px;' value="220" /></td></tr>
+        <tr><td colspan=2>Title:<input type="text" autocomplete="off"  id=trendGaugeTitleValue style='width:180px;' value="Supply Hot Water" /></td></tr>
+        <tr><td colspan=2 >Units Of Measurement:<input type="text" autocomplete="off"  id=trendGaugeUnitValue style='cursor:default;width:50px;' value="&deg;F" /></td></tr>
+        <tr><td>Width:<input type="text" autocomplete="off"  style=width:30px id=trendGaugeWidthValue  value="100" /></td>
+        <td>Height:<input type="text" autocomplete="off"  style=width:30px id=trendGaugeHeightValue  value="50" /></td></tr>
+        <tr><td>Min<input type="text" autocomplete="off"  id=trendGaugeMinValue style='width:50px;' value="60" /></td>
+        <td>Max <input type="text" autocomplete="off"  id=trendGaugeMaxValue style='width:50px;' value="220" /></td></tr>
         <tr><td>Ring <span id=trendGaugeRingColorBg>Color</span>: <select id=trendGaugeRingColorSelect onChange=parent.trendGaugeRingColorSelected()></select></td>
         <td>Face <span id=trendGaugeFaceColorBg>Color</span>:<select id=trendGaugeFaceColorSelect onChange=parent.trendGaugeFaceColorSelected()></select>
          </td></tr>
-        <tr><td><input type="checkbox" checked id=trendGaugeSetpointCheck />Setpoint Line:</td><td><input id=trendGaugeSetpointValue type=text style=width:80px placeholder="setpoint" value="140" /> </td></tr>
-        <tr><td><input type="checkbox" checked id=trendGaugeMaxErrorCheck />Max Error Band:</td><td><input id=trendGaugeMaxErrorBandValue type=text style=width:80px placeholder="percent span" value=15 />% </td></tr>
-        <tr><td><input type="checkbox"   id=trendGaugeMinErrorCheck />Min Error Band:</td><td><input id=trendGaugeMinErrorBandValue  type=text style=width:80px placeholder="percent span"   />%</td></tr>
+        <tr><td><input type="checkbox" checked id=trendGaugeSetpointCheck />Setpoint Line:</td><td><input id=trendGaugeSetpointValue type="text" autocomplete="off"  style=width:80px placeholder="setpoint" value="140" /> </td></tr>
+        <tr><td><input type="checkbox" checked id=trendGaugeMaxErrorCheck />Max Error Band:</td><td><input id=trendGaugeMaxErrorBandValue type="text" autocomplete="off"  style=width:80px placeholder="percent span" value=15 />% </td></tr>
+        <tr><td><input type="checkbox"   id=trendGaugeMinErrorCheck />Min Error Band:</td><td><input id=trendGaugeMinErrorBandValue  type="text" autocomplete="off"  style=width:80px placeholder="percent span"   />%</td></tr>
 
        </table>
 </td>
@@ -92,6 +92,8 @@ function writeTrendGaugeColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
         trendGaugeFaceColorSelect.appendChild(option)
 
@@ -99,6 +101,8 @@ function writeTrendGaugeColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
        trendGaugeRingColorSelect.appendChild(option)
 
@@ -112,7 +116,7 @@ function writeTrendGaugeColorSelection()
 
 
  	trendGaugeRingColorSelect.selectedIndex=45
-	trendGaugeFaceColorSelect.selectedIndex=23
+	trendGaugeFaceColorSelect.selectedIndex=49
 
 	var clr=trendGaugeRingColorSelect.options[trendGaugeRingColorSelect.selectedIndex].value
    trendGaugeRingColorBg.style.backgroundColor=clr

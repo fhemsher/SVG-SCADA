@@ -115,33 +115,26 @@ function writeControlColorSelection()
 	{
 		var name=DrawColors[k][0]
 		var myColor=DrawColors[k][1]
-		var option=document.createElement("OPTION")
-		option.style.backgroundColor=myColor
-		option.value=myColor
-		option.title=name+" "+myColor
-
-		option.text=k
 
 
 		var option=document.createElement("OPTION")
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 
 		option.text=k
         drawControlStrokeSelect.appendChild(option)
 
-       	var option=document.createElement("OPTION")
-		option.style.backgroundColor=myColor
-		option.value=myColor
-		option.title=name+" "+myColor
-		option.text=k
 
 
 		var option=document.createElement("OPTION")
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 
 		option.text=k
         drawControlFillSelect.appendChild(option)
@@ -153,7 +146,7 @@ function writeControlColorSelection()
 	drawControlStrokeSelect.selectedIndex=116
 	var clr=drawControlStrokeSelect.options[drawControlStrokeSelect.selectedIndex].value
 	drawControlStrokeBg.style.backgroundColor=clr
-	drawControlFillSelect.selectedIndex=22
+	drawControlFillSelect.selectedIndex=216
 	var clr=drawControlFillSelect.options[drawControlFillSelect.selectedIndex].value
 	drawControlFillBg.style.backgroundColor=clr
 

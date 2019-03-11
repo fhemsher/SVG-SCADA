@@ -51,7 +51,7 @@ HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this elem
 <table >
 <tr>
 <td>Title</td>
-<td><input  onkeyup=parent.changeVariableFrequency()  id=titleValue type="text" style=width:200px; value="Variable Frequency Title" /></td>
+<td><input  onkeyup=parent.changeVariableFrequency()  id=titleValue type="text" autocomplete="off"  style=width:200px; value="Variable Frequency Title" /></td>
 </tr>
 
 
@@ -93,6 +93,8 @@ function writeVariableFrequencyColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
         faceColorVariableFrequencySelect.appendChild(option)
 
@@ -101,7 +103,7 @@ function writeVariableFrequencyColorSelection()
 
 	}
 
-    faceColorVariableFrequencySelect.selectedIndex=22  //---gold---
+    faceColorVariableFrequencySelect.selectedIndex=39  //---gold---
     var clr=faceColorVariableFrequencySelect.options[faceColorVariableFrequencySelect.selectedIndex].value
    faceColorBg.style.backgroundColor=clr
 

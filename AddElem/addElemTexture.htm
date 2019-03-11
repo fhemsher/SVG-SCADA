@@ -298,29 +298,21 @@ function writeTextureColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
-		option.text=k
-
-
-		var option=document.createElement("OPTION")
-		option.style.backgroundColor=myColor
-		option.value=myColor
-		option.title=name+" "+myColor
+                        if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 
 		option.text=k
         strokeColorSelect.appendChild(option)
 
 
-		var option=document.createElement("OPTION")
-		option.style.backgroundColor=myColor
-		option.value=myColor
-		option.title=name+" "+myColor
-		option.text=k
 
 
 		var option=document.createElement("OPTION")
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                         if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 
 		option.text=k
        fillColorSelect.appendChild(option)
@@ -328,7 +320,7 @@ function writeTextureColorSelection()
 
 
 	}
-	strokeColorSelect.selectedIndex=7
+	strokeColorSelect.selectedIndex=353
 	var clr=strokeColorSelect.options[strokeColorSelect.selectedIndex].value
 	strokeBg.style.backgroundColor=clr
 }

@@ -47,9 +47,9 @@ HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this elem
 
 </tr>
 
-        <tr><td>Title:<input onkeyup=parent.changeDigitalReadout() type=text id=digitalReadoutTitleValue style='width:140px;' value="Digital Readout Title" /></td></tr>
-        <tr><td>Maximum Value:<input onkeyup=parent.changeDigitalReadout() type=text id=digitalReadoutMaxValue style='cursor:default;width:50px;'  value="100" /></td></tr>
-        <tr><td>Units Of Measurement:<input onkeyup=parent.changeDigitalReadout() type=text id=digitalReadoutUnitValue style='cursor:default;width:70px;' value="degrees F" /></td></tr>
+        <tr><td>Title:<input onkeyup=parent.changeDigitalReadout() type="text" autocomplete="off"  id=digitalReadoutTitleValue style='width:140px;' value="Digital Readout Title" /></td></tr>
+        <tr><td>Maximum Value:<input onkeyup=parent.changeDigitalReadout() type="text" autocomplete="off"  id=digitalReadoutMaxValue style='cursor:default;width:50px;'  value="100" /></td></tr>
+        <tr><td>Units Of Measurement:<input onkeyup=parent.changeDigitalReadout() type="text" autocomplete="off"  id=digitalReadoutUnitValue style='cursor:default;width:70px;' value="degrees F" /></td></tr>
         <tr><td>Face <span id=digitalReadoutFaceColorBg>Color</span>: <select id=digitalReadoutFaceColorSelect onChange=parent.digitalReadoutFaceColorSelected()></select></td></tr>
         <tr><td>Numbers Border <span id=digitalReadoutBorderColorBg>Color</span>: <select id=digitalReadoutBorderColorSelect onChange=parent.digitalReadoutBorderColorSelected()></select></td></tr>
         <tr><td>Numbers <span id=digitalReadoutNumberColorBg>Color</span>: <select id=digitalReadoutNumberColorSelect onChange=parent.digitalReadoutNumberColorSelected()></select></td></tr>
@@ -83,6 +83,8 @@ function writeDigitalReadoutColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
         digitalReadoutFaceColorSelect.appendChild(option)
 
@@ -90,6 +92,8 @@ function writeDigitalReadoutColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
        digitalReadoutBorderColorSelect.appendChild(option)
 
@@ -99,12 +103,16 @@ function writeDigitalReadoutColorSelection()
 		option.value=myColor
 		option.title=name+" "+myColor
 		option.text=k
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
         digitalReadoutNumberColorSelect.appendChild(option)
 
 		var option=document.createElement("OPTION")
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
        digitalReadoutNumberBgColorSelect.appendChild(option)
 	}
@@ -117,11 +125,11 @@ function writeDigitalReadoutColorSelection()
    var clr=digitalReadoutBorderColorSelect.options[digitalReadoutBorderColorSelect.selectedIndex].value
    digitalReadoutBorderColorBg.style.backgroundColor=clr
 
-	digitalReadoutNumberColorSelect.selectedIndex=55  //---lime---
+	digitalReadoutNumberColorSelect.selectedIndex=104  //---lime---
      var clr=digitalReadoutNumberColorSelect.options[digitalReadoutNumberColorSelect.selectedIndex].value
    digitalReadoutNumberColorBg.style.backgroundColor=clr
 
-	digitalReadoutNumberBgColorSelect.selectedIndex=143 //---black---
+	digitalReadoutNumberBgColorSelect.selectedIndex=1 //---black---
 	var clr=digitalReadoutNumberBgColorSelect.options[digitalReadoutNumberBgColorSelect.selectedIndex].value
    digitalReadoutNumberBgColorBg.style.backgroundColor=clr
 

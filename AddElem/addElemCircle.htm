@@ -103,18 +103,13 @@ function writeCircleColorSelection()
 	{
 		var name=DrawColors[k][0]
 		var myColor=DrawColors[k][1]
-		var option=document.createElement("OPTION")
-		option.style.backgroundColor=myColor
-		option.value=myColor
-		option.title=name+" "+myColor
-
-		option.text=k
-
 
 		var option=document.createElement("OPTION")
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                 if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 
 		option.text=k
         drawCircleStrokeSelect.appendChild(option)
@@ -124,21 +119,18 @@ function writeCircleColorSelection()
 		option.value=myColor
 		option.title=name+" "+myColor
 		option.text=k
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 
 
-		var option=document.createElement("OPTION")
-		option.style.backgroundColor=myColor
-		option.value=myColor
-		option.title=name+" "+myColor
-
-		option.text=k
+		
         drawCircleFillSelect.appendChild(option)
 
 
 
 
 	}
-	drawCircleStrokeSelect.selectedIndex=44
+	drawCircleStrokeSelect.selectedIndex=353
 	var clr=drawCircleStrokeSelect.options[drawCircleStrokeSelect.selectedIndex].value
 	drawCircleStrokeBg.style.backgroundColor=clr
 }

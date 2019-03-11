@@ -104,6 +104,8 @@ function writePidColorSelection()
 		option.style.backgroundColor=myColor
 		option.value=myColor
 		option.title=name+" "+myColor
+                if(parent.hexString.indexOf(myColor)!=-1)
+        option.style.color="white"
 		option.text=k
        pidColorSelect.appendChild(option)
 
@@ -111,7 +113,7 @@ function writePidColorSelection()
 
 
 	}
-	pidColorSelect.selectedIndex=117
+	pidColorSelect.selectedIndex=2
 	var clr=pidColorSelect.options[pidColorSelect.selectedIndex].value
 	pidColorBg.style.backgroundColor=clr
 }
