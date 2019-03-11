@@ -60,6 +60,9 @@ onmousedown="return false;"
 <div id=addElemIconFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemIconFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
 	<script charset="UTF-8" type="text/javascript" src="AddElem/Icon/drawIcon.js"></script>
     <script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjIcon.js"></script>
+<div id=addElemImageFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemImageFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
+	<script charset="UTF-8" type="text/javascript" src="AddElem/Image/drawImage.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjImage.js"></script>
 <div id=addElemCircleFrameDiv style='padding:10px;border-radius:10px;position:fixed;visibility:hidden;width:1px;height:1px;overflow:hidden'><iframe id=addElemCircleFrame style='border-width:0px;height:1px;overflow:hidden;'   scrolling='no' frameborder='0'   ></iframe></div>
 	<script charset="UTF-8" type="text/javascript" src="AddElem/Circle/drawCircle.js"></script>
     <script charset="UTF-8" type="text/javascript" src="js03_drag/dragObjCircle.js"></script>
@@ -321,8 +324,8 @@ stroke: DarkViolet;
 
 
 
- Drawing Width:<input type="text" value=800 id=svgWidthValue style='width:40px' />
- Drawing Height:<input type="text" value=560 id=svgHeightValue style='width:40px' />&nbsp;<button id=setSVGSizeButton onClick=setSVGSizeButtonClicked() title="Set SVG drawing size">set</button>
+ Drawing Width:<input type="text" autocomplete="off"  value=800 id=svgWidthValue style='width:40px' />
+ Drawing Height:<input type="text" autocomplete="off"  value=560 id=svgHeightValue style='width:40px' />&nbsp;<button id=setSVGSizeButton onClick=setSVGSizeButtonClicked() title="Set SVG drawing size">set</button>
 
 <TABLE style=width:800px;><TR>
  <TD>
@@ -459,6 +462,8 @@ JavaScript and SVG source are shown for each example.
 &nbsp; &nbsp; &nbsp; &nbsp; <button onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=getIsaLibraryButton  style=background-color:#E0CAEA onClick=getIsaLibrary()>ISA Symbol Library</button><img id=openIsaButton onClick=openIsaHelp() align=center src="Images/help.png"  width=20 height=20  alt="SVG ISA SCADA Control Schematics" />
 &nbsp; &nbsp; &nbsp; &nbsp; <button onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=getComponentLibraryButton  style=background-color:#C3E6D3 onClick=getComponentLibrary()>Component Library</button><img id=openProcessButton onClick=openComponentHelp() align=center src="Images/help.png"  width=20 height=20  alt="SVG SCADA Control Components" />
 &nbsp; &nbsp; &nbsp; &nbsp; <button onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=getProcessLibraryButton  style=background-color:#7df9ff onClick=getProcessLibrary()>Process Equipment Library</button><img id=openProcessButton onClick=openProcessHelp() align=center src="Images/help.png"  width=20 height=20  alt="SVG SCADA Control Process Equipment" />
+            &nbsp; &nbsp; &nbsp;&nbsp;
+            <button title="Import image from your computer as background template" onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddBGImageButton   style=background-color:ghostwhite onClick=openAddBGImage()   >Template Image</button>
 
 
 
@@ -490,14 +495,13 @@ JavaScript and SVG source are shown for each example.
             <button onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddPathButton  style=background-color:linen onClick=openAddPathDraw()>Paths</button>
             <button onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddPolygonButton  style=background-color:linen onClick=openAddPolygonDraw()>Polygons</button>
             <button onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddIconButton  style=background-color:linen onClick=openAddIconDraw()>Icons</button>
+            <button title="Add images from your computer"  onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddImageButton  style=background-color:linen onClick=openAddImageDraw()>Images</button>
                          <button onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddSymbolButton  style=background-color:#538BBA;color:white onClick=openAddSymbolDraw()>Symbols</button>
 
    &nbsp;&nbsp;<button title="Add pattern/texture fill to elements" onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddTextureButton  style=background-color:linen onClick=openAddTexture()><i>Textures</i></button>
             <button title="Add Gradients" onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddGradientButton  style=background-color:linen onClick=openAddGradient()><i>Gradients</i></button>
              &nbsp;&nbsp;
             <button title="Create a component" onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddComponentButton   style=background-color:#C3E6D3 onClick=openAddComponentDraw();startComponentDraw()   ><i>Components</i></button>
-             &nbsp;&nbsp;
-            <button title="Import image from your computer as background template" onmouseover=this.style.borderColor="lime" onmouseout=this.style.borderColor=''  id=openAddBGImageButton   style=background-color:ghostwhite onClick=openAddBGImage()   >Template Image</button>
   </div>
 </center>
 
@@ -543,8 +547,6 @@ Then <b>right-click</b> on the added symbol to drag, copy, color, and resize it.
  Copy this library for your use: <a href="LIBRARY/Isa.svg" target="_blank">Isa.svg</a>
 
 </div>
-
-
 
 
 
@@ -988,7 +990,7 @@ function writeEM()
     em+="gm"
     em+="ail."
     em+="com"
-   emDiv.innerHTML=em +" &nbsp;&nbsp;<span style=color:maroon>Last Update: 01/15/2019</span>"
+   emDiv.innerHTML=em +" &nbsp;&nbsp;<span style=color:maroon>Last Update: 03/11/2019</span>"
 
 }
 function openMobileHelp()
