@@ -6,10 +6,11 @@ function disableAllButtons()
       openAddComponentButton.disabled=true
     openAddCircleButton.disabled=true
     openAddIconButton.disabled=true
+    openAddImageButton.disabled=true
 
     openAddEllipseButton.disabled=true
     openAddRectButton.disabled=true
-    openAddBGimageButton.disabled=true
+    openAddBGImageButton.disabled=true
     openAddTextButton.disabled=true
     openAddPathButton.disabled=true
     openAddSymbolButton.disabled=true
@@ -32,10 +33,11 @@ function enableAllButtons()
        openAddComponentButton.disabled=false
     openAddCircleButton.disabled=false
     openAddIconButton.disabled=false
+    openAddImageButton.disabled=false
 
     openAddEllipseButton.disabled=false
     openAddRectButton.disabled=false
-    openAddBGimageButton.disabled=false
+    openAddBGImageButton.disabled=false
     openAddTextButton.disabled=false
     openAddPathButton.disabled=false
     openAddSymbolButton.disabled=false
@@ -50,11 +52,12 @@ function enableAllButtons()
 
          openAddComponentButton.style.borderColor=""
     openAddCircleButton.style.borderColor=""
-    openAddIconButton.style.borderColor="" 
+    openAddIconButton.style.borderColor=""
+    openAddImageButton.style.borderColor=""
 
     openAddEllipseButton.style.borderColor=""
     openAddRectButton.style.borderColor=""
-    openAddBGimageButton.style.borderColor=""
+    openAddBGImageButton.style.borderColor=""
 
 
 
@@ -117,7 +120,6 @@ function openEditProcess()
 
 }
 
-
 function openAddIconDraw()
 {
     if(addElemIconLoad==true)
@@ -127,6 +129,18 @@ function openAddIconDraw()
         mySVG.setAttribute("onclick", "plantIcon(event)")
 
         openAddIconButton.style.borderStyle = "inset"
+
+}
+
+function openAddImageDraw()
+{
+    if(addElemImageLoad==true)
+        startImageDraw()
+
+        openIframe("AddElem", "addElemImage", 0)
+        mySVG.setAttribute("onclick", "plantImage(event)")
+
+        openAddImageButton.style.borderStyle = "inset"
 
 }
 
@@ -143,21 +157,21 @@ function openAddTexture()
 }
 
 
-function openAddBGimage()
+function openAddBGImage()
 {
-   if(addElemBGimageLoad==true)
-       startBGimageDraw()
-    if(document.getElementById(DrawBGimageEditId))
-    {   var cw = addElemBGimageCw
+   if(addElemBGImageLoad==true)
+       startBGImageDraw()
+    if(document.getElementById(DrawBGImageEditId))
+    {   var cw = addElemBGImageCw
         cw.editTemplateCheckDiv.style.visibility="visible"
 
 
     }
 
-        openIframe("AddElem", "addElemBGimage", 0)
+        openIframe("AddElem", "addElemBGImage", 0)
        // mySVG.setAttribute("onclick", "plantSymbolSymbol(event)")
 
-        openAddBGimageButton.style.borderStyle = "inset"
+        openAddBGImageButton.style.borderStyle = "inset"
 }
 
 function openAddGradient()
@@ -404,7 +418,6 @@ var AddElemOpen = false //--true if any addElem Frame is viz=true
 function isAddElemOpen() //---called from iframeSelection.js---
 {
     AddElemOpen = false
-
     if(editElemProcessViz==true)AddElemOpen = true;
     if(editElemComponentViz==true)AddElemOpen = true;
     if(editElemIsaViz==true)AddElemOpen = true;
@@ -412,6 +425,7 @@ function isAddElemOpen() //---called from iframeSelection.js---
     if(addElemTextViz==true)AddElemOpen = true;
     if(addElemCircleViz==true)AddElemOpen = true;
     if(addElemIconViz==true)AddElemOpen = true;
+    if(addElemImageViz==true)AddElemOpen = true;
     if(addElemControlViz==true)AddElemOpen = true;
     if(addElemPIDViz==true)AddElemOpen = true;
     if(addElemGaugeViz==true)AddElemOpen = true;
@@ -505,10 +519,11 @@ function closeIframe(name)
     openAddComponentButton.style.borderStyle = ""
     openAddCircleButton.style.borderStyle = ""
     openAddIconButton.style.borderStyle = ""
+    openAddImageButton.style.borderStyle = ""
 
     openAddEllipseButton.style.borderStyle = ""
     openAddRectButton.style.borderStyle = ""
-    openAddBGimageButton.style.borderStyle = ""
+    openAddBGImageButton.style.borderStyle = ""
     openAddTextButton.style.borderStyle = ""
     openAddPathButton.style.borderStyle = ""
     openAddSymbolButton.style.borderStyle = ""
@@ -538,7 +553,6 @@ function closeAllFrames()
     hmiIntroDiv.style.visibility="hidden"
 
     closeHelp()
-
     closeComponentHelp()
     closeProcessHelp()
         closeHMIHelp()
@@ -555,11 +569,12 @@ function closeAllFrames()
          openAddCircleButton.style.borderStyle = ""
          openAddComponentButton.style.borderStyle = ""
          openAddIconButton.style.borderStyle = ""
+         openAddImageButton.style.borderStyle = ""
 
 
    openAddEllipseButton.style.borderStyle = ""
     openAddRectButton.style.borderStyle = ""
-    openAddBGimageButton.style.borderStyle = ""
+    openAddBGImageButton.style.borderStyle = ""
     openAddTextButton.style.borderStyle = ""
     openAddPathButton.style.borderStyle = ""
     openAddSymbolButton.style.borderStyle = ""
@@ -579,7 +594,7 @@ function closeAllFrames()
         if(viz==true)
         {
             if(name=="editElemComponent")closeEditComponent()
-            else if(name=="editElemProcess")closeEditProcess()
+             else if(name=="editElemProcess")closeEditProcess()
             else if(name=="editElemIsa")closeEditIsa()
             else if(name=="addElemText")closeDrawText()
             else if(name=="addElemCircle")closeDrawCircle()
@@ -619,7 +634,6 @@ function closeAllFrames()
     }
 
 }
-
 var editElemProcessLoad = false
 var addElemControlLoad = false
 var addElemComponentLoad = false
@@ -637,6 +651,7 @@ var addElemProcessVariableChartLoad = false
 var addElemSubstationDigitalLoad = false
 var addElemCircleLoad = false
 var addElemIconLoad = false
+var addElemImageLoad = false
 var addElemSymbolLoad = false
 var addElemPolygonLoad = false
 var addElemTextureLoad = false
@@ -648,17 +663,17 @@ var addElemCircuitBreakerLoad = false
 var addElemSymbolEditLoad = false
 var addElemEllipseLoad = false
 var addElemRectLoad = false
-var addElemBGimageLoad = false
+var addElemBGImageLoad = false
 var addElemTextLoad = false
 var addElemPathLoad = false
 var addElemPathEditLoad = false
-
 var editElemProcessViz = false
 var addElemCircleViz = false
 var addElemComponentViz = false
 var editElemComponentViz = false
 var editElemIsaViz = false
 var addElemIconViz = false
+var addElemImageViz = false
 var addElemControlViz = false
 var addElemPIDViz = false
 var addElemGaugeViz = false
@@ -681,17 +696,17 @@ var addElemCircuitBreakerViz = false
 var addElemSymbolEditViz = false
 var addElemEllipseViz = false
 var addElemRectViz = false
-var addElemBGimageViz = false
+var addElemBGImageViz = false
 var addElemTextViz = false
 var addElemPathViz = false
 var addElemPathEditViz = false
-
 var editElemProcessCw
 var addElemCircleCw
 var addElemComponentCw
 var editElemComponentCw
 var editElemIsaCw
 var addElemIconCw
+var addElemImageCw
 var addElemControlCw
 var addElemPIDCw
 var addElemGaugeCw
@@ -714,7 +729,7 @@ var addElemButtonCw
 var addElemSymbolEditCw
 var addElemEllipseCw
 var addElemRectCw
-var addElemBGimageCw
+var addElemBGImageCw
 var addElemTextCw
 var addElemPathCw
 var addElemPathEditCw
@@ -755,7 +770,7 @@ iframeNameArray[26] = 'addElemTankLevel'
 iframeNameArray[27] = 'addElemSubstationDigital'
 iframeNameArray[28] = 'addElemVariableFrequency'
 iframeNameArray[29] = 'addElemProcessVariableChart'
-iframeNameArray[30] = 'addElemBGimage'
+iframeNameArray[30] = 'addElemBGImage'
 iframeNameArray[31] = 'addElemAutoManual'
-
+iframeNameArray[32] = 'addElemImage'
 

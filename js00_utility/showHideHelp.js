@@ -48,6 +48,10 @@ function openComponentHelp()
     isaTableCloseButton.style.visibility="hidden"
 
 }
+
+
+
+
 function closeComponentHelp()
 {
     var height=1
