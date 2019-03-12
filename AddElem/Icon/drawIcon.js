@@ -2,6 +2,20 @@ function closeDrawIcon()
 {
     if(addElemIconViz==true)
     {
+
+        if(ActiveElem&&EditIcon==false)
+        {       if(document.getElementById(ActiveIconId)&&document.getElementById(ActiveIconId).parentNode==domActiveElemG )
+            domActiveElemG.removeChild(document.getElementById(ActiveIconId))
+
+        }
+        if(EditIcon)
+        {
+
+         var elemObjEdit = document.getElementById(DrawIconEditId)
+        elemObjEdit.style.visibility = "visible"
+        domActiveElemG.removeChild(document.getElementById("activeElem"))
+
+        }
         DrawX.style("display", "none")
         DrawX.attr("stroke", "violet")
         closeIframe("addElemIcon");
@@ -493,7 +507,7 @@ function finishEditIcon()
             domElemG.insertBefore(finishedElem, EditThisIcon)
             domElemG.removeChild(EditThisIcon)
 
-
+        EditIcon=false
 
 
 
