@@ -269,7 +269,10 @@ function publishSVG()
 
     if(svgString.indexOf("url(#warningMaxTankLevel)")!=-1)
         publishSVG.appendChild(alarmWarningTankLevelDefs.cloneNode(true))
-
+    //---remove dragArrow---
+    if(publishSVG.lastChild.getAttribute("id")=="imgDragArrow")
+        publishSVG.removeChild(publishSVG.lastChild)
+        
     var svgString = new XMLSerializer().serializeToString(publishSVG)
     publishSVGValue.value=svgString
 
