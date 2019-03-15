@@ -104,6 +104,14 @@ function showSaveSVG()
 
 }
 
+function closeSvgSave()
+{
+    svgSaveDiv.style.height = "0px"
+     svgSaveDiv.innerHTML =""
+
+
+}
+
 function svgCopy()
 {
 	svgSaveDiv.style.display="block"
