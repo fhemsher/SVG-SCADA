@@ -329,7 +329,7 @@ stroke: DarkViolet;
 
 <TABLE style=width:800px;><TR>
  <TD>
-  <button title="Show current drawing's SVG source" onClick=removeSCADA();svgCopy()>SVG Source</button>
+  <button title="Show current drawing's raw SVG source" onClick=removeSCADA();svgCopy()>SVG Source</button>
   <button title="Copy SVG for other applications" onClick=removeSCADA();publishSVG()>Publish</button>
   <button id=clearButton title="Clear current SVG drawing"  onClick=removeSCADA();clearButtonClicked() >Clear/Start Over</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </TD>
 <TD>
@@ -374,7 +374,7 @@ stroke: DarkViolet;
 </TR>
 </TABLE>
 <center>
-<div id=svgSaveDiv class="copySource" style=display:none;height:1px;overflow:auto;width:1200px;text-align:left; /></div>
+<div  title="Click to close" onclick=closeSvgSave() id=svgSaveDiv class="copySource" style=display:none;height:1px;overflow:auto;width:1200px;text-align:left; /></div>
   <div id=svgSourceDiv style=display:none;overflow:auto;width:1200px;text-align:left; /></div>
 
   <div id=hmiSourceContainer style='background:#ABCDEF;border:1px solid black;border-radius:10px; padding:10px;position:fixed;top:300px;left:0px;display:none;width:360px;height:360px;text-align:left;' >
