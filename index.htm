@@ -374,8 +374,17 @@ stroke: DarkViolet;
 </TR>
 </TABLE>
 <center>
-<div  title="Click to close" onclick=closeSvgSave() id=svgSaveDiv class="copySource" style=display:none;height:1px;overflow:auto;width:1200px;text-align:left; /></div>
-  <div id=svgSourceDiv style=display:none;overflow:auto;width:1200px;text-align:left; /></div>
+<DIV id=sourceContainerDiv style=visibility:hidden>
+<table style=width:25%><tr>
+    <td style=width:95% align=center><b>SVG Raw Source</b></td>
+    <td align=right><button title="Close raw SVG Source"  onclick=closeSvgSave()>X</button></td>
+</tr></table>
+
+
+<div  id=svgSaveDiv title="Click to close raw SVG Source"  onclick=closeSvgSave() class="copySource" style=display:none;height:1px;overflow:auto;width:1200px;text-align:left; /></div>
+</DIV>
+
+<div id=svgSourceDiv style=display:none;overflow:auto;width:1200px;text-align:left; /></div>
 
   <div id=hmiSourceContainer style='background:#ABCDEF;border:1px solid black;border-radius:10px; padding:10px;position:fixed;top:300px;left:0px;display:none;width:360px;height:360px;text-align:left;' >
          <table style=width:100%><tr><td align=center style=width:90%>HMI Element SVG Source</td><td align=right><button onClick=closeHMISource()>X</button></td></tr></table>
