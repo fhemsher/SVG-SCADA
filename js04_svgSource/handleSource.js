@@ -88,6 +88,8 @@ function clearButtonClicked()
 	ProcessDoc=null
 	//showSourceSVG()
 	showSaveSVG()
+
+
 	enableAllButtons()
 }
 
@@ -272,7 +274,7 @@ function publishSVG()
     //---remove dragArrow---
     if(publishSVG.lastChild.getAttribute("id")=="imgDragArrow")
         publishSVG.removeChild(publishSVG.lastChild)
-        
+
     var svgString = new XMLSerializer().serializeToString(publishSVG)
     publishSVGValue.value=svgString
 
@@ -417,6 +419,7 @@ function insertExistingSVG()
                               {
                                 var id=el.id
                                 var myClass=el.getAttribute("class")
+                                if(myClass=="imageElem")el.setAttribute("onmousedown","editImageDraw("+id+",evt)")
                                 if(myClass=="iconElem")el.setAttribute("onmousedown","editIconStart("+id+",evt)")
                                 if(myClass=="pathElem")el.setAttribute("onmousedown","startPathDrawEdit("+id+",evt)")
                                 if(myClass=="circleElem")el.setAttribute("onmousedown","editCircleDraw("+id+",evt)")
