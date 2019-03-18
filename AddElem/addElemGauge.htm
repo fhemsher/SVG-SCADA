@@ -75,7 +75,7 @@ HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this elem
     <button style='background-color:red;visibility:hidden' id=drawGaugeDeleteButton  onClick=parent.removeCurrentDrawGauge()>delete</button>
 	<button id=drawGaugeTopButton style=background:white;font-size:120%;font-weight:bold;color:maroon;visibility:hidden  title='Move to top' onClick=parent.topDrawGauge()>&#x21E7;</button>
 	<button id=drawGaugeBotButton style=background:white;font-size:120%;font-weight:bold;color:maroon   title='Move to bottom' onClick=parent.botDrawGauge()>&#x21E9;</button>
-    <button title='Preview change(s)' style='background-color:orange;visibility:hidden' id=editGaugePreviewButton onClick=parent.editGaugePreviewDrawGauge()>preview</button>
+    <button title='Preview change(s)' disabled id=previewGaugeButton onClick=parent.previewDrawGauge()>preview</button>
 
     <button id=drawGaugeFinishButton disabled onClick=parent.finishDrawGauge()>finish</button>
 </td>

@@ -66,9 +66,9 @@ HMI Symbol SVG Source:<input type=checkbox  title="Show SVG source for this elem
 <td>
 	<button id=drawTrendGaugeCancelButton disabled title='cancel/remove this circle' onClick=parent.cancelDrawTrendGauge()>cancel</button>
     <button style='background-color:red;visibility:hidden' id=drawTrendGaugeDeleteButton  onClick=parent.removeCurrentDrawTrendGauge()>delete</button>
-    <button title='Preview change(s)' style='background-color:orange;visibility:hidden' id=editTrendGaugePreviewButton onClick=parent.editTrendGaugePreviewDraw()>preview</button>
 	<button id=drawTrendGaugeTopButton style=background:white;font-size:120%;font-weight:bold;color:maroon;visibility:hidden  title='Move to top' onClick=parent.topDrawTrendGauge()>&#x21E7;</button>
 	<button id=drawTrendGaugeBotButton style=background:white;font-size:120%;font-weight:bold;color:maroon   title='Move to bottom' onClick=parent.botDrawTrendGauge()>&#x21E9;</button>
+     <button title='Preview change(s)' disabled id=previewTrendGaugeButton disabled onClick=parent.previewDrawTrendGauge()>preview</button>
 
     <button id=drawTrendGaugeFinishButton disabled onClick=parent.finishDrawTrendGauge()>finish</button>
 </td>
