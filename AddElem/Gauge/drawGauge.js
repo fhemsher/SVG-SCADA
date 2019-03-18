@@ -55,10 +55,11 @@ function closeDrawGauge()
         cw.drawGaugeDeleteButton.style.visibility = "hidden"
         cw.drawGaugeTopButton.style.visibility = "hidden"
            cw.drawGaugeBotButton.disabled=true
+           cw.previewGaugeButton.disabled=true
         cw.drawGaugeEditSpan.innerText = "Draw Round Gauges"
         cw.containerDiv.style.backgroundColor = "#ABCDEF"
 
-       cw.editGaugePreviewButton.style.visibility = "hidden"
+
 
     }
 }
@@ -194,6 +195,7 @@ function plantGauge()
         cw.drawGaugeCancelButton.disabled = false
         cw.drawGaugeFinishButton.disabled = false
                    cw.drawGaugeBotButton.disabled=false
+                   cw.previewGaugeButton.disabled=false
 
 }
 
@@ -254,7 +256,7 @@ function finishDrawGauge()
            cw.drawGaugeFinishButton.disabled = true
            cw.drawGaugeCancelButton.disabled = true
                        cw.drawGaugeBotButton.disabled=true
-
+                cw.previewGaugeButton.disabled=true
            if(cw.sourceHMICheck.checked==true)
             {
 
@@ -283,7 +285,8 @@ function cancelDrawGauge()
             cw.drawGaugeFinishButton.disabled = true
             cw.drawGaugeCancelButton.disabled = true
             cw.drawGaugeBotButton.disabled=true
-            coverOff()
+            cw.previewGaugeButton.disabled=true
+         coverOff()
 
         }
 
@@ -378,15 +381,16 @@ function setEditGauge()
     cw.drawGaugeDeleteButton.style.visibility = "visible"
         cw.drawGaugeTopButton.style.visibility = "visible"
         cw.drawGaugeBotButton.style.visibility = "visible"
+
   cw.drawGaugeEditSpan.innerHTML = "Edit Gauge"
     cw.containerDiv.style.backgroundColor = "orange"
-   cw.editGaugePreviewButton.style.visibility = "visible"
+//   cw.editGaugePreviewButton.style.visibility = "visible"
     //domActiveElemG.setAttribute("transform", activeElem.getAttribute("transform"))
     //activeElem.removeAttribute("transform")
     cw.drawGaugeCancelButton.disabled = false
     cw.drawGaugeFinishButton.disabled = false
                 cw.drawGaugeBotButton.disabled=false
-
+                  cw.previewGaugeButton.disabled=false
 
             var matrix = activeElem.transform.baseVal.consolidate().matrix;
 
@@ -465,7 +469,7 @@ function setGaugeEditDrag()
     ActiveElem.style("cursor", "move")
 
 }
-function editGaugePreviewDrawGauge()
+function previewDrawGauge()
 {
 
     var cw = addElemGaugeCw
@@ -473,7 +477,9 @@ function editGaugePreviewDrawGauge()
     var transX=matrix.e
     var transY=matrix.f
     domActiveElemG.removeChild(activeElem)
-
+        plantGauge()
+     activeElem.setAttribute("transform", "translate("+(transX)+" "+(transY)+")")
+    /*
     activeElem=document.createElementNS(NS,"g")
     activeElem.setAttribute("id", "activeElem")
     domActiveElemG.appendChild(activeElem)
@@ -529,7 +535,7 @@ function editGaugePreviewDrawGauge()
         activeElem.setAttribute("class", "dragTargetObj")
         activeElem.setAttribute("pointer-events", null)
 
-
+    */
 
 }
 function finishEditGauge()
