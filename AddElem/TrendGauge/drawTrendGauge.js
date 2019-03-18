@@ -60,7 +60,7 @@ function closeDrawTrendGauge()
         cw.drawTrendGaugeEditSpan.innerText = "Draw TrendGauges"
         cw.containerDiv.style.backgroundColor = "#ABCDEF"
 
-       cw.editTrendGaugePreviewButton.style.visibility = "hidden"
+       cw.previewTrendGaugeButton.disabled = true
 
     }
 }
@@ -164,7 +164,7 @@ buildTrendGauge(title,unit,10,min,max,minErrorBand,maxErrorBand,width,height,rin
 
 
 
-
+          cw.previewTrendGaugeButton.disabled = false
         cw.drawTrendGaugeCancelButton.disabled = false
         cw.drawTrendGaugeFinishButton.disabled = false
             cw.drawTrendGaugeBotButton.disabled=false
@@ -345,7 +345,7 @@ function setEditTrendGauge()
         cw.drawTrendGaugeBotButton.style.visibility = "visible"
   cw.drawTrendGaugeEditSpan.innerHTML = "Edit Trend Gauge"
     cw.containerDiv.style.backgroundColor = "orange"
-   cw.editTrendGaugePreviewButton.style.visibility = "visible"
+    cw.previewTrendGaugeButton.disabled = false
     //domActiveElemG.setAttribute("transform", activeElem.getAttribute("transform"))
     //activeElem.removeAttribute("transform")
     cw.drawTrendGaugeCancelButton.disabled = false
@@ -461,7 +461,7 @@ function setTrendGaugeEditDrag()
     ActiveElem.style("cursor", "move")
 
 }
-function editTrendGaugePreviewDraw()
+function previewDrawTrendGauge()
 {
 
     var cw = addElemTrendGaugeCw
@@ -469,7 +469,9 @@ function editTrendGaugePreviewDraw()
     var transX=matrix.e
     var transY=matrix.f
     domActiveElemG.removeChild(activeElem)
-
+            plantTrendGauge()
+     activeElem.setAttribute("transform", "translate("+(transX)+" "+(transY)+")")
+/*
     activeElem=document.createElementNS(NS,"g")
     activeElem.setAttribute("id", "activeElem")
     domActiveElemG.appendChild(activeElem)
@@ -515,7 +517,7 @@ function editTrendGaugePreviewDraw()
         activeElem.setAttribute("class", "dragTargetObj")
         activeElem.setAttribute("pointer-events", null)
 
-
+   */
 
 }
 function finishEditTrendGauge()
