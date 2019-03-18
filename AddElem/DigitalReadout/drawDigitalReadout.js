@@ -200,14 +200,14 @@ function changeDigitalReadout()
 
     var titleDiv=containerFO.childNodes.item(0)
     var input=containerFO.childNodes.item(1)
-
+    
     var unitsDiv=containerFO.childNodes.item(2)
 
     containerFO.style.background=faceColor
     titleDiv.innerHTML=title
     unitsDiv.innerHTML=units
 
-    input.value=max
+    input.innerHTML=max
 
     input.style.color=numColor
     input.style.borderColor=numBorderColor
