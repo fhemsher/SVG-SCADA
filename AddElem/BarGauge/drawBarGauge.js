@@ -591,14 +591,14 @@ function botDrawBarGauge()
 
 }
 
-function faceColorSelected()
+function faceBarColorSelected()
 {
     var cw = addElemBarGaugeCw
     var faceColor=cw.faceColorSelect.options[cw.faceColorSelect.selectedIndex].value
     cw.faceColorBg.style.background=faceColor
     changeBarGauge()
 }
-function barColorSelected()
+function barBarColorSelected()
 {
 
      var cw = addElemBarGaugeCw
