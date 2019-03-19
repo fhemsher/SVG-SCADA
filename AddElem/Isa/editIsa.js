@@ -516,7 +516,7 @@ function cancelDrawEditIsa()
      activeElem = null
     ActiveElem = null
     EditIsaObj = null
-     DrawIsaEditId=null
+    // DrawIsaEditId=null
 
 setEditIsa()
 
@@ -669,8 +669,10 @@ var IsaDeleted = false
 //---button---
 function removeCurrentDrawIsa()
 {
+            if(EditIsaObj&&EditIsaObj.parentNode==domActiveElemG)
+        domActiveElemG.removeChild(EditIsaObj)
 
-       domActiveElemG.removeChild(EditIsaObj)
+      
     var elemObjEdit = document.getElementById(DrawIsaEditId)
     domElemG.removeChild(elemObjEdit)
     IsaDeleted = true
