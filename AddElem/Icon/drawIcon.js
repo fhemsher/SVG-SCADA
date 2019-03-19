@@ -8,7 +8,7 @@ function closeDrawIcon()
             domActiveElemG.removeChild(document.getElementById(ActiveIconId))
 
         }
-        if(EditIcon)
+        if(EditIcon&&IconDeleted==false)
         {
 
          var elemObjEdit = document.getElementById(DrawIconEditId)
@@ -153,6 +153,8 @@ var IconDeleted = false
 function trackDrawIcon()
 {
     var cw = addElemIconCw
+
+    console.log(cw.PlantUnicode)
     if(cw.PlantUnicode)
     {
         if(ActiveElem==null&&EditIcon==false && IconDeleted==false)
