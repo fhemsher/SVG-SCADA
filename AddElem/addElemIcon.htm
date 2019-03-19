@@ -59,7 +59,7 @@ Type:<select onchange=unicodeTypeSelected() id="unicodeTypeSelect">
         Then click the desired icon button.
         Choose its size &amp; color.
         Then click on drawing to plant it.
-       
+
 
          </i>
 
@@ -160,6 +160,9 @@ function plantThisIcon(event)
 
 
     }
+
+    parent.EditIcon=false
+    parent.IconDeleted=false
     parent.Unicode=PlantUnicode
 }
 
