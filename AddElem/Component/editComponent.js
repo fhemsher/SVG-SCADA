@@ -282,7 +282,7 @@ function cancelDrawEditComponent()
      activeElem = null
     ActiveElem = null
     EditComponentObj = null
-     DrawComponentEditId=null
+    // DrawComponentEditId=null
 
 setEditComponent()
 
@@ -435,8 +435,8 @@ var ComponentDeleted = false
 //---button---
 function removeCurrentDrawComponent()
 {
-
-       domActiveElemG.removeChild(EditComponentObj)
+       if(EditComponentObj&&EditComponentObj.parentNode==domActiveElemG)
+        domActiveElemG.removeChild(EditComponentObj)
     var elemObjEdit = document.getElementById(DrawComponentEditId)
     domElemG.removeChild(elemObjEdit)
     ComponentDeleted = true
