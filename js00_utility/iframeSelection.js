@@ -138,7 +138,7 @@ function openAddImageDraw()
         startImageDraw()
 
         openIframe("AddElem", "addElemImage", 0)
-        mySVG.setAttribute("onclick", "plantImage(event)")
+        mySVG.setAttribute("onclick", "placeDrawImage()")
 
         openAddImageButton.style.borderStyle = "inset"
 
