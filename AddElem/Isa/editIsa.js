@@ -298,6 +298,7 @@ EditThisIsa = null
             setEditIsa()
 
     }
+    /*
     if(isRightMB&&ZoomDrawing==true ) //---zoom drag
     {
         mySVG.setAttribute("onmousedown", "startDragZoom(evt)")
@@ -316,7 +317,7 @@ EditThisIsa = null
 
         ZoomDraggedElems.push([dragTarget,"editIsaDraw("+dragTarget.id+",evt)",classed])
     }
-
+   */
 }
 
 var EditIsaObj
@@ -672,7 +673,7 @@ function removeCurrentDrawIsa()
             if(EditIsaObj&&EditIsaObj.parentNode==domActiveElemG)
         domActiveElemG.removeChild(EditIsaObj)
 
-      
+
     var elemObjEdit = document.getElementById(DrawIsaEditId)
     domElemG.removeChild(elemObjEdit)
     IsaDeleted = true
