@@ -156,7 +156,7 @@ function getProcessLibrary()
    helpDiv.style.height="1px"
         processTableDiv.style.top = "60px"
         processTableDiv.style.visibility = "visible"
-        console.log(rowCnt)
+
         setProcessEditDrag()
          getProcessLibraryButton.style.borderStyle = "inset"
          disableAllButtons()
@@ -397,6 +397,7 @@ function editProcess(elemObjEdit, evt)
             setEditProcess()
 
     }
+    /*
     if(isRightMB&&ZoomDrawing==true ) //---zoom drag
     {
         mySVG.setAttribute("onmousedown", "startDragZoom(evt)")
@@ -416,7 +417,7 @@ function editProcess(elemObjEdit, evt)
 
         ZoomDraggedElems.push([dragTarget,"editProcess("+dragTarget.id+",evt)",classed])
     }
-
+   */
 }
 
 
