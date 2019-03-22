@@ -91,17 +91,9 @@ function closeDrawPath()
     var cw = addElemPathCw
     mySVG.removeAttribute('onclick')
 
-    if(cw.dragAddPathCheck.checked)
-    {
-        var myPath=document.getElementById(AddPathId)
-        myPath.setAttribute("class","pathElem")
-        myPath.setAttribute("onmousedown", "startPathDrawEdit("+AddPathId+",evt)")
-         myPath.style.cursor = "default"
 
-    }
 
-    cw.dragAddPathCheck.checked=false
-    cw.dragAddPathCheck.disabled=true
+   
 
 
     DrawPath = false
@@ -633,7 +625,7 @@ function finishDrawPath()
     resetPath()
     startPathDraw()
     AddPathId=finishedElem.getAttribute("id")
-    cw.dragAddPathCheck.disabled=false
+
 
 
 }

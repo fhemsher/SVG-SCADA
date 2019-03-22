@@ -4,7 +4,7 @@ function trackDrawPath()
      var cw = addElemPathCw
 
     if
-    (ActiveElem==null&&DrawPathStart==true&&cw.dragAddPathCheck.checked==false)
+    (ActiveElem==null&&DrawPathStart==true)
     {
         DrawX.style("display", "inline")
         DrawX.attr("transform", "translate("+SVGx+" "+SVGy+")")
@@ -195,8 +195,7 @@ function placeDrawPath()
         cw.drawPathCancelButton.disabled = false
 
         DrawPath = true
-        cw.dragAddPathCheck.checked=false
-    cw.dragAddPathCheck.disabled=true
+    
 }
 
 var DragCircleG;
