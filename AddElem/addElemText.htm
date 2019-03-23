@@ -113,8 +113,7 @@ box-shadow: 4px 4px 5px #888;
 
 <tr  align=center>
 	<td>
-        Shadow:<input type="checkbox" id=shadowDrawTextCheck onClick=backgroundDrawTextCheck.checked=false;parent.shadowDrawTextChecked();focusText() />
-        Background:<input title="White backkground for text" type="checkbox" id=backgroundDrawTextCheck onClick=shadowDrawTextCheck.checked=false;parent.backgroundDrawTextChecked();focusText() />
+        Shadow:<input type="checkbox" id=shadowDrawTextCheck onClick=parent.shadowDrawTextChecked();focusText() />
         <br>
 		<button id=deleteDrawTextButton  title='remove this text' onClick=parent.removeCurrentDrawText() style='visibility:hidden;background-color:red'>delete</button>
 	<button id=drawTextTopButton style=background:white;font-size:120%;font-weight:bold;color:maroon;visibility:hidden  title='Move to top' onClick=parent.topDrawText()>&#x21E7;</button>
