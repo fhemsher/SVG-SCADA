@@ -10,28 +10,7 @@ function shadowDrawTextChecked()
                 activeElem.removeAttribute('filter')
     }
 }
-function backgroundDrawTextChecked()
-{
 
-    var cw = addElemTextCw
-    if(ActiveElem)
-    {
-        if(cw.backgroundDrawTextCheck.checked)
-        {
-            ActiveElem.attr('filter', "url(#textBg)")
-            ActiveElem.attr("font-weight", "bold")
-            ActiveElem.attr("stroke", "white")
-            ActiveElem.attr("stroke-width", "1")
-
-        }
-        else
-        {
-            activeElem.removeAttribute('filter')
-            ActiveElem.attr("stroke", "none")
-            ActiveElem.attr("font-weight", null)
-        }
-    }
-}
 
 //---during drag of element add class 'noselect' to text elements---
 //---start Drag---
@@ -319,14 +298,7 @@ function placeDrawText()
             activeElem = document.getElementById("activeElem")
             if(cw.shadowDrawTextCheck.checked)
             ActiveElem.attr('filter', 'url(#drop-shadow)')
-            else if(cw.backgroundDrawTextCheck.checked)
-            {
-                ActiveElem.attr('filter', 'url(#textBg)')
-                ActiveElem.attr("font-weight", "bold")
-                ActiveElem.attr("stroke", "white")
-                ActiveElem.attr("stroke-width", "1")
 
-            }
 
             TextElem = ActiveElem.append("svg:text")
             .attr("id", "activeText")
@@ -557,15 +529,7 @@ function finishDrawText()
                 finishedElem.attr("transform", ActiveElem.attr("transform"))
                 if(cw.shadowDrawTextCheck.checked)
                     finishedElem.attr('filter', 'url(#drop-shadow)')
-                    else if(cw.backgroundDrawTextCheck.checked)
-                    {
-                        finishedElem.attr('filter', 'url(#textBg)')
 
-                        finishedElem.attr("font-weight", "bold")
-                        finishedElem.attr("stroke", "white")
-
-                        finishedElem.attr("stroke-width", "1")
-                    }
                     finishedElem.attr("onmousedown", "editTextDraw("+id+",evt)")
 
                     finishedElem.style("cursor", "default")
@@ -709,10 +673,7 @@ function setEditText()
         cw.shadowDrawTextCheck.checked = true
         else
             cw.shadowDrawTextCheck.checked = false
-            if(filter=="url(#textBg)")
-            cw.backgroundDrawTextCheck.checked = true
-            else
-                cw.backgroundDrawTextCheck.checked = false
+
 
                 var strokeWidth = fontSize*.02
                 //----reset selections---
