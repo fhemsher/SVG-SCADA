@@ -375,6 +375,647 @@ Measured</text><rect width="154" height="248" stroke="none" fill="white" fill-op
 
 
 
+<g nativeWidth="46"  nativeHeight="9"  category="Other" title="Switch" description="SPST, OPEN" id="component540" myScale="1"   transform="matrix(1 0 0 1 0 0)" >
+        <rect x="59" y="19" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="-1" y="19" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <ellipse cx="47" cy="20" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <ellipse cx="12" cy="20" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 50.5 20 L 59 20" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 1 20 L 9.5 20" fill="none" stroke="#000000" stroke-width="2"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 14.15 18.97 L 34.43 11.04" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 31.8 8.87 L 43.15 7.84 L 33.89 14.49 Z" fill="#000000"
+              stroke="#000000" stroke-linejoin="round" stroke-linecap="square"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <rect x="-13" y="0" width="13" height="13" fill-opacity="0"
+              fill="#dae2f2" stroke="none" pointer-events="none"/>
+<rect x="0" y="5" id="cover" width="50" height="25" fill="white" fill-opacity="0" stroke="none"/></g>
+
+<g nativeWidth="46"  nativeHeight="9"  category="Other" title="Switch" description="NORMALLY OPEN" id="component541" myScale="1"   transform="matrix(1 0 0 1 0 0)" >
+        <rect x="59" y="29" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="-1" y="29" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <ellipse cx="47" cy="30" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <rect x="10.65" y="22.13" width="38.92" height="0.94" fill="none"
+              stroke="#000000" stroke-width="1.08" pointer-events="none"/>
+        <ellipse cx="12" cy="30" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 50.5 30 L 59 30" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 1 30 L 9.5 30" fill="none" stroke="#000000" stroke-width="2"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 30.12 5.72 C 30.12 21.6 30.12 21.6 30.12 21.6" fill="none"
+              stroke="#000000" stroke-width="2" stroke-linecap="square"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <rect x="-13" y="0" width="13" height="13" fill-opacity="0"
+              fill="#dae2f2" stroke="none" pointer-events="none"/>
+<rect x="0" y="5" id="cover" width="50" height="25" fill="white" fill-opacity="0" stroke="none"/></g>
+
+
+
+<g nativeWidth="46"  nativeHeight="9"  category="Other" title="Switch" description="SPST, CLOSED" id="component550" myScale="1"   transform="matrix(1 0 0 1 0 0)" >
+        <rect x="59" y="9" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="-1" y="9" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <ellipse cx="47" cy="10" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 15.5 10 L 33.5 10" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="12" cy="10" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 50.5 10 L 59 10" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 1 10 L 9.5 10" fill="none" stroke="#000000" stroke-width="2"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 32.86 7 L 43.86 10 L 32.86 13 Z" fill="#000000"
+              stroke="#000000" stroke-linejoin="round" stroke-linecap="square"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <rect x="-13" y="0" width="13" height="13" fill-opacity="0"
+              fill="#dae2f2" stroke="none" pointer-events="none"/>
+<rect x="0" y="0" id="cover" width="50" height="25" fill="white" fill-opacity="0" stroke="none"/></g>
+
+<g nativeWidth="46"  nativeHeight="9"  category="Other" title="Switch" description="NORMALLY CLOSED" id="component551" myScale="1"   transform="matrix(1 0 0 1 0 0)" >
+        <rect x="59" y="19" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="-1" y="19" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <ellipse cx="47" cy="20" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <rect x="10.65" y="23.53" width="38.92" height="0.94" fill="none"
+              stroke="#000000" stroke-width="1.08" pointer-events="none"/>
+        <ellipse cx="12" cy="20" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 50.5 20 L 59 20" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 1 20 L 9.5 20" fill="none" stroke="#000000" stroke-width="2"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 30.12 7.13 C 30.12 23 30.12 23 30.12 23" fill="none"
+              stroke="#000000" stroke-width="2" stroke-linecap="square"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <rect x="-13" y="0" width="13" height="13" fill-opacity="0"
+              fill="#dae2f2" stroke="none" pointer-events="none"/>
+<rect x="0" y="5" id="cover" width="50" height="20" fill="white" fill-opacity="0" stroke="none"/></g>
+
+
+
+<g nativeWidth="46"  nativeHeight="9"  category="Other" title="Switch" description="SPDT" id="component554" myScale="1"   transform="matrix(1 0 0 1 0 0)" >
+        <rect x="-1" y="19" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="9" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="29" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <path d="M 14 19.64 L 35.19 13.08" fill="none" stroke="#000000"
+              stroke-width="2" stroke-miterlimit="10" pointer-events="none"/>
+        <ellipse cx="13" cy="20" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 1 20 L 9.51 20" fill="none" stroke="#000000" stroke-width="2"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="46" cy="10" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 48.5 10 L 59.01 10" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="46" cy="30" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 48.5 30 L 59.01 30" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 32.6 10.72 L 43.99 10.28 L 34.41 16.45 Z" fill="#000000"
+              stroke="#000000" stroke-linejoin="round" stroke-linecap="square"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <rect x="-13" y="0" width="13" height="13" fill-opacity="0"
+              fill="#dae2f2" stroke="none" pointer-events="none"/>
+<rect x="0" y="5" id="cover" width="50" height="25" fill="white" fill-opacity="0" stroke="none"/></g>
+
+
+
+<g nativeWidth="46"  nativeHeight="9"  category="Other" title="Switch" description="DPST, CLOSED" id="component557" myScale="1"   transform="matrix(1 0 0 1 0 0)" >
+        <rect x="59" y="9" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="-1" y="9" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="29" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="-1" y="29" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <ellipse cx="47" cy="10" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 15.5 10 L 33.5 10" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="12" cy="10" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 50.5 10 L 59 10" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 1 10 L 9.5 10" fill="none" stroke="#000000" stroke-width="2"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="47" cy="30" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 15.5 30 L 33.5 30" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="12" cy="30" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 50.5 30 L 59 30" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 1 30 L 9.5 30" fill="none" stroke="#000000" stroke-width="2"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 13 L 29 15" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 17 L 29 19" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 21 L 29 23" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 25 L 29 27" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 32.78 7 L 43.78 10 L 32.78 13 Z" fill="#000000"
+              stroke="#000000" stroke-linejoin="round" stroke-linecap="square"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 32.78 27 L 43.78 30 L 32.78 33 Z" fill="#000000"
+              stroke="#000000" stroke-linejoin="round" stroke-linecap="square"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <rect x="-13" y="0" width="13" height="13" fill-opacity="0"
+              fill="#dae2f2" stroke="none" pointer-events="none"/>
+<rect x="0" y="5" id="cover" width="50" height="25" fill="white" fill-opacity="0" stroke="none"/></g>
+
+<g nativeWidth="46"  nativeHeight="9"  category="Other" title="Switch" description="SPDT, CENTER OFF" id="component558" myScale="1"   transform="matrix(1 0 0 1 0 0)" >
+        <rect x="-1" y="19" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="9" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="29" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <ellipse cx="48" cy="20" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <ellipse cx="13" cy="20" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 1 20 L 9.51 20" fill="none" stroke="#000000" stroke-width="2"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="46" cy="10" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 48.5 10 L 59.01 10" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="46" cy="30" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 48.5 30 L 59.01 30" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 14.28 19.32 L 35.47 12.76" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 31.76 10.66 L 43.16 10.21 L 33.57 16.38 Z" fill="#000000"
+              stroke="#000000" stroke-linejoin="round" stroke-linecap="square"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <rect x="-13" y="0" width="13" height="13" fill-opacity="0"
+              fill="#dae2f2" stroke="none" pointer-events="none"/>
+<rect x="0" y="5" id="cover" width="50" height="25" fill="white" fill-opacity="0" stroke="none"/></g>
+
+
+
+
+<g nativeWidth="46"  nativeHeight="9"  category="Other" title="Switch" description="DPST, CLOSED" id="component561" myScale="1"   transform="matrix(1 0 0 1 0 0)" >
+        <rect x="59" y="9" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="-1" y="9" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="29" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="-1" y="29" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <ellipse cx="47" cy="10" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 15.5 10 L 33.5 10" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="12" cy="10" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 50.5 10 L 59 10" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 1 10 L 9.5 10" fill="none" stroke="#000000" stroke-width="2"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="47" cy="30" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 15.5 30 L 33.5 30" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="12" cy="30" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 50.5 30 L 59 30" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 1 30 L 9.5 30" fill="none" stroke="#000000" stroke-width="2"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 13 L 29 15" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 17 L 29 19" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 21 L 29 23" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 25 L 29 27" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 32.78 7 L 43.78 10 L 32.78 13 Z" fill="#000000"
+              stroke="#000000" stroke-linejoin="round" stroke-linecap="square"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 32.78 27 L 43.78 30 L 32.78 33 Z" fill="#000000"
+              stroke="#000000" stroke-linejoin="round" stroke-linecap="square"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <rect x="-13" y="0" width="13" height="13" fill-opacity="0"
+              fill="#dae2f2" stroke="none" pointer-events="none"/>
+<rect x="0" y="5" id="cover" width="50" height="35" fill="white" fill-opacity="0" stroke="none"/></g>
+
+
+
+
+<g nativeWidth="46"  nativeHeight="19"  category="Other" title="Switch" description="DPST, OPEN" id="component564" myScale="1"   transform="matrix(1 0 0 1 0 0)" >
+        <rect x="59" y="19" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="-1" y="19" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="39" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="-1" y="39" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <ellipse cx="47" cy="20" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <ellipse cx="12" cy="20" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 50.5 20 L 59 20" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 1 20 L 9.5 20" fill="none" stroke="#000000" stroke-width="2"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="47" cy="40" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <ellipse cx="12" cy="40" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 50.5 40 L 59 40" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 1 40 L 9.5 40" fill="none" stroke="#000000" stroke-width="2"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 16.5 L 29 18.5" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 20.5 L 29 22.5" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 24.5 L 29 26.5" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 28.5 L 29 30.5" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 14.38 18.86 L 35.11 10.81" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 14.42 39.23 L 36.39 30.3" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 30.93 9.21 L 42.29 8.18 L 33.03 14.83 Z" fill="#000000"
+              stroke="#000000" stroke-linejoin="round" stroke-linecap="square"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 30.93 29.21 L 42.29 28.18 L 33.03 34.83 Z" fill="#000000"
+              stroke="#000000" stroke-linejoin="round" stroke-linecap="square"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <rect x="-13" y="0" width="13" height="13" fill-opacity="0"
+              fill="#dae2f2" stroke="none" pointer-events="none"/>
+<rect x="0" y="5" id="cover" width="50" height="50" fill="white" fill-opacity="0" stroke="none"/></g>
+
+
+
+<g nativeWidth="46"  nativeHeight="49"  category="Other" title="Switch" description="DPDT" id="component567" myScale=".53"   transform="matrix(.53 0 0 .53 0 0)" >
+        <rect x="-1" y="59" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="49" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="69" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="-1" y="19" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="9" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="29" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <ellipse cx="13" cy="60" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 1 60 L 9.51 60" fill="none" stroke="#000000" stroke-width="2"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="46" cy="50" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 48.5 50 L 59.01 50" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="46" cy="70" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 48.5 70 L 59.01 70" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="13" cy="20" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 1 20 L 9.51 20" fill="none" stroke="#000000" stroke-width="2"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="46" cy="10" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 48.5 10 L 59.01 10" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="46" cy="30" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 48.5 30 L 59.01 30" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 17.13 L 29 19.13" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 21.13 L 29 23.13" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 25.13 L 29 27.13" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 29.13 L 29 31.13" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 33.13 L 29 35.13" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 37.13 L 29 39.13" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 41.13 L 29 43.13" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 45.13 L 29 47.13" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 49.13 L 29 51.13" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 14.62 59.58 L 34.56 53.14" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 14.49 19.45 L 34.87 13.08" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 32.24 10.82 L 43.63 10.37 L 34.04 16.54 Z" fill="#000000"
+              stroke="#000000" stroke-linejoin="round" stroke-linecap="square"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 32.24 50.69 L 43.63 50.24 L 34.04 56.41 Z" fill="#000000"
+              stroke="#000000" stroke-linejoin="round" stroke-linecap="square"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <rect x="-13" y="0" width="13" height="13" fill-opacity="0"
+              fill="#dae2f2" stroke="none" pointer-events="none"/>
+<rect x="0" y="5" id="cover" width="50" height="70" fill="white" fill-opacity="0" stroke="none"/></g>
+
+
+
+<g nativeWidth="46"  nativeHeight="49"  category="Other" title="Switch" description="DPDT, CENTER OFF" id="component570" myScale=".53"   transform="matrix(.53 0 0 .53 0 0)" >
+        <rect x="-1" y="19" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="9" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="29" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="-1" y="59" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="49" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="69" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <ellipse cx="48" cy="20" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <ellipse cx="13" cy="20" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 1 20 L 9.51 20" fill="none" stroke="#000000" stroke-width="2"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="46" cy="10" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 48.5 10 L 59.01 10" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="46" cy="30" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 48.5 30 L 59.01 30" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="48" cy="60" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <ellipse cx="13" cy="60" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 1 60 L 9.51 60" fill="none" stroke="#000000" stroke-width="2"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="46" cy="50" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 48.5 50 L 59.01 50" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="46" cy="70" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 48.5 70 L 59.01 70" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 17 L 29 19" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 21 L 29 23" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 25 L 29 27" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 29 L 29 31" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 33 L 29 35" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 37 L 29 39" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 41 L 29 43" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 45 L 29 47" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 29 49 L 29 51" fill="none" stroke="#000000"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 14.32 19.38 L 34.69 12.94" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 14.29 59.53 L 34.91 52.84" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 31.67 10.74 L 43.06 10.29 L 33.47 16.46 Z" fill="#000000"
+              stroke="#000000" stroke-linejoin="round" stroke-linecap="square"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 31.67 50.71 L 43.06 50.26 L 33.47 56.43 Z" fill="#000000"
+              stroke="#000000" stroke-linejoin="round" stroke-linecap="square"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <rect x="-13" y="0" width="13" height="13" fill-opacity="0"
+              fill="#dae2f2" stroke="none" pointer-events="none"/>
+<rect x="0" y="5" id="cover" width="50" height="70" fill="white" fill-opacity="0" stroke="none"/></g>
+
+
+<g nativeWidth="46"  nativeHeight="9"  category="Other" title="Switch" description="ROTARY, 3-POSITION" id="component573" myScale="1"   transform="matrix(1 0 0 1 0 0)" >
+        <rect x="-1" y="19" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="9" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="29" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="19" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <ellipse cx="48" cy="20" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <ellipse cx="13" cy="20" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 1 20 L 9.51 20" fill="none" stroke="#000000" stroke-width="2"
+              stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="46" cy="10" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 48.5 10 L 59.01 10" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="46" cy="30" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 48.5 30 L 59.01 30" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 50.5 20 L 59 20" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 14.36 18.99 L 34.49 12.99" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 32.41 10.47 L 43.8 10.02 L 34.21 16.19 Z" fill="#000000"
+              stroke="#000000" stroke-linejoin="round" stroke-linecap="square"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <rect x="-13" y="0" width="13" height="13" fill-opacity="0"
+              fill="#dae2f2" stroke="none" pointer-events="none"/>
+<rect x="0" y="5" id="cover" width="50" height="25" fill="white" fill-opacity="0" stroke="none"/></g>
+
+
+
+<g nativeWidth="46"  nativeHeight="29"  category="Other" title="Switch" description="ROTARY, 5-POSITION" id="component576" myScale="1"   transform="matrix(1 0 0 1 0 0)" >
+        <rect x="-1" y="29" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="19" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="29" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="9" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="19" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="39" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="9" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <rect x="59" y="49" width="2" height="2" fill="#000000" stroke="none"
+              pointer-events="none"/>
+        <ellipse cx="48" cy="30" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <ellipse cx="13" cy="30" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 1 30.01 L 9.51 30.02" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="46" cy="20" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <rect x="48.1" y="19.7" width="11.3" height="0.69" fill="none"
+              stroke="#000000" stroke-width="1.2" pointer-events="none"/>
+        <ellipse cx="46" cy="40" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 49.69 30.02 L 59 30.02" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="41" cy="11" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <ellipse cx="41" cy="49" rx="2" ry="2" fill="none" stroke="#000000"
+                 stroke-width="2" pointer-events="none"/>
+        <path d="M 48.5 9.98 L 59 9.98" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 47.95 9.97 L 42.86 10.51" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 48.5 20.02 L 59 20.02" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 48.5 40.02 L 59 40.02" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 48.5 10.02 L 59 10.02" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 47.95 9.97 L 42.86 10.51" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 48.5 50.02 L 59 50.02" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 47.95 50.02 L 42.86 49.48" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 14.41 29.58 L 35.47 22.77" fill="none" stroke="#000000"
+              stroke-width="2" stroke-linecap="round" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 32.22 20.61 L 43.61 20.16 L 34.03 26.33 Z" fill="#000000"
+              stroke="#000000" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <rect x="-13" y="0" width="13" height="13" fill-opacity="0"
+              fill="#dae2f2" stroke="none" pointer-events="none"/>
+<rect x="0" y="5" id="cover" width="50" height="40" fill="white" fill-opacity="0" stroke="none"/></g>
+
+
+
 
 
     </svg>
