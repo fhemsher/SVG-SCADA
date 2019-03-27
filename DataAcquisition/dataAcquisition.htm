@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>SCADA Data Acquisition</title>
+</head>
+
+<body style=font-family:arial on>
+<center><h1>SCADA Data Acquisition</h1>
+<div style='width:95%;text-align:justify;border-radius:12px;padding:10px;border:solid black 1px;background-color:gainsboro'>
+All SCADA data changes are saved at the Web Server and applied in creating trending charts, graphs, and data tables for each SCADA process.
+This is an example using a method to accomplish this by saving data to a Windows
+Server in XML format via Javascript in .ASP (Classic ASP) files. (There are other options available to the vendor that can be applied to sending data to the server.)
+Each SCADA process includes its database that includes a data file for each device.
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" id="publishSVG" width="800" height="430" viewBox="0 0 800 430" style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><style xmlns="http://www.w3.org/1999/xhtml"></style><defs xmlns="http://www.w3.org/1999/xhtml"></defs>
+
+<g id="publishG"><g id="publishElemG" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><rect fill="white" fill-opacity="0" stroke="#FF0000" stroke-width="2" x="0" y="0" width="195" height="144" stroke-dasharray="8 4" rx="10" ry="10" transform="matrix(1 0 0 1 524 77)" rotateAngle="0"/><rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="226" height="184" rx="10" ry="10" transform="matrix(1 0 0 1 510 62)" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="4" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 42 31 L 762 31" rightAngle="true" rotateAngle="0"/><text font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0.4" fill="#FF0000" transform="matrix(1 0 0 1 318 20)" rotateAngle="0" filter="null">
+
+
+Data Stream Network</text><rect fill="white" fill-opacity="0" stroke="#9400D3" stroke-width="5" x="0" y="0" width="97" height="140" transform="translate(352 228)" rotateAngle="0"/><text font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0.4" fill="#9400D3" transform="matrix(1 0 0 1 373 279)" rotateAngle="0" filter="null">
+
+
+Web</text><text font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0" fill="#9400D3" transform="matrix(1 0 0 1 367 312)" rotateAngle="0">
+
+
+
+
+Server</text><rect fill="white" fill-opacity="0" stroke="#9400D3" stroke-width="2" x="0" y="0" width="171" height="104" stroke-dasharray="8 3" transform="matrix(1 0 0 1 537 90)" rotateAngle="0" rx="10" ry="10"/><text font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0" fill="#9400D3" transform="matrix(1 0 0 1 582 213)" rotateAngle="0">
+
+
+
+
+Browser</text><path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="3" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 85 31 L 85 49" rightAngle="true" rotateAngle="0"/><rect fill="#00BFFF" fill-opacity="1.0" stroke="#000000" stroke-width="2" x="0" y="0" width="142" height="80" rx="10" ry="10" transform="matrix(1 0 0 1 553 102)" rotateAngle="0"/><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.4" fill="#000000" transform="matrix(1 0 0 1 584 123)" rotateAngle="0" filter="null">
+
+
+
+
+SCADA</text><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.4" fill="#000000" transform="matrix(1 0 0 1 582 140)" rotateAngle="0" filter="null">
+
+
+
+
+Drawing</text><rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="80" height="81" transform="matrix(1 0 0 1 48 148)" rotateAngle="0"/><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.4" fill="#000000" transform="matrix(1 0 0 1 58 174)" rotateAngle="0" filter="null">
+
+
+
+
+Smart</text><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.4" fill="#000000" transform="matrix(1 0 0 1 52 196)" rotateAngle="0" filter="null">
+
+
+
+
+Control</text><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 57 219)" rotateAngle="0">
+
+
+
+
+Device</text><rect fill="white" fill-opacity="0" stroke="#000000" stroke-width="2" x="0" y="0" width="92" height="97" transform="matrix(1 0 0 1 41 282)" rotateAngle="0"/><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 58 306)" rotateAngle="0">
+
+
+
+
+Field</text><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 54 329)" rotateAngle="0">
+
+
+
+
+Device</text><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 43 355)" rotateAngle="0">
+
+
+
+
+(Actuator)</text><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="2" stroke-opacity="1.0" d="M 86 230 L 86 282" rightAngle="true" marker-end="url(#arrow000000)" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 71 89 L 71 146" rightAngle="true" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#000000" stroke-width="1.5" stroke-opacity="1.0" marker-end="url(#arrow000000)" d="M 101 148 L 101 92" rightAngle="true" rotateAngle="0"/><text font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0.4" fill="#000000" transform="matrix(1 0 0 1 117 248)" rotateAngle="0" filter="null">Hot Water System</text><text font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0.4" fill="#000000" transform="matrix(1 0 0 1 529 324)" rotateAngle="0" filter="null">
+
+
+
+
+Interactive SCADA</text><text font-family="Arial" font-size="20" font-weight="normal" font-style="normal" stroke="none" stroke-width="0.4" fill="#000000" transform="matrix(1 0 0 1 555 275)" rotateAngle="0" filter="null">
+
+
+
+Client Computer</text><path fill="none" fill-opacity="1.0" stroke="#FF0000" stroke-width="4" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 403 31 L 403 131 L 521 131" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#9400D3" stroke-width="4" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 400 224 L 400 168 L 535 168" rightAngle="true" rotateAngle="0"/><path fill="none" fill-opacity="1.0" stroke="#9400D3" stroke-width="4" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 27 389 L 767 389" rightAngle="true"/><path fill="none" fill-opacity="1.0" stroke="#9400D3" stroke-width="4" stroke-opacity="1.0" stroke-dasharray="8 4" d="M 401 369 L 401 387" rightAngle="true"/><text font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0" fill="#9400D3" transform="matrix(1 0 0 1 317 417)" rotateAngle="0" filter="null">
+
+
+Internet/Intranet</text><text font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0" fill="#FF0000" transform="matrix(1 0 0 1 552 240)" rotateAngle="0">
+
+JavaScript SDK</text><text font-family="Arial" font-size="17" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 557 163)" rotateAngle="0">Hot Water System</text><text font-family="Arial" font-size="17" font-weight="normal" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 381 163)" rotateAngle="0">Data Acquisition</text><text font-family="Arial" font-size="20" font-weight="bold" font-style="italic" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 131 270)" rotateAngle="0">Field Devices</text><g xmlns="http://www.w3.org/2000/svg" transform="matrix(0.55 0 0 0.55 -134 -65.025)" parentid="component1551029200392"><path fill="#FF0000" fill-opacity="1.0" stroke="#000000" stroke-width="2" d="M 349 281 L 451 281 L 399 190 z" type="linear"/><text font-family="Times New Roman" font-size="30" font-weight="bold" font-style="normal" stroke="none" stroke-width="0" fill="#000000" transform="matrix(1 0 0 1 377 259)">IoT</text><rect width="102" height="91" fill="white" fill-opacity="0" transform="translate(349,190)" style="cursor: default;" vector-effects="non-scaling-stroke" stroke-width="6" stroke-opacity=".5"/></g></g></g><defs id="arrowDefs"><marker id="arrow9400D3" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#9400D3" stroke-linejoin="bevel">
+
+
+
+
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+
+
+
+
+</marker><marker id="arrow000000" viewBox="0 0 8000 8000" vector-effect="non-scaling-stroke" refX="250" refY="150" markerUnits="strokeWidth" markerWidth="300" markerHeight="300" orient="auto" fill="#000000" stroke-linejoin="bevel">
+
+
+
+
+<path d="M2 59,293 148,1 243,121 151,Z" stroke="RGB(0,0,0)"/>
+
+
+
+
+</marker></defs></svg>
+<p></p>
+
+<iframe id=frameHWS  src='hws.htm' width=1200 height=660 style="border:3px solid gainsboro"  ></iframe>
+
+
+
+</body>
+
+
+</html>
