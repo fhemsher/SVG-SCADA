@@ -1811,7 +1811,7 @@ function getHWS()
                 var utcms=+data[k].getAttribute("utcms")
                 var date=new Date(utcms).toLocaleString()
                 var value=data[k].getAttribute("data")
-                var row = oatTable.insertRow(rowCnt)
+                var row = hwsTable.insertRow(rowCnt)
                 row.insertCell(0).innerHTML=date
                 row.insertCell(1).innerHTML=value
 
