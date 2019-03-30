@@ -36,57 +36,31 @@
 Whenever each value is changed, the data value is sent to the server, updating the database
 for this SCADA process.
 <table>
-<tr><td>Outside Air</td><td><input disabled  onmousedown="OutsideAir=true" onmouseup="outsideAirRangeValue.value=this.value;sendOAT(this.value);OutsideAir=false"   id=outsideAirRangeValue style=width:100px type="range" value=70  min="70" step=.5 max="90"> <input style=width:40px id=outsideAirValue type="text" value=70.0 />&deg;</td></tr>
-<tr><td>HWS</td><td><input disabled  onmousedown="HWSTemp=true" onmouseup="HWSRangeValue.value=this.value;sendHWS(this.value);HWSTemp=false"  id=HWSRangeValue style=width:100px type="range" value=130  min="130" step=.5 max="170"> <input style=width:40px id=HWSValue type="text" value=130.0 />&deg;</td></tr>
-<tr><td>Flow</td><td><input disabled  onmousedown="FlowGpm=true" onmouseup="flowGpmRangeValue.value=this.value;sendFLOW(this.value);FlowGpm=false"  id=flowGpmRangeValue style=width:100px type="range" value=200  min="200" step=.5 max="240"> <input style=width:40px id=flowGpmValue type="text" value=200.0 />GPM</td></tr>
-<tr><td>Valve</td><td><input disabled  onmousedown="ValvePos=true" onmouseup="valveRangeValue.value=this.value;sendVALVE(this.value);ValvePos=false"  id=valveRangeValue style=width:100px type="range" value=35  min="35" step=.5 max="50"> <input style=width:40px id=valveValue type="text" value=35.0 />%</td></tr>
+<tr><td>Outside Air</td><td><input disabled  onmousedown="OutsideAir=true" onmouseup="outsideAirRangeValue.value=this.value;sendOAT(this.value);OutsideAir=false"   id=outsideAirRangeValue style=width:100px type="range" value=70  min="70" step=.1 max="90"> <input style=width:40px id=outsideAirValue type="text" value=70.0 />&deg;</td></tr>
+<tr><td>HWS</td><td><input disabled  onmousedown="HWSTemp=true" onmouseup="HWSRangeValue.value=this.value;sendHWS(this.value);HWSTemp=false"  id=HWSRangeValue style=width:100px type="range" value=130  min="130" step=.1 max="170"> <input style=width:40px id=HWSValue type="text" value=130.0 />&deg;</td></tr>
+<tr><td>Flow</td><td><input disabled  onmousedown="FlowGpm=true" onmouseup="flowGpmRangeValue.value=this.value;sendFLOW(this.value);FlowGpm=false"  id=flowGpmRangeValue style=width:100px type="range" value=200  min="200" step=.1 max="240"> <input style=width:40px id=flowGpmValue type="text" value=200.0 />GPM</td></tr>
+<tr><td>Valve</td><td><input disabled  onmousedown="ValvePos=true" onmouseup="valveRangeValue.value=this.value;sendVALVE(this.value);ValvePos=false"  id=valveRangeValue style=width:100px type="range" value=35  min="35" step=.1 max="50"> <input style=width:40px id=valveValue type="text" value=35.0 />%</td></tr>
 
 
 </table>
  <p>
      NOTE: Data sent in this example is appended to the existing database of previous data sent by other users of this example.
 <center><button  id=datableButton onclick=showDataTable()>Hot Water System Data Table</button><center>
-
  </p>
 
 </div>
 
 </td>
 <td>
-<div id=dataTableDiv style='visibility:hidden;padding:6px;border:2px solid black;position:absolute;top:135px;left:40px;width:330px;height:1px;background:white;overflow:hidden'>
+<div id=dataTableDiv style='visibility:hidden;padding:6px;border:2px solid black;position:absolute;top:135px;left:40px;width:500px;height:1px;background:white;overflow:hidden'>
 <table style=width:100%><tr>
     <td style=width:90% align=center><b>Hot Water System Data Table</b></td>
     <td align=right><button onclick=closeDataTable()>X</button></td>
 
 </tr></table>
-<center>Outside Air Temperature</center>
-    <table id=oatTable border=1 style=width:100%;border-collapse:collapse>
-        <tr>
-        <td>Time (Locale)</td>
-        <td>Degrees F</td>
-        </tr>
+    <table id=dataTable border=1 style=width:100%;border-collapse:collapse>
     </table>
-<center>Hot Water Temperature</center>
-    <table id=hwsTable border=1 style=width:100%;border-collapse:collapse>
-        <tr>
-        <td>Time (Locale)</td>
-        <td>Degrees F</td>
-        </tr>
-    </table>
-<center>Hot Water Flow</center>
-    <table id=flowTable border=1 style=width:100%;border-collapse:collapse>
-        <tr>
-        <td>Time (Locale)</td>
-        <td>GPM</td>
-        </tr>
-    </table>
-<center>Steam Valve Position</center>
-    <table id=valveTable border=1 style=width:100%;border-collapse:collapse>
-        <tr>
-        <td>Time (Locale)</td>
-        <td>Percent</td>
-        </tr>
-    </table>
+
 
 </div>
 
@@ -165,8 +139,8 @@ IC</text>
             <stop stop-color="#f09995" offset="0.15"/>
 
 
-            <stop stop-color="#f6ccca" offset="0.25"/>
 
+            <stop stop-color="#f6ccca" offset="0.25"/>
 
             <stop stop-color="#d17c78" offset="0.44"/>
 
@@ -1508,7 +1482,6 @@ FT</text>
 
 </td>
 </tr></table>
-
     <br><button title="Show Javascript Source" onclick=showSource()>Javascript Source</button> <button title="Close javascript source" disabled id=closeSourceButton onClick=closeSource()>X</button>
 
  <div id=sourceDiv style=overflow:auto;width:100%;height:1px;visibility:hidden;overflow:hidden>
@@ -1517,6 +1490,9 @@ FT</text>
 </div>
 </center>
     </div>
+
+
+
 <script id=myScript>
 
 //---status: Message received---
@@ -1533,7 +1509,7 @@ function startStopPump()  //---ON or OFF--
         changeGaugeOAT(70)
         changeGaugeGPM(200)
         changeDigitalReadout(35)
-
+    /*
         HWSTemp=true
         OutsideAir=true
         FlowGpm=true
@@ -1542,7 +1518,7 @@ function startStopPump()  //---ON or OFF--
         sendOAT(70)
         sendFLOW(200)
         sendVALVE(35)
-
+     */
         if(!ScadaArrows) //---start run and initialize arrows--
         {
             runArrows()
@@ -1590,12 +1566,13 @@ function changeDigitalReadout(value)
 
 //-------Data Acquisition-----
 var OutsideAir=false
-function sendOAT(data)
+function sendOAT(data) //---slider---
 {
     if(OutsideAir==true)
     {
         var utcms=new Date().getTime()
-        sendXML="<oat  utcms='"+utcms+"' data='"+data+"' />"
+        sendXML="<scada oat='"+data+"' />"
+
         outsideAirValue.value=data
         changeGaugeOAT(data)
         console.log(sendXML)
@@ -1610,26 +1587,21 @@ function sendOAT(data)
             }
 
             OutsideAir=false
-            if(DocOAT)
-            {
-                var row = oatTable.insertRow()
-                row.insertCell(0).innerHTML=new Date(utcms).toLocaleString()
-                row.insertCell(1).innerHTML=data
-            }
+
         };
 
         xhr.send(sendXML)
     }
 }
 var HWSTemp=false
-function sendHWS(data)
+function sendHWS(data)   //---slider---
 {
     if(HWSTemp==true)
     {
         HWSValue.value=data
         changeGaugeHWS(data)
         var utcms=new Date().getTime()
-        sendXML="<hws  utcms='"+utcms+"' data='"+data+"' />"
+        sendXML="<scada hws='"+data+"' />"
            var xhr = new XMLHttpRequest();
         xhr.open("POST", "sendHWS.asp", true);
         xhr.onload = function()
@@ -1640,12 +1612,6 @@ function sendHWS(data)
              }
 
              HWSTemp=false
-            if(DocHWS)
-            {
-                var row = hwsTable.insertRow()
-                row.insertCell(0).innerHTML=new Date(utcms).toLocaleString()
-                row.insertCell(1).innerHTML=data
-            }
 
         };
 
@@ -1654,14 +1620,14 @@ function sendHWS(data)
 }
 
 var FlowGpm=false
-function sendFLOW(data)
+function sendFLOW(data)   //---slider---
 {
     if(FlowGpm==true)
     {
         flowGpmValue.value=data
         changeGaugeGPM(data)
         var utcms=new Date().getTime()
-        sendXML="<flow  utcms='"+utcms+"' data='"+data+"' />"
+        sendXML="<scada flow='"+data+"' />"
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "sendFLOW.asp", true);
         xhr.onload = function()
@@ -1673,30 +1639,22 @@ function sendFLOW(data)
              }
 
            FlowGpm=false
-            if(DocFLOW)
-            {
-                var row = flowTable.insertRow()
-                row.insertCell(0).innerHTML=new Date(utcms).toLocaleString()
-                row.insertCell(1).innerHTML=data
-            }
+
 
         };
 
         xhr.send(sendXML);
     }
-
-
-
 }
  var ValvePos=false
-function sendVALVE(data)
+function sendVALVE(data)   //---slider---
 {
      if(ValvePos==true)
     {
         valveValue.value=data
         changeDigitalReadout(data)
         var utcms=new Date().getTime()
-        sendXML="<valve  utcms='"+utcms+"' data='"+data+"' />"
+        sendXML="<scada valve='"+data+"' />"
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "sendVALVE.asp", true);
         xhr.onload = function()
@@ -1708,12 +1666,6 @@ function sendVALVE(data)
              }
 
                ValvePos=false
-            if(DocVALVE)
-            {
-                var row = valveTable.insertRow()
-                row.insertCell(0).innerHTML=new Date(utcms).toLocaleString()
-                row.insertCell(1).innerHTML=data
-            }
 
         };
 
@@ -1724,198 +1676,56 @@ function sendVALVE(data)
 
 
 //----------------DATA TABLE---------------------
-var DocOAT
-var DocHWS
-var DocFLOW
-var DocVALVE
-
-
+var DocDATA
 function showDataTable()
 {
-    if(!DocOAT)
-    {
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "DATA/HotWaterSystem/oat.xml", true);
+        xhr.open("GET", "DATA/HotWaterSystem.xml", true);
         xhr.onload = function()
         {
+
             var xmlString = this.responseText
 
             //---DOMParser---
             var parser = new DOMParser();
-            DocOAT = parser.parseFromString(xmlString, "text/xml").documentElement;
+            DocDATA = parser.parseFromString(xmlString, "text/xml").documentElement;
             //---clear previous table----
-            var rows = oatTable.rows
+            var rows = dataTable.rows
             for(var k = rows.length-1; k>=0; k--)
-                oatTable.deleteRow(rows[k])
-
-               var rowCnt=1
-
-                var row = oatTable.insertRow(0)
-                row.align = "center"
-                var dateCell = row.insertCell(0).innerHTML = "Date (Locale)"
-                var valueCell = row.insertCell(1).innerHTML = "Degrees F"
+                dataTable.deleteRow(rows[k])
+               var row = dataTable.insertRow()
+               row.insertCell(0).innerHTML="Date (Locale)"
+                row.insertCell(1).innerHTML="OAT &deg;"
+                row.insertCell(2).innerHTML="HWS &deg;"
+                row.insertCell(3).innerHTML="FLOW gpm"
+                row.insertCell(4).innerHTML="VALVE %"
 
                 //----write table---
-                var data = DocOAT.childNodes
+                var data = DocDATA.childNodes
 
             for(var k = 0; k<data.length; k++)
             {
                 var utcms=+data[k].getAttribute("utcms")
                 var date=new Date(utcms).toLocaleString()
-                var value=data[k].getAttribute("data")
-                var row = oatTable.insertRow(rowCnt)
+
+                var oat=data[k].getAttribute("oat")
+                var hws=data[k].getAttribute("hws")
+                var flow=data[k].getAttribute("flow")
+                var valve=data[k].getAttribute("valve")
+                var row = dataTable.insertRow()
                 row.insertCell(0).innerHTML=date
-                row.insertCell(1).innerHTML=value
-
-
-                rowCnt++
+                row.insertCell(1).innerHTML=oat
+                row.insertCell(2).innerHTML=hws
+                row.insertCell(3).innerHTML=flow
+                row.insertCell(4).innerHTML=valve
             }
 
-            getHWS()
+             openDataTable()
         }
         xhr.send()
-    }
-    else
-        openDataTable()
+
 }
-function getHWS()
-{
-    if(!DocHWS)
-    {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "DATA/HotWaterSystem/hws.xml", true);
-        xhr.onload = function()
-        {
-            var xmlString = this.responseText
 
-            //---DOMParser---
-            var parser = new DOMParser();
-            DocHWS = parser.parseFromString(xmlString, "text/xml").documentElement;
-            //---clear previous table----
-            var rows = hwsTable.rows
-            for(var k = rows.length-1; k>=0; k--)
-                hwsTable.deleteRow(rows[k])
-
-               var rowCnt=1
-
-                var row = hwsTable.insertRow(0)
-                row.align = "center"
-                var dateCell = row.insertCell(0).innerHTML = "Date (Locale)"
-                var valueCell = row.insertCell(1).innerHTML = "Degrees F"
-
-                //----write table---
-                var data = DocHWS.childNodes
-
-            for(var k = 0; k<data.length; k++)
-            {
-                var utcms=+data[k].getAttribute("utcms")
-                var date=new Date(utcms).toLocaleString()
-                var value=data[k].getAttribute("data")
-                var row = hwsTable.insertRow(rowCnt)
-                row.insertCell(0).innerHTML=date
-                row.insertCell(1).innerHTML=value
-
-
-                rowCnt++
-            }
-
-            getFLOW()
-        }
-        xhr.send()
-    }
-}
-function getFLOW()
-{
-    if(!DocFLOW)
-    {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "DATA/HotWaterSystem/flow.xml", true);
-        xhr.onload = function()
-        {
-            var xmlString = this.responseText
-
-            //---DOMParser---
-            var parser = new DOMParser();
-            DocFLOW = parser.parseFromString(xmlString, "text/xml").documentElement;
-            //---clear previous table----
-            var rows = flowTable.rows
-            for(var k = rows.length-1; k>=0; k--)
-                flowTable.deleteRow(rows[k])
-
-               var rowCnt=1
-
-                var row = flowTable.insertRow(0)
-                row.align = "center"
-                var dateCell = row.insertCell(0).innerHTML = "Date (Locale)"
-                var valueCell = row.insertCell(1).innerHTML = "GPM"
-
-                //----write table---
-                var data = DocFLOW.childNodes
-
-            for(var k = 0; k<data.length; k++)
-            {
-                var utcms=+data[k].getAttribute("utcms")
-                var date=new Date(utcms).toLocaleString()
-                var value=data[k].getAttribute("data")
-                var row = flowTable.insertRow(rowCnt)
-                row.insertCell(0).innerHTML=date
-                row.insertCell(1).innerHTML=value
-
-
-                rowCnt++
-            }
-
-            getVALVE()
-        }
-        xhr.send()
-    }
-}
-function getVALVE()
-{
-    if(!DocVALVE)
-    {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "DATA/HotWaterSystem/valve.xml", true);
-        xhr.onload = function()
-        {
-            var xmlString = this.responseText
-
-            //---DOMParser---
-            var parser = new DOMParser();
-            DocVALVE = parser.parseFromString(xmlString, "text/xml").documentElement;
-            //---clear previous table----
-            var rows = valveTable.rows
-            for(var k = rows.length-1; k>=0; k--)
-                valveTable.deleteRow(rows[k])
-
-               var rowCnt=1
-
-                var row = valveTable.insertRow(0)
-                row.align = "center"
-                var dateCell = row.insertCell(0).innerHTML = "Date (Locale)"
-                var valueCell = row.insertCell(1).innerHTML = "Percent"
-
-                //----write table---
-                var data = DocVALVE.childNodes
-
-            for(var k = 0; k<data.length; k++)
-            {
-                var utcms=+data[k].getAttribute("utcms")
-                var date=new Date(utcms).toLocaleString()
-                var value=data[k].getAttribute("data")
-                var row = valveTable.insertRow(rowCnt)
-                row.insertCell(0).innerHTML=date
-                row.insertCell(1).innerHTML=value
-
-
-                rowCnt++
-            }
-
-            openDataTable()
-        }
-        xhr.send()
-    }
-}
 
 function openDataTable()
 {
@@ -1937,6 +1747,24 @@ function closeDataTable()
     setTimeout("dataTableDiv.style.visibility='hidden'",500)
 }
 
+//---convert XML to JSON---
+var JSONDATA=[]
+function jsonData()
+{
+    var data = DocDATA.childNodes
+    for(var k=0;k<data.length;k++)
+    {
+        var utcms=data[k].getAttribute("utcms")
+        var oat=data[k].getAttribute("oat")
+        var hws=data[k].getAttribute("hws")
+        var flow=data[k].getAttribute("flow")
+        var valve=data[k].getAttribute("valve")
+        var jsonObj={utcms:utcms,oat:oat,hws:hws,flow:flow,valve:valve}
+
+        JSONDATA.push(jsonObj)
+    }
+    jsonValue.value=JSON.stringify(JSONDATA)
+}
 </script>
 <script>
 
