@@ -46,8 +46,11 @@ function closeDrawRect()
         DrawX.attr("stroke", "violet")
         DrawX.attr("transform", null)
         DragDot.attr("cx", null)
+        DragDot.attr("cy", null)
         DragDot.attr("transform", null)
         DragDot.style("visibility", "hidden")
+        domActiveElemG.removeAttribute("transform")
+
         cw.drawRectCopyButton.style.visibility = "hidden"
         cw.drawRectTopButton.style.visibility = "hidden"
        // cw.drawRectBotButton.style.visibility = "hidden"
