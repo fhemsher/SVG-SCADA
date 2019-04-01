@@ -43,6 +43,7 @@ function closeDrawCircle()
         DrawX.attr("stroke", "violet")
         DrawX.attr("transform", null)
         DragDot.attr("cx", null)
+        DragDot.attr("cy", null)
         DragDot.attr("transform", null)
         DragDot.style("visibility", "hidden")
         cw.drawCircleFinishButton.disabled = true
