@@ -44,6 +44,7 @@ function closeDrawEllipse()
         DrawX.attr("stroke", "violet")
         DrawX.attr("transform", null)
         DragDot.attr("cx", null)
+        DragDot.attr("cy", null)
         DragDot.attr("transform", null)
         DragDot.style("visibility", "hidden")
         cw.drawEllipseCopyButton.style.visibility = "hidden"
@@ -144,6 +145,7 @@ function placeDrawEllipse()
         domActiveElemG.appendChild(dragDot) //--place drag dot on top---
 
         DragDot.attr("cx", 20)
+        DragDot.attr("cy", 15)
 
         activeElem.setAttribute("transform", "translate("+SVGx+" "+SVGy+")")
         DrawX.style("display", "inline")
